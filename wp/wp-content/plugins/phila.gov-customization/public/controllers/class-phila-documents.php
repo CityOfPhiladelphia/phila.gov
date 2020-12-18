@@ -49,7 +49,7 @@ class Phila_Publications_Controller {
   public function get_items( $request ) {
 
     $args = array(
-      'post_type' => array('document'),
+      'post_type' => array('document', 'longform_content'),
       'posts_per_page'  => $request['count'],
       'category'  => array($request['category']),
       's' => $request['s'],

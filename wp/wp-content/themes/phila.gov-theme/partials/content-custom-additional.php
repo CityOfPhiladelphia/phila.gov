@@ -12,6 +12,7 @@
   }else{
     $content = array();
     $document_picker = $current_row['phila_full_options']['phila_content_additional_content']['phila_document_page_picker'];
+    $document_text = $current_row['phila_full_options']['phila_content_additional_content']['phila_forms_instructions_free_text'];
     $related_content = $current_row['phila_full_options']['phila_content_additional_content']['service_related_content'];
     $related_content_picker = $current_row['phila_full_options']['phila_content_additional_content']['service_related_content_picker'];
     $did_you_know = $current_row['phila_full_options']['phila_content_additional_content']['service_did_you_know_content'];
@@ -19,6 +20,7 @@
     $disclaimer = $current_row['phila_full_options']['phila_content_additional_content']['service_disclaimer_content'];
 
     $content['forms'] = $document_picker;
+    $content['form_free'] = $document_text;
     $content['related_picker'] = $related_content_picker;
     $content['related'] = $related_content;
     $content['aside']['did_you_know'] = $did_you_know;
@@ -33,18 +35,20 @@
 <?php if( !phila_util_is_array_empty($content) ) :  ?>
 <!-- Additional Content-->
 <section>
-  <?php if ( !empty($content['forms']) ) : ?>
+  <?php if ( !empty($content['forms']) || !empty( $content['form_free'] )) : ?>
   <div class="row">
     <div class="columns">
       <section>
         <h3 class="black bg-ghost-gray phm-mu mtl mbm">Forms & instructions</h3>
-        <div class="phm-mu">
-          <?php foreach ( $content['forms'] as $form ): ?>
-            <div class="pvs">
-              <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
-            </div>
-          <?php endforeach; ?>
-        </div>
+        <?php if (!empty( $content['forms']) ) : ?>
+          <div class="phm-mu">
+            <?php foreach ( $content['forms'] as $form ): ?>
+              <div class="pvs">
+                <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
+            <?php endforeach; ?>
+            <?php endif; ?>
+            <?php echo apply_filters( 'the_content', $content['form_free']); ?>
+          </div>
       </section>
     </div>
   </div>
