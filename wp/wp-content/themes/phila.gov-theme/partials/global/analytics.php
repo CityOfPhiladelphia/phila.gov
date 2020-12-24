@@ -69,3 +69,13 @@
     })(window, document, "clarity", "script", "4l8dhsl6kn");
   </script>
   <!-- End Microsoft Clarity -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NHET8T5XY8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NHET8T5XY8');
+  </script>
+  <!-- End Global site tag (gtag.js) - Google Analytics -->
