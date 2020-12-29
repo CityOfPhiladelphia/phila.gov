@@ -134,7 +134,12 @@ class ListingRepository
 	*/ 
 	public function isFiltered()
 	{
-		return ( isset($_GET['category']) && $_GET['category'] !== "all" ) ? true : false;
+		$taxonomies = get_taxonomies();
+		$tax_filtered = false;
+		foreach ( $taxonomies as $tax ){
+			if ( isset($_GET[$tax]) && $_GET[$tax] !== '' ) $tax_filtered = true;
+		}
+		return ( (isset($_GET['category']) && $_GET['category'] !== "all") || $tax_filtered ) ? true : false;
 	}
 
 	/**
@@ -148,7 +153,7 @@ class ListingRepository
 			if ( $initial_orderby ) $ordered = true;
 		}
 		if ( $ordered && isset($_GET['orderby']) && $_GET['orderby'] == 'menu_order' && !isset($_GET['order']) ) $ordered = false;
-		// Enbales nesting if sorted by menu order in ascending order
+		// Enables nesting if sorted by menu order in ascending order
 		if ( isset($_GET['orderby']) && $_GET['orderby'] == 'menu_order' && isset($_GET['order']) && $_GET['order'] == 'ASC' ) $ordered = false;
 		return $ordered;
 	}
