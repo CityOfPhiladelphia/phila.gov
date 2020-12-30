@@ -277,16 +277,14 @@ class PostUpdateRepository
 	*/
 	private function updateCategories($data, $append_taxonomies = false)
 	{
-		if ( isset($data['cat']) )
+		if ( isset($data['post_category']) )
 		{
-			// $this->validation->validateIntegerArray($data['cat']);
-			// $cats = [];
-			// // var_dump($data);
-			// foreach($data['cat'] as $cat) {
-			// 	if ( $cat !== 0 ) $cats[] = (int) $cat;
-			// }
-			// wp_set_post_categories($data['post_id'], $data['cat']);
-			wp_set_post_terms($data['post_id'], $data['cat'], 'category', $append_taxonomies);
+			$this->validation->validateIntegerArray($data['post_category']);
+			$cats = [];
+			foreach($data['post_category'] as $cat) {
+				if ( $cat !== 0 ) $cats[] = (int) $cat;
+			}
+			wp_set_post_categories($data['post_id'], $data['post_category'], $append_taxonomies);
 		}
 	}
 
