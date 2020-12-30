@@ -1027,17 +1027,18 @@ NestedPages.Nesting = function()
 	// Sync Nesting
 	plugin.syncNesting = function(manual, callback)
 	{
-		var list;
+		var list,
+		filtered;
 
 		if ( nestedpages.manual_order_sync === '1' && !manual) return;
 		$(NestedPages.selectors.errorDiv).hide();
 		$(NestedPages.selectors.loadingIndicator).show();
-		if ( NestedPages.jsData.nestable ){
+		filtered = ( $(NestedPages.selectors.lists).first().hasClass('filtered') ) ? true : false;
+		if ( NestedPages.jsData.nestable && !filtered ){
 			list = $(NestedPages.selectors.sortable).nestedSortable('toHierarchy', {startDepthCount: 0});
 		} else {
 			list = plugin.setNestingArray();
 		}
-		
 		plugin.disableNesting();
 
 		var syncmenu = NestedPages.jsData.syncmenu;
@@ -1052,7 +1053,8 @@ NestedPages.Nesting = function()
 				nonce : NestedPages.jsData.nonce,
 				list : list,
 				post_type : NestedPages.jsData.posttype,
-				syncmenu : syncmenu
+				syncmenu : syncmenu,
+				filtered : filtered
 			},
 			success: function(data, callback){
 				plugin.initializeSortable();
@@ -1455,7 +1457,6 @@ NestedPages.NewPost = function()
 		html += '</ul></div>';
 		
 		// Quick Edit (data attrs)
-
 		html += '<a href="#" class="np-btn np-quick-edit" data-id="' + post.id + '" data-template="' + post.page_template + '" data-category="' + post.post_category + '" data-title="' + post.title + '" data-slug="' + post.slug + '" data-commentstatus="closed" data-status="' + post.status.toLowerCase() + '" data-np-status="show"	data-navstatus="show" data-author="' + post.author + '" data-template="' + post.template + '" data-month="' + post.month + '" data-day="' + post.day + '" data-year="' + post.year + '" data-hour="' + post.hour + '" data-minute="' + post.minute + '" data-datepicker="' + post.datepicker + '" data-time="' + post.time + '" data-formattedtime="' + post.formattedtime + '" data-ampm="' + post.ampm + '">' + nestedpages.quick_edit + '</a>';
 
 		html += '<a href="' + post.view_link + '" class="np-btn" target="_blank">' + nestedpages.view + '</a>';
@@ -1589,9 +1590,9 @@ NestedPages.QuickEditPost = function()
 			title : $(plugin.button).attr('data-title'),
 			slug : $(plugin.button).attr('data-slug'),
 			author : $(plugin.button).attr('data-author'),
+			category : $(plugin.button).attr('data-post_category'),
 			cs : $(plugin.button).attr('data-commentstatus'),
 			status : $(plugin.button).attr('data-status'),
-			category : $(plugin.button).attr('data-cat'),
 			template : $(plugin.button).attr('data-template'),
 			month : $(plugin.button).attr('data-month'),
 			day : $(plugin.button).attr('data-day'),
@@ -1931,7 +1932,7 @@ NestedPages.QuickEditPost = function()
 		var button = $(plugin.row).find(NestedPages.selectors.quickEditOpen);
 
 		$(button).attr('data-id', plugin.newData.post_id);
-		$(button).attr('data-category', plugin.newData.post_cat);
+		$(button).attr('data-category', plugin.newData.post_category);
 		$(button).attr('data-template', plugin.newData.page_template);
 		$(button).attr('data-title', plugin.newData.post_title);
 		$(button).attr('data-slug', plugin.newData.post_name);
