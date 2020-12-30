@@ -87,6 +87,7 @@
 		</div>
 		<?php endif; ?>
 
+
 		<?php if ( $this->post_type->name == 'page' && $this->user->canSortPosts($this->post_type->name) && !$this->listing_repo->isSearch() ) : ?>
 		<div class="form-control full checkbox">
 			<label>
