@@ -3,7 +3,7 @@
 
 $app_id = 'vue-app';
 $longform_file_path = 'https://www.phila.gov/embedded/longform-content/'.$phila_environment;
-$vuejs_js_ids = [$longform_file_path.'/js/chunk-vendors.js', $longform_file_path.'/js/app.js'];
-$vuejs_css_ids = [$longform_file_path.'/css/chunk-vendors.css', $longform_file_path.'/css/app.css'];
+$vuejs_js_ids = [$longform_file_path.'/js/chunk-vendors.js', $longform_file_path.'/js/app.js?cache'];
+$vuejs_css_ids = [$longform_file_path.'/css/chunk-vendors.css', $longform_file_path.'/css/app.css?cache'];
 
 include(locate_template( 'partials/vue-apps/vue-register.php' ) );
