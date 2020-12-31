@@ -51,8 +51,8 @@ class Phila_Gov_Longform_Content {
           'id'   => 'phila_longform_content_footnote_copy',
           'type' => 'text',
           'size'  =>  75,
-          'limit' => 400,
-          'desc'  => '400 character limit.',
+          'limit' => 800,
+          'desc'  => '800 character limit.',
           'columns' => 6,
         ),
         array(
