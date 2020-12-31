@@ -13,6 +13,7 @@ wp/wp-content/plugins/mb-*
 !wp/wp-content/plugins/mb-relationships
 wp/wp-content/plugins/two-factor-authentication-premium/
 wp/wp-content/plugins/wpfront-user-role-editor-personal-pro/
+wp/wp-content/plugins/wp-nested-pages/
 wp/wp-content/themes/phila.gov-theme/yarn-error.log
 node_moddules
 # Ignore compiled files

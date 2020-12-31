@@ -15,7 +15,8 @@
 				title: alert_reset_options_title,
 				buttons: button_names,
 				modal: true,
-				width: 350
+				width: 350,
+				closeText: ''
 			});
 		});
 		
