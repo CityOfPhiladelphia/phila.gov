@@ -75,7 +75,7 @@
                   <a href="https://property.phila.gov/" class="trending-requests">Search for property information</a>
                 </li>
                 <li>
-                  <a href="http://www.philadelphiastreets.com/sanitation/residential/collection-schedules" class="trending-requests external">Trash and recycling schedule</a>
+                  <a href="https://www.phila.gov/services/trash-recycling-city-upkeep/residential-trash-and-recycling/find-your-trash-and-recycling-collection-day/#/" class="trending-requests">Trash and recycling schedule</a>
                 </li>
                 <li>
                   <a href="https://www.phila.gov/services/water-gas-utilities/water-sewer-services/become-a-water-customer/" class="trending-requests">Turn water service on or off</a>
