@@ -11,7 +11,7 @@
 <?php $contact_content = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_std_address']) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_std_address'] : ''; ?>
 
 <div class="grid-container">
-  <div class="grid-x grid-margin-xmvl">
+  <div class="grid-x grid-margin-x mvl">
     <div class="cell">
       <section>
         <?php if ( $wysiwyg_heading != '' ): ?>
