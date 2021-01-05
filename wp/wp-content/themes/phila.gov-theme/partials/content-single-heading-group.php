@@ -10,14 +10,14 @@
 
 <?php $contact_content = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_std_address']) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_std_address'] : ''; ?>
 
-<div class="grid-container">
-  <div class="grid-x grid-margin-x mvl">
-    <div class="cell">
-      <section>
-        <?php if ( $wysiwyg_heading != '' ): ?>
-          <h3 class="black bg-ghost-gray phm-mu mbm" id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>
-        <?php endif; ?>
-        <div class="phm-mu">
+
+    <div class="one-quarter-layout">
+
+    <div class="row one-quarter-row mvxl">
+        <div class="medium-6 columns">
+            <h3 id="<?php echo sanitize_title_with_dashes($wysiwyg_heading, null, 'save')?>"><?php echo $wysiwyg_heading; ?></h3>
+        </div>
+        <div class="medium-18 columns pbxl">
           <?php if ( (!empty($wysiwyg_content) || (!empty($is_address) ) ) ) : ?>
             <?php echo apply_filters( 'the_content', $wysiwyg_content ) ;?> 
             <?php include( locate_template( 'partials/global/contact-information.php' ) );?>
@@ -31,5 +31,3 @@
         </div>
       </section>
     </div>
-  </div>
-</div>
