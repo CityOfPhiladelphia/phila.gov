@@ -10,8 +10,8 @@
 
 <?php $contact_content = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_std_address']) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_std_address'] : ''; ?>
 
-
-  <div class="grid-x mvl">
+<div class="grid-container">
+  <div class="grid-x grid-margin-xmvl">
     <div class="cell">
       <section>
         <?php if ( $wysiwyg_heading != '' ): ?>
@@ -32,3 +32,4 @@
       </section>
     </div>
   </div>
+</div>
