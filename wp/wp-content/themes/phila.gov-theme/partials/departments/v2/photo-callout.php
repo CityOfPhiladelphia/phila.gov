@@ -16,7 +16,7 @@ if (phila_get_selected_template() === 'homepage_v2') {
     $alt = reset($get_photo)['alt'];
 
   }else{
-    $photo_callout = isset($current_row['phila_full_options']['phila_photo_callout']) ? $current_row['phila_full_options']['phila_photo_callout'] : '';
+    $photo_callout = isset($current_row['phila_full_options']['photo_callout']) ? $current_row['phila_full_options']['photo_callout'] : '';
     $toggle = isset($photo_callout['phila_v2_photo_callout_block__image_toggle']) ? $photo_callout['phila_v2_photo_callout_block__image_toggle'] : '';
     $header = $photo_callout['phila_v2_photo_callout_block__txt-header'];
     $subHeader = $photo_callout['phila_v2_photo_callout_block__txt-sub-header'];    
