@@ -50,9 +50,11 @@
 </head>
 
 <body <?php body_class(); ?> lang="en" data-clarity-unmask="True">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<?php if ( !is_user_logged_in() ): ?>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+<?php endif; ?>
   <header class="global-nav no-js pbm pbn-mu mbn-mu">
     <h1 class="accessible">City of Philadelphia</h1>
 
