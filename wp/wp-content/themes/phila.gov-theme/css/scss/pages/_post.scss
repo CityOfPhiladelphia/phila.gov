@@ -319,4 +319,15 @@
       display: none;
     }
   }
+  table {
+    tr {
+      th {
+        color: #fff;
+        border: 2px solid #fff;
+      }
+    }
+    td {
+      border: 2px solid #fff;
+    }
+  }
 }
