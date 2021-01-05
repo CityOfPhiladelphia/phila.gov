@@ -3795,6 +3795,7 @@ function wp_plupload_default_settings() {
  *     @type array  $nonces                Nonces for update, delete and edit.
  *     @type string $orientation           If the attachment is an image, represents the image orientation
  *                                         (landscape or portrait).
+ *     @type string $overrideDate          Override date if upload date is not accurate to the document
  *     @type array  $sizes                 If the attachment is an image, contains an array of arrays
  *                                         for the images sizes: thumbnail, medium, large, and full.
  *     @type string $status                Post status of the attachment (usually 'inherit').
@@ -3851,6 +3852,7 @@ function wp_prepare_attachment_for_js( $attachment ) {
 		'subtype'       => $subtype,
 		'icon'          => wp_mime_type_icon( $attachment->ID ),
 		'dateFormatted' => mysql2date( __( 'F j, Y' ), $attachment->post_date ),
+		'overrideDate'  => mysql2date( __( 'F j, Y' ), rwmb_meta('phila_document_page_release_date', '', $attachment->ID)),
 		'nonces'        => array(
 			'update' => false,
 			'delete' => false,
