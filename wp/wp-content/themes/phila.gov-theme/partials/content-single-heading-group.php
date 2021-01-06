@@ -7,11 +7,11 @@
 
 <?php $is_address = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_address_select'] ) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_address_select'] : ''; ?>
 <?php $stepped_select = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_stepped_select'] ) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_stepped_select'] : ''; ?>
-
 <?php $contact_content = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_std_address']) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_std_address'] : ''; ?>
 
-
-<div class="grid-container">
+<?php if (phila_get_selected_template() !='custom_content'): ?>
+  <div class="grid-container">
+<?php endif;?>
 <div class="grid-x mvl">
     <div class="cell">
       <section>
@@ -32,4 +32,6 @@
         </div>
       </section>
     </div>
-</div>
+<?php if (phila_get_selected_template() !='custom_content'): ?>
+  </div>
+<?php endif;?>
