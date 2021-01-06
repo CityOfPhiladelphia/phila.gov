@@ -1166,11 +1166,10 @@ class DuplicatePost{
 						add_post_meta($new_id, 'service_related_content_picker', $service_related_content, false);
 					}
         }
-      }else if( $meta_key === 'phila_select_programs'){// now it's saving the values, but adding them to the page twice. updading the page normally fixes the issue, but it's still not ideal.
-        foreach ($meta_values as $program_values){
-					if(!metadata_exists('post', $new_id, 'phila_select_programs')) {
-						add_post_meta($new_id, 'phila_select_programs', $program_values, false);
-					}
+      }else if( $meta_key === 'phila_select_programs'){ // clears whatever is in the destination and replaces with what exists on the active page
+				delete_post_meta($new_id, 'phila_select_programs');
+        foreach ($meta_values as $program_value){
+					add_post_meta($new_id, 'phila_select_programs', $program_value, false);
         }
       }else if( $meta_key === 'phila_files'){ //document pages
         foreach ($meta_values as $file_values){
@@ -1315,3 +1314,9 @@ class DuplicatePost{
 
 
 }
+
+// works for duplicating the page 
+// }else if( $meta_key === 'phila_select_programs'){
+// 	foreach ($meta_values as $program_values){
+// 		add_post_meta($new_id, 'phila_select_programs', $program_values, false);
+// 	}
