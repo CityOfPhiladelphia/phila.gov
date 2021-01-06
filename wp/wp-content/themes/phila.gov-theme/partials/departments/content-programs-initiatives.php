@@ -286,6 +286,18 @@
               <!-- /Heading Group -->
             <?php endif;?>
 
+            <?php elseif ( $current_row_option == 'phila_heading_one_quarter'):
+            
+            $wysiwyg_heading = isset( $current_row['phila_full_options']['phila_heading_one_quarter']['phila_wysiwyg_heading'] ) ? $current_row['phila_full_options']['phila_heading_one_quarter']['phila_wysiwyg_heading'] : '';
+            $wysiwyg_content = isset( $current_row['phila_full_options']['phila_heading_one_quarter']['phila_unique_wysiwyg_content'] ) ? $current_row['phila_full_options']['phila_heading_one_quarter']['phila_unique_wysiwyg_content'] : '';
+
+            if ( !empty( $wysiwyg_heading ) || !empty( $wysiwyg_content ) ) : ?>
+              <!-- 1/4 Heading Group -->
+              <?php include(locate_template('partials/content-one-quarter-simple.php')); ?>
+              <!-- 1/4 Heading Group -->
+            <?php endif;?>
+
+
           <?php elseif ( $current_row_option == 'phila_prereq'):
           
             $accordion_group = isset( $current_row['phila_full_options']['phila_prereq']['accordion_group'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_group'] : '';
