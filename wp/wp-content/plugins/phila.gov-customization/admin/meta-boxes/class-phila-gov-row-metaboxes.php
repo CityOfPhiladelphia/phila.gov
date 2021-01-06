@@ -276,6 +276,16 @@ class Phila_Gov_Row_Metaboxes {
         )
       ),
       array(
+        'id' => 'phila_heading_one_quarter',
+        'type'  => 'group',
+        'clone' => false,
+        'visible' => array('phila_full_options_select', '=', 'phila_heading_one_quarter_select'),
+
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+        )
+      ),
+      array(
         'id' => 'phila_programs',
         'type'  => 'group',
         'clone' => false,
