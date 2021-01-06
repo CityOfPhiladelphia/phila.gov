@@ -1,5 +1,7 @@
 <?php 
   /* Template for Google Analytics */
+
+if ( !is_user_logged_in() ): 
 ?>
 <?php 
     $lang = empty(rwmb_meta('phila_select_language', '', $post->ID)) ? 'english' : rwmb_meta('phila_select_language', '', $post->ID);
@@ -79,3 +81,4 @@
     gtag('config', 'G-NHET8T5XY8');
   </script>
   <!-- End Global site tag (gtag.js) - Google Analytics -->
+<?php endif; ?>
