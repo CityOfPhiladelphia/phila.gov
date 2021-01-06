@@ -49,6 +49,7 @@ class Phila_Gov_Row_Select_Options {
         'phila_get_involved' => 'Get Involved',
         'phila_image_list' => 'Image list',
         'phila_content_heading_group' => 'Heading group',
+        'phila_heading_one_quarter_select' => '1/4 Heading group',
         'phila_list_items' => 'List items (grid)',
         'phila_location_list' => 'Location List',
         'phila_photo_callout' => 'Photo callout',
