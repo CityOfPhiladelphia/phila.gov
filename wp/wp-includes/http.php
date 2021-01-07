@@ -75,7 +75,7 @@ function wp_safe_remote_get( $url, $args = array() ) {
  * URL. The URL is validated to avoid redirection and request forgery attacks.
  *
  * @since 3.6.0
- *
+ *	
  * @see wp_remote_request() For more information on the response array format.
  * @see WP_Http::request() For default arguments information.
  *
@@ -86,6 +86,7 @@ function wp_safe_remote_get( $url, $args = array() ) {
 function wp_safe_remote_post( $url, $args = array() ) {
 	$args['reject_unsafe_urls'] = true;
 	$http                       = _wp_http_get_object();
+	var_dump($http->post( $url, $args ));
 	return $http->post( $url, $args );
 }
 
