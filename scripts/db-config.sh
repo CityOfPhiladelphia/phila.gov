@@ -24,4 +24,4 @@ if ( ! empty( $REPLICA_DB_HOST ) ) {
 					"read"     => 1,
 	));
 }
-' > "../wp/db-config.php"
+' > "wp/db-config.php"
