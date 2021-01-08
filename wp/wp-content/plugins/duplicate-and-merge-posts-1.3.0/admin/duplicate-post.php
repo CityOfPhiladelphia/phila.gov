@@ -1146,33 +1146,30 @@ class DuplicatePost{
       /* These meta fields get stored as repeated keys, which the duplicate and edit plugin doesn't account for. 
       By checking if the fields are of a certain name, we can prevent the fields from not getting duplicated at all, 
 			and when merged back in, prevent the fields from getting repeated ids */ 
+			// DD - These work for all use cases except duplicating a page, then deleting all of the fields inside that duplicated page, and merging the empty field in.
+			// The expected behavior for that use case is for the original values of that field to be retained
       if ($meta_key === 'phila_document_page_picker'){
-				// var_dump($meta_key);
-				// var_dump($meta_values);
+				delete_post_meta($new_id, 'phila_document_page_picker');
         foreach ($meta_values as $doc_page_value){
-					if(!metadata_exists('post', $new_id, 'phila_document_page_picker')) {
-						add_post_meta($new_id, 'phila_document_page_picker', $doc_page_value, false);
-					}
-				}
+					add_post_meta($new_id, 'phila_document_page_picker', $doc_page_value, false);
+        }
       }else if( $meta_key === 'phila_related_content_picker'){
+				delete_post_meta($new_id, 'phila_related_content_picker');
         foreach ($meta_values as $related_content){
-					if(!metadata_exists('post', $new_id, 'phila_related_content_picker')) {
-						add_post_meta($new_id, 'phila_related_content_picker', $related_content, false);
-					}
+					add_post_meta($new_id, 'phila_related_content_picker', $related_content, false);
         }
       }else if( $meta_key === 'service_related_content_picker'){
+				delete_post_meta($new_id, 'service_related_content_picker');
         foreach ($meta_values as $service_related_content){
-					if(!metadata_exists('post', $new_id, 'service_related_content_picker')) {
-						add_post_meta($new_id, 'service_related_content_picker', $service_related_content, false);
-					}
+					add_post_meta($new_id, 'service_related_content_picker', $service_related_content, false);
         }
-      }else if( $meta_key === 'phila_select_programs'){// now it's saving the values, but adding them to the page twice. updading the page normally fixes the issue, but it's still not ideal.
-        foreach ($meta_values as $program_values){
-					if(!metadata_exists('post', $new_id, 'phila_select_programs')) {
-						add_post_meta($new_id, 'phila_select_programs', $program_values, false);
-					}
+      }else if( $meta_key === 'phila_select_programs'){ 
+				delete_post_meta($new_id, 'phila_select_programs');
+        foreach ($meta_values as $program_value){
+					add_post_meta($new_id, 'phila_select_programs', $program_value, false);
         }
-      }else if( $meta_key === 'phila_files'){ //document pages
+      }else if( $meta_key === 'phila_files'){
+				delete_post_meta($new_id, 'phila_files');
         foreach ($meta_values as $file_values){
           add_post_meta($new_id, 'phila_files', $file_values, false);
       }
@@ -1315,3 +1312,9 @@ class DuplicatePost{
 
 
 }
+
+// works for duplicating the page 
+// }else if( $meta_key === 'phila_select_programs'){
+// 	foreach ($meta_values as $program_values){
+// 		add_post_meta($new_id, 'phila_select_programs', $program_values, false);
+// 	}
