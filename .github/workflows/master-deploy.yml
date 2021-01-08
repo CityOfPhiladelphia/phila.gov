@@ -17,4 +17,4 @@ jobs:
       - id: master-deploy
         uses: webfactory/create-aws-codedeploy-deployment@0.2.2
         with: 
-          application: master-phila-gov-codedeploy
+          application: beta.phila.gov
