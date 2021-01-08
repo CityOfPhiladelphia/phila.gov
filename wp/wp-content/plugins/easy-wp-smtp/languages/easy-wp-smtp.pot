@@ -2,16 +2,16 @@
 # This file is distributed under the same license as the Easy WP SMTP plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Easy WP SMTP 1.4.1\n"
+"Project-Id-Version: Easy WP SMTP 1.4.4t1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/easy-wp-smtp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-31T17:26:40+03:00\n"
-"PO-Revision-Date: 2020-07-31T17:26:40+03:00\n"
-"X-Generator: WP-CLI 2.0.1\n"
+"POT-Creation-Date: 2020-12-08T18:27:38+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: easy-wp-smtp\n"
 
 #. Plugin Name of the plugin
@@ -33,36 +33,6 @@ msgstr ""
 
 #. Author URI of the plugin
 msgid "https://wp-ecommerce.net/"
-msgstr ""
-
-#: easy-wp-smtp.php:358
-msgid "Error occurred during settings import"
-msgstr ""
-
-#: easy-wp-smtp.php:410
-msgid "Please configure your SMTP credentials in the <a href=\"%s\">settings menu</a> in order to send email using Easy WP SMTP plugin."
-msgstr ""
-
-#: easy-wp-smtp.php:422
-msgid "Settings have been imported successfully."
-msgstr ""
-
-#: easy-wp-smtp.php:430
-#: class-easywpsmtp-admin.php:112
-msgid "Nonce check failed."
-msgstr ""
-
-#: easy-wp-smtp.php:436
-msgid "Can't clear log - file is not writeable."
-msgstr ""
-
-#: easy-wp-smtp.php:456
-#: easy-wp-smtp.php:464
-msgid "Settings"
-msgstr ""
-
-#: easy-wp-smtp.php:622
-msgid "Please refresh the page and try again."
 msgstr ""
 
 #: class-easywpsmtp-admin.php:39
@@ -106,6 +76,11 @@ msgstr ""
 msgid "Easy WP SMTP Settings"
 msgstr ""
 
+#: class-easywpsmtp-admin.php:112
+#: easy-wp-smtp.php:439
+msgid "Nonce check failed."
+msgstr ""
+
 #: class-easywpsmtp-admin.php:123
 msgid "Please enter a valid email address in the 'FROM' field."
 msgstr ""
@@ -135,7 +110,7 @@ msgid "Additional Settings"
 msgstr ""
 
 #: class-easywpsmtp-admin.php:221
-#: class-easywpsmtp-admin.php:463
+#: class-easywpsmtp-admin.php:466
 msgid "Test Email"
 msgstr ""
 
@@ -268,8 +243,9 @@ msgid "The password to login to your mail server"
 msgstr ""
 
 #: class-easywpsmtp-admin.php:348
-#: class-easywpsmtp-admin.php:465
-#: class-easywpsmtp-admin.php:517
+#: class-easywpsmtp-admin.php:411
+#: class-easywpsmtp-admin.php:468
+#: class-easywpsmtp-admin.php:520
 msgctxt "\"Note\" as in \"Note: keep this in mind\""
 msgid "Note:"
 msgstr ""
@@ -279,7 +255,7 @@ msgid "when you click \"Save Changes\", your actual password is stored in the da
 msgstr ""
 
 #: class-easywpsmtp-admin.php:353
-#: class-easywpsmtp-admin.php:415
+#: class-easywpsmtp-admin.php:418
 msgid "Save Changes"
 msgstr ""
 
@@ -343,149 +319,178 @@ msgstr ""
 msgid "Check this box to enable mail debug log"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:410
+#: class-easywpsmtp-admin.php:411
+msgid "debug log is reset when the plugin is activated, deactivated or updated."
+msgstr ""
+
+#: class-easywpsmtp-admin.php:413
 msgid "View Log"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:410
+#: class-easywpsmtp-admin.php:413
 msgid "Clear Log"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:422
+#: class-easywpsmtp-admin.php:425
 msgid "Danger Zone"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:424
+#: class-easywpsmtp-admin.php:427
 msgid "Actions in this section can (and some of them will) erase or mess up your settings. Use it with caution."
 msgstr ""
 
-#: class-easywpsmtp-admin.php:427
+#: class-easywpsmtp-admin.php:430
 msgid "Export\\Import Settings"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:429
+#: class-easywpsmtp-admin.php:432
 msgid "Export Settings"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:430
+#: class-easywpsmtp-admin.php:433
 msgid "Use this to export plugin settings to a file."
 msgstr ""
 
-#: class-easywpsmtp-admin.php:432
+#: class-easywpsmtp-admin.php:435
 msgid "Import Settings"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:433
+#: class-easywpsmtp-admin.php:436
 msgid "Use this to import plugin settings from a file. Note this would replace all your existing settings, so use with caution."
 msgstr ""
 
-#: class-easywpsmtp-admin.php:437
+#: class-easywpsmtp-admin.php:440
 msgid "Delete Settings and Deactivate Plugin"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:439
+#: class-easywpsmtp-admin.php:442
 msgid "Self-destruct"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:439
+#: class-easywpsmtp-admin.php:442
 msgid "This will remove ALL your settings and deactivate the plugin. Useful when you're uninstalling the plugin and want to completely remove all crucial data stored in the database."
 msgstr ""
 
-#: class-easywpsmtp-admin.php:440
+#: class-easywpsmtp-admin.php:443
 msgid "Warning! This can't be undone."
 msgstr ""
 
-#: class-easywpsmtp-admin.php:465
+#: class-easywpsmtp-admin.php:468
 msgid "You have unsaved settings. In order to send a test email, you need to go back to previous tab and click \"Save Changes\" button first."
 msgstr ""
 
-#: class-easywpsmtp-admin.php:471
+#: class-easywpsmtp-admin.php:474
 msgid "Following error occurred when attempting to send test email:"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:474
+#: class-easywpsmtp-admin.php:477
 msgid "Test email was successfully sent. No errors occurred during the process."
 msgstr ""
 
-#: class-easywpsmtp-admin.php:485
-#: class-easywpsmtp-admin.php:493
+#: class-easywpsmtp-admin.php:488
+#: class-easywpsmtp-admin.php:496
 msgid "Show Debug Log"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:495
+#: class-easywpsmtp-admin.php:498
 msgid "Hide Debug Log"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:516
+#: class-easywpsmtp-admin.php:519
 msgid "You can use this section to send an email from your server using the above configured SMTP details to see if the email gets delivered."
 msgstr ""
 
-#: class-easywpsmtp-admin.php:517
+#: class-easywpsmtp-admin.php:520
 msgid "debug log for this test email will be automatically displayed right after you send it. Test email also ignores \"Enable Domain Check\" option."
 msgstr ""
 
-#: class-easywpsmtp-admin.php:522
+#: class-easywpsmtp-admin.php:525
 msgid "To"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:525
+#: class-easywpsmtp-admin.php:528
 msgid "Enter the recipient's email address"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:529
+#: class-easywpsmtp-admin.php:532
 msgid "Subject"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:532
+#: class-easywpsmtp-admin.php:535
 msgid "Enter a subject for your message"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:536
+#: class-easywpsmtp-admin.php:539
 msgid "Message"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:539
+#: class-easywpsmtp-admin.php:542
 msgid "Write your email message"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:544
+#: class-easywpsmtp-admin.php:547
 msgid "Send Test Email"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:557
+#: class-easywpsmtp-admin.php:560
 msgid "Documentation"
 msgstr ""
 
 #. translators: %s is replaced by documentation page URL
-#: class-easywpsmtp-admin.php:563
+#: class-easywpsmtp-admin.php:566
 msgctxt "%s is replaced by <a target=\"_blank\" href=\"https://wp-ecommerce.net/easy-wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-server-2197\">Easy WP SMTP</a>"
 msgid "Please visit the %s plugin's documentation page to learn how to use this plugin."
 msgstr ""
 
-#: class-easywpsmtp-admin.php:571
+#: class-easywpsmtp-admin.php:574
 msgid "Support"
 msgstr ""
 
 #. translators: %s is replaced by support forum URL
-#: class-easywpsmtp-admin.php:577
+#: class-easywpsmtp-admin.php:580
 msgctxt "%s is replaced by \"Support Forum\" link"
 msgid "Having issues or difficulties? You can post your issue on the %s"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:581
+#: class-easywpsmtp-admin.php:584
 msgid "Support Forum"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:588
+#: class-easywpsmtp-admin.php:591
 msgid "Rate Us"
 msgstr ""
 
 #. translators: %s is replaced by rating link
-#: class-easywpsmtp-admin.php:594
+#: class-easywpsmtp-admin.php:597
 msgctxt "%s is replaced by \"rating\" link"
 msgid "Like the plugin? Please give us a %s"
 msgstr ""
 
-#: class-easywpsmtp-admin.php:598
+#: class-easywpsmtp-admin.php:601
 msgid "rating"
+msgstr ""
+
+#: easy-wp-smtp.php:361
+msgid "Error occurred during settings import"
+msgstr ""
+
+#: easy-wp-smtp.php:413
+msgid "Please configure your SMTP credentials in the <a href=\"%s\">settings menu</a> in order to send email using Easy WP SMTP plugin."
+msgstr ""
+
+#: easy-wp-smtp.php:425
+msgid "Settings have been imported successfully."
+msgstr ""
+
+#: easy-wp-smtp.php:445
+msgid "Can't clear log - file is not writeable."
+msgstr ""
+
+#: easy-wp-smtp.php:474
+#: easy-wp-smtp.php:482
+msgid "Settings"
+msgstr ""
+
+#: easy-wp-smtp.php:647
+msgid "Please refresh the page and try again."
 msgstr ""

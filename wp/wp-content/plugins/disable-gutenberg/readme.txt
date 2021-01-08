@@ -9,9 +9,9 @@ Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Contributors: specialk
 Requires at least: 4.9
-Tested up to: 5.5
-Stable tag: 2.2
-Version: 2.2
+Tested up to: 5.6
+Stable tag: 2.3
+Version: 2.3
 Requires PHP: 5.6.20
 Text Domain: disable-gutenberg
 Domain Path: /languages
@@ -161,7 +161,7 @@ So if you hide the plugin's menu item, you always can access the settings direct
 
 **More Tools**
 
-Here is a description of the tools available by clicking the "More Tools" link.
+The settings include a "More Tools" link. Clicking it toggles open some advanced options:
 
 * Disable Nag - Disables "Try Gutenberg" nag
 * Enable Frontend - Enables the frontend Gutenberg stylesheet
@@ -281,7 +281,7 @@ And/or purchase one of my premium WordPress plugins:
 * [BBQ Pro](https://plugin-planet.com/bbq-pro/) - Super fast WordPress firewall
 * [Blackhole Pro](https://plugin-planet.com/blackhole-pro/) - Automatically block bad bots
 * [Banhammer Pro](https://plugin-planet.com/banhammer-pro/) - Monitor traffic and ban the bad guys
-* [GA Google Analytics Pro](https://plugin-planet.com/ga-google-analytics-pro/) - Connect your WordPress to Google Analytics
+* [GA Google Analytics Pro](https://plugin-planet.com/ga-google-analytics-pro/) - Connect WordPress to Google Analytics
 * [USP Pro](https://plugin-planet.com/usp-pro/) - Unlimited front-end forms
 
 Links, tweets and likes also appreciated. Thanks! :)
@@ -294,6 +294,12 @@ Thank you to everyone for using Disable Gutenberg and for all the [awesome 5-sta
 
 If you have any feedback or suggestions to make this plugin the absolute best it can be, and/or would like to help with development, please reach me via my [contact form](https://perishablepress.com/contact/) at Perishable Press.
 
+
+**2.3 (2020/11/09)**
+
+* Updates plugin script to account for changes in jQuery UI
+* Tests on PHP 7.4 and 8.0
+* Tests on WordPress 5.6
 
 **2.2 (2020/08/02)**
 
