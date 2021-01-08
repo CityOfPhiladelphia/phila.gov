@@ -86,7 +86,6 @@ function wp_safe_remote_get( $url, $args = array() ) {
 function wp_safe_remote_post( $url, $args = array() ) {
 	$args['reject_unsafe_urls'] = true;
 	$http                       = _wp_http_get_object();
-	var_dump($http->post( $url, $args ));
 	return $http->post( $url, $args );
 }
 
