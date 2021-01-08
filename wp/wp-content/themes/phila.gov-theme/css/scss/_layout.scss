@@ -49,18 +49,6 @@ img.float-right{
   }
 }
 
-.clickable-row{
-  cursor: pointer;
-  opacity: 1;
-  @include transition( background, .2s );
-
-  &:hover {
-    opacity: .5;
-    background: transparent;
-  }
-}
-
-
 @media screen and (min-width: 64em) {
   .fat-gutter{
     &.row,
