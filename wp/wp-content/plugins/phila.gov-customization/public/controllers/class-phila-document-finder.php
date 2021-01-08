@@ -121,6 +121,10 @@ class Phila_Document_Finder_Controller {
     if($file['dateFormatted']) {
       $post_data['date'] = (string) $file['dateFormatted'];
     }
+    if($file['overrideDate']) {
+      // override date if exists
+      $post_data['date'] = (string) $file['overrideDate'];
+    }
     if($file['editLink']) {
       $post_data['editLink'] = (string) $file['editLink'];
     }

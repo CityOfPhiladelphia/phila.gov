@@ -7,6 +7,7 @@ source /home/ubuntu/.ssh/environment
 
 _dir="$(dirname "$0")"
 plugins="mb-admin-columns-1.5.0.zip
+mb-rest-api-1.4.0.zip
 mb-revision-1.3.3.zip
 mb-settings-page-2.1.3.zip
 mb-term-meta-1.2.10.zip

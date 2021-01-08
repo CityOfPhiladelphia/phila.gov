@@ -6607,6 +6607,7 @@ Attachment = View.extend(/** @lends wp.media.view.Attachment.prototype */{
 				caption:       '',
 				title:         '',
 				dateFormatted: '',
+				overrideDate:  '',
 				width:         '',
 				height:        '',
 				compat:        false,
