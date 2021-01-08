@@ -311,7 +311,19 @@ class WebhookTrigger
         ]);
 
         $method = jamstack_deployments_get_webhook_method();
-        
+        var_dump($webhook);
+        var_dump('~~~~~~~~~');
+        $args = array();
+        $args['host'] = 'webhooks.amplify.us-east-1.amazonaws.com';
+        $args['Access-Control-Allow-Origin'] = '*';
+        $args['Access-Control-Allow-Headers'] = 'x-requested-with, x-requested-b';
+        // $args['blocking'] = false;
+        // $args['timeout'] = 25;
+        $args['content-type'] = 'application/json';
+        var_dump($args);
+        var_dump('----------');
+        var_dump($method);
+        var_dump('----------');
         do_action('jamstack_deployments_before_fire_webhook');
         if ($method === 'get') {
             $return = wp_safe_remote_get($webhook, $args);
@@ -319,7 +331,7 @@ class WebhookTrigger
             $return = wp_safe_remote_post($webhook, $args);
         }
         do_action('jamstack_deployments_after_fire_webhook');
-
+        var_dump($return);
         return $return;
     }
 }
