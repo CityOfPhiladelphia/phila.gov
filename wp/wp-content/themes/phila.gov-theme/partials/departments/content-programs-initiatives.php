@@ -261,8 +261,9 @@
               <!-- /Staff listing -->
             <?php endif;?>
 
-            <?php elseif ( $current_row_option == 'phila_photo_callout'):?>
-            <?php if ( isset( $current_row['phila_full_options']['phila_photo_callout'] ) ): ?>
+            <?php elseif ( $current_row_option == 'phila_photo_callout'): ?>
+            <?php if ( isset( $current_row['phila_full_options']['phila_photo_callout']) || isset( $current_row['phila_full_options']['phila_full_options_select'] )): 
+              ?>
               <!-- Photo call out -->
               <?php include(locate_template('partials/departments/v2/photo-callout.php')); ?>
               <!-- /Photo call out -->
@@ -285,6 +286,18 @@
               <?php include(locate_template('partials/content-single-heading-group.php')); ?>
               <!-- /Heading Group -->
             <?php endif;?>
+
+            <?php elseif ( $current_row_option == 'phila_heading_one_quarter_select'):
+            
+            $wysiwyg_heading = isset( $current_row['phila_full_options']['phila_heading_one_quarter']['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ? $current_row['phila_full_options']['phila_heading_one_quarter']['phila_custom_wysiwyg']['phila_wysiwyg_title'] : '';
+            $wysiwyg_content = isset( $current_row['phila_full_options']['phila_heading_one_quarter']['phila_custom_wysiwyg']['phila_wysiwyg_content'] ) ? $current_row['phila_full_options']['phila_heading_one_quarter']['phila_custom_wysiwyg']['phila_wysiwyg_content'] : '';
+
+            if ( !empty( $wysiwyg_heading ) || !empty( $wysiwyg_content ) ) : ?>
+              <!-- 1/4 Heading Group -->
+              <?php include(locate_template('partials/content-one-quarter-simple.php')); ?>
+              <!-- 1/4 Heading Group -->
+            <?php endif;?>
+
 
           <?php elseif ( $current_row_option == 'phila_prereq'):
           

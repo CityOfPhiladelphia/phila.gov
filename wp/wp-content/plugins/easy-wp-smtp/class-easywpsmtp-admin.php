@@ -126,9 +126,9 @@ function swpsmtp_settings() {
 		if ( isset( $_POST['swpsmtp_reply_to_email'] ) ) {
 			$swpsmtp_options['reply_to_email'] = sanitize_email( $_POST['swpsmtp_reply_to_email'] );
 		}
-                if ( isset( $_POST['swpsmtp_bcc_email'] ) ) {
-                        $swpsmtp_options['bcc_email'] = sanitize_text_field( $_POST['swpsmtp_bcc_email'] );//Can contain comma seperated addresses.
-                }
+		if ( isset( $_POST['swpsmtp_bcc_email'] ) ) {
+			$swpsmtp_options['bcc_email'] = sanitize_text_field( $_POST['swpsmtp_bcc_email'] );//Can contain comma seperated addresses.
+		}
 
 		if ( isset( $_POST['swpsmtp_email_ignore_list'] ) ) {
 			$swpsmtp_options['email_ignore_list'] = sanitize_text_field( $_POST['swpsmtp_email_ignore_list'] );
@@ -269,13 +269,13 @@ function swpsmtp_settings() {
 										<p>
 									</td>
 								</tr>
-                                                                <tr valign="top">
-                                                                        <th scope="row"><?php esc_html_e( 'BCC Email Address', 'easy-wp-smtp' ); ?></th>
-                                                                        <td>
-                                                                                <input id="swpsmtp_bcc_email" type="text" name="swpsmtp_bcc_email" value="<?php echo isset( $swpsmtp_options['bcc_email'] ) ? esc_attr( $swpsmtp_options['bcc_email'] ) : ''; ?>" /><br />
-                                                                                <p class="description"><?php esc_html_e( "Optional. This email address will be used in the 'BCC' field of the outgoing emails. Use this option carefully since all your outgoing emails from this site will add this address to the BCC field. You can also enter multiple email addresses (comma separated).", 'easy-wp-smtp' ); ?></p>
-                                                                        </td>
-                                                                </tr>
+								<tr valign="top">
+									<th scope="row"><?php esc_html_e( 'BCC Email Address', 'easy-wp-smtp' ); ?></th>
+									<td>
+										<input id="swpsmtp_bcc_email" type="text" name="swpsmtp_bcc_email" value="<?php echo isset( $swpsmtp_options['bcc_email'] ) ? esc_attr( $swpsmtp_options['bcc_email'] ) : ''; ?>" /><br />
+										<p class="description"><?php esc_html_e( "Optional. This email address will be used in the 'BCC' field of the outgoing emails. Use this option carefully since all your outgoing emails from this site will add this address to the BCC field. You can also enter multiple email addresses (comma separated).", 'easy-wp-smtp' ); ?></p>
+									</td>
+								</tr>
 
 								<tr class="ad_opt swpsmtp_smtp_options">
 									<th><?php esc_html_e( 'SMTP Host', 'easy-wp-smtp' ); ?></th>
@@ -406,7 +406,10 @@ function swpsmtp_settings() {
 									<th scope="row"><?php esc_html_e( 'Enable Debug Log', 'easy-wp-smtp' ); ?></th>
 									<td>
 										<input id="swpsmtp_enable_debug" type="checkbox" name="swpsmtp_enable_debug" value="1" <?php echo ( isset( $swpsmtp_options['smtp_settings']['enable_debug'] ) && ( $swpsmtp_options['smtp_settings']['enable_debug'] ) ) ? 'checked' : ''; ?> />
-										<p class="description"><?php esc_html_e( 'Check this box to enable mail debug log', 'easy-wp-smtp' ); ?></p>
+										<p class="description"><?php esc_html_e( 'Check this box to enable mail debug log', 'easy-wp-smtp' ); ?>
+											<br/>
+											<b><?php echo esc_html( _x( 'Note:', '"Note" as in "Note: keep this in mind"', 'easy-wp-smtp' ) ); ?></b> <?php esc_html_e( 'debug log is reset when the plugin is activated, deactivated or updated.', 'easy-wp-smtp' ); ?>
+										</p>
 										<a href="<?php echo esc_attr( admin_url() ); ?>?swpsmtp_action=view_log" target="_blank"><?php esc_html_e( 'View Log', 'easy-wp-smtp' ); ?></a> | <a style="color: red;" id="swpsmtp_clear_log_btn" href="#0"><?php esc_html_e( 'Clear Log', 'easy-wp-smtp' ); ?></a>
 									</td>
 								</tr>
