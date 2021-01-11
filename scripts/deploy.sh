@@ -71,6 +71,3 @@ sudo rm -rf /var/run/nginx-cache
 sudo rm -rf /home/ubuntu/app/wp/wp-content/cache
 
 sudo service nginx reload
-
-echo 'Running db-config.sh'
-"$_dir/db-config.sh"
