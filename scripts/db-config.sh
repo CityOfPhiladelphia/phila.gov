@@ -1,4 +1,10 @@
 #!/bin/sh
+
+echo 'Writing wp-config.php'
+
+source /home/ubuntu/.ssh/environment
+cd /home/ubuntu/app/wp
+
 echo '<?php
 /**
  * Register the primary server to HyperDB
@@ -24,4 +30,4 @@ if ( ! empty( $REPLICA_DB_HOST ) ) {
 					"read"     => 1,
 	));
 }
-' > "wp/db-config.php"
+' > "db-config.php"
