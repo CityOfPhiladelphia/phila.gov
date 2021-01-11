@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# source /home/ubuntu/.ssh/environment
-# cd /home/ubuntu/app/wp
+source /home/ubuntu/.ssh/environment
 
 echo '<?php
 /**

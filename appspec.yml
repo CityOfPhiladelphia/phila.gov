@@ -21,6 +21,9 @@ hooks:
   AfterInstall:
     - location: scripts/deploy.sh
       runas: ubuntu
+  BeforeAllowTraffic:
+    - location: scripts/db-config.sh
+      runas: ubuntu
 branch_config:
   wip\/.*: null
   staging:
