@@ -10,9 +10,6 @@ source "$_dir/lib/mo"
 echo 'Running wp-config.sh'
 "$_dir/wp-config.sh"
 
-echo 'Running db-config.sh'
-"$_dir/db-config.sh"
-
 echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 npm install
@@ -74,3 +71,6 @@ sudo rm -rf /var/run/nginx-cache
 sudo rm -rf /home/ubuntu/app/wp/wp-content/cache
 
 sudo service nginx reload
+
+echo 'Running db-config.sh'
+"$_dir/db-config.sh"
