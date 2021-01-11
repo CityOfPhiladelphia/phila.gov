@@ -10,7 +10,7 @@ source "$_dir/lib/mo"
 echo 'Running wp-config.sh'
 "$_dir/wp-config.sh"
 
-sudo chmod 755 /home/ubuntu/phila.gov/scripts/db-config.sh
+sudo chmod 755 phila.gov/scripts/db-config.sh
 
 echo 'Running db-config.sh'
 "$_dir/db-config.sh"
