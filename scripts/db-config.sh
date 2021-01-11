@@ -28,4 +28,4 @@ if ( ! empty( $REPLICA_DB_HOST ) ) {
 					"read"     => 1,
 	));
 }
-' > "../wp/db-config.php"
+' > "/home/ubuntu/app/wp/db-config.php"
