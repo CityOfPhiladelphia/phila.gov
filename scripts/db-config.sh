@@ -2,7 +2,7 @@
 
 source /home/ubuntu/.ssh/environment
 
-echo '$REPLICA_DB_HOST' > '/home/ubuntu/app/wp/db-config.php'
+echo '$REPLICA_DB_HOST' > '/home/ubuntu/app/wp/test.txt'
 
 # echo "'host'     => $DB_HOST,
 # 	'user'     => $DB_USER,
