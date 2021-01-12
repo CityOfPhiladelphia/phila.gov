@@ -2,7 +2,8 @@
 
 FILE=/home/ubuntu/.ssh/environment
 if test -f "$FILE"; then
-    echo "$FILE exists." > "/home/ubuntu/app/wp/db-config.php"
+		source $FILE
+    echo "$DB_HOST exists." > "/home/ubuntu/app/wp/db-config.php"
 fi
 
 # echo '<?php
