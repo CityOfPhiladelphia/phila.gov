@@ -21,6 +21,7 @@ hooks:
   AfterInstall:
     - location: scripts/deploy.sh
       runas: ubuntu
+  AfterAllowTraffic:
     - location: scripts/db-config.sh
       runas: ubuntu
 branch_config:
