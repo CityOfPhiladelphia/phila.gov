@@ -2,12 +2,13 @@
 
 source /home/ubuntu/.ssh/environment
 
-echo "<?php
+echo '<?php
 /**
  * Register the primary server to HyperDB
  */
-$wpdb->add_database( array(
-	'host'     => $DB_HOST,
+$wpdb->add_database( array('  > '/home/ubuntu/app/wp/db-config.php'
+
+echo "'host'     => $DB_HOST,
 	'user'     => $DB_USER,
 	'password' => $DB_PASS,
 	'name'     => 'wp',
@@ -17,14 +18,16 @@ $wpdb->add_database( array(
 /**
  * Register replica database server if it's available in this environment
  */
-if ( ! empty( $REPLICA_DB_HOST ) ) {
-	$wpdb->add_database(array(
-					'host'     => $REPLICA_DB_HOST,
-					'user'     => $DB_USER,
-					'password' => $DB_PASS,
-					'name'     => 'wp',
-					'write'    => 0,
-					'read'     => 1,
+if ( ! empty( $REPLICA_DB_HOST ) ) {"  >> '/home/ubuntu/app/wp/db-config.php'
+
+echo '$wpdb->add_database(array(' >> '/home/ubuntu/app/wp/db-config.php'
+
+echo "'host'     => $REPLICA_DB_HOST,
+	'user'     => $DB_USER,
+	'password' => $DB_PASS,
+	'name'     => 'wp',
+	'write'    => 0,
+	'read'     => 1,
 	));
 }
-" > '/home/ubuntu/app/wp/db-config.php'
+" >> '/home/ubuntu/app/wp/db-config.php'
