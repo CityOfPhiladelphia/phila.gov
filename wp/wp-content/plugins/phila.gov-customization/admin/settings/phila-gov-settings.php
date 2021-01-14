@@ -95,6 +95,59 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     ),
     'fields'  => array(
       array(
+        'name'  => 'Current collection status',
+        'desc'  => 'Display on phila.gov homepage, covid update page, trash collection page, and streets homepage',
+        'id'    => 'phila_collection_status',
+        'type'  => 'radio',
+        'inline' => false,
+        'options' =>  array(
+            '0' => 'On schedule',
+            '1' => 'Some delays but stick to schedule',
+            '2' => 'Some delays, put out one day later',
+            '3' => 'Holiday, put out one day later',
+            '4' => 'Flexible / unanticipated cause of delays',
+        )
+      ),
+      array(
+        'id'  => 'phila_flexible_collection',
+        'type'   => 'group',
+        'visible' => array(
+          'when'  => array(
+            array('phila_collection_status', '=', '4'),
+          ),
+        ),
+        'fields'  => array(
+          array(
+            'id'  => 'phila_flexible_collection_status',
+            'name'  => 'Status',
+            'type'  => 'wysiwyg',
+            'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
+          ),
+          array(
+            'id'    => 'phila_flexible_collection_color',
+            'name'  => 'Color of flexible collection status alert',
+            'type'  => 'radio',
+            'inline' => false,
+            'options' =>  array(
+                '0' => 'green',
+                '1' => 'yellow',
+                '2' => 'red',
+            )
+          ),
+          array(
+            'id'    => 'phila_flexible_collection_impact',
+            'name'  => 'Collection calculation impact',
+            'type'  => 'radio',
+            'inline' => false,
+            'options' =>  array(
+                '0' => 'No impact',
+                '1' => '1 day delay',
+                '2' => 'Cannot determine',
+            )
+          ),
+        )
+      ),
+      array(
         'id'  => 'phila_closure_exception',
         'type'   => 'group',
         'fields'  => array(
