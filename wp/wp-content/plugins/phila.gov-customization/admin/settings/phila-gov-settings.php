@@ -166,26 +166,6 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             'type'  => 'date',
             'required'  => true,
           ),
-          array(
-            'id'  => 'end_date',
-            'name' => 'Closure end date',
-            'type'  => 'date',
-            'required'  => true,
-          ),
-          array(
-            'id'   => 'is_recycling_biweekly',
-            'name' => 'Is recycling biweekly?',
-            'type' => 'switch',
-            'on_label' => 'Yes',
-            'off_label'  => 'No'
-          ),
-          array(
-            'id'   => 'is_active',
-            'name' => 'Is this closure active?',
-            'type' => 'switch',
-            'on_label' => 'Yes',
-            'off_label'  => 'No'
-          ),
         ),
       ),
     ),
