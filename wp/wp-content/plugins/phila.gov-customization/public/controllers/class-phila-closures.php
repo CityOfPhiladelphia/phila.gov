@@ -59,8 +59,21 @@ class Phila_Closures_Controller {
   public function get_items( $request ) {
 
     $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
+    $phila_collection_status = rwmb_meta( 'phila_collection_status', array( 'object_type' => 'setting' ), 'phila_settings' );
+    $flexible_collection = rwmb_meta( 'phila_flexible_collection', array( 'object_type' => 'setting' ), 'phila_settings' );
 
-    $exception = rwmb_meta( 'phila_closure_exception', array( 'object_type' => 'setting' ), 'phila_settings' );
+    $delay = false;
+    $undetermined = false;
+
+    if ( $phila_collection_status == 2 || $phila_collection_status == 3 ) {
+      $delay = true;
+    } else if ($phila_collection_status == 4 ) {
+      if ( $flexible_collection['phila_flexible_collection_impact'] == 1 ) {
+        $delay = true;
+      } else if ( $flexible_collection['phila_flexible_collection_impact'] == 2 ) {
+        $undetermined = true;
+      }
+    }
 
     $data = array();
 
@@ -298,6 +311,34 @@ class Phila_Closures_Controller {
 
     return rest_ensure_response( $post_data );
 }
+
+/**
+   * Matches the post data to the schema. Also, rename the fields to nicer names.
+   *
+   * @param WP_Post $post The comment object whose response is being prepared.
+   */
+
+  public function prepare_undetermined_for_response( $undetermined ) {
+    $post_data = array();
+
+    $post_data['undetermined'] = (boolean) $undetermined;
+
+    return rest_ensure_response( $post_data );
+  }
+
+/**
+   * Matches the post data to the schema. Also, rename the fields to nicer names.
+   *
+   * @param WP_Post $post The comment object whose response is being prepared.
+   */
+
+  public function prepare_delay_for_response( $delay ) {
+    $post_data = array();
+
+    $post_data['delay'] = (boolean) $delay;
+
+    return rest_ensure_response( $post_data );
+  }
 
   /**
    * Prepare a response for inserting into a collection of responses.
