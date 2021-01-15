@@ -18,7 +18,7 @@ if test -f "$FILE"; then
 		/**
 		* Register replica database server if it's available in this environment
 		*/
-		if ( isset( $REPLICA_DB_HOST ) ) {
+		if ( isset( ${REPLICA_DB_HOST} ) ) {
 			\$wpdb->add_database(array(
 				'host'     => '$REPLICA_DB_HOST',
 				'user'     => '$DB_USER',
