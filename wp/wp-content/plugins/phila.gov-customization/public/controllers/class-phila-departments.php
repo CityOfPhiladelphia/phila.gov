@@ -113,6 +113,12 @@ class Phila_Departments_Controller {
       $post_data['acronym'] = (string) $acronym;
     }
 
+    if (isset( $schema['properties']['connect'] )) {
+      $connect_panel = rwmb_meta('phila_connect_panel', array(), $post->ID);
+      var_dump($connect_panel);
+      $post_data['connect'] = (string) $connect_panel;
+    }
+
     return rest_ensure_response( $post_data );
 }
 
@@ -170,7 +176,32 @@ class Phila_Departments_Controller {
           'readonly'     => true,
         ),
         'acronym' => array(
-          'description'  => esc_html__( 'Acronym of the object.', 'phila-gov' ),
+          'description'  => esc_html__( 'Acronym of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'email' => array(
+          'description'  => esc_html__( 'email of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'instagram' => array(
+          'description'  => esc_html__( 'instagram of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'facebook' => array(
+          'description'  => esc_html__( 'facebook of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'phone' => array(
+          'description'  => esc_html__( 'phone of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'description' => array(
+          'description'  => esc_html__( 'Description of the Department.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
         ),
