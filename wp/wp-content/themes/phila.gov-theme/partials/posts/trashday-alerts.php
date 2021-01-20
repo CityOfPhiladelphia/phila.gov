@@ -10,7 +10,7 @@
     <div class="columns">
 <?php } ?>
 
-<?php if ( !$a['is_in_table'] ) { ?> 
+<?php if ( !$a['is_in_table'] || $a['is_in_table'] == 0 ) { ?> 
   <table class="service-update">
     <tbody>
 <?php } ?>
@@ -29,9 +29,9 @@
                 ( $flexible_collection['phila_flexible_collection_color'] == 2 ) { echo "service-update--critical"; }
           }
       ?>">
-        <th class="phl-mu <?php if ( !phila_is_department_homepage( 'test' ) && !is_home() ) echo 'icon-only';?>">
-          <i class="fa-2x fa-fw fas fa-trash-alt service-icon" aria-hidden="true"></i>
-          <?php if ( phila_is_department_homepage( 'test' ) || is_home() ) { ?>
+        <th class="phl-mu <?php if ( !phila_is_department_homepage( 'test' ) && !is_home() && $a['icon_padding'] == 0 ) echo 'icon-only';?>">
+          <i class="fa-2x fa-fw fas fa-trash-alt service-icon <?php if( $a['icon_padding'] && $a['icon_padding'] == 1) echo 'plm-mu' ?>" aria-hidden="true"></i>
+          <?php if ( $a['icon_text'] && $a['icon_text'] == 1 ) { ?>
             <span class="icon-label">Trash & Recycling</span>
           <?php } ?>
         </th>
@@ -48,7 +48,7 @@
         </td>
       </tr>
 
-<?php if ( !$a['is_in_table'] ) { ?> 
+<?php if ( !$a['is_in_table'] || $a['is_in_table'] == 0 ) { ?> 
     </tbody>
   </table>
 <?php } ?>
