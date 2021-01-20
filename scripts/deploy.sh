@@ -13,15 +13,10 @@ echo 'Running wp-config.sh'
 echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 npm install
-if [ "$PHILA_TEST" ]; then
-  echo 'Running test machine tasks'
-  npm rebuild node-sass
-  npm run dev:build
-else
-  echo 'Running prod tasks'
-  npm run build
-  npm run postbuild
-fi
+echo 'Running prod tasks'
+npm run build
+npm run postbuild
+
 cd /home/ubuntu/app
 
 echo 'Modifying php configs'
@@ -38,10 +33,10 @@ g/^max_input_vars/s/100000/1000000
 w
 EOF
 
-if [ ! "$PHILA_TEST" ]; then
-echo 'Installing private plugins'
-"$_dir/private-plugins.sh"
-fi
+# if [ ! "$PHILA_TEST" ]; then
+# echo 'Installing private plugins'
+# "$_dir/private-plugins.sh"
+# fi
 
 echo 'Reloading php-fpm'
 sudo service php7.2-fpm reload
