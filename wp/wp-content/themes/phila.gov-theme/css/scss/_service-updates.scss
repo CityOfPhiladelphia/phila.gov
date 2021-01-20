@@ -69,6 +69,9 @@
     padding: 1rem;
     .service-icon {
       padding: 0px;
+      &.plm-mu {
+        padding: 0 0 1rem 0 !important;
+      }
     }
   }
 

@@ -94,19 +94,20 @@ class Phila_Closures_Controller {
     if ( empty( $closures ) ) {
       return rest_ensure_response( $data );
     }
-
+    $closure_array = [];
     foreach ( $closures as $closure ) {
       $response = $this->prepare_item_for_response( $closure, $request );
 
-      $data[] = $this->prepare_response_for_collection( $response );
+      $closure_array[] = $this->prepare_response_for_collection( $response );
     }
+      $data['closures'] = $closure_array;
 
       $undetermined_response = $this->prepare_undetermined_for_response( $undetermined );
       $status_response = $this->prepare_status_for_response( $status );
       $delay_response = $this->prepare_delay_for_response( $delay );
-      $data[] = $this->prepare_response_for_collection( $undetermined_response );
-      $data[] = $this->prepare_response_for_collection( $delay_response );
-      $data[] = $this->prepare_response_for_collection( $status_response );
+      $data['undetermined'] = $undetermined_response->get_data();
+      $data['delay'] =  $delay_response->get_data();
+      $data['status'] = $status_response->get_data();
 
     // Return all response data.
     return rest_ensure_response( $data );
@@ -282,9 +283,8 @@ class Phila_Closures_Controller {
    */
 
   public function prepare_undetermined_for_response( $undetermined ) {
-    $post_data = array();
 
-    $post_data['undetermined'] = (boolean) $undetermined;
+    $post_data = (boolean) $undetermined;
 
     return rest_ensure_response( $post_data );
   }
@@ -297,9 +297,8 @@ class Phila_Closures_Controller {
    */
 
   public function prepare_status_for_response( $status ) {
-    $post_data = array();
 
-    $post_data['status'] = (string) $status;
+    $post_data = (string) $status;
 
     return rest_ensure_response( $post_data );
   }
@@ -311,9 +310,8 @@ class Phila_Closures_Controller {
    */
 
   public function prepare_delay_for_response( $delay ) {
-    $post_data = array();
 
-    $post_data['delay'] = (boolean) $delay;
+    $post_data = (boolean) $delay;
 
     return rest_ensure_response( $post_data );
   }

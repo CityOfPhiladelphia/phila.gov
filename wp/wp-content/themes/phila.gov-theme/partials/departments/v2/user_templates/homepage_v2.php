@@ -77,8 +77,6 @@
     // defaults to our original content order
     $homepage_v2_content_paritals_include_order = $meta_box_order_arr[0] == "default" ?  $homepage_v2_content_partials :  array();
 
-    do_shortcode('[trashday-alerts]');
-
     /**
      * loop through our meta box order and populate the our final
      *  template include array with the proper template meta values

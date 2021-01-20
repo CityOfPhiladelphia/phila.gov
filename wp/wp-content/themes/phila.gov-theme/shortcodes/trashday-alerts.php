@@ -10,7 +10,9 @@
 function trashday_alerts_shortcode($atts) {
 
   $a = shortcode_atts( array(
-    'is_in_table' => false
+    'is_in_table' => 0,
+    'icon_text' => 0,
+    'icon_padding' => 0,
   ), $atts );
 
   include( locate_template( 'partials/posts/trashday-alerts.php' ) );
