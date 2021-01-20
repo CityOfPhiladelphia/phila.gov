@@ -59,7 +59,7 @@ for f in nginx/**; do
 done
 
 echo 'Testing nginx config'
-# sudo nginx -t
+sudo nginx -t
 
 echo 'Purging nginx cache'
 sudo rm -rf /var/run/nginx-cache
