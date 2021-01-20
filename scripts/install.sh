@@ -15,9 +15,9 @@ npm install
 npm cache verify
 cd /home/ubuntu/app
 
-if [ "$PHILA_TEST" ]; then
-  $_dir/unison.sh
-  $_dir/gen-cert.sh
-  $_dir/wp-config.sh
-  $_dir/local-db.sh
-fi
+# if [ "$PHILA_TEST" ]; then
+#   $_dir/unison.sh
+#   $_dir/gen-cert.sh
+#   $_dir/wp-config.sh
+#   $_dir/local-db.sh
+# fi
