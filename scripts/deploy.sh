@@ -22,7 +22,6 @@ else
   npm run build
   npm run postbuild
 fi
-
 cd /home/ubuntu/app
 
 echo 'Modifying php configs'
