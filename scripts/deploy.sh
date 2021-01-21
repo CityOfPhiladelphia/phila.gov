@@ -22,9 +22,6 @@ else
   npm run build
   npm run postbuild
 fi
-echo 'Running prod tasks'
-npm run build
-npm run postbuild
 
 cd /home/ubuntu/app
 
