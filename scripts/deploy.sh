@@ -33,10 +33,10 @@ g/^max_input_vars/s/100000/1000000
 w
 EOF
 
-# if [ ! "$PHILA_TEST" ]; then
-# echo 'Installing private plugins'
-# "$_dir/private-plugins.sh"
-# fi
+if [ ! "$PHILA_TEST" ]; then
+echo 'Installing private plugins'
+"$_dir/private-plugins.sh"
+fi
 
 echo 'Reloading php-fpm'
 sudo service php7.2-fpm reload
