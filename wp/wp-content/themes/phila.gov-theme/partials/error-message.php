@@ -1,29 +1,23 @@
-<div class="phila-error-background columns">
-  <div class="phila-error-card row">
-    <div class="medium-2">
-      <i class="fas fa-exclamation-circle"></i>
-    </div>
-    <div class="medium-22 phila-error">
-      <div class="phila-error-title">
-      This is the title
+<?php if ( isset($error_message_title) && isset($error_messages) && !empty($error_messages) )  { ?>
+  <div class="phila-error-background pvm">
+    <div class="grid-container">
+      <div class="phila-error-card grid-x pas">
+        <div class="cell medium-1">
+          <i class="fas fa-exclamation-circle"></i>
+        </div>
+        <div class="cell medium-23 phila-error">
+          <div class="phila-error-title"><?php echo $error_message_title; ?></div>
+          <ul class="phila-error-list">
+            <?php foreach ($error_messages as $message) { ?>
+              <li class="phila-error-item">
+                <a href="<?php echo $message['link'] ?>">
+                  <?php echo $message['text'] ?>
+                </a>
+              </li>
+            <?php } ?>
+          </ul>
+        </div>
       </div>
-      <ul class="phila-error-list">
-        <li class="phila-error-item">
-          <a href="#">
-            item
-          </a>
-        </li>
-        <li class="phila-error-item">
-          <a href="#">
-            item
-          </a>
-        </li>
-        <li class="phila-error-item">
-          <a href="#">
-            item
-          </a>
-        </li>
-      </ul>
     </div>
   </div>
-</div>
+<?php } ?>
