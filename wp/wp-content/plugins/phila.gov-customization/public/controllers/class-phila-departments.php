@@ -113,10 +113,47 @@ class Phila_Departments_Controller {
       $post_data['acronym'] = (string) $acronym;
     }
 
-    if (isset( $schema['properties']['connect'] )) {
-      $connect_panel = rwmb_meta('phila_connect_panel', array(), $post->ID);
-      var_dump($connect_panel);
-      $post_data['connect'] = (string) $connect_panel;
+    $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel', array(), $post->ID);
+    $connect_info = phila_connect_panel($connect_panel);
+
+    if (isset( $schema['properties']['email'] )) {
+      $post_data['email'] = (string) $connect_info['email'];
+    } else 
+
+    if (isset( $schema['properties']['instagram']) && $connect_info['social'] && isset($connect_info['social']['instagram'])) {
+      $post_data['instagram'] = (string) $connect_info['social']['instagram'];
+    } else {
+      $post_data['instagram'] = '';
+    }
+
+    if (isset( $schema['properties']['facebook']) && $connect_info['social'] && isset($connect_info['social']['facebook'])) {
+      $post_data['facebook'] = (string) $connect_info['social']['facebook'];
+    } else {
+      $post_data['facebook'] = '';
+    }
+
+    if (isset( $schema['properties']['twitter']) &&  $connect_info['social'] && isset($connect_info['social']['twitter'])) {
+      $post_data['twitter'] = (string) $connect_info['social']['twitter'];
+    } else {
+      $post_data['twitter'] = '';
+    }
+
+    if (isset( $schema['properties']['phone'] ) && !empty($connect_info['email'])) {
+      $post_data['phone'] = (string) '(' . $connect_info['phone']['area'] . ') '. $connect_info['phone']['co-code'] . '-'. $connect_info['phone']['subscriber-number'];
+    } else {
+      $post_data['phone'] = '';
+    }
+
+    if (isset( $schema['properties']['fax'] )) {
+      $post_data['fax'] = (string) $connect_info['fax'];
+    }
+
+    //HOW TO FETCH THE DESCRIPTION FROM CURRENT DEPARTMENT?
+    $description = phila_get_item_meta_desc($post);
+    // $dept_desc = rwmb_meta( 'phila_dept_desc' );
+
+    if (isset( $schema['properties']['description'] )) {
+      $post_data['description'] = (string) $description;
     }
 
     return rest_ensure_response( $post_data );
@@ -192,6 +229,16 @@ class Phila_Departments_Controller {
         ),
         'facebook' => array(
           'description'  => esc_html__( 'facebook of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'twitter' => array(
+          'description'  => esc_html__( 'twitter of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'fax' => array(
+          'description'  => esc_html__( 'fax of the department.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
         ),
