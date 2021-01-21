@@ -18,3 +18,5 @@ jobs:
         uses: webfactory/create-aws-codedeploy-deployment@0.2.2
         with: 
           application: beta.phila.gov
+          - run:
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.PROD_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
