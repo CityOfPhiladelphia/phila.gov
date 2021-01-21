@@ -313,7 +313,6 @@ class WebhookTrigger
             'headers'  => array(
                 'Content-type: application/json;charset=utf-8',
                 'Accept: application/json',
-                'Host: '.get_site_url(),
             ),
             'body' => array(
             )
