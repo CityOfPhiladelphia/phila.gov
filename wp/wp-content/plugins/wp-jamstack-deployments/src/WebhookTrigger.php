@@ -297,7 +297,7 @@ class WebhookTrigger
     public static function fireWebhook()
     {
         $webhook = jamstack_deployments_get_webhook_url();
-        
+
         if (!$webhook) {
             return;
         }
