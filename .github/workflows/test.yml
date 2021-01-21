@@ -20,8 +20,4 @@ jobs:
         with: 
           application: test-phila-gov-codedeploy
       - name: invalidate
-        env: 
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.TEST_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.TEST_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
