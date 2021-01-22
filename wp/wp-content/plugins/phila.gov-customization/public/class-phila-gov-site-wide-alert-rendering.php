@@ -62,14 +62,12 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
                       <i class="<?php echo ($alert_icon) ? $alert_icon :  'fas fa-exclamation' ?> fa-fw fa-2x" aria-hidden="true"></i>
                   </div>
                   <?php if ($alert_color == 'red') :?>
-                    <div class="cell auto shrink align-self-middle">
+                    <div class="cell medium-auto medium-shrink small-24 align-self-middle">
                       <h2><?php $title = get_the_title(); echo $title;?> </h2>
                     </div>
                   <?php endif; ?>
                   <div class="cell auto message align-self-middle">
                   <?php
-                    $title = get_the_title();
-                    echo $title;
                     $content = get_the_content();
                     echo $content;
                   ?>
