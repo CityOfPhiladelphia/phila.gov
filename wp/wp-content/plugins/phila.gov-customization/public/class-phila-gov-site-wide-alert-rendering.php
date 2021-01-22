@@ -52,6 +52,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
           $date_seperator = ' ';
         }
 
+        var_dump($alert_end);
         $now = current_time('timestamp');
 
         if( $alert_active ) { ?>
@@ -73,7 +74,8 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
             </div>
           </div>
           <?php
-        }else if ( $alert_start <= $now && ( $alert_end > $now )){ ?>
+        
+        }else if ( ($alert_start <= $now && $alert_end == 0 ) || $alert_start <= $now && ( $alert_end >= $now ) ){ ?>
           <div class="site-wide-alert <?php echo $alert_color?>" data-alert="alert-<?php echo $alert_start ?>-<?php echo $alert_end; ?>-<?php echo get_the_ID(); ?>" data-swiftype-index="false">
           <div class="row">
             <div class="medium-centered">
