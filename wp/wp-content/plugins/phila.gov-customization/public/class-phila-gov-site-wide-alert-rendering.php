@@ -51,8 +51,6 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
         if(($alert_start == '') || ($alert_end == '')){
           $date_seperator = ' ';
         }
-
-        var_dump($alert_end);
         $now = current_time('timestamp');
 
         if( $alert_active ) { ?>
@@ -63,8 +61,15 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
                   <div class="cell auto shrink center icon hide-for-small-only align-self-middle">
                       <i class="<?php echo ($alert_icon) ? $alert_icon :  'fas fa-exclamation' ?> fa-fw fa-2x" aria-hidden="true"></i>
                   </div>
+                  <?php if ($alert_color == 'red') :?>
+                    <div class="cell auto shrink align-self-middle">
+                      <h2><?php $title = get_the_title(); echo $title;?> </h2>
+                    </div>
+                  <?php endif; ?>
                   <div class="cell auto message align-self-middle">
                   <?php
+                    $title = get_the_title();
+                    echo $title;
                     $content = get_the_content();
                     echo $content;
                   ?>
