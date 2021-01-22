@@ -1,4 +1,12 @@
 <?php 
+$pages = new WP_Query( array( 'post_type' => 'longform_content', 'post_parent' => the_ID()) );
+
+var_dump($pages);
+// foreach ($pages as $page ) {
+  // var_dump($page->ID);
+  // $root=count($ancestors)-1;
+  // var_dump($root);
+// }
 $error_message_title = 'this is a test';
 $error_messages = [];
 $item1['link'] = 'publications';
