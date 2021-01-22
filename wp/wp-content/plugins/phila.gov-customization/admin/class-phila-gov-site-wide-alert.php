@@ -37,6 +37,7 @@ class Phila_Gov_Site_Wide_Alert {
           'options' => array(
             'blue'       => 'Blue',
             'orange' => 'Orange',
+            'red' => 'Red',
           ),
         ),
         array(
