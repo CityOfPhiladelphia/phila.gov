@@ -148,11 +148,7 @@ class Phila_Departments_Controller {
       $post_data['fax'] = (string) $connect_info['fax'];
     }
 
-    //HOW TO FETCH THE DESCRIPTION FROM CURRENT DEPARTMENT?
     $description = rwmb_meta( 'phila_meta_desc', '', $post->ID );
-    // Attempt to change the function to use current post only renders the ZBA description for all
-    // $description = phila_get_item_meta_desc( true, $post->ID );
-    var_dump($description);
 
     if (isset( $schema['properties']['description'] )) {
       $post_data['description'] = (string) $description;

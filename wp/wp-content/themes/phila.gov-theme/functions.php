@@ -1168,13 +1168,8 @@ function phila_get_service_updates(){
  * @param $post Int. Pass post ID if we are not in the loop.
  *
  **/
-function phila_get_item_meta_desc( $bloginfo = true, $post_id = null ){
-  
-  if ($post_id !== null) {
-    $post = get_post($post_id);
-  } else {
-    global $post;
-  }
+function phila_get_item_meta_desc( $bloginfo = true ){
+  global $post;
 
   $meta_desc = array();
 
