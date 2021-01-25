@@ -19,5 +19,6 @@ if [ "$PHILA_TEST" ]; then
   $_dir/unison.sh
   $_dir/gen-cert.sh
   $_dir/wp-config.sh
+  $_dir/db-config.sh
   $_dir/local-db.sh
 fi

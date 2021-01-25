@@ -13,4 +13,12 @@
       text-decoration: underline;
     }
   }
+  &.red {
+    background: #CC3000;
+    color: white;
+    a:link, a:visited{
+      color: white;
+      text-decoration: underline;
+    }
+  }
 }
