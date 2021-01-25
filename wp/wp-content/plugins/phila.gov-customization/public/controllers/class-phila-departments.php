@@ -149,8 +149,7 @@ class Phila_Departments_Controller {
     }
 
     //HOW TO FETCH THE DESCRIPTION FROM CURRENT DEPARTMENT?
-    $description = phila_get_item_meta_desc($post);
-    // $dept_desc = rwmb_meta( 'phila_dept_desc' );
+    $description = rwmb_meta( 'phila_dept_desc', array(), $post->ID );
 
     if (isset( $schema['properties']['description'] )) {
       $post_data['description'] = (string) $description;
