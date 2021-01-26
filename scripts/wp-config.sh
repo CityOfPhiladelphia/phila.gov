@@ -85,7 +85,10 @@ define('JWT_AUTH_SECRET_KEY', '$JWT_AUTH_SECRET_KEY');
 /** Allow CORS */
 define('JWT_AUTH_CORS_ENABLE', true);
 
+/** Limit post revisions */
+define('WP_POST_REVISIONS', 10);
 
 /** https://wordpress.org/support/topic/problem-after-the-recent-update */
 define('FS_METHOD', 'direct');
 PHP
+git
