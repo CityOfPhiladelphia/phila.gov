@@ -91,4 +91,3 @@ define('WP_POST_REVISIONS', 10);
 /** https://wordpress.org/support/topic/problem-after-the-recent-update */
 define('FS_METHOD', 'direct');
 PHP
-git
