@@ -9,7 +9,7 @@
     "dev:js": "browserify js/dev/main.js -o js/phila-scripts.js",
     "build:js": "browserify -e js/dev/main.js | uglifyjs -c -m > js/phila-scripts.min.js",
     "vuejs": "webpack --mode production  --config webpack.config.js",
-    "dev:build": "npm run dev:css && npm run dev:js && npm run dev:vuejs",
+    "dev:build": "npm run dev:css && npm run dev:js && npm run vuejs",
     "build": "npm run build:css && npm run build:js && npm run vuejs",
     "postbuild": "postcss --use autoprefixer -b 'last 2 versions' < css/styles.min.css -o css/styles.min.css"
   },
