@@ -95,21 +95,55 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     ),
     'fields'  => array(
       array(
-        'id'  => 'phila_closure_exception',
+        'name'  => 'Current collection status',
+        'desc'  => 'Display on phila.gov homepage, covid update page, trash collection page, and streets homepage',
+        'id'    => 'phila_collection_status',
+        'type'  => 'radio',
+        'inline' => false,
+        'options' =>  array(
+            '0' => 'On schedule',
+            '1' => 'Some delays but stick to schedule',
+            '2' => 'Some delays, put out one day later',
+            '3' => 'Holiday, put out one day later',
+            '4' => 'Flexible / unanticipated cause of delays',
+        )
+      ),
+      array(
+        'id'  => 'phila_flexible_collection',
         'type'   => 'group',
+        'visible' => array(
+          'when'  => array(
+            array('phila_collection_status', '=', '4'),
+          ),
+        ),
         'fields'  => array(
           array(
-            'id'  => 'exception',
-            'name'  => 'Exception',
+            'id'  => 'phila_flexible_collection_status',
+            'name'  => 'Status',
             'type'  => 'wysiwyg',
             'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
           ),
           array(
-            'id'   => 'exception_delay',
-            'name' => 'Does this exception delay trash collection by a day?',
-            'type' => 'switch',
-            'on_label' => 'Yes',
-            'off_label'  => 'No'
+            'id'    => 'phila_flexible_collection_color',
+            'name'  => 'Color of flexible collection status alert',
+            'type'  => 'radio',
+            'inline' => false,
+            'options' =>  array(
+                '0' => 'green',
+                '1' => 'yellow',
+                '2' => 'red',
+            )
+          ),
+          array(
+            'id'    => 'phila_flexible_collection_impact',
+            'name'  => 'Collection calculation impact',
+            'type'  => 'radio',
+            'inline' => false,
+            'options' =>  array(
+                '0' => 'No impact',
+                '1' => '1 day delay',
+                '2' => 'Cannot determine',
+            )
           ),
         )
       ),
@@ -131,26 +165,6 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             'name' => 'Closure start date',
             'type'  => 'date',
             'required'  => true,
-          ),
-          array(
-            'id'  => 'end_date',
-            'name' => 'Closure end date',
-            'type'  => 'date',
-            'required'  => true,
-          ),
-          array(
-            'id'   => 'is_recycling_biweekly',
-            'name' => 'Is recycling biweekly?',
-            'type' => 'switch',
-            'on_label' => 'Yes',
-            'off_label'  => 'No'
-          ),
-          array(
-            'id'   => 'is_active',
-            'name' => 'Is this closure active?',
-            'type' => 'switch',
-            'on_label' => 'Yes',
-            'off_label'  => 'No'
           ),
         ),
       ),
