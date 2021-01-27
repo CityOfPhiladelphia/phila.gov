@@ -1,4 +1,4 @@
-<?php if ( isset($error_message_title) && isset($error_messages) && !empty($error_messages) )  { ?>
+<?php if ( isset($error_message_title) && isset($error_messages) && !empty($error_messages) && is_user_logged_in() )  { ?>
   <div class="phila-error-background pvm">
     <div class="grid-container">
       <div class="phila-error-card grid-x pas">
