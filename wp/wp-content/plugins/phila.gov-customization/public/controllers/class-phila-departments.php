@@ -160,6 +160,13 @@ class Phila_Departments_Controller {
       $post_data['description'] = (string) $description;
     }
 
+    if (isset( $schema['properties']['permalink'] )) {
+      $permalink = get_permalink($post->ID);
+      $post_data['permalink'] = (string) $permalink;
+    }
+
+    
+
     return rest_ensure_response( $post_data );
 }
 
@@ -258,6 +265,11 @@ class Phila_Departments_Controller {
         ),
         'description' => array(
           'description'  => esc_html__( 'Description of the Department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'permalink' => array(
+          'description'  => esc_html__( 'Permalnk of the Department.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
         ),
