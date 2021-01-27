@@ -115,11 +115,10 @@ class Phila_Departments_Controller {
 
     $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel', array(), $post->ID);
     $connect_info = phila_connect_panel($connect_panel);
-    // print_r($connect_info);
 
     if (isset( $schema['properties']['email'] )) {
       $post_data['email'] = (string) $connect_info['email'];
-    } else 
+    }  
 
     if (isset( $schema['properties']['instagram']) && $connect_info['social'] && isset($connect_info['social']['instagram'])) {
       $post_data['instagram'] = (string) $connect_info['social']['instagram'];
@@ -145,6 +144,10 @@ class Phila_Departments_Controller {
       $post_data['phone'] = (string) '(' . $connect_info['phone']['area'] . ') '. $connect_info['phone']['co-code'] . '-'. $connect_info['phone']['subscriber-number'];
     } else {
       $post_data['phone'] = (string) $connect_info['phone']['co-code'];
+    }
+
+    if (isset( $schema['properties']['tty'] )) {
+      $post_data['tty'] = (string) $connect_info['tty'];
     }
 
     if (isset( $schema['properties']['fax'] )) {
@@ -235,6 +238,11 @@ class Phila_Departments_Controller {
         ),
         'twitter' => array(
           'description'  => esc_html__( 'twitter of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'tty' => array(
+          'description'  => esc_html__( 'tty of the department.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
         ),
