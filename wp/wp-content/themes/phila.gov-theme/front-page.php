@@ -22,103 +22,124 @@ get_header(); ?>
           </div>
         </div>
 
-        <div class="row common-requests">
-          <div class="small-24 medium-15 large-13 small-centered columns overlap">
-            <div class="row collapse call-to-action bg-white pvs pls equal-height">
-              <div class="small-12 medium-6 columns">
-                <a href="https://www.phila.gov/trashday" class="mrs mbs equal" onclick="dataLayer.push({
-                      'event': 'GAEvent',
-                      'eventCategory': 'Service Button',
-                      'eventAction': 'Find trash day',
-                      'eventLabel': 'www.phila.gov'
-                    });
-                  ">
-                  <span class="accessible">Find trash day</span>
-                  <div class="phs pvm cta-block clearfix" aria-hidden="true">
-                    <div class="valign">
-                      <div class="valign-cell">
-                        <i class="fas fa-trash-alt fa-4x"></i>
+        <div class="grid-x common-requests">
+          <div class="small-24 medium-15 large-13 small-centered cell overlap">
+            <div class="grid-x collapse call-to-action bg-white pvs pls equal-height">
+              <div class="small-24 medium-auto cell">
+                  <a href="https://www.phila.gov/programs/coronavirus-disease-2019-covid-19/" class="mrs mbs equal" onclick="dataLayer.push({
+                        'event': 'GAEvent',
+                        'eventCategory': 'Service Button',
+                        'eventAction': 'Covid information',
+                        'eventLabel': 'www.phila.gov'
+                      });
+                    ">
+                    <span class="accessible">Covid-19 updates</span>
+                    <div class="phs pvm cta-block clearfix" aria-hidden="true">
+                      <div class="valign">
+                        <div class="valign-cell">
+                          <i class="fas fa-virus fa-4x"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="h6">COVID-19<span class="break-before-mu"> updates</span></p>
                       </div>
                     </div>
-                    <div>
-                      <p class="h6">Find<span class="break-before-mu"> trash day</span></p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="small-12 medium-6 columns">
-                <a href="https://epay.phila.gov/paymentcenter/accountlookup/"  class="mrs mbs equal"
-                onclick="dataLayer.push({
-                      'event': 'GAEvent',
-                      'eventCategory': 'Service Button',
-                      'eventAction': 'Pay a bill',
-                      'eventLabel': 'www.phila.gov'
-                    });
-                  ">
-                  <span class="accessible">Pay a bill</span>
-                  <div class="phs pvm cta-block clearfix"  aria-hidden="true">
-                    <div class="valign">
-                      <div class="valign-cell">
-                        <i class="fal fa-credit-card fa-4x"></i>
+                  </a>
+                </div>
+                <div class="small-12 medium-auto cell">
+                  <a href="https://www.phila.gov/trashday" class="mrs mbs equal" onclick="dataLayer.push({
+                        'event': 'GAEvent',
+                        'eventCategory': 'Service Button',
+                        'eventAction': 'Find trash day',
+                        'eventLabel': 'www.phila.gov'
+                      });
+                    ">
+                    <span class="accessible">Find trash day</span>
+                    <div class="phs pvm cta-block clearfix" aria-hidden="true">
+                      <div class="valign">
+                        <div class="valign-cell">
+                          <i class="fas fa-trash-alt fa-4x"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="h6">Find<span class="break-before-mu"> trash day</span></p>
                       </div>
                     </div>
-                    <div>
-                      <p class="h6">Pay<span class="break-before-mu"> a bill</span></p>
+                  </a>
+                </div>
+                <div class="small-12 medium-auto cell">
+                  <a href="https://epay.phila.gov/paymentcenter/accountlookup/"  class="mrs mbs equal"
+                  onclick="dataLayer.push({
+                        'event': 'GAEvent',
+                        'eventCategory': 'Service Button',
+                        'eventAction': 'Pay a bill',
+                        'eventLabel': 'www.phila.gov'
+                      });
+                    ">
+                    <span class="accessible">Pay a bill</span>
+                    <div class="phs pvm cta-block clearfix"  aria-hidden="true">
+                      <div class="valign">
+                        <div class="valign-cell">
+                          <i class="fal fa-credit-card fa-4x"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="h6">Pay<span class="break-before-mu"> a bill</span></p>
+                      </div>
                     </div>
-                  </div>
-                </a>
-              </div>
-              <div class="small-12 medium-6 columns">
-                <a href="/jobs/" class="mrs mbs equal"
-                onclick="dataLayer.push({
-                      'event': 'GAEvent',
-                      'eventCategory': 'Service Button',
-                      'eventAction': 'Explore City jobs',
-                      'eventLabel': 'www.phila.gov'
-                    });
-                  ">
-                <span class="accessible">Explore City jobs</span>
+                  </a>
+                </div>
+                <div class="small-12 medium-auto cell">
+                  <a href="/jobs/" class="mrs mbs equal"
+                  onclick="dataLayer.push({
+                        'event': 'GAEvent',
+                        'eventCategory': 'Service Button',
+                        'eventAction': 'Explore City jobs',
+                        'eventLabel': 'www.phila.gov'
+                      });
+                    ">
+                  <span class="accessible">Explore City jobs</span>
 
-                  <div class="phs pvm cta-block clearfix" aria-hidden="true">
-                    <div class="valign ">
-                      <div class="valign-cell">
-                        <i class="fas fa-briefcase fa-4x"></i>
+                    <div class="phs pvm cta-block clearfix" aria-hidden="true">
+                      <div class="valign ">
+                        <div class="valign-cell">
+                          <i class="fas fa-briefcase fa-4x"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="h6">Explore<span class="break-before-mu"> City jobs</span></p>
                       </div>
                     </div>
-                    <div>
-                      <p class="h6">Explore<span class="break-before-mu"> City jobs</span></p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="small-12 medium-6 columns">
-                <a href="http://property.phila.gov/" class="mrs mbs equal"
-                onclick="dataLayer.push({
-                      'event': 'GAEvent',
-                      'eventCategory': 'Service Button',
-                      'eventAction': 'Search for a property',
-                      'eventLabel': 'www.phila.gov'
-                    });
-                  ">
-                  <span class="accessible">Search for a property</span>
-                  <div class="phs pvm cta-block clearfix" aria-hidden="true">
-                    <div class="valign ">
-                      <div class="valign-cell">
-                        <i class="fas fa-home fa-4x"></i>
+                  </a>
+                </div>
+                <div class="small-12 medium-auto cell">
+                  <a href="http://property.phila.gov/" class="mrs mbs equal"
+                  onclick="dataLayer.push({
+                        'event': 'GAEvent',
+                        'eventCategory': 'Service Button',
+                        'eventAction': 'Search for a property',
+                        'eventLabel': 'www.phila.gov'
+                      });
+                    ">
+                    <span class="accessible">Search for a property</span>
+                    <div class="phs pvm cta-block clearfix" aria-hidden="true">
+                      <div class="valign ">
+                        <div class="valign-cell">
+                          <i class="fas fa-home fa-4x"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="h6">Search for a<span class="break-before-mu"> property</span></p>
                       </div>
                     </div>
-                    <div>
-                      <p class="h6">Search for a<span class="break-before-mu"> property</span></p>
-                    </div>
-                  </div>
-                </a>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
+          <!-- End Common Requests -->
         </div>
-        <!-- End Common Requests -->
       </div>
-    </div>
     <!-- End Hero Content -->
     <div class="row">
       <div class="columns">
