@@ -11,6 +11,13 @@
 
   $sub_heading = rwmb_meta('prog_sub_head');
 
+  if (isset($association)) {
+    $parent = wp_get_post_parent_id($post);
+    $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $parent);
+
+    $sub_heading = rwmb_meta('prog_sub_head', array(), $parent);
+  }
+
   if ( !empty( $sub_hero ) ):
     $sub_hero = reset( $sub_hero );
   else:
@@ -25,9 +32,10 @@
   $description = rwmb_meta( 'phila_meta_desc' );
 
   $current_post_type = get_post_type($post->ID);
+
 ?>
 <header>
-  <?php if ( !empty( get_post_ancestors( $post->ID ) ) ) : ?>
+  <?php if ( $user_selected_template === 'prog_association' ) : ?>
     <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']  ?>) ">
       <div class="grid-container pvxl">
         <div class="grid-x center">
@@ -47,7 +55,7 @@
         </div>
       </div>
     </div>
-    <?php if (phila_get_selected_template() != 'prog_association') : ?>
+    <?php if ($user_selected_template != 'prog_association') : ?>
       <?php phila_get_menu(); ?>
     <?php endif; ?>
     <?php if ($current_post_type != 'department_page' && $user_selected_template != 'stub') : ?>
