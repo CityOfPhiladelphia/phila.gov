@@ -58,7 +58,7 @@ class Phila_Closures_Controller {
   */
   public function get_items( $request ) {
 
-    $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
+    $closures = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
     $phila_collection_status = rwmb_meta( 'phila_collection_status', array( 'object_type' => 'setting' ), 'phila_settings' );
     $flexible_collection = rwmb_meta( 'phila_flexible_collection', array( 'object_type' => 'setting' ), 'phila_settings' );
     $delay = false;
@@ -122,7 +122,7 @@ class Phila_Closures_Controller {
   */
   public function get_today( $request ) {
 
-    $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
+    $closures = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
 
     $data = array();
 
@@ -170,7 +170,7 @@ class Phila_Closures_Controller {
 
     $date = date($request_date);
 
-    $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
+    $closures = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
 
     $data = array();
     
@@ -217,7 +217,7 @@ class Phila_Closures_Controller {
       new DateInterval('P1D'), 
       6);
 
-    $closures = rwmb_meta( 'phila_closures', array( 'object_type' => 'setting' ), 'phila_settings' );
+    $closures = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
 
     $data = array();
     
@@ -269,7 +269,7 @@ class Phila_Closures_Controller {
 
     $schema = $this->get_item_schema( $request );
 
-    $post_data['closure_label'] = (string) $post['closure_label'] ?? '';
+    $post_data['holiday_label'] = (string) $post['holiday_label'] ?? '';
 
     $post_data['start_date']  = (string) $post['start_date'] ?? '';
 
@@ -359,7 +359,7 @@ class Phila_Closures_Controller {
       'type'                 => 'object',
       // Specify object properties in the properties attribute.
       'properties'           => array(
-        'closure_label'=> array(
+        'holiday_label'=> array(
           'description'  => esc_html__( 'Label of the object.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
