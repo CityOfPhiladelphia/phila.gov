@@ -58,7 +58,7 @@ class Phila_Closures_Controller {
   */
   public function get_items( $request ) {
 
-    $closures = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
+    $holidays = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
     $phila_collection_status = rwmb_meta( 'phila_collection_status', array( 'object_type' => 'setting' ), 'phila_settings' );
     $flexible_collection = rwmb_meta( 'phila_flexible_collection', array( 'object_type' => 'setting' ), 'phila_settings' );
     $delay = false;
@@ -91,16 +91,16 @@ class Phila_Closures_Controller {
 
     $data = array();
 
-    if ( empty( $closures ) ) {
+    if ( empty( $holidays ) ) {
       return rest_ensure_response( $data );
     }
-    $closure_array = [];
-    foreach ( $closures as $closure ) {
-      $response = $this->prepare_item_for_response( $closure, $request );
+    $holiday_array = [];
+    foreach ( $holidays as $holiday ) {
+      $response = $this->prepare_item_for_response( $holiday, $request );
 
-      $closure_array[] = $this->prepare_response_for_collection( $response );
+      $holiday_array[] = $this->prepare_response_for_collection( $response );
     }
-      $data['closures'] = $closure_array;
+      $data['holidays'] = $holiday_array;
 
       $undetermined_response = $this->prepare_undetermined_for_response( $undetermined );
       $status_response = $this->prepare_status_for_response( $status );
@@ -122,29 +122,29 @@ class Phila_Closures_Controller {
   */
   public function get_today( $request ) {
 
-    $closures = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
+    $holidays = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
 
     $data = array();
 
     $today = date('Y-m-d');
     
-    if ( empty( $closures ) ) {
+    if ( empty( $holidays ) ) {
       return rest_ensure_response( $data );
     }
 
-    foreach ( $closures as $closure ) {
-      $end_date = new DateTime($closure['end_date']);
+    foreach ( $holidays as $holiday ) {
+      $end_date = new DateTime($holiday['end_date']);
       $end_date->setTime(0,0,1);
       
       $period = new DatePeriod (
-        new DateTime($closure['start_date']),
+        new DateTime($holiday['start_date']),
         new DateInterval('P1D'),
         $end_date
       );
 
       foreach ($period as $key => $value) {
         if ($value->format('Y-m-d') == $today) {
-          $response = $this->prepare_item_for_response( $closure, $request );
+          $response = $this->prepare_item_for_response( $holiday, $request );
   
           $data[] = $this->prepare_response_for_collection( $response );
           break;
@@ -170,27 +170,27 @@ class Phila_Closures_Controller {
 
     $date = date($request_date);
 
-    $closures = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
+    $holidays = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
 
     $data = array();
     
-    if ( empty( $closures ) ) {
+    if ( empty( $holidays ) ) {
       return rest_ensure_response( $data );
     }
 
-    foreach ( $closures as $closure ) {
-      $end_date = new DateTime($closure['end_date']);
+    foreach ( $holidays as $holiday ) {
+      $end_date = new DateTime($holiday['end_date']);
       $end_date->setTime(0,0,1);
       
       $period = new DatePeriod (
-        new DateTime($closure['start_date']),
+        new DateTime($holiday['start_date']),
         new DateInterval('P1D'),
         $end_date
       );
 
       foreach ($period as $key => $value) {
         if ($value->format('Y-m-d') == $date) {
-          $response = $this->prepare_item_for_response( $closure, $request );
+          $response = $this->prepare_item_for_response( $holiday, $request );
   
           $data[] = $this->prepare_response_for_collection( $response );
           break;
@@ -217,20 +217,20 @@ class Phila_Closures_Controller {
       new DateInterval('P1D'), 
       6);
 
-    $closures = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
+    $holidays = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
 
     $data = array();
     
-    if ( empty( $closures ) ) {
+    if ( empty( $holidays ) ) {
       return rest_ensure_response( $data );
     }
 
-    foreach ( $closures as $closure ) {
-      $end_date = new DateTime($closure['end_date']);
+    foreach ( $holidays as $holiday ) {
+      $end_date = new DateTime($holiday['end_date']);
       $end_date->setTime(0,0,1);
       
       $period = new DatePeriod (
-        new DateTime($closure['start_date']),
+        new DateTime($holiday['start_date']),
         new DateInterval('P1D'),
         $end_date
       );
@@ -240,7 +240,7 @@ class Phila_Closures_Controller {
       foreach ($period as $key => $value) {
         foreach ($week as $key => $day) {
           if ($value->format('Y-m-d') == $day->format('Y-m-d')) {
-            $response = $this->prepare_item_for_response( $closure, $request );
+            $response = $this->prepare_item_for_response( $holiday, $request );
     
             $data[] = $this->prepare_response_for_collection( $response );
             $match = true;
