@@ -153,21 +153,21 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'name' => 'Holiday List',
       ),
       array(
-        'id'  => 'phila_closures',
+        'id'  => 'phila_holidays',
         'type'   => 'group',
         'clone' => true,
-        'add_button' => '+ Add another closure',
+        'add_button' => '+ Add another holiday',
 
         'fields'  => array(
           array(
-            'id'  => 'closure_label',
-            'name'  => 'Closure label',
+            'id'  => 'holiday_label',
+            'name'  => 'Holiday label',
             'type'  => 'text',
             'required'  => true
           ),
           array(
             'id'  => 'start_date',
-            'name' => 'Closure start date',
+            'name' => 'Holiday start date',
             'type'  => 'date',
             'required'  => true,
           ),
