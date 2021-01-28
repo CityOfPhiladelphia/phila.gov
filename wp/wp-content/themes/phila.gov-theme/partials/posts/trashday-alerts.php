@@ -1,6 +1,6 @@
 <?php
 /*
- * Press release grid
+ * Trashday alerts
 */
 ?>
 
