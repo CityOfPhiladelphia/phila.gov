@@ -96,12 +96,13 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'fields'  => array(
       array(
         'name'  => 'Current collection status',
-        'desc'  => 'Display on phila.gov homepage, covid update page, trash collection page, and streets homepage',
+        'desc'  => 'Display on phila.gov homepage, covid update page, trash collection page, and streets homepage. NOTE: Active holidays will only work if first option selected',
         'id'    => 'phila_collection_status',
         'type'  => 'radio',
         'inline' => false,
+        'std' => '0',
         'options' =>  array(
-            '0' => 'On schedule',
+            '0' => 'On regular or holiday schedule',
             '1' => 'Some delays but stick to schedule',
             '2' => 'Some delays, put out one day later',
             '3' => 'Holiday, put out one day later',
@@ -146,6 +147,10 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             )
           ),
         )
+      ),
+      array(
+        'type' => 'heading',
+        'name' => 'Holiday List',
       ),
       array(
         'id'  => 'phila_closures',
