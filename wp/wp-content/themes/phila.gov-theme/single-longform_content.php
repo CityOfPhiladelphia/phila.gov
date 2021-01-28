@@ -1,3 +1,7 @@
+<?php include(locate_template('partials/errors/longform-errors.php')); ?>
+
+<?php include(locate_template('partials/errors/error-message.php')); ?>
+
 <div id='longform-content-single-container'>
 <?php
 /**
@@ -11,7 +15,6 @@ get_header();
 ?>
 
 <div id="post-<?php the_ID(); ?>">
-
   <?php include(locate_template('partials/departments/v2/longform-content.php')); ?>
 
 </div><!-- #post-## -->
