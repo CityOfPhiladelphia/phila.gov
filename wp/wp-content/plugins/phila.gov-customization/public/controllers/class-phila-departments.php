@@ -115,6 +115,7 @@ class Phila_Departments_Controller {
 
     $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel', array(), $post->ID);
     $connect_info = phila_connect_panel($connect_panel);
+    var_dump($connect_info);
 
     if (isset( $schema['properties']['email'] )) {
       $post_data['email'] = (string) $connect_info['email'];
@@ -145,6 +146,8 @@ class Phila_Departments_Controller {
     } else {
       $post_data['phone'] = (string) $connect_info['phone']['co-code'];
     }
+
+    //Need to check if phone_multi isset , and if so, then loop through each phone number 
 
     if (isset( $schema['properties']['tty'] )) {
       $post_data['tty'] = (string) $connect_info['tty'];
@@ -261,6 +264,11 @@ class Phila_Departments_Controller {
         'phone' => array(
           'description'  => esc_html__( 'phone of the department.', 'phila-gov' ),
           'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'phone_multi' => array(
+          'description'  => esc_html__( 'Extra phones of the department.', 'phila-gov' ),
+          'type'         => 'array',
           'readonly'     => true,
         ),
         'description' => array(
