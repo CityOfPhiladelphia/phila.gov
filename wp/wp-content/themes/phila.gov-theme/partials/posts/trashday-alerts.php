@@ -20,6 +20,7 @@ foreach ( $holidays as $holiday ) {
     $is_holiday = true;
   }
 }
+var_dump($is_holiday);
 ?>
 
 <?php global $post; ?>
