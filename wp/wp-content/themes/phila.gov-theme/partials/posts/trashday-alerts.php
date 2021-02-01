@@ -4,7 +4,24 @@
 */
 ?>
 
-<?php $status = rwmb_meta( 'phila_collection_status', array( 'object_type' => 'setting' ), 'phila_settings' ); ?>
+<?php
+
+$status = rwmb_meta( 'phila_collection_status', array( 'object_type' => 'setting' ), 'phila_settings' );
+$holidays = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
+
+$is_holiday = false;
+foreach ( $holidays as $holiday ) {
+  $today = new DateTime();
+  $holiday_date = new DateTime($holiday['start_date']);
+  $endDate = clone $today;
+  $endDate->modify('next friday');
+
+  if (($holiday_date >= $today) && ($holiday_date <= $endDate) && (date('N') <= 5)){
+    $is_holiday = true;
+  }
+}
+?>
+
 <?php global $post; ?>
 <?php if ( phila_is_department_homepage( $post ) ) { ?>
   <div class="row mvl">
@@ -20,7 +37,8 @@
           { echo "service-update"; } else if 
         ( $status == 1 || 
           $status == 2 || 
-          $status == 3 )
+          $status == 3 ||
+          $is_holiday == true)
           { echo "service-update--warning"; } else if
         ( $status == 4 ) 
           { 
@@ -42,7 +60,7 @@
               ( $status == 0 ) { echo "Trash and recycling collections are on schedule."; } else if 
               ( $status == 1 ) { echo "Trash and recycling collections are delayed in some areas. Set materials out on scheduled day."; } else if
               ( $status == 2 ) { echo "Trash and recycling collections are delayed in some areas. Set materials out one day behind scheduled day."; } else if
-              ( $status == 3 ) { echo "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day."; } else if
+              ( $status == 3 || $is_holiday == true ) { echo "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day."; } else if
               ( $status == 4 ) { echo $flexible_collection['phila_flexible_collection_status']; } 
             ?>
           </span>
