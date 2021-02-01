@@ -33,12 +33,12 @@ foreach ( $holidays as $holiday ) {
     <tbody>
 <?php } ?>
       <tr class="<?php if 
-        ( $status == 0) 
-          { echo "service-update"; } else if 
         ( $status == 1 || 
           $status == 2 || 
           $is_holiday == true)
           { echo "service-update--warning"; } else if
+        ( $status == 0) 
+          { echo "service-update"; } else if 
         ( $status == 3 ) 
           { 
             $flexible_collection = rwmb_meta( 'phila_flexible_collection', array( 'object_type' => 'setting' ), 'phila_settings' );
@@ -56,10 +56,10 @@ foreach ( $holidays as $holiday ) {
         <td class="pam">
           <span class="bold">
             <?php if 
+              ( $is_holiday == true ) { echo "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day."; } else if
               ( $status == 0 ) { echo "Trash and recycling collections are on schedule."; } else if 
               ( $status == 1 ) { echo "Trash and recycling collections are delayed in some areas. Set materials out on scheduled day."; } else if
               ( $status == 2 ) { echo "Trash and recycling collections are delayed in some areas. Set materials out one day behind scheduled day."; } else if
-              ( $is_holiday == true ) { echo "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day."; } else if
               ( $status == 3 ) { echo $flexible_collection['phila_flexible_collection_status']; } 
             ?>
           </span>
