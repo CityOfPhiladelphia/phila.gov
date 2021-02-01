@@ -96,16 +96,16 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'fields'  => array(
       array(
         'name'  => 'Current collection status',
-        'desc'  => 'Display on phila.gov homepage, covid update page, trash collection page, and streets homepage',
+        'desc'  => 'Display on phila.gov homepage, covid update page, trash collection page, and streets homepage. NOTE: Active holidays will only work if first option selected',
         'id'    => 'phila_collection_status',
         'type'  => 'radio',
         'inline' => false,
+        'std' => '0',
         'options' =>  array(
-            '0' => 'On schedule',
+            '0' => 'On regular or holiday schedule',
             '1' => 'Some delays but stick to schedule',
             '2' => 'Some delays, put out one day later',
-            '3' => 'Holiday, put out one day later',
-            '4' => 'Flexible / unanticipated cause of delays',
+            '3' => 'Flexible / unanticipated cause of delays',
         )
       ),
       array(
@@ -148,21 +148,25 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         )
       ),
       array(
-        'id'  => 'phila_closures',
+        'type' => 'heading',
+        'name' => 'Holiday List',
+      ),
+      array(
+        'id'  => 'phila_holidays',
         'type'   => 'group',
         'clone' => true,
-        'add_button' => '+ Add another closure',
+        'add_button' => '+ Add another holiday',
 
         'fields'  => array(
           array(
-            'id'  => 'closure_label',
-            'name'  => 'Closure label',
+            'id'  => 'holiday_label',
+            'name'  => 'Holiday label',
             'type'  => 'text',
             'required'  => true
           ),
           array(
             'id'  => 'start_date',
-            'name' => 'Closure start date',
+            'name' => 'Holiday start date',
             'type'  => 'date',
             'required'  => true,
           ),

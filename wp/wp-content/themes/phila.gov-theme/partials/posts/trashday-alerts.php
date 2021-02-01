@@ -1,11 +1,29 @@
 <?php
 /*
- * Press release grid
+ * Trashday alerts
 */
 ?>
 
-<?php $status = rwmb_meta( 'phila_collection_status', array( 'object_type' => 'setting' ), 'phila_settings' ); ?>
-<?php if ( phila_is_department_homepage( 'test' ) ) { ?>
+<?php
+
+$status = rwmb_meta( 'phila_collection_status', array( 'object_type' => 'setting' ), 'phila_settings' );
+$holidays = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
+
+$is_holiday = false;
+foreach ( $holidays as $holiday ) {
+  $today = new DateTime();
+  $holiday_date = new DateTime($holiday['start_date']);
+  $endDate = clone $today;
+  $endDate->modify('next friday');
+
+  if (($holiday_date >= $today) && ($holiday_date <= $endDate) && (date('N') <= 5)){
+    $is_holiday = true;
+  }
+}
+?>
+
+<?php global $post; ?>
+<?php if ( phila_is_department_homepage( $post ) ) { ?>
   <div class="row mvl">
     <div class="columns">
 <?php } ?>
@@ -15,13 +33,13 @@
     <tbody>
 <?php } ?>
       <tr class="<?php if 
-        ( $status == 0) 
-          { echo "service-update"; } else if 
         ( $status == 1 || 
           $status == 2 || 
-          $status == 3 )
+          $is_holiday == true)
           { echo "service-update--warning"; } else if
-        ( $status == 4 ) 
+        ( $status == 0) 
+          { echo "service-update"; } else if 
+        ( $status == 3 ) 
           { 
             $flexible_collection = rwmb_meta( 'phila_flexible_collection', array( 'object_type' => 'setting' ), 'phila_settings' );
             if  ( $flexible_collection['phila_flexible_collection_color'] == 0 ) { echo "service-update"; } else if 
@@ -29,7 +47,7 @@
                 ( $flexible_collection['phila_flexible_collection_color'] == 2 ) { echo "service-update--critical"; }
           }
       ?>">
-        <th class="phl-mu <?php if ( !phila_is_department_homepage( 'test' ) && !is_home() && $a['icon_padding'] == 0 ) echo 'icon-only';?>">
+        <th class="phl-mu <?php if ( !phila_is_department_homepage( $post ) && !is_home() && $a['icon_padding'] == 0 ) echo 'icon-only';?>">
           <i class="fa-2x fa-fw fas fa-trash-alt service-icon <?php if( $a['icon_padding'] && $a['icon_padding'] == 1) echo 'plm-mu' ?>" aria-hidden="true"></i>
           <?php if ( $a['icon_text'] && $a['icon_text'] == 1 ) { ?>
             <span class="icon-label">Trash & Recycling</span>
@@ -38,11 +56,11 @@
         <td class="pam">
           <span class="bold">
             <?php if 
+              ( $is_holiday == true ) { echo "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day."; } else if
               ( $status == 0 ) { echo "Trash and recycling collections are on schedule."; } else if 
               ( $status == 1 ) { echo "Trash and recycling collections are delayed in some areas. Set materials out on scheduled day."; } else if
               ( $status == 2 ) { echo "Trash and recycling collections are delayed in some areas. Set materials out one day behind scheduled day."; } else if
-              ( $status == 3 ) { echo "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day."; } else if
-              ( $status == 4 ) { echo $flexible_collection['phila_flexible_collection_status']; } 
+              ( $status == 3 ) { echo $flexible_collection['phila_flexible_collection_status']; } 
             ?>
           </span>
         </td>
@@ -52,7 +70,7 @@
     </tbody>
   </table>
 <?php } ?>
-<?php if ( phila_is_department_homepage( 'test' ) ) { ?>
+<?php if ( phila_is_department_homepage( $post ) ) { ?>
   </div>
 </div>
 <?php } 
