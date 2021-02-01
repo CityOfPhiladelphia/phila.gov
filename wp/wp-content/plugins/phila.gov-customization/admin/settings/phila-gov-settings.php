@@ -105,8 +105,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             '0' => 'On regular or holiday schedule',
             '1' => 'Some delays but stick to schedule',
             '2' => 'Some delays, put out one day later',
-            '3' => 'Holiday, put out one day later',
-            '4' => 'Flexible / unanticipated cause of delays',
+            '3' => 'Flexible / unanticipated cause of delays',
         )
       ),
       array(
