@@ -96,6 +96,16 @@ class Phila_Closures_Controller {
     }
     $holiday_array = [];
     foreach ( $holidays as $holiday ) {
+      $today = new DateTime();
+      $holiday_date = new DateTime($holiday['start_date']);
+      $endDate = clone $today;
+      $endDate->modify('next friday');
+
+      if (($holiday_date >= $today) && ($holiday_date <= $endDate) && (date('N') <= 5)){ // if today is within the holiday impact window and today is not a weekend day
+        $status = "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day.";
+        $delay = true;
+      }
+
       $response = $this->prepare_item_for_response( $holiday, $request );
 
       $holiday_array[] = $this->prepare_response_for_collection( $response );
