@@ -138,6 +138,7 @@ class Phila_Closures_Controller {
       return rest_ensure_response( $data );
     }
 
+
     foreach ( $holidays as $holiday ) {
       $end_date = new DateTime($holiday['end_date']);
       $end_date->setTime(0,0,1);
