@@ -76,10 +76,6 @@ class Phila_Closures_Controller {
         $status = "Trash and recycling collections are delayed in some areas. Set materials out one day behind scheduled day.";
         break;
       case 3:
-        $delay = true;
-        $status = "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day.";
-        break;
-      case 4:
         $status = $flexible_collection['phila_flexible_collection_status'];
         if ( $flexible_collection['phila_flexible_collection_impact'] == 1 ) {
           $delay = true;
