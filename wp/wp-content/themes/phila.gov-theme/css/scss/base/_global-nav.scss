@@ -36,7 +36,7 @@
   //utility nav
   .utility-nav {
     font-size: .85rem;
-    height: 25px;
+    min-height: 25px;
 
     @include breakpoint(small only) {
       height:10px;
@@ -571,8 +571,13 @@ header {
         }
       }
       &.dot-gov {
+        @include breakpoint(small only) {
+          padding-top: 10px;
+        }
         .trust-icon {
-          width: 80px;
+          @include breakpoint(medium up) {
+            width: 80px;
+          }
         }
         .trust-details {
           width: calc(100% - 105px);
@@ -581,6 +586,10 @@ header {
     }
     #trusted-site-close {
       color: #fff;
+      position: absolute;
+      @include breakpoint(small only) {
+        margin-left: -10px;
+      }
     }
   }
 }
