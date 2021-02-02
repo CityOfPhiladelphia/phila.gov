@@ -103,10 +103,10 @@
               <span class="icon-text">.gov</span>
             </div> 
             <div class="trust-details">Only government entities in the U.S. can end in .gov</div>
+            <a href="#" aria-label="Close Trusted Site Details" id="trusted-site-close" class="float-right">
+              <i class="fas fa-times fa-2x"></i>
+            </a>
           </div>
-          <a href="#" aria-label="Close Trusted Site Details" id="trusted-site-close">
-            <i class="fas fa-times fa-2x"></i>
-          </a>
         </div>
       </div>
     </div>
