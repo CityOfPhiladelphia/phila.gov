@@ -62,10 +62,12 @@
     <div class="row columns bg-ben-franklin-blue expanded utility-nav" data-swiftype-index="false">
       <div class="row">
         <div class="medium-12 columns">
-          <div class="medium-horizontal show-for-medium">
-            <span>An official website of the City of Philadelphia government </span>
-            <a href="/departments/">Here's how you know</a>
-          </div>
+          <ul class="medium-horizontal menu show-for-medium">
+            <li class="gov-site">
+              <span>An official website of the City of Philadelphia government </span>
+              <a href="#" id="trusted-site-toggle">Here's how you know</a>
+            </li>
+          </ul>
         </div>
         <div class="medium-12 columns">
           <ul class="medium-horizontal menu show-for-medium float-right">
@@ -79,7 +81,7 @@
       </div>
     </div>
     <!-- Trusted Site -->
-    <div class="row columns expanded trusted-site" data-swiftype-index="false">
+    <div class="row columns expanded" data-swiftype-index="false" id="trusted-site">
       <div class="row pvm">
         <div class="medium-12 columns">
           <div class="medium-horizontal show-for-medium">
@@ -102,42 +104,12 @@
             </div> 
             <div class="trust-details">Only government entities in the U.S. can end in .gov</div>
           </div>
+          <a href="#" aria-label="Close Trusted Site Details" id="trusted-site-close">
+            <i class="fas fa-times fa-2x"></i>
+          </a>
         </div>
       </div>
     </div>
-    <!-- <div id="trusted-site-details" class="" style="">
-      <div class="container">
-        <div id="close-tsd">
-          <span class="icon">
-            <a href="#" aria-label="Close Trusted Site Details">
-              <i class="fas fa-times"></i>
-            </a>
-          </span>
-        </div>
-        <div id="trusted-panel">
-          <div class="columns is-centered is-marginless is-multiline is-tablet">
-            <div class="column">
-              <div class="trust-icon">
-                <span class="icon circle-icon">
-                  <i class="fas fa-lock"></i>
-                </span>
-                <span class="icon-text">https://</span>
-              </div> 
-              <div class="trust-details">The <strong>https://</strong> in the address bar means your information is encrypted and can not be accessed by anyone else</div>
-            </div> 
-            <div class="column">
-              <div class="trust-icon-right">
-                <span class="icon circle-icon">
-                  <i class="fas fa-university"></i>
-                </span> 
-                <span class="icon-text">.gov</span>
-              </div> 
-              <div class="trust-details-right">Only government entities in the U.S. can end in .gov</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <!-- sticky/desktop nav -->
     <div id="global-sticky-nav" class="row">
       <div class="small-24 columns">
