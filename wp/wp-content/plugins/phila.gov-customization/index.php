@@ -39,6 +39,8 @@ require $dir. '/admin/class-phila-gov-role-administration.php';
 require $dir. '/admin/class-phila-gov-site-wide-alert.php';
 require $dir. '/admin/class-phila-gov-staff-directory.php';
 require $dir. '/admin/class-phila-gov-longform-content.php';
+require $dir. '/admin/class-phila-gov-text.php';
+require $dir. '/admin/class-phila-gov-wysiwyg.php';
 require $dir. '/admin/define-roles.php';
 require $dir. '/admin/rest-additions.php';
 require $dir. '/admin/tiny-mce.php';

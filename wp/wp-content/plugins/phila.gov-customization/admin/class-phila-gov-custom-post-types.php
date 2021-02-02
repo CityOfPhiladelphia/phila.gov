@@ -30,6 +30,10 @@ class Phila_Gov_Custom_Post_Types{
 
     add_action( 'init', array( $this, 'create_phila_annoucement' ), 1 );
 
+    add_action( 'init', array( $this, 'create_phila_text' ), 1 );
+
+    add_action( 'init', array( $this, 'create_phila_wysiwyg' ), 1 );
+
     add_action( 'admin_init', array($this, 'redirect_admin_pages'), 1);
 
 
@@ -394,6 +398,80 @@ class Phila_Gov_Custom_Post_Types{
         'query_var' => true,
         'rewrite' => array(
           'slug' => 'publications',
+          'with_front' => false,
+        ),
+      )
+    );
+  }
+
+  function create_phila_text() {
+    register_post_type( 'text',
+      array(
+        'labels' => array(
+          'name' => __( 'Text Page' ),
+          'singular_name' => __( 'Text Page' ),
+          'add_new'   => __( 'Add Text Page' ),
+          'all_items'   => __( 'All Text Pages' ),
+          'add_new_item' => __( 'Add New Text Page' ),
+          'edit_item'   => __( 'Edit Text Page' ),
+          'view_item'   => __( 'View Text Page' ),
+          'search_items'   => __( 'Search Text Pages' ),
+          'not_found'   => __( 'Text Page Not Found' ),
+          'not_found_in_trash'   => __( 'Text Page not found in trash' ),
+        ),
+        'taxonomies' => array(
+          'category',
+        ),
+        'supports' => array(
+          'title',
+          'revisions',
+          'author'
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'show_in_rest' => true,
+        'rest_base' => 'texts',
+        'menu_icon' => 'dashicons-media-text',
+        'hierarchical' => false,
+        'rewrite' => array(
+          'slug' => 'texts',
+          'with_front' => false,
+        ),
+      )
+    );
+  }
+
+  function create_phila_wysiwyg() {
+    register_post_type( 'wysiwyg',
+      array(
+        'labels' => array(
+          'name' => __( 'Wysiwyg Page' ),
+          'singular_name' => __( 'Wysiwyg Page' ),
+          'add_new'   => __( 'Add Wysiwyg Page' ),
+          'all_items'   => __( 'All Wysiwyg Pages' ),
+          'add_new_item' => __( 'Add New Wysiwyg Page' ),
+          'edit_item'   => __( 'Edit Wysiwyg Page' ),
+          'view_item'   => __( 'View Wysiwyg Page' ),
+          'search_items'   => __( 'Search Wysiwyg Pages' ),
+          'not_found'   => __( 'Wysiwyg Page Not Found' ),
+          'not_found_in_trash'   => __( 'Wysiwyg Page not found in trash' ),
+        ),
+        'taxonomies' => array(
+          'category',
+        ),
+        'supports' => array(
+          'title',
+          'revisions',
+          'author'
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'show_in_rest' => true,
+        'rest_base' => 'wysiwygs',
+        'menu_icon' => 'dashicons-media-text',
+        'hierarchical' => false,
+        'rewrite' => array(
+          'slug' => 'wysiwygs',
           'with_front' => false,
         ),
       )
