@@ -85,6 +85,9 @@
           a {
             text-decoration: underline;
           }
+          &::after {
+            display: none;
+          }
         }
       }
     }
