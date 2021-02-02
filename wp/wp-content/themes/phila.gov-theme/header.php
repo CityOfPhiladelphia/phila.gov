@@ -65,10 +65,10 @@
           <ul class="medium-horizontal menu">
             <li class="gov-site show-for-medium">
               <span>An official website of the City of Philadelphia government </span>
-              <a href="#" id="trusted-site-toggle">Here's how you know</a>
+              <a href="" id="trusted-site-toggle">Here's how you know</a>
             </li>
             <li class="gov-site show-for-small-only">
-              <a href="#" id="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
+              <a href="" id="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
             </li>
           </ul>
         </div>
