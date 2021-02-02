@@ -77,6 +77,15 @@
             }
           }
         }
+        &.gov-site {
+          span {
+            font-size: 0.75rem;
+            color: white;
+          }
+          a {
+            text-decoration: underline;
+          }
+        }
       }
     }
     #google_translate_element a {
@@ -517,7 +526,8 @@ header {
     }
 
   }
-  .trusted-site {
+  #trusted-site {
+    display: none;
     background-color: #0c59a6;
     .columns {
       margin: 0px;
@@ -568,6 +578,9 @@ header {
           width: calc(100% - 85px);
         }
       }
+    }
+    #trusted-site-close {
+      color: #fff;
     }
   }
 }
