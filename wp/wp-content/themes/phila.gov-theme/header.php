@@ -61,15 +61,56 @@
     <!-- Utility Navigation -->
     <div class="row columns bg-ben-franklin-blue expanded utility-nav" data-swiftype-index="false">
       <div class="row">
-        <div class="medium-24 columns float-right">
-          <ul class="medium-horizontal menu show-for-medium float-right">
-            <li><a href="/departments/mayor/">Office of the Mayor</a></li>
-            <li><a href="/departments/">City government directory</a></li>
+        <div class="medium-12 small-16 columns">
+          <ul class="medium-horizontal menu">
+            <li class="gov-site show-for-medium">
+              <span>An official website of the City of Philadelphia government </span>
+              <a href="#" id="trusted-site-toggle">Here's how you know</a>
+            </li>
+            <li class="gov-site show-for-small-only">
+              <a href="#" id="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="medium-12 small-8 columns">
+          <ul class="medium-horizontal menu float-right">
+            <li class="show-for-medium"><a href="/departments/mayor/">Office of the Mayor</a></li>
+            <li class="show-for-medium"><a href="/departments/">City government directory</a></li>
             <li>
               <div id="google_translate_element" class="no-js"><span class="show-for-sr">Google Translate</span></div>
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+    <!-- Trusted Site -->
+    <div class="row columns expanded" data-swiftype-index="false" id="trusted-site">
+      <div class="row pvm">
+        <div class="medium-12 columns">
+          <div class="medium-horizontal">
+            <div class="trust-icon">
+              <span class="icon circle-icon">
+                <i class="fas fa-lock"></i>
+              </span>
+              <span class="icon-text">https://</span>
+            </div> 
+            <div class="trust-details">The <strong>https://</strong> in the address bar means your information is encrypted and can not be accessed by anyone else</div>
+          </div>
+        </div>
+        <div class="medium-12 columns dot-gov">
+          <div class="medium-horizontal">
+            <div class="trust-icon">
+              <span class="icon circle-icon">
+                <i class="fas fa-university"></i>
+              </span> 
+              <span class="icon-text">.gov</span>
+            </div> 
+            <div class="trust-details">Only government entities in the U.S. can end in .gov</div>
+          </div>
+        </div>
+        <a href="#" aria-label="Close Trusted Site Details" id="trusted-site-close" class="float-right">
+          <i class="fas fa-times fa-2x"></i>
+        </a>
       </div>
     </div>
     <!-- sticky/desktop nav -->
