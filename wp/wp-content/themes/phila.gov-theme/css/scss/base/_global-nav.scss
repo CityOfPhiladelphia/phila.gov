@@ -88,12 +88,15 @@
         }
       }
     }
-    #google_translate_element a {
-      padding: .2rem 2rem .3rem .5rem;
-    }
-    #google_translate_element .goog-te-gadget-simple .goog-te-menu-value::after {
-      top: 6px;
-    }
+    #google_translate_element {
+      padding: 0.25rem 0.5rem;
+      a {
+        padding: .2rem 2rem .3rem .5rem;
+      }
+      .goog-te-gadget-simple .goog-te-menu-value::after {
+        top: 6px;
+      }
+    } 
   }
 
 
