@@ -84,7 +84,7 @@
     <div class="row columns expanded" data-swiftype-index="false" id="trusted-site">
       <div class="row pvm">
         <div class="medium-12 columns">
-          <div class="medium-horizontal show-for-medium">
+          <div class="medium-horizontal">
             <div class="trust-icon">
               <span class="icon circle-icon">
                 <i class="fas fa-lock"></i>
@@ -95,7 +95,7 @@
           </div>
         </div>
         <div class="medium-12 columns dot-gov">
-          <div class="medium-horizontal show-for-medium">
+          <div class="medium-horizontal">
             <div class="trust-icon">
               <span class="icon circle-icon">
                 <i class="fas fa-university"></i>
