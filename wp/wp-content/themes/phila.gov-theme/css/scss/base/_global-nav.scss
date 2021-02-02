@@ -531,6 +531,7 @@ header {
     background-color: #0c59a6;
     .columns {
       margin: 0px;
+      padding-right: 20px;
       .trust-icon {
         font-size: 1em;
         font-weight: 400;
@@ -587,8 +588,9 @@ header {
     #trusted-site-close {
       color: #fff;
       position: absolute;
+      margin-left: -40px;
       @include breakpoint(small only) {
-        margin-left: -10px;
+        margin-left: -20px;
       }
     }
   }
