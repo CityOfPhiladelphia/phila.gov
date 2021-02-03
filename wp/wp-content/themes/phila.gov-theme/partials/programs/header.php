@@ -34,7 +34,7 @@
   $current_post_type = get_post_type($post->ID);
 ?>
 <header>
-  <?php if ( !empty( get_post_ancestors( $post->ID ) ) ) : ?><?php echo $sub_hero['full_url']  ?>
+  <?php if ( !empty( get_post_ancestors( $post->ID ) ) ) : ?>
     <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']  ?>) ">
       <div class="grid-container pvxl">
         <div class="grid-x center">
