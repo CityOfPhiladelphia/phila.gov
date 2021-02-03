@@ -9,7 +9,6 @@
 
   $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $post->ID);
 
-  var_dump( $sub_hero );
   $sub_heading = rwmb_meta('prog_sub_head');
 
   if ( !empty( $sub_hero ) ):
