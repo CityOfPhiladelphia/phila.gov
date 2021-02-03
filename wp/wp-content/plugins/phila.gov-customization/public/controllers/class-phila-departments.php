@@ -142,7 +142,7 @@ class Phila_Departments_Controller {
     // checks to see if there is a phone number by checking to see if the are code is empty
     // if the area code is empty, it will populate with the co-code, which will either be 311 or null
     if (isset( $schema['properties']['phone'] ) && !empty($connect_info['phone']['area'])) {
-      $post_data['phone'] = (string) '(' . $connect_info['phone']['area'] . ') '. $connect_info['phone']['co-code'] . '-'. $connect_info['phone']['subscriber-number'];
+      $post_data['phone'] = $connect_info['phone'];
     } else {
       $post_data['phone'] = (string) $connect_info['phone']['co-code'];
     }
