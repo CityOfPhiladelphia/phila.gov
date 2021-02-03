@@ -18,12 +18,11 @@
     $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
   endif;
 
-  if (isset($association)) {
-  
+  if ( isset( $association )) {
     $parent = wp_get_post_parent_id($post);
     $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $parent);
+    $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
     $sub_heading = rwmb_meta('prog_sub_head', array(), $parent);
-
   }
 
   $owner = rwmb_meta( 'phila_program_owner_logo', array( 'limit' => 1 ) );
@@ -35,7 +34,7 @@
   $current_post_type = get_post_type($post->ID);
 ?>
 <header>
-  <?php if ( !empty( get_post_ancestors( $post->ID ) ) ) : ?>
+  <?php if ( !empty( get_post_ancestors( $post->ID ) ) ) : ?><?php echo $sub_hero['full_url']  ?>
     <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']  ?>) ">
       <div class="grid-container pvxl">
         <div class="grid-x center">
