@@ -18,6 +18,14 @@
     $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
   endif;
 
+  if (isset($association)) {
+  
+    $parent = wp_get_post_parent_id($post);
+    $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $parent);
+    $sub_heading = rwmb_meta('prog_sub_head', array(), $parent);
+
+  }
+
   $owner = rwmb_meta( 'phila_program_owner_logo', array( 'limit' => 1 ) );
   $owner = !empty($owner) ? reset($owner) : '';
 
@@ -47,7 +55,7 @@
         </div>
       </div>
     </div>
-    <?php if (phila_get_selected_template() != 'prog_association') : ?>
+    <?php if ($user_selected_template != 'prog_association') : ?>
       <?php phila_get_menu(); ?>
     <?php endif; ?>
     <?php if ($current_post_type != 'department_page' && $user_selected_template != 'stub') : ?>
