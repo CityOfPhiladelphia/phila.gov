@@ -9,6 +9,7 @@
 
   $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $post->ID);
 
+  var_dump( $sub_hero );
   $sub_heading = rwmb_meta('prog_sub_head');
 
   if ( !empty( $sub_hero ) ):
@@ -17,6 +18,12 @@
     $sub_hero = rwmb_meta( 'prog_header_img_sub', array( 'limit' => 1 ), $parent->ID);
     $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
   endif;
+
+  if (isset($association)) {
+  
+    $parent = wp_get_post_parent_id($post);
+    $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $parent);
+  }
 
   $owner = rwmb_meta( 'phila_program_owner_logo', array( 'limit' => 1 ) );
   $owner = !empty($owner) ? reset($owner) : '';
