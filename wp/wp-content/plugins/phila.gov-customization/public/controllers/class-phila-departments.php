@@ -95,6 +95,11 @@ class Phila_Departments_Controller {
 
     $schema = $this->get_item_schema( $request );
 
+   // fetch connect box information and description from metaboxes
+    $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel', array(), $post->ID);
+    $connect_info = phila_connect_panel($connect_panel);
+    $description = rwmb_meta( 'phila_meta_desc', '', $post->ID );
+
     if (isset( $schema['properties']['name'] )) {
 
       $post_data['name'] = (string) $post->post_title;
@@ -112,10 +117,6 @@ class Phila_Departments_Controller {
       $acronym = rwmb_meta('phila_department_acronym', array(), $post->ID);
       $post_data['acronym'] = (string) $acronym;
     }
-
-    $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel', array(), $post->ID);
-    $connect_info = phila_connect_panel($connect_panel);
-    // var_dump($connect_info);
 
     if (isset( $schema['properties']['email'] )) {
       $post_data['email'] = (string) $connect_info['email'];
@@ -147,7 +148,7 @@ class Phila_Departments_Controller {
       $post_data['phone'] = (string) $connect_info['phone']['co-code'];
     }
 
-    //Need to check if phone_multi isset , and if so, then loop through each phone number 
+    //Need to check if phone_multi isset , and if so, then add the array 
     if ( isset( $connect_info['phone_multi'] ) ) {
       $post_data['phone_multi'] = $connect_info['phone_multi'];
     }
@@ -160,8 +161,6 @@ class Phila_Departments_Controller {
       $post_data['fax'] = (string) $connect_info['fax'];
     }
 
-    $description = rwmb_meta( 'phila_meta_desc', '', $post->ID );
-
     if (isset( $schema['properties']['description'] )) {
       $post_data['description'] = (string) $description;
     }
@@ -170,8 +169,6 @@ class Phila_Departments_Controller {
       $permalink = get_permalink($post->ID);
       $post_data['permalink'] = (string) $permalink;
     }
-
-    
 
     return rest_ensure_response( $post_data );
 }
