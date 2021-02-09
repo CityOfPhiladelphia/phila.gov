@@ -697,6 +697,12 @@ function phila_format_document_type($document_type){
     case 'zip':
       echo 'zip';
       break;
+    case 'jpg':
+      echo 'jpeg';
+      break;
+    case 'jpeg':
+      echo 'jpeg';
+      break;
   }
 }
 
