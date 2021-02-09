@@ -45,6 +45,11 @@
           <table class="service-update">
             <tbody>
             <?php 
+            if (strpos($group['group_title'], 'trash') !== false || strpos($group['group_title'], 'recycling') !== false) {
+              echo do_shortcode('[trashday-alerts is_in_table=1 icon_text=1 icon_padding=1]');
+            }
+            ?>
+            <?php 
               foreach ($group['service_content'] as $item) :?>
                 <tr class="service-update--<?php if ( !$item['level'] == '' ) echo $item['level']; ?> ">
                   <th class="phl-mu">
