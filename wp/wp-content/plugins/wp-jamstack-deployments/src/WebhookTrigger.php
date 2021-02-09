@@ -296,6 +296,7 @@ class WebhookTrigger
      */
     public static function fireWebhook()
     {
+        global $post;
         $webhook = jamstack_deployments_get_webhook_url();
 
         if (!$webhook) {
@@ -308,6 +309,14 @@ class WebhookTrigger
 
         $method = jamstack_deployments_get_webhook_method();
 
+        if(isset( $post->post_type )) {
+            $post_type = $post->post_type;
+            if ($post->post_type == 'department_page' ) {
+                $post_type = 'departments';
+            }
+        }
+
+        $webhook = $webhook.'/'.$post->ID.'/'.$post_type.'/'.$post->post_name;
         $args = array(
             'method' => 'POST',
             'headers'  => array(
