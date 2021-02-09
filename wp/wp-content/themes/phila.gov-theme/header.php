@@ -65,10 +65,10 @@
           <ul class="medium-horizontal menu">
             <li class="gov-site show-for-medium">
               <span>An official website of the City of Philadelphia government </span>
-              <a href="#" id="trusted-site-toggle">Here's how you know</a>
+              <a href="javascript:void(0)" id="trusted-site-toggle">Here's how you know</a>
             </li>
             <li class="gov-site show-for-small-only">
-              <a href="#" id="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
+              <a href="javascript:void(0)" id="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
             </li>
           </ul>
         </div>
@@ -108,7 +108,7 @@
             <div class="trust-details">Only government entities in the U.S. can end in .gov</div>
           </div>
         </div>
-        <a href="#" aria-label="Close Trusted Site Details" id="trusted-site-close" class="float-right">
+        <a href="javascript:void(0)" aria-label="Close Trusted Site Details" id="trusted-site-close" class="float-right">
           <i class="fas fa-times fa-2x"></i>
         </a>
       </div>
