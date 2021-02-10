@@ -36,7 +36,7 @@
   //utility nav
   .utility-nav {
     font-size: .85rem;
-    height: 25px;
+    min-height: 25px;
 
     @include breakpoint(small only) {
       height:10px;
@@ -77,14 +77,30 @@
             }
           }
         }
+        &.gov-site {
+          span {
+            font-size: 0.75rem;
+            color: white;
+          }
+          a {
+            font-size: .75rem;
+            text-decoration: underline;
+          }
+          &::after {
+            display: none;
+          }
+        }
       }
     }
-    #google_translate_element a {
-      padding: .2rem 2rem .3rem .5rem;
-    }
-    #google_translate_element .goog-te-gadget-simple .goog-te-menu-value::after {
-      top: 6px;
-    }
+    #google_translate_element {
+      padding: 0.25rem 0.5rem;
+      a {
+        padding: .2rem 2rem .3rem .5rem;
+      }
+      .goog-te-gadget-simple .goog-te-menu-value::after {
+        top: 6px;
+      }
+    } 
   }
 
 
@@ -516,6 +532,74 @@ header {
       margin: .75rem auto 0 auto;
     }
 
+  }
+  #trusted-site {
+    display: none;
+    background-color: #0c59a6;
+    .columns {
+      margin: 0px;
+      padding-right: 20px;
+      .trust-icon {
+        font-size: 1em;
+        font-weight: 400;
+        line-height: 1.5rem;
+        color: white;
+        width: 100px;
+        display: inline-block;
+        vertical-align: middle;
+        .circle-icon {          
+          line-height: 1.5rem;
+          align-items: center;
+          display: inline-flex;
+          justify-content: center;
+          border-radius: 50%;
+          background-color: #fff;
+          width: 1.5rem;
+          height: 1.5rem;
+          text-align: center;
+          font-size: 1rem;
+          color: #2176d2;
+          margin-right: 0.1rem;
+        }
+        .icon-text {
+          font-size: 1.25rem;
+          font-weight: 600;
+          line-height: 1.5rem;
+        }
+      }
+      .trust-details {
+        display: inline-block;
+        width: calc(100% - 105px);
+        vertical-align: middle;
+        line-height: 1.1;
+        font-size: 0.75rem;
+        color: #fff;
+        strong {
+          color: #fff;
+        }
+      }
+      &.dot-gov {
+        @include breakpoint(small only) {
+          padding-top: 10px;
+        }
+        .trust-icon {
+          @include breakpoint(medium up) {
+            width: 80px;
+          }
+        }
+        .trust-details {
+          width: calc(100% - 105px);
+        }
+      }
+    }
+    #trusted-site-close {
+      color: #fff;
+      position: absolute;
+      margin-left: -40px;
+      @include breakpoint(small only) {
+        margin-left: -20px;
+      }
+    }
   }
 }
 //Global search

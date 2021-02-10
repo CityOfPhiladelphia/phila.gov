@@ -26,9 +26,16 @@ $children = get_posts( array(
 ));
 
 $ancestors = get_post_ancestors($post);
+$parent = wp_get_post_parent_id($post);
 $user_selected_template = phila_get_selected_template();
 
+if (phila_get_selected_template($parent) == 'prog_association' ) {
+  $user_selected_template = 'prog_association';
+  $association = true;
+}
+
 get_header(); ?>
+
 
 <div id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
 
@@ -55,7 +62,8 @@ get_header(); ?>
 
 ?>
 <?php else: ?>
-    <?php include(locate_template( 'partials/programs/header.php') ); ?>
+    <?php 
+      include(locate_template( 'partials/programs/header.php') ); ?>
 <?php endif; ?>
 
 
