@@ -24,7 +24,7 @@ foreach ( $holidays as $holiday ) {
 
 <?php global $post; ?>
 <?php if ( phila_is_department_homepage( $post ) ) { ?>
-  <div class="row mvl">
+  <div class="row mtl">
     <div class="columns">
 <?php } ?>
 
@@ -50,7 +50,7 @@ foreach ( $holidays as $holiday ) {
         <th class="phl-mu <?php if ( !phila_is_department_homepage( $post ) && !is_home() && $a['icon_padding'] == 0 ) echo 'icon-only';?>">
           <i class="fa-2x fa-fw fas fa-trash-alt service-icon <?php if( $a['icon_padding'] && $a['icon_padding'] == 1) echo 'plm-mu' ?>" aria-hidden="true"></i>
           <?php if ( $a['icon_text'] && $a['icon_text'] == 1 ) { ?>
-            <span class="icon-label">Trash & Recycling</span>
+            <span class="icon-label">Trash & recycling</span>
           <?php } ?>
         </th>
         <td class="pam">
