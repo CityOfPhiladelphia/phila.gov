@@ -1,0 +1,23 @@
+.phila-error-background {
+  background-color: #F0F0F0;
+  .phila-error-card {
+    border: 1px solid #CFCFCF;
+    border-left: 8px solid #CC3000;
+    background-color: #FFFFFF;
+    .fa-exclamation-circle {
+      color: #A82400;
+      font-size: 18px;
+    }
+    .phila-error {
+      .phila-error-title {
+        color: #000000;
+        font-weight: bold;
+      }
+      .phila-error-list {
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
