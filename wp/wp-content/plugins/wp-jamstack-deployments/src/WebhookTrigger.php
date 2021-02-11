@@ -314,6 +314,9 @@ class WebhookTrigger
             if ($post->post_type == 'department_page' ) {
                 $post_type = 'departments';
             }
+            else if ($post->post_type == 'service_page' ) {
+                $post_type = 'services';
+            }
         }
 
         $webhook = $webhook.'/'.$post->ID.'/'.$post_type.'/'.$post->post_name;
