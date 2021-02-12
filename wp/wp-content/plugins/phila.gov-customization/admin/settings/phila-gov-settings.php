@@ -95,62 +95,80 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     ),
     'fields'  => array(
       array(
-        'id'  => 'phila_closure_exception',
+        'name'  => 'Current collection status',
+        'desc'  => 'Display on phila.gov homepage, covid update page, trash collection page, and streets homepage. NOTE: Active holidays will only work if first option selected',
+        'id'    => 'phila_collection_status',
+        'type'  => 'radio',
+        'inline' => false,
+        'std' => '0',
+        'options' =>  array(
+            '0' => 'On regular or holiday schedule',
+            '1' => 'Some delays but stick to schedule',
+            '2' => 'Some delays, put out one day later',
+            '3' => 'Flexible / unanticipated cause of delays',
+        )
+      ),
+      array(
+        'id'  => 'phila_flexible_collection',
         'type'   => 'group',
+        'visible' => array(
+          'when'  => array(
+            array('phila_collection_status', '=', '4'),
+          ),
+        ),
         'fields'  => array(
           array(
-            'id'  => 'exception',
-            'name'  => 'Exception',
+            'id'  => 'phila_flexible_collection_status',
+            'name'  => 'Status',
             'type'  => 'wysiwyg',
             'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
           ),
           array(
-            'id'   => 'exception_delay',
-            'name' => 'Does this exception delay trash collection by a day?',
-            'type' => 'switch',
-            'on_label' => 'Yes',
-            'off_label'  => 'No'
+            'id'    => 'phila_flexible_collection_color',
+            'name'  => 'Color of flexible collection status alert',
+            'type'  => 'radio',
+            'inline' => false,
+            'options' =>  array(
+                '0' => 'green',
+                '1' => 'yellow',
+                '2' => 'red',
+            )
+          ),
+          array(
+            'id'    => 'phila_flexible_collection_impact',
+            'name'  => 'Collection calculation impact',
+            'type'  => 'radio',
+            'inline' => false,
+            'options' =>  array(
+                '0' => 'No impact',
+                '1' => '1 day delay',
+                '2' => 'Cannot determine',
+            )
           ),
         )
       ),
       array(
-        'id'  => 'phila_closures',
+        'type' => 'heading',
+        'name' => 'Holiday List',
+      ),
+      array(
+        'id'  => 'phila_holidays',
         'type'   => 'group',
         'clone' => true,
-        'add_button' => '+ Add another closure',
+        'add_button' => '+ Add another holiday',
 
         'fields'  => array(
           array(
-            'id'  => 'closure_label',
-            'name'  => 'Closure label',
+            'id'  => 'holiday_label',
+            'name'  => 'Holiday label',
             'type'  => 'text',
             'required'  => true
           ),
           array(
             'id'  => 'start_date',
-            'name' => 'Closure start date',
+            'name' => 'Holiday start date',
             'type'  => 'date',
             'required'  => true,
-          ),
-          array(
-            'id'  => 'end_date',
-            'name' => 'Closure end date',
-            'type'  => 'date',
-            'required'  => true,
-          ),
-          array(
-            'id'   => 'is_recycling_biweekly',
-            'name' => 'Is recycling biweekly?',
-            'type' => 'switch',
-            'on_label' => 'Yes',
-            'off_label'  => 'No'
-          ),
-          array(
-            'id'   => 'is_active',
-            'name' => 'Is this closure active?',
-            'type' => 'switch',
-            'on_label' => 'Yes',
-            'off_label'  => 'No'
           ),
         ),
       ),
