@@ -20,15 +20,6 @@ get_header();
   <?php return; ?>
 <?php endif;?>
 
-<?php if ($user_selected_template == 'child_index') :  ?>
-
-  <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
-    <?php get_template_part( 'partials/departments/v2/child', 'index' ); ?>
-
-  <?php get_footer(); ?>
-<?php return; ?>
-<?php endif;?>
-
 <?php if ($user_selected_template == 'stub'): ?>
   <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
 
@@ -69,6 +60,9 @@ get_header();
           break;
         case 'timeline':
           get_template_part( 'partials/departments/v2/homepage_timeline' );
+          break;
+        case ('child_index'):
+          get_template_part( 'partials/departments/v2/child', 'index' );
           break;
       } ?>
       <?php get_template_part( 'partials/departments/content', 'programs-initiatives' ); ?>
