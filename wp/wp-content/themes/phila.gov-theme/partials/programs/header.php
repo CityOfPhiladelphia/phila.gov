@@ -32,6 +32,7 @@
   $description = rwmb_meta( 'phila_meta_desc' );
 
   $current_post_type = get_post_type($post->ID);
+  
 ?>
 <header>
   <?php if ( !empty( get_post_ancestors( $post->ID ) ) ) : ?>
