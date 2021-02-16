@@ -14,7 +14,9 @@ foreach ( $holidays as $holiday ) {
   $today = new DateTime();
   $holiday_date = new DateTime($holiday['start_date']);
   $endDate = clone $today;
-  $endDate->modify('next friday');
+  if ($today->format('N') <= 4) {
+    $endDate->modify('next friday');
+  }
 
   if (($holiday_date >= $today) && ($holiday_date <= $endDate) && (date('N') <= 5)){
     $is_holiday = true;
