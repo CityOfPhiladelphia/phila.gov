@@ -18,7 +18,7 @@ foreach ( $holidays as $holiday ) {
     $endDate->modify('next friday');
   }
 
-  if (($holiday_date >= $today) && ($holiday_date <= $endDate) && (date('N') <= 5)){
+  if (( $today >= $holiday_date) && ($today <= $endDate) && (date('N') <= 5)){
     $is_holiday = true;
   }
 }
