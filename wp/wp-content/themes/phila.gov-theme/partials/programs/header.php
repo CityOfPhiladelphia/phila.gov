@@ -39,7 +39,6 @@
   $description = rwmb_meta( 'phila_meta_desc' );
 
   $current_post_type = get_post_type($post->ID);
-
 ?>
 <header>
   <?php if ( $user_selected_template === 'prog_association' ) : ?>
