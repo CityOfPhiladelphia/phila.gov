@@ -195,7 +195,7 @@ class Phila_Gov_Register_Program_Templates {
       'visible' => array(
         'when'  => array(
           array( 'phila_template_select', '=', 'prog_association' ),
-          array( 'service_template_selection', '=', 'custom_content' )
+          array( 'phila_template_select', '=', 'custom_content' ),
         ),
         'relation' => 'or',
       ),
