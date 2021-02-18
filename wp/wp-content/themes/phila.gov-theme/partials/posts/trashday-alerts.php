@@ -35,20 +35,20 @@ foreach ( $holidays as $holiday ) {
     <tbody>
 <?php } ?>
       <tr class="<?php if 
-        ( $status == 1 || 
-          $status == 2 || 
-          $is_holiday == true)
-          { echo "service-update--warning"; } else if
-        ( $status == 0) 
-          { echo "service-update"; } else if 
-        ( $status == 3 ) 
-          { 
-            $flexible_collection = rwmb_meta( 'phila_flexible_collection', array( 'object_type' => 'setting' ), 'phila_settings' );
-            if  ( $flexible_collection['phila_flexible_collection_color'] == 0 ) { echo "service-update"; } else if 
-                ( $flexible_collection['phila_flexible_collection_color'] == 1 ) { echo "service-update--warning"; } else if 
-                ( $flexible_collection['phila_flexible_collection_color'] == 2 ) { echo "service-update--critical"; }
-          }
-      ?>">
+      ( $status == 3 )
+      { 
+        $flexible_collection = rwmb_meta( 'phila_flexible_collection', array( 'object_type' => 'setting' ), 'phila_settings' );
+        if  ( $flexible_collection['phila_flexible_collection_color'] == 0 ) { echo "service-update"; } else if 
+            ( $flexible_collection['phila_flexible_collection_color'] == 1 ) { echo "service-update--warning"; } else if 
+            ( $flexible_collection['phila_flexible_collection_color'] == 2 ) { echo "service-update--critical"; } else if 
+          ( $status == 1 || 
+            $status == 2 || 
+            $is_holiday == true)
+            { echo "service-update--warning"; } else if
+          ( $status == 0) 
+            { echo "service-update"; } 
+      }
+        ?>">
         <th class="phl-mu <?php if ( !phila_is_department_homepage( $post ) && !is_home() && $a['icon_padding'] == 0 ) echo 'icon-only';?>">
           <i class="fa-2x fa-fw fas fa-trash-alt service-icon <?php if( $a['icon_padding'] && $a['icon_padding'] == 1) echo 'plm-mu' ?>" aria-hidden="true"></i>
           <?php if ( $a['icon_text'] && $a['icon_text'] == 1 ) { ?>
@@ -58,11 +58,11 @@ foreach ( $holidays as $holiday ) {
         <td class="pam">
           <span class="bold">
             <?php if 
-              ( $is_holiday == true ) { echo "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day."; } else if
+              ( $status == 3 ) { echo $flexible_collection['phila_flexible_collection_status']; } else if
               ( $status == 0 ) { echo "Trash and recycling collections are on schedule."; } else if 
               ( $status == 1 ) { echo "Trash and recycling collections are delayed in some areas. Set materials out on scheduled day."; } else if
               ( $status == 2 ) { echo "Trash and recycling collections are delayed in some areas. Set materials out one day behind scheduled day."; } else if
-              ( $status == 3 ) { echo $flexible_collection['phila_flexible_collection_status']; } 
+              ( $is_holiday == true ) { echo "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day."; } 
             ?>
           </span>
         </td>
