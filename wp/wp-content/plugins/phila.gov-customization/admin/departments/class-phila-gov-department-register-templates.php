@@ -35,7 +35,6 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'clone' => false,
         'placeholder'  => 'Select a template',
         'options' => array(
-          'default'                 => 'Default',
           'homepage_v2'             => 'Homepage',
           'repeating_rows'          => 'Repeating rows',
           'one_quarter_headings_v2' => '1/4 headings',
