@@ -258,7 +258,7 @@ get_header(); ?>
                 <p>Throughout the redesign process, we’ve been collaborating with people like you to inform the direction and usability of the site. Please continue to send us your thoughts:
                   </p>
                 <ul class="list-style-none mln pln pvm">
-                  <li class="mbm"><i class="fas fa-arrow-right fa-lg prs" aria-hidden="true"></i> Use the site’s <i class="fal fa-lightbulb fa-lg" aria-hidden="true"></i> feedback links to alert us to content errors and design feedback.</li>
+                  <li class="mbm"><i class="fas fa-arrow-right fa-lg prs" aria-hidden="true"></i> Use the site's feedback links to alert us to content errors and design feedback.</li>
                 </ul>
               </section>
             </div>
