@@ -8,6 +8,7 @@ require('./action-guide-v2');
 require('./city-directory-list')
 require('./collapsible-div')
 require('./filter')
+require('./feedback');
 require('./global-is-active')
 require('./hashchange-check')
 require('./hide-empty-table')
