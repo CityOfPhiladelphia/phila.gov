@@ -15,18 +15,36 @@
     <?php while ( $stub_post->have_posts() ) : ?>
       <?php $stub_post->the_post(); ?>
       <?php $stub_id = $post_id; ?>
-      <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
+      <div class="row">
+        <header class="columns">
+          <h1 class="contrast"><?php echo get_the_title(); ?></h1>
+        </header>
+      </div>      <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
       <?php if( !empty( get_the_content() ) ) : ?>
         <?php include( locate_template( 'partials/content-basic.php' ) ); ?>
       <?php endif; ?>
-
+      <?php include(locate_template( 'partials/content-custom-markup-after-wysiwyg.php' ) ); ?>
       <?php 
-        include(locate_template( 'partials/content-custom-markup-after-wysiwyg.php' ) );
-        include(locate_template( 'partials/departments/v2/content-one-quarter.php' ) );
-        include(locate_template( 'partials/resource-list.php'));
-        include(locate_template( 'partials/departments/v2/collection-page.php' )); 
-        include(locate_template( 'partials/departments/v2/document-finder.php' ));
-        include(locate_template( 'partials/departments/content-programs-initiatives.php' ) );
+
+        $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $stub_id );
+
+        switch ($user_selected_template) {
+          case 'phila_one_quarter':
+            include(locate_template( 'partials/departments/v2/content-one-quarter.php' ) );
+            break; 
+          case 'collection_page_v2':
+            include(locate_template( 'partials/departments/v2/collection-page.php' )); 
+            break;
+          case 'document_finder_v2':
+            include(locate_template( 'partials/departments/v2/document-finder.php' ));
+            break;
+          case 'resource_list_v2':
+            include(locate_template( 'partials/resource-list.php'));
+            break;
+          case 'prog_association':
+            include(locate_template( 'partials/departments/content-programs-initiatives.php' ) );
+            break;
+        }
         include(locate_template( 'partials/content-additional.php' ) ); 
         ?>
       <?php endwhile; ?>
