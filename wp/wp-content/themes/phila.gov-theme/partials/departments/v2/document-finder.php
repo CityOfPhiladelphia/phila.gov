@@ -10,7 +10,7 @@ if ($vue_or_not) {
 
   $vuejs_js_ids = ['https://www.phila.gov/embedded/document-finder/local/js/chunk-vendors.js?cachefix', 'https://www.phila.gov/embedded/document-finder/local/js/app.js?cachefix'];
   $vuejs_css_ids = ['https://www.phila.gov/embedded/document-finder/local/css/chunk-vendors.css?cachefix', 'https://www.phila.gov/embedded/document-finder/local/css/app.css?cachefix'];
-  
+
   include(locate_template( 'partials/vue-apps/vue-register.php' ) );
 }
 else {
