@@ -10,16 +10,17 @@
     'p' => $post_id,
     'post_type' => 'programs'
   ); ?>
+    <div class="row">
+      <header class="columns">
+        <h1 class="contrast"><?php echo get_the_title(); ?></h1>
+      </header>
+    </div> 
   <?php $stub_post = new WP_Query($stub_args); ?>
   <?php if ( $stub_post->have_posts() ): ?>
     <?php while ( $stub_post->have_posts() ) : ?>
       <?php $stub_post->the_post(); ?>
       <?php $stub_id = $post_id; ?>
-      <div class="row">
-        <header class="columns">
-          <h1 class="contrast"><?php echo get_the_title(); ?></h1>
-        </header>
-      </div>      <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
+      <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
       <?php if( !empty( get_the_content() ) ) : ?>
         <?php include( locate_template( 'partials/content-basic.php' ) ); ?>
       <?php endif; ?>
