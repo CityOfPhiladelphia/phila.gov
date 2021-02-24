@@ -7,6 +7,7 @@ class Phila_Services_Controller {
     $this->namespace     = 'services/v1';
     $this->resource_name = 'directory';
     $this->category_resource = 'categories';
+    $this->department_resource = 'departments';
   }
 
   // Register our routes.
@@ -48,6 +49,16 @@ class Phila_Services_Controller {
         'permission_callback' => '__return_true',
       ),
       'schema' => array( $this, 'get_category_schema' ),
+    ) );
+
+    // Register the endpoint for collections.
+    register_rest_route( $this->namespace, '/' . $this->department_resource . '/(?P<id>[\d]+)', array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_items_of_department' ),
+        'permission_callback' => '__return_true',
+      ),
+      'schema' => array( $this, 'get_item_schema' ),
     ) );
   }
 
@@ -160,6 +171,48 @@ class Phila_Services_Controller {
 
   }
 
+
+
+  /**
+   * Return all services of a department, excluding stubs
+   *
+   * @param WP_REST_Request $request Current request.
+  */
+  public function get_items_of_department( $request ) {
+    $post_id = (int) $request['id'];
+    $category = get_the_category( $post_id );
+    $category_id = $category[0]->term_id;
+    $args = array(
+      'post_type'  => 'service_page',
+      'posts_per_page'  => -1,
+      'order' => 'ASC',
+      'orderby' => 'title',
+      'category__in' => $category_id,
+      'meta_query' => array(
+        array(
+          'key'     => 'phila_template_select',
+          'value' => array('service_stub'),
+          'compare' => 'NOT IN'
+        ),
+      ),
+    );
+    $posts = get_posts($args);
+
+    $data = array();
+
+    if ( empty( $posts ) ) {
+      return rest_ensure_response( $data );
+    }
+
+    foreach ( $posts as $post ) {
+      $response = $this->prepare_item_for_response( $post, $request );
+
+      $data[] = $this->prepare_response_for_collection( $response );
+    }
+
+    // Return all response data.
+    return rest_ensure_response( $data );
+  }
 
   /**
    * Return all services of a service
