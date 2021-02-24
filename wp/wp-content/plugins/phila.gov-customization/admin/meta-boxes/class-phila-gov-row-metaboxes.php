@@ -674,7 +674,9 @@ class Phila_Gov_Row_Metaboxes {
         'id'  => 'phila_stepped_select',
         'type'  => 'switch',
         'on_label'  => 'Yes',
-        'off_label' => 'No'
+        'off_label' => 'No',
+        'hidden' => array('phila_template_select', '=', 'custom_content'),
+
       ),
       array(
         'id' => 'phila_stepped_content',
