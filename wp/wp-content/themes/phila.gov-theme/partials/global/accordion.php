@@ -27,17 +27,17 @@
   <?php foreach ( $accordion_group as $ag_key => $accordion ) : ?>
   <?php reset($accordion_group) ?>
   <div class="icon-expand-container result">
-    <div class="icon-expand-title grid-x">
+    <div class="icon-expand-title grid-x align-middle">
       <?php if ($use_icon === true ) :?>
         <?php if ( isset( $accordion['phila_custom_wysiwyg']['phila_accordion_icon'] ) ) { ?>
-            <div class="cell shrink mrm mtxs"><i class="<?php echo $accordion['phila_custom_wysiwyg']['phila_accordion_icon'] ?> fa-2x"></i></div> 
-        <?php } else if (isset($custom_icon ) && $custom_icon === true ) { ?>          
-            <div class="cell shrink mrm mtxs"><i class="<?php echo rwmb_meta('phila_v2_icon') ?> fa-2x"></i></div> 
+            <div class="cell shrink mrm mtxs"><i class="<?php echo $accordion['phila_custom_wysiwyg']['phila_accordion_icon'] ?> fa-2x fa-fw"></i></div> 
+        <?php } else if ( isset( $custom_icon ) && $custom_icon === true ) { ?>          
+            <div class="cell shrink mrm mtxs"><i class="<?php echo rwmb_meta('phila_v2_icon') ?> fa-2x fa-fw"></i></div> 
         <?php } else { ?>
-          <div class="cell shrink mrm mtxs"><i class="fas fa-tasks fa-2x"></i></div> 
+          <div class="cell shrink mrl mtxs"><i class="fas fa-tasks fa-2x fa-fw"></i></div> 
         <?php } ?>
       <?php endif; ?>
-      <div class="cell auto">
+      <div class="cell auto no-p-margin">
         <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_title'] ); ?>
       </div>
     </div>
