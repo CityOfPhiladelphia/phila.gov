@@ -3,10 +3,18 @@
     $accordion_group = $faq['accordion_group'];
 ?>
 <div class="row">
-    <div class="small-24 columns results mbm">
+    <div class="small-24 columns results mbm" id="<?php echo sanitize_title_with_dashes($faq['accordion_row_title']).'-faq' ?>">
         <div id="a-z-filter-list" class="faq-list">
             <div id="a-z-list">
                 <!--1/4 Content-->
+                <form class="search mvl">
+                    <input class="search-field" type="text" placeholder="Begin typing to filter results...">
+                    <input type="submit" class="search-submit" value="Search">
+                </form>
+                <div class="row one-quarter-row mvl">
+                    <a href="#" data-toggle="expandable-all" class="float-right phm-mu"> Expand All + </a>
+                    <hr class="no-bottom-margin">
+                </div>
                 <section class="a-z-group">
                     <div class="one-quarter-layout">
                         <div class="row one-quarter-row mvl">
