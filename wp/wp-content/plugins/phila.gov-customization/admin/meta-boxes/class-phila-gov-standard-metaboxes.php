@@ -182,7 +182,7 @@ class Phila_Gov_Standard_Metaboxes {
           'id'  => 'phila_stepped_select',
           'type'  => 'switch',
           'on_label'  => 'Yes',
-          'off_label' => 'No'
+          'off_label' => 'No',
         ),
         array(
           'id' => 'phila_stepped_content',
