@@ -2,7 +2,7 @@
   ?>
   <section>
     <div class="mbxxl">
-      <h3 id="<?php echo sanitize_title_with_dashes($requirements_prereq_title) ?>" class="phm-mu mtl mbm"><?php echo $requirements_prereq_title ?></h3>
+      <h3 id="<?php echo sanitize_title_with_dashes($requirements_prereq_title) ?>" class="mtl mbm"><?php echo $requirements_prereq_title ?></h3>
       <?php
         $accordion_title = '';
         $is_full_width = false; 
