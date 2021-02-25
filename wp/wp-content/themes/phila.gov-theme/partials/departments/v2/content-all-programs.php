@@ -19,8 +19,8 @@ global $phila_environment;
 $app_id = 'vue-app';
 $program_file_path = 'https://www.phila.gov/embedded/all-programs/'.$phila_environment;
 
-$vuejs_js_ids = [$program_file_path.'/js/chunk-vendors.js', $program_file_path.'/js/app.js'];
-$vuejs_css_ids = [$program_file_path.'/css/app.css'];
+$vuejs_js_ids = [$program_file_path.'/js/chunk-vendors.js?cache', $program_file_path.'/js/app.js?cache'];
+$vuejs_css_ids = [$program_file_path.'/css/app.css?cache'];
 
 include(locate_template( 'partials/vue-apps/vue-register.php' ) );
 
