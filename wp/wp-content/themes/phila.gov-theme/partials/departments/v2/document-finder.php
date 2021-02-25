@@ -12,8 +12,7 @@ if ($vue_or_not) {
   $vuejs_css_ids = ['https://www.phila.gov/embedded/document-finder/production/css/chunk-vendors.css?nocache', 'https://www.phila.gov/embedded/document-finder/production/css/app.css?nocache'];
   
   include(locate_template( 'partials/vue-apps/vue-register.php' ) );
-}
-else {
+} else {
   $no_pagination = rwmb_meta('phila_doc_no_paginate');
   //ensure 0 index for js initialization
   $c = -1;
