@@ -72,6 +72,37 @@ HTML;
 
   switch ($user_selected_template) {
 
+    case 'all_services_v2':
+      get_template_part( 'partials/departments/v2/content', 'all-services' );
+      break;
+
+    case 'all_programs_v2':
+      get_template_part( 'partials/departments/v2/content', 'all-programs' );
+      break;
+
+    case 'child_index':
+      get_template_part( 'partials/departments/v2/child', 'index' );
+      break;
+
+    case 'collection_page_v2':
+      get_template_part( 'partials/departments/v2/collection-page' );
+      break;
+
+    case 'contact_us_v2':
+      get_template_part( 'partials/departments/v2/content', 'contact-us' );
+      break;
+
+    case 'disabled':
+      break;
+
+    case 'document_finder_v2':
+      get_template_part( 'partials/departments/v2/document-finder' );
+      break;
+
+    case 'forms_and_documents_v2':
+      get_template_part( 'partials/departments/v2/content', 'forms-documents' );
+      break;
+
     case 'homepage_v2':
 
       $_categories         = get_the_category();
@@ -102,33 +133,24 @@ HTML;
 
       break;
 
-    case 'one_quarter_headings_v2':
-      get_template_part( 'partials/departments/v2/content', 'one-quarter' );
+    case 'off_site_department':
       break;
 
-    case 'things-to-do':
-      get_template_part( 'partials/departments/v2/content', 'things-to-do' );
+    case 'one_quarter_headings_v2':
+      get_template_part( 'partials/departments/v2/content', 'one-quarter' );
       break;
 
     case 'our-locations':
       get_template_part( 'partials/departments/v2/content', 'our-locations' );
       break;
+  
+    case 'prog_association':
+      apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
+    break;
 
-    case 'contact_us_v2':
-      get_template_part( 'partials/departments/v2/content', 'contact-us' );
-      break;
-
-    case 'all_services_v2':
-      get_template_part( 'partials/departments/v2/content', 'all-services' );
-      break;
-
-    case 'all_programs_v2':
-      get_template_part( 'partials/departments/v2/content', 'all-programs' );
-      break;
-
-    case 'forms_and_documents_v2':
-      get_template_part( 'partials/departments/v2/content', 'forms-documents' );
-      break;
+    case 'repeating_rows':
+      apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
+    break;
 
     case 'resource_list_v2':
       apply_template_section(get_template_part( 'partials/resource', 'list' ));
@@ -138,36 +160,14 @@ HTML;
       get_template_part( 'partials/departments/phila_staff_directory_listing' );
       break;
 
-    case 'document_finder_v2':
-      get_template_part( 'partials/departments/v2/document-finder' );
+    case 'things-to-do':
+      get_template_part( 'partials/departments/v2/content', 'things-to-do' );
       break;
-
-    case 'collection_page_v2':
-      get_template_part( 'partials/departments/v2/collection-page' );
-      break;
-
-    case 'child_index':
-      get_template_part( 'partials/departments/v2/child', 'index' );
-    break;
-
-    case 'disabled':
-      break;
-
-    case 'off_site_department':
-      break;
-
-    case 'prog_association':
-      apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
-    break;
-
-    case 'repeating_rows':
-      apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
-    break;
 
     case 'timeline':
       get_template_part( 'partials/departments/v2/homepage_timeline' );
     break;
-    
+
     default:
       break;
 
