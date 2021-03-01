@@ -189,6 +189,8 @@ class Phila_Gov_Register_Program_Templates {
         'when' => array(
           array( 'phila_template_select', '=', 'prog_off_site' ),
           array( 'phila_template_select', '=', 'resource_list_v2' ),
+          array( 'phila_template_select', '=', 'all_programs_v2' ),
+          array( 'phila_template_select', '=', 'all_services_v2' ),
         ),
         'relation' => 'or',
       ),

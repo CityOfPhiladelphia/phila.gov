@@ -7,6 +7,7 @@ class Phila_Programs_Controller {
     $this->namespace     = 'programs/v1';
     $this->resource_name = 'archives';
     $this->service_resource = 'related_service';
+    $this->department_resource = 'departments';
 
   }
 
@@ -40,6 +41,16 @@ class Phila_Programs_Controller {
         'permission_callback' => '__return_true',
       ),
       'schema' => array( $this, 'get_services_schema' ),
+    ) );
+
+    // Register the endpoint for collections.
+    register_rest_route( $this->namespace, '/' . $this->department_resource . '/(?P<id>[\d]+)', array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_items_of_department' ),
+        'permission_callback' => '__return_true',
+      ),
+      'schema' => array( $this, 'get_item_schema' ),
     ) );
   }
 
@@ -129,6 +140,45 @@ class Phila_Programs_Controller {
     }else{
       $posts = $this->run_search_query($request);
     }
+
+    $data = array();
+
+    if ( empty( $posts ) ) {
+      return rest_ensure_response( $data );
+    }
+
+    foreach ( $posts as $post ) {
+      $response = $this->prepare_item_for_response( $post, $request );
+
+      $data[] = $this->prepare_response_for_collection( $response );
+    }
+
+    // Return all response data.
+    return rest_ensure_response( $data );
+  }
+
+
+  /**
+   * Get Programs
+   *
+   * @param WP_REST_Request $request Current request.
+  */
+  public function get_items_of_department( $request ) {
+
+    $post_id = (int) $request['id'];
+    $category = get_the_category( $post_id );
+    $category_id = $category[0]->term_id;
+
+    $args = array(
+      'post_type'  => 'programs',
+      'posts_per_page'  => -1,
+      'order' => 'ASC',
+      'post_parent' => 0,
+      'orderby' => 'title',
+      'category__in' => $category_id,
+    );
+
+    $posts = get_posts($args);
 
     $data = array();
 
