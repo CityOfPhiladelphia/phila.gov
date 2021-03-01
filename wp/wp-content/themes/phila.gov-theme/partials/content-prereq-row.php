@@ -4,7 +4,6 @@
   $override_icon = rwmb_meta('phila_v2_icon');
   $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $post->id ); 
   ?>
-yay
 <?php if ( !empty( $accordion_group ) ): ?>
   <section>
     <div class="mbxxl">
