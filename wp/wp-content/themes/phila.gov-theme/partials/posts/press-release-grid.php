@@ -43,6 +43,7 @@ if( !empty($tag) ) {
     'post_type' => array( 'post' ),
     'order' => 'desc',
     'orderby' => 'post_date',
+    'ignore_sticky_posts' => 1,
     'cat' => (int) implode( $press_categories ),
     'meta_query'  => array(
       'relation'=> 'AND',
