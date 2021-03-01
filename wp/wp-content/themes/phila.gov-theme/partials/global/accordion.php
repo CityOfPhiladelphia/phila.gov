@@ -8,10 +8,9 @@
     $use_icon = Boolean - determine if icon should be displayed when using non-full width template
   */
 
-  $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $post->id ); 
 ?>
 
-<?php if ( $user_selected_template === 'prog_landing_page') : ?>
+<?php if ( $is_full_width === true) : ?>  
 <section class="mvl">
   <h2 id="#<?php echo phila_format_uri($accordion_title)?>"><?php echo isset($accordion_title) ? $accordion_title : '' ?></h2>
   <div class="accordion" data-accordion data-multi-expand="true">
