@@ -31,6 +31,7 @@
     position: absolute;
     right: 0;
     bottom: -40px;
+    z-index: 10;
   }
   .icon-expand-content{
     display: none;
@@ -42,7 +43,7 @@
   }
 }
 hr.icon-expand-hr{
-  margin: 3rem 0 2rem 0 !important;
+  margin: 1rem 0 1.5rem !important;
 }
 .visible{
   display: block !important;

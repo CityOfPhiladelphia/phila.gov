@@ -400,7 +400,7 @@ class Phila_Gov_Standard_Metaboxes {
           //TODO: swap this out for an icon picker
           'id'  => 'phila_accordion_icon',
           'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
-          'name'  => 'Select icon',
+          'name'  => 'Select icon for this accordion only (optional)',
           'type'  => 'text',
         ),
         array(
@@ -553,13 +553,12 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  //NOTE: While these fields are potentially cloneable, having multiple fields appear in different groups will fail. As we saw with multiple cloneable address fields.
-  public static function phila_v2_icon_selection(){
+  public static function phila_v2_icon_selection( $name = 'Select icon' ){
     return array(
       //TODO: swap this out for an icon picker
       'id'  => 'phila_v2_icon',
       'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome.io</a>.',
-      'name'  => 'Select icon',
+      'name'  => $name,
       'type'  => 'text',
     );
   }
@@ -1455,7 +1454,7 @@ public static function phila_meta_var_connect(){
         'type' => 'text',
         'class' => 'percent-100'
       ),
-      Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
+      Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection($name = 'Override for all items (optional)'),
       array(
         'id'   => 'accordion_group',
         'type' => 'group',
