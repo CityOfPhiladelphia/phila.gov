@@ -25,6 +25,11 @@
   text-transform: none;
 }
 
-.no-p-margin p{
-  margin-bottom: 0;
+.no-p-margin {
+  p{
+    margin-bottom: 0;
+  }
+  &.fixed-width {
+    max-width: 570px;
+  }
 }

@@ -86,9 +86,10 @@
 
 <?php if ( !empty( $requirements_prereq_select ) ): ?>
 <section>
-  <div class="mbxxl">
-    <h3 id="<?php echo sanitize_title_with_dashes($requirements_prereq_title['accordion_row_title']) ?>" class="phm-mu mtl mbm"><?php echo $requirements_prereq_title['accordion_row_title'] ?></h3>
+  <div class="mbxxl phm-mu">
+    <h3 id="<?php echo sanitize_title_with_dashes($requirements_prereq_title['accordion_row_title']) ?>" class="mtl mbm"><?php echo $requirements_prereq_title['accordion_row_title'] ?></h3>
     <?php
+      $override_icon = isset($requirements_prereq_title['phila_v2_icon']) ? $requirements_prereq_title['phila_v2_icon'] : '';
       $accordion_title = '';
       $accordion_group = $requirements_prereq['accordion_group'];
       $is_full_width = false; 

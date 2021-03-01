@@ -302,7 +302,8 @@
           <?php elseif ( $current_row_option == 'phila_prereq'):
           
             $accordion_group = isset( $current_row['phila_full_options']['phila_prereq']['accordion_group'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_group'] : '';
-            $requirements_prereq_title = isset( $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] : '';
+            $requirements_prereq_title = isset( $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] : '';  
+            $override_icon = isset( $current_row['phila_full_options']['phila_prereq']['phila_v2_icon'] ) ? $current_row['phila_full_options']['phila_prereq']['phila_v2_icon'] : '';
 
             if ( !empty( $accordion_group ) || !empty( $requirements_prereq_title ) ) : ?>
               <!-- Prereq Row -->

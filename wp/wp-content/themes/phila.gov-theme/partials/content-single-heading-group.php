@@ -9,7 +9,6 @@
 ?>
 <?php $stepped_select = isset($current_row['phila_full_options']['phila_content_heading_group']['phila_stepped_select']) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_stepped_select'] : '';
 ?>
-
 <?php $contact_content = isset($current_row['phila_full_options']['phila_content_heading_group']['phila_std_address']) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_std_address'] : ''; 
 
 $source_template =  rwmb_meta( 'phila_template_select'); 
