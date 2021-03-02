@@ -32,21 +32,16 @@ module.exports = $(function(){
 
   $('[data-toggle="expandable-all"]').click(function(e){
     e.preventDefault();
-    var parent = '';
-    var parentId = $(this).closest('.small-24.columns.results.mbm').attr('id');
-    if (parentId != undefined) {
-      parent = '#'+parentId;
-    }
-
+    
     if($(this).html() === ' Expand All + '){
       $(this).html(' Collapse All - ');
-      $(parent+' .icon-expand-content').each(function () {
+      $('.icon-expand-content').each(function () {
         $(this).attr('aria-expanded', 'true');
         if (!$(this).hasClass("visible")) {
           $(this).addClass('visible');
         }
       });
-      $(parent+' .icon-expand-link').each(function () {
+      $('.icon-expand-link').each(function () {
         if($(this).html() === ' More + '){
           $(this).html(' Less - ');
           $(this).prev().attr('aria-expanded', 'true');
@@ -54,13 +49,13 @@ module.exports = $(function(){
       });
     } else {
       $(this).html(' Expand All + ');
-      $(parent+' .icon-expand-content').each(function () {
+      $('.icon-expand-content').each(function () {
         $(this).attr('aria-expanded', 'false');
         if ($(this).hasClass("visible")) {
           $(this).removeClass('visible');
         }
       });
-      $(parent+' .icon-expand-link').each(function () {
+      $('.icon-expand-link').each(function () {
         if($(this).html() === ' Less - '){
           $(this).html(' More + ');
           $(this).prev().attr('aria-expanded', 'false');
