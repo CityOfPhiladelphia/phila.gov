@@ -97,6 +97,7 @@ HTML;
 
     case 'document_finder_v2':
       get_template_part( 'partials/departments/v2/document-finder' );
+      include(locate_template( 'partials/departments/content-programs-initiatives.php' ) );
       break;
 
     case 'forms_and_documents_v2':
