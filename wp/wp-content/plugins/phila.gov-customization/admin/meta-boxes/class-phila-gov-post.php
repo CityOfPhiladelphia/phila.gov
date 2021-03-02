@@ -78,7 +78,7 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array (
       'title'    => 'Post options',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'programs' ),
       'context'  => 'side',
       'priority' => 'high',
       'visible' => array(
