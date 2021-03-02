@@ -6,9 +6,10 @@
 */
 
 $user_selected_template = phila_get_selected_template();
+$language = rwmb_meta('phila_select_language');
+$language_list = phila_get_translated_language( $language );
 
 get_header();
-
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class('program clearfix'); ?>>
 
@@ -23,7 +24,7 @@ get_header();
 <?php if ($user_selected_template == 'stub'): ?>
   <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
 
- <?php  
+<?php  
   include(locate_template('partials/programs/stub.php'));
   get_footer();
 

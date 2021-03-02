@@ -1875,12 +1875,12 @@ function phila_weighted_search_results(){
   }
 }
 
-add_action( 'mb_relationships_init', function() {
+add_action( 'mb_relationships_init', function($page_type) {
   MB_Relationships_API::register( array(
       'id'   => 'post_to_post_translations',
       'from' => array(
         'object_type'  => 'post',
-        'post_type'   => 'post',
+        'post_type'   => $page_type,
         'empty_message' => 'none',
         'admin_column' => true,
         'add_button'  => '+ Add another translation',
@@ -1917,7 +1917,7 @@ add_action( 'mb_relationships_init', function() {
       ),      
       'to'   => array(
         'object_type'  => 'post',
-        'post_type'   => 'post',
+        'post_type'   => $page_type,
         'query_args' => array(
           'post_status'  => array(
             'publish',
@@ -2010,7 +2010,7 @@ function phila_get_translated_language( $language ) {
   }else{
 
     $connected = new WP_Query( array(
-      'post_type'  => 'post',
+      'post_type'  => $post->post_type,
       'post_status'  => array(
         'publish',
         'private',
@@ -2025,7 +2025,7 @@ function phila_get_translated_language( $language ) {
     while ( $connected->have_posts() ) : $connected->the_post(); 
 
       $connected_source = new WP_Query( array(
-        'post_type'  => 'post',
+        'post_type'  => $post->post_type,
         'post_status'  => array(
           'publish',
           'private',
