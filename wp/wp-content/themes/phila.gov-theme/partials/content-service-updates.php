@@ -112,7 +112,7 @@ endif;
                 </tr><!-- row -->
               <?php ++$i; ?>
             <?php endforeach; ?>
-            <?php if (is_home()) {
+            <?php if ( is_home() ) {
                     echo do_shortcode('[trashday-alerts is_in_table=1 icon_text=1]');
                   } 
             ?>
