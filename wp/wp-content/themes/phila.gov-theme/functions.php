@@ -1985,8 +1985,13 @@ function phila_language_output($language){
   return $language;
 }
 
-function phila_get_translated_language( $language ) {
-  global $wp_query, $post;
+function phila_get_translated_language( $language, $post_id = null ) {
+  global $wp_query;
+  if ($post_id != null) {
+    $post = get_post($post_id);
+  } else {
+    global $post;
+  }
 
   $language_list = array();
 
