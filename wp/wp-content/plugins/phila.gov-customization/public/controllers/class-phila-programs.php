@@ -466,7 +466,7 @@ class Phila_Programs_Controller {
           'type'  => 'string',
         ),
         'language_list'  => array(
-          'description' => esc_html__('The langauge list of this post.', 'phila-gov'),
+          'description' => esc_html__('The language list of this post.', 'phila-gov'),
           'type'  => 'object',
         ),
       ),
