@@ -91,7 +91,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'settings_pages' => 'phila_gov',
     'tab'            => 'closures',
     'include' => array(
-      'user_role'  => array( 'administrator', 'editor', 'job_board_editor' ),
+      'user_role'  => array( 'administrator', 'editor', 'job_board_editor', 'secondary_philagov_closure_settings_editor' ),
     ),
     'fields'  => array(
       array(
