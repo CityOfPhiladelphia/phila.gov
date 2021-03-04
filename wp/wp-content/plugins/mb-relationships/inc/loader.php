@@ -66,8 +66,7 @@ class MBR_Loader {
 		$shortcodes->init();
 
 		// All registration code goes here.
-		do_action( 'mb_relationships_init', 'post' );
-		do_action( 'mb_relationships_init', 'programs' );
+		do_action( 'mb_relationships_init' );
 	}
 
 	/**
