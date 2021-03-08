@@ -5,6 +5,7 @@ require('phila-standards')
 require('./phila-gov')
 //require('./site-wide-alerts')
 require('./action-guide-v2');
+require('./chevrons');
 require('./city-directory-list')
 require('./collapsible-div')
 require('./filter')
