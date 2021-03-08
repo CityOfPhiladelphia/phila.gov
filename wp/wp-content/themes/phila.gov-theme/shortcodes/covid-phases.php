@@ -38,19 +38,20 @@ function covid_phases( $atts ) {
   ?>
 
   <section class="phila-redesign covid-phases mvl phl">
+    <h3 class="phases-header mbm">Phases</h3>
     <div class="process">
       <div class="row collapse process-bar">
-        <div class="medium-6 columns">
+        <div class="small-6 medium-6 columns">
           <section class="chevron <?php echo $phase_1a; ?>">
             <div class="row collapse active-marker">
-              <div class="medium-6 columns center small-centered marker">
+              <div class="columns center small-centered marker">
                 <i class="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
               </div>
             </div>
             <header class="bg-dark-gray">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i>Phase 1a</h4>
+                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i><span class="phase">Phase </span>1a</h4>
                 </div>
               </div>
             </header>
@@ -62,17 +63,17 @@ function covid_phases( $atts ) {
             </div>
           </section>
         </div>
-        <div class="medium-6 columns small-text">
+        <div class="small-6 medium-6 columns small-text">
           <section class="chevron <?php echo $phase_1b; ?>">
             <div class="row collapse active-marker">
-              <div class="medium-6 columns center small-centered marker">
+              <div class="columns center small-centered marker">
                 <i class="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
               </div>
             </div>
             <header class="bg-dark-gray">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i>Phase 1b</h4>
+                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i><span class="phase">Phase </span>1b</h4>
                 </div>
               </div>
             </header>
@@ -85,17 +86,17 @@ function covid_phases( $atts ) {
             </div>
           </section>
         </div>
-        <div class="medium-6 columns small-text">
+        <div class="small-6 medium-6 columns small-text">
           <section class="chevron <?php echo $phase_1c; ?>">
             <div class="row collapse active-marker">
-              <div class="medium-6 columns center small-centered marker">
+              <div class="columns center small-centered marker">
                 <i class="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
               </div>
             </div>
             <header class="bg-dark-gray">
               <div class="valign process-label left-arrow-indent right-arrow-ben-franklin-blue right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i>Phase 1c</h4>
+                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i><span class="phase">Phase </span>1c</h4>
                 </div>
               </div>
             </header>
@@ -107,17 +108,17 @@ function covid_phases( $atts ) {
             </div>
           </section>
         </div>
-        <div class="medium-6 columns end">
+        <div class="small-6 medium-6 columns end">
           <section class="chevron <?php echo $phase_2; ?>">
             <div class="row collapse active-marker">
-              <div class="medium-6 columns center small-centered marker">
+              <div class="columns center small-centered marker">
                 <i class="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
               </div>
             </div>
             <header class="bg-dark-gray">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i>Phase 2</h4>
+                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i><span class="phase">Phase </span>2</h4>
                 </div>
               </div>
             </header>
