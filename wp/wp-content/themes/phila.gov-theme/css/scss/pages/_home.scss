@@ -278,6 +278,9 @@
     }
   }
   &.covid-phases {
+    .phases-header {
+      display: none;
+    }
     .chevron {
       position: relative;
     }
@@ -381,6 +384,22 @@
             border-left-color: #0F4D90;
           }
         }
+      }
+    }
+    @media only screen and (max-width: 600px) {
+      padding: 0px;
+      .phase {
+        display: none;
+      }
+      .description {
+        left: 0px;
+        width: 100%;
+      }
+      .chevron {
+        position: static;
+      }
+      .phases-header {
+        display: block;
       }
     }
   }

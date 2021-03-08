@@ -2,6 +2,9 @@ module.exports = $(function(){
   $('.covid-phases .chevron .bg-dark-gray').click(function(e){
     e.preventDefault();
     e.stopPropagation();
+    $('.covid-phases .chevron').each(function() {
+      $(this).removeClass('open');
+    });
     $(this).closest(".chevron").toggleClass('open');
   });
   $('.covid-phases .chevron .description').click(function(e){
