@@ -34,7 +34,7 @@
                 <a href="#anchor-<?php echo $c ?>">Event listings</a>
               </li>
             <?php elseif ( $current_row['spotlight_options'] == 'accordion'): ?>
-            <?php $accordion_title =        $current_row['accordion_row']['accordion_row_title']; ?>
+            <?php $accordion_title = $current_row['accordion_row']['accordion_row_title']; ?>
               <li class="event medium-auto">
                 <a href="#anchor-<?php echo $c ?>"><?php echo $accordion_title ?></a>
               </li>

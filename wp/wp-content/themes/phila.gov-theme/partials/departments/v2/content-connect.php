@@ -128,16 +128,11 @@
           <i class="fal fa-at fa-2x" aria-hidden="true"></i>
           <span class="accessible">Social</span>
         </th>
-        <td class="<?php echo (!$archive) ? 'pvl' : '' ?>">
-          <?php if ( ! empty( $connect_vars['social'] ) ):
-            $item_count = count( $connect_vars['social'] );
-            $columns = phila_grid_column_counter( $item_count );
-            if ( $columns == '12' ) :
-              $columns = '8';
-            endif;
-            ?>
+        <td >
+        <div class="pvm grid-x">
+          <?php if ( ! empty( $connect_vars['social'] ) ):?>
           <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
-            <div class="small-<?php echo $columns;?> end columns pvxs">
+            <div class="shrink small-5 cell">
               <a href="<?php echo $connect_vars['social']['facebook']; ?>" class="phs" data-analytics="social">
                 <i class="fab fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
@@ -145,7 +140,7 @@
             </div>
           <?php endif; ?>
           <?php if ( isset( $connect_vars['social']['twitter'] ) && !$connect_vars['social']['twitter'] == '') : ?>
-            <div class="small-<?php echo $columns;?> end columns pvxs">
+            <div class="shrink small-5 cell">
               <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs" data-analytics="social">
                 <i class="fab fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
@@ -153,7 +148,7 @@
             </div>
           <?php endif; ?>
           <?php if ( isset( $connect_vars['social']['instagram'] ) && !$connect_vars['social']['instagram'] == '') : ?>
-            <div class="small-<?php echo $columns;?> end columns pvxs">
+            <div class="shrink small-5 cell">
               <a href="<?php echo $connect_vars['social']['instagram']; ?>" class="phs" data-analytics="social">
               <i class="fab fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
@@ -161,7 +156,7 @@
             </div>
           <?php endif; ?>
           <?php if ( isset( $connect_vars['social']['youtube'] ) && !$connect_vars['social']['youtube'] == '') : ?>
-            <div class="small-<?php echo $columns;?> end columns pvxs">
+            <div class="shrink small-5 cell">
               <a href="<?php echo $connect_vars['social']['youtube']; ?>" class="phs" data-analytics="social">
               <i class="fab fa-youtube fa-2x" title="YouTube" aria-hidden="true"></i>
                 <span class="show-for-sr">Youtube channel</span>
@@ -169,13 +164,14 @@
             </div>
           <?php endif; ?>
           <?php if ( isset( $connect_vars['social']['flickr'] ) && !$connect_vars['social']['flickr'] == '') : ?>
-            <div class="small-<?php echo $columns;?> end columns pvxs">
+            <div class="shrink small-4 cell">
               <a href="<?php echo $connect_vars['social']['flickr']; ?>" class="phs" data-analytics="social">
               <i class="fab fa-flickr fa-2x" title="Flickr" aria-hidden="true"></i>
                 <span class="show-for-sr">Flickr stream</span>
               </a>
             </div>
           <?php endif; ?>
+        </div>
         </td>
       </tr>
     <?php endif; ?>

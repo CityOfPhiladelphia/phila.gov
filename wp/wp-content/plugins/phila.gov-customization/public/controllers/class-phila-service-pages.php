@@ -247,7 +247,6 @@ class Phila_Services_Controller {
     return rest_ensure_response( $data );
   }
 
-
   /**
    * Matches the post data to the schema. Also, rename the fields to nicer names.
    *
