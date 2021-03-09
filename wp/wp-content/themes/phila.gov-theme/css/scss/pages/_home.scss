@@ -237,7 +237,7 @@
         border-left: 15px solid;
         position: absolute;
         margin-top: 0px;
-        left: -1px;
+        left: 0px;
       }
       &.left-arrow-white {
         &:before {
@@ -267,7 +267,8 @@
         border-left: 15px solid color(dark-gray);
         border-top: 20px solid transparent;
         border-bottom: 20px solid transparent;
-        right: 0px;
+        right: -1px;
+        padding-left: 2px;
       }
       &.right-arrow-ben-franklin-blue{
         &:after {
@@ -277,6 +278,12 @@
     }
   }
   &.covid-phases {
+    .phases-header {
+      display: none;
+    }
+    .chevron {
+      position: relative;
+    }
     .active-marker {
       display: none;
       margin-bottom: -5px;
@@ -293,8 +300,9 @@
     }
     .description {
       display: none;
+      position: absolute;
       padding: 0.5rem;
-      width: calc( 100% - 15px );
+      width: calc( 100% - 16px );
       background-color: #F0F0F0;
       &::before {
         display: none !important;
@@ -312,14 +320,14 @@
       text-transform: none;
     }
     .completed {
-      margin-top: 58px;
+      margin-top: 60px;
       .fa-check-circle {
         display: inline-block;
         padding-right: 0.5rem;
       }
     }
     .upcoming {
-      margin-top: 58px;
+      margin-top: 60px;
       .bg-dark-gray {
         background-color: #D8D8D8 !important;
         .right-arrow {
@@ -376,6 +384,22 @@
             border-left-color: #0F4D90;
           }
         }
+      }
+    }
+    @media only screen and (max-width: 600px) {
+      padding: 0px;
+      .phase {
+        display: none;
+      }
+      .description {
+        left: 0px;
+        width: 100%;
+      }
+      .chevron {
+        position: static;
+      }
+      .phases-header {
+        display: block;
       }
     }
   }
