@@ -1198,6 +1198,33 @@ $meta_boxes[] = array(
 
 );
 
+$meta_boxes[] = array(
+  'title' => 'Translated content',
+  'pages'    => array( 'programs' ),
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'translated_content'),
+      ),
+  ),
+  'fields' => array(
+    array(
+      'id'       => 'phila_v2_translated_content',
+      'title'    => 'Translated content',
+      'context'  => 'normal',
+      'priority' => 'high',
+      'type'  => 'group',
+      'clone' => true,
+      'sort_clone' => true,
+      'add_button'  => '+ Add another translation',
+
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+        Phila_Gov_Standard_Metaboxes::phila_language_selector( 'translated_language' ),
+      ),
+    ),
+  ),
+);
+
 return $meta_boxes;
 
 }
