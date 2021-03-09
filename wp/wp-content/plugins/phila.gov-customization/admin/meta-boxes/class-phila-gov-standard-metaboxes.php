@@ -1528,6 +1528,31 @@ public static function phila_timeline_page_selector( ){
   );
 }
 
+public static function phila_language_selector( $id = 'phila_select_language' ){
+  return array(
+    'name'  => 'Select the language of this post',
+    'id'    => $id,
+    'type'  => 'select',
+    'options'         => array(
+      'english'   => 'English', 
+      'spanish'   => 'Spanish', 
+      'french'    => 'French', 
+      'chinese'   => 'Chinese (simplifed)',
+      'vietnamese'    => 'Vietnamese',
+      'russian'     => 'Russian',
+      'arabic'    => 'Arabic',
+      'bengali' => 'Bengali',
+      'haitian' => 'Haitian Creole',
+      'hindo' => 'Hindo',
+      'indonesian' => 'Indonesian',
+      'urdu' => 'Urdu',
+      'korean' => 'Korean',
+      'portuguese' => 'Portuguese',
+      'khmer' => 'Khmer',
+    ),
+  );
+}
+
 public static function phila_get_service_updates( ){
 
   return array(

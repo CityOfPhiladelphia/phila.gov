@@ -44,6 +44,7 @@ class Phila_Gov_Register_Program_Templates {
             'stub'              => 'Stub',
             'prog_association'  => 'Subpage with association',
             'timeline'   =>  'Timeline',
+            'translated_content'   =>  'Translated content',
           ),
           'admin_columns' => array(
             'position' => 'after date',
