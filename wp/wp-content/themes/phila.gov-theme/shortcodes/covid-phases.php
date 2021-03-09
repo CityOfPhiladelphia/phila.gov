@@ -94,7 +94,7 @@ function covid_phases( $atts ) {
               </div>
             </div>
             <header class="bg-dark-gray">
-              <div class="valign process-label left-arrow-indent right-arrow-ben-franklin-blue right-arrow">
+              <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
                   <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i><span class="phase">Phase </span>1c</h4>
                 </div>
