@@ -381,6 +381,9 @@ class Phila_Programs_Controller {
 
     if (isset( $schema['properties']['translated_content'] )) {
       $translated_content = rwmb_meta( 'phila_v2_translated_content', array(), $post->ID );
+      foreach ($translated_content as $key => $value) {
+        $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content'] = apply_filters('the_content', $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content']);
+      }
 
       $post_data['translated_content']  = (array) $translated_content;
     }
