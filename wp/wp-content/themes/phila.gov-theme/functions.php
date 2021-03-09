@@ -1929,6 +1929,60 @@ add_action( 'mb_relationships_init', function() {
       'reciprocal' => true,
 
   ) );
+
+  MB_Relationships_API::register( array(
+    'id'   => 'post_to_post_translations',
+    'from' => array(
+      'object_type'  => 'post',
+      'post_type'   => 'programs',
+      'empty_message' => 'none',
+      'admin_column' => true,
+      'add_button'  => '+ Add another translation',
+      'meta_box' => array(
+        'hidden' => array(
+          'when' => array(
+            array('phila_select_language', '!=', 'english'),
+          ),
+        ),
+        'title' => 'Select translated posts',
+        'context' => 'side', 
+        'priority' => 'high',
+        'field' => array(
+          'name'  => 'Choose',
+          'placeholder' => 'Select a post',
+          'query_args' => array(
+            'posts_per_page'  => -1,
+            'post_status'  => array(
+              'publish',
+              'private',
+              'draft',
+            ),
+            'meta_query' => array(
+              array(
+                  'key'     => 'phila_select_language',
+                  'value'   => 'english',
+                  'compare' => '!=',
+              ),
+            ),
+          ),
+        ),
+
+      ),
+    ),      
+    'to'   => array(
+      'object_type'  => 'post',
+      'post_type'   => 'programs',
+      'query_args' => array(
+        'post_status'  => array(
+          'publish',
+          'private',
+          'draft',
+        ),
+      ),
+    ),
+    'reciprocal' => true,
+  ) );
+
 } );
 
 function phila_language_output($language){
@@ -1985,8 +2039,13 @@ function phila_language_output($language){
   return $language;
 }
 
-function phila_get_translated_language( $language ) {
-  global $wp_query, $post;
+function phila_get_translated_language( $language, $post_id = null ) {
+  global $wp_query;
+  if ($post_id != null) {
+    $post = get_post($post_id);
+  } else {
+    global $post;
+  }
 
   $language_list = array();
 
@@ -2010,7 +2069,7 @@ function phila_get_translated_language( $language ) {
   }else{
 
     $connected = new WP_Query( array(
-      'post_type'  => 'post',
+      'post_type'  => $post->post_type,
       'post_status'  => array(
         'publish',
         'private',
@@ -2025,7 +2084,7 @@ function phila_get_translated_language( $language ) {
     while ( $connected->have_posts() ) : $connected->the_post(); 
 
       $connected_source = new WP_Query( array(
-        'post_type'  => 'post',
+        'post_type'  => $post->post_type,
         'post_status'  => array(
           'publish',
           'private',

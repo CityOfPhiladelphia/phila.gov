@@ -78,7 +78,7 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array (
       'title'    => 'Post options',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'programs' ),
       'context'  => 'side',
       'priority' => 'high',
       'visible' => array(
@@ -87,28 +87,7 @@ class Phila_Gov_Post {
         ),
       ),
       'fields' => array(
-        array(
-          'name'  => 'Select the language of this post',
-          'id'    => 'phila_select_language',
-          'type'  => 'select',
-          'options'         => array(
-            'english'   => 'English', 
-            'spanish'   => 'Spanish', 
-            'french'    => 'French', 
-            'chinese'   => 'Chinese (simplifed)',
-            'vietnamese'    => 'Vietnamese',
-            'russian'     => 'Russian',
-            'arabic'    => 'Arabic',
-            'bengali' => 'Bengali',
-            'haitian' => 'Haitian Creole',
-            'hindo' => 'Hindo',
-            'indonesian' => 'Indonesian',
-            'urdu' => 'Urdu',
-            'korean' => 'Korean',
-            'portuguese' => 'Portuguese',
-            'khmer' => 'Khmer',
-          ),
-        ),
+        Phila_Gov_Standard_Metaboxes::phila_language_selector(),
         array(
           'name'  => 'Include last updated?',
           'id'    => 'is_last_updated',
