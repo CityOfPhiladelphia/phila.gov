@@ -379,6 +379,12 @@ class Phila_Programs_Controller {
       $post_data['language_list']  = ( object ) $new_language_list;
     }
 
+    if (isset( $schema['properties']['translated_content'] )) {
+      $translated_content = rwmb_meta( 'phila_v2_translated_content', array(), $post->ID );
+
+      $post_data['translated_content']  = (array) $translated_content;
+    }
+
     return rest_ensure_response( $post_data );
 }
 
@@ -468,6 +474,10 @@ class Phila_Programs_Controller {
         'language_list'  => array(
           'description' => esc_html__('The language list of this post.', 'phila-gov'),
           'type'  => 'object',
+        ),
+        'translated_content'  => array(
+          'description' => esc_html__('The translated content of this post.', 'phila-gov'),
+          'type'  => 'array',
         ),
       ),
     );
