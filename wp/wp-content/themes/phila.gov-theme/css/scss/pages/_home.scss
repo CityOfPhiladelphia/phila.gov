@@ -295,9 +295,6 @@
         }
       }
     }
-    .fa-check-circle {
-      display: none;
-    }
     .description {
       display: none;
       position: absolute;
@@ -321,9 +318,16 @@
     }
     .completed {
       margin-top: 60px;
-      .fa-check-circle {
-        display: inline-block;
-        padding-right: 0.5rem;
+      .bg-dark-gray {
+        background-color: #58C04D !important;
+        .right-arrow {
+          h4 {
+            color: #000;
+          }
+          &::after {
+            border-left-color: #58C04D;
+          }
+        }
       }
     }
     .upcoming {

@@ -51,7 +51,7 @@ function covid_phases( $atts ) {
             <header class="bg-dark-gray">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i><span class="phase">Phase </span>1a</h4>
+                  <h4 class="mbn h5 white"><span class="phase">Phase </span>1a</h4>
                 </div>
               </div>
             </header>
@@ -73,7 +73,7 @@ function covid_phases( $atts ) {
             <header class="bg-dark-gray">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i><span class="phase">Phase </span>1b</h4>
+                  <h4 class="mbn h5 white"><span class="phase">Phase </span>1b</h4>
                 </div>
               </div>
             </header>
@@ -96,7 +96,7 @@ function covid_phases( $atts ) {
             <header class="bg-dark-gray">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i><span class="phase">Phase </span>1c</h4>
+                  <h4 class="mbn h5 white"><span class="phase">Phase </span>1c</h4>
                 </div>
               </div>
             </header>
@@ -118,7 +118,7 @@ function covid_phases( $atts ) {
             <header class="bg-dark-gray">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><i class="fas fa-check-circle"></i><span class="phase">Phase </span>2</h4>
+                  <h4 class="mbn h5 white"><span class="phase">Phase </span>2</h4>
                 </div>
               </div>
             </header>
