@@ -36,11 +36,23 @@ get_header();
   </div>
 
 <?php  
+  include(locate_template('partials/departments/v2/translated-content.php'));
+  get_footer();
+
+  return; ?>
+<?php endif;?>
+
+<?php if ($user_selected_template == 'covid_guidance'): ?>
+  <div class="mtl mbm">
+    <?php get_template_part( 'partials/breadcrumbs' ); ?>
+  </div>
+
+<?php  
   include(locate_template('partials/departments/v2/covid-guidance.php'));
   get_footer();
 
   return; ?>
-  <?php endif;?>
+ <?php endif;?>
 
 
   <?php
