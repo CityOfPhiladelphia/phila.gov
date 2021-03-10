@@ -42,7 +42,7 @@
       ?>
       <div class="cell shrink mrl mtxs"><i class="<?php echo $accordion_icon ?> fa-2x fa-fw"></i></div> 
       <?php endif; ?>
-      <div class="cell auto no-p-margin fixed-width">
+      <div class="cell auto no-p-margin fixed-width small-21">
         <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_title'] ); ?>
       </div>
     </div>
