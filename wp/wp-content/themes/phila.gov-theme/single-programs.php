@@ -30,6 +30,18 @@ get_header();
   return; ?>
   <?php endif;?>
 
+<?php if ($user_selected_template == 'translated_content'): ?>
+  <div class="mtl mbm">
+    <?php get_template_part( 'partials/breadcrumbs' ); ?>
+  </div>
+
+<?php  
+  include(locate_template('partials/departments/v2/covid-guidance.php'));
+  get_footer();
+
+  return; ?>
+  <?php endif;?>
+
 
   <?php
     while ( have_posts() ) : the_post();
@@ -65,9 +77,6 @@ get_header();
         case 'timeline':
           get_template_part( 'partials/departments/v2/homepage_timeline' );
           break;
-        case 'translated_content':
-          include(locate_template('partials/departments/v2/covid-guidance.php'));
-        break;
         case ('child_index'):
           get_template_part( 'partials/departments/v2/child', 'index' );
           break;
