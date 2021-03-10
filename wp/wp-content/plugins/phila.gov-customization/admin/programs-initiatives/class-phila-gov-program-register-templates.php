@@ -37,6 +37,7 @@ class Phila_Gov_Register_Program_Templates {
             'prog_landing_page'  => 'Homepage',
             'phila_one_quarter'    => '1/4 Headings (subpage)',
             'collection_page_v2'   => 'Collection page',
+            'covid_guidance'   =>  'Covid guidance',
             'document_finder_v2'   =>  'Document finder',
             'child_index'   => 'List of child pages',
             'prog_off_site' => 'Off-site program',

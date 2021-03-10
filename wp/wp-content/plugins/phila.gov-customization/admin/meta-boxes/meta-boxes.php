@@ -1204,7 +1204,9 @@ $meta_boxes[] = array(
   'visible' => array(
     'when'  =>  array(
         array('phila_template_select', '=', 'translated_content'),
+        array('phila_template_select', '=', 'covid_guidance'),
       ),
+    'relation'  => 'or'
   ),
   'fields' => array(
     array(
