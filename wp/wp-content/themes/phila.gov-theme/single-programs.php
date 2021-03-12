@@ -36,7 +36,7 @@ get_header();
   </div>
 
 <?php  
-  include(locate_template('partials/departments/v2/translated-content.php'));
+  include(locate_template('partials/global/translated-content.php'));
   get_footer();
 
   return; ?>
@@ -48,7 +48,7 @@ get_header();
   </div>
 
 <?php  
-  include(locate_template('partials/departments/v2/covid-guidance.php'));
+  include(locate_template('partials/programs/covid-guidance.php'));
   get_footer();
 
   return; ?>

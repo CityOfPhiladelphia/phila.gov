@@ -940,7 +940,9 @@ $meta_boxes[] = array(
       array('phila_template_select', '=', 'topic_page'),
       array('phila_template_select', '=', 'service_stub'),
       array('phila_template_select', '=', 'default_v2'),
-      array('phila_template_select', '=', 'custom_content')
+      array('phila_template_select', '=', 'custom_content'),
+      array('phila_template_select', '=', 'translated_content'),
+      array('phila_template_select', '=', 'covid_guidance'),
     ),
     'relation' => 'or',
   ),
@@ -995,7 +997,7 @@ $meta_boxes[] = array(
           'id'  => 'phila_doc_label_column_title',
           'type'  => 'text',
           'name'  => 'Optional label column title (will add label column)',
-          'class' => 'optional-label',
+          'class' => 'margin-bottom-10',
           'visible' => array(
             'when'  => array(
               array('phila_vue_toggle', '=', true),
@@ -1201,6 +1203,7 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'title' => 'Translated content',
   'pages'    => array( 'programs' ),
+  'revision' => true,
   'visible' => array(
     'when'  =>  array(
         array('phila_template_select', '=', 'translated_content'),
@@ -1220,8 +1223,8 @@ $meta_boxes[] = array(
       'add_button'  => '+ Add another translation',
 
       'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_language_selector( 'translated_language', 'margin-bottom-10' ),
         Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
-        Phila_Gov_Standard_Metaboxes::phila_language_selector( 'translated_language' ),
       ),
     ),
   ),
