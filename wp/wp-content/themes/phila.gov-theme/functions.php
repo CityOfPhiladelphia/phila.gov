@@ -1930,59 +1930,6 @@ add_action( 'mb_relationships_init', function() {
 
   ) );
 
-  MB_Relationships_API::register( array(
-    'id'   => 'post_to_post_translations',
-    'from' => array(
-      'object_type'  => 'post',
-      'post_type'   => 'programs',
-      'empty_message' => 'none',
-      'admin_column' => true,
-      'add_button'  => '+ Add another translation',
-      'meta_box' => array(
-        'hidden' => array(
-          'when' => array(
-            array('phila_select_language', '!=', 'english'),
-          ),
-        ),
-        'title' => 'Select translated posts',
-        'context' => 'side', 
-        'priority' => 'high',
-        'field' => array(
-          'name'  => 'Choose',
-          'placeholder' => 'Select a post',
-          'query_args' => array(
-            'posts_per_page'  => -1,
-            'post_status'  => array(
-              'publish',
-              'private',
-              'draft',
-            ),
-            'meta_query' => array(
-              array(
-                  'key'     => 'phila_select_language',
-                  'value'   => 'english',
-                  'compare' => '!=',
-              ),
-            ),
-          ),
-        ),
-
-      ),
-    ),      
-    'to'   => array(
-      'object_type'  => 'post',
-      'post_type'   => 'programs',
-      'query_args' => array(
-        'post_status'  => array(
-          'publish',
-          'private',
-          'draft',
-        ),
-      ),
-    ),
-    'reciprocal' => true,
-  ) );
-
 } );
 
 function phila_language_output($language){

@@ -1528,11 +1528,12 @@ public static function phila_timeline_page_selector( ){
   );
 }
 
-public static function phila_language_selector( $id = 'phila_select_language' ){
+public static function phila_language_selector( $id = 'phila_select_language', $class = '' ){
   return array(
     'name'  => 'Select the language of this post',
     'id'    => $id,
     'type'  => 'select',
+    'class' => $class,
     'options' => array(
       'english'     => 'English', 
       'arabic'      => 'Arabic',

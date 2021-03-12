@@ -362,23 +362,6 @@ class Phila_Programs_Controller {
       $post_data['image']  = (string) $medium_image;
     }
 
-    if (isset( $schema['properties']['language_list'] )) {
-      $language = rwmb_meta('phila_select_language', '', $post->ID);
-      if ( empty( $language ) ) {
-        $language = 'english';
-      }
-      $language_list = phila_get_translated_language( $language, $post->ID );
-      $new_language_list = [];
-      foreach ($language_list as $key => $value) {
-        $language_list_item['language'] = $key;
-        $language_list_item['key'] = phila_language_output($key);
-        $language_list_item['value'] = $value;
-        array_push($new_language_list, $language_list_item); 
-      }
-
-      $post_data['language_list']  = ( object ) $new_language_list;
-    }
-
     if (isset( $schema['properties']['translated_content'] )) {
       $translated_content = rwmb_meta( 'phila_v2_translated_content', array(), $post->ID );
       foreach ($translated_content as $key => $value) {
@@ -473,10 +456,6 @@ class Phila_Programs_Controller {
         'image'  => array(
           'description' => esc_html__('The medium size image associated with this program.', 'phila-gov'),
           'type'  => 'string',
-        ),
-        'language_list'  => array(
-          'description' => esc_html__('The language list of this post.', 'phila-gov'),
-          'type'  => 'object',
         ),
         'translated_content'  => array(
           'description' => esc_html__('The translated content of this post.', 'phila-gov'),
