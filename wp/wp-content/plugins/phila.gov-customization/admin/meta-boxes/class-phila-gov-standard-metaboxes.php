@@ -1555,6 +1555,36 @@ public static function phila_language_selector( $id = 'phila_select_language', $
   );
 }
 
+public static function phila_multiple_language_selector( $id = 'translated_options', $class = '' ){
+  return array(
+    'name'  => 'Select the translated languages of this post',
+    'id'    => $id,
+    'type'  => 'select_advanced',
+    'multiple' => true,
+    'placeholder' => 'select all active languages',
+    'field_type'  => 'select_advanced',
+    'class' => $class,
+    'options' => array(
+      'english'     => 'English', 
+      'arabic'      => 'Arabic',
+      'bengali'     => 'Bengali',
+      'chinese'     => 'Chinese (simplifed)',
+      'french'      => 'French',
+      'haitian'     => 'Haitian Creole',
+      'hindo'       => 'Hindo',
+      'indonesian'  => 'Indonesian',
+      'khmer'       => 'Khmer',
+      'korean'      => 'Korean',
+      'portuguese'  => 'Portuguese',
+      'russian'     => 'Russian',
+      'spanish'     => 'Spanish',
+      'swahili'     => 'Swahili',
+      'urdu'        => 'Urdu',
+      'vietnamese'  => 'Vietnamese',
+    ),
+  );
+}
+
 public static function phila_get_service_updates( ){
 
   return array(

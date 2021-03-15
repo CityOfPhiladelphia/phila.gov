@@ -1202,16 +1202,21 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Translated content',
-  'pages'    => array( 'programs' ),
+  'pages'    => array( 'programs', 'post' ),
   'revision' => true,
   'visible' => array(
     'when'  =>  array(
         array('phila_template_select', '=', 'translated_content'),
         array('phila_template_select', '=', 'covid_guidance'),
+        array('phila_template_select', '=', 'post'),
+        array('phila_template_select', '=', 'press_release'),
+        array('phila_template_select', '=', 'action_guide'),
+        array('phila_template_select', '=', 'action_guide_2'),
       ),
     'relation'  => 'or'
   ),
   'fields' => array(
+    Phila_Gov_Standard_Metaboxes::phila_multiple_language_selector( 'translated_options', 'margin-bottom-10' ),
     array(
       'id'       => 'phila_v2_translated_content',
       'title'    => 'Translated content',

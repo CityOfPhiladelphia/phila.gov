@@ -213,7 +213,26 @@ class Phila_Archives_Controller {
           $full_query = array_merge($query_defaults, $ac_arg);
           $posts = get_posts( $full_query );
       }
-    }else{
+    } else if ( isset( $request['language'] ) ) {
+      $args = array(
+        'posts_per_page'=> $request['count'],
+        'post_parent' => 0,
+        'post_type' => array('post', 'phila_post', 'press_release', 'news_post'),
+        'orderby' => 'title',
+        'order' => 'asc',
+        'meta_query' => array(
+          array(
+              'key' => 'translated_options',
+              'value' => array ( $request['language'] ),
+              'compare' => 'IN'
+          )
+        )
+      );
+      $query_defaults = $this->set_query_defaults($request);
+      $args = array_merge($query_defaults, $args);
+
+      $posts = get_posts( $args );
+    } else{
       $args = array(
         'post_type' => $post_type,
       );
@@ -366,6 +385,21 @@ class Phila_Archives_Controller {
       $post_data['categories']  = (array) $categories;
     }
 
+    if (isset( $schema['properties']['translated_content'] )) {
+      $translated_content = rwmb_meta( 'phila_v2_translated_content', array(), $post->ID );
+      foreach ($translated_content as $key => $value) {
+        $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content'] = apply_filters('the_content', $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content']);
+      }
+
+      $post_data['translated_content']  = (array) $translated_content;
+    }
+
+    if (isset( $schema['properties']['translated_options'] )) {
+      $post_data['translated_options']  = (array) rwmb_meta( 'translated_options', array(), $post->ID );;
+    }
+
+
+
     return rest_ensure_response( $post_data );
 }
 
@@ -445,6 +479,14 @@ class Phila_Archives_Controller {
         ),
         'categories'  => array(
           'description' => esc_html__('The categories assigned to this object.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'translated_content'  => array(
+          'description' => esc_html__('The translated content of this post.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'translated_options'  => array(
+          'description' => esc_html__('The translated content of this post.', 'phila-gov'),
           'type'  => 'array',
         ),
       ),
