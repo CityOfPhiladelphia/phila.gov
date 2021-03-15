@@ -193,6 +193,8 @@ class Phila_Gov_Register_Program_Templates {
           array( 'phila_template_select', '=', 'resource_list_v2' ),
           array( 'phila_template_select', '=', 'all_programs_v2' ),
           array( 'phila_template_select', '=', 'all_services_v2' ),
+          array( 'phila_template_select', '=', 'translated_content' ),
+          array( 'phila_template_select', '=', 'covid_guidance' ),
         ),
         'relation' => 'or',
       ),

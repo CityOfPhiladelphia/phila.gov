@@ -1,6 +1,6 @@
 <?php
 /*
- * Partial for rendering all programs in this department's category.
+ * Partial for rendering the covid guidance program
  *
  */
 ?>
