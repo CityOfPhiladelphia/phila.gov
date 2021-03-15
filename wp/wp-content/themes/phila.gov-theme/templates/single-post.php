@@ -18,6 +18,7 @@ $date_formatted = new DateTime($last_updated_date);
 $last_updated_text = rwmb_meta('last_updated_text');
 $language = rwmb_meta('phila_select_language');
 $language_list = phila_get_translated_language( $language );
+$translated_options = rwmb_meta('translated_options');
 
 
 ?>
@@ -72,9 +73,11 @@ $language_list = phila_get_translated_language( $language );
     </div>
   <?php endif; ?>
   </header>
-  <?php  if ( count( $language_list ) >= 2 ): ?>
+  <?php  if ( count( $translated_options ) >= 1 ) { ?>
+    <?php include(locate_template('partials/global/translated-content.php')); ?>
+  <?php  } else if ( count( $language_list ) >= 2 ) { ?>
     <?php include(locate_template ('partials/posts/post-translated-content.php') ); ?>
-  <?php endif; ?>
+  <?php } ?>
 
 
   <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') && ($template_type != 'press_release') ): ?>
