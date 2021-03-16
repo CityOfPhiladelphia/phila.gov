@@ -398,7 +398,9 @@ class Phila_Archives_Controller {
       $post_data['translated_options']  = (array) rwmb_meta( 'translated_options', array(), $post->ID );;
     }
 
-
+    if (isset( $schema['properties']['posted_on_values'] )) {
+      $post_data['posted_on_values']  = (object) phila_get_posted_on( $post->ID );
+    }
 
     return rest_ensure_response( $post_data );
 }
@@ -487,6 +489,10 @@ class Phila_Archives_Controller {
         ),
         'translated_options'  => array(
           'description' => esc_html__('The translated content of this post.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'posted_on_values'  => array(
+          'description' => esc_html__('The post info.', 'phila-gov'),
           'type'  => 'array',
         ),
       ),

@@ -24,6 +24,7 @@ $translated_options = rwmb_meta('translated_options');
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
+  <?php if ( count( $translated_options ) <= 0 ) { ?> 
   <header class="post-header grid-container">
     <div class="grid-x grid-padding-x align-bottom">
       <div class="cell medium-18 post-title">
@@ -73,6 +74,7 @@ $translated_options = rwmb_meta('translated_options');
     </div>
   <?php endif; ?>
   </header>
+  <?php } // endif for translated content = 0 ?>
   <?php  if ( count( $translated_options ) >= 1 ) { ?>
     <?php include(locate_template('partials/global/translated-content.php')); ?>
   <?php  } else if ( count( $language_list ) >= 2 ) { ?>
