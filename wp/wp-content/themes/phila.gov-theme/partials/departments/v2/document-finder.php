@@ -6,6 +6,7 @@ $app_title = rwmb_meta('phila_vue_app_title');
 $vue_or_not = rwmb_meta('phila_vue_toggle');
 
 if ($vue_or_not) {
+  global $phila_environment;
   $app_id = 'vue-app';
 
   $program_file_path = 'https://www.phila.gov/embedded/document-finder/'.$phila_environment;
