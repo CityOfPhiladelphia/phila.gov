@@ -80,7 +80,8 @@ function covid_phases( $atts ) {
             <div class="description">
               <ul>
                 <li>Frontline essential workers at high risk for exposure</li>
-                <li>Individuals 75+ with highest risk medical conditions</li>
+                <li>Individuals 65+</li>
+                <li>Those with the highest risk medical conditions</li>
                 <li>Those working or residing in congregate settings</li>
               </ul>
             </div>
@@ -103,7 +104,6 @@ function covid_phases( $atts ) {
             <div class="description">
               <ul>
                 <li>Essential workers at lower risk of exposure</li>
-                <li>Individuals 65–74 with highest risk medical conditions</li>
               </ul>
             </div>
           </section>
