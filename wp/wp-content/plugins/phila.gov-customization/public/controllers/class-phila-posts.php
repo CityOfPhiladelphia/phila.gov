@@ -412,6 +412,14 @@ class Phila_Archives_Controller {
       $post_data['post_read_cta']['link_desc']  = (object) rwmb_meta( 'phila_link_desc', array(), $post->ID );
     }
 
+    if (isset( $schema['properties']['press_release_date'] )) {
+      $post_data['press_release_date'] = (string) rwmb_meta( 'phila_press_release_date', array(), $post->ID );
+    }
+
+    if (isset( $schema['properties']['contact_information'] )) {
+      $post_data['contact_information'] = (array) rwmb_meta( 'press_release_contact', array(), $post->ID );
+    }
+
     return rest_ensure_response( $post_data );
 }
 
@@ -511,6 +519,14 @@ class Phila_Archives_Controller {
         ),
         'post_read_cta'  => array(
           'description' => esc_html__('The post read cta.', 'phila-gov'),
+          'type'  => 'object',
+        ),
+        'press_release_date'  => array(
+          'description' => esc_html__('The press release release date.', 'phila-gov'),
+          'type'  => 'string',
+        ),
+        'contact_information'  => array(
+          'description' => esc_html__('The press release contact information.', 'phila-gov'),
           'type'  => 'object',
         ),
       ),
