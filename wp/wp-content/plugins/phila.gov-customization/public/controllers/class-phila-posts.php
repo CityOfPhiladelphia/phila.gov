@@ -395,11 +395,21 @@ class Phila_Archives_Controller {
     }
 
     if (isset( $schema['properties']['translated_options'] )) {
-      $post_data['translated_options']  = (array) rwmb_meta( 'translated_options', array(), $post->ID );;
+      $post_data['translated_options']  = (array) rwmb_meta( 'translated_options', array(), $post->ID );
     }
 
     if (isset( $schema['properties']['posted_on_values'] )) {
       $post_data['posted_on_values']  = (object) phila_get_posted_on( $post->ID );
+    }
+
+    if (isset( $schema['properties']['department'] )) {
+      $category = get_the_category( $post->ID );
+      $post_data['department']  = (string) phila_get_current_department_name( $category, false, false );
+    }
+
+    if (isset( $schema['properties']['post_read_cta'] )) {
+      $post_data['post_read_cta']['cta']  = (object) rwmb_meta( 'post_read_cta', array(), $post->ID );
+      $post_data['post_read_cta']['link_desc']  = (object) rwmb_meta( 'phila_link_desc', array(), $post->ID );
     }
 
     return rest_ensure_response( $post_data );
@@ -494,6 +504,14 @@ class Phila_Archives_Controller {
         'posted_on_values'  => array(
           'description' => esc_html__('The post info.', 'phila-gov'),
           'type'  => 'array',
+        ),
+        'department'  => array(
+          'description' => esc_html__('The department owner of this post.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'post_read_cta'  => array(
+          'description' => esc_html__('The post read cta.', 'phila-gov'),
+          'type'  => 'object',
         ),
       ),
     );

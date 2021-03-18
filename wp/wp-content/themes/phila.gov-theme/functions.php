@@ -1892,7 +1892,10 @@ add_action( 'mb_relationships_init', function() {
           'hidden' => array(
             'when' => array(
               array('phila_select_language', '!=', 'english'),
+              array('phila_template_select', '=', 'translated_press_release'),
+              array('phila_template_select', '=', 'translated_post'),
             ),
+            'relation' => 'or',
           ),
           'title' => 'Select translated posts',
           'context' => 'side', 
