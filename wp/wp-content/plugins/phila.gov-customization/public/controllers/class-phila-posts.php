@@ -420,6 +420,10 @@ class Phila_Archives_Controller {
       $post_data['contact_information'] = (array) rwmb_meta( 'press_release_contact', array(), $post->ID );
     }
 
+    if (isset( $schema['properties']['featured_image'] )) {
+      $post_data['featured_image'] = (string) the_post_thumbnail_url( $post->ID );
+    }
+
     return rest_ensure_response( $post_data );
 }
 
@@ -528,6 +532,10 @@ class Phila_Archives_Controller {
         'contact_information'  => array(
           'description' => esc_html__('The press release contact information.', 'phila-gov'),
           'type'  => 'object',
+        ),
+        'featured_image'  => array(
+          'description' => esc_html__('The post featured image.', 'phila-gov'),
+          'type'  => 'string',
         ),
       ),
     );
