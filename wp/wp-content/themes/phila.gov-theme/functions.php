@@ -479,6 +479,11 @@ require get_template_directory() . '/inc/utilities.php';
 require get_template_directory() . '/inc/date-translations.php';
 
 /**
+ * Load custom related content file.
+ */
+require get_template_directory() . '/inc/related-content.php';
+
+/**
  * Load custom Resource list switch file.
  */
 require get_template_directory() . '/inc/resource-list-switch.php';
