@@ -21,7 +21,9 @@ class Phila_Gov_Post {
       'visible' => array(
         'when' => array(
           array('phila_template_select', '=', 'post'),
+          array('phila_template_select', '=', 'translated_post'),
         ),
+        'relation' => 'or',
       ),
       'fields'  => array(
         array(
@@ -39,6 +41,13 @@ class Phila_Gov_Post {
       'title'    => 'Social media share pre-filled text',
       'pages'    => array( 'post' ),
       'context'  => 'after_title',
+      'hidden' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'translated_press_release'),
+          array('phila_template_select', '=', 'translated_post'),
+        ),
+        'relation' => 'or',
+      ),
       'fields'  => array(
         array(
           'type' => 'textarea',
@@ -135,28 +144,7 @@ class Phila_Gov_Post {
         ),
       ),
       'fields' => array(
-        array(
-          'id' => 'post_read_cta',
-          'type' => 'group',
-          'clone' => true,
-          'sort'  => true,
-          'max_clone' => 2,
-          'desc'  => 'Blogs engage readers by asking them to take action after reading a post. Use this area to encourage your readers to do something next.',
-          'fields' => array(
-            array(
-              'type'=> 'custom_html',
-            ),
-              Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'phila_post_links'),
-              array(
-                'type'  => 'heading',
-                'name'  => 'Link description',
-              ),
-          array(
-            'id' => 'phila_link_desc',
-            'type'  => 'textarea',
-          ),
-        )
-      )
+        Phila_Gov_Standard_Metaboxes::phila_post_read_cta(),
     )
   );
 

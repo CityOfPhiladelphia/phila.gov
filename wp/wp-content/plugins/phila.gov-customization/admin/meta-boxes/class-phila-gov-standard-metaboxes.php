@@ -1555,6 +1555,87 @@ public static function phila_language_selector( $id = 'phila_select_language', $
   );
 }
 
+public static function phila_short_description( ){
+  return array(
+    'name'  => 'Short description',
+    'id'   => 'phila_meta_desc',
+    'limit' => 140,
+    'type' => 'textarea',
+    'desc'  => 'Enter a short description of this content. This description will appear in lists that include this item, search results, and social media link previews. 140 character maximum.',
+  );
+}
+
+public static function phila_social_media_text( ){
+  return array(
+    'name'  => 'Social media share pre-filled text',
+    'type' => 'textarea',
+    'id'  => 'phila_social_intent',
+    'limit' => 256,
+    'desc'  => 'Curate Tweet sharing text. Required. 256 character limit.  A link to this page will be automatically added. <br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
+  );
+}
+
+
+public static function phila_post_read_cta(){
+  return array(
+    'id' => 'post_read_cta',
+    'type' => 'group',
+    'clone' => true,
+    'sort'  => true,
+    'max_clone' => 2,
+    'desc'  => 'Blogs engage readers by asking them to take action after reading a post. Use this area to encourage your readers to do something next.',
+    'hidden' => array(
+      'when'  =>  array(
+        array('phila_template_select', '=', 'translated_press_release'),
+      ),
+    ),
+    'fields' => array(
+      array(
+        'type'=> 'custom_html',
+      ),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'phila_post_links'),
+        array(
+          'type'  => 'heading',
+          'name'  => 'Link description',
+        ),
+    array(
+      'id' => 'phila_link_desc',
+      'type'  => 'textarea',
+    ),
+  )
+  );
+}
+
+public static function phila_multiple_language_selector( $id = 'translated_options', $class = '' ){
+  return array(
+    'name'  => 'Select the translated languages of this post',
+    'id'    => $id,
+    'type'  => 'select_advanced',
+    'multiple' => true,
+    'placeholder' => 'select all active languages',
+    'field_type'  => 'select_advanced',
+    'class' => $class,
+    'options' => array(
+      'english'     => 'English', 
+      'arabic'      => 'Arabic',
+      'bengali'     => 'Bengali',
+      'chinese'     => 'Chinese (simplifed)',
+      'french'      => 'French',
+      'haitian'     => 'Haitian Creole',
+      'hindo'       => 'Hindo',
+      'indonesian'  => 'Indonesian',
+      'khmer'       => 'Khmer',
+      'korean'      => 'Korean',
+      'portuguese'  => 'Portuguese',
+      'russian'     => 'Russian',
+      'spanish'     => 'Spanish',
+      'swahili'     => 'Swahili',
+      'urdu'        => 'Urdu',
+      'vietnamese'  => 'Vietnamese',
+    ),
+  );
+}
+
 public static function phila_get_service_updates( ){
 
   return array(

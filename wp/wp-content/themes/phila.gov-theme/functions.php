@@ -623,7 +623,11 @@ function phila_get_dept_contact_blocks() {
 
 
 
-function phila_get_posted_on(){
+function phila_get_posted_on( $post_id = null ){
+  if ( $post_id ) {
+    global $post;
+    $post = get_post( $post_id );
+  }
   $posted_on_meta['author'] = array( esc_html( get_the_author()));
   $more_authors = rwmb_meta('phila_author');
   if ( !empty($more_authors) ) {
@@ -1888,7 +1892,10 @@ add_action( 'mb_relationships_init', function() {
           'hidden' => array(
             'when' => array(
               array('phila_select_language', '!=', 'english'),
+              array('phila_template_select', '=', 'translated_press_release'),
+              array('phila_template_select', '=', 'translated_post'),
             ),
+            'relation' => 'or',
           ),
           'title' => 'Select translated posts',
           'context' => 'side', 
