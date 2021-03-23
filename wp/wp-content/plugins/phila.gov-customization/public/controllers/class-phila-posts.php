@@ -436,7 +436,7 @@ class Phila_Archives_Controller {
           'type'  => 'string',
         ),
         'language'  => array(
-          'description' => esc_html__('The langauge this post is in.', 'phila-gov'),
+          'description' => esc_html__('The language this post is in.', 'phila-gov'),
           'type'  => 'string',
         ),
         'tags'  => array(

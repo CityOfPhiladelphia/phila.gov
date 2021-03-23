@@ -40,17 +40,17 @@ wp_localize_script( 'phila-scripts', 'phila_language_list', $new_language_list )
 ?>
 
 <div class="grid-container translations-container">
-    <div class="grid-x medium-24 bg-ghost-gray mvl translations">
-      <span class="phm globe"><i class="fas fa-globe fa-2x"></i></span>
-      <ul id="main-translation-bar" class="inline-list no-bullet mbn pln"></ul>
-      <div class="phm phs dropdown-container">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li>
-            <a href="#" class="dropdown-selector"></a>
-            <ul id="dropdown-translation-bar" class="menu"></ul>
-          </li>
-        </ul>
-      </div>
+  <div class="grid-x medium-24 bg-ghost-gray translations <?php echo $post->post_type == 'programs' ? 'mts mbl' :  'mvl' ?>">
+    <span class="phm globe"><i class="fas fa-globe fa-2x"></i></span>
+    <ul id="main-translation-bar" class="inline-list no-bullet mbn pln"></ul>
+    <div class="phm phs dropdown-container">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <a href="#" class="dropdown-selector"></a>
+          <ul id="dropdown-translation-bar" class="menu"></ul>
+        </li>
+      </ul>
     </div>
   </div>
+</div>
   <!-- /Translated content -->
