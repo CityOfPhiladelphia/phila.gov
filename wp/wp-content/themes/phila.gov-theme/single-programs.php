@@ -43,9 +43,7 @@ get_header();
 <?php endif;?>
 
 <?php if ($user_selected_template == 'covid_guidance'): ?>
-  <div class="mtl mbm">
-    <?php get_template_part( 'partials/breadcrumbs' ); ?>
-  </div>
+  <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
 
 <?php  
   include(locate_template('partials/programs/covid-guidance.php'));
