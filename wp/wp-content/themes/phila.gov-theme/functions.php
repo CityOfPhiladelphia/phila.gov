@@ -1691,11 +1691,11 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "Zoning Board of",
     "Board of",
     "Office of the",
+    "Office of Policy and Strategic Initiatives for",
     "Office of",
     "Department of",
     "Bureau of",
     "Division of",
-    "Office of Policy and Strategic Initiatives for"
   );
 
   if ( !isset( $page_title ) ) {
