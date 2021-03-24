@@ -213,7 +213,26 @@ class Phila_Archives_Controller {
           $full_query = array_merge($query_defaults, $ac_arg);
           $posts = get_posts( $full_query );
       }
-    }else{
+    } else if ( isset( $request['language'] ) ) {
+      $args = array(
+        'posts_per_page'=> $request['count'],
+        'post_parent' => 0,
+        'post_type' => array('post', 'phila_post', 'press_release', 'news_post'),
+        'orderby' => 'title',
+        'order' => 'asc',
+        'meta_query' => array(
+          array(
+              'key' => 'translated_options',
+              'value' => array ( $request['language'] ),
+              'compare' => 'IN'
+          )
+        )
+      );
+      $query_defaults = $this->set_query_defaults($request);
+      $args = array_merge($query_defaults, $args);
+
+      $posts = get_posts( $args );
+    } else{
       $args = array(
         'post_type' => $post_type,
       );
@@ -366,6 +385,45 @@ class Phila_Archives_Controller {
       $post_data['categories']  = (array) $categories;
     }
 
+    if (isset( $schema['properties']['translated_content'] )) {
+      $translated_content = rwmb_meta( 'phila_v2_translated_content', array(), $post->ID );
+      foreach ($translated_content as $key => $value) {
+        $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content'] = apply_filters('the_content', $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content']);
+      }
+
+      $post_data['translated_content']  = (array) $translated_content;
+    }
+
+    if (isset( $schema['properties']['translated_options'] )) {
+      $post_data['translated_options']  = (array) rwmb_meta( 'translated_options', array(), $post->ID );
+    }
+
+    if (isset( $schema['properties']['posted_on_values'] )) {
+      $post_data['posted_on_values']  = (object) phila_get_posted_on( $post->ID );
+    }
+
+    if (isset( $schema['properties']['department'] )) {
+      $category = get_the_category( $post->ID );
+      $post_data['department']  = (string) phila_get_current_department_name( $category, false, false );
+    }
+
+    if (isset( $schema['properties']['post_read_cta'] )) {
+      $post_data['post_read_cta']['cta']  = (object) rwmb_meta( 'post_read_cta', array(), $post->ID );
+      $post_data['post_read_cta']['link_desc']  = (object) rwmb_meta( 'phila_link_desc', array(), $post->ID );
+    }
+
+    if (isset( $schema['properties']['press_release_date'] )) {
+      $post_data['press_release_date'] = (string) rwmb_meta( 'phila_press_release_date', array(), $post->ID );
+    }
+
+    if (isset( $schema['properties']['contact_information'] )) {
+      $post_data['contact_information'] = (array) rwmb_meta( 'press_release_contact', array(), $post->ID );
+    }
+
+    if (isset( $schema['properties']['featured_image'] )) {
+      $post_data['featured_image'] = (string) the_post_thumbnail_url( $post->ID );
+    }
+
     return rest_ensure_response( $post_data );
 }
 
@@ -446,6 +504,38 @@ class Phila_Archives_Controller {
         'categories'  => array(
           'description' => esc_html__('The categories assigned to this object.', 'phila-gov'),
           'type'  => 'array',
+        ),
+        'translated_content'  => array(
+          'description' => esc_html__('The translated content of this post.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'translated_options'  => array(
+          'description' => esc_html__('The translated content of this post.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'posted_on_values'  => array(
+          'description' => esc_html__('The post info.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'department'  => array(
+          'description' => esc_html__('The department owner of this post.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'post_read_cta'  => array(
+          'description' => esc_html__('The post read cta.', 'phila-gov'),
+          'type'  => 'object',
+        ),
+        'press_release_date'  => array(
+          'description' => esc_html__('The press release release date.', 'phila-gov'),
+          'type'  => 'string',
+        ),
+        'contact_information'  => array(
+          'description' => esc_html__('The press release contact information.', 'phila-gov'),
+          'type'  => 'object',
+        ),
+        'featured_image'  => array(
+          'description' => esc_html__('The post featured image.', 'phila-gov'),
+          'type'  => 'string',
         ),
       ),
     );
