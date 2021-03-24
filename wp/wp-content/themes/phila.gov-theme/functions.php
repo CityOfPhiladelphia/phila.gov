@@ -1694,7 +1694,8 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "Office of",
     "Department of",
     "Bureau of",
-    "Division of"
+    "Division of",
+    "Office of Policy and Strategic Initiatives for"
   );
 
   if ( !isset( $page_title ) ) {
