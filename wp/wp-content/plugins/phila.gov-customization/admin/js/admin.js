@@ -68,7 +68,11 @@ jQuery(document).ready(function($) {
             $( "#title" ).attr('disabled', true);
             $( "<div style='color:#838383; padding-left:5px;'>This field isn't available to edit. To change the title, save as a new item.</div> " ).insertAfter('#title');
 
-        }else{
+        } else if ( typenow == 'homepage' ) {
+          $('#title').rules('add', {
+            maxlength: 144
+          });
+        } else {
           if (typenow == 'post'){
             return;
           }
