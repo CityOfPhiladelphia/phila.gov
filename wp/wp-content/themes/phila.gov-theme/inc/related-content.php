@@ -38,9 +38,11 @@ function get_related_content( $post_id ) {
         foreach ($translated_posts as $key => $value) {
           $post['title'] = $value['phila_custom_wysiwyg']['phila_wysiwyg_title'];
           $post['link'] = get_permalink().'?language='.$value['translated_language'];
+          $post['template'] = phila_get_selected_template( get_the_ID() );
           $post['featured_image'] = wp_get_attachment_url( get_post_thumbnail_id(), 'thumbnail' );
           $post['published_date'] = rwmb_meta( 'phila_press_release_date') ? rwmb_meta( 'phila_press_release_date') : get_the_date();
           $post['language'] = $value['translated_language'];
+
           array_push( $posts, $post );
           $post = null;
         }
@@ -48,6 +50,7 @@ function get_related_content( $post_id ) {
         $post = null;
         $post['title'] = get_the_title();
         $post['link'] = get_permalink();
+        $post['template'] = phila_get_selected_template( get_the_ID() );
         $post['featured_image'] = wp_get_attachment_url( get_post_thumbnail_id(), 'thumbnail' );
         $post['published_date'] =  rwmb_meta( 'phila_press_release_date') ? rwmb_meta( 'phila_press_release_date') : get_the_date();
         $post['language'] = rwmb_meta( 'phila_select_language');
