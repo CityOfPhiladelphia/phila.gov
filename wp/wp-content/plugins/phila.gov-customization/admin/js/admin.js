@@ -68,13 +68,18 @@ jQuery(document).ready(function($) {
             $( "#title" ).attr('disabled', true);
             $( "<div style='color:#838383; padding-left:5px;'>This field isn't available to edit. To change the title, save as a new item.</div> " ).insertAfter('#title');
 
-        }else{
+        } else {
           if (typenow == 'post'){
             return;
+          } else if ( typenow == 'department_page' ) {
+            $('#title').rules('add', {
+              maxlength: 144
+            });
+          } else {
+            $('#title').rules('add', {
+              maxlength: 72
+            });
           }
-          $('#title').rules('add', {
-            maxlength: 72
-          });
         }
       }
       // Set validations for custom post type Service Page
