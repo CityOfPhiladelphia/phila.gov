@@ -13,21 +13,33 @@ function get_related_content( $post_id ) {
     array_push( $cat_ids, $cat->cat_ID );
   }
   $cat_id_string = implode( ', ', $cat_ids );
-  $template_type = phila_get_selected_template( $post_id );
+  $template_type = rwmb_meta( 'phila_template_select', $args = array(), $post_id );
+  if ($template_type == 'translated_press_release' || $template_type == 'translated_press_release' ) {
+    $templates = ['translated_press_release', 'press_release'];
+  } else if ($template_type == 'translated_post' || $template_type == 'post' ) {
+    $templates = ['translated_post', 'post'];
+  }
 
-  $related_content_args = array(
-    'post_type' => $related_post_type,
-    'category__and' => array($cat_id_string),
-    'posts_per_page'  => 4,
-    'post__not_in'  => array($post_id),
-    // 'meta_query' => array(
-    //   array(
-    //     'key'     => 'phila_template_select',
-    //     'value'   => $template_type,
-    //     'compare' => '=',
-    //   ),
-    // ),
-  );
+  if ($templates) {
+    $related_content_args = array(
+      'post_type' => $related_post_type,
+      'category__and' => array($cat_id_string),
+      'post__not_in'  => array($post_id),
+      'meta_query' => array(
+        array(
+          'key'     => 'phila_template_select',
+          'value'   => $templates,
+          'compare' => 'IN',
+        ),
+      ),
+    );
+  } else {
+    $related_content_args = array(
+      'post_type' => $related_post_type,
+      'category__and' => array($cat_id_string),
+      'post__not_in'  => array($post_id),
+    );
+  }
 
   $related_posts = new WP_Query( $related_content_args );
 
