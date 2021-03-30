@@ -421,7 +421,11 @@ class Phila_Archives_Controller {
     }
 
     if (isset( $schema['properties']['featured_image'] )) {
-      $post_data['featured_image'] = (string) the_post_thumbnail_url( $post->ID );
+      $post_data['featured_image'] = (string) wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' );
+    }
+
+    if (isset( $schema['properties']['related_content'] )) {
+      $post_data['related_content'] = (array) get_related_content( $post->ID );
     }
 
     return rest_ensure_response( $post_data );
@@ -462,6 +466,90 @@ class Phila_Archives_Controller {
    * @param WP_REST_Request $request Current request.
    */
   public function get_item_schema( $request ) {
+    if ($request['get_related_content'] && $request['get_related_content'] == true) {
+      $schema = array(
+        // This tells the spec of JSON Schema we are using which is draft 4.
+        '$schema'              => 'http://json-schema.org/draft-04/schema#',
+        // The title property marks the identity of the resource.
+        'title'                => 'post',
+        'type'                 => 'object',
+        // Specify object properties in the properties attribute.
+        'properties'           => array(
+          'id' => array(
+            'description'  => esc_html__( 'Unique identifier for the object.', 'phila-gov' ),
+            'type'         => 'integer',
+            'context'      => array( 'view', 'edit', 'embed' ),
+            'readonly'     => true,
+          ),
+          'title'=> array(
+            'description'  => esc_html__( 'Title of the object.', 'phila-gov' ),
+            'type'         => 'string',
+            'readonly'     => true,
+          ),
+          'template'  => array(
+            'description' => esc_html__('The template this object is using.', 'phila-gov'),
+            'type'  => 'string',
+          ),
+          'date'  => array(
+            'description' => esc_html__('The date this object was published.', 'phila-gov'),
+            'type'  => 'string',
+          ),
+          'link'  => array(
+            'description' => esc_html__('The permalink for this object.', 'phila-gov'),
+            'type'  => 'string',
+          ),
+          'language'  => array(
+            'description' => esc_html__('The language this post is in.', 'phila-gov'),
+            'type'  => 'string',
+          ),
+          'tags'  => array(
+            'description' => esc_html__('The tags assigned to this object.', 'phila-gov'),
+            'type'  => 'array',
+          ),
+          'categories'  => array(
+            'description' => esc_html__('The categories assigned to this object.', 'phila-gov'),
+            'type'  => 'array',
+          ),
+          'translated_content'  => array(
+            'description' => esc_html__('The translated content of this post.', 'phila-gov'),
+            'type'  => 'array',
+          ),
+          'translated_options'  => array(
+            'description' => esc_html__('The translated content of this post.', 'phila-gov'),
+            'type'  => 'array',
+          ),
+          'posted_on_values'  => array(
+            'description' => esc_html__('The post info.', 'phila-gov'),
+            'type'  => 'array',
+          ),
+          'department'  => array(
+            'description' => esc_html__('The department owner of this post.', 'phila-gov'),
+            'type'  => 'array',
+          ),
+          'post_read_cta'  => array(
+            'description' => esc_html__('The post read cta.', 'phila-gov'),
+            'type'  => 'object',
+          ),
+          'press_release_date'  => array(
+            'description' => esc_html__('The press release release date.', 'phila-gov'),
+            'type'  => 'string',
+          ),
+          'contact_information'  => array(
+            'description' => esc_html__('The press release contact information.', 'phila-gov'),
+            'type'  => 'object',
+          ),
+          'featured_image'  => array(
+            'description' => esc_html__('The post featured image.', 'phila-gov'),
+            'type'  => 'string',
+          ),
+          'related_content'  => array(
+            'description' => esc_html__('The related posts.', 'phila-gov'),
+            'type'  => 'object',
+          ),
+        ),
+      ); 
+      return $schema;
+    }
     $schema = array(
       // This tells the spec of JSON Schema we are using which is draft 4.
       '$schema'              => 'http://json-schema.org/draft-04/schema#',
