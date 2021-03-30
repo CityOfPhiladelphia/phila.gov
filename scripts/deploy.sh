@@ -44,7 +44,7 @@ echo 'Installing private plugins'
 fi
 
 echo 'Reloading php-fpm'
-sudo service php7.4-fpm reload
+sudo service php7.2-fpm reload
 
 echo 'Refreshing WordPress'
 wp rewrite flush
