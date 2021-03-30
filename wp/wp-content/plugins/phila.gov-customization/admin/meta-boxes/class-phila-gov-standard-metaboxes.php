@@ -1584,6 +1584,11 @@ public static function phila_post_read_cta(){
     'sort'  => true,
     'max_clone' => 2,
     'desc'  => 'Blogs engage readers by asking them to take action after reading a post. Use this area to encourage your readers to do something next.',
+    'hidden' => array(
+      'when'  =>  array(
+        array('phila_template_select', '=', 'translated_press_release'),
+      ),
+    ),
     'fields' => array(
       array(
         'type'=> 'custom_html',
