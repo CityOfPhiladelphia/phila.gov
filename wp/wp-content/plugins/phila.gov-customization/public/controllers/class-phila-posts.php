@@ -4,18 +4,30 @@ class Phila_Archives_Controller {
 
   // Initialize the namespace and resource name.
   public function __construct() {
-    $this->namespace     = 'the-latest/v1';
-    $this->resource_name = 'archives';
-    $this->category_resource = 'categories';
+    $this->namespace            = 'the-latest/v1';
+    $this->resource_name        = 'archives';
+    $this->resource_name_small  = 'archives-small';
+    $this->category_resource    = 'categories';
+    $this->namespace_v2         = 'the-latest/v2';
   }
 
   // Register our routes.
   public function register_routes() {
-  // Register the endpoint for collections.
+    // Register the endpoint for collections.
     register_rest_route( $this->namespace, '/' . $this->resource_name, array(
       array(
         'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_items' ),
+        'permission_callback' => '__return_true',
+      ),
+      'schema' => array( $this, 'get_item_schema' ),
+    ) );
+
+    // Register the endpoint for large collections of minute details.
+    register_rest_route( $this->namespace_v2, '/' . $this->resource_name, array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_items_v2' ),
         'permission_callback' => '__return_true',
       ),
       'schema' => array( $this, 'get_item_schema' ),
@@ -258,6 +270,163 @@ class Phila_Archives_Controller {
     return rest_ensure_response( $data );
   }
 
+
+  /**
+   * Get the 40 latest posts within the "archives" umbrella
+   *
+   * @param WP_REST_Request $request Current request.
+  */
+  public function get_items_v2( $request ) {
+    $post_type = isset( $request['post_type'] ) ? array( $request['post_type']) : array('post', 'phila_post', 'press_release', 'news_post');
+
+    $count = isset( $request['count'] ) ? $request['count'] : '40';
+
+    if ( isset( $request['template'] ) ) {
+      $template = $request['template'] ;
+      switch($template) {
+        case 'featured':
+          $posts_args = array(
+            'post_type' => array('post', 'news_post'),
+            'meta_query'  => array(
+              'relation'  => 'OR',
+              array(
+                'key' => 'phila_show_on_home',
+                'value' => '1',
+                'compare' => '=',
+              ),
+              array(
+                'relation'  => 'AND',
+                array(
+                  'key' => 'phila_is_feature',
+                  'value' => '1',
+                  'compare' => '=',
+                ),
+              ),
+            ),
+          );
+          $query_defaults = $this->set_query_defaults($request);
+          $full_query = array_merge($query_defaults, $posts_args);
+          $posts = get_posts( $full_query );
+          break;
+        case 'post':
+          $old_args = array(
+            'post_type' => array('phila_post'),
+          );
+          $new_args = array(
+            'post_type' => array('post'),
+            'meta_query'  => array(
+                array(
+                  'key' => 'phila_template_select',
+                  'value' => 'post',
+                  'compare' => '=',
+              ),
+            ),
+          );
+          // special handling for old phila_post CPT
+          $query_defaults_old = $this->set_query_defaults($request);
+          $full_query_old = array_merge($query_defaults_old, $old_args);
+
+          $query_defaults_new = $this->set_query_defaults($request);
+          $full_query_new = array_merge($query_defaults_new, $new_args);
+
+          $posts_old = get_posts( $full_query_old );
+          $posts_new = get_posts( $full_query_new );
+
+          $posts = array();
+          $posts = array_merge( $posts_new, $posts_old );
+          break;
+
+        case 'press_release' :
+          $old_args  = array(
+            'post_type' => array( 'press_release' ),
+          );
+          $new_args  = array(
+            'post_type' => array( 'post' ),
+            'meta_query'  => array(
+              array(
+                'key' => 'phila_template_select',
+                'value' => 'press_release',
+                'compare' => '=',
+              ),
+            ),
+          );
+
+          $query_defaults_old = $this->set_query_defaults($request);
+          $full_query_old = array_merge($query_defaults_old, $old_args);
+
+          $query_defaults_new = $this->set_query_defaults($request);
+          $full_query_new = array_merge($query_defaults_new, $new_args);
+
+          $press_old = get_posts( $full_query_old );
+          $press_new = get_posts( $full_query_new );
+
+          $posts = array();
+          $posts = array_merge( $press_new, $press_old );
+        break;
+        case 'action_guide':
+          $ac_arg = array(
+            'post_type' => array('post'),
+            'meta_query'  => array(
+              array(
+                'key' => 'phila_template_select',
+                'value' => 'action_guide',
+                'compare' => '=',
+              ),
+            ),
+          );
+          $query_defaults = $this->set_query_defaults($request);
+          $full_query = array_merge($query_defaults, $ac_arg);
+          $posts = get_posts( $full_query );
+      }
+    } else if ( isset( $request['language'] ) ) {
+      $args = array(
+        'posts_per_page'=> $request['count'],
+        'post_parent' => 0,
+        'post_type' => array('post', 'phila_post', 'press_release', 'news_post'),
+        'orderby' => 'title',
+        'order' => 'asc',
+        'meta_query' => array(
+          array(
+              'key' => 'translated_options',
+              'value' => array ( $request['language'] ),
+              'compare' => 'IN'
+          )
+        )
+      );
+      $query_defaults = $this->set_query_defaults($request);
+      $args = array_merge($query_defaults, $args);
+
+      $posts = get_posts( $args );
+    } else{
+      $args = array(
+        'post_type' => $post_type,
+      );
+      $query_defaults = $this->set_query_defaults($request);
+      $args = array_merge($query_defaults, $args);
+
+      $posts = get_posts( $args );
+    }
+
+    $data = array();
+
+    if ( empty( $posts ) ) {
+      return rest_ensure_response( $data );
+    }
+
+    foreach ( $posts as $post ) {
+      $response = $this->prepare_v2_item_for_response( $post, $request );
+
+      $data[] = $this ->prepare_response_for_collection( $response );
+    }
+
+    // Return all response data.
+    return rest_ensure_response( $data );
+  }
+
+
+
+
+
   /**
    * Outputs category data
    *
@@ -387,10 +556,14 @@ class Phila_Archives_Controller {
 
     if (isset( $schema['properties']['translated_content'] )) {
       $translated_content = rwmb_meta( 'phila_v2_translated_content', array(), $post->ID );
+      
       foreach ($translated_content as $key => $value) {
-        $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content'] = apply_filters('the_content', $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content']);
+          // if ($translated_content[$key] && $translated_content[$key]['phila_custom_wysiwyg'] && $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content']) {
+          if(!empty($value["phila_custom_wysiwyg"])) {
+            $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content'] =  apply_filters('the_content', $value['phila_custom_wysiwyg']['phila_wysiwyg_content']);
+          }
+        // }
       }
-
       $post_data['translated_content']  = (array) $translated_content;
     }
 
@@ -426,6 +599,95 @@ class Phila_Archives_Controller {
 
     if (isset( $schema['properties']['related_content'] )) {
       $post_data['related_content'] = (array) get_related_content( $post->ID );
+    }
+
+    return rest_ensure_response( $post_data );
+}
+
+
+  /**
+   * Matches the post data to the schema. Also, rename the fields to nicer names.
+   *
+   * @param WP_Post $post The comment object whose response is being prepared.
+   */
+
+  public function prepare_v2_item_for_response( $post, $request ) {
+    $post_data = array();
+
+    $schema = $this->get_item_schema( $request );
+
+    if ( isset( $schema['properties']['id'] ) ) {
+        $post_data['id'] = (int) $post->ID;
+    }
+
+    if (isset( $schema['properties']['title'] )) {
+      $post_data['title']  =  (string) html_entity_decode($post->post_title);
+    }
+
+    if (isset( $schema['properties']['template'] )) {
+      $post_data['template']  = (string) phila_get_selected_template($post->ID);
+    }
+
+    if (isset( $schema['properties']['date'] )) {
+      $post_data['date']  = (string) $post->post_date;
+    }
+
+    if (isset( $schema['properties']['link'] )) {
+      if ($post->post_type == 'phila_post'){
+
+        $date = get_the_date('Y-m-d', $post->ID);
+        $url = get_permalink($post->ID);
+        $pattern = '/-';
+        $replacement = '/' . $date . '-';
+
+        $new_url = str_replace( $pattern, $replacement, $url );
+        $parsed_link = parse_url($new_url);
+
+        $post_data['link']  = (string) $parsed_link['path'];
+      }else{
+        $link = get_permalink($post->ID);
+        $parsed_link = parse_url($link);
+        $post_data['link']  = (string) $parsed_link['path'] ;
+      }
+    }
+
+    if (isset( $schema['properties']['tags'] )) {
+      $tags = get_the_tags($post->ID);
+
+      $post_data['tags']  = (array) $tags;
+    }
+
+    if (isset( $schema['properties']['language'] )) {
+      $language = rwmb_meta('phila_select_language', '', $post->ID);
+      if ( empty( $language ) ) { # set the default lang to account for items made before this feature existed.
+        $language = 'english';
+      }
+      $post_data['language']  = (string) $language;
+    }
+
+    if (isset( $schema['properties']['categories'] )) {
+      $categories = get_the_category($post->ID);
+
+      foreach ($categories as $category){
+          $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name );
+
+          $category->slang_name = html_entity_decode(trim($trimmed_name));
+      }
+
+      $post_data['categories']  = (array) $categories;
+    }
+
+    if (isset( $schema['properties']['translated_content'] )) {
+      $translated_content = rwmb_meta( 'phila_v2_translated_content', array(), $post->ID );
+      
+      foreach ($translated_content as $key => $value) {
+          // if ($translated_content[$key] && $translated_content[$key]['phila_custom_wysiwyg'] && $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content']) {
+          if(!empty($value["phila_custom_wysiwyg"])) {
+            $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content'] =  apply_filters('the_content', $value['phila_custom_wysiwyg']['phila_wysiwyg_content']);
+          }
+        // }
+      }
+      $post_data['translated_content']  = (array) $translated_content;
     }
 
     return rest_ensure_response( $post_data );
