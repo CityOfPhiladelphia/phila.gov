@@ -398,9 +398,9 @@ class Phila_Archives_Controller {
       $post_data['translated_options']  = (array) rwmb_meta( 'translated_options', array(), $post->ID );
     }
 
-    if (isset( $schema['properties']['posted_on_values'] )) {
-      $post_data['posted_on_values']  = (object) phila_get_posted_on( $post->ID );
-    }
+    // if (isset( $schema['properties']['posted_on_values'] )) {
+    //   $post_data['posted_on_values']  = (object) phila_get_posted_on( $post->ID );
+    // }
 
     if (isset( $schema['properties']['department'] )) {
       $category = get_the_category( $post->ID );
