@@ -11,7 +11,7 @@ if test -f "$FILE"; then
 			'host'     => '$DB_HOST',
 			'user'     => '$DB_USER',
 			'password' => '$DB_PASS',
-			'name'     => wp,
+			'name'     => 'wp',
 			'write'    => 1,
 			'read'     => 0,
 		) );
@@ -22,7 +22,7 @@ if test -f "$FILE"; then
 			'host'     => '$REPLICA_DB_HOST',
 			'user'     => '$DB_USER',
 			'password' => '$DB_PASS',
-			'name'     => wp,
+			'name'     => 'wp',
 			'write'    => 0,
 			'read'     => 1,
 		));
