@@ -30,20 +30,20 @@
         $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $stub_id );
 
         switch ($user_selected_template) {
-          case 'phila_one_quarter':
-            include(locate_template( 'partials/departments/v2/content-one-quarter.php' ) );
-            break; 
           case 'collection_page_v2':
             include(locate_template( 'partials/departments/v2/collection-page.php' )); 
             break;
           case 'document_finder_v2':
             include(locate_template( 'partials/departments/v2/document-finder.php' ));
             break;
-          case 'resource_list_v2':
-            include(locate_template( 'partials/resource-list.php'));
-            break;
+          case 'phila_one_quarter':
+            include(locate_template( 'partials/departments/v2/content-one-quarter.php' ) );
+            break; 
           case 'prog_association':
             include(locate_template( 'partials/departments/content-programs-initiatives.php' ) );
+            break;
+          case 'resource_list_v2':
+            include(locate_template( 'partials/resource-list.php'));
             break;
         }
         include(locate_template( 'partials/content-additional.php' ) ); 
