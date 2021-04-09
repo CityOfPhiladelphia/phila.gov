@@ -1281,6 +1281,25 @@ function phila_get_selected_template( $post_id = null, $modify_response = true )
   return $user_selected_template;
 }
 
+
+/**
+ * Returns true or false depending on if a post is featured or not
+ *
+ **/
+
+function phila_is_featured( $post_id = null ){
+
+  $featured = false;
+  $old_feature = get_post_meta( $post_id, 'phila_show_on_home', true);
+  $new_feature = get_post_meta( $post_id, 'phila_is_feature', true );
+
+  if ( $old_feature != 0 || $new_feature != 0  ){
+    $featured = true;
+  }
+
+  return $featured;
+}
+
 /**
  * Do the math to determine the correct column span for X items on a 24 column grid.
  *

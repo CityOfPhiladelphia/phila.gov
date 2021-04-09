@@ -119,6 +119,7 @@ class Phila_Archives_Controller {
     if ( isset( $request['template'] ) ) {
       $template = $request['template'] ;
       switch($template) {
+        
         case 'featured':
           $posts_args = array(
             'post_type' => array('post', 'news_post'),
@@ -313,6 +314,10 @@ class Phila_Archives_Controller {
       $post_data['template']  = (string) phila_get_selected_template($post->ID);
     }
 
+    if (isset( $schema['properties']['featured'] )) {
+      $post_data['featured']  = (string) phila_is_featured($post->ID);
+    }
+
     if (isset( $schema['properties']['author'] )) {
       $post_data['author']  = (string) $post->author_name;
     }
@@ -425,6 +430,10 @@ class Phila_Archives_Controller {
         ),
         'template'  => array(
           'description' => esc_html__('The template this object is using.', 'phila-gov'),
+          'type'  => 'string',
+        ),
+        'featured'  => array(
+          'description' => esc_html__('Boolean that returns true if object is featured', 'phila-gov'),
           'type'  => 'string',
         ),
         'date'  => array(
