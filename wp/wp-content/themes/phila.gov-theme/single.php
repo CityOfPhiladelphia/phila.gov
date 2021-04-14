@@ -5,6 +5,10 @@
  * @package phila-gov
  */
 
+include(locate_template('partials/errors/post-errors.php'));
+
+include(locate_template('partials/errors/error-message.php'));
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
