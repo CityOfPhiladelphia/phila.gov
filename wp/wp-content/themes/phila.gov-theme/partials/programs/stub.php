@@ -45,6 +45,9 @@
           case 'resource_list_v2':
             include(locate_template( 'partials/resource-list.php'));
             break;
+          case 'timeline':
+            get_template_part( 'partials/departments/v2/homepage_timeline' );
+            break;
         }
         include(locate_template( 'partials/content-additional.php' ) ); 
         ?>
