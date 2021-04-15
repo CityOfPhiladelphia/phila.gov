@@ -77,7 +77,7 @@ $row_content = rwmb_meta('collection_row');?>
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
           </div>
           <div class="columns medium-18 pbxl">
-            <div class="row fat-gutter">
+            <div class="row fat-gutter program-card-row">
               <?php foreach( $current_row['program_pages']['phila_select_programs'] as $program_page ) : ?>
                 <div class="medium-12 columns end mbl">
                   <?php $off_site = rwmb_meta('prog_off_site_link', $args = array(), $post_id =  $program_page); ?>
