@@ -946,7 +946,7 @@ function page_attributes_meta_box( $post ) {
 			'selected'         => $post->post_parent,
 			'name'             => 'parent_id',
 			'show_option_none' => __( '(no parent)' ),
-			'sort_column'      => 'menu_order, post_title',
+			'sort_column'      => 'post_title, menu_order',
 			'echo'             => 0,
 		);
 
