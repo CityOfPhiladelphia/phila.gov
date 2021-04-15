@@ -245,6 +245,7 @@ function phila_register_tax_detail_meta_boxes( $meta_boxes ){
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg_address(),
           array(
             'name' => 'Steps in payment process',
+            'desc'  => 'A minimum of 2 steps are required for this section',
             'type'  => 'heading',
           ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content()
