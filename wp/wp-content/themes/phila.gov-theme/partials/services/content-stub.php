@@ -30,6 +30,7 @@ if ( null !== rwmb_meta( 'phila_stub_source' ) ) :
 
       elseif ($source_template == 'start_process') : 
         get_template_part('partials/services/content', 'start-process'); 
+        get_template_part('partials/content', 'default'); 
     
       elseif ($source_template == 'vue_app') : 
         get_template_part('partials/services/content', 'vue-app'); 
