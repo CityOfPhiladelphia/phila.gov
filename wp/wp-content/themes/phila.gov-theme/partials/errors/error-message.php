@@ -10,9 +10,14 @@
           <ul class="phila-error-list">
             <?php foreach ($error_messages as $message) { ?>
               <li class="phila-error-item">
-                <a href="<?php echo $message['link'] ?>" target="_blank">
+                <?php if($message['link']) { ?>
+                  <a href="<?php echo $message['link'] ?>" target="_blank">
+                    <?php echo $message['text'] ?>
+                  </a>
+                <?php } else { ?>
                   <?php echo $message['text'] ?>
-                </a>
+                <?php } ?>
+                
               </li>
             <?php } ?>
           </ul>
