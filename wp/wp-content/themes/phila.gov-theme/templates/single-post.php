@@ -12,6 +12,7 @@ $post_type = get_post_type();
 $post_obj = get_post_type_object( $post_type );
 $post_id = get_the_id();
 $template_type = phila_get_selected_template();
+$featured = phila_is_featured( $post_id );
 $last_updated = rwmb_meta('is_last_updated');
 $last_updated_date = rwmb_meta('last_updated_date');
 $date_formatted = new DateTime($last_updated_date);

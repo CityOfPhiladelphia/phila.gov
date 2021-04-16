@@ -12,12 +12,13 @@ $holidays = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'p
 $is_holiday = false;
 foreach ( $holidays as $holiday ) {
   $today = new DateTime();
+  $today->setTime(0, 0, 0, 0);
   $holiday_date = new DateTime($holiday['start_date']);
+  $holiday_date->setTime(0, 0, 0, 0);
   $end_date = clone $holiday_date;
-  if ($today->format('N') <= 4) {
+  if ($today->format('N') <= 4 && $holiday_date->format('N') != 5 && $holiday_date->format('N') != 6 && $holiday_date->format('N') != 7 ) {
     $end_date->modify('next friday');
   }
-
   if (( $today >= $holiday_date) && ($today <= $end_date) && (date('N') <= 5)){
     $is_holiday = true;
   }
