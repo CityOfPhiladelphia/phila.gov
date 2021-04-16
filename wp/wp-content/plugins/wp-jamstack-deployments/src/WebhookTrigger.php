@@ -87,7 +87,6 @@ class WebhookTrigger
         if (!self::canFireForTaxonomy($id, $tax_id, $tax_slug)) {
             return;
         }
-
         self::fireWebhook();
     }
 
@@ -270,7 +269,6 @@ class WebhookTrigger
         if (!in_array(get_post_status($id), $statuses, true)) {
             return;
         }
-
         self::fireWebhook();
     }
 
@@ -297,6 +295,8 @@ class WebhookTrigger
     public static function fireWebhook()
     {
         global $post;
+        $status = get_post_status($post->id);
+
         $webhook = jamstack_deployments_get_webhook_url();
 
         if (!$webhook) {
@@ -320,15 +320,27 @@ class WebhookTrigger
         }
 
         $webhook = $webhook.'/'.$post->ID.'/'.$post_type.'/'.$post->post_name;
-        $args = array(
-            'method' => 'POST',
-            'headers'  => array(
-                'Content-type: application/json;charset=utf-8',
-                'Accept: application/json',
-            ),
-            'body' => array(
-            )
-        );
+        if ( $status != 'trash' ) {
+            $args = array(
+                'method' => 'POST',
+                'headers'  => array(
+                    'Content-type: application/json;charset=utf-8',
+                    'Accept: application/json',
+                ),
+                'body' => array(
+                )
+            );
+        } else {
+            $args = array(
+                'method' => 'DELETE',
+                'headers'  => array(
+                    'Content-type: application/json;charset=utf-8',
+                    'Accept: application/json',
+                ),
+                'body' => array(
+                )
+            );
+        }
 
         do_action('jamstack_deployments_before_fire_webhook');
         
