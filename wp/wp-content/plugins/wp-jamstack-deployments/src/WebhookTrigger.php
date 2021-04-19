@@ -346,7 +346,6 @@ class WebhookTrigger
         if ($method === 'get') {
             $return = wp_safe_remote_get($webhook, $args);
         } else {
-            var_dump('wow1');
             $return = wp_safe_remote_post($webhook, $args);
         }
         do_action('jamstack_deployments_after_fire_webhook');
