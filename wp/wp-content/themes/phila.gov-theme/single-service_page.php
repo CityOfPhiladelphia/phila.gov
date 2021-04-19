@@ -57,70 +57,33 @@
               <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
             </header>
             <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
-            <?php if ($user_selected_template == 'tax_detail') : ?>
-              <?php get_template_part('partials/services/content', 'tax-detail');?>
+            <?php if ($user_selected_template == 'tax_detail') : 
+              get_template_part('partials/services/content', 'tax-detail');
             
-            <?php elseif ($user_selected_template == 'start_process') : ?>
-              <?php get_template_part('partials/services/content', 'start-process');?>
-              <?php get_template_part('partials/content', 'default'); ?>
+              elseif ($user_selected_template == 'start_process') : 
+                get_template_part('partials/services/content', 'start-process');
+                get_template_part('partials/content', 'default'); 
 
-            <?php elseif ($user_selected_template == 'vue_app') : ?>
-              <?php get_template_part('partials/services/content', 'vue-app');?>
+              elseif ($user_selected_template == 'vue_app') : 
+                get_template_part('partials/services/content', 'vue-app');
 
-            <?php elseif ($user_selected_template == 'default_v2') :?>
-              <?php get_template_part('partials/services/content', 'default-v2'); ?>
+              elseif ($user_selected_template == 'default_v2') :
+                get_template_part('partials/services/content', 'default-v2'); 
+              
+              elseif ($user_selected_template == 'custom_content') :
+                include( locate_template( 'partials/content-basic.php' ) ); 
+                include( locate_template( 'partials/departments/content-programs-initiatives.php' ) ); 
             
-            <?php elseif ($user_selected_template == 'custom_content') :?>
-              <?php include( locate_template( 'partials/content-basic.php' ) ); ?>
-              <?php include( locate_template( 'partials/departments/content-programs-initiatives.php' ) ); ?>
-            
-            <!-- Service Stub  -->
-            <?php elseif ($user_selected_template == 'service_stub') : ?>
-              <?php if ( null !== rwmb_meta( 'phila_stub_source' ) ) : ?>
-                <?php $stub_source = rwmb_meta( 'phila_stub_source' );?>
-                <?php $post_id = intval( $stub_source );?>
+            ?> <!-- Service Stub  --> <?php
+              elseif ($user_selected_template == 'service_stub') : 
+                get_template_part('partials/services/content', 'stub'); 
+              elseif ($user_selected_template == 'topic_page'):
+                get_template_part('partials/services/content', 'topic-page'); 
 
-                  <?php $stub_args = array(
-                    'p' => $post_id,
-                    'post_type' => 'service_page'
-                    ); ?>
+              else : 
+                get_template_part('partials/content', 'default'); 
 
-                  <?php $stub_post = new WP_Query($stub_args); ?>
-                  <?php if ( $stub_post->have_posts() ): ?>
-                    <?php while ( $stub_post->have_posts() ) : ?>
-                      <?php $stub_post->the_post(); ?>
-                      <?php $source_template =  rwmb_meta( 'phila_template_select'); ?>
-                        <?php if ($source_template == 'default_v2') :?>
-                          <?php get_template_part('partials/services/content', 'default-v2'); ?>
-
-                        <?php elseif ($source_template == 'default') : ?>
-                          <?php get_template_part('partials/content', 'default'); ?>
-
-                        <?php elseif ($source_template == 'tax_detail') : ?>
-                          <?php get_template_part('partials/services/content', 'tax-detail'); ?>
-
-                        <?php elseif ($source_template == 'topic_page') : ?>
-                          <?php get_template_part('partials/services/content', 'topic-page'); ?>
-
-                        <?php elseif ($source_template == 'start_process') : ?>
-                          <?php get_template_part('partials/services/content', 'start-process'); ?>
-                        
-                        <?php elseif ($source_template == 'vue_app') : ?>
-                          <?php get_template_part('partials/services/content', 'vue-app'); ?>
-
-                        <?php endif; ?>
-                      <?php endwhile; ?>
-                    <?php endif; ?>
-                    <?php wp_reset_query(); ?>
-                  <?php endif; ?>
-                  <!-- END Service Stub -->
-                <?php elseif ($user_selected_template == 'topic_page'):?>
-                  <?php get_template_part('partials/services/content', 'topic-page'); ?>
-
-                <?php else : ?>
-                  <?php get_template_part('partials/content', 'default'); ?>
-
-              <?php endif; ?>
+              endif; ?>
               </div>
             </article>
           </div>
