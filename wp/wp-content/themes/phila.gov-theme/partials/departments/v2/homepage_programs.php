@@ -22,7 +22,7 @@
   </div>
   <div class="row">
     <div class="columns">
-      <div class="row fat-gutter">
+      <div class="row fat-gutter program-card-row">
         <?php foreach( $cards as $card ) : ?>
           <?php $template = phila_get_selected_template( $card ); ?>
           <div class="<?php echo count($cards) == 1  ? '' : 'medium-8'?> columns end mbl">
