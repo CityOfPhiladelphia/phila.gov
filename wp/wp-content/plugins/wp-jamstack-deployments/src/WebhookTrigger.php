@@ -308,7 +308,6 @@ class WebhookTrigger
         }
 
         $method = jamstack_deployments_get_webhook_method();
-
         if(isset( $post->post_type )) {
             $post_type = $post->post_type;
             if ($post->post_type == 'department_page' ) {
@@ -347,6 +346,7 @@ class WebhookTrigger
         if ($method === 'get') {
             $return = wp_safe_remote_get($webhook, $args);
         } else {
+            var_dump('wow1');
             $return = wp_safe_remote_post($webhook, $args);
         }
         do_action('jamstack_deployments_after_fire_webhook');
