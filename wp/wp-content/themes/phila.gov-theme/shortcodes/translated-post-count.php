@@ -1,8 +1,8 @@
 <?php
 /**
 *
-* Shortcode for displaying filtered press releases
-* @param @atts - conditionally add table wrapper, default false
+* Shortcode for displaying post count by language 
+* @param @atts - language of post to count
 *
 * @package phila-gov_customization
 */
