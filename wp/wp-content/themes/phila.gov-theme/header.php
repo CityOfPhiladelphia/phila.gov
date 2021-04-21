@@ -16,6 +16,7 @@
   <meta name="description" content="<?php echo ( is_archive() || is_search() || is_home() ) ? get_bloginfo('description') : phila_get_item_meta_desc(); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#2176d2">
+  <meta name="facebook-domain-verification" content="a0t35pecrjiy8ly0weq7bzyb419o42">
 
   <!-- Swiftype -->
   <meta class="swiftype" name="title" data-type="string" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) ); ?>">
