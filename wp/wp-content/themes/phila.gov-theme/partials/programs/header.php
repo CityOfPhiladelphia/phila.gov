@@ -28,13 +28,13 @@
       }
     }
   endif;
-  var_dump('association: '.$association);
   if ( isset( $association )) {
     $parent = wp_get_post_parent_id($post);
     $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $parent);
     $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
     $sub_heading = rwmb_meta('prog_sub_head', array(), $parent);
   }
+  var_dump('$sub_hero: '.$sub_hero);
 
   $owner = rwmb_meta( 'phila_program_owner_logo', array( 'limit' => 1 ) );
   $owner = !empty($owner) ? reset($owner) : '';
