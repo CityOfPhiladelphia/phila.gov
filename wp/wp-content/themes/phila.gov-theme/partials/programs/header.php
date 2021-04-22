@@ -15,13 +15,16 @@
   if ( !empty( $sub_hero ) ):
     $sub_hero = reset( $sub_hero );
   else:
-    // foreach is ordered closest ancestor to further ancestor
+    // foreach is ordered closest ancestor to further ancestor   prog_header_img_sub
     foreach($ancestors as $ancestor_id) {
       if (empty( $sub_hero )) {
-        $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $ancestor_id);
-        $ancestor_title = get_the_title($ancestor_id);
-      } else {
-        $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
+        if(!next($ancestors)) {
+          $sub_hero = rwmb_meta( 'prog_header_img_sub', array( 'limit' => 1 ), $ancestor_id);
+          $ancestor_title = get_the_title($ancestor_id);
+        } else {
+          $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $ancestor_id);
+          $ancestor_title = get_the_title($ancestor_id);
+        }
       }
     }
   endif;
@@ -43,7 +46,6 @@
 ?>
 <header>
   <?php if ( !empty( $ancestors ) ) : ?>
-    <?php var_dump($sub_hero); ?>
     <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']  ?>) ">
       <div class="grid-container pvxl">
         <div class="grid-x center">
