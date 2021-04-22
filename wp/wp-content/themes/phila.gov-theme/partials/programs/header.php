@@ -20,9 +20,11 @@
       if (empty( $sub_hero )) {
         if(!next($ancestors)) {
           $sub_hero = rwmb_meta( 'prog_header_img_sub', array( 'limit' => 1 ), $ancestor_id);
+          $sub_hero = $sub_hero[0];
           $ancestor_title = get_the_title($ancestor_id);
         } else {
           $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $ancestor_id);
+          $sub_hero = $sub_hero[0];
           $ancestor_title = get_the_title($ancestor_id);
         }
       }
@@ -42,7 +44,6 @@
   $description = rwmb_meta( 'phila_meta_desc' );
 
   $current_post_type = get_post_type($post->ID);
-  var_dump($sub_hero['full_url']);
 ?>
 <header>
   <?php if ( !empty( $ancestors ) ) : ?>
