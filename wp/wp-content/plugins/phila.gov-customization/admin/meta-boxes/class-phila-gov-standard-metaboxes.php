@@ -267,7 +267,7 @@ class Phila_Gov_Standard_Metaboxes {
         ),
         'field_type'  => 'select_advanced'
       ),
-      Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link override', 'override_url', '', 12 ),
+      Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link override', 'override_url', '', 12, 'url' ),
     );
   }
 
@@ -757,11 +757,11 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_metabox_url( $name, $id, $desc = null, $columns = '12' ){
+  public static function phila_metabox_url( $name, $id, $desc = null, $columns = '12', $type = 'text' ){
     return array(
       'name'  => $name,
       'id'    => $id,
-      'type'  => 'text',
+      'type'  => $type,
       'class' => 'metabox-url',
       'desc'  => $desc,
       'columns' => $columns,
