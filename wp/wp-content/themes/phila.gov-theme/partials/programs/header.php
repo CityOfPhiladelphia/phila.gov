@@ -28,7 +28,7 @@
       }
     }
   endif;
-
+  var_dump('association: '.$association);
   if ( isset( $association )) {
     $parent = wp_get_post_parent_id($post);
     $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $parent);
