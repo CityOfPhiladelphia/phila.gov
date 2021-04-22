@@ -43,10 +43,11 @@
   $description = rwmb_meta( 'phila_meta_desc' );
 
   $current_post_type = get_post_type($post->ID);
+  echo $sub_hero['full_url'];
 ?>
 <header>
   <?php if ( !empty( $ancestors ) ) : ?>
-    <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']  ?>) ">
+    <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']; ?>) ">
       <div class="grid-container pvxl">
         <div class="grid-x center">
           <div class="cell">
