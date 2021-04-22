@@ -371,6 +371,10 @@ class Phila_Programs_Controller {
       $post_data['translated_content']  = (array) $translated_content;
     }
 
+    if (isset( $schema['properties']['translated_options'] )) {
+      $post_data['translated_options']  = (array) rwmb_meta( 'translated_options', array(), $post->ID );;
+    }
+
     return rest_ensure_response( $post_data );
 }
 
@@ -458,6 +462,10 @@ class Phila_Programs_Controller {
           'type'  => 'string',
         ),
         'translated_content'  => array(
+          'description' => esc_html__('The translated content of this post.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'translated_options'  => array(
           'description' => esc_html__('The translated content of this post.', 'phila-gov'),
           'type'  => 'array',
         ),
