@@ -18,14 +18,19 @@
     // foreach is ordered closest ancestor to further ancestor
     foreach($ancestors as $ancestor_id) {
       if (empty( $sub_hero )) {
-        $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $ancestor_id);
+        if(!next($ancestors)) {
+          $sub_hero = rwmb_meta( 'prog_header_img_sub', array( 'limit' => 1 ), $ancestor_id);
+        } else {
+          $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $ancestor_id);
+        }
+        if ($sub_hero) {
+          $sub_hero = $sub_hero[0];
+        }
+        $sub_heading = rwmb_meta('prog_sub_head', array(), $ancestor_id);
         $ancestor_title = get_the_title($ancestor_id);
-      } else {
-        $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
       }
     }
   endif;
-
   if ( isset( $association )) {
     $parent = wp_get_post_parent_id($post);
     $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $parent);
@@ -43,7 +48,7 @@
 ?>
 <header>
   <?php if ( !empty( $ancestors ) ) : ?>
-    <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']  ?>) ">
+    <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']; ?>) ">
       <div class="grid-container pvxl">
         <div class="grid-x center">
           <div class="cell">
@@ -53,9 +58,7 @@
             <?php endif ?>
             <h1 <?php echo !empty($sub_heading) ? 'class="man"' : ''; ?>>
             <?php
-              if (!empty($sub_heading)) {
-                the_title();
-              } else if (isset($ancestor_title)) {
+              if (isset($ancestor_title)) {
                 echo $ancestor_title;
               } else if (isset($parent->post_title)) {
                 echo $parent->post_title;
