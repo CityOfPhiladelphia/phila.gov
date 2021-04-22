@@ -20,13 +20,14 @@
       if (empty( $sub_hero )) {
         if(!next($ancestors)) {
           $sub_hero = rwmb_meta( 'prog_header_img_sub', array( 'limit' => 1 ), $ancestor_id);
-          $sub_hero = $sub_hero[0];
-          $ancestor_title = get_the_title($ancestor_id);
         } else {
           $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $ancestor_id);
-          $sub_hero = $sub_hero[0];
-          $ancestor_title = get_the_title($ancestor_id);
         }
+        if ($sub_hero) {
+          $sub_hero = $sub_hero[0];
+        }
+        $sub_heading = rwmb_meta('prog_sub_head', array(), $ancestor_id);
+        $ancestor_title = get_the_title($ancestor_id);
       }
     }
   endif;
@@ -57,9 +58,7 @@
             <?php endif ?>
             <h1 <?php echo !empty($sub_heading) ? 'class="man"' : ''; ?>>
             <?php
-              if (!empty($sub_heading)) {
-                the_title();
-              } else if (isset($ancestor_title)) {
+              if (isset($ancestor_title)) {
                 echo $ancestor_title;
               } else if (isset($parent->post_title)) {
                 echo $parent->post_title;
