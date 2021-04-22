@@ -43,7 +43,6 @@
 ?>
 <header>
   <?php if ( !empty( $ancestors ) ) : ?>
-  <?php var_dump($sub_hero); ?>
     <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']  ?>) ">
       <div class="grid-container pvxl">
         <div class="grid-x center">
