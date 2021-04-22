@@ -34,7 +34,6 @@
     $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
     $sub_heading = rwmb_meta('prog_sub_head', array(), $parent);
   }
-  var_dump($sub_hero);
 
   $owner = rwmb_meta( 'phila_program_owner_logo', array( 'limit' => 1 ) );
   $owner = !empty($owner) ? reset($owner) : '';
@@ -43,7 +42,7 @@
   $description = rwmb_meta( 'phila_meta_desc' );
 
   $current_post_type = get_post_type($post->ID);
-  echo $sub_hero['full_url'];
+  var_dump($sub_hero['full_url']);
 ?>
 <header>
   <?php if ( !empty( $ancestors ) ) : ?>
