@@ -15,7 +15,7 @@
   if ( !empty( $sub_hero ) ):
     $sub_hero = reset( $sub_hero );
   else:
-    // foreach is ordered closest ancestor to further ancestor   prog_header_img_sub
+    // foreach is ordered closest ancestor to further ancestor
     foreach($ancestors as $ancestor_id) {
       if (empty( $sub_hero )) {
         if(!next($ancestors)) {
