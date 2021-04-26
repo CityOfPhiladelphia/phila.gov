@@ -19,7 +19,6 @@ function walk_ins_shortcode($atts, $content=null){
     'em'     => [],
     'strong' => [],
     'class' => [],
-    'p' => [],
   ];
 
   $output = '';
@@ -43,11 +42,8 @@ function walk_ins_shortcode($atts, $content=null){
 
     $output .=  wp_kses($content, $allowed_html) ;
         
-    if ($post_type === 'service_page'){
-      $output .= '</div></div></div>';
-    }else {
-      $output .= '</div></div></div></div>';
-    }
+    $output .= '</div></div></div>';
+
   
     return $output;
 
