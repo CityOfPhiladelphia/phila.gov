@@ -27,7 +27,6 @@
           $sub_hero = $sub_hero[0];
         }
         $sub_heading = rwmb_meta('prog_sub_head', array(), $ancestor_id);
-        $ancestor_title = get_the_title($ancestor_id);
       }
     }
   endif;
@@ -57,15 +56,7 @@
               <hr>
             <?php endif ?>
             <h1 <?php echo !empty($sub_heading) ? 'class="man"' : ''; ?>>
-            <?php
-              if (isset($ancestor_title)) {
-                echo $ancestor_title;
-              } else if (isset($parent->post_title)) {
-                echo $parent->post_title;
-              } else {
-                the_title();
-              }
-            ?>
+            <?php the_title(); ?>
             </h1>
             <?php if(!empty($sub_heading)) : ?>
               <hr>
