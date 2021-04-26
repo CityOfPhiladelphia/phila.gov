@@ -488,6 +488,11 @@ require get_template_directory() . '/inc/related-content.php';
  */
 require get_template_directory() . '/inc/resource-list-switch.php';
 
+/**
+ * Load microsite webhook file.
+ */
+require get_template_directory() . '/inc/phila_microsite_triggers.php';
+
 foreach (glob( get_template_directory() . '/shortcodes/*.php') as $filename){
   require $filename;
 }
