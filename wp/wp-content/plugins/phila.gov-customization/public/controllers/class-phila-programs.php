@@ -338,6 +338,12 @@ class Phila_Programs_Controller {
       $post_data['categories']  = (array) $categories;
     }
 
+    if (isset( $schema['properties']['owners'] )) {
+      $owners = get_the_terms( $post->ID, 'category' );
+
+      $post_data['owners']  = (array) $owners;
+    }
+
     if (isset( $schema['properties']['audiences'] )) {
       $audiences = get_the_terms($post->ID, 'audience');
 
@@ -451,6 +457,10 @@ class Phila_Programs_Controller {
         ),
         'audiences'  => array(
           'description' => esc_html__('The audience taxonomy assigned to this object.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'owners'  => array(
+          'description' => esc_html__('The owner departments of this object.', 'phila-gov'),
           'type'  => 'array',
         ),
         'services'  => array(
