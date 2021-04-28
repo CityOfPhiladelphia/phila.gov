@@ -411,6 +411,23 @@ class Phila_Programs_Controller {
     if (isset( $schema['properties']['owners'] )) {
 
       $post_data['owners']  = ( array ) get_the_terms( $post->ID, 'category' );
+    } 
+
+    if (isset( $schema['properties']['page_content'] )) {
+
+      $post_data['page_content']  = ( array ) rwmb_meta( 'phila_row', array(), $post->ID);
+    }
+
+    if (isset( $schema['properties']['phila_header'] )) {
+
+      $post_data['program_images']  = ( array ) rwmb_meta( 'phila_header', array(), $post->ID);
+    }
+    
+    if (isset( $schema['properties']['our_services'] )) {
+      $homepage_services = rwmb_meta( 'phila_v2_homepage_services', array(), $post->ID);
+      $service_link = rwmb_meta( 'phila_v2_service_link', array(), $post->ID);
+      array_push( $homepage_services, $service_link );
+      $post_data['our_services']  = ( array ) $homepage_services;
     }
 
     if (isset( $schema['properties']['services'] )) {
@@ -572,6 +589,22 @@ class Phila_Programs_Controller {
         ),
         'owners'  => array(
           'description' => esc_html__('The owner categories of this object.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'page_content'  => array(
+          'description' => esc_html__('The page content of this object.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'program_images'  => array(
+          'description' => esc_html__('The program images of this object.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'program_images'  => array(
+          'description' => esc_html__('The program images of this object.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'our_services'  => array(
+          'description' => esc_html__('The services of this object.', 'phila-gov'),
           'type'  => 'array',
         ),
         'services'  => array(
