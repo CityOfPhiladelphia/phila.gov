@@ -8,6 +8,9 @@
   $spotlight_id = rwmb_meta('phila_event_spotlight');
   $user_selected_template = phila_get_selected_template();
   $post_type_parent = get_post_type($post->ID);
+  if( !isset($override_url)) {
+    $override_url = rwmb_meta('override_url');
+  }
   ?>
 <?php if ( !empty( $cal_id )  || !empty($display_spotlight)):?>
   <!-- Full Width Calendar -->
