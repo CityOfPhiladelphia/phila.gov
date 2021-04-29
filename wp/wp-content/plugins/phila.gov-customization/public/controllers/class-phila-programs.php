@@ -52,6 +52,7 @@ class Phila_Programs_Controller {
         'permission_callback' => '__return_true',
       ),
       'schema' => array( $this, 'get_item_schema_v2' ),
+    ) );
 
     // Register the endpoint for collections.
     register_rest_route( $this->namespace, '/' . $this->department_resource . '/(?P<id>[\d]+)', array(
