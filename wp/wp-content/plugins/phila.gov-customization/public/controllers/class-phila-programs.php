@@ -363,6 +363,18 @@ class Phila_Programs_Controller {
       $post_data['title']  =  (string) html_entity_decode($post->post_title);
     }
 
+    if ( isset( $schema['properties']['status'] ) ) {
+      $post_data['status'] = (string) $post->post_status;
+    }
+
+    if ( isset( $schema['properties']['slug'] ) ) {
+      $post_data['slug'] = (string) $post->post_name;
+    }
+
+    if ( isset( $schema['properties']['content'] ) ) {
+      $post_data['content'] = (string) apply_filters( 'the_content', $post->post_content );
+    }
+
     if (isset( $schema['properties']['short_description'] )) {
       $short_desc = rwmb_meta( 'phila_meta_desc', array(), $post->ID );
 
@@ -409,25 +421,31 @@ class Phila_Programs_Controller {
     }
 
     if (isset( $schema['properties']['owners'] )) {
-
       $post_data['owners']  = ( array ) get_the_terms( $post->ID, 'category' );
     } 
 
     if (isset( $schema['properties']['page_content'] )) {
-
       $post_data['page_content']  = ( array ) rwmb_meta( 'phila_row', array(), $post->ID);
     }
 
-    if (isset( $schema['properties']['phila_header'] )) {
+    if (isset( $schema['properties']['program_images'] )) {
+      $program_images['prog_header_img'] = rwmb_meta( 'prog_header_img', array(), $post->ID);
+      $program_images['prog_header_img_sub'] = rwmb_meta( 'prog_header_img_sub', array(), $post->ID);
+      $program_images['phila_v2_department_logo'] = rwmb_meta( 'phila_v2_department_logo', array(), $post->ID);
+      $program_images['phila_program_owner_logo'] = rwmb_meta( 'phila_program_owner_logo', array(), $post->ID);
+      $program_images['phila_photo_credit'] = rwmb_meta( 'phila_photo_credit', array(), $post->ID);
 
-      $post_data['program_images']  = ( array ) rwmb_meta( 'phila_header', array(), $post->ID);
+      $post_data['program_images']  = ( array ) $program_images;
     }
     
     if (isset( $schema['properties']['our_services'] )) {
       $homepage_services = rwmb_meta( 'phila_v2_homepage_services', array(), $post->ID);
-      $service_link = rwmb_meta( 'phila_v2_service_link', array(), $post->ID);
-      array_push( $homepage_services, $service_link );
       $post_data['our_services']  = ( array ) $homepage_services;
+    }
+
+    if (isset( $schema['properties']['service_link'] )) {
+      $service_link = rwmb_meta( 'phila_v2_service_link', array(), $post->ID);
+      $post_data['service_link']  = ( string ) $service_link;
     }
 
     if (isset( $schema['properties']['services'] )) {
@@ -571,6 +589,21 @@ class Phila_Programs_Controller {
           'type'         => 'string',
           'readonly'     => true,
         ),
+        'status'  => array(
+          'description' => esc_html__('The status of the object.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'slug'  => array(
+          'description' => esc_html__('The slug of the object.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
+        'content'  => array(
+          'description' => esc_html__('The content of the object.', 'phila-gov'),
+          'type'        => 'string',
+          'readonly'    => true,
+        ),
         'template'  => array(
           'description' => esc_html__('The template this object is using.', 'phila-gov'),
           'type'  => 'string',
@@ -599,13 +632,13 @@ class Phila_Programs_Controller {
           'description' => esc_html__('The program images of this object.', 'phila-gov'),
           'type'  => 'array',
         ),
-        'program_images'  => array(
-          'description' => esc_html__('The program images of this object.', 'phila-gov'),
-          'type'  => 'array',
-        ),
         'our_services'  => array(
           'description' => esc_html__('The services of this object.', 'phila-gov'),
           'type'  => 'array',
+        ),
+        'service_link'  => array(
+          'description' => esc_html__('The service link of this object.', 'phila-gov'),
+          'type'  => 'string',
         ),
         'services'  => array(
           'description' => esc_html__('The service category assigned to this object.', 'phila-gov'),
