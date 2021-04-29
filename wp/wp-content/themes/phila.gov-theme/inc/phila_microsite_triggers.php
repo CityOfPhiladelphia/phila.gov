@@ -79,7 +79,7 @@ function publish_microsite_post($new_status, $old_status, $post) {
 }
 
 function publish_microsite_post_private($new_status, $old_status, $post) {
-  if('publish' === $new_status ) {
+  if('publish' === $new_status ||  'private' === $new_status) {
     if(isset( $post->post_type )) {
       $post_type = $post->post_type;
       if ($post->post_type == 'department_page' ) {
