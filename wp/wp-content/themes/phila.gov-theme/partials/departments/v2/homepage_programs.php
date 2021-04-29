@@ -22,7 +22,7 @@
   </div>
   <div class="row">
     <div class="columns">
-      <div class="row fat-gutter">
+      <div class="row fat-gutter program-card-row">
         <?php foreach( $cards as $card ) : ?>
           <?php $template = phila_get_selected_template( $card ); ?>
           <div class="<?php echo count($cards) == 1  ? '' : 'medium-8'?> columns end mbl">
@@ -32,7 +32,7 @@
               $img = reset( $img );?>
               <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt']?>">
               <div class="content-block">
-                <h4 class="h3"><?php echo get_the_title($card); ?></h3>
+                <h4 class="h3 <?php echo ($template == 'prog_off_site') ? 'external' : ''; ?>"><?php echo get_the_title($card); ?></h4>
                 <?php echo rwmb_meta( 'phila_meta_desc', $args = '', $card ); ?></h4>
               </div>
             </a>

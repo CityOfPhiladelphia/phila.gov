@@ -95,6 +95,11 @@ class Phila_Departments_Controller {
 
     $schema = $this->get_item_schema( $request );
 
+   // fetch connect box information and description from metaboxes
+    $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel', array(), $post->ID);
+    $connect_info = phila_connect_panel($connect_panel);
+    $description = rwmb_meta( 'phila_meta_desc', '', $post->ID );
+
     if (isset( $schema['properties']['name'] )) {
 
       $post_data['name'] = (string) $post->post_title;
@@ -111,6 +116,58 @@ class Phila_Departments_Controller {
     if (isset( $schema['properties']['acronym'] )) {
       $acronym = rwmb_meta('phila_department_acronym', array(), $post->ID);
       $post_data['acronym'] = (string) $acronym;
+    }
+
+    if (isset( $schema['properties']['email'] )) {
+      $post_data['email'] = (string) $connect_info['email'];
+    }  
+
+    if (isset( $schema['properties']['instagram']) && $connect_info['social'] && isset($connect_info['social']['instagram'])) {
+      $post_data['instagram'] = (string) $connect_info['social']['instagram'];
+    } else {
+      $post_data['instagram'] = '';
+    }
+
+    if (isset( $schema['properties']['facebook']) && $connect_info['social'] && isset($connect_info['social']['facebook'])) {
+      $post_data['facebook'] = (string) $connect_info['social']['facebook'];
+    } else {
+      $post_data['facebook'] = '';
+    }
+
+    if (isset( $schema['properties']['twitter']) &&  $connect_info['social'] && isset($connect_info['social']['twitter'])) {
+      $post_data['twitter'] = (string) $connect_info['social']['twitter'];
+    } else {
+      $post_data['twitter'] = '';
+    }
+
+    // checks to see if there is a phone number by checking to see if the are code is empty
+    // if the area code is empty, it will populate with the co-code, which will either be 311 or null
+    if (isset( $schema['properties']['phone'] ) && !empty($connect_info['phone']['area'])) {
+      $post_data['phone'] = $connect_info['phone'];
+    } else {
+      $post_data['phone'] = (string) $connect_info['phone']['co-code'];
+    }
+
+    //Need to check if phone_multi isset , and if so, then add the array 
+    if ( isset( $connect_info['phone_multi'] ) ) {
+      $post_data['phone_multi'] = $connect_info['phone_multi'];
+    }
+
+    if (isset( $schema['properties']['tty'] )) {
+      $post_data['tty'] = (string) $connect_info['tty'];
+    }
+
+    if (isset( $schema['properties']['fax'] )) {
+      $post_data['fax'] = (string) $connect_info['fax'];
+    }
+
+    if (isset( $schema['properties']['description'] )) {
+      $post_data['description'] = (string) $description;
+    }
+
+    if (isset( $schema['properties']['permalink'] )) {
+      $permalink = get_permalink($post->ID);
+      $post_data['permalink'] = (string) $permalink;
     }
 
     return rest_ensure_response( $post_data );
@@ -170,7 +227,57 @@ class Phila_Departments_Controller {
           'readonly'     => true,
         ),
         'acronym' => array(
-          'description'  => esc_html__( 'Acronym of the object.', 'phila-gov' ),
+          'description'  => esc_html__( 'Acronym of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'email' => array(
+          'description'  => esc_html__( 'email of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'instagram' => array(
+          'description'  => esc_html__( 'instagram of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'facebook' => array(
+          'description'  => esc_html__( 'facebook of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'twitter' => array(
+          'description'  => esc_html__( 'twitter of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'tty' => array(
+          'description'  => esc_html__( 'tty of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'fax' => array(
+          'description'  => esc_html__( 'fax of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'phone' => array(
+          'description'  => esc_html__( 'phone of the department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'phone_multi' => array(
+          'description'  => esc_html__( 'Extra phones of the department.', 'phila-gov' ),
+          'type'         => 'array',
+          'readonly'     => true,
+        ),
+        'description' => array(
+          'description'  => esc_html__( 'Description of the Department.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'permalink' => array(
+          'description'  => esc_html__( 'Permalnk of the Department.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
         ),

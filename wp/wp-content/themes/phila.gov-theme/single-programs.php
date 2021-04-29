@@ -6,9 +6,9 @@
 */
 
 $user_selected_template = phila_get_selected_template();
-
+$language = rwmb_meta('phila_select_language');
+$language_list = phila_get_translated_language( $language );
 get_header();
-
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class('program clearfix'); ?>>
 
@@ -20,29 +20,44 @@ get_header();
   <?php return; ?>
 <?php endif;?>
 
-<?php if ($user_selected_template == 'child_index') :  ?>
-
-  <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
-    <?php get_template_part( 'partials/departments/v2/child', 'index' ); ?>
-
-  <?php get_footer(); ?>
-<?php return; ?>
-<?php endif;?>
-
 <?php if ($user_selected_template == 'stub'): ?>
   <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
 
- <?php  
+<?php  
   include(locate_template('partials/programs/stub.php'));
   get_footer();
 
   return; ?>
   <?php endif;?>
 
+<?php if ($user_selected_template == 'translated_content'): ?>
+  <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
+
+<?php  
+  include(locate_template('partials/global/translated-content.php'));
+  get_footer();
+
+  return; ?>
+<?php endif;?>
+
+<?php if ($user_selected_template == 'covid_guidance'): ?>
+  <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
+
+<?php  
+  include(locate_template('partials/programs/covid-guidance.php'));
+  get_footer();
+
+  return; ?>
+<?php endif;?>
+
 
   <?php
     while ( have_posts() ) : the_post();
       include( locate_template( 'partials/programs/header.php' ) );
+
+      if ( count( $language_list ) >= 2 ):
+        include(locate_template ('partials/posts/post-translated-content.php') );
+      endif;
 
       get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
       <?php if( !empty( get_the_content() ) ) : ?>
@@ -69,6 +84,9 @@ get_header();
           break;
         case 'timeline':
           get_template_part( 'partials/departments/v2/homepage_timeline' );
+          break;
+        case ('child_index'):
+          get_template_part( 'partials/departments/v2/child', 'index' );
           break;
       } ?>
       <?php get_template_part( 'partials/departments/content', 'programs-initiatives' ); ?>

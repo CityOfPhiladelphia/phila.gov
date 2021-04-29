@@ -186,7 +186,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     'visible' => array(
       'when' => array(
         array('phila_template_select', '=', 'press_release'),
+        array('phila_template_select', '=', 'translated_press_release'),
       ),
+      'relation' => 'or',
     ),
 
     'fields' => array(
@@ -213,7 +215,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     'visible' => array(
       'when' => array(
         array('phila_template_select', '=', 'press_release'),
+        array('phila_template_select', '=', 'translated_press_release'),
       ),
+      'relation' => 'or',
     ),
 
     'fields' => array(
@@ -940,7 +944,9 @@ $meta_boxes[] = array(
       array('phila_template_select', '=', 'topic_page'),
       array('phila_template_select', '=', 'service_stub'),
       array('phila_template_select', '=', 'default_v2'),
-      array('phila_template_select', '=', 'custom_content')
+      array('phila_template_select', '=', 'custom_content'),
+      array('phila_template_select', '=', 'translated_content'),
+      array('phila_template_select', '=', 'covid_guidance'),
     ),
     'relation' => 'or',
   ),
@@ -995,7 +1001,7 @@ $meta_boxes[] = array(
           'id'  => 'phila_doc_label_column_title',
           'type'  => 'text',
           'name'  => 'Optional label column title (will add label column)',
-          'class' => 'optional-label',
+          'class' => 'margin-bottom-10',
           'visible' => array(
             'when'  => array(
               array('phila_vue_toggle', '=', true),
@@ -1196,6 +1202,73 @@ $meta_boxes[] = array(
     ),
   )
 
+);
+
+$meta_boxes[] = array(
+  'title' => 'Translated content',
+  'pages'    => array( 'post' ),
+  'revision' => true,
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'translated_post'),
+        array('phila_template_select', '=', 'translated_press_release'),
+      ),
+    'relation'  => 'or'
+  ),
+  'fields' => array(
+    Phila_Gov_Standard_Metaboxes::phila_multiple_language_selector( 'translated_options', 'margin-bottom-10' ),
+    array(
+      'id'       => 'phila_v2_translated_content',
+      'title'    => 'Translated content',
+      'context'  => 'normal',
+      'priority' => 'high',
+      'type'  => 'group',
+      'clone' => true,
+      'sort_clone' => true,
+      'add_button'  => '+ Add another translation',
+
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_language_selector( 'translated_language', 'margin-bottom-10' ),
+        Phila_Gov_Standard_Metaboxes::phila_short_description(),
+        Phila_Gov_Standard_Metaboxes::phila_social_media_text(),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+        Phila_Gov_Standard_Metaboxes::phila_post_read_cta(),
+      ),
+    ),
+  ),
+);
+
+$meta_boxes[] = array(
+  'title' => 'Translated content',
+  'pages'    => array( 'programs' ),
+  'revision' => true,
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'translated_content'),
+        array('phila_template_select', '=', 'covid_guidance'),
+      ),
+    'relation'  => 'or'
+  ),
+  'fields' => array(
+    Phila_Gov_Standard_Metaboxes::phila_multiple_language_selector( 'translated_options', 'margin-bottom-10' ),
+    array(
+      'id'       => 'phila_v2_translated_content',
+      'title'    => 'Translated content',
+      'context'  => 'normal',
+      'priority' => 'high',
+      'type'  => 'group',
+      'clone' => true,
+      'sort_clone' => true,
+      'add_button'  => '+ Add another translation',
+
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_language_selector( 'translated_language', 'margin-bottom-10' ),
+        Phila_Gov_Standard_Metaboxes::phila_short_description(),
+        Phila_Gov_Standard_Metaboxes::phila_social_media_text(),
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg(),
+      ),
+    ),
+  ),
 );
 
 return $meta_boxes;

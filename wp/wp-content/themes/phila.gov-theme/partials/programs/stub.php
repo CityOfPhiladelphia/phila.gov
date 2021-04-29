@@ -10,6 +10,11 @@
     'p' => $post_id,
     'post_type' => 'programs'
   ); ?>
+    <div class="row">
+      <header class="columns">
+        <h1 class="contrast"><?php echo get_the_title(); ?></h1>
+      </header>
+    </div> 
   <?php $stub_post = new WP_Query($stub_args); ?>
   <?php if ( $stub_post->have_posts() ): ?>
     <?php while ( $stub_post->have_posts() ) : ?>
@@ -19,14 +24,31 @@
       <?php if( !empty( get_the_content() ) ) : ?>
         <?php include( locate_template( 'partials/content-basic.php' ) ); ?>
       <?php endif; ?>
-
+      <?php include(locate_template( 'partials/content-custom-markup-after-wysiwyg.php' ) ); ?>
       <?php 
-        include(locate_template( 'partials/content-custom-markup-after-wysiwyg.php' ) );
-        include(locate_template( 'partials/departments/v2/content-one-quarter.php' ) );
-        include(locate_template( 'partials/resource-list.php'));
-        include(locate_template( 'partials/departments/v2/collection-page.php' )); 
-        include(locate_template( 'partials/departments/v2/document-finder.php' ));
-        include(locate_template( 'partials/departments/content-programs-initiatives.php' ) );
+
+        $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $stub_id );
+
+        switch ($user_selected_template) {
+          case 'collection_page_v2':
+            include(locate_template( 'partials/departments/v2/collection-page.php' )); 
+            break;
+          case 'document_finder_v2':
+            include(locate_template( 'partials/departments/v2/document-finder.php' ));
+            break;
+          case 'phila_one_quarter':
+            include(locate_template( 'partials/departments/v2/content-one-quarter.php' ) );
+            break; 
+          case 'prog_association':
+            include(locate_template( 'partials/departments/content-programs-initiatives.php' ) );
+            break;
+          case 'resource_list_v2':
+            include(locate_template( 'partials/resource-list.php'));
+            break;
+          case 'timeline':
+            get_template_part( 'partials/departments/v2/homepage_timeline' );
+            break;
+        }
         include(locate_template( 'partials/content-additional.php' ) ); 
         ?>
       <?php endwhile; ?>

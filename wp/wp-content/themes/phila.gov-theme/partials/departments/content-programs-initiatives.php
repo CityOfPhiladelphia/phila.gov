@@ -14,8 +14,8 @@
   $page_rows = rwmb_meta('phila_row');
 ?>
 <?php if (!phila_util_is_array_empty($page_rows)): ?>
-  <!-- Program and initiatives -->
-  <section>
+<!-- /Page content / programs + initiatives -->
+<section>
   <?php
     foreach ($page_rows as $key => $value):
       $current_row = $page_rows[$key];?>
@@ -302,7 +302,8 @@
           <?php elseif ( $current_row_option == 'phila_prereq'):
           
             $accordion_group = isset( $current_row['phila_full_options']['phila_prereq']['accordion_group'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_group'] : '';
-            $requirements_prereq_title = isset( $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] : '';
+            $requirements_prereq_title = isset( $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] : '';  
+            $override_icon = isset( $current_row['phila_full_options']['phila_prereq']['phila_v2_icon'] ) ? $current_row['phila_full_options']['phila_prereq']['phila_v2_icon'] : '';
 
             if ( !empty( $accordion_group ) || !empty( $requirements_prereq_title ) ) : ?>
               <!-- Prereq Row -->
@@ -321,54 +322,6 @@
             <?php endif;?>
 
         <?php endif;  /*end full row */?>
-
-        <?php elseif ( ( isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_half') && ( isset( $current_row['phila_half_options']['phila_half_col_1'] ) && isset( $current_row['phila_half_options']['phila_half_col_2'] ) ) ):
-
-          // Begin 1/2 x 1/2 row
-          $current_row_option_one = $current_row['phila_half_options']['phila_half_col_1'];
-          $current_row_option_two = $current_row['phila_half_options']['phila_half_col_2']; ?>
-
-        <section class="row mvl">
-          <?php if ( $current_row_option_one['phila_half_col_1_option'] == 'phila_custom_text'):?>
-
-            <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
-              $custom_text = $current_row_option_one['phila_custom_text']; ?>
-              <div class="large-12 columns">
-                <?php include(locate_template('partials/departments/content-custom-text.php'));?>
-              </div>
-            <?php endif;?>
-
-          <?php elseif ( $current_row_option_one['phila_half_col_1_option'] == 'phila_pullquote'):
-            $pullquote = isset ($current_row_option_one['phila_pullquote'] ) ? $current_row_option_one['phila_pullquote'] : '';
-            $quote = isset( $pullquote['phila_quote'] ) ? $pullquote['phila_quote'] : '';
-            $attribution = isset( $pullquote['phila_attribution'] ) ? $pullquote['phila_attribution'] : '';
-
-            if ( !empty( $quote ) ): ?>
-              <div class="large-12 columns">
-                <?php echo do_shortcode('[pullquote quote="' . $quote . '" attribution="' . $attribution . '" inline="false"]'); ?>
-              </div>
-            <?php endif; ?>
-          <?php endif; ?>
-
-          <?php if ( $current_row_option_two['phila_half_col_2_option'] == 'phila_custom_text'):?>
-              <?php if ( isset( $current_row_option_two['phila_custom_text'] ) ):
-                $custom_text = $current_row_option_two['phila_custom_text'];?>
-                <div class="large-12 columns">
-                  <?php include(locate_template('partials/departments/content-custom-text.php'));?>
-                </div>
-              <?php endif;?>
-
-          <?php elseif ( $current_row_option_two['phila_half_col_2_option'] == 'phila_pullquote'):
-            $pullquote = isset ($current_row_option_two['phila_pullquote'] ) ? $current_row_option_two['phila_pullquote'] : '';
-            $quote = isset( $pullquote['phila_quote'] ) ? $pullquote['phila_quote'] : '';
-            $attribution = isset( $pullquote['phila_attribution'] ) ? $pullquote['phila_attribution'] : '';
-
-            if ( !empty( $quote ) ): ?>
-              <div class="large-12 columns">
-                <?php echo do_shortcode('[pullquote quote="' . $quote . '" attribution="' . $attribution . '" inline="false"]'); ?>
-              </div>
-            <?php endif; ?>
-          <?php endif; ?>
 
       </section>
       <?php elseif ( (isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_thirds' ) && ( isset($current_row['phila_two_thirds_options']['phila_two_thirds_col'] ) && isset( $current_row['phila_two_thirds_options']['phila_one_third_col'] ) ) ):
@@ -412,5 +365,5 @@
       <?php endif; ?>
     <?php endforeach; ?>
   </div>
-<!-- /Program and initiatives -->
+<!-- /Page content / programs + initiatives -->
 <?php endif; ?>

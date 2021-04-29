@@ -8,6 +8,7 @@ class Phila_Programs_Controller {
     $this->namespace_v2     = 'programs/v2';
     $this->resource_name = 'archives';
     $this->service_resource = 'related_service';
+    $this->department_resource = 'departments';
 
   }
 
@@ -51,6 +52,15 @@ class Phila_Programs_Controller {
         'permission_callback' => '__return_true',
       ),
       'schema' => array( $this, 'get_item_schema_v2' ),
+
+    // Register the endpoint for collections.
+    register_rest_route( $this->namespace, '/' . $this->department_resource . '/(?P<id>[\d]+)', array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_items_of_department' ),
+        'permission_callback' => '__return_true',
+      ),
+      'schema' => array( $this, 'get_item_schema' ),
     ) );
   }
 
@@ -140,6 +150,45 @@ class Phila_Programs_Controller {
     }else{
       $posts = $this->run_search_query($request);
     }
+
+    $data = array();
+
+    if ( empty( $posts ) ) {
+      return rest_ensure_response( $data );
+    }
+
+    foreach ( $posts as $post ) {
+      $response = $this->prepare_item_for_response( $post, $request );
+
+      $data[] = $this->prepare_response_for_collection( $response );
+    }
+
+    // Return all response data.
+    return rest_ensure_response( $data );
+  }
+
+
+  /**
+   * Get Programs
+   *
+   * @param WP_REST_Request $request Current request.
+  */
+  public function get_items_of_department( $request ) {
+
+    $post_id = (int) $request['id'];
+    $category = get_the_category( $post_id );
+    $category_id = $category[0]->term_id;
+
+    $args = array(
+      'post_type'  => 'programs',
+      'posts_per_page'  => -1,
+      'order' => 'ASC',
+      'post_parent' => 0,
+      'orderby' => 'title',
+      'category__in' => $category_id,
+    );
+
+    $posts = get_posts($args);
 
     $data = array();
 
@@ -339,6 +388,19 @@ class Phila_Programs_Controller {
       }
 
       $post_data['image']  = (string) $medium_image;
+    }
+
+    if (isset( $schema['properties']['translated_content'] )) {
+      $translated_content = rwmb_meta( 'phila_v2_translated_content', array(), $post->ID );
+      foreach ($translated_content as $key => $value) {
+        $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content'] = apply_filters('the_content', $translated_content[$key]['phila_custom_wysiwyg']['phila_wysiwyg_content']);
+      }
+
+      $post_data['translated_content']  = (array) $translated_content;
+    }
+
+    if (isset( $schema['properties']['translated_options'] )) {
+      $post_data['translated_options']  = (array) rwmb_meta( 'translated_options', array(), $post->ID );;
     }
 
     return rest_ensure_response( $post_data );
@@ -551,6 +613,14 @@ class Phila_Programs_Controller {
         'image'  => array(
           'description' => esc_html__('The medium size image associated with this program.', 'phila-gov'),
           'type'  => 'string',
+        ),
+        'translated_content'  => array(
+          'description' => esc_html__('The translated content of this post.', 'phila-gov'),
+          'type'  => 'array',
+        ),
+        'translated_options'  => array(
+          'description' => esc_html__('The translated content of this post.', 'phila-gov'),
+          'type'  => 'array',
         ),
       ),
     );

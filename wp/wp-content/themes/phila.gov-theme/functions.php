@@ -479,6 +479,11 @@ require get_template_directory() . '/inc/utilities.php';
 require get_template_directory() . '/inc/date-translations.php';
 
 /**
+ * Load custom related content file.
+ */
+require get_template_directory() . '/inc/related-content.php';
+
+/**
  * Load custom Resource list switch file.
  */
 require get_template_directory() . '/inc/resource-list-switch.php';
@@ -628,7 +633,11 @@ function phila_get_dept_contact_blocks() {
 
 
 
-function phila_get_posted_on(){
+function phila_get_posted_on( $post_id = null ){
+  if ( $post_id ) {
+    global $post;
+    $post = get_post( $post_id );
+  }
   $posted_on_meta['author'] = array( esc_html( get_the_author()));
   $more_authors = rwmb_meta('phila_author');
   if ( !empty($more_authors) ) {
@@ -701,6 +710,12 @@ function phila_format_document_type($document_type){
       break;
     case 'zip':
       echo 'zip';
+      break;
+    case 'jpg':
+      echo 'jpeg';
+      break;
+    case 'jpeg':
+      echo 'jpeg';
       break;
   }
 }
@@ -1280,6 +1295,25 @@ function phila_get_selected_template( $post_id = null, $modify_response = true )
   return $user_selected_template;
 }
 
+
+/**
+ * Returns true or false depending on if a post is featured or not
+ *
+ **/
+
+function phila_is_featured( $post_id = null ){
+
+  $featured = false;
+  $old_feature = get_post_meta( $post_id, 'phila_show_on_home', true);
+  $new_feature = get_post_meta( $post_id, 'phila_is_feature', true );
+
+  if ( $old_feature != 0 || $new_feature != 0  ){
+    $featured = true;
+  }
+
+  return $featured;
+}
+
 /**
  * Do the math to determine the correct column span for X items on a 24 column grid.
  *
@@ -1690,6 +1724,7 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "Zoning Board of",
     "Board of",
     "Office of the",
+    "Office of Policy and Strategic Initiatives for",
     "Office of",
     "Department of",
     "Bureau of",
@@ -1887,7 +1922,10 @@ add_action( 'mb_relationships_init', function() {
           'hidden' => array(
             'when' => array(
               array('phila_select_language', '!=', 'english'),
+              array('phila_template_select', '=', 'translated_press_release'),
+              array('phila_template_select', '=', 'translated_post'),
             ),
+            'relation' => 'or',
           ),
           'title' => 'Select translated posts',
           'context' => 'side', 
@@ -1928,6 +1966,7 @@ add_action( 'mb_relationships_init', function() {
       'reciprocal' => true,
 
   ) );
+
 } );
 
 function phila_language_output($language){
@@ -1977,6 +2016,9 @@ function phila_language_output($language){
     case 'portuguese'; 
       $language = 'Português';
       break;
+    case 'swahili';
+      $language = 'Kiswahili';
+      break;
     default;
       $language = 'English'; 
       break;
@@ -1984,8 +2026,13 @@ function phila_language_output($language){
   return $language;
 }
 
-function phila_get_translated_language( $language ) {
-  global $wp_query, $post;
+function phila_get_translated_language( $language, $post_id = null ) {
+  global $wp_query;
+  if ($post_id != null) {
+    $post = get_post($post_id);
+  } else {
+    global $post;
+  }
 
   $language_list = array();
 
@@ -2009,7 +2056,7 @@ function phila_get_translated_language( $language ) {
   }else{
 
     $connected = new WP_Query( array(
-      'post_type'  => 'post',
+      'post_type'  => $post->post_type,
       'post_status'  => array(
         'publish',
         'private',
@@ -2024,7 +2071,7 @@ function phila_get_translated_language( $language ) {
     while ( $connected->have_posts() ) : $connected->the_post(); 
 
       $connected_source = new WP_Query( array(
-        'post_type'  => 'post',
+        'post_type'  => $post->post_type,
         'post_status'  => array(
           'publish',
           'private',
@@ -2050,7 +2097,7 @@ function phila_get_translated_language( $language ) {
     endwhile;
     wp_reset_postdata();
 
-  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean', 'portuguese', 'khmer' );
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean', 'portuguese', 'khmer', 'swahili' );
   $ordered_array = array_replace(array_flip($order), $language_list);
   $final_array = array();
   foreach ($ordered_array as $key => $value){
@@ -2063,7 +2110,7 @@ function phila_get_translated_language( $language ) {
 }
 
 function phila_order_languages($languages){
-  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean', 'portuguese', 'khmer');
+  $order = array('english', 'spanish', 'chinese', 'vietnamese', 'russian', 'arabic', 'french', 'bengali', 'haitian', 'hindo', 'indonesian', 'urdu', 'korean', 'portuguese', 'khmer', 'swahili' );
   $ordered_array = array_replace(array_flip($order), $languages);
   $final_order = array();
   foreach ($ordered_array as $key => $value){

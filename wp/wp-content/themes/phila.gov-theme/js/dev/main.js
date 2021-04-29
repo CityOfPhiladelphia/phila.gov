@@ -5,9 +5,11 @@ require('phila-standards')
 require('./phila-gov')
 //require('./site-wide-alerts')
 require('./action-guide-v2');
+require('./chevrons');
 require('./city-directory-list')
 require('./collapsible-div')
 require('./filter')
+require('./feedback');
 require('./global-is-active')
 require('./hashchange-check')
 require('./hide-empty-table')

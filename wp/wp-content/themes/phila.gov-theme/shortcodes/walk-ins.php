@@ -19,7 +19,6 @@ function walk_ins_shortcode($atts, $content=null){
     'em'     => [],
     'strong' => [],
     'class' => [],
-    'p' => [],
   ];
 
   $output = '';
@@ -34,16 +33,19 @@ function walk_ins_shortcode($atts, $content=null){
     }
     
     $output .= '<i class="fas fa-street-view fa-3x"></i></div>';
+
     if ($post_type === 'service_page'){
       $output .= '<div class="cell small-21 medium-21 walk-ins-copy">';
     }else{
-    $output .= '<div class="cell small-21 medium-22 walk-ins-copy">';
+      $output .= '<div class="cell small-21 medium-22 walk-ins-copy">';
     }
 
     $output .=  wp_kses($content, $allowed_html) ;
-    $output .= '</div></div></div>';
+        
+    $output .= '</div></div>';
 
     return $output;
+
   } else {
     return;
   }

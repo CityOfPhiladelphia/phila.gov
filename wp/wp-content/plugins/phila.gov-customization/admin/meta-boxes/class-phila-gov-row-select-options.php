@@ -20,7 +20,6 @@ class Phila_Gov_Row_Select_Options {
     'placeholder' => 'Select...',
     'options' => array(
       'phila_grid_options_full' => 'Full Width',
-      'phila_grid_options_half' => '1/2 x 1/2',
       'phila_grid_options_thirds' => '2/3 x 1/3',
       ),
     );
@@ -82,24 +81,6 @@ class Phila_Gov_Row_Select_Options {
       'fields' => array(
         Phila_Gov_Row_Metaboxes::phila_metabox_thirds_option_one(),
         Phila_Gov_Row_Metaboxes::phila_metabox_thirds_option_two(),
-      ),
-    );
-  }
-
-  public static function phila_metabox_half_options( ){
-
-    return array(
-      'name' => '1/2 x 1/2 Options',
-      'id'   => 'phila_half_options',
-      'type' => 'group',
-      'hidden' => array(
-        'phila_grid_options',
-        '!=',
-        'phila_grid_options_half'
-      ),
-      'fields' => array(
-        Phila_Gov_Row_Metaboxes::phila_metabox_half_option_one(),
-        Phila_Gov_Row_Metaboxes::phila_metabox_half_option_two(),
       ),
     );
   }

@@ -91,7 +91,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'settings_pages' => 'phila_gov',
     'tab'            => 'closures',
     'include' => array(
-      'user_role'  => array( 'administrator', 'editor', 'job_board_editor' ),
+      'user_role'  => array( 'administrator', 'editor', 'job_board_editor', 'secondary_philagov_closure_settings_editor' ),
     ),
     'fields'  => array(
       array(
@@ -113,7 +113,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'type'   => 'group',
         'visible' => array(
           'when'  => array(
-            array('phila_collection_status', '=', '4'),
+            array('phila_collection_status', '=', '3'),
           ),
         ),
         'fields'  => array(

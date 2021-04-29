@@ -3,6 +3,7 @@
    * Programs and initiatives header
   */
   $parent = phila_util_get_furthest_ancestor($post);
+  $ancestors = get_post_ancestors($post);
   $hero = rwmb_meta( 'prog_header_img', array( 'limit' => 1 ) );
 
   $hero = !empty( $hero ) ? reset( $hero ) : '';
@@ -14,10 +15,21 @@
   if ( !empty( $sub_hero ) ):
     $sub_hero = reset( $sub_hero );
   else:
-    $sub_hero = rwmb_meta( 'prog_header_img_sub', array( 'limit' => 1 ), $parent->ID);
-    $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
+    // foreach is ordered closest ancestor to further ancestor
+    foreach($ancestors as $ancestor_id) {
+      if (empty( $sub_hero )) {
+        if(!next($ancestors)) {
+          $sub_hero = rwmb_meta( 'prog_header_img_sub', array( 'limit' => 1 ), $ancestor_id);
+        } else {
+          $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $ancestor_id);
+        }
+        if ($sub_hero) {
+          $sub_hero = $sub_hero[0];
+        }
+        $sub_heading = rwmb_meta('prog_sub_head', array(), $ancestor_id);
+      }
+    }
   endif;
-
   if ( isset( $association )) {
     $parent = wp_get_post_parent_id($post);
     $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $parent);
@@ -34,8 +46,8 @@
   $current_post_type = get_post_type($post->ID);
 ?>
 <header>
-  <?php if ( !empty( get_post_ancestors( $post->ID ) ) ) : ?><?php echo $sub_hero['full_url']  ?>
-    <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']  ?>) ">
+  <?php if ( !empty( $ancestors ) ) : ?>
+    <div class="hero-subpage <?php echo !empty($sub_heading) ? 'associated-sub' : '' ?>" style="background-image:url(<?php echo $sub_hero['full_url']; ?>) ">
       <div class="grid-container pvxl">
         <div class="grid-x center">
           <div class="cell">
@@ -43,12 +55,12 @@
             <?php if(!empty($sub_heading)) : ?>
               <hr>
             <?php endif ?>
-            <h1 <?php echo !empty($sub_heading) ? 'class="man"' : ''; ?>><?php echo !empty($sub_heading) ? the_title() : $parent->post_title ?></h1>
+            <h1 <?php echo !empty($sub_heading) ? 'class="man"' : ''; ?>>
+            <?php the_title(); ?>
+            </h1>
             <?php if(!empty($sub_heading)) : ?>
               <hr>
-            <?php endif ?>
-            <?php if(!empty($sub_heading)) : ?>
-                <h3><?php echo $sub_heading ?></h3>
+              <h3><?php echo $sub_heading ?></h3>
             <?php endif;?>
           </div>
         </div>
@@ -61,7 +73,7 @@
       <div class="mtl mbm">
         <?php get_template_part( 'partials/breadcrumbs' ); ?>
       </div>
-      <?php if ( empty( $sub_heading ) ) :?>
+      <?php if ( empty( $sub_heading ) && $user_selected_template != 'covid_guidance' && $user_selected_template != 'translated_content' ) :?>
         <div class="grid-container">
           <div class="grid-x">
             <div class="cell">

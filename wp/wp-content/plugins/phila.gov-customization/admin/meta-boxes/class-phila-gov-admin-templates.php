@@ -55,6 +55,19 @@ class Phila_Gov_Admin_Templates {
         ),
       ),
     );
+    $conditions['#postdivrich'] = array(
+      'hidden' => array(
+        'when' => array(
+          array( 'phila_template_select', '=', 'topic_page' ),
+          array( 'phila_template_select', '=', 'service_stub' ),
+          array( 'phila_template_select', '=', 'off_site_department' ),
+          array( 'phila_template_select', '=', 'covid_guidance' ),
+          array( 'phila_template_select', '=', 'prog_off_site' ),
+          array( 'phila_template_select', '=', 'translated_content' ),
+        ),
+        'relation' => 'or'
+      ),
+    );
     return $conditions;
   }
 
@@ -127,7 +140,9 @@ class Phila_Gov_Admin_Templates {
             'post'   => 'Post',
             'press_release' => 'Press Release',
             'action_guide'  => 'Action Guide',
-            'action_guide_2'  => 'Action Guide V2'
+            'action_guide_2'  => 'Action Guide V2',
+            'translated_post'   => 'Translated Post',
+            'translated_press_release' => 'Translated Press Release',
           ),
           'admin_columns' => array(
             'position' => 'after date',
