@@ -27,7 +27,13 @@ class Phila_Item_Meta_Desc {
       'post_types' => array(
         'phila_post', 'news_post',  'department_page', 'service_page', 'document', 'press_release', 'page', 'post', 'programs', 'event_spotlight', 'guides'
       ),
-
+      'hidden' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'translated_press_release'),
+          array('phila_template_select', '=', 'translated_post'),
+        ),
+        'relation' => 'or',
+      ),
       'fields' => array(
         array(
           'id'   => $prefix . 'meta_desc',

@@ -66,6 +66,7 @@
                 the_title();
               }
             ?>
+            <?php the_title(); ?>
             </h1>
             <?php if(!empty($sub_heading)) : ?>
               <hr>
