@@ -13,6 +13,7 @@ class Phila_Gov_Row_Metaboxes {
     'class' => 'phila_row',
     'type'  => 'group',
     'clone' => true,
+    'max_clone' => 8,
     'sort_clone' => true,
     'add_button'  => '+ Add row',
     'fields' => array(
