@@ -184,7 +184,7 @@ class Phila_Gov_Register_Program_Templates {
     $meta_boxes[] = array(
       'id'       => 'phila_program',
       'title'    => 'Page content',
-      'pages' => array( 'programs', 'department_page', 'service_page' ),
+      'pages' => array( 'programs', 'department_page', 'service_page', 'longform_content' ),
       'priority' => 'high',
       'revision' => true,
       'hidden' => array(
