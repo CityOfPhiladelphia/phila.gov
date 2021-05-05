@@ -304,10 +304,11 @@
             $accordion_group = isset( $current_row['phila_full_options']['phila_prereq']['accordion_group'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_group'] : '';
             $requirements_prereq_title = isset( $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] : '';  
             $override_icon = isset( $current_row['phila_full_options']['phila_prereq']['phila_v2_icon'] ) ? $current_row['phila_full_options']['phila_prereq']['phila_v2_icon'] : '';
-
+            $use_icon = true;
+            $is_full_width = false;
             if ( !empty( $accordion_group ) || !empty( $requirements_prereq_title ) ) : ?>
               <!-- Prereq Row -->
-              <?php include(locate_template('partials/content-custom-prereq-row.php')); ?>
+              <?php include(locate_template('partials/global/accordion.php')); ?>
               <!-- /Prereq Row -->
             <?php endif;?>
 
