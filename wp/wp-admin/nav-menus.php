@@ -1042,6 +1042,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 										<legend class="menu-settings-group-name howto"><?php _e( 'Display location' ); ?></legend>
 										<?php
 										foreach ( $locations as $location => $description ) :
+											var_dump($menu_locations[ $location ]);
 											$checked = isset( $menu_locations[ $location ] ) && $menu_locations[ $location ] === $nav_menu_selected_id;
 											?>
 											<div class="menu-settings-input checkbox-input">
