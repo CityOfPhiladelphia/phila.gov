@@ -107,8 +107,8 @@ function publish_microsite_post_private($new_status, $old_status, $post) {
 }
 
 add_action( 'trashed_post', 'delete_microsite_post', 10, 0 );
-add_action( 'trashed_post', 'delete_microsite_post_private', 10, 0 );
+// add_action( 'trashed_post', 'delete_microsite_post_private', 10, 0 );
 add_action( 'transition_post_status', 'publish_microsite_post', 10, 3 );
-add_action( 'transition_post_status', 'publish_microsite_post_private', 10, 3 );
+// add_action( 'transition_post_status', 'publish_microsite_post_private', 10, 3 );
 
 ?>
