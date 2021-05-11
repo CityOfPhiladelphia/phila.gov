@@ -74,6 +74,7 @@ function publish_microsite_post($new_status, $old_status, $post) {
         )
     );
     $http = _wp_http_get_object();
+    var_dump($webhook);
     return $http->post( $webhook, $args );
   }
 }
