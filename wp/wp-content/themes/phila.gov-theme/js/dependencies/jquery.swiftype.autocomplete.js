@@ -309,25 +309,27 @@
     params['per_page'] = config.resultLimit;
 
     var endpoint = Swiftype.root_url + '/api/v1/public/engines/suggest.json';
-    $this.currentRequest = $.ajax({
-      type: 'GET',
-      dataType: 'jsonp',
-      url: endpoint,
-      data: params,
-      success : function(data) {
+    if (params['q'].length >= 4){ // only autocompletes when there are 4+ characters in the query to prevent sending too many requests to swiftype
+      $this.currentRequest = $.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        url: endpoint,
+        data: params,
+        success : function(data) {
 
-      var norm = normalize(term);
-      if (data.record_count > 0) {
-        $this.cache.put(norm, data.records);
-      } else {
-        $this.addEmpty(norm);
-        $this.data('swiftype-list').empty();
-        $this.hideList();
-        return;
+        var norm = normalize(term);
+        if (data.record_count > 0) {
+          $this.cache.put(norm, data.records);
+        } else {
+          $this.addEmpty(norm);
+          $this.data('swiftype-list').empty();
+          $this.hideList();
+          return;
+        }
+        processData($this, data.records, term);
       }
-      processData($this, data.records, term);
-    }
-  });
+    });
+  }
 };
   var getResults = function($this, term) {
     var norm = normalize(term);
