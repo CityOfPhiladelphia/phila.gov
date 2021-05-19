@@ -18,7 +18,7 @@ endif;
 
 <?php $service_updates_loop = new WP_Query( $service_args ); ?>
 
-<?php if ( $service_updates_loop->have_posts() ) : ?>
+<?php if ( $service_updates_loop->have_posts() && (isset( $category_slug ) || is_home()) ) : ?>
 <?php $update_array = array(); ?>
 
 <?php while ( $service_updates_loop->have_posts() ) :?>
