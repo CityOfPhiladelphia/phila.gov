@@ -5,12 +5,16 @@
  * @package phila-gov
  */
 
-get_header(); ?>
+get_header(); 
+
+$mobile_homepage_image = rwmb_meta( 'homepage_mobile', array( 'object_type' => 'setting' ), 'phila_settings' );
+$desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' => 'setting' ), 'phila_settings' );
+?>
 
 <div class="site-main home">
   <main>
-    <div class="hero-content">
-      <img class="show-for-small-only" src="<?php echo get_bloginfo('url'); ?>/wp-content/themes/phila.gov-theme/img/beta-homepage-mobile.jpg" alt="">
+    <div class="hero-content" style="background: url('<?php echo $desktop_homepage_image; ?>');">
+      <img class="show-for-small-only" src="<?php echo $mobile_homepage_image; ?>" alt="">
       <div class="hero-wrap">
         <div class="photo-credit small-text">
         </div>

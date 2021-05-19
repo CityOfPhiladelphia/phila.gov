@@ -9,9 +9,7 @@
   .hero-content {
     margin-top:0;
     font-family: 'Montserrat', 'Tahoma', sans-serif;
-
     @media only screen and (min-width: 40em) {
-      background: url('../img/beta-homepage-shade.jpg');
       background-size: cover;
       background-repeat: no-repeat;
     }
