@@ -68,7 +68,7 @@ $language_list = phila_get_translated_language( $language );
   <?php if ( $last_updated ): ?>
     <div class="last-updated mtm">
       <span class="last-updated-text ptm">Last updated:</span> <?php echo $date_formatted->format('F d, Y'); ?> 
-      <?php echo !empty($last_updated_text) ? '<p>' . $last_updated_text . '</p>' : '' ?>
+      <?php echo !empty($last_updated_text) ?  apply_filters('the_content', $last_updated_text) : ''; ?>
     </div>
   <?php endif; ?>
   </header>
