@@ -13,7 +13,7 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
 
 <div class="site-main home">
   <main>
-    <div class="hero-content" style="background: url('<?php echo $desktop_homepage_image; ?>');">
+    <div class="hero-content" style="background-image: url('<?php echo $desktop_homepage_image; ?>');">
       <img class="show-for-small-only" src="<?php echo $mobile_homepage_image; ?>" alt="">
       <div class="hero-wrap">
         <div class="photo-credit small-text">
