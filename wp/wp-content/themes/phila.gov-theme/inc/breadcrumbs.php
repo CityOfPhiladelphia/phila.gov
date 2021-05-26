@@ -38,7 +38,7 @@ function phila_breadcrumbs() {
 
     } elseif ( is_singular('document') ) {
 
-        echo '<li><a href="/documents">Publications &amp; forms</a></li>';
+        echo '<li><a href="/publications-forms">Publications &amp; forms</a></li>';
         echo '<li>';
         the_title();
         echo '</li>';
@@ -68,13 +68,6 @@ function phila_breadcrumbs() {
     } elseif ( is_post_type_archive('service_page' ) ) {
 
         echo '<li>' . __( 'Service directory', 'phila.gov' ) . '</li>';
-
-    } elseif ( ( is_post_type_archive('document') && is_category() ) ) {
-
-        echo '<li><a href="/news">Publications &amp; forms</a></li>';
-        $category = get_the_category($post->ID);
-
-        echo '<li>' . $category[0]->name . '</li>';
 
     } elseif ( is_post_type_archive('document') ) {
 
@@ -139,7 +132,7 @@ function phila_breadcrumbs() {
 
     } elseif( is_tag() ){
 
-      echo '<li><a href="/posts">Posts</a></li>';
+      echo '<li><a href="/the-latest">Posts</a></li>';
       echo '<li>';
       '<span>' . single_tag_title( 'Tagged in: ' ) . '</span>';
 
@@ -147,13 +140,13 @@ function phila_breadcrumbs() {
 
       $categories = get_the_category($post->ID);
 
-      echo '<li><a href="/posts">Posts</a></li>';
+      echo '<li><a href="/the-latest">Posts</a></li>';
       if ( !$categories == 0 ) {
         echo '<li>' . $categories[0]->name . '</li>';
       }
     } elseif ( is_author() ) {
 
-      echo '<li><a href="/posts">Posts</a></li>';
+      echo '<li><a href="/the-latest">Posts</a></li>';
       echo '<li>';
         printf( __( 'Author: %s', 'phila-gov' ), '<span class="vcard">' . get_the_author() . '</span>' );
       echo '</li>';

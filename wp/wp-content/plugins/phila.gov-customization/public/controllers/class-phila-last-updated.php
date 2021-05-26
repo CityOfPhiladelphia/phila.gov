@@ -64,19 +64,19 @@ class Phila_Last_Updated_Controller {
         'updated_at' => ''
       ),
       array(
-        'link'  => '/departments/',
+        'link'  => '/city-government-directory/',
         'updated_at' => ''
       ),
       array(
-        'link'  => '/documents/',
+        'link'  => '/publications-forms/',
         'updated_at' => ''
       ),
       array(
-        'link'  => '/programs/',
+        'link'  => '/programs-initiatives/',
         'updated_at' => ''
       ),
       array(
-        'link'  => '/services/',
+        'link'  => '/service-directory/',
         'updated_at' => ''
       ),
     );

@@ -32,22 +32,35 @@ class Phila_Departments_Controller {
   }
 
   /**
-   * Return all services, excluding stubs
+   * Return all departments
    *
    * @param WP_REST_Request $request Current request.
   */
   public function get_items( $request ) {
 
-    $args = array(
+    $regular_homepages = array(
       'posts_per_page'=> -1,
       'post_type' => 'department_page',
       'orderby' => 'title',
       'order' => 'asc',
+      'post_status' => 'publish',
       'post_parent' => 0,
-      'post_status' => 'publish'
     );
 
-    $posts = get_posts( $args );
+    $non_homepages = array(
+      'posts_per_page'=> -1,
+      'post_type' => 'department_page',
+      'orderby' => 'title',
+      'order' => 'asc',
+      'post_status' => 'publish',
+      'meta_key' => 'phila_department_home_page',
+      'meta_value' => 1,
+    );
+
+    $home = get_posts( $regular_homepages );
+    $non = get_posts($non_homepages);
+
+    $posts = array_merge($home, $non);
 
     $data = array();
 
