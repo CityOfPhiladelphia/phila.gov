@@ -66,17 +66,17 @@
           <ul class="medium-horizontal menu">
             <li class="gov-site show-for-medium">
               <span>An official website of the City of Philadelphia government </span>
-              <a href="javascript:void(0)" id="trusted-site-toggle">Here's how you know</a>
+              <a href="" class="trusted-site-toggle">Here's how you know</a>
             </li>
             <li class="gov-site show-for-small-only">
-              <a href="javascript:void(0)" id="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
+              <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
             </li>
           </ul>
         </div>
         <div class="medium-12 small-8 columns">
           <ul class="medium-horizontal menu float-right">
             <li class="show-for-medium"><a href="/departments/mayor/">Office of the Mayor</a></li>
-            <li class="show-for-medium"><a href="/departments/">City government directory</a></li>
+            <li class="show-for-medium"><a href="/city-government-directory/">City government directory</a></li>
             <li>
               <div id="google_translate_element" class="no-js"><span class="show-for-sr">Google Translate</span></div>
             </li>
@@ -142,7 +142,7 @@
                         <a href="/the-latest/" class="valign-cell"> News &amp; events</a>
                       </li>
                       <li>
-                        <a href="/documents/" class="valign-cell"> Publications &amp; forms</a>
+                        <a href="/publications-forms/" class="valign-cell"> Publications &amp; forms</a>
                       </li>
                     </ul>
                 </nav>
@@ -193,15 +193,15 @@
                       <a href="/programs-initiatives/#/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs &amp; initiatives</a>
                     </li>
                     <li tabindex="0">
-                      <a href="/news/" class="valign-cell"><i class="fas fa-microphone"></i> News &amp; events</a>
+                      <a href="/the-latest/" class="valign-cell"><i class="fas fa-microphone"></i> News &amp; events</a>
                     </li>
                     <li tabindex="0">
-                      <a href="/documents/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications &amp; forms</a>
+                      <a href="/publications-forms/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications &amp; forms</a>
                     </li>
                     <li class="bg-sidewalk" tabindex="0">
                       <a href="/mayor/"><i class="fas fa-university"></i> Mayor's Office</a>
                     </li>
-                    <li class="bg-sidewalk" tabindex="0"><a href="/departments/"><i class="fas fa-sitemap"></i> City government directory</a>
+                    <li class="bg-sidewalk" tabindex="0"><a href="/city-government-directory/"><i class="fas fa-sitemap"></i> City government directory</a>
                     </li>
                   </ul>
                 </nav>
