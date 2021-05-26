@@ -21,7 +21,8 @@ $(function() {
     $(window).on('scroll', validateSticky);
     validateSticky();
 
-    $("#trusted-site-toggle, #trusted-site-close").click(function(){
-        $("#trusted-site").toggle();
+    $(".trusted-site-toggle, #trusted-site-close").click(function(event){
+      event.preventDefault();
+      $("#trusted-site").toggle();
     });
 });
