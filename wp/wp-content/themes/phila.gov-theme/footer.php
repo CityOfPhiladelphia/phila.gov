@@ -180,10 +180,10 @@
         </nav>
         <nav>
           <ul>
-            <li class="pvxs"><a href="https://www.phila.gov/departments/">City government directory</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/city-government-directory/">City government directory</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/service-directory/">Service directory</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/programs-initiatives/#/">Programs & initiatives </a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/documents/">Publications & forms </a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/publications-forms/">Publications & forms </a></li>
           </ul>
         </nav>
       </section>
