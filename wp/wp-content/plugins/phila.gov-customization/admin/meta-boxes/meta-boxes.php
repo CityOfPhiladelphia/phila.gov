@@ -1014,6 +1014,7 @@ $meta_boxes[] = array(
           'id'  => 'phila_reverse_category_order',
           'type'  => 'switch',
           'name'  => 'Display categories in reverse alphabetical order',
+          'desc'  => 'Default: alphabetical order',
           'on_label'  => 'Yes',
           'off_label' => 'No',
         ),
