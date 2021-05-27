@@ -1011,6 +1011,13 @@ $meta_boxes[] = array(
           'desc'  => 'Defaults to: Begin typing to filter documents',
         ),
         array(
+          'id'  => 'phila_reverse_category_order',
+          'type'  => 'switch',
+          'name'  => 'Display categories in reverse alphabetical order',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+        ),
+        array(
           'name'  => 'Add files to table',
           'id'    => 'phila_files',
           'type'  => 'file_advanced',
