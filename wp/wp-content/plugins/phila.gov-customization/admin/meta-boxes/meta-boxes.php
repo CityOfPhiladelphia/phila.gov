@@ -1019,6 +1019,14 @@ $meta_boxes[] = array(
           'off_label' => 'No',
         ),
         array(
+          'id'  => 'phila_hide_date_column',
+          'type'  => 'switch',
+          'name'  => 'Hide date column',
+          'desc'  => 'Default: visible dates',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+        ),
+        array(
           'name'  => 'Add files to table',
           'id'    => 'phila_files',
           'type'  => 'file_advanced',
