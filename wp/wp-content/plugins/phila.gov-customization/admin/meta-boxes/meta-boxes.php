@@ -1011,6 +1011,22 @@ $meta_boxes[] = array(
           'desc'  => 'Defaults to: Begin typing to filter documents',
         ),
         array(
+          'id'  => 'phila_reverse_category_order',
+          'type'  => 'switch',
+          'name'  => 'Display categories in reverse alphabetical order',
+          'desc'  => 'Default: alphabetical order',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+        ),
+        array(
+          'id'  => 'phila_hide_date_column',
+          'type'  => 'switch',
+          'name'  => 'Hide date column',
+          'desc'  => 'Default: visible dates',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+        ),
+        array(
           'name'  => 'Add files to table',
           'id'    => 'phila_files',
           'type'  => 'file_advanced',
