@@ -38,13 +38,26 @@ class Phila_Pages_Controller {
   */
   public function get_items( $request ) {
 
-    $posts = new WP_Query( array(
-      'post_type' => array('post', 'page', 'service_updates', 'site_wide_alert', 'document', 'staff_directory', 'announcement', 'service_page', 'department_page', 'event_spotlight', 'guides', 'programs', 'calendar', 'phila_post', 'news_post', 'press_release'),
-      'posts_per_page'  => -1,
-      'order' => 'asc',
-      'orderby' => 'title',
-      'post_status' => 'publish',
-    ) );
+    if ($request['department']) {
+      $department_id = $request['department'];
+
+      $posts = new WP_Query( array(
+        'category__in' => $department_id,
+        'post_type' => array('post', 'page', 'service_updates', 'site_wide_alert', 'document', 'staff_directory', 'announcement', 'service_page', 'department_page', 'event_spotlight', 'guides', 'programs', 'calendar', 'phila_post', 'news_post', 'press_release'),
+        'posts_per_page'  => -1,
+        'order' => 'asc',
+        'orderby' => 'title',
+        'post_status' => 'publish',
+      ) );
+    } else {
+      $posts = new WP_Query( array(
+        'post_type' => array('post', 'page', 'service_updates', 'site_wide_alert', 'document', 'staff_directory', 'announcement', 'service_page', 'department_page', 'event_spotlight', 'guides', 'programs', 'calendar', 'phila_post', 'news_post', 'press_release'),
+        'posts_per_page'  => -1,
+        'order' => 'asc',
+        'orderby' => 'title',
+        'post_status' => 'publish',
+      ) );
+    }
 
     if ( $posts->have_posts() ) {
       $pages = array();

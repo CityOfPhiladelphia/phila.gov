@@ -6,11 +6,12 @@ class Phila_Departments_Controller {
   public function __construct() {
     $this->namespace     = 'departments/v1';
     $this->resource_name = 'list';
+    $this->owner_resource_name = 'owners';
   }
 
   // Register our routes.
   public function register_routes() {
-  // Register the endpoint for collections.
+    // Register the endpoint for collections.
     register_rest_route( $this->namespace, '/' . $this->resource_name, array(
       array(
         'methods'   => WP_REST_Server::READABLE,
@@ -28,6 +29,16 @@ class Phila_Departments_Controller {
         'permission_callback' => '__return_true',
       ),
       'schema' => array( $this, 'get_item_schema' ),
+    ) );
+
+    // Register the endpoint for collections.
+    register_rest_route( $this->namespace, '/' . $this->owner_resource_name, array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_owner_items' ),
+        'permission_callback' => '__return_true',
+      ),
+      'schema' => array( $this, 'get_owner_item_schema' ),
     ) );
   }
 
@@ -76,6 +87,24 @@ class Phila_Departments_Controller {
 
     // Return all response data.
     return rest_ensure_response( $data );
+  }
+
+
+  /**
+   * Return all departments
+   *
+   * @param WP_REST_Request $request Current request.
+  */
+  public function get_owner_items() {
+
+    $categories = get_categories();
+
+    $data = array();
+
+    if ( empty( $categories ) ) {
+      return rest_ensure_response( $data );
+    }
+    return rest_ensure_response( $categories );
   }
 
 
