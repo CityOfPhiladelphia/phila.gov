@@ -1009,6 +1009,23 @@ $meta_boxes[] = array(
           ),
         ),
         array(
+          'id'  => 'phila_doc_label_sort',
+          'name'  => 'Default table to sort by label column (if it exists)',
+          'type'  => 'radio',
+          'std'=> '0',
+          'options' =>  array(
+              '0' => 'None',
+              'ascending' => 'Ascending',
+              'descending' => 'Descending'
+          ),
+          'class' => 'margin-bottom-10',
+          'visible' => array(
+            'when'  => array(
+              array('phila_vue_toggle', '=', true),
+            ),
+          ),
+        ),
+        array(
           'id'  => 'phila_search_bar_text',
           'type'  => 'text',
           'name'  => 'Text for the document search',
