@@ -226,7 +226,6 @@
         !is_page_template('templates/the-latest.php') &&
         $post_type != 'programs' &&
         $post_type != 'guides' &&
-        $post_type != 'longform_content' &&
         $post_type != 'event_spotlight') : ?>
         <div class="mtl mbm">
           <?php get_template_part( 'partials/breadcrumbs' ); ?>
