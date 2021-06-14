@@ -2,6 +2,10 @@
 
 <?php include(locate_template('partials/errors/error-message.php')); ?>
 
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="//cityofphiladelphia.github.io/patterns/images/favicon.ico">
+</head>
+
 <div id='longform-content-single-container'>
 <?php
 /**
