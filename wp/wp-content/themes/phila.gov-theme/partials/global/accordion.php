@@ -28,8 +28,9 @@
   <?php foreach ( $accordion_group as $ag_key => $accordion ) : ?>
   <?php reset($accordion_group) ?>
   <?php if (isset( $accordion['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ): ?>
-  <div class="icon-expand-container result">
-    <div class="icon-expand-title grid-x align-middle">
+  <div class="icon-expand-container result grid-x align-bottom">
+    <div class="icon-expand-title align-middle cell auto">
+      <div class="cell auto no-p-margin fixed-width small-21 grid-x">
       <?php if ($use_icon === true ) :?>
         <?php 
         if (!empty($override_icon)){
@@ -40,14 +41,13 @@
           $accordion_icon = 'fas fa-tasks';
         }
       ?>
-      <div class="cell shrink mrl hide-for-small-only"><i class="<?php echo $accordion_icon ?> fa-2x fa-fw"></i></div> 
+      <div class="cell shrink hide-for-small-only"><i class="<?php echo $accordion_icon ?> fa-2x fa-fw"></i></div> 
       <?php endif; ?>
-      <div class="cell auto no-p-margin fixed-width small-21">
-        <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_title'] ); ?>
+        <div class="cell auto"><?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_title'] ); ?></div>
       </div>
     </div>
-    <a href="#" data-toggle="icon-expand" class="icon-expand-link" id="<?php echo sanitize_title_with_dashes($accordion['phila_custom_wysiwyg']['phila_wysiwyg_title']) . '-control' ?>"> More + </a>
-    <div class="icon-expand-content mvm " aria-controls="<?php echo sanitize_title_with_dashes($accordion['phila_custom_wysiwyg']['phila_wysiwyg_title']) . '-control' ?>" aria-expanded="false">
+    <a href="#" data-toggle="icon-expand" class="cell shrink" id="<?php echo sanitize_title_with_dashes($accordion['phila_custom_wysiwyg']['phila_wysiwyg_title']) . '-control' ?>"> More + </a>
+    <div class="icon-expand-content mvm cell small-24" aria-controls="<?php echo sanitize_title_with_dashes($accordion['phila_custom_wysiwyg']['phila_wysiwyg_title']) . '-control' ?>" aria-expanded="false">
       <?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_content']); ?>
     </div>
   </div>
