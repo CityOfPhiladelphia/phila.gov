@@ -67,6 +67,7 @@
 
         $cal_owner_id = isset( $current_row['calendar_row']['phila_calendar_owner'] ) ? $current_row['calendar_row']['phila_calendar_owner'] : ''; 
         $cal_category = get_the_category_by_ID($cal_owner_id);
+        $override_url = isset( $current_row['calendar_row']['override_url'] ) ? $current_row['calendar_row']['override_url'] : '';
         ?>
         <div id="anchor-<?php echo $c ?>" data-magellan-target="<?php echo $c ?>" class="es-calendar">
           <?php include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
