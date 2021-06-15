@@ -2,8 +2,7 @@
 /*
  * Event spotlight card
 */
-
-if ( is_singular('department_page') ) {
+if ( is_singular('department_page') || is_singular('programs')  ) {
   $spotlight_args  = array(
     'posts_per_page' => 1,
     'post_type' => array('event_spotlight'),

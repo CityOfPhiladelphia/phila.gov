@@ -4,8 +4,12 @@
   * $cal_category - required
   */
   global $post;
-  $display_spotlight = rwmb_meta('phila_active_event_spotlight');
-  $spotlight_id = rwmb_meta('phila_event_spotlight');
+  if (!isset($display_spotlight) || $display_spotlight == null ) {
+    $display_spotlight = rwmb_meta('phila_active_event_spotlight');
+  } 
+  if (!isset($spotlight_id) || $spotlight_id == null ) {
+    $spotlight_id = rwmb_meta('phila_event_spotlight');
+  }
   $user_selected_template = phila_get_selected_template();
   $post_type_parent = get_post_type($post->ID);
   if( !isset($override_url)) {
