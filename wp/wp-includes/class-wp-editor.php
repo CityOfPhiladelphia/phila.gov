@@ -28,7 +28,6 @@ final class _WP_Editors {
 	private static $translation;
 	private static $tinymce_scripts_printed = false;
 	private static $link_dialog_printed     = false;
-	private static $loaded_css     					= true;
 
 	private function __construct() {}
 
@@ -1113,11 +1112,8 @@ final class _WP_Editors {
 		$version = 'ver=' . get_bloginfo( 'version' );
 
 		// Default stylesheets.
-		if (self::$loaded_css == false) {
-			$settings['content_css'] = includes_url( "css/dashicons$suffix.css?$version" ) . ',' .
-			includes_url( "js/tinymce/skins/wordpress/wp-content.css?$version" );
-			self::$loaded_css = true;
-		}
+		// $settings['content_css'] = includes_url( "css/dashicons$suffix.css?$version" ) . ',' .
+		// includes_url( "js/tinymce/skins/wordpress/wp-content.css?$version" );
 
 		return $settings;
 	}

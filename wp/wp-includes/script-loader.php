@@ -56,7 +56,7 @@ function wp_register_tinymce_scripts( $scripts, $force_uncompressed = false ) {
 	// or tinymce.min.js (when SCRIPT_DEBUG is true).
 	if ( $compressed ) {
 		// var_dump('yup');
-		// $scripts->add( 'wp-tinymce', includes_url( 'js/tinymce/' ) . 'wp-tinymce.js', array(), $tinymce_version );
+		$scripts->add( 'wp-tinymce', includes_url( 'js/tinymce/' ) . 'wp-tinymce.js', array(), $tinymce_version );
 	} else {
 		$scripts->add( 'wp-tinymce-root', includes_url( 'js/tinymce/' ) . "tinymce$dev_suffix.js", array(), $tinymce_version );
 		$scripts->add( 'wp-tinymce', includes_url( 'js/tinymce/' ) . "plugins/compat3x/plugin$dev_suffix.js", array( 'wp-tinymce-root' ), $tinymce_version );
@@ -1411,6 +1411,7 @@ function wp_default_styles( $styles ) {
 	$styles->add( 'common', "/wp-admin/css/common$suffix.css" );
 	$styles->add( 'forms', "/wp-admin/css/forms$suffix.css" );
 	$styles->add( 'admin-menu', "/wp-admin/css/admin-menu$suffix.css" );
+	// $styles->add( 'dash-icons', "/wp-admin/css/dashicons.min.css" );
 	$styles->add( 'dashboard', "/wp-admin/css/dashboard$suffix.css" );
 	$styles->add( 'list-tables', "/wp-admin/css/list-tables$suffix.css" );
 	$styles->add( 'edit', "/wp-admin/css/edit$suffix.css" );
