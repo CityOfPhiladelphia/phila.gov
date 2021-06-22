@@ -27,9 +27,19 @@
 /* plugins */
 @import url('../../../amazon-s3-and-cloudfront/assets/css/notice.css');
 @import url('../../../wpfront-user-role-editor-personal-pro/css/personal-pro/admin-style.css');
+@import url('../../../wp-nested-pages/assets/css/nestedpages.css');
+
+/* metabox */
 @import url('../../../meta-box/css/image.css');
 @import url('../../../meta-box/css/switch.css');
-@import url('../../../wp-nested-pages/assets/css/nestedpages.css');
+@import url('../../../meta-box/css/input-list.css');
+@import url('../../../meta-box/css/select.css');
+@import url('../../../meta-box/css/select-advanced.css');
+@import url('../../../meta-box/css/file-input.css');
+@import url('../../../meta-box/css/media.css');
+
+
+
 
 
 #submitdiv,
