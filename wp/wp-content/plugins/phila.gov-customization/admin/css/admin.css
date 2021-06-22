@@ -1,5 +1,22 @@
 /* for all users */
 /* Recent metabox update is hidding submit div for some pages */
+@import url('../../../../../wp-admin/css/common.min.css');
+@import url('../../../../../wp-admin/css/forms.min.css');
+@import url('../../../../../wp-admin/css/admin-menu.min.css');
+@import url('../../../../../wp-admin/css/dashboard.min.css');
+@import url('../../../../../wp-admin/css/list-tables.min.css');
+@import url('../../../../../wp-admin/css/edit.min.css');
+@import url('../../../../../wp-admin/css/revisions.min.css');
+@import url('../../../../../wp-admin/css/media.min.css');
+@import url('../../../../../wp-admin/css/themes.min.css');
+@import url('../../../../../wp-admin/css/about.min.css');
+@import url('../../../../../wp-admin/css/nav-menus.min.css');
+@import url('../../../../../wp-admin/css/widgets.min.css');
+@import url('../../../../../wp-admin/css/site-icon.min.css');
+@import url('../../../../../wp-admin/css/l10n.min.css');
+@import url('../../../../../wp-admin/css/code-editor.min.css');
+@import url('../../../../../wp-admin/css/site-health.min.css');
+
 #submitdiv,
 #categorydiv{
   display: block !important;
