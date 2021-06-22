@@ -55,7 +55,7 @@
       ?>
     <div class="grid-container">
 
-      <div class="grid-x grid-padding-x mbl <?php if( $item_count > 1 ) echo 'equal-height' ?>">
+      <div class="grid-x grid-padding-x mbxl <?php if( $item_count > 1 ) echo 'equal-height' ?>">
 
       <div class="cell">
           <h2 class="h3">Featured <?php echo strtolower(the_title()) ?></h2>
