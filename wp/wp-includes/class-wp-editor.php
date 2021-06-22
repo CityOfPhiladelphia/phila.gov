@@ -557,7 +557,8 @@ final class _WP_Editors {
 					$settings['wpeditimage_disable_captions'] = true;
 				}
 
-				$mce_css = $settings['content_css'];
+				$mce_css = null;
+				// $mce_css = $settings['content_css'];
 
 				/*
 				 * The `editor-style.css` added by the theme is generally intended for the editor instance on the Edit Post screen.
@@ -588,11 +589,11 @@ final class _WP_Editors {
 				 */
 				$mce_css = trim( apply_filters( 'mce_css', $mce_css ), ' ,' );
 
-				if ( ! empty( $mce_css ) ) {
-					$settings['content_css'] = $mce_css;
-				} else {
-					unset( $settings['content_css'] );
-				}
+				// if ( ! empty( $mce_css ) ) {
+				// 	$settings['content_css'] = $mce_css;
+				// } else {
+				// 	unset( $settings['content_css'] );
+				// }
 
 				self::$first_init = $settings;
 			}
