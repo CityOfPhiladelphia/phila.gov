@@ -1,6 +1,6 @@
 /* for all users */
 /* Recent metabox update is hidding submit div for some pages */
-@import url('../../../../../wp-admin/css/common.min.css');
+/* @import url('../../../../../wp-admin/css/common.min.css');
 @import url('../../../../../wp-admin/css/forms.min.css');
 @import url('../../../../../wp-admin/css/admin-menu.min.css');
 @import url('../../../../../wp-admin/css/dashboard.min.css');
@@ -15,7 +15,15 @@
 @import url('../../../../../wp-admin/css/site-icon.min.css');
 @import url('../../../../../wp-admin/css/l10n.min.css');
 @import url('../../../../../wp-admin/css/code-editor.min.css');
-@import url('../../../../../wp-admin/css/site-health.min.css');
+@import url('../../../../../wp-admin/css/site-health.min.css'); */
+
+@import url('../../../../../wp-includes/js/imgareaselect/imgareaselect.css');
+@import url('../../../../../wp-includes/css/jquery-ui-dialog.min.css');
+@import url('../../../../../wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css');
+@import url('../../../../../wp-includes/js/mediaelement/wp-mediaelement.min.css');
+@import url('../../../../../wp-includes/js/thickbox/thickbox.css');
+@import url('../../../../../wp-includes/js/codemirror/codemirror.min.css');
+
 
 #submitdiv,
 #categorydiv{
