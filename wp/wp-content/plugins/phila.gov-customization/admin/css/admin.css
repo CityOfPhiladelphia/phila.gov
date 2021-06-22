@@ -24,6 +24,13 @@
 @import url('../../../../../wp-includes/js/thickbox/thickbox.css');
 @import url('../../../../../wp-includes/js/codemirror/codemirror.min.css');
 
+/* plugins */
+@import url('../../../amazon-s3-and-cloudfront/assets/css/notice.css');
+@import url('../../../wpfront-user-role-editor-personal-pro/css/personal-pro/admin-style.css');
+@import url('../../../meta-box/css/image.css');
+@import url('../../../meta-box/css/switch.css');
+@import url('../../../wp-nested-pages/assets/css/nestedpages.css');
+
 
 #submitdiv,
 #categorydiv{
