@@ -73,7 +73,7 @@ function register_template_selection_metabox_departments( $meta_boxes ){
           'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
         ),
         'exclude' => array(
-          'custom' => 'not_phila_department_home_page',
+          'custom' => 'is_phila_department_home_page',
         ),
       ),
       array(
@@ -130,7 +130,7 @@ function register_template_selection_metabox_departments( $meta_boxes ){
       return false;
     }
 
-    function not_phila_department_home_page() {
+    function is_phila_department_home_page() {
       if( isset($_GET['post']) === true && 
         ( phila_get_selected_template($_GET['post']) ==  'homepage_v2' ||
           phila_get_selected_template($_GET['post']) ==  'one_quarter_headings_v2' ||

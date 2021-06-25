@@ -108,7 +108,7 @@ class Phila_Gov_Register_Program_Templates {
           'desc'  => 'Required if subpages exist. Minimum size 700px by 500px.',
           'columns' => 3,
           'exclude' => array(
-            'custom' => 'not_prog_off_site',
+            'custom' => 'is_prog_off_site',
           ),
         ),
         array(
@@ -119,7 +119,7 @@ class Phila_Gov_Register_Program_Templates {
           'max_file_uploads' => 1,
           'columns' => 3,
           'exclude' => array(
-            'custom' => 'not_prog_off_site',
+            'custom' => 'is_prog_off_site',
           ),
         ),
         array(
@@ -130,7 +130,7 @@ class Phila_Gov_Register_Program_Templates {
           'max_file_uploads' => 1,
           'columns' => 3,
           'exclude' => array(
-            'custom' => 'not_prog_off_site',
+            'custom' => 'is_prog_off_site',
           ),
         ),
         array(
@@ -149,7 +149,7 @@ class Phila_Gov_Register_Program_Templates {
       return false;
     }
 
-    function not_prog_off_site() {
+    function is_prog_off_site() {
       if( isset($_GET['post']) === true && 
         ( phila_get_selected_template($_GET['post']) == 'prog_off_site' ) )
         return true;

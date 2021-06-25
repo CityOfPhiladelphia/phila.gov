@@ -52,7 +52,7 @@ class Phila_Gov_Admin_Templates {
     );
     $conditions['#postdivrich'] = array(
       'exclude' => array(
-        'custom' => 'not_postdivrich',
+        'custom' => 'is_postdivrich',
       ),
     );
     
@@ -65,7 +65,7 @@ class Phila_Gov_Admin_Templates {
       return false;
     }
 
-    function not_postdivrich() {
+    function is_postdivrich() {
       if( isset($_GET['post']) === true && 
         ( phila_get_selected_template($_GET['post']) == 'topic_page' ||
           phila_get_selected_template($_GET['post']) == 'service_stub' ||
@@ -112,7 +112,7 @@ class Phila_Gov_Admin_Templates {
           'type'  => 'heading',
           'name' => 'Alternate title',
           'exclude' => array(
-            'custom' => 'not_service_stub',
+            'custom' => 'is_service_stub',
           ),
         ),
         array(
@@ -121,13 +121,13 @@ class Phila_Gov_Admin_Templates {
           'desc' => 'Enter an alternate title for this service. This will appear in place of the page title on alphabetical lists of services.',
           'size'  => 100,
           'exclude' => array(
-            'custom' => 'not_service_stub',
+            'custom' => 'is_service_stub',
           ),
         )
       ),
     );
 
-    function not_service_stub() {
+    function is_service_stub() {
       if( isset($_GET['post']) === true && 
         ( phila_get_selected_template($_GET['post']) == 'service_stub' ) )
         return true;
