@@ -18,10 +18,8 @@ class Phila_Gov_Post {
       'title'    => 'Multiple authors',
       'pages'    => array( 'post' ),
       'context'  => 'after_title',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'post'),
-        ),
+      'include' => array(
+        'custom' => 'is_post',
       ),
       'fields'  => array(
         array(
@@ -34,6 +32,13 @@ class Phila_Gov_Post {
       ),
     )
   );
+
+  function is_post() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'post' ) )
+      return true;
+    return false;
+  }
 
   $meta_boxes[] = array(
       'title'    => 'Social media share pre-filled text',
@@ -55,10 +60,8 @@ class Phila_Gov_Post {
       'pages'    => array( 'post' ),
       'context'  => 'side',
       'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '!=', 'action_guide'),
-        ),
+      'exclude' => array(
+        'custom' => 'is_action_guide',
       ),
       'include' => array(
         'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
@@ -76,15 +79,27 @@ class Phila_Gov_Post {
       )
     );
 
+    function is_action_guide() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'action_guide' ) )
+        return true;
+      return false;
+    }
+
+    function is_action_guide_v2() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'action_guide_v2' ) )
+        return true;
+      return false;
+    }
+
     $meta_boxes[] = array (
       'title'    => 'Post options',
       'pages'    => array( 'post' ),
       'context'  => 'side',
       'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '!=', 'action_guide'),
-        ),
+      'exclude' => array(
+        'custom' => 'is_action_guide',
       ),
       'fields' => array(
         Phila_Gov_Standard_Metaboxes::phila_language_selector(),
@@ -128,11 +143,9 @@ class Phila_Gov_Post {
       'title'    => 'End of post call to action. Where should users go now?',
       'pages'    => array( 'post' ),
       'context'  => 'normal',
-      'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'post'),
-        ),
+      'priority' => 'high',      
+      'include' => array(
+        'custom' => 'is_post',
       ),
       'fields' => array(
         array(
@@ -167,10 +180,8 @@ class Phila_Gov_Post {
       'pages'    => array( 'post' ),
       'context'  => 'normal',
       'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide'),
-        ),
+      'include' => array(
+        'custom' => 'is_action_guide',
       ),
       'fields' => array(
         array(
@@ -185,10 +196,8 @@ class Phila_Gov_Post {
       'pages'    => array( 'post' ),
       'context'  => 'normal',
       'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide'),
-        ),
+      'include' => array(
+        'custom' => 'is_action_guide',
       ),
       'fields' => array(
         array(
@@ -208,13 +217,9 @@ class Phila_Gov_Post {
       'pages' => array('post'),
       'context' => 'normal',
       'priority'  => 'high',
-
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide'),
-        ),
+      'include' => array(
+        'custom' => 'is_action_guide',
       ),
-
       'fields' => array(
         array(
           'type'  => 'heading',
@@ -259,10 +264,8 @@ class Phila_Gov_Post {
       'pages'    => array( 'post' ),
       'priority' => 'high',
       'revision' => true,
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide_2'),
-        ),
+      'include' => array(
+        'custom' => 'is_action_guide_v2',
       ),
       'fields' => array(
         array(
@@ -285,10 +288,8 @@ class Phila_Gov_Post {
       'pages'    => array( 'post' ),
       'context'  => 'normal',
       'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide_2'),
-        ),
+      'include' => array(
+        'custom' => 'is_action_guide_v2',
       ),
       'fields' => array(
         array(
