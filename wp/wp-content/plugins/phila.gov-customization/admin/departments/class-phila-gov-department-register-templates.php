@@ -72,18 +72,8 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'include' => array(
           'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
         ),
-        'hidden' => array(
-          'when' => array(
-            array('phila_template_select', '=', 'homepage_v2' ),
-            array('phila_template_select', '=', 'one_quarter_headings_v2' ),
-            array('phila_template_select', '=', 'contact_us_v2' ),
-            array('phila_template_select', '=', 'all_services_v2' ),
-            array('phila_template_select', '=', 'all_programs_v2' ),
-            array('phila_template_select', '=', 'forms_and_documents_v2' ),
-            array('phila_template_select', '=', 'resource_list_v2' ),
-            array('phila_template_select', '=', 'staff_directory_v2' ),
-          ),
-          'relation' => 'or'
+        'exclude' => array(
+          'custom' => 'not_phila_department_home_page',
         ),
       ),
       array(
@@ -91,9 +81,9 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'class' => 'hide-on-load',
         'type' => 'custom_html',
         'std' => 'Visit <a href="/wp-admin/edit.php?post_type=staff_directory">staff members</a> section to add/edit staff.',
-        'visible' => array(
-          'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
-        )
+        'include' => array(
+          'custom' => 'is_staff_directory',
+        ),
       ),
       array(
         'id'  => 'full_list',
@@ -103,18 +93,18 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'type' => 'switch',
         'on_label'  => 'Yes',
         'off_label' => 'No',
-        'visible' => array(
-          'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
-        )
+        'include' => array(
+          'custom' => 'is_staff_directory',
+        ),
       ),
       array(
         'id'  => 'units',
         'class' => 'hide-on-load',
         'name'  => 'Display staff grouped by the following units?',
         'type' => 'unit',
-        'visible' => array(
-          'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
-        )
+        'include' => array(
+          'custom' => 'is_staff_directory',
+        ),
       ),
       array(
         'id'  => 'anchor_list',
@@ -123,14 +113,37 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'type' => 'switch',
         'on_label'  => 'Yes',
         'off_label' => 'No',
-          'visible' => array(
-          'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
-        )
+        'include' => array(
+          'custom' => 'is_staff_directory',
+        ),
       ),
     ),
   );
 
     return $meta_boxes;
+
+    function is_phila_template_select_staff() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'staff_directory_v2' ||
+          phila_get_selected_template($_GET['post']) == 'staff_directory' ) )
+        return true;
+      return false;
+    }
+
+    function not_phila_department_home_page() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) ==  'homepage_v2' ||
+          phila_get_selected_template($_GET['post']) ==  'one_quarter_headings_v2' ||
+          phila_get_selected_template($_GET['post']) ==  'contact_us_v2' ||
+          phila_get_selected_template($_GET['post']) ==  'all_services_v2' ||
+          phila_get_selected_template($_GET['post']) ==  'all_programs_v2' ||
+          phila_get_selected_template($_GET['post']) ==  'forms_and_documents_v2' ||
+          phila_get_selected_template($_GET['post']) ==  'resource_list_v2' ||
+          phila_get_selected_template($_GET['post']) ==  'staff_directory_v2' ) )
+        return true;
+      return false;
+    }
+
   }
 
 }
