@@ -187,30 +187,74 @@ class Phila_Gov_Register_Program_Templates {
       'pages' => array( 'programs', 'department_page', 'service_page' ),
       'priority' => 'high',
       'revision' => true,
-      'hidden' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'prog_off_site' ),
-          array( 'phila_template_select', '=', 'resource_list_v2' ),
-          array( 'phila_template_select', '=', 'all_programs_v2' ),
-          array( 'phila_template_select', '=', 'all_services_v2' ),
-          array( 'phila_template_select', '=', 'translated_content' ),
-          array( 'phila_template_select', '=', 'covid_guidance' ),
-          array( 'phila_template_select', '=', 'tax_detail' ),
-        ),
-        'relation' => 'or',
-      ),
-      'visible' => array(
-        'when'  => array(
-          array( 'phila_template_select', '=', 'prog_association' ),
-          array( 'service_template_selection', '=', 'custom_content' )
-        ),
-        'relation' => 'or',
-      ),
-
+      'include' => array( 'custom' => array('is_prog_landing_page', 'is_prog_association', 'is_custom_content')),
       'fields' => array(
         Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
       )
     );
+
+
+    function is_prog_landing_page() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'prog_landing_page')
+        return true;
+      return false;
+    } 
+    function is_phila_one_quarter() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'phila_one_quarter')
+        return true;
+      return false;
+    } 
+    function is_collection_page_v2() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'collection_page_v2')
+        return true;
+      return false;
+    } 
+    function is_covid_guidance() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'covid_guidance')
+        return true;
+      return false;
+    } 
+    function is_document_finder_v2() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'document_finder_v2')
+        return true;
+      return false;
+    } 
+    function is_child_index() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'child_index')
+        return true;
+      return false;
+    } 
+    function is_prog_off_site() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'prog_off_site')
+        return true;
+      return false;
+    } 
+    function is_resource_list_v2() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'resource_list_v2')
+        return true;
+      return false;
+    } 
+    function is_stub() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'stub')
+        return true;
+      return false;
+    } 
+    function is_prog_association() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'prog_association')
+        return true;
+      return false;
+    } 
+    function is_timeline() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'timeline')
+        return true;
+      return false;
+    } 
+    function is_translated_content() {
+      if( isset($_GET['post']) === true && phila_get_selected_template($_GET['post']) == 'translated_content')
+        return true;
+      return false;
+    } 
+
 
     $meta_boxes[] = array(
       'title' => 'Stub',
