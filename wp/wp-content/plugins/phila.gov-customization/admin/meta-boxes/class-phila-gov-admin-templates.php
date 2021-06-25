@@ -38,13 +38,8 @@ class Phila_Gov_Admin_Templates {
     );
 
     $conditions['.additional-content'] = array(
-      'visible' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'default' ),
-          array( 'phila_template_select', '=', 'tax_detail' ),
-          array( 'phila_template_select', '=', 'start_process' ),
-        ),
-        'relation' => 'or'
+      'include' => array(
+        'custom' => 'is_additional_content',
       ),
     );
     //hide submit div when user is a readonly user
@@ -56,18 +51,32 @@ class Phila_Gov_Admin_Templates {
       ),
     );
     $conditions['#postdivrich'] = array(
-      'hidden' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'topic_page' ),
-          array( 'phila_template_select', '=', 'service_stub' ),
-          array( 'phila_template_select', '=', 'off_site_department' ),
-          array( 'phila_template_select', '=', 'covid_guidance' ),
-          array( 'phila_template_select', '=', 'prog_off_site' ),
-          array( 'phila_template_select', '=', 'translated_content' ),
-        ),
-        'relation' => 'or'
+      'exclude' => array(
+        'custom' => 'not_postdivrich',
       ),
     );
+    
+    function is_additional_content() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'default' ||
+          phila_get_selected_template($_GET['post']) == 'tax_detail' ||
+          phila_get_selected_template($_GET['post']) == 'start_process' ) )
+        return true;
+      return false;
+    }
+
+    function not_postdivrich() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'topic_page' ||
+          phila_get_selected_template($_GET['post']) == 'service_stub' ||
+          phila_get_selected_template($_GET['post']) == 'off_site_department' ||
+          phila_get_selected_template($_GET['post']) == 'covid_guidance' ||
+          phila_get_selected_template($_GET['post']) == 'prog_off_site' ||
+          phila_get_selected_template($_GET['post']) == 'translated_content' ) )
+        return true;
+      return false;
+    }
+
     return $conditions;
   }
 
@@ -102,10 +111,8 @@ class Phila_Gov_Admin_Templates {
         array(
           'type'  => 'heading',
           'name' => 'Alternate title',
-          'visible' => array(
-            'when' => array(
-              array('phila_template_select', '!=', 'service_stub'),
-            ),
+          'exclude' => array(
+            'custom' => 'not_service_stub',
           ),
         ),
         array(
@@ -113,14 +120,20 @@ class Phila_Gov_Admin_Templates {
           'type'  => 'text',
           'desc' => 'Enter an alternate title for this service. This will appear in place of the page title on alphabetical lists of services.',
           'size'  => 100,
-          'visible' => array(
-            'when' => array(
-              array('phila_template_select', '!=', 'service_stub'),
-            ),
+          'exclude' => array(
+            'custom' => 'not_service_stub',
           ),
         )
       ),
     );
+
+    function not_service_stub() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'service_stub' ) )
+        return true;
+      return false;
+    }
+
     return $meta_boxes;
   }
 
