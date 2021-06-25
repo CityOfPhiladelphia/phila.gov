@@ -21,12 +21,9 @@ class Phila_Gov_Collection_Page {
       'pages'    => array( 'department_page', 'programs' ),
       'context'  => 'normal',
       'revision' => true,
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'collection_page_v2'),
-        ),
+      'include' => array(
+        'custom' => 'is_phila_collection_page',
       ),
-
       'fields' => array(
         array(
           'id'    => 'collection_row',
@@ -52,7 +49,6 @@ class Phila_Gov_Collection_Page {
               array(
                 'id'    => 'program_pages',
                 'type'  => 'group',
-
                 'visible' => array(
                   'when' => array(
                     array('phila_collection_options', '=', 'program'),
@@ -127,6 +123,13 @@ class Phila_Gov_Collection_Page {
         ),
       )
     );
+
+    function is_phila_collection_page() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'collection_page_v2' ) )
+        return true;
+      return false;
+    }
 
     return $meta_boxes;
   }

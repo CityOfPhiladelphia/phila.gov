@@ -61,9 +61,8 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       'title'    => 'External Site',
       'pages'    => array( 'department_page' ),
       'context'  => 'after_title',
-
-      'visible' => array(
-        'phila_template_select', '=', 'off_site_department',
+      'include' => array(
+        'custom' => 'is_off_site_department',
       ),
 
       'fields' => array(
@@ -79,6 +78,12 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
       )
     );//External department link
 
+    function is_off_site_department() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'off_site_department' ) )
+        return true;
+      return false;
+    }
 
     return $meta_boxes;
 
