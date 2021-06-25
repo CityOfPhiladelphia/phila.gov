@@ -39,7 +39,7 @@ class Phila_Gov_Admin_Templates {
 
     $conditions['.additional-content'] = array(
       'include' => array(
-        'custom' => 'is_additional_content',
+        'custom' => 'is_additional_content_conditions',
       ),
     );
     //hide submit div when user is a readonly user
@@ -56,7 +56,7 @@ class Phila_Gov_Admin_Templates {
       ),
     );
     
-    function is_additional_content() {
+    function is_additional_content_conditions() {
       if( isset($_GET['post']) === true && 
         ( phila_get_selected_template($_GET['post']) == 'default' ||
           phila_get_selected_template($_GET['post']) == 'tax_detail' ||
