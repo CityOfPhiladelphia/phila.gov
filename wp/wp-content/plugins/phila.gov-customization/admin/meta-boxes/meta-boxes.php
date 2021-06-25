@@ -177,18 +177,166 @@ function phila_register_meta_boxes( $meta_boxes ){
     ),
   );
 
+  function is_press_release() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'press_release' ) )
+      return true;
+    return false;
+  }
+
+  function is_resource_list_v2() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'resource_list_v2' ) )
+      return true;
+    return false;
+  }
+
+  function is_homepage_v2() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ) )
+      return true;
+    return false;
+  }
+  
+  function is_board_commission_member_list() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ||
+        phila_get_selected_template($_GET['post']) == 'staff_directory_v2' ) )
+      return true;
+    return false;
+  }
+
+  function is_phila_full_row_press_releases() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ||
+        phila_get_selected_template($_GET['post']) == 'guide_landing_page' ) )
+      return true;
+    return false;
+  }
+
+  function is_phila_full_row_blog() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ||
+        phila_get_selected_template($_GET['post']) == 'guide_landing_page' ) )
+      return true;
+    return false;
+  }
+
+  function is_service_stub() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'service_stub' ) )
+      return true;
+    return false;
+  }
+
+  function is_department_stub() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'department_stub' ) )
+      return true;
+    return false;
+  }
+
+  function is_vue_app() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'vue_app' ) )
+      return true;
+    return false;
+  }
+
+  function is_topic_page() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'topic_page' ) )
+      return true;
+    return false;
+  }
+
+  function is_heading_groups() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == '' ||
+        phila_get_selected_template($_GET['post']) == 'one_quarter_headings_v2' ||
+        phila_get_selected_template($_GET['post']) == 'phila_one_quarter' ||
+        phila_get_selected_template($_GET['post']) == 'default' ||
+        phila_get_selected_template($_GET['post']) == 'start_process' ||
+        phila_get_selected_template($_GET['post']) == 'default_v2' ) )
+      return true;
+    return false;
+  }
+
+  function is_faq_groups() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'one_quarter_headings_v2' ||
+        phila_get_selected_template($_GET['post']) == 'phila_one_quarter' ) )
+      return true;
+    return false;
+  }
+
+  function is_document_finder_v2() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'document_finder_v2' ) )
+      return true;
+    return false;
+  }
+
+  function is_our_services() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ||
+        phila_get_selected_template($_GET['post']) == 'prog_landing_page' ) )
+      return true;
+    return false;
+  }
+
+  function is_disclaimer_modal() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ||
+        phila_get_selected_template($_GET['post']) == 'prog_landing_page' ) )
+      return true;
+    return false;
+  }
+
+  function is_prereq_row() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'default_v2' ||
+        phila_get_selected_template($_GET['post']) == 'default' ) )
+      return true;
+    return false;
+  }
+
+  function is_timeline() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'timeline' ) )
+      return true;
+    return false;
+  }
+
+  function is_translated_content() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'translated_content' ||
+        phila_get_selected_template($_GET['post']) == 'covid_guidance' ) )
+      return true;
+    return false;
+  }
+
+  function is_additional_content() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'topic_page' ||
+        phila_get_selected_template($_GET['post']) == 'service_stub' ||
+        phila_get_selected_template($_GET['post']) == 'default_v2' ||
+        phila_get_selected_template($_GET['post']) == 'custom_content' ||
+        phila_get_selected_template($_GET['post']) == 'translated_content' ||
+        phila_get_selected_template($_GET['post']) == 'covid_guidance' ) )
+      return true;
+    return false;
+  }
+
   $meta_boxes[] = array(
     'id'       => 'press-release-date',
     'title'    => 'Release Date',
     'pages'    => array( 'post' ),
     'context'  => 'after_title',
     'priority' => 'low',
-    'visible' => array(
-      'when' => array(
-        array('phila_template_select', '=', 'press_release'),
-      ),
+    'include' => array(
+      'custom' => 'is_press_release',
     ),
-
     'fields' => array(
       array(
         'name'  => 'Release Date',
@@ -210,12 +358,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'post' ),
     'context'  => 'after_title',
     'priority' => 'low',
-    'visible' => array(
-      'when' => array(
-        array('phila_template_select', '=', 'press_release'),
-      ),
+    'include' => array(
+      'custom' => 'is_press_release',
     ),
-
     'fields' => array(
       array(
         'id'  => 'press_release_contact',
@@ -247,12 +392,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     'pages'    => array( 'department_page', 'programs' ),
     'context'  => 'normal',
     'priority' => 'high',
-    'visible' => array(
-      'when' => array(
-        array(  'phila_template_select','=', 'resource_list_v2'),
-      ),
+    'include' => array(
+      'custom' => 'is_resource_list_v2',
     ),
-
     'fields' => array(
       array(
         'id'  => 'phila_resource_list',
@@ -345,13 +487,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     'context'  => 'normal',
     'priority' => 'default',
     'revision' => true,
-
-    'visible' => array(
-      'when'  => array(
-        array('phila_template_select', '=', 'homepage_v2' ),
-      ),
+    'include' => array(
+      'custom' => 'is_homepage_v2',
     ),
-
     'fields' => array(
       array(
         'name' => 'Description',
@@ -438,14 +576,9 @@ function phila_register_meta_boxes( $meta_boxes ){
 
     'include' => array(
       'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+      'custom' => 'is_homepage_v2',
+      'relation' => 'and',
     ),
-    'visible' => array(
-      'when'  => array(
-        array('phila_template_select', '=', 'homepage_v2' ),
-      ),
-      'relation' => 'or',
-    ),
-
     // List of sub-fields
     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full(),
   );
@@ -458,15 +591,10 @@ function phila_register_meta_boxes( $meta_boxes ){
     'priority' => 'default',
 
     'include' => array(
-      'user_role'  => array(
-        'administrator', 'primary_department_homepage_editor', 'editor' ),
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+      'custom' => 'is_homepage_v2',
+      'relation' => 'and',
     ),
-    'visible' => array(
-      'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2'),
-      ),
-    ),
-
     'fields' => array(
       array(
         'id'   => 'phila_staff_directory_selected',
@@ -496,9 +624,9 @@ function phila_register_meta_boxes( $meta_boxes ){
         'type' => 'switch',
         'on_label'  => 'Yes',
         'off_label' => 'No',
-        'visible' => array(
-          'phila_template_select', 'in', ['homepage_v2']
-        )
+        'include' => array(
+          'custom' => 'is_homepage_v2',
+        ),
       ),
     ),
   );
@@ -512,13 +640,8 @@ function phila_register_meta_boxes( $meta_boxes ){
 
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
-    ),
-    'visible' => array(
-      'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2'),
-        array( 'phila_template_select', '=', 'staff_directory_v2'),
-      ),
-      'relation' => 'or',
+      'custom' => 'is_board_commission_member_list',
+      'relation' => 'and',
     ),
 
     'fields'  => array(
@@ -549,13 +672,8 @@ function phila_register_meta_boxes( $meta_boxes ){
 
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
-    ),
-    'visible' => array(
-      'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2'),
-        array( 'phila_template_select', '=', 'guide_landing_page' )
-      ),
-      'relation'  => 'or'
+      'custom' => 'is_phila_full_row_press_releases',
+      'relation' => 'and',
     ),
     'fields' => array(
       array(
@@ -599,15 +717,9 @@ function phila_register_meta_boxes( $meta_boxes ){
 
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+      'custom' => 'is_phila_full_row_blog',
+      'relation' => 'and',
     ),
-    'visible' => array(
-      'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2' ),
-        array( 'phila_template_select', '=', 'guide_landing_page' )
-      ),
-      'relation' => 'or', 
-    ),
-
     'fields' => array(
       array(
         'name' => 'Display a full row of blog posts?',
@@ -652,13 +764,9 @@ function phila_register_meta_boxes( $meta_boxes ){
 
     'include' => array(
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+      'custom' => 'is_homepage_v2',
+      'relation' => 'and',
     ),
-    'visible' => array(
-      'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2'),
-      ),
-    ),
-
     'fields' => array(
       array(
         'id'  => 'phila_call_to_action_section',
@@ -721,7 +829,9 @@ $meta_boxes[] = array(
   'pages' => array('service_page'),
   'context' => 'after_title',
   'priority' => 'low',
-  'visible' => array('phila_template_select', 'service_stub'),
+  'include' => array(
+    'custom' => 'is_service_stub',
+  ),
   'revision' => true,
 
   'fields'  => array(
@@ -750,10 +860,8 @@ $meta_boxes[] = array(
   'pages' => array('department_page'),
   'context' => 'after_title',
   'priority' => 'low',
-  'visible' => array(
-    'when'  => array(
-      array('phila_template_select', '=', 'department_stub'),
-    ),
+  'include' => array(
+    'custom' => 'is_department_stub',
   ),
   'revision' => true,
 
@@ -799,11 +907,8 @@ $meta_boxes[] = array(
   'pages' => array ( 'service_page' ),
   'revision' => false,
   'priority' => 'high',
-
-  'visible' => array(
-    'when'  => array(
-      array('phila_template_select', '=', 'vue_app'),
-    ),
+  'include' => array(
+    'custom' => 'is_vue_app',
   ),
   'fields' => array(
     array (
@@ -825,7 +930,9 @@ $meta_boxes[] = array(
   'pages' => array('service_page'),
   'context' => 'after_title',
   'priority' => 'low',
-  'visible' => array('phila_template_select', 'topic_page'),
+  'include' => array(
+    'custom' => 'is_topic_page',
+  ),
 
   'fields'  => array(
     array(
@@ -853,18 +960,8 @@ $meta_boxes[] = array(
   'title' => 'Heading Groups',
   'pages' => array('department_page', 'page', 'service_page', 'programs'),
   'revision' => true,
-
-  'visible' => array(
-    'when' => array(
-      array( 'phila_template_select', '=', ''),
-      array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
-      array( 'phila_template_select', '=', 'phila_one_quarter' ),
-      array( 'phila_template_select', '=', 'default'),
-      array( 'phila_template_select', '=', 'start_process'),
-      array( 'phila_template_select', '=', 'default_v2' ),
-
-    ),
-    'relation' => 'or',
+  'include' => array(
+    'custom' => 'is_heading_groups',
   ),
 
   'fields' => array(
@@ -885,15 +982,9 @@ $meta_boxes[] = array(
   'title' => 'FAQ groups',
   'pages' => array('department_page', 'programs'),
   'revision' => true,
-
-  'visible' => array(
-    'when' => array(
-      array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
-      array( 'phila_template_select', '=', 'phila_one_quarter' ),
-    ),
-    'relation' => 'or',
+  'include' => array(
+    'custom' => 'is_faq_groups',
   ),
-
   'fields' => array(
     array(
       'id'  => 'accordion_search',
@@ -935,18 +1026,9 @@ $meta_boxes[] = array(
   'revision' => true,
   'context'  => 'advanced',
   // see this partial to add more page templates - DD phila.gov-theme/partials/content-additional.php
-  'hidden' => array(
-    'when'  => array(
-      array('phila_template_select', '=', 'topic_page'),
-      array('phila_template_select', '=', 'service_stub'),
-      array('phila_template_select', '=', 'default_v2'),
-      array('phila_template_select', '=', 'custom_content'),
-      array('phila_template_select', '=', 'translated_content'),
-      array('phila_template_select', '=', 'covid_guidance'),
-    ),
-    'relation' => 'or',
+  'exclude' => array(
+    'custom' => 'is_additional_content',
   ),
-
   'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_var_addtional_content()
 );
 
@@ -954,10 +1036,8 @@ $meta_boxes[] = array(
   'title' => 'Document tables',
   'pages' => array('department_page', 'programs'),
   'revision' => true,
-  'visible' => array(
-    'when'  => array(
-      array('phila_template_select', '=', 'document_finder_v2'),
-    ),
+  'include' => array(
+    'custom' => 'is_document_finder_v2',
   ),
   'fields' => array(
     array (
@@ -1064,12 +1144,8 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'title' => 'Our services',
   'pages'    => array( 'department_page', 'programs' ),
-  'visible' => array(
-    'when'  =>  array(
-        array('phila_template_select', '=', 'homepage_v2'),
-        array('phila_template_select', '=', 'prog_landing_page')
-      ),
-    'relation'  => 'or'
+  'include' => array(
+    'custom' => 'is_our_services',
   ),
 
   'fields' => array(
@@ -1107,11 +1183,9 @@ $meta_boxes[] = array(
   'title'    => 'Our programs',
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
-  'visible' => array(
-    'when'  =>  array(
-        array('phila_template_select', '=', 'homepage_v2'),
-      ),
-    ),
+  'include' => array(
+    'custom' => 'is_homepage_v2',
+  ),
   'fields' => 
     Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true),
 
@@ -1169,12 +1243,8 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'title' => 'Disclaimer Modal',
   'pages'    => array( 'department_page', 'programs' ),
-  'visible' => array(
-    'when'  =>  array(
-        array('phila_template_select', '=', 'homepage_v2'),
-        array('phila_template_select', '=', 'prog_landing_page')
-      ),
-    'relation'  => 'or'
+  'include' => array(
+    'custom' => 'is_disclaimer_modal',
   ),
   'fields' => Phila_Gov_Standard_Metaboxes::phila_disclaimer_modal(),
 );
@@ -1186,13 +1256,8 @@ $meta_boxes[] = array(
   'pages' => array ( 'service_page' ),
   'revision' => true,
   'context'  => 'advanced',
-
-  'visible' => array(
-    'when'  => array(
-      array('phila_template_select', '=', 'default_v2'),
-      array('phila_template_select', '=', 'default')
-    ),
-    'relation' => 'or',
+  'include' => array(
+    'custom' => 'is_prereq_row',
   ),
 
   'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_prereq_row('Prerequisite row title')
@@ -1203,10 +1268,8 @@ $meta_boxes[] = array(
   'title' => 'Timeline',
   'pages' => array('department_page', 'programs'),
   'revision' => true,
-  'visible' => array(
-    'when'  => array(
-      array('phila_template_select', '=', 'timeline'),
-    ),
+  'include' => array(
+    'custom' => 'is_timeline',
   ),
   'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_timeline()
 );
@@ -1216,10 +1279,8 @@ $meta_boxes[] = array(
   'title'    => 'Homepage timeline',
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
-  'visible' => array(
-    'when'  =>  array(
-        array('phila_template_select', '=', 'homepage_v2'),
-      ),
+  'include' => array(
+    'custom' => 'is_homepage_v2',
   ),
   'fields' => array(
     Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
@@ -1237,12 +1298,8 @@ $meta_boxes[] = array(
   'title' => 'Translated content',
   'pages'    => array( 'programs' ),
   'revision' => true,
-  'visible' => array(
-    'when'  =>  array(
-        array('phila_template_select', '=', 'translated_content'),
-        array('phila_template_select', '=', 'covid_guidance'),
-      ),
-    'relation'  => 'or'
+  'include' => array(
+    'custom' => 'is_translated_content',
   ),
   'fields' => array(
     array(
