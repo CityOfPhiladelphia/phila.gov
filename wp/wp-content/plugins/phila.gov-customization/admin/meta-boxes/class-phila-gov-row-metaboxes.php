@@ -74,6 +74,15 @@ class Phila_Gov_Row_Metaboxes {
 }
 
   public static function phila_metabox_full_options( ){
+
+    function is_homepage_v2() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ) )
+        return true;
+      return false;
+    }
+
+
     return array(
     'name' => '',
     'id'   => 'phila_full_options',
@@ -258,9 +267,9 @@ class Phila_Gov_Row_Metaboxes {
             'type' => 'switch',
             'on_label'  => 'Yes',
             'off_label' => 'No',
-            'visible' => array(
-              'phila_template_select', 'in', ['homepage_v2']
-            )
+            'include' => array(
+              'custom' => 'is_homepage_v2',
+            ),
           ),
         ),
       ),
