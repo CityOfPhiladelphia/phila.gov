@@ -18,16 +18,35 @@ class Phila_Gov_Register_Service_Templates {
 
   function register_template_selection_metabox_services( $meta_boxes ){
 
+    function is_start_process() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'start_process' ) )
+        return true;
+      return false;
+    }
+
+    function is_default_v2() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'default_v2' ) )
+        return true;
+      return false;
+    }
+
+    function is_service_related() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'default_v2' ||
+          phila_get_selected_template($_GET['post']) == 'topic_page' ) )
+        return true;
+      return false;
+    }
+
     $meta_boxes[] = array(
       'title' => 'Before you start',
       'pages' => array('service_page'),
       'revision' => true,
       'priority'  => 'high',
-      'visible' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'start_process' ),
-        ),
-        'relation' => 'or',
+      'include' => array(
+        'custom' => 'is_start_process',
       ),
       'fields' => array(
         array(
@@ -53,11 +72,8 @@ class Phila_Gov_Register_Service_Templates {
     'pages' => array('service_page'),
     'revision' => true,
     'priority'  => 'high',
-    'visible' => array(
-      'when' => array(
-        array( 'phila_template_select', '=', 'default_v2' ),
-      ),
-      'relation' => 'or',
+    'include' => array(
+      'custom' => 'is_default_v2',
     ),
     'fields' => array(
       array(
@@ -75,11 +91,8 @@ class Phila_Gov_Register_Service_Templates {
       'id'       => 'service_questions',
       'title'    => 'Default service content',
       'pages' => array( 'service_page' ),
-      'visible' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'default_v2' ),
-        ),
-        'relation'  => 'or'
+      'include' => array(
+        'custom' => 'is_default_v2',
       ),
       'fields' => array(
         array(
@@ -365,13 +378,8 @@ class Phila_Gov_Register_Service_Templates {
       'id'       => 'service_related',
       'title'    => 'Addtional content',
       'pages' => array( 'service_page' ),
-      'visible' => array(
-        'when' => array(
-            array( 'phila_template_select', '=', 'default_v2' ),
-            array( 'phila_template_select', '=', 'topic_page' ),
-
-          ),
-        'relation'  => 'or'
+      'include' => array(
+        'custom' => 'is_service_related',
       ),
       'fields' => array(
         array(
