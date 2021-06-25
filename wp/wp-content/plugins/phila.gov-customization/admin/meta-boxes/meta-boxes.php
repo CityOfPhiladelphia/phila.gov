@@ -191,13 +191,6 @@ function phila_register_meta_boxes( $meta_boxes ){
     return false;
   }
 
-  function is_homepage_v2() {
-    if( isset($_GET['post']) === true && 
-      ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ) )
-      return true;
-    return false;
-  }
-  
   function is_board_commission_member_list() {
     if( isset($_GET['post']) === true && 
       ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ||

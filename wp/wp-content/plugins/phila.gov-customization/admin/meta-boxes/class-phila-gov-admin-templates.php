@@ -127,13 +127,6 @@ class Phila_Gov_Admin_Templates {
       ),
     );
 
-    function is_service_stub() {
-      if( isset($_GET['post']) === true && 
-        ( phila_get_selected_template($_GET['post']) == 'service_stub' ) )
-        return true;
-      return false;
-    }
-
     return $meta_boxes;
   }
 

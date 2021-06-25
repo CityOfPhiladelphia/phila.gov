@@ -106,7 +106,7 @@ class Phila_Gov_Register_Guide_Templates {
       'pages' => array( 'guides' ),
       'revision' => true,
       'include' => array(
-        'custom' => 'is_heading_groups',
+        'custom' => 'is_heading_groups_guides',
       ),
       'fields' => array(
         array(
@@ -128,7 +128,7 @@ class Phila_Gov_Register_Guide_Templates {
       return false;
     }
 
-    function is_heading_groups() {
+    function is_heading_groups_guides() {
       if( isset($_GET['post']) === true && 
         ( phila_get_selected_template($_GET['post']) == 'guide_sub_page' ) )
         return true;
