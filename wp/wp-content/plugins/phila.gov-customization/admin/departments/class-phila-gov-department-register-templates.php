@@ -91,9 +91,9 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'class' => 'hide-on-load',
         'type' => 'custom_html',
         'std' => 'Visit <a href="/wp-admin/edit.php?post_type=staff_directory">staff members</a> section to add/edit staff.',
-        'include' => array(
-          'custom' => 'is_staff_directory',
-        ),
+        'visible' => array(
+          'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
+        )
       ),
       array(
         'id'  => 'full_list',
@@ -103,18 +103,18 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'type' => 'switch',
         'on_label'  => 'Yes',
         'off_label' => 'No',
-        'include' => array(
-          'custom' => 'is_staff_directory',
-        ),
+        'visible' => array(
+          'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
+        )
       ),
       array(
         'id'  => 'units',
         'class' => 'hide-on-load',
         'name'  => 'Display staff grouped by the following units?',
         'type' => 'unit',
-        'include' => array(
-          'custom' => 'is_staff_directory',
-        ),
+        'visible' => array(
+          'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
+        )
       ),
       array(
         'id'  => 'anchor_list',
@@ -123,22 +123,14 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'type' => 'switch',
         'on_label'  => 'Yes',
         'off_label' => 'No',
-        'include' => array(
-          'custom' => 'is_staff_directory',
-        ),
+          'visible' => array(
+          'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
+        )
       ),
     ),
   );
 
     return $meta_boxes;
-
-    function is_phila_template_select_staff() {
-      if( isset($_GET['post']) === true && 
-        ( phila_get_selected_template($_GET['post']) == 'staff_directory_v2' ||
-          phila_get_selected_template($_GET['post']) == 'staff_directory' ) )
-        return true;
-      return false;
-    }
 
   }
 
