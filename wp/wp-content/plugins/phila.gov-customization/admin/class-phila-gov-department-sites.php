@@ -46,18 +46,14 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           add_post_meta( $post->ID,  $this->prefix.'meta-box-order', 'default' );
         }
       }
-
-
     }
 
   }
 
-
-
   function phila_register_department_meta_boxes( $meta_boxes ){
 
     $meta_boxes[] = array(
-      'id'       => 'departments',
+      'id'       => 'external_site',
       'title'    => 'External Site',
       'pages'    => array( 'department_page' ),
       'context'  => 'after_title',

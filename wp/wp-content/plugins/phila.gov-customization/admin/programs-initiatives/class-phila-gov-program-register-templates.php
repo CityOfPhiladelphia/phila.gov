@@ -57,6 +57,7 @@ class Phila_Gov_Register_Program_Templates {
     );
 
     $meta_boxes[] = array(
+      'id' => 'program_link',
       'title' => 'Program link',
       'type'  => 'URL',
       'pages' => array( 'programs' ),
@@ -208,9 +209,12 @@ class Phila_Gov_Register_Program_Templates {
 
     function is_phila_program() {
       if( isset($_GET['post']) === true && 
-        ( phila_get_selected_template($_GET['post']) == 'prog_landing_page' ||
+        ( phila_get_selected_template($_GET['post']) == 'collection_page_v2' ||
+          phila_get_selected_template($_GET['post']) == 'custom_content' ||
+          phila_get_selected_template($_GET['post']) == 'document_finder_v2' ||
+          phila_get_selected_template($_GET['post']) == 'phila_one_quarter' ||
           phila_get_selected_template($_GET['post']) == 'prog_association' ||
-          phila_get_selected_template($_GET['post']) == 'custom_content' ) )
+          phila_get_selected_template($_GET['post']) == 'prog_landing_page' ) )
         return true;
       return false;
     } 

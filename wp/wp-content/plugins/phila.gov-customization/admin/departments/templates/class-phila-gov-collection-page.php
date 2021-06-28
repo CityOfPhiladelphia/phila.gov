@@ -16,7 +16,7 @@ class Phila_Gov_Collection_Page {
   function register_collection_page_metaboxes( $meta_boxes ){
 
     $meta_boxes[] = array(
-      'id'       => 'phila_collection_page',
+      'id'       => 'phila_collection_page_rows',
       'title'    => 'Collection page rows',
       'pages'    => array( 'department_page', 'programs' ),
       'context'  => 'normal',

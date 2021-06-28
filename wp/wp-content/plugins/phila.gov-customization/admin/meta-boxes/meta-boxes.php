@@ -950,6 +950,7 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
+  'id' => 'heading_groups',
   'title' => 'Heading Groups',
   'pages' => array('department_page', 'page', 'service_page', 'programs'),
   'revision' => true,
@@ -972,6 +973,7 @@ $meta_boxes[] = array(
 
 
 $meta_boxes[] = array(
+  'id' => 'faq_groups',
   'title' => 'FAQ groups',
   'pages' => array('department_page', 'programs'),
   'revision' => true,
@@ -1026,6 +1028,7 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
+  'id' => 'document_tables',
   'title' => 'Document tables',
   'pages' => array('department_page', 'programs'),
   'revision' => true,
