@@ -1248,8 +1248,8 @@ $meta_boxes[] = array(
 
 
 $meta_boxes[] = array(
+  'id'       => 'prereq_row_content',
   'title' => 'Prereq Row',
-  'id'       => 'prereq_row',
   'pages' => array ( 'service_page' ),
   'revision' => true,
   'context'  => 'advanced',

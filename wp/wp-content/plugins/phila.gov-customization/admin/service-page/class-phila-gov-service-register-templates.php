@@ -68,6 +68,7 @@ class Phila_Gov_Register_Service_Templates {
     );
 
   $meta_boxes[] = array(
+    'id' => 'before_you_begin',
     'title' => 'Before you begin',
     'pages' => array('service_page'),
     'revision' => true,
@@ -88,7 +89,7 @@ class Phila_Gov_Register_Service_Templates {
     
 
     $meta_boxes[] = array(
-      'id'       => 'service_questions',
+      'id'       => 'default_service_questions',
       'title'    => 'Default service content',
       'pages' => array( 'service_page' ),
       'include' => array(
