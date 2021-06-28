@@ -380,7 +380,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
-    'id'       => 'phila_resource_list',
+    'id'       => 'phila_resource_list_v1',
     'title'    => __( 'Resource List' ),
     'pages'    => array( 'department_page', 'programs' ),
     'context'  => 'normal',
