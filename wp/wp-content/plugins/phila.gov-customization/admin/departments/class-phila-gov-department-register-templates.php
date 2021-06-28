@@ -72,8 +72,18 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'include' => array(
           'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
         ),
-        'exclude' => array(
-          'custom' => 'is_phila_department_home_page',
+        'hidden' => array(
+          'when' => array(
+            array('phila_template_select', '=', 'homepage_v2' ),
+            array('phila_template_select', '=', 'one_quarter_headings_v2' ),
+            array('phila_template_select', '=', 'contact_us_v2' ),
+            array('phila_template_select', '=', 'all_services_v2' ),
+            array('phila_template_select', '=', 'all_programs_v2' ),
+            array('phila_template_select', '=', 'forms_and_documents_v2' ),
+            array('phila_template_select', '=', 'resource_list_v2' ),
+            array('phila_template_select', '=', 'staff_directory_v2' ),
+          ),
+          'relation' => 'or'
         ),
       ),
       array(
@@ -126,20 +136,6 @@ function register_template_selection_metabox_departments( $meta_boxes ){
       if( isset($_GET['post']) === true && 
         ( phila_get_selected_template($_GET['post']) == 'staff_directory_v2' ||
           phila_get_selected_template($_GET['post']) == 'staff_directory' ) )
-        return true;
-      return false;
-    }
-
-    function is_phila_department_home_page() {
-      if( isset($_GET['post']) === true && 
-        ( phila_get_selected_template($_GET['post']) ==  'homepage_v2' ||
-          phila_get_selected_template($_GET['post']) ==  'one_quarter_headings_v2' ||
-          phila_get_selected_template($_GET['post']) ==  'contact_us_v2' ||
-          phila_get_selected_template($_GET['post']) ==  'all_services_v2' ||
-          phila_get_selected_template($_GET['post']) ==  'all_programs_v2' ||
-          phila_get_selected_template($_GET['post']) ==  'forms_and_documents_v2' ||
-          phila_get_selected_template($_GET['post']) ==  'resource_list_v2' ||
-          phila_get_selected_template($_GET['post']) ==  'staff_directory_v2' ) )
         return true;
       return false;
     }
