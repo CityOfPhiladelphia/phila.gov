@@ -322,7 +322,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   }
 
   $meta_boxes[] = array(
-    'id'       => 'press-release-date',
+    'id'       => 'press_release_date',
     'title'    => 'Release Date',
     'pages'    => array( 'post' ),
     'context'  => 'after_title',
@@ -347,6 +347,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
+    'id'    => 'contact_information',
     'title'    => 'Contact Information',
     'pages'    => array( 'post' ),
     'context'  => 'after_title',
