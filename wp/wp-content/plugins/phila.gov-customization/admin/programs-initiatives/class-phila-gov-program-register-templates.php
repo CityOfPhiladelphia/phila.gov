@@ -158,7 +158,7 @@ class Phila_Gov_Register_Program_Templates {
     }
 
     $meta_boxes[] = array(
-      'id'       => 'phila_sub_association',
+      'id'       => 'phila_sub_association_content',
       'title'    => 'Association content',
       'pages' => array( 'programs', 'department_page' ),
       'priority' => 'high',
@@ -209,12 +209,22 @@ class Phila_Gov_Register_Program_Templates {
 
     function is_phila_program() {
       if( isset($_GET['post']) === true && 
-        ( phila_get_selected_template($_GET['post']) == 'collection_page_v2' ||
+        ( phila_get_selected_template($_GET['post']) == 'child_index' ||
+          phila_get_selected_template($_GET['post']) == 'collection_page_v2' ||
+          phila_get_selected_template($_GET['post']) == 'contact_us_v2' ||
           phila_get_selected_template($_GET['post']) == 'custom_content' ||
+          phila_get_selected_template($_GET['post']) == 'default' ||
           phila_get_selected_template($_GET['post']) == 'document_finder_v2' ||
+          phila_get_selected_template($_GET['post']) == 'homepage_v2' ||
+          phila_get_selected_template($_GET['post']) == 'one_quarter_headings_v2' ||
+          phila_get_selected_template($_GET['post']) == 'our-locations' ||
           phila_get_selected_template($_GET['post']) == 'phila_one_quarter' ||
           phila_get_selected_template($_GET['post']) == 'prog_association' ||
-          phila_get_selected_template($_GET['post']) == 'prog_landing_page' ) )
+          phila_get_selected_template($_GET['post']) == 'prog_landing_page' ||
+          phila_get_selected_template($_GET['post']) == 'repeating_rows' ||
+          phila_get_selected_template($_GET['post']) == 'staff_directory_v2' ||
+          phila_get_selected_template($_GET['post']) == 'stub' ||
+          phila_get_selected_template($_GET['post']) == 'things-to-do' ) )
         return true;
       return false;
     } 

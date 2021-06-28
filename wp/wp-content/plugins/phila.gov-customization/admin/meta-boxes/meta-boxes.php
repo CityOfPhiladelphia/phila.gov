@@ -849,6 +849,7 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
+  'id' => 'department_stub',
   'title' => 'Department Stub',
   'pages' => array('department_page'),
   'context' => 'after_title',

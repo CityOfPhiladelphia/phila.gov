@@ -12,6 +12,7 @@ function phila_register_department_contact_us( $meta_boxes ){
   }
 
   $meta_boxes[] = array(
+    'id' => 'contact_us',
     'title' => 'Contact us',
     'pages' => array('department_page'),
     'include' => array(
