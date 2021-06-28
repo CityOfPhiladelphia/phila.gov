@@ -51,10 +51,8 @@ class Phila_Gov_Register_Guide_Templates {
           'id'  => 'phila_social_intent',
           'limit' => 256,
           'desc'  => 'Curate Tweet sharing text. Required. 256 character limit.  A link to this page will be automatically added. <br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
-          'hidden' => array(
-            'when' => array(
-              array('phila_template_select', '!=', 'guide_landing_page'),
-            ),
+          'include' => array(
+            'custom' => 'is_guide_landing_page',
           ),
         ),
         array(
@@ -71,10 +69,8 @@ class Phila_Gov_Register_Guide_Templates {
           'desc'  => 'Defaults to "Overview" if left empty',
           'columns' => 6,
           'std' => 'Overview',
-          'hidden' => array(
-            'when' => array(
-              array('phila_template_select', '!=', 'guide_landing_page'),
-            ),
+          'include' => array(
+            'custom' => 'is_guide_landing_page',
           ),
         ),
         array(
@@ -86,10 +82,8 @@ class Phila_Gov_Register_Guide_Templates {
           'js_options'    => array(
             'palettes' => array( '#26cef8', '#58c04d', '#9400c6', '#0f4d90', '#dd2662' )
           ),
-          'hidden' => array(
-            'when' => array(
-              array('phila_template_select', '=', 'guide_landing_page'),
-            ),
+          'exclude' => array(
+            'custom' => 'is_guide_landing_page',
           ),
         ),
       ),
@@ -99,12 +93,9 @@ class Phila_Gov_Register_Guide_Templates {
       'id'       => 'phila_guide_calendar',
       'title'    => 'Add calendar?',
       'pages' => array( 'guides' ),
-      'hidden' => array(
-        'when' => array(
-          array('phila_template_select', '!=', 'guide_landing_page'),
-        ),
+      'include' => array(
+        'custom' => 'is_guide_landing_page',
       ),
-
       'fields' =>
         Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full()
 
@@ -114,13 +105,9 @@ class Phila_Gov_Register_Guide_Templates {
       'title' => 'Heading groups',
       'pages' => array( 'guides' ),
       'revision' => true,
-
-      'visible' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'guide_sub_page' ),
-        ),
+      'include' => array(
+        'custom' => 'is_heading_groups_guides',
       ),
-
       'fields' => array(
         array(
           'id' => 'phila_heading_groups',
@@ -134,15 +121,33 @@ class Phila_Gov_Register_Guide_Templates {
       )
     );
 
+    function is_guide_landing_page() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'guide_landing_page' ) )
+        return true;
+      return false;
+    }
+
+    function is_heading_groups_guides() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'guide_sub_page' ) )
+        return true;
+      return false;
+    }
+
+    function is_resource_groups() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'guide_landing_page' ||
+          phila_get_selected_template($_GET['post']) == 'guide_resource_page' ) )
+        return true;
+      return false;
+    }
+
     $meta_boxes[] = array(
       'title' => 'Resource groups',
       'pages' => array('guides'),
-      'visible'   => array(
-        'relation' => 'or',
-        'when'  => array(
-          array('phila_template_select', '=', 'guide_landing_page'),
-          array('phila_template_select', '=', 'guide_resource_page'),
-        )
+      'include' => array(
+        'custom' => 'is_resource_groups',
       ),
       'fields' => array(
         array(

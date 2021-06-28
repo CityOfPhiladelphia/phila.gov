@@ -4,17 +4,85 @@ add_filter( 'rwmb_meta_boxes', 'phila_register_department_meta_boxes' );
 
 function phila_register_department_meta_boxes( $meta_boxes ){
 
+  function is_things_to_do() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'things-to-do' ) )
+      return true;
+    return false;
+  }
+
+  function is_department_media() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ) )
+      return true;
+    return false;
+  }
+
+  function is_services_list() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'service_list_v2' ) )
+      return true;
+    return false;
+  }
+
+  function is_full_width_call_to_action() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ||
+        phila_get_selected_template($_GET['post']) == 'things-to-do' || 
+        phila_get_selected_template($_GET['post']) == 'our-locations' ) )
+      return true;
+    return false;
+  }
+
+  function is_photo_callout() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ||
+        phila_get_selected_template($_GET['post']) == 'things-to-do' || 
+        phila_get_selected_template($_GET['post']) == 'our-locations' ) )
+      return true;
+    return false;
+  }
+
+  function is_forms_and_documents() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'forms_and_documents_v2' ) )
+      return true;
+    return false;
+  }
+
+  function is_staff_directory_v2() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'staff_directory_v2' ) )
+      return true;
+    return false;
+  }
+
+  function is_our_locations() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'our-locations' ) )
+      return true;
+    return false;
+  }
+
+  function is_department_metadata() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ||
+        phila_get_selected_template($_GET['post']) == 'off_site_department' ) )
+      return true;
+    return false;
+  }
+
   //Department Homepage
   $meta_boxes[] = array(
     'title' => 'Department media',
     'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'homepage_v2' ),
     'context'  => 'normal',
     'priority' => 'high',
     'include' => array(
       'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+      'custom' => 'is_department_media',
+      'relation' => 'and',
     ),
-
     'fields' => array(
       array(
         'type' => 'heading',
@@ -66,8 +134,9 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'title' => 'Services list',
     'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'service_list_v2' ),
-
+    'include' => array(
+      'custom' => 'is_services_list',
+    ),
     'fields' => array(
       array(
         'id'       => 'phila_v2_services_list',
@@ -87,19 +156,11 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'title' => 'Full-width call to action',
     'pages'    => array( 'department_page' ),
-    // 'visible' => array( 'phila_template_select', 'homepage_v2' ),
-    'visible' => array(
-      'when' => array(
-        array('phila_template_select', 'homepage_v2'),
-        array('phila_template_select', 'things-to-do'),
-        array('phila_template_select', 'our-locations')
-      ),
-      'relation' => 'or'
-    ),
     'include' => array(
       'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+      'custom' => 'is_full_width_call_to_action',
+      'relation' => 'and',
     ),
-
     'fields' => array(
       array(
         'id'       => 'phila_v2_cta_full',
@@ -117,7 +178,9 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'title' => 'Forms and Documents',
     'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'forms_and_documents_v2' ),
+    'include' => array(
+      'custom' => 'is_forms_and_documents',
+    ),
 
     'fields' => array(
       array(
@@ -152,9 +215,12 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
 
   $meta_boxes[] = array(
+    'id' => 'override_page_category_selection',
     'title' => 'Override page category selection',
     'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'staff_directory_v2' ),
+    'include' => array(
+      'custom' => 'is_staff_directory_v2',
+    ),
     'context'  => 'normal',
     'priority' => 'high',
 
@@ -178,24 +244,19 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
       'include' => array(
         'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+        'custom' => 'is_photo_callout',
+        'relation' => 'and',
       ),
-
-      'visible' =>  array(
-        'when' => array(
-            array( 'phila_template_select', '=', 'homepage_v2'),
-            array( 'phila_template_select', '=', 'things-to-do'),
-            array( 'phila_template_select', '=', 'our-locations')
-          ),
-          'relation' => 'or'
-      ),
-
       'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_photo_callout(),
   );//Things To Do
 
 $meta_boxes[] = array(
+    'id' => 'image_grid_with_links',
     'title' => 'Image Grid with Links',
     'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'things-to-do' ),
+    'include' => array(
+      'custom' => 'is_things_to_do',
+    ),
 
     'fields' => array(
       array(
@@ -229,48 +290,54 @@ $meta_boxes[] = array(
   );
 
 $meta_boxes[] = array(
-      'title'    => 'Programs and Initiatives Grid',
+  'id'    => 'programs_and_initiatives_grid',
+  'title'    => 'Programs and Initiatives Grid',
 
-      'pages'    => array( 'department_page' ),
-      'visible' => array( 'phila_template_select', 'things-to-do' ),
-      'context'  => 'normal',
+  'pages'    => array( 'department_page' ),
+  'include' => array(
+    'custom' => 'is_things_to_do',
+  ),
+  'context'  => 'normal',
 
-      'fields' => array(
-          array(
-            'name' => 'Display a Programs and Initiatives grid?',
-            'id'   => 'phila_progs_inits_grid_shown',
-            'type' => 'switch',
-            'on_label'  => 'Yes',
-            'off_label' => 'No'
-          )
+  'fields' => array(
+      array(
+        'name' => 'Display a Programs and Initiatives grid?',
+        'id'   => 'phila_progs_inits_grid_shown',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No'
       )
-    );//Things To Do
+  )
+);//Things To Do
 
 
 $meta_boxes[] = array(
-      'title'    => 'Featured Activities Grid',
+  'id'       => 'featured_activities_grid',
+  'title'    => 'Featured Activities Grid',
 
-      'pages'    => array( 'department_page' ),
-      'visible' => array( 'phila_template_select', 'things-to-do' ),
-      'context'  => 'normal',
+  'pages'    => array( 'department_page' ),
+  'include' => array(
+    'custom' => 'is_things_to_do',
+  ),
+  'context'  => 'normal',
 
-      'fields' => array(
-          array(
-            'name' => 'Display a Featured Activities grid?',
-            'id'   => 'phila_feat_activites_grid_shown',
-            'type' => 'switch',
-            'on_label'  => 'Yes',
-            'off_label' => 'No',
-          )
+  'fields' => array(
+      array(
+        'name' => 'Display a Featured Activities grid?',
+        'id'   => 'phila_feat_activites_grid_shown',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
       )
-    );
+  )
+);
 
     $meta_boxes[] = array(
+      'id'    => 'featured_locations_grid',
       'title'    => 'Featured Locations Grid',
-
       'pages'    => array( 'department_page' ),
-      'visible' => array(
-          array('phila_template_select', 'our-locations')
+      'include' => array(
+        'custom' => 'is_our_locations',
       ),
       'context'  => 'normal',
 
@@ -292,15 +359,18 @@ $meta_boxes[] = array(
     );
 
   $meta_boxes[] = array(
-      'title'    => 'WYSIWYG section with header',
-      'pages'    => array( 'department_page' ),
-      'visible' => array( 'phila_template_select', 'things-to-do' ),
-      'context'  => 'normal',
+  'id'    => 'wysiwyg_section_with_header',
+  'title'    => 'WYSIWYG section with header',
+  'pages'    => array( 'department_page' ),
+  'include' => array(
+    'custom' => 'is_things_to_do',
+  ),
+  'context'  => 'normal',
 
-      'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg()
-      )
-    );//Things To Do
+  'fields' => array(
+      Phila_Gov_Standard_Metaboxes::phila_metabox_v2_wysiwyg()
+  )
+);//Things To Do
 
   $meta_boxes[] = array(
     'title' => 'Department metadata',
@@ -309,13 +379,8 @@ $meta_boxes[] = array(
     'priority' => 'low',
     'include' => array(
       'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
-    ),
-    'visible' => array(
-      'when' => array(
-        array('phila_template_select', 'homepage_v2'),
-        array('phila_template_select', 'off_site_department')
-      ),
-      'relation' => 'or'
+      'custom' => 'is_department_metadata',
+      'relation' => 'and',
     ),
     'fields' => array(
       array(
