@@ -1,0 +1,12 @@
+.text-limiter {
+	margin-top: -1px;
+}
+.text-limiter > span {
+	background-color: #f7f7f7;
+	border: 1px solid #7e8993;
+	border-radius: 4px;
+	margin-left: 1px;
+	display: inline-block;
+	padding: 0 5px;
+	font-size: 12px;
+}

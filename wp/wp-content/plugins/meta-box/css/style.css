@@ -29,7 +29,7 @@
 }
 .rwmb-input input,
 .rwmb-input select {
-	max-width: 99%;
+	max-width: 100%;
 }
 
 /* 75% if field has label, 100% if no label */
@@ -101,6 +101,7 @@
 p.rwmb-error {
 	color: #dc3232;
 	margin: 2px 0 5px;
+	clear: both;
 }
 input.rwmb-error.rwmb-error,
 textarea.rwmb-error,
@@ -128,14 +129,13 @@ select.rwmb-error {
 #side-sortables .rwmb-label {
 	margin-bottom: 3px;
 }
-#side-sortables .rwmb-input input,
-#side-sortables .rwmb-input select {
-	width: 100%;
-	max-width: 100%;
-}
-#side-sortables .rwmb-input input[type="checkbox"],
-#side-sortables .rwmb-input input[type="radio"] {
-	width: auto;
+#side-sortables .rwmb-input input:not([type="checkbox"]):not([type="radio"]),
+#side-sortables .rwmb-input-group,
+#side-sortables .rwmb-input select,
+#side-sortables .rwmb-input .select2-container,
+#side-sortables .rwmb-input textarea {
+	width: 100% !important;
+	min-width: auto;
 }
 
 /* Mobile style */
