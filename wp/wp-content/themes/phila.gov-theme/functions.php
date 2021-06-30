@@ -1467,6 +1467,7 @@ function phila_additional_content( $input ){
 
       $output['disclaimer'] = isset( $input['phila_disclaimer']['phila_disclaimer_content'] ) ? $input['phila_disclaimer']['phila_disclaimer_content'] : '';
 
+      $output['form_free'] =  isset( $input['phila_forms_instructions']['phila_forms_instructions_free_text'] ) ? $input['phila_forms_instructions']['phila_forms_instructions_free_text'] : '';
     }
   }
 
