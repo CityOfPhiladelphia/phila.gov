@@ -209,3 +209,8 @@ ul#department_page-search-checklist li{
 .margin-bottom-10 {
   margin-bottom: 10px;
 }
+
+/* Override rwmb-columns attempt to make all fields width: 100% */
+.rwmb-column .rwmb-input input:not([type="checkbox"]):not([type="radio"]), .rwmb-column .rwmb-input-group, .rwmb-column .rwmb-input select, .rwmb-column .rwmb-input .select2-container, .rwmb-column .rwmb-input textarea {
+  width: auto !important;
+}
