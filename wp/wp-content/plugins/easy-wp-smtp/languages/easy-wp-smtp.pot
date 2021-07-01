@@ -292,7 +292,7 @@ msgid "Block all emails"
 msgstr ""
 
 #: class-easywpsmtp-admin.php:384
-msgid "When enabled, plugin attempts to block ALL emails from being sent out if domain mismtach."
+msgid "When enabled, plugin attempts to block ALL emails from being sent out if domain mismatch."
 msgstr ""
 
 #: class-easywpsmtp-admin.php:388

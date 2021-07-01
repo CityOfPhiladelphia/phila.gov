@@ -11,12 +11,12 @@ mb-rest-api-1.4.0.zip
 mb-revision-1.3.3.zip
 mb-settings-page-2.1.3.zip
 mb-term-meta-1.2.10.zip
-meta-box-columns-1.2.7.zip
-meta-box-conditional-logic-1.6.13.zip
-meta-box-group-1.3.11.zip
+meta-box-columns-1.2.13.zip
+meta-box-conditional-logic-1.6.14.zip
+meta-box-group-1.3.12.zip
 meta-box-include-exclude-1.0.11.zip
 meta-box-tabs-1.1.8.zip
-wp-nested-pages-phila-3.1.14.zip
+wp-nested-pages-phila-3.1.15.zip
 meta-box-tooltip-1.1.4.zip
 two-factor-authentication-premium.1.8.6.zip
 wpfront-user-role-editor-personal-pro-2.14.5.zip"
