@@ -1,21 +1,17 @@
 <?php
 /**
  * Plugin Name: Meta Box Text Limiter
- * Plugin URI: https://metabox.io/plugins/meta-box-text-limiter/
+ * Plugin URI:  https://metabox.io/plugins/meta-box-text-limiter/
  * Description: Limit number of characters or words entered for text and textarea fields.
- * Version: 1.1.0
- * Author: MetaBox.io
- * Author URI: https://metabox.io
+ * Version:     1.1.3
+ * Author:      MetaBox.io
+ * Author URI:  https://metabox.io
  *
  * @package    Meta Box
  * @subpackage Meta Box Text Limiter
  */
 
 if ( ! class_exists( 'MB_Text_Limiter' ) ) {
-
-	/**
-	 * Text limiter class.
-	 */
 	class MB_Text_Limiter {
 		/**
 		 * List of supported fields.
@@ -24,9 +20,6 @@ if ( ! class_exists( 'MB_Text_Limiter' ) ) {
 		 */
 		protected $types = array( 'text', 'textarea' );
 
-		/**
-		 * Initialize.
-		 */
 		public function init() {
 			add_action( 'rwmb_before', array( $this, 'register' ) );
 
@@ -81,6 +74,10 @@ if ( ! class_exists( 'MB_Text_Limiter' ) ) {
 		 * @return string
 		 */
 		public function get_value( $value, $field ) {
+			if ( empty( $field ) ) {
+				return $value;
+			}
+
 			if ( ! in_array( $field['type'], $this->types, true ) || empty( $field['limit'] ) || ! is_numeric( $field['limit'] ) ) {
 				return $value;
 			}
@@ -96,15 +93,12 @@ if ( ! class_exists( 'MB_Text_Limiter' ) ) {
 			return $value;
 		}
 
-		/**
-		 * Enqueue assets.
-		 */
 		public function enqueue() {
 			// Use helper function to get correct URL to current folder, which can be used in themes/plugins.
 			list( , $url ) = RWMB_Loader::get_path( dirname( __FILE__ ) );
 
-			wp_enqueue_style( 'text-limiter', $url . 'css/text-limiter.css' );
-			wp_enqueue_script( 'text-limiter', $url . 'js/text-limiter.js', array( 'jquery' ), '', true );
+			wp_enqueue_style( 'text-limiter', $url . 'text-limiter.css' );
+			wp_enqueue_script( 'text-limiter', $url . 'text-limiter.js', array( 'jquery' ), '', true );
 		}
 	}
 

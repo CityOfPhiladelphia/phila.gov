@@ -9,9 +9,9 @@ Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Contributors: specialk
 Requires at least: 4.9
-Tested up to: 5.6
-Stable tag: 2.3
-Version: 2.3
+Tested up to: 5.7
+Stable tag: 2.4
+Version: 2.4
 Requires PHP: 5.6.20
 Text Domain: disable-gutenberg
 Domain Path: /languages
@@ -294,6 +294,11 @@ Thank you to everyone for using Disable Gutenberg and for all the [awesome 5-sta
 
 If you have any feedback or suggestions to make this plugin the absolute best it can be, and/or would like to help with development, please reach me via my [contact form](https://perishablepress.com/contact/) at Perishable Press.
 
+
+**2.4 (2021/02/08)**
+
+* Tests on PHP 7.4 and 8.0
+* Tests on WordPress 5.7
 
 **2.3 (2020/11/09)**
 
