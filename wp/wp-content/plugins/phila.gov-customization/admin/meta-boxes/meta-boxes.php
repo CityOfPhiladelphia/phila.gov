@@ -1112,6 +1112,11 @@ $meta_boxes[] = array(
           'desc'  => 'Default: alphabetical order',
           'on_label'  => 'Yes',
           'off_label' => 'No',
+          'visible' => array(
+            'when'  => array(
+              array('phila_vue_toggle', '=', true),
+            ),
+          ),
         ),
         array(
           'id'  => 'phila_hide_date_column',
@@ -1120,6 +1125,11 @@ $meta_boxes[] = array(
           'desc'  => 'Default: visible dates',
           'on_label'  => 'Yes',
           'off_label' => 'No',
+          'visible' => array(
+            'when'  => array(
+              array('phila_vue_toggle', '=', true),
+            ),
+          ),
         ),
         array(
           'name'  => 'Add files to table',
