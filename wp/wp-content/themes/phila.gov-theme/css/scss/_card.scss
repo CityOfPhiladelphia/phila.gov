@@ -8,6 +8,9 @@ a.card,
     color:color(dark-gray);
     word-break: break-word;
   }
+  &.underline {
+    border-bottom: 1px solid #a1a1a1;
+  }
   &.program-card{
     border-bottom: none;
     h3, .h3 {
@@ -126,11 +129,16 @@ a.card,
   .card-description{
     font-weight: normal;
     h3 {
-      text-decoration: none;
+      text-decoration: underline;
     }
     p{
       color: color(dark-gray);
       text-decoration: none;
+    }
+    &.pvm {
+      h3 {
+        text-decoration: none;
+      }
     }
   }
   &.card-fixed-height{
