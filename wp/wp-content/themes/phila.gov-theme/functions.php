@@ -2120,6 +2120,7 @@ function phila_add_meta_document_fields($response, $attachment) {
   }
   $response['mediaCategory'] = $attachment_term;
   $response['label'] = $attachment->phila_label;
+  $response['overrideDate'] = $attachment->phila_document_page_release_date;
 
   return $response;
 }
