@@ -77,7 +77,7 @@
       <div class="mtl mbm">
         <?php get_template_part( 'partials/breadcrumbs' ); ?>
       </div>
-      <?php if ( empty( $sub_heading ) && $user_selected_template != 'covid_guidance' && $user_selected_template != 'translated_content' ) :?>
+      <?php if ( $user_selected_template != 'covid_guidance' && $user_selected_template != 'translated_content' && $user_selected_template != 'prog_association' ) :?>
         <div class="grid-container">
           <div class="grid-x">
             <div class="cell">
