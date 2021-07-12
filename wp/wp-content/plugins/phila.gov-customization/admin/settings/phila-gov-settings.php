@@ -7,7 +7,7 @@ function phila_options_page( $settings_pages ) {
     'id'          => 'phila_gov',
     'option_name' => 'phila_settings',
     'menu_title'  => 'Phila.gov settings',
-    'parent'      => 'options-general.php',
+    'menu_title'  => 'phila.gov settings',
     'tabs'        => array(
       'general' => 'General Settings',
       'jobs'  => 'Featured jobs',
