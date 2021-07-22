@@ -86,10 +86,15 @@ function phila_register_meta_boxes( $meta_boxes ){
         'size'  =>  25,
         'timestamp'  => true,
         'js_options' =>  array(
-          'dateFormat' => 'mm-dd-yy',
+          'dateFormat' => 'yy/mm/dd',
           'controlType'=> 'select',
           'oneLine'=> true,
           'maxDate' => '+2w'
+        ),
+        'admin_columns' => array(
+          'position' => 'after date',
+          'title'    => __( 'End date' ),
+          'sort'     => true,
         ),
       ),
     ),
