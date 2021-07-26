@@ -1,0 +1,2173 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-01-06 16:08+0530\n"
+"PO-Revision-Date: 2021-01-06 16:09+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: Import-export.php:19
+msgid "Keep configuration Intact"
+msgstr ""
+
+#: Import-export.php:30
+msgid ""
+"Enabling this would keep your settings intact when plugin is uninstalled"
+msgstr ""
+
+#: Import-export.php:31
+msgid "Please enable this option when you are updating to a Premium version."
+msgstr ""
+
+#: Utilities.php:400 Utilities.php:422 mo_login_saml_sso_widget.php:230
+msgid "ERROR"
+msgstr ""
+
+#: Utilities.php:401 Utilities.php:423 mo_login_saml_sso_widget.php:231
+#: mo_login_saml_sso_widget.php:288
+msgid "Error"
+msgstr ""
+
+#: Utilities.php:403 Utilities.php:425 mo_login_saml_sso_widget.php:233
+#: mo_login_saml_sso_widget.php:290
+msgid "Possible Cause"
+msgstr ""
+
+#: Utilities.php:404
+msgid "Expected one of the Audiences to be"
+msgstr ""
+
+#: Utilities.php:411 Utilities.php:443
+msgid "We could not sign you in. Please contact your administrator"
+msgstr ""
+
+#: Utilities.php:431
+msgid "Fix Issue"
+msgstr ""
+
+#: Utilities.php:510
+msgid "Could not locate key algorithm in encrypted data."
+msgstr ""
+
+#: Utilities.php:516
+msgid "Could not locate <dsig:KeyInfo> for the encrypted key."
+msgstr ""
+
+#: Utilities.php:806 Utilities.php:817
+msgid "Unable to connect to the Internet. Please try again."
+msgstr ""
+
+#: feedback_form.php:22
+msgid "Your feedback"
+msgstr ""
+
+#: feedback_form.php:31
+msgid "Please help us to improve our plugin by giving your opinion."
+msgstr ""
+
+#: feedback_form.php:56 feedback_form.php:140 feedback_form.php:150
+msgid "Thank you for appreciating our work"
+msgstr ""
+
+#: feedback_form.php:69
+msgid "Please enter your email address"
+msgstr ""
+
+#: feedback_form.php:78
+msgid "Tell us what happened!"
+msgstr ""
+
+#: feedback_form.php:80
+msgid ""
+"miniOrange representative will reach out to you at the email-address entered "
+"above."
+msgstr ""
+
+#: feedback_form.php:86
+msgid "Send"
+msgstr ""
+
+#: feedback_form.php:89
+msgid "Skip"
+msgstr ""
+
+#: feedback_form.php:142
+msgid "Not happy with our plugin? Let us know what went wrong"
+msgstr ""
+
+#: feedback_form.php:144
+msgid "Found any issues? Let us know and we'll fix it ASAP"
+msgstr ""
+
+#: feedback_form.php:146
+msgid "Let us know if you need any help"
+msgstr ""
+
+#: feedback_form.php:148
+msgid "We're glad that you are happy with our plugin"
+msgstr ""
+
+#: login.php:182 mo_saml_settings_page.php:1717
+msgid "Close"
+msgstr ""
+
+#: login.php:183
+msgid "Next"
+msgstr ""
+
+#: login.php:339
+msgid "List of attributes cleared"
+msgstr ""
+
+#: login.php:396 login.php:748
+msgid "All the fields are required. Please enter valid entries."
+msgstr ""
+
+#: login.php:401 login.php:1071
+msgid ""
+"Please match the requested format for Identity Provider Name. Only "
+"alphabets, numbers and underscore is allowed."
+msgstr ""
+
+#: login.php:430
+msgid "Invalid certificate: Please provide a valid certificate."
+msgstr ""
+
+#: login.php:439
+msgid "Invalid Certificate: Please provide a certificate"
+msgstr ""
+
+#: login.php:481 login.php:1113
+msgid "Identity Provider details saved successfully."
+msgstr ""
+
+#: login.php:504
+msgid "Settings updated successfully."
+msgstr ""
+
+#: login.php:511
+msgid ""
+"ERROR: <a href=\"http://php.net/manual/en/curl.installation.php\" target="
+"\"_blank\">PHP cURL extension</a> is not installed or disabled. Save "
+"Attribute Mapping failed."
+msgstr ""
+
+#: login.php:518
+msgid "Attribute Mapping details saved successfully"
+msgstr ""
+
+#: login.php:526
+msgid ""
+"ERROR: <a href=\"http://php.net/manual/en/curl.installation.php\" target="
+"\"_blank\">PHP cURL extension</a> is not installed or disabled. Save Role "
+"Mapping failed."
+msgstr ""
+
+#: login.php:535
+msgid "Role Mapping details saved successfully."
+msgstr ""
+
+#: login.php:593
+msgid ""
+"Something went wrong. Please reach out to us using the Support/Contact Us "
+"form to get help with the demo."
+msgstr ""
+
+#: login.php:594 login.php:602
+msgid "Error :"
+msgstr ""
+
+#: login.php:594
+msgid "Something went wrong while setting up demo."
+msgstr ""
+
+#: login.php:599
+msgid "Success :"
+msgstr ""
+
+#: login.php:605
+msgid "Please setup manual demo."
+msgstr ""
+
+#: login.php:646
+msgid ""
+"Thanks! We have received your request and will shortly get in touch with you."
+msgstr ""
+
+#: login.php:665
+msgid ""
+"ERROR: <a href=\"http://php.net/manual/en/curl.installation.php\" target="
+"\"_blank\">PHP cURL extension</a> is not installed or disabled. Registration "
+"failed."
+msgstr ""
+
+#: login.php:678
+msgid "Please enter the required fields."
+msgstr ""
+
+#: login.php:683 login.php:820 login.php:843
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: login.php:688 login.php:753
+msgid ""
+"Minimum 6 characters should be present. Maximum 15 characters should be "
+"present. Only following symbols (!@#.$%^&*-_) should be present."
+msgstr ""
+
+#: login.php:724
+msgid "Passwords do not match."
+msgstr ""
+
+#: login.php:738
+msgid ""
+"ERROR: <a href=\"http://php.net/manual/en/curl.installation.php\" target="
+"\"_blank\">PHP cURL extension</a> is not installed or disabled. Login failed."
+msgstr ""
+
+#: login.php:776
+msgid "Customer retrieved successfully"
+msgstr ""
+
+#: login.php:785
+msgid "Invalid username or password. Please try again."
+msgstr ""
+
+#: login.php:794
+msgid ""
+"ERROR: <a href=\"http://php.net/manual/en/curl.installation.php\" target="
+"\"_blank\">PHP cURL extension</a> is not installed or disabled. Query submit "
+"failed."
+msgstr ""
+
+#: login.php:817
+msgid "Please fill up Email and Query fields to submit your query."
+msgstr ""
+
+#: login.php:826 login.php:859
+msgid "Your query could not be submitted. Please try again."
+msgstr ""
+
+#: login.php:829
+msgid "Thanks for getting in touch! We shall get back to you shortly."
+msgstr ""
+
+#: login.php:836
+msgid "Please fill up Email fields to submit your query."
+msgstr ""
+
+#: login.php:839
+msgid "Please fill up Schedule Call Details to submit your query."
+msgstr ""
+
+#: login.php:862
+msgid ""
+"Thanks for getting in touch! You will receive the call details on your email "
+"shortly."
+msgstr ""
+
+#: login.php:882
+msgid ""
+"ERROR: <a href=\"http://php.net/manual/en/curl.installation.php\" target="
+"\"_blank\">PHP cURL extension</a> is not installed or disabled. Resend OTP "
+"failed."
+msgstr ""
+
+#: login.php:894
+#, php-format
+msgid ""
+"Your password has been reset successfully. Please enter the new password "
+"sent to %s"
+msgstr ""
+
+#: login.php:897
+msgid "An error occurred while processing your request. Please Try again."
+msgstr ""
+
+#: login.php:906
+msgid "Plugin deactivated successfully"
+msgstr ""
+
+#: login.php:968
+msgid "Error while submitting the query."
+msgstr ""
+
+#: login.php:975
+msgid "Thank you for the feedback."
+msgstr ""
+
+#: login.php:1010
+msgid ""
+" Plan (highlighted with red border) will be the best suitable licensing plan "
+"as per the SSO details provided by you. If you still have any concern, "
+"please write us at info@xecurify.com."
+msgstr ""
+
+#: login.php:1039
+msgid ""
+"PHP cURL extension is not installed or disabled. Cannot fetch metadata from "
+"URL."
+msgstr ""
+
+#: login.php:1077 login.php:1118
+msgid "Please provide a valid metadata file."
+msgstr ""
+
+#: login.php:1083 login.php:1123
+msgid "Please provide a valid metadata URL."
+msgstr ""
+
+#: login.php:1089
+msgid "Unable to fetch Metadata. Please check your IDP configuration again."
+msgstr ""
+
+#: login.php:1152
+msgid ""
+"You already have an account with miniOrange. Please enter a valid password."
+msgstr ""
+
+#: login.php:1183 mo_saml_settings_page.php:377
+msgid "Thank you for registering with miniOrange."
+msgstr ""
+
+#: login.php:1200
+msgid "Configure SAML Identity Provider for SSO"
+msgstr ""
+
+#: login.php:1204
+msgid "Plugin Configuration"
+msgstr ""
+
+#: login.php:1206
+msgid "Premium Plans"
+msgstr ""
+
+#: login.php:1247
+msgid "Settings"
+msgstr ""
+
+#: mo_login_saml_sso_widget.php:16
+msgid "This is a miniOrange SAML login widget."
+msgstr ""
+
+#: mo_login_saml_sso_widget.php:47
+msgid "Title:"
+msgstr ""
+
+#: mo_login_saml_sso_widget.php:68
+msgid "Please configure the miniOrange SAML Plugin first."
+msgstr ""
+
+#: mo_login_saml_sso_widget.php:73
+msgid "We could not sign you in. Please contact your Administrator."
+msgstr ""
+
+#: mo_login_saml_sso_widget.php:88
+#, php-format
+msgid "Hello, %s"
+msgstr ""
+
+#: mo_login_saml_sso_widget.php:90
+msgid "Logout"
+msgstr ""
+
+#: mo_login_saml_sso_widget.php:242 mo_login_saml_sso_widget.php:308
+msgid "We could not sign you in. Please contact administrator"
+msgstr ""
+
+#: mo_saml_addons.php:7
+msgid ""
+"Allows real-time user sync (automatic user create, delete, and update) from "
+"your Identity Provider such as Azure, Okta, Onelogin into your WordPress "
+"site."
+msgstr ""
+
+#: mo_saml_addons.php:8
+msgid ""
+"Restrict access to WordPress pages/posts based on user roles and their login "
+"status, thereby protecting these pages/posts from unauthorized access."
+msgstr ""
+
+#: mo_saml_addons.php:9
+msgid ""
+"Restrict any kind of media files such as images, audio, videos, documents, "
+"etc, and any extension (configurable) such as png, pdf, jpeg, jpg, bmp, gif, "
+"etc."
+msgstr ""
+
+#: mo_saml_addons.php:10
+msgid ""
+"SSO Login Audit tracks all the SSO users and generates detailed reports. The "
+"advanced search filters in audit reports makes it easy to find and keep "
+"track of your users."
+msgstr ""
+
+#: mo_saml_addons.php:11
+msgid ""
+"Integrate user information sent by the SAML Identity Provider in SAML "
+"Assertion with the BuddyPress profile fields."
+msgstr ""
+
+#: mo_saml_addons.php:12
+msgid ""
+"Allows mapping your users to different LearnDash LMS plugin groups as per "
+"their group information sent by configured  SAML Identity Provider."
+msgstr ""
+
+#: mo_saml_addons.php:13
+msgid ""
+"Enables you to redirect your users to different pages after they log into "
+"your site, based on the attributes sent by your Identity Provider."
+msgstr ""
+
+#: mo_saml_addons.php:14
+msgid ""
+"Helps you in managing the login session time of your users based on their "
+"WordPress roles. Session time for roles can be specified."
+msgstr ""
+
+#: mo_saml_addons.php:15
+msgid ""
+"Allows secure access to the site using various federations such as InCommon, "
+"HAKA, HKAF, etc. Users can log into the WordPress site using their "
+"university credentials."
+msgstr ""
+
+#: mo_saml_addons.php:16
+msgid ""
+"Map users to different membership levels created by the MemberPress plugin "
+"using the group information sent by your Identity Provider."
+msgstr ""
+
+#: mo_saml_addons.php:17
+msgid ""
+"Integrate WP-members fields using the attributes sent by your SAML Identity "
+"Provider in the SAML Assertion."
+msgstr ""
+
+#: mo_saml_addons.php:18
+msgid ""
+"Map WooCommerce checkout page fields using the attributes sent by your IDP. "
+"This also allows you to map the users in different WooCommerce roles based "
+"on their IDP groups."
+msgstr ""
+
+#: mo_saml_addons.php:19
+msgid ""
+"Allows users to SSO into your site without creating a user account for them. "
+"This is useful when you dont want to manage the user accounts at the "
+"WordPress site."
+msgstr ""
+
+#: mo_saml_addons.php:20
+msgid ""
+"Map your users to different Paid MembershipPro membership levels as per the "
+"group information sent by your Identity Provider."
+msgstr ""
+
+#: mo_saml_addons.php:21
+msgid ""
+"Maps raw image data or URL received from your Identity Provider into "
+"Gravatar for the user."
+msgstr ""
+
+#: mo_saml_addons.php:25
+msgid "Recommended Add-ons for you"
+msgstr ""
+
+#: mo_saml_addons.php:45
+msgid "Check out all our add-ons"
+msgstr ""
+
+#: mo_saml_addons.php:76
+msgid "Learn More"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1163
+msgid "Choose Your Licensing Plan"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1167
+msgid "Single Site"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1169
+msgid "Multisite Network"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1175
+msgid ""
+"License is linked to the domain of the Wordpress instance, so if you have "
+"dev-staging-prod type of environment then you will require 3 licenses of the "
+"plugin (with discounts applicable on pre-production environments)."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1176
+msgid ""
+"Contact us at <a style=\"color:blue\" href=\"mailto:info@xecurify.com"
+"\">info@xecurify.com</a> for bulk discounts."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1203 mo_saml_licensing_plans.php:1254
+#: mo_saml_licensing_plans.php:1316 mo_saml_licensing_plans.php:1370
+#: mo_saml_licensing_plans.php:1437 mo_saml_licensing_plans.php:1490
+#: mo_saml_licensing_plans.php:1555
+msgid "Why should I choose this plan?"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1204 mo_saml_licensing_plans.php:1317
+msgid "Choose this plan if you are looking for the features like "
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1206 mo_saml_licensing_plans.php:1213
+#: mo_saml_licensing_plans.php:1257 mo_saml_licensing_plans.php:1265
+#: mo_saml_licensing_plans.php:1376
+msgid "Auto-Redirect to IdP"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1207
+msgid ""
+"Basic Attribute Mapping (Username, Email, First Name, Last Name, Display "
+"Name)"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1208 mo_saml_licensing_plans.php:1261
+#: mo_saml_licensing_plans.php:1323 mo_saml_licensing_plans.php:1446
+#: mo_saml_licensing_plans.php:1559 mo_saml_settings_page.php:679
+#: mo_saml_settings_page.php:1088
+msgid "Note:"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1209
+msgid "Single Logout & Role Mapping is not a part of this plan."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1212
+msgid "Standard"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1223 mo_saml_licensing_plans.php:1276
+#: mo_saml_licensing_plans.php:1340 mo_saml_licensing_plans.php:1396
+#: mo_saml_licensing_plans.php:1458 mo_saml_licensing_plans.php:1505
+#: mo_saml_licensing_plans.php:1572 mo_saml_settings_page.php:75
+msgid "Upgrade Now"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1225
+msgid "See the Standard Plugin features list below"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1228 mo_saml_licensing_plans.php:1282
+#: mo_saml_licensing_plans.php:1345 mo_saml_licensing_plans.php:1401
+#: mo_saml_licensing_plans.php:1463 mo_saml_licensing_plans.php:1510
+#: mo_saml_licensing_plans.php:1577
+msgid "Unlimited Authentications"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1229 mo_saml_licensing_plans.php:1283
+#: mo_saml_licensing_plans.php:1346 mo_saml_licensing_plans.php:1402
+#: mo_saml_licensing_plans.php:1464 mo_saml_licensing_plans.php:1511
+#: mo_saml_licensing_plans.php:1578
+msgid ""
+"Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1230
+msgid "Widget, Shortcode to add IdP Login Link on your site"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1231 mo_saml_licensing_plans.php:1285
+#: mo_saml_licensing_plans.php:1348 mo_saml_licensing_plans.php:1404
+#: mo_saml_licensing_plans.php:1466 mo_saml_licensing_plans.php:1513
+#: mo_saml_licensing_plans.php:1580
+msgid "Step-by-step guide to setup IdP"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1232 mo_saml_licensing_plans.php:1286
+#: mo_saml_licensing_plans.php:1349 mo_saml_licensing_plans.php:1405
+#: mo_saml_licensing_plans.php:1467 mo_saml_licensing_plans.php:1514
+#: mo_saml_licensing_plans.php:1581
+msgid "Auto-Redirect to IdP from login page"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1233 mo_saml_licensing_plans.php:1287
+#: mo_saml_licensing_plans.php:1350 mo_saml_licensing_plans.php:1406
+#: mo_saml_licensing_plans.php:1468 mo_saml_licensing_plans.php:1515
+#: mo_saml_licensing_plans.php:1582
+msgid "Protect your complete site (Auto-Redirect to IdP from any page)"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1234 mo_saml_licensing_plans.php:1288
+#: mo_saml_licensing_plans.php:1351 mo_saml_licensing_plans.php:1407
+#: mo_saml_licensing_plans.php:1469 mo_saml_licensing_plans.php:1516
+#: mo_saml_licensing_plans.php:1583
+msgid "Change SP base Url and SP Entity ID"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1235 mo_saml_licensing_plans.php:1289
+#: mo_saml_licensing_plans.php:1352 mo_saml_licensing_plans.php:1408
+#: mo_saml_licensing_plans.php:1470 mo_saml_licensing_plans.php:1517
+#: mo_saml_licensing_plans.php:1584
+msgid "Options to select SAML Request binding type"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1236 mo_saml_licensing_plans.php:1291
+#: mo_saml_licensing_plans.php:1353 mo_saml_licensing_plans.php:1410
+#: mo_saml_licensing_plans.php:1471 mo_saml_licensing_plans.php:1519
+#: mo_saml_licensing_plans.php:1585
+msgid "Integrated Windows Authentication (supported with AD FS)"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1247 mo_saml_licensing_plans.php:1305
+#: mo_saml_licensing_plans.php:1364 mo_saml_licensing_plans.php:1424
+#: mo_saml_licensing_plans.php:1482 mo_saml_licensing_plans.php:1533
+#: mo_saml_licensing_plans.php:1596 mo_saml_settings_page.php:226
+msgid "Add-Ons"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1247 mo_saml_licensing_plans.php:1305
+#: mo_saml_licensing_plans.php:1364
+msgid "Purchase Separately"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1247 mo_saml_licensing_plans.php:1305
+#: mo_saml_licensing_plans.php:1364 mo_saml_licensing_plans.php:1424
+#: mo_saml_licensing_plans.php:1482
+msgid "Contact us"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1255
+msgid ""
+"Choose this plan if you have Multisite Network Installation and are looking "
+"for the features like "
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1256 mo_saml_licensing_plans.php:1375
+msgid "Subsite Specific SSO"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1258 mo_saml_licensing_plans.php:1318
+#: mo_saml_licensing_plans.php:1377 mo_saml_licensing_plans.php:1442
+msgid "Advance Attribute Mapping"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1259 mo_saml_licensing_plans.php:1319
+#: mo_saml_licensing_plans.php:1378 mo_saml_licensing_plans.php:1443
+msgid "Role Mapping"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1260 mo_saml_licensing_plans.php:1321
+#: mo_saml_licensing_plans.php:1379 mo_saml_licensing_plans.php:1444
+msgid "IdP metadata sync"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1261 mo_saml_licensing_plans.php:1322
+#: mo_saml_licensing_plans.php:1380 mo_saml_licensing_plans.php:1445
+msgid "Support of custom SP and IdP certificate"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1261
+msgid "Add-ons are not a part of this plan."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1264 mo_saml_licensing_plans.php:1327
+msgid "Premium"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1265
+msgid "Attribute and Role Management"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1265
+msgid "Connect all subsites to same IdP"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1265 mo_saml_licensing_plans.php:1320
+#: mo_saml_licensing_plans.php:1328
+msgid "Single Logout"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1278
+msgid "See the Multisite Premium Plugin features list below"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1284 mo_saml_licensing_plans.php:1347
+#: mo_saml_licensing_plans.php:1403 mo_saml_licensing_plans.php:1465
+#: mo_saml_licensing_plans.php:1512 mo_saml_licensing_plans.php:1579
+msgid "Widget,Shortcode to add IdP Login Link on your site"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1290 mo_saml_licensing_plans.php:1354
+#: mo_saml_licensing_plans.php:1409 mo_saml_licensing_plans.php:1472
+#: mo_saml_licensing_plans.php:1518 mo_saml_licensing_plans.php:1586
+msgid "SAML Single Logout"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1292 mo_saml_licensing_plans.php:1355
+#: mo_saml_licensing_plans.php:1411 mo_saml_licensing_plans.php:1473
+#: mo_saml_licensing_plans.php:1520 mo_saml_licensing_plans.php:1587
+msgid "Customized Role Mapping"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1293 mo_saml_licensing_plans.php:1356
+#: mo_saml_licensing_plans.php:1412 mo_saml_licensing_plans.php:1474
+#: mo_saml_licensing_plans.php:1521 mo_saml_licensing_plans.php:1588
+msgid "Auto-sync IdP Configuration from metadata"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1294 mo_saml_licensing_plans.php:1357
+#: mo_saml_licensing_plans.php:1413 mo_saml_licensing_plans.php:1475
+#: mo_saml_licensing_plans.php:1522 mo_saml_licensing_plans.php:1589
+msgid ""
+"Custom Attribute Mapping (Any attribute which is stored in user-meta table)"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1295 mo_saml_licensing_plans.php:1358
+#: mo_saml_licensing_plans.php:1414 mo_saml_licensing_plans.php:1476
+#: mo_saml_licensing_plans.php:1523 mo_saml_licensing_plans.php:1590
+msgid "Store Multiple IdP Certificates"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1296 mo_saml_licensing_plans.php:1359
+#: mo_saml_licensing_plans.php:1415 mo_saml_licensing_plans.php:1477
+#: mo_saml_licensing_plans.php:1524 mo_saml_licensing_plans.php:1591
+msgid "Custom SP Certificate"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1297 mo_saml_licensing_plans.php:1416
+#: mo_saml_licensing_plans.php:1525
+msgid "Multi-Site Support"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1298 mo_saml_licensing_plans.php:1417
+#: mo_saml_licensing_plans.php:1526
+msgid "Sub-site specific SSO for Multisite"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1299 mo_saml_licensing_plans.php:1418
+#: mo_saml_licensing_plans.php:1527
+msgid "Auto-Redirection from specific subsites"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1324
+msgid ""
+"Add-ons are not a part of this plan. All features of Standard Plan are "
+"included here."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1328
+msgid "Attribute & Role Management"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1342
+msgid "See the Premium Plugin features list below"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1371
+msgid ""
+"Choose this plan if you have Multisite Network installation and are looking "
+"for features like "
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1372 mo_saml_licensing_plans.php:1385
+#: mo_saml_licensing_plans.php:1419 mo_saml_licensing_plans.php:1528
+msgid "Mu Domain Mapping Support"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1373 mo_saml_licensing_plans.php:1385
+msgid "Easy migration from staging to prod"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1374 mo_saml_licensing_plans.php:1385
+msgid "Setup SSO with multiple IdPs"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1383 mo_saml_licensing_plans.php:1448
+msgid "Enterprise"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1398
+msgid "See the Multisite Enterprise Plugin features list below"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1420 mo_saml_licensing_plans.php:1449
+#: mo_saml_licensing_plans.php:1478 mo_saml_licensing_plans.php:1529
+#: mo_saml_licensing_plans.php:1592
+msgid "Multiple IdP Support"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1421 mo_saml_licensing_plans.php:1479
+#: mo_saml_licensing_plans.php:1530 mo_saml_licensing_plans.php:1593
+msgid ""
+"Compatible with multiple environments in a hosting provider like Pantheon, "
+"WP-Engine, Wordpress VIP"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1424 mo_saml_licensing_plans.php:1441
+#: mo_saml_licensing_plans.php:1449 mo_saml_licensing_plans.php:1482
+#: mo_saml_licensing_plans.php:1542 mo_saml_licensing_plans.php:1605
+msgid "SSO Login Audit"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1424 mo_saml_licensing_plans.php:1482
+msgid "Purchase Separately (Remaining)"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1438
+msgid "Choose this plan if you are looking for features like "
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1439 mo_saml_licensing_plans.php:1449
+msgid "Easy migration from dev to prod"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1440
+msgid "Support of multiple IdPs"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1446
+msgid ""
+"Add-ons are not a part of this plan. All features of Premium Plan are "
+"included here."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1460
+msgid "See the Enterprise Plugin features list below"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1491 mo_saml_licensing_plans.php:1556
+msgid "Choose this plan if you are looking for "
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1492 mo_saml_licensing_plans.php:1557
+msgid "All exclusive features included"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1493 mo_saml_licensing_plans.php:1558
+msgid ""
+"Add-ons (Page Restriction, BuddyPress Attribute Mapping, LearnDash Attribute "
+"Mapping, Media Restriction, Attribute based Redirection, Federation SSO, "
+"SCIM-User Provisioning, SSO Session Management, SSO Login Audit,)."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1493 mo_saml_licensing_plans.php:1641
+#: mo_saml_settings_page.php:1314 mo_saml_settings_page.php:1334
+#: mo_saml_settings_page.php:1995
+msgid "Note"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1493
+msgid ""
+"All the Add-ons are packaged with this plan. All features of all the "
+"Multisite Plans are included here."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1495 mo_saml_licensing_plans.php:1562
+msgid "All-Inclusive"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1496
+msgid "Multisite Network SSO with all features and all the Add-ons"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1507
+msgid "See the multisite All-Inclusive Plan features list below"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1531 mo_saml_licensing_plans.php:1594
+msgid "Customize the metadata contact information"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1532 mo_saml_licensing_plans.php:1595
+msgid "Configuring plugin using APIs"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1534 mo_saml_licensing_plans.php:1597
+msgid "Page Restriction Add-On"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1535 mo_saml_licensing_plans.php:1598
+msgid "Buddypress Attribute Mapping Add-On"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1536 mo_saml_licensing_plans.php:1599
+msgid "LearnDash Attribute Integration Add-On"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1537 mo_saml_licensing_plans.php:1600
+msgid "Media Restriction Add-On"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1538 mo_saml_licensing_plans.php:1601
+msgid "Attribute based Redirection"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1539 mo_saml_licensing_plans.php:1602
+msgid "Federation SSO Add-On"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1540 mo_saml_licensing_plans.php:1603
+msgid "SCIM-User Provisioning"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1541 mo_saml_licensing_plans.php:1604
+msgid "SSO Session Management"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1560
+msgid ""
+"All the Add-ons are packaged with this plan. All features of all the Plans "
+"are included here."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1563
+msgid "All features along <br>with all Add-ons"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1574
+msgid "See the All-inclusive Plugin features list below"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1623
+msgid "Steps to Upgrade to Premium Plugin"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1624
+msgid ""
+"1. Click on 'Upgrade now' button of the required licensing plan. You will be "
+"redirected to miniOrange Login Console. Enter your password with which you "
+"created an account\n"
+"                with us. After that you will be redirected to payment page."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1626
+msgid ""
+"2. Enter your card details and complete the payment. On successful payment "
+"completion, you will see the link\n"
+"                to download the premium plugin."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1628
+msgid ""
+"3. To install the premium plugin, first deactivate and delete the free "
+"version of the plugin. Enable the \"Keep Configuration Intact\" checkbox "
+"before deactivating and deleting the plugin. By doing so, your saved "
+"configurations of the plugin will not get lost."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1630
+msgid ""
+"4. From this point on, do not update the premium plugin from the Wordpress "
+"store."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1632
+#, php-format
+msgid ""
+"Cost applicable for one instance only. Licenses are perpetual and the "
+"Support Plan includes 12 months of maintenance (support and version "
+"updates). You can renew maintenance after 12 months at 50% of the current "
+"license cost."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1634
+msgid "MultiSite Network Support"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1635
+msgid ""
+"There is an additional cost for the number of subsites in Multisite Network."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1637
+msgid "Multiple IdPs Supported"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1638
+msgid ""
+"There is an additional cost for the IdPs if the number of IdP is more than 1."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1641
+msgid ""
+"miniOrange does not store or transfer any data which is coming from the "
+"Identity Provider to the WordPress. All the data remains within your "
+"premises / server. We do not provide the developer license for our paid "
+"plugins and the source code is protected. It is strictly prohibited to make "
+"any changes in the code without having written permission from miniOrange. "
+"There are hooks provided in the plugin which can be used by the developers "
+"to extend the plugin's functionality."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1644
+msgid "10 Days Return Policy"
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1645
+msgid ""
+"At miniOrange, we want to ensure you are 100% happy with your purchase. If "
+"the premium plugin you purchased is\n"
+"            not working as advertised and you've attempted to resolve any "
+"issues with our support team, which couldn't get\n"
+"            resolved. We will refund the whole amount within 10 days of the "
+"purchase."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1648
+msgid ""
+"Please email us at <b><a href=\"mailto:info@xecurify.com\">info@xecurify."
+"com</a></b>\n"
+"            for any queries regarding the return policy."
+msgstr ""
+
+#: mo_saml_licensing_plans.php:1668 mo_saml_settings_page.php:517
+msgid "Back"
+msgstr ""
+
+#: mo_saml_settings_page.php:61 mo_saml_settings_page.php:74
+msgid "miniOrange SSO using SAML 2.0"
+msgstr ""
+
+#: mo_saml_settings_page.php:63
+msgid "You are currently on the Free version of the plugin"
+msgstr ""
+
+#: mo_saml_settings_page.php:65
+msgid "Why should I upgrade to premium plugin?"
+msgstr ""
+
+#: mo_saml_settings_page.php:66
+msgid "You should upgrade to seek the support of our SSO expert team."
+msgstr ""
+
+#: mo_saml_settings_page.php:66
+msgid ""
+"Free version does not support attribute mapping, role mapping, single logout "
+"features and Multisite Network Installation."
+msgstr ""
+
+#: mo_saml_settings_page.php:66
+msgid ""
+"Premium version support Signed SAML Request and Encrypted Assertion which "
+"are recommended from security point of view."
+msgstr ""
+
+#: mo_saml_settings_page.php:66
+msgid ""
+"Auto-Redirect to IdP which protect your site with IdP login is a part of "
+"premium version of the plugin."
+msgstr ""
+
+#: mo_saml_settings_page.php:66
+msgid "Check the features given in the Licensing Plans for more detail."
+msgstr ""
+
+#: mo_saml_settings_page.php:67
+msgid "Why should I upgrade?"
+msgstr ""
+
+#: mo_saml_settings_page.php:76
+msgid "FAQs"
+msgstr ""
+
+#: mo_saml_settings_page.php:77
+msgid "Ask questions on our forum"
+msgstr ""
+
+#: mo_saml_settings_page.php:80
+msgid "Restart Plugin Tour"
+msgstr ""
+
+#: mo_saml_settings_page.php:99
+msgid "Let's get started!"
+msgstr ""
+
+#: mo_saml_settings_page.php:108
+msgid ""
+"Hey, Thank you for installing <b style=\"color: #E85700\">miniOrange SSO "
+"using SAML 2.0 plugin"
+msgstr ""
+
+#: mo_saml_settings_page.php:109
+msgid "We support all SAML 2.0 compliant Identity Providers."
+msgstr ""
+
+#: mo_saml_settings_page.php:111
+msgid ""
+"Please find some of the well-known <b>IdP configuration guides</b> below."
+msgstr ""
+
+#: mo_saml_settings_page.php:112
+msgid ""
+"If you do not find your IDP guide here, don't worry! mail us at <a href="
+"\"mailto:info@xecurify.com\">info@xecurify.com</a>"
+msgstr ""
+
+#: mo_saml_settings_page.php:113
+msgid ""
+"Make sure to check out the list of supported add-ons to increase the "
+"functionality of your WordPress site."
+msgstr ""
+
+#: mo_saml_settings_page.php:136
+msgid "Take a quick tour of setting up the plugin with ADFS"
+msgstr ""
+
+#: mo_saml_settings_page.php:136
+msgid "Press Esc to skip"
+msgstr ""
+
+#: mo_saml_settings_page.php:140
+msgid "Start tour"
+msgstr ""
+
+#: mo_saml_settings_page.php:141
+msgid "Skip the tour"
+msgstr ""
+
+#: mo_saml_settings_page.php:216
+msgid "Service Provider Setup"
+msgstr ""
+
+#: mo_saml_settings_page.php:218
+msgid "Service Provider Metadata"
+msgstr ""
+
+#: mo_saml_settings_page.php:220
+msgid "Attribute/Role Mapping"
+msgstr ""
+
+#: mo_saml_settings_page.php:222
+msgid "Premium plans"
+msgstr ""
+
+#: mo_saml_settings_page.php:224
+msgid "Redirection & SSO Links"
+msgstr ""
+
+#: mo_saml_settings_page.php:228
+msgid "Demo Request"
+msgstr ""
+
+#: mo_saml_settings_page.php:230
+msgid "Account Setup"
+msgstr ""
+
+#: mo_saml_settings_page.php:382
+msgid "miniOrange Account Email"
+msgstr ""
+
+#: mo_saml_settings_page.php:386
+msgid "Customer ID"
+msgstr ""
+
+#: mo_saml_settings_page.php:398
+msgid "Change Email Address"
+msgstr ""
+
+#: mo_saml_settings_page.php:401
+msgid "Check Licensing Plans"
+msgstr ""
+
+#: mo_saml_settings_page.php:422
+msgid "Register with miniOrange"
+msgstr ""
+
+#: mo_saml_settings_page.php:425
+msgid "Why should I register?"
+msgstr ""
+
+#: mo_saml_settings_page.php:427
+msgid ""
+"You should register so that in case you need help, we can help you with step "
+"by step instructions. We support all known IdPs - ADFS, Okta, Salesforce, "
+"Shibboleth, SimpleSAMLphp, OpenAM, Centrify, Ping, RSA, IBM, Oracle, "
+"OneLogin, Bitium, WSO2 etc."
+msgstr ""
+
+#: mo_saml_settings_page.php:428
+msgid ""
+"You will also need a miniOrange account to upgrade to the premium version of "
+"the plugins."
+msgstr ""
+
+#: mo_saml_settings_page.php:428
+msgid ""
+" We do not store any information except the email that you will use to "
+"register with us."
+msgstr ""
+
+#: mo_saml_settings_page.php:433 mo_saml_settings_page.php:498
+#: mo_saml_settings_page.php:1965
+msgid "Email"
+msgstr ""
+
+#: mo_saml_settings_page.php:440 mo_saml_settings_page.php:504
+msgid "Password"
+msgstr ""
+
+#: mo_saml_settings_page.php:442
+msgid "Choose your password (Min. length 6)"
+msgstr ""
+
+#: mo_saml_settings_page.php:444 mo_saml_settings_page.php:452
+#: mo_saml_settings_page.php:508
+msgid ""
+"Minimum 6 characters should be present. Maximum 15 characters should be "
+"present. Only following symbols (!@#.$%^&*) should be present."
+msgstr ""
+
+#: mo_saml_settings_page.php:448
+msgid "Confirm Password"
+msgstr ""
+
+#: mo_saml_settings_page.php:450
+msgid "Confirm your password"
+msgstr ""
+
+#: mo_saml_settings_page.php:458
+msgid "Register"
+msgstr ""
+
+#: mo_saml_settings_page.php:461
+msgid "Already have an account?"
+msgstr ""
+
+#: mo_saml_settings_page.php:490
+msgid "Login with miniOrange"
+msgstr ""
+
+#: mo_saml_settings_page.php:493
+msgid ""
+"It seems you already have an account with miniOrange. Please enter your "
+"miniOrange email and password."
+msgstr ""
+
+#: mo_saml_settings_page.php:494
+msgid "Click here if you forgot your password?"
+msgstr ""
+
+#: mo_saml_settings_page.php:506
+msgid "Enter your password"
+msgstr ""
+
+#: mo_saml_settings_page.php:515
+msgid "Login"
+msgstr ""
+
+#: mo_saml_settings_page.php:550
+msgid "Option 1: Use a Widget"
+msgstr ""
+
+#: mo_saml_settings_page.php:550
+msgid "Available in current version of the plugin"
+msgstr ""
+
+#: mo_saml_settings_page.php:552
+msgid "Take Tab-Tour"
+msgstr ""
+
+#: mo_saml_settings_page.php:558
+msgid ""
+"Add the SSO Widget by following the instructions below. This will add the "
+"SSO link on your site."
+msgstr ""
+
+#: mo_saml_settings_page.php:561
+msgid "Go to Appearances"
+msgstr ""
+
+#: mo_saml_settings_page.php:561
+msgid "Widgets"
+msgstr ""
+
+#: mo_saml_settings_page.php:562
+#, php-format
+msgid "Select \"Login with %s"
+msgstr ""
+
+#: mo_saml_settings_page.php:562
+msgid "Drag and drop to your favourite location and save."
+msgstr ""
+
+#: mo_saml_settings_page.php:570
+msgid "Option 2: Auto-Redirection from site"
+msgstr ""
+
+#: mo_saml_settings_page.php:571 mo_saml_settings_page.php:593
+#: mo_saml_settings_page.php:616
+msgid "Available in Standard, Premium, Enterprise and All-Inclusive plans"
+msgstr ""
+
+#: mo_saml_settings_page.php:572
+msgid ""
+"1. Select this option if you want to restrict your site to only logged in "
+"users."
+msgstr ""
+
+#: mo_saml_settings_page.php:573
+msgid ""
+"Selecting this option will redirect the users to your IdP if logged in "
+"session is not found."
+msgstr ""
+
+#: mo_saml_settings_page.php:578
+msgid "Redirect to IdP if user not logged in"
+msgstr ""
+
+#: mo_saml_settings_page.php:578
+msgid "PROTECT COMPLETE SITE"
+msgstr ""
+
+#: mo_saml_settings_page.php:581
+msgid ""
+"2. It will force user to provide credentials on your IdP on each login "
+"attempt even if the user is already logged in to IdP."
+msgstr ""
+
+#: mo_saml_settings_page.php:582
+msgid ""
+"This option may require some additional setting in your IdP to force it "
+"depending on your Identity Provider."
+msgstr ""
+
+#: mo_saml_settings_page.php:587
+msgid "Force authentication with your IdP on each login attempt"
+msgstr ""
+
+#: mo_saml_settings_page.php:592
+msgid "Option 3: Auto-Redirection from WordPress Login"
+msgstr ""
+
+#: mo_saml_settings_page.php:594
+msgid ""
+"1. Select this option if you want the users visiting any of the following "
+"URLs to get redirected to your configured IdP for authentication"
+msgstr ""
+
+#: mo_saml_settings_page.php:595
+msgid "or"
+msgstr ""
+
+#: mo_saml_settings_page.php:600
+msgid "Redirect to IdP from WordPress Login Page"
+msgstr ""
+
+#: mo_saml_settings_page.php:603
+msgid ""
+"2. Select this option to enable backdoor login if auto-redirect from "
+"WordPress Login is enabled."
+msgstr ""
+
+#: mo_saml_settings_page.php:609
+msgid ""
+"Checking this option creates a backdoor to login to your Website using "
+"WordPress credentials incase you get locked out of your IdP"
+msgstr ""
+
+#: mo_saml_settings_page.php:610
+msgid "Note down this URL"
+msgstr ""
+
+#: mo_saml_settings_page.php:615
+msgid "Option 4: Use a ShortCode"
+msgstr ""
+
+#: mo_saml_settings_page.php:620 mo_saml_settings_page.php:629
+msgid "Disabled. Configure your Service Provider"
+msgstr ""
+
+#: mo_saml_settings_page.php:623
+msgid "Check this option if you want to add a shortcode to your page"
+msgstr ""
+
+#: mo_saml_settings_page.php:630
+msgid "Log Out and Test"
+msgstr ""
+
+#: mo_saml_settings_page.php:634
+msgid ""
+"These options are configurable in the Standard, Premium, Enterprise and All-"
+"Inclusive version of the plugin."
+msgstr ""
+
+#: mo_saml_settings_page.php:652
+msgid "Gather Metadata for IDP"
+msgstr ""
+
+#: mo_saml_settings_page.php:654 mo_saml_settings_page.php:942
+#: mo_saml_settings_page.php:1503
+msgid "Take Tab-tour"
+msgstr ""
+
+#: mo_saml_settings_page.php:666
+msgid "Service Provider Endpoints"
+msgstr ""
+
+#: mo_saml_settings_page.php:673
+msgid "Enter Service Provider Entity ID"
+msgstr ""
+
+#: mo_saml_settings_page.php:679
+msgid ""
+"If you have already shared the below URLs or Metadata with your IdP, do "
+"<b>NOT</b> change SP EntityID. It might break your existing login flow."
+msgstr ""
+
+#: mo_saml_settings_page.php:683
+msgid "Update"
+msgstr ""
+
+#: mo_saml_settings_page.php:696
+msgid ""
+"Provide this metadata URL to your Identity Provider or download the .xml "
+"file to upload it in your idp"
+msgstr ""
+
+#: mo_saml_settings_page.php:697
+msgid "Metadata URL"
+msgstr ""
+
+#: mo_saml_settings_page.php:699 mo_saml_settings_page.php:715
+#: mo_saml_settings_page.php:725 mo_saml_settings_page.php:735
+#: mo_saml_settings_page.php:747 mo_saml_settings_page.php:757
+#: mo_saml_settings_page.php:767 mo_saml_settings_page.php:778
+#: mo_saml_settings_page.php:833
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: mo_saml_settings_page.php:701
+msgid "Metadata XML File"
+msgstr ""
+
+#: mo_saml_settings_page.php:701 mo_saml_settings_page.php:786
+#: mo_saml_settings_page.php:789
+msgid "Download"
+msgstr ""
+
+#: mo_saml_settings_page.php:703 mo_saml_settings_page.php:884
+msgid "OR"
+msgstr ""
+
+#: mo_saml_settings_page.php:706
+msgid "Link to Configure the Plug in"
+msgstr ""
+
+#: mo_saml_settings_page.php:707
+msgid "Click Here to see the Guide for Configuring the plugin"
+msgstr ""
+
+#: mo_saml_settings_page.php:707
+msgid ""
+"You will need the following information to configure your IdP. Copy it and "
+"keep it handy"
+msgstr ""
+
+#: mo_saml_settings_page.php:712
+msgid "SP-EntityID / Issuer"
+msgstr ""
+
+#: mo_saml_settings_page.php:722
+msgid "ACS (AssertionConsumerService) URL"
+msgstr ""
+
+#: mo_saml_settings_page.php:732
+msgid "Audience URI"
+msgstr ""
+
+#: mo_saml_settings_page.php:742
+msgid "NameID format"
+msgstr ""
+
+#: mo_saml_settings_page.php:754
+msgid "Recipient URL"
+msgstr ""
+
+#: mo_saml_settings_page.php:764
+msgid "Destination URL"
+msgstr ""
+
+#: mo_saml_settings_page.php:775 mo_saml_settings_page.php:796
+msgid "Default Relay State (Optional)"
+msgstr ""
+
+#: mo_saml_settings_page.php:784 mo_saml_settings_page.php:803
+msgid "Certificate (Optional)"
+msgstr ""
+
+#: mo_saml_settings_page.php:786
+msgid "Register to download the certificate"
+msgstr ""
+
+#: mo_saml_settings_page.php:798 mo_saml_settings_page.php:805
+msgid ""
+"Available in the Standard, Premium, Enterprise and All-Inclusive plans of "
+"the plugin."
+msgstr ""
+
+#: mo_saml_settings_page.php:830
+msgid "Copied"
+msgstr ""
+
+#: mo_saml_settings_page.php:853
+msgid "Upload IDP Metadata"
+msgstr ""
+
+#: mo_saml_settings_page.php:855
+msgid "Cancel"
+msgstr ""
+
+#: mo_saml_settings_page.php:868 mo_saml_settings_page.php:1292
+msgid "Identity Provider Name"
+msgstr ""
+
+#: mo_saml_settings_page.php:869
+msgid "Identity Provider name like ADFS, SimpleSAML"
+msgstr ""
+
+#: mo_saml_settings_page.php:869 mo_saml_settings_page.php:1298
+msgid "Only alphabets, numbers and underscore is allowed"
+msgstr ""
+
+#: mo_saml_settings_page.php:879
+msgid "Upload Metadata"
+msgstr ""
+
+#: mo_saml_settings_page.php:881
+msgid "Upload"
+msgstr ""
+
+#: mo_saml_settings_page.php:891
+msgid "Enter metadata URL"
+msgstr ""
+
+#: mo_saml_settings_page.php:892
+msgid "Enter metadata URL of your IdP."
+msgstr ""
+
+#: mo_saml_settings_page.php:893
+msgid "Fetch Metadata"
+msgstr ""
+
+#: mo_saml_settings_page.php:939
+msgid "Select your Identity Provider"
+msgstr ""
+
+#: mo_saml_settings_page.php:1088
+msgid ""
+"Please feel free to reach out to us in case of any issues for setting up the "
+"Custom IDP using the Contact Us dialog."
+msgstr ""
+
+#: mo_saml_settings_page.php:1172
+msgid ""
+"Select your Identity Provider from the list below, and you can find the link "
+"to the guide for setting up SAML below."
+msgstr ""
+
+#: mo_saml_settings_page.php:1173
+msgid "Please contact us if you don't find your IDP in the list."
+msgstr ""
+
+#: mo_saml_settings_page.php:1178
+msgid "Start typing your identity provider name here.."
+msgstr ""
+
+#: mo_saml_settings_page.php:1181
+msgid ""
+"It looks like your identity provider is not listed below, you can "
+"select<strong> Custom IDP </strong>to configure the plugin. Please send us "
+"query using support form given aside for more details."
+msgstr ""
+
+#: mo_saml_settings_page.php:1221
+msgid "Configure Service Provider"
+msgstr ""
+
+#: mo_saml_settings_page.php:1227
+msgid "Upload IDP Metadata File/XML"
+msgstr ""
+
+#: mo_saml_settings_page.php:1243
+msgid "Identity Provider"
+msgstr ""
+
+#: mo_saml_settings_page.php:1248
+msgid "Click here to open Guide"
+msgstr ""
+
+#: mo_saml_settings_page.php:1252
+msgid "Change Identity Provider"
+msgstr ""
+
+#: mo_saml_settings_page.php:1265
+msgid "Azure B2C tenant Name"
+msgstr ""
+
+#: mo_saml_settings_page.php:1267
+msgid "Enter your Azure B2C tenant Name. Example: xyb2c.onmicrosoft.com"
+msgstr ""
+
+#: mo_saml_settings_page.php:1274
+msgid "IdentityExperienceFramework app ID"
+msgstr ""
+
+#: mo_saml_settings_page.php:1276
+msgid "Enter the application ID for the IdentityExperienceFramework app"
+msgstr ""
+
+#: mo_saml_settings_page.php:1283
+msgid "ProxyIdentityExperienceFramework app ID"
+msgstr ""
+
+#: mo_saml_settings_page.php:1285
+msgid "Enter the application ID for the ProxyIdentityExperienceFramework app"
+msgstr ""
+
+#: mo_saml_settings_page.php:1295
+msgid "Identity Provider name like ADFS, SimpleSAML, Salesforce"
+msgstr ""
+
+#: mo_saml_settings_page.php:1305
+msgid "IdP Entity ID or Issuer"
+msgstr ""
+
+#: mo_saml_settings_page.php:1306
+msgid "Identity Provider Entity ID or Issuer"
+msgstr ""
+
+#: mo_saml_settings_page.php:1314
+msgid ""
+"You can find the <b>EntityID</b> in Your IdP-Metadata XML file enclosed in "
+"<code>EntityDescriptor</code> tag having attribute as <code>entityID</code>"
+msgstr ""
+
+#: mo_saml_settings_page.php:1323
+msgid "SAML Login URL"
+msgstr ""
+
+#: mo_saml_settings_page.php:1325
+msgid "Single Sign On Service URL (HTTP-Redirect binding) of your IdP"
+msgstr ""
+
+#: mo_saml_settings_page.php:1334
+msgid ""
+"You can find the <b>SAML Login URL</b> in Your IdP-Metadata XML file "
+"enclosed in <code>SingleSignOnService</code> tag (Binding type: HTTP-"
+"Redirect)"
+msgstr ""
+
+#: mo_saml_settings_page.php:1345
+msgid "X.509 Certificate"
+msgstr ""
+
+#: mo_saml_settings_page.php:1346
+msgid ""
+"Copy and Paste the content from the downloaded certificate or copy the "
+"content enclosed in X509Certificate tag (has parent tag KeyDescriptor "
+"use=signing) in IdP-Metadata XML file"
+msgstr ""
+
+#: mo_saml_settings_page.php:1351 mo_saml_settings_page.php:1371
+#: mo_saml_settings_page.php:1516 mo_saml_settings_page.php:1578
+#: mo_saml_settings_page.php:1938
+msgid "NOTE"
+msgstr ""
+
+#: mo_saml_settings_page.php:1351
+msgid "Format of the certificate"
+msgstr ""
+
+#: mo_saml_settings_page.php:1361
+msgid "Character encoding"
+msgstr ""
+
+#: mo_saml_settings_page.php:1371
+msgid "Uses iconv encoding to convert X509 certificate into correct encoding."
+msgstr ""
+
+#: mo_saml_settings_page.php:1375 mo_saml_settings_page.php:1646
+msgid "Save"
+msgstr ""
+
+#: mo_saml_settings_page.php:1380
+msgid "Enable openssl extension to test your configuration."
+msgstr ""
+
+#: mo_saml_settings_page.php:1383
+msgid ""
+"You can only test your Configuration after saving your Service Provider "
+"Settings."
+msgstr ""
+
+#: mo_saml_settings_page.php:1385
+msgid "Test configuration"
+msgstr ""
+
+#: mo_saml_settings_page.php:1394
+msgid "Generate Azure B2C SSO Policies"
+msgstr ""
+
+#: mo_saml_settings_page.php:1394
+msgid "Generate SSO Policies"
+msgstr ""
+
+#: mo_saml_settings_page.php:1405
+msgid "Update SSO Configuration"
+msgstr ""
+
+#: mo_saml_settings_page.php:1405
+msgid "Update Configuration"
+msgstr ""
+
+#: mo_saml_settings_page.php:1423 mo_saml_settings_page.php:1426
+#: mo_saml_settings_page.php:1716
+msgid "Export Plugin Configuration"
+msgstr ""
+
+#: mo_saml_settings_page.php:1501
+msgid "Attribute Mapping (Optional)"
+msgstr ""
+
+#: mo_saml_settings_page.php:1511 mo_saml_settings_page.php:1573
+msgid "Click Here to know how this is useful."
+msgstr ""
+
+#: mo_saml_settings_page.php:1516
+msgid ""
+"Use attribute name <code>NameID</code> if Identity is in the "
+"<i>NameIdentifier</i> element of the subject statement in SAML Response."
+msgstr ""
+
+#: mo_saml_settings_page.php:1520
+msgid "Username (required)"
+msgstr ""
+
+#: mo_saml_settings_page.php:1524
+msgid "Email (required)"
+msgstr ""
+
+#: mo_saml_settings_page.php:1529
+msgid "First Name"
+msgstr ""
+
+#: mo_saml_settings_page.php:1530
+msgid "Enter attribute name for First Name"
+msgstr ""
+
+#: mo_saml_settings_page.php:1536
+msgid "Last Name"
+msgstr ""
+
+#: mo_saml_settings_page.php:1537
+msgid "Enter attribute name for Last Name"
+msgstr ""
+
+#: mo_saml_settings_page.php:1544
+msgid "Group/Role"
+msgstr ""
+
+#: mo_saml_settings_page.php:1545
+msgid "Enter attribute name for Group/Role"
+msgstr ""
+
+#: mo_saml_settings_page.php:1551
+msgid ""
+"These attributes are configurable in Standard, Premium, Enterprise and All-"
+"Inclusive versions of the plugin."
+msgstr ""
+
+#: mo_saml_settings_page.php:1552
+msgid "Map Custom Attributes"
+msgstr ""
+
+#: mo_saml_settings_page.php:1553
+msgid ""
+"Customized Attribute Mapping means you can map any attribute of the IDP to "
+"the <b>usermeta</b> table of your database."
+msgstr ""
+
+#: mo_saml_settings_page.php:1554
+msgid ""
+"Customized Attribute Mapping is configurable in the Premium, Enterprise and "
+"All-Inclusive versions of the plugin."
+msgstr ""
+
+#: mo_saml_settings_page.php:1569
+msgid "Role Mapping (Optional)"
+msgstr ""
+
+#: mo_saml_settings_page.php:1578
+msgid ""
+"Role will be assigned only to new users. Existing Wordpress users' role "
+"remains same."
+msgstr ""
+
+#: mo_saml_settings_page.php:1586
+msgid "Do not auto create users if roles are not mapped here"
+msgstr ""
+
+#: mo_saml_settings_page.php:1595
+msgid "Do not assign role to unlisted users"
+msgstr ""
+
+#: mo_saml_settings_page.php:1599
+msgid "Default Role"
+msgstr ""
+
+#: mo_saml_settings_page.php:1617
+msgid "Select the default role to assign to Users."
+msgstr ""
+
+#: mo_saml_settings_page.php:1630 mo_saml_settings_page.php:1632
+#, php-format
+msgid "Semi-colon(;) separated Group/Role value for %s"
+msgstr ""
+
+#: mo_saml_settings_page.php:1639
+msgid ""
+"Customized Role Mapping options are configurable in the Premium, Enterprise "
+"and All-Inclusive versions of the plugin."
+msgstr ""
+
+#: mo_saml_settings_page.php:1640
+msgid ""
+"In the standard version, you can only assign the default role to the user."
+msgstr ""
+
+#: mo_saml_settings_page.php:1708
+msgid ""
+"Please try the solution given above.If the problem persists,download the "
+"plugin configuration by clicking on Export Plugin Configuration and mail us "
+"at <a href=\"mailto:info@xecurify.com\">info@xecurify.com</a>"
+msgstr ""
+
+#: mo_saml_settings_page.php:1709
+msgid "We will get back to you soon!"
+msgstr ""
+
+#: mo_saml_settings_page.php:1753
+msgid "Feature Request/Contact Us (24*7 Support)"
+msgstr ""
+
+#: mo_saml_settings_page.php:1756
+msgid "Need any help? Just give us a call at +1 978 658 9387"
+msgstr ""
+
+#: mo_saml_settings_page.php:1759
+msgid ""
+"We can help you with configuring your Identity Provider. Just send us a "
+"query and we will get back to you soon."
+msgstr ""
+
+#: mo_saml_settings_page.php:1768
+msgid "Enter your email"
+msgstr ""
+
+#: mo_saml_settings_page.php:1780
+msgid "Enter your phone"
+msgstr ""
+
+#: mo_saml_settings_page.php:1787
+msgid "Write your query here"
+msgstr ""
+
+#: mo_saml_settings_page.php:1793
+msgid "Setup a Call / Screen-share session with miniOrange Technical Team"
+msgstr ""
+
+#: mo_saml_settings_page.php:1799
+msgid "Enable this option to setup a call"
+msgstr ""
+
+#: mo_saml_settings_page.php:1804
+msgid "TimeZone"
+msgstr ""
+
+#: mo_saml_settings_page.php:1808
+msgid "Select your timezone"
+msgstr ""
+
+#: mo_saml_settings_page.php:1825
+msgid "Date"
+msgstr ""
+
+#: mo_saml_settings_page.php:1826
+msgid "Select Meeting Date"
+msgstr ""
+
+#: mo_saml_settings_page.php:1829
+msgid "Time (24-hour)"
+msgstr ""
+
+#: mo_saml_settings_page.php:1830
+msgid "Select Meeting Time"
+msgstr ""
+
+#: mo_saml_settings_page.php:1834
+msgid ""
+"Call and Meeting details will be sent to your email. Please verify the email "
+"before submitting your query."
+msgstr ""
+
+#: mo_saml_settings_page.php:1923
+msgid "Attributes sent by the Identity Provider"
+msgstr ""
+
+#: mo_saml_settings_page.php:1926
+msgid "ATTRIBUTE NAME"
+msgstr ""
+
+#: mo_saml_settings_page.php:1926
+msgid "ATTRIBUTE VALUE"
+msgstr ""
+
+#: mo_saml_settings_page.php:1936
+msgid "Clear Attributes List"
+msgstr ""
+
+#: mo_saml_settings_page.php:1938
+msgid ""
+"Please clear this list after configuring the plugin to hide your "
+"confidential attributes."
+msgstr ""
+
+#: mo_saml_settings_page.php:1939
+msgid ""
+"Click on <b>Test configuration</b> in <b>Service Provider Setup</b> tab to "
+"populate the list again."
+msgstr ""
+
+#: mo_saml_settings_page.php:1955
+msgid "Request for Demo"
+msgstr ""
+
+#: mo_saml_settings_page.php:1956
+msgid ""
+"Want to try out the paid features before purchasing the license? Just let us "
+"know which plan you're interested in and we will setup a demo for you."
+msgstr ""
+
+#: mo_saml_settings_page.php:1966
+msgid "We will use this email to setup the demo for you"
+msgstr ""
+
+#: mo_saml_settings_page.php:1973
+msgid "Request a demo for"
+msgstr ""
+
+#: mo_saml_settings_page.php:1975
+msgid "Select a license plan"
+msgstr ""
+
+#: mo_saml_settings_page.php:1986
+msgid "Description"
+msgstr ""
+
+#: mo_saml_settings_page.php:1987
+msgid "Write us about your requirement."
+msgstr ""
+
+#: mo_saml_settings_page.php:1994
+msgid "Select the Add-ons you are interested in (Optional)"
+msgstr ""
+
+#: mo_saml_settings_page.php:1995
+msgid "All-Inclusive plan entitles all the addons in the license cost itself."
+msgstr ""
+
+#: mo_saml_settings_page.php:2006
+msgid "Send Request"
+msgstr ""
+
+#: pointers.php:17
+msgid "Select ADFS as IDP (Step 1 of 9)"
+msgstr ""
+
+#: pointers.php:18
+msgid ""
+"Choose ADFS as your IDP, and refer to the setup guide  for complete "
+"instructions."
+msgstr ""
+
+#: pointers.php:26
+msgid "Service Provider Metadata URL (Step 2 of 9)"
+msgstr ""
+
+#: pointers.php:27
+msgid "Use this Metadata URL or file to configure ADFS."
+msgstr ""
+
+#: pointers.php:35
+msgid "Upload your metadata (Step 3 of 9)"
+msgstr ""
+
+#: pointers.php:36
+msgid ""
+"Once you have configured ADFS, you can use this button to upload the "
+"metadata received from ADFS."
+msgstr ""
+
+#: pointers.php:44
+msgid "Check your configurations (Step 4 of 9)"
+msgstr ""
+
+#: pointers.php:45
+msgid ""
+"After uploading the metadata from ADFS, use this button to test the "
+"configurations between ADFS and WordPress."
+msgstr ""
+
+#: pointers.php:53
+msgid "Configure Attribute Mapping (Step 5 of 9)"
+msgstr ""
+
+#: pointers.php:54 pointers.php:193
+msgid ""
+"While auto registering the users in your WordPress site these attributes "
+"will automatically get mapped to your WordPress user details."
+msgstr ""
+
+#: pointers.php:63
+msgid "Configure Role Mapping (Step 6 of 9)"
+msgstr ""
+
+#: pointers.php:64 pointers.php:202
+msgid ""
+"Select roles to be assigned to users when they are created in Wordpress."
+msgstr ""
+
+#: pointers.php:72
+msgid "Available with this version (Step 7 of 9)"
+msgstr ""
+
+#: pointers.php:73 pointers.php:225
+msgid "Add a widget to your Wordpress page and test out the SSO."
+msgstr ""
+
+#: pointers.php:81
+msgid "Add-Ons (Step 8 of 9)"
+msgstr ""
+
+#: pointers.php:82
+msgid "Checkout all our add-ons to extend the SSO functionality."
+msgstr ""
+
+#: pointers.php:90
+msgid "We are here!!"
+msgstr ""
+
+#: pointers.php:91
+msgid "Get in touch with us and we will help you setup the plugin in no time."
+msgstr ""
+
+#: pointers.php:106
+msgid "Select your IDP"
+msgstr ""
+
+#: pointers.php:107
+msgid ""
+"Choose your IDP from the list of IDPs, and refer to the setup guides to "
+"proceed further"
+msgstr ""
+
+#: pointers.php:114 pointers.php:122
+msgid "Upload your metadata"
+msgstr ""
+
+#: pointers.php:115
+msgid ""
+"If you have a metadata URL or file provided by your IDP, click on this "
+"button."
+msgstr ""
+
+#: pointers.php:123
+msgid ""
+"If you have a metadata URL or file provided by your IDP, click on this "
+"button. You can configure the plugin manually as well"
+msgstr ""
+
+#: pointers.php:132
+msgid "Check your configurations"
+msgstr ""
+
+#: pointers.php:133
+msgid "This will test if the configurations on IDP and SP are correct"
+msgstr ""
+
+#: pointers.php:140
+msgid "Export Configuration"
+msgstr ""
+
+#: pointers.php:141
+msgid ""
+"If you are having trouble setting up the plugin, Export the configurations "
+"and mail us at info@xecurify.com."
+msgstr ""
+
+#: pointers.php:150 pointers.php:180 pointers.php:211 pointers.php:260
+msgid "Click when you need me!"
+msgstr ""
+
+#: pointers.php:151 pointers.php:181 pointers.php:212 pointers.php:261
+msgid "Revisit tour"
+msgstr ""
+
+#: pointers.php:162
+msgid "Service Provider Metadata URL"
+msgstr ""
+
+#: pointers.php:163
+msgid "Use this Metadata URL or file to configure your IDP."
+msgstr ""
+
+#: pointers.php:170
+msgid "Service Provider Metadata URLs"
+msgstr ""
+
+#: pointers.php:171
+msgid ""
+"If your IDP does not support metadata URL or file, you can even manually "
+"configure your IDP using the information given here"
+msgstr ""
+
+#: pointers.php:192
+msgid "Configure Attribute Mapping"
+msgstr ""
+
+#: pointers.php:201
+msgid "Configure Role Mapping"
+msgstr ""
+
+#: pointers.php:224
+msgid "Available with this version"
+msgstr ""
+
+#: pointers.php:232 pointers.php:242 pointers.php:251
+msgid "Premium Feature"
+msgstr ""
+
+#: pointers.php:233
+msgid ""
+"Redirect the users to your IdP if user not logged in.Protects your complete "
+"site from not logged in Users"
+msgstr ""
+
+#: pointers.php:243
+msgid ""
+"Automatically redirect the user to the Identity Provider when they land on "
+"the WordPress Login Page."
+msgstr ""
+
+#: pointers.php:252
+msgid "Add a shortcode to any page and SSO into your website"
+msgstr ""
