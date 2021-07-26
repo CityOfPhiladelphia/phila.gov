@@ -762,6 +762,19 @@ input[type=radio]:checked + label > .sm {
 	background-color: #3473b4cc;
 }
 
+/** CSS for Demo Request Section **/
+.demo-request-div {
+    background: #f2f5fb;
+    border-radius: 2px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-style: solid;
+    border-color: #2f6062;
+    padding-left: 10px;
+}
+
 /** CSS for Call Setup Section **/
 .call-setup-div{
 	background: #F2F5FB;

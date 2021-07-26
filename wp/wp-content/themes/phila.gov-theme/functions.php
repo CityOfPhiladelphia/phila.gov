@@ -1501,6 +1501,7 @@ function phila_additional_content( $input ){
 
       $output['disclaimer'] = isset( $input['phila_disclaimer']['phila_disclaimer_content'] ) ? $input['phila_disclaimer']['phila_disclaimer_content'] : '';
 
+      $output['form_free'] =  isset( $input['phila_forms_instructions']['phila_forms_instructions_free_text'] ) ? $input['phila_forms_instructions']['phila_forms_instructions_free_text'] : '';
     }
   }
 
@@ -2156,6 +2157,7 @@ function phila_add_meta_document_fields($response, $attachment) {
   }
   $response['mediaCategory'] = $attachment_term;
   $response['label'] = $attachment->phila_label;
+  $response['overrideDate'] = $attachment->phila_document_page_release_date;
 
   return $response;
 }

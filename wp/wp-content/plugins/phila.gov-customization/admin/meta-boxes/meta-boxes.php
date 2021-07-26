@@ -86,10 +86,15 @@ function phila_register_meta_boxes( $meta_boxes ){
         'size'  =>  25,
         'timestamp'  => true,
         'js_options' =>  array(
-          'dateFormat' => 'mm-dd-yy',
+          'dateFormat' => 'yy/mm/dd',
           'controlType'=> 'select',
           'oneLine'=> true,
           'maxDate' => '+2w'
+        ),
+        'admin_columns' => array(
+          'position' => 'after date',
+          'title'    => __( 'End date' ),
+          'sort'     => true,
         ),
       ),
     ),
@@ -1038,6 +1043,11 @@ $meta_boxes[] = array(
           'desc'  => 'Default: alphabetical order',
           'on_label'  => 'Yes',
           'off_label' => 'No',
+          'visible' => array(
+            'when'  => array(
+              array('phila_vue_toggle', '=', true),
+            ),
+          ),
         ),
         array(
           'id'  => 'phila_hide_date_column',
@@ -1046,6 +1056,11 @@ $meta_boxes[] = array(
           'desc'  => 'Default: visible dates',
           'on_label'  => 'Yes',
           'off_label' => 'No',
+          'visible' => array(
+            'when'  => array(
+              array('phila_vue_toggle', '=', true),
+            ),
+          ),
         ),
         array(
           'name'  => 'Add files to table',

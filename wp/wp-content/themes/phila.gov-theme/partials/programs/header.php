@@ -12,6 +12,8 @@
 
   $sub_heading = rwmb_meta('prog_sub_head');
 
+  $heading = get_the_title();
+
   if ( !empty( $sub_hero ) ):
     $sub_hero = reset( $sub_hero );
   else:
@@ -27,7 +29,7 @@
           $sub_hero = $sub_hero[0];
         }
         $sub_heading = rwmb_meta('prog_sub_head', array(), $ancestor_id);
-        $ancestor_title = get_the_title($ancestor_id);
+        $heading = get_the_title( $ancestor_id );
       }
     }
   endif;
@@ -36,6 +38,7 @@
     $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $parent);
     $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
     $sub_heading = rwmb_meta('prog_sub_head', array(), $parent);
+    $heading = get_the_title( $parent );
   }
 
   $owner = rwmb_meta( 'phila_program_owner_logo', array( 'limit' => 1 ) );
@@ -57,20 +60,11 @@
               <hr>
             <?php endif ?>
             <h1 <?php echo !empty($sub_heading) ? 'class="man"' : ''; ?>>
-            <?php
-              if (isset($ancestor_title)) {
-                echo $ancestor_title;
-              } else if (isset($parent->post_title)) {
-                echo $parent->post_title;
-              } else {
-                the_title();
-              }
-            ?>
-            <?php the_title(); ?>
+            <?php echo $heading; ?>
             </h1>
             <?php if(!empty($sub_heading)) : ?>
               <hr>
-              <h3><?php echo $sub_heading ?></h3>
+              <h3><?php echo $sub_heading; ?></h3>
             <?php endif;?>
           </div>
         </div>
@@ -83,7 +77,7 @@
       <div class="mtl mbm">
         <?php get_template_part( 'partials/breadcrumbs' ); ?>
       </div>
-      <?php if ( empty( $sub_heading ) && $user_selected_template != 'covid_guidance' && $user_selected_template != 'translated_content' ) :?>
+      <?php if ( $user_selected_template != 'covid_guidance' && $user_selected_template != 'translated_content' && $user_selected_template != 'prog_association' ) :?>
         <div class="grid-container">
           <div class="grid-x">
             <div class="cell">

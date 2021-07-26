@@ -1942,7 +1942,7 @@ function mo_saml_show_licensing_page(){
             look = 'empty';
         }
        
-        query1= '<b>['+look+']</b> <br>'+query+' <br> ';
+        query1= '<b>['+look+']</b> <br><b>Plugin Licensing Question: </b>'+query+' <br> ';
 
         if(email == "" || query == "" || query1 == ""){
 

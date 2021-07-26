@@ -2067,6 +2067,12 @@ function miniorange_demo_request_saml(){
     <h3><?php _e('Request for Demo','miniorange-saml-20-single-sign-on');?></h3><hr>
     <?php esc_html_e('Want to try out the paid features before purchasing the license? Just let us know which plan you\'re interested in and we will setup a demo for you.','miniorange-saml-20-single-sign-on');?>
     <br/><br/>
+    <div class="demo-request-div">
+    <?php   $support_Email = "samlsupport@xecurify.com";
+            $support_Email = esc_url( sprintf( 'mailto:%s', antispambot( sanitize_email( $support_Email ) ) ), array( 'mailto' ) );
+    ?>
+    <?php printf(esc_html__('The demo credentials will be sent to the below mentioned email address. You can configure the plugin with your Identity Provider and test out complete functionality right away. Feel free to contact us at %1$s incase of any issues or concerns.','miniorange-saml-20-single-sign-on'),sprintf('<a style="color:blue" href="%s">%s</a>',$support_Email,esc_html__('samlsupport@xecurify.com','miniorange-saml-20-single-sign-on'))); ?>
+    </div>
     <div class="mo_demo_layout" style="padding-bottom:20px; padding-right:5px;">
     
     <form method="post" action="">

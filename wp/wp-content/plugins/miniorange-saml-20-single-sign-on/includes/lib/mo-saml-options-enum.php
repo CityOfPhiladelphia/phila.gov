@@ -131,7 +131,7 @@ class mo_saml_options_plugin_constants extends  MoSAMLBasicEnum{
      const CMS_Name = "WP";
      const Application_Name = "WP miniOrange SAML 2.0 SSO Plugin";
      const Application_type = "SAML";
-     const Version = "4.9.06";
+     const Version = "4.9.08";
      const HOSTNAME = "https://login.xecurify.com";
 }
 

@@ -381,7 +381,7 @@ function swpsmtp_settings() {
 										<p>
 											<label><input type="checkbox" id="swpsmtp_block_all_emails" name="swpsmtp_block_all_emails" value="1" <?php echo ( isset( $swpsmtp_options['block_all_emails'] ) && ( $swpsmtp_options['block_all_emails'] ) ) ? ' checked' : ''; ?><?php echo ( isset( $swpsmtp_options['enable_domain_check'] ) && ( $swpsmtp_options['enable_domain_check'] ) ) ? '' : ' disabled'; ?> /> <?php esc_html_e( 'Block all emails', 'easy-wp-smtp' ); ?></label>
 										</p>
-										<p class="description"><?php esc_html_e( 'When enabled, plugin attempts to block ALL emails from being sent out if domain mismtach.', 'easy-wp-smtp' ); ?></p>
+										<p class="description"><?php esc_html_e( 'When enabled, plugin attempts to block ALL emails from being sent out if domain mismatch.', 'easy-wp-smtp' ); ?></p>
 									</td>
 								</tr>
 								<tr valign="top">
