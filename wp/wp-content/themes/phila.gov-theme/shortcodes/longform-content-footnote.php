@@ -12,13 +12,12 @@ function longform_content_footnote_shortcode($atts) {
   $a = shortcode_atts( array(
     'id' => 0,
   ), $atts );
-  $object = [];
-  $object['content'] = 'link copied';
-  $object['trigger'] = 'click';
 
-  return '<i v-tooltip='.$object.' class="pls fas fa-space-station-moon" />';
-  // $object['content'] = 'link copied';
-  // $object['trigger'] = 'click';
+  // $content = 'link copied';
+  // $trigger = 'click';
+
+  // return '<i v-tooltip='.$object.' class="pls fas fa-space-station-moon" />';
+  return '<i v-tooltip="{ "content": "link copied!", "trigger": "click" }" class="pls fas fa-space-station-moon" />';
 
   wp_reset_postdata();
 
