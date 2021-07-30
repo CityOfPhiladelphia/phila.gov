@@ -13,13 +13,13 @@ function longform_content_footnote_shortcode($atts, $content = null) {
     'id' => 0,
   ), $atts );
 
-  return '<i data-id='.$a['id'].' data-content="'.$content.'" class="pls fas fa-space-station-moon" />';
+  return '<i data-id='.$a['id'].' data-content="'.$content.'" class="pls fas fa-space-station-moon" ></i>';
 
   wp_reset_postdata();
 
 }
-// add_action( 'init', 'register_longform_content_footnote_shortcode' );
+add_action( 'init', 'register_longform_content_footnote_shortcode' );
 
-// function register_longform_content_footnote_shortcode(){
+function register_longform_content_footnote_shortcode(){
   add_shortcode( 'longform-footnote', 'longform_content_footnote_shortcode' );
-// }
+}
