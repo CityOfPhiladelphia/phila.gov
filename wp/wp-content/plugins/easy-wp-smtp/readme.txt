@@ -3,9 +3,9 @@ Contributors: wpecommerce, wp.insider, alexanderfoxc
 Donate link: https://wp-ecommerce.net/easy-wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-server-2197
 Tags: mail, wordpress smtp, phpmailer, smtp, wp_mail, email, gmail, outgoing mail, privacy, security, sendmail, ssl, tls, wp-phpmailer, mail smtp, wp smtp
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,9 @@ Inspired by [WP Mail SMTP](http://wordpress.org/plugins/wp-mail-smtp/) plugin
 
 
 == Changelog ==
+
+= 1.4.7 =
+* A timestamp is now added to the debug log file output.
 
 = 1.4.6 =
 * Fixed a typo in the description of a settings option.
