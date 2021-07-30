@@ -18,6 +18,9 @@
 .fa-pad {
 	padding: 0 3px 0 0;
 	}
+.fa-pad-more {
+	padding: 0 5px 0 0;
+	}
 .fa-cogs:before {
 	content: "\f085";
 	}
