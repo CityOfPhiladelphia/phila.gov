@@ -6,6 +6,7 @@ class Phila_Pages_Controller {
   public function __construct() {
     $this->namespace     = 'pages/v1';
     $this->resource_name = 'page';
+    $this->homepages = 'homepages';
   }
 
   // Register our routes.
@@ -15,6 +16,15 @@ class Phila_Pages_Controller {
       array(
         'methods'   => WP_REST_Server::READABLE,
         'callback'  => array( $this, 'get_items' ),
+        'permission_callback' => '__return_true',
+      ),
+      'schema' => array( $this, 'get_item_schema' ),
+    ) );
+
+    register_rest_route( $this->namespace, '/' . $this->homepages, array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_top_items' ),
         'permission_callback' => '__return_true',
       ),
       'schema' => array( $this, 'get_item_schema' ),
@@ -48,6 +58,94 @@ class Phila_Pages_Controller {
         'post_status' => 'publish',
       ) );
     }
+
+    if ( $posts->have_posts() ) {
+      $pages = array();
+      while ( $posts->have_posts() ) {
+        $posts->the_post();
+        $terms = get_the_terms( get_the_id(), 'category' ); 
+        if ($terms) {
+          $term_names = '';
+          $first = true;
+          foreach($terms as $term) {
+            if ($first) {
+              $first = false;
+              $term_names .= $term->name;
+            }
+            else {
+              $term_names .= '; '.$term->name;
+            }
+          }
+          foreach($terms as $term) {
+            $page = new stdClass();
+            $page->id = get_the_id();
+            $page->last_modified = get_the_modified_time('F jS, Y') . ', ' . get_the_modified_time();
+            if (get_userdata( rwmb_meta( '_edit_last', $args = array(), $post_id = get_the_id() ) )) {
+              $user = get_userdata( rwmb_meta( '_edit_last', $args = array(), $post_id = get_the_id() ) );
+              $page->last_modified_user = $user->first_name . ' ' . $user->last_name;
+            }
+            else {
+              $page->last_modified_user = '';
+            }
+            $page->owner = $term->name;
+            $page->all_owners = $term_names;
+            $page->post_type = get_post_type_object(get_post_type())->labels->singular_name;
+            $page->short_description = rwmb_meta( 'phila_meta_desc', $args = array(), $post_id = get_the_id() );
+            $page->status = get_post_status();
+            $page->template = rwmb_meta( 'phila_template_select', $args = array(), $post_id = get_the_id() );
+            $page->title = get_the_title();
+            $page->url = get_the_permalink();
+            array_push($pages, $page);
+          }
+        }
+      }
+      wp_reset_postdata();
+    }
+
+    foreach ( $pages as $page ) {
+      $response = $this->prepare_item_for_response( $page, $request );
+
+      $data[] = $this->prepare_response_for_collection( $response );
+    }
+
+    // Return all response data.
+    return rest_ensure_response( $data );
+
+  }
+
+
+  /**
+   * Return all pages
+   *
+   * @param WP_REST_Request $request Current request.
+  */
+  public function get_top_items( $request ) {
+
+    $posts = new WP_Query( array(
+      'post_type' => array('service_page', 'department_page'),
+      'posts_per_page'  => -1,
+      'order' => 'asc',
+      'orderby' => 'title',
+      'post_status' => 'publish',
+      'meta_query' => array(
+        'relation'  => 'OR',
+        array( // department page
+          'key'     => 'phila_template_select',
+          'value'   => 'homepage_v2',
+          'compare' => '=',
+        ),
+        array( // service page
+          'key'     => 'phila_template_select',
+          'value'   => 'topic_page',
+          'compare' => '=',
+        ),
+        // array( // program page
+        //   'key'     => 'prog_landing_page',
+        //   'value'   => 'topic_page',
+        //   'compare' => '=',
+        // ),
+      ),
+    ) );
 
     if ( $posts->have_posts() ) {
       $pages = array();

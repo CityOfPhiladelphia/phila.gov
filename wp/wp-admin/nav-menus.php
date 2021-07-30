@@ -1060,6 +1060,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 											) {
 													$checked = true;
 											}
+											$checked = isset( $menu_locations[ $location ] ) && $menu_locations[ $location ] === $nav_menu_selected_id;
 											?>
 											<div class="menu-settings-input checkbox-input">
 												<input type="checkbox"<?php checked( $checked ); ?> name="menu-locations[<?php echo esc_attr( $location ); ?>]" id="locations-<?php echo esc_attr( $location ); ?>" value="<?php echo esc_attr( $nav_menu_selected_id ); ?>" />
