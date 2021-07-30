@@ -27,6 +27,8 @@ class Phila_Longform_Content_Controller {
    * @param WP_REST_Request $request Current request.
   */
   public function get_items( $request ) {
+    WPBMap::addAllMappedShortcodes(); // This does all the work
+
     $post_id = $request['id'];
     $data = array();
     $post = get_post( $post_id );
