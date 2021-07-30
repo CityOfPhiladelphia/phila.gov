@@ -1,5 +1,5 @@
 //! moment.js
-//! version : 2.29.1
+//! version : 2.27.0
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 //! license : MIT
 //! momentjs.com
@@ -2540,7 +2540,8 @@
     hooks.createFromInputFallback = deprecate(
         'value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), ' +
             'which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are ' +
-            'discouraged. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.',
+            'discouraged and will be removed in an upcoming major release. Please refer to ' +
+            'http://momentjs.com/guides/#/warnings/js-date/ for more info.',
         function (config) {
             config._d = new Date(config._i + (config._useUTC ? ' UTC' : ''));
         }
@@ -3725,10 +3726,7 @@
     function calendar$1(time, formats) {
         // Support for single parameter, formats only overload to the calendar function
         if (arguments.length === 1) {
-            if (!arguments[0]) {
-                time = undefined;
-                formats = undefined;
-            } else if (isMomentInput(arguments[0])) {
+            if (isMomentInput(arguments[0])) {
                 time = arguments[0];
                 formats = undefined;
             } else if (isCalendarSpec(arguments[0])) {
@@ -4406,7 +4404,7 @@
             eras = this.localeData().eras();
         for (i = 0, l = eras.length; i < l; ++i) {
             // truncate time
-            val = this.clone().startOf('day').valueOf();
+            val = this.startOf('day').valueOf();
 
             if (eras[i].since <= val && val <= eras[i].until) {
                 return eras[i].name;
@@ -4426,7 +4424,7 @@
             eras = this.localeData().eras();
         for (i = 0, l = eras.length; i < l; ++i) {
             // truncate time
-            val = this.clone().startOf('day').valueOf();
+            val = this.startOf('day').valueOf();
 
             if (eras[i].since <= val && val <= eras[i].until) {
                 return eras[i].narrow;
@@ -4446,7 +4444,7 @@
             eras = this.localeData().eras();
         for (i = 0, l = eras.length; i < l; ++i) {
             // truncate time
-            val = this.clone().startOf('day').valueOf();
+            val = this.startOf('day').valueOf();
 
             if (eras[i].since <= val && val <= eras[i].until) {
                 return eras[i].abbr;
@@ -4469,7 +4467,7 @@
             dir = eras[i].since <= eras[i].until ? +1 : -1;
 
             // truncate time
-            val = this.clone().startOf('day').valueOf();
+            val = this.startOf('day').valueOf();
 
             if (
                 (eras[i].since <= val && val <= eras[i].until) ||
@@ -5620,7 +5618,7 @@
 
     //! moment.js
 
-    hooks.version = '2.29.1';
+    hooks.version = '2.27.0';
 
     setHookCallback(createLocal);
 

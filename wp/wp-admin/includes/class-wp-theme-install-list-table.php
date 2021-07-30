@@ -132,16 +132,8 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 		 * Filters API request arguments for each Install Themes screen tab.
 		 *
 		 * The dynamic portion of the hook name, `$tab`, refers to the theme install
-		 * tab.
-		 *
-		 * Possible hook names include:
-		 *
-		 *  - `install_themes_table_api_args_dashboard`
-		 *  - `install_themes_table_api_args_featured`
-		 *  - `install_themes_table_api_args_new`
-		 *  - `install_themes_table_api_args_search`
-		 *  - `install_themes_table_api_args_updated`
-		 *  - `install_themes_table_api_args_upload`
+		 * tabs. Default tabs are 'dashboard', 'search', 'upload', 'featured',
+		 * 'new', and 'updated'.
 		 *
 		 * @since 3.7.0
 		 *

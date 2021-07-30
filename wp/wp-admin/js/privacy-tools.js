@@ -5,7 +5,7 @@
  */
 
 // Privacy request action handling.
-jQuery( function( $ ) {
+jQuery( document ).ready( function( $ ) {
 	var __ = wp.i18n.__,
 		copiedNoticeTimeout;
 

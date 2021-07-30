@@ -65,6 +65,6 @@ window.wpAjax = jQuery.extend( {
 }, wpAjax || { noPerm: 'Sorry, you are not allowed to do that.', broken: 'Something went wrong.' } );
 
 // Basic form validation.
-jQuery( function($){
+jQuery(document).ready( function($){
 	$('form.validate').on( 'submit', function() { return wpAjax.validateForm( $(this) ); } );
 });

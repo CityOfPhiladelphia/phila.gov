@@ -87,8 +87,8 @@ if ( 'grid' === $mode ) {
 		<?php
 		if ( current_user_can( 'upload_files' ) ) {
 			?>
-			<a href="<?php echo esc_url( admin_url( 'media-new.php' ) ); ?>" class="page-title-action aria-button-if-js"><?php echo esc_html_x( 'Add New', 'file' ); ?></a>
-			<?php
+			<a href="<?php echo admin_url( 'media-new.php' ); ?>" class="page-title-action aria-button-if-js"><?php echo esc_html_x( 'Add New', 'file' ); ?></a>
+								<?php
 		}
 		?>
 
@@ -120,8 +120,6 @@ $doaction = $wp_list_table->current_action();
 if ( $doaction ) {
 	check_admin_referer( 'bulk-media' );
 
-	$post_ids = array();
-
 	if ( 'delete_all' === $doaction ) {
 		$post_ids = $wpdb->get_col( "SELECT ID FROM $wpdb->posts WHERE post_type='attachment' AND post_status = 'trash'" );
 		$doaction = 'delete';
@@ -149,7 +147,7 @@ if ( $doaction ) {
 			break;
 
 		case 'trash':
-			if ( empty( $post_ids ) ) {
+			if ( ! isset( $post_ids ) ) {
 				break;
 			}
 			foreach ( (array) $post_ids as $post_id ) {
@@ -170,7 +168,7 @@ if ( $doaction ) {
 			);
 			break;
 		case 'untrash':
-			if ( empty( $post_ids ) ) {
+			if ( ! isset( $post_ids ) ) {
 				break;
 			}
 			foreach ( (array) $post_ids as $post_id ) {
@@ -185,7 +183,7 @@ if ( $doaction ) {
 			$location = add_query_arg( 'untrashed', count( $post_ids ), $location );
 			break;
 		case 'delete':
-			if ( empty( $post_ids ) ) {
+			if ( ! isset( $post_ids ) ) {
 				break;
 			}
 			foreach ( (array) $post_ids as $post_id_del ) {
@@ -272,7 +270,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 <?php
 if ( current_user_can( 'upload_files' ) ) {
 	?>
-	<a href="<?php echo esc_url( admin_url( 'media-new.php' ) ); ?>" class="page-title-action"><?php echo esc_html_x( 'Add New', 'file' ); ?></a>
+	<a href="<?php echo admin_url( 'media-new.php' ); ?>" class="page-title-action"><?php echo esc_html_x( 'Add New', 'file' ); ?></a>
 						<?php
 }
 

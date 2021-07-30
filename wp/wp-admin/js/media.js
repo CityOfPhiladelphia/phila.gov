@@ -140,7 +140,7 @@
 	 *
 	 * @return {void}
 	 */
-	$( function() {
+	$( document ).ready( function() {
 		var settings, $mediaGridWrap = $( '#wp-media-grid' );
 
 		// Opens a manage media frame into the grid.

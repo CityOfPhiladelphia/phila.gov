@@ -642,7 +642,7 @@ class WP_REST_Application_Passwords_Controller extends WP_REST_Controller {
 	}
 
 	/**
-	 * Prepares links for the request.
+	 * Prepares links for the object.
 	 *
 	 * @since 5.6.0
 	 *

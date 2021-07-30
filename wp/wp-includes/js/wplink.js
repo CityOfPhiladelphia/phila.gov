@@ -93,7 +93,7 @@
 
 		// If URL wasn't corrected last time and doesn't start with http:, https:, ? # or /, prepend http://.
 		correctURL: function () {
-			var url = inputs.url.val().trim();
+			var url = $.trim( inputs.url.val() );
 
 			if ( url && correctedURL !== url && ! /^(?:[a-z]+:|#|\?|\.|\/)/.test( url ) ) {
 				inputs.url.val( 'http://' + url );
@@ -238,7 +238,7 @@
 				linkText = linkNode.text();
 				href = linkNode.attr( 'href' );
 
-				if ( ! linkText.trim() ) {
+				if ( ! $.trim( linkText ) ) {
 					linkText = text || '';
 				}
 
@@ -312,7 +312,7 @@
 			wpLink.correctURL();
 
 			return {
-				href: inputs.url.val().trim(),
+				href: $.trim( inputs.url.val() ),
 				target: inputs.openInNewTab.prop( 'checked' ) ? '_blank' : null
 			};
 		},
@@ -425,7 +425,7 @@
 				if ( ! $link.length ) {
 					editor.execCommand( 'mceInsertLink', false, { href: '_wp_link_placeholder', 'data-wp-temp-link': 1 } );
 					$link = editor.$( 'a[data-wp-temp-link="1"]' ).removeAttr( 'data-wp-temp-link' );
-					hasText = $link.text().trim();
+					hasText = $.trim( $link.text() );
 				}
 
 				if ( ! $link.length ) {
@@ -483,8 +483,7 @@
 				}
 			}
 
-			selection = selection || '';
-			selection = selection.trim();
+			selection = $.trim( selection );
 
 			if ( selection && emailRegexp.test( selection ) ) {
 				// Selection is email address.
@@ -798,5 +797,5 @@
 		}
 	});
 
-	$( wpLink.init );
+	$( document ).ready( wpLink.init );
 })( jQuery, window.wpLinkL10n, window.wp );

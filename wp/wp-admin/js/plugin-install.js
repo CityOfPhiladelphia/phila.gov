@@ -6,7 +6,7 @@
 
 /* global tb_click, tb_remove, tb_position */
 
-jQuery( function( $ ) {
+jQuery( document ).ready( function( $ ) {
 
 	var tbWindow,
 		$iframeBody,

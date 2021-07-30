@@ -12,7 +12,7 @@
  * @requires jQuery
  */
 (function($) {
-	$( function() {
+	$(document).ready(function() {
 		var frame,
 			bgImage = $( '#custom-background-image' );
 

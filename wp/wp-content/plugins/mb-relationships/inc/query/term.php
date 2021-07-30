@@ -77,7 +77,7 @@ class MBR_Query_Term {
 		$query_vars = wp_parse_args(
 			$query_vars,
 			array(
-				'taxonomy'   => $settings['field']['taxonomy'],
+				'taxonomy'   => $settings['taxonomy'],
 				'hide_empty' => false,
 			)
 		);

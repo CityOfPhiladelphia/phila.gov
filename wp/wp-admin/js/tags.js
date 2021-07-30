@@ -9,7 +9,7 @@
 
  /* global ajaxurl, wpAjax, showNotice, validateForm */
 
-jQuery( function($) {
+jQuery(document).ready(function($) {
 
 	var addingTerm = false;
 

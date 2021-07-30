@@ -1803,7 +1803,7 @@
 		$( 'body' ).removeClass( 'modal-open' );
 
 		if ( wp.updates.$elToReturnFocusToFromCredentialsModal ) {
-			wp.updates.$elToReturnFocusToFromCredentialsModal.trigger( 'focus' );
+			wp.updates.$elToReturnFocusToFromCredentialsModal.focus();
 		}
 	};
 

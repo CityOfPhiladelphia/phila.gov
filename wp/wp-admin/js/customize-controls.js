@@ -289,7 +289,7 @@
 					collection.focusContainer.focus();
 				}
 			} else if ( collection.previousActiveElement ) {
-				$( collection.previousActiveElement ).trigger( 'focus' );
+				$( collection.previousActiveElement ).focus();
 				collection.previousActiveElement = null;
 			}
 
@@ -1592,7 +1592,7 @@
 				if ( args.unchanged ) {
 					expand = args.completeCallback;
 				} else {
-					expand = function() {
+					expand = $.proxy( function() {
 						section._animateChangeExpanded( function() {
 							sectionTitle.attr( 'tabindex', '-1' );
 							backBtn.attr( 'tabindex', '0' );
@@ -1609,7 +1609,7 @@
 						content.addClass( 'open' );
 						overlay.addClass( 'section-open' );
 						api.state( 'expandedSection' ).set( section );
-					}.bind( this );
+					}, this );
 				}
 
 				if ( ! args.allowMultiple ) {
@@ -2696,12 +2696,12 @@
 				if ( args.unchanged ) {
 					expand = args.completeCallback;
 				} else {
-					expand = function() {
+					expand = $.proxy( function() {
 						section._animateChangeExpanded( function() {
 							sectionTitle.attr( 'tabindex', '-1' );
 							backBtn.attr( 'tabindex', '0' );
 
-							backBtn.trigger( 'focus' );
+							backBtn.focus();
 							content.css( 'top', '' );
 							container.scrollTop( 0 );
 
@@ -2711,7 +2711,7 @@
 						} );
 
 						content.addClass( 'open' );
-					}.bind( this );
+					}, this );
 				}
 
 				if ( section.panel() ) {
@@ -2956,7 +2956,7 @@
 						topPanel.attr( 'tabindex', '-1' );
 						backBtn.attr( 'tabindex', '0' );
 
-						backBtn.trigger( 'focus' );
+						backBtn.focus();
 						accordionSection.css( 'top', '' );
 						container.scrollTop( 0 );
 
@@ -3874,9 +3874,9 @@
 
 			control.container.toggleClass( 'has-notifications', 0 !== notifications.length );
 			control.container.toggleClass( 'has-error', hasError );
-			container.empty().append(
-				control.notificationsTemplate( { notifications: notifications, altNotice: Boolean( control.altNotice ) } ).trim()
-			);
+			container.empty().append( $.trim(
+				control.notificationsTemplate( { notifications: notifications, altNotice: Boolean( control.altNotice ) } )
+			) );
 		},
 
 		/**

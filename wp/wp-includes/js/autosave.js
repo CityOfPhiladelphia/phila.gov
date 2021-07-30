@@ -582,7 +582,7 @@ window.autosave = function() {
 			 * Don't run if the post type supports neither 'editor' (textarea#content) nor 'excerpt'.
 			 */
 			if ( checkStorage() && blog_id && ( $('#content').length || $('#excerpt').length ) ) {
-				$( run );
+				$document.ready( run );
 			}
 
 			return {
@@ -798,9 +798,7 @@ window.autosave = function() {
 			 *
 			 * @return {void}
 			 */
-			$( function() {
-				_schedule();
-			}).on( 'heartbeat-send.autosave', function( event, data ) {
+			$document.on( 'heartbeat-send.autosave', function( event, data ) {
 				var autosaveData = save();
 
 				if ( autosaveData ) {
@@ -850,6 +848,8 @@ window.autosave = function() {
 			}).on( 'heartbeat-connection-restored.autosave', function() {
 				$('#lost-connection-notice').hide();
 				enableButtons();
+			}).ready( function() {
+				_schedule();
 			});
 
 			return {
@@ -873,10 +873,7 @@ window.autosave = function() {
 		 *
 		 * @return {void}
 		 */
-		$( function() {
-			// Set the initial compare string in case TinyMCE is not used or not loaded first.
-			setInitialCompare();
-		}).on( 'tinymce-editor-init.autosave', function( event, editor ) {
+		$document.on( 'tinymce-editor-init.autosave', function( event, editor ) {
 			// Reset the initialCompare data after the TinyMCE instances have been initialized.
 			if ( 'content' === editor.id || 'excerpt' === editor.id ) {
 				window.setTimeout( function() {
@@ -884,6 +881,9 @@ window.autosave = function() {
 					setInitialCompare();
 				}, 1000 );
 			}
+		}).ready( function() {
+			// Set the initial compare string in case TinyMCE is not used or not loaded first.
+			setInitialCompare();
 		});
 
 		return {

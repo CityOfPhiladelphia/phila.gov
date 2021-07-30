@@ -1225,7 +1225,7 @@ window.commentReply = {
 	}
 };
 
-$( function(){
+$(document).ready(function(){
 	var make_hotkeys_redirect, edit_comment, toggle_all, make_bulk;
 
 	setCommentsList();

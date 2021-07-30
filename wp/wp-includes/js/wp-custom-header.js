@@ -287,10 +287,9 @@
 				video = document.createElement( 'video' );
 
 			video.id = 'wp-custom-header-video';
-			video.autoplay = true;
-			video.loop = true;
-			video.muted = true;
-			video.playsInline = true;
+			video.autoplay = 'autoplay';
+			video.loop = 'loop';
+			video.muted = 'muted';
 			video.width = this.settings.width;
 			video.height = this.settings.height;
 

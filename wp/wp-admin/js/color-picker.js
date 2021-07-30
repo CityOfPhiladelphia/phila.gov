@@ -101,7 +101,7 @@
 			}
 
 			// Bind the close event.
-			self.close = self.close.bind( self );
+			self.close = $.proxy( self.close, self );
 
 			self.initialValue = el.val();
 
@@ -277,7 +277,7 @@
 				if ( me.hasClass( 'wp-picker-clear' ) ) {
 					self.element.val( '' );
 					self.toggler.css( 'backgroundColor', '' );
-					if ( typeof self.options.clear === 'function' ) {
+					if ( $.isFunction( self.options.clear ) ) {
 						self.options.clear.call( this, event );
 					}
 				} else if ( me.hasClass( 'wp-picker-default' ) ) {

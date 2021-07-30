@@ -1027,23 +1027,33 @@ a.rsswidget {
 }
 
 #dashboard_browser_nag p.browser-update-nag.has-browser-icon {
-	padding-left: 128px;
+	padding-left: 125px;
 }
 
 #dashboard_browser_nag .browser-icon {
-	margin-top: -32px;
+	margin-top: -35px;
+}
+
+#dashboard_browser_nag.postbox.browser-insecure {
+	background-color: #b32d2e;
+	border-color: #b32d2e;
 }
 
 #dashboard_browser_nag.postbox {
-	background-color: #b32d2e;
+	background-color: #dba617;
 	background-image: none;
-	border-color: #b32d2e;
+	border-color: #f0c33c;
 	color: #fff;
 	box-shadow: none;
 }
 
+#dashboard_browser_nag.postbox.browser-insecure h2 {
+	border-bottom-color: #e65054;
+	color: #fff;
+}
+
 #dashboard_browser_nag.postbox h2 {
-	border-bottom-color: transparent;
+	border-bottom-color: #f5e6ab;
 	background: transparent none;
 	color: #fff;
 	box-shadow: none;
@@ -1051,10 +1061,6 @@ a.rsswidget {
 
 #dashboard_browser_nag a {
 	color: #fff;
-}
-
-#dashboard_browser_nag.postbox .postbox-header {
-	border-color: transparent;
 }
 
 #dashboard_browser_nag h2.hndle {

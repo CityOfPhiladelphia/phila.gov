@@ -1,5 +1,3 @@
-
-// Node.prototype.contains
 (function() {
 
 	function contains(node) {
@@ -11,21 +9,19 @@
 			if (this === node) {
 				return true;
 			}
-		// eslint-disable-next-line no-cond-assign
 		} while (node = node && node.parentNode);
 
 		return false;
 	}
 
 	// IE
-	if ('HTMLElement' in self && 'contains' in HTMLElement.prototype) {
+	if ('HTMLElement' in this && 'contains' in HTMLElement.prototype) {
 		try {
 			delete HTMLElement.prototype.contains;
-		// eslint-disable-next-line no-empty
 		} catch (e) {}
 	}
 
-	if ('Node' in self) {
+	if ('Node' in this) {
 		Node.prototype.contains = contains;
 	} else {
 		document.contains = Element.prototype.contains = contains;

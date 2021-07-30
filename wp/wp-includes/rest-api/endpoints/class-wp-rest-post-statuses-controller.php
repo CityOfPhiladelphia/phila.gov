@@ -27,7 +27,7 @@ class WP_REST_Post_Statuses_Controller extends WP_REST_Controller {
 	}
 
 	/**
-	 * Registers the routes for post statuses.
+	 * Registers the routes for the objects of the controller.
 	 *
 	 * @since 4.7.0
 	 *
