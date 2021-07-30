@@ -85,7 +85,7 @@ table.media #parent,
 table.media .parent,
 table.media #author,
 table.media .taxonomy-media_author, 
-table.media td:nth-of-type(2) ,
+table.media td:nth-of-type(2),
 .updraftmanagermessage.error
 {
   display: none !important;
