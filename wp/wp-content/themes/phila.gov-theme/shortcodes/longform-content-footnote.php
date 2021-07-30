@@ -13,8 +13,8 @@ function longform_content_footnote_shortcode($atts) {
     'id' => 0,
   ), $atts );
 
-  // return '<i v-tooltip="{ content: "link copied!", trigger: "click" }" class="pls fas fa-space-station-moon" />';
-  return '<bold>wow</bold>';
+  return '<i v-tooltip="{ content: "link copied!", trigger: "click" }" class="pls fas fa-space-station-moon" />';
+  // return '<bold>wow</bold>';
 
   wp_reset_postdata();
 
