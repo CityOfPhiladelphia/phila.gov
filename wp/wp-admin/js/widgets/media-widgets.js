@@ -551,13 +551,13 @@ wp.mediaWidgets = ( function( $ ) {
 			// Update the title.
 			control.$el.on( 'input change', '.title', function updateTitle() {
 				control.model.set({
-					title: $( this ).val().trim()
+					title: $.trim( $( this ).val() )
 				});
 			});
 
 			// Update link_url attribute.
 			control.$el.on( 'input change', '.link', function updateLinkUrl() {
-				var linkUrl = $( this ).val().trim(), linkType = 'custom';
+				var linkUrl = $.trim( $( this ).val() ), linkType = 'custom';
 				if ( control.selectedAttachment.get( 'linkUrl' ) === linkUrl || control.selectedAttachment.get( 'link' ) === linkUrl ) {
 					linkType = 'post';
 				} else if ( control.selectedAttachment.get( 'url' ) === linkUrl ) {

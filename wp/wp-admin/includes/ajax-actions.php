@@ -374,7 +374,7 @@ function wp_ajax_get_community_events() {
 		 * The location is stored network-wide, so that the user doesn't have to set it on each site.
 		 */
 		if ( $ip_changed || $search ) {
-			update_user_meta( $user_id, 'community-events-location', $events['location'] );
+			update_user_option( $user_id, 'community-events-location', $events['location'], true );
 		}
 
 		wp_send_json_success( $events );
@@ -1733,13 +1733,13 @@ function wp_ajax_closed_postboxes() {
 	}
 
 	if ( is_array( $closed ) ) {
-		update_user_meta( $user->ID, "closedpostboxes_$page", $closed );
+		update_user_option( $user->ID, "closedpostboxes_$page", $closed, true );
 	}
 
 	if ( is_array( $hidden ) ) {
 		// Postboxes that are always shown.
 		$hidden = array_diff( $hidden, array( 'submitdiv', 'linksubmitdiv', 'manage-menu', 'create-menu' ) );
-		update_user_meta( $user->ID, "metaboxhidden_$page", $hidden );
+		update_user_option( $user->ID, "metaboxhidden_$page", $hidden, true );
 	}
 
 	wp_die( 1 );
@@ -1764,7 +1764,7 @@ function wp_ajax_hidden_columns() {
 	}
 
 	$hidden = ! empty( $_POST['hidden'] ) ? explode( ',', $_POST['hidden'] ) : array();
-	update_user_meta( $user->ID, "manage{$page}columnshidden", $hidden );
+	update_user_option( $user->ID, "manage{$page}columnshidden", $hidden, true );
 
 	wp_die( 1 );
 }
@@ -1919,11 +1919,11 @@ function wp_ajax_meta_box_order() {
 	}
 
 	if ( $order ) {
-		update_user_meta( $user->ID, "meta-box-order_$page", $order );
+		update_user_option( $user->ID, "meta-box-order_$page", $order, true );
 	}
 
 	if ( $page_columns ) {
-		update_user_meta( $user->ID, "screen_layout_$page", $page_columns );
+		update_user_option( $user->ID, "screen_layout_$page", $page_columns, true );
 	}
 
 	wp_send_json_success();
@@ -2987,26 +2987,11 @@ function wp_ajax_query_attachments() {
 	 *
 	 * @param array $query An array of query variables.
 	 */
-	$query             = apply_filters( 'ajax_query_attachments_args', $query );
-	$attachments_query = new WP_Query( $query );
+	$query = apply_filters( 'ajax_query_attachments_args', $query );
+	$query = new WP_Query( $query );
 
-	$posts       = array_map( 'wp_prepare_attachment_for_js', $attachments_query->posts );
-	$posts       = array_filter( $posts );
-	$total_posts = $attachments_query->found_posts;
-
-	if ( $total_posts < 1 ) {
-		// Out-of-bounds, run the query again without LIMIT for total count.
-		unset( $query['paged'] );
-
-		$count_query = new WP_Query();
-		$count_query->query( $query );
-		$total_posts = $count_query->found_posts;
-	}
-
-	$max_pages = ceil( $total_posts / (int) $attachments_query->query['posts_per_page'] );
-
-	header( 'X-WP-Total: ' . (int) $total_posts );
-	header( 'X-WP-TotalPages: ' . (int) $max_pages );
+	$posts = array_map( 'wp_prepare_attachment_for_js', $query->posts );
+	$posts = array_filter( $posts );
 
 	wp_send_json_success( $posts );
 }
@@ -3713,7 +3698,7 @@ function wp_ajax_parse_embed() {
 		$mce_styles = wpview_media_sandbox_styles();
 
 		foreach ( $mce_styles as $style ) {
-			$styles .= sprintf( '<link rel="stylesheet" href="%s" />', $style );
+			$styles .= sprintf( '<link rel="stylesheet" href="%s"/>', $style );
 		}
 
 		$html = do_shortcode( $parsed );

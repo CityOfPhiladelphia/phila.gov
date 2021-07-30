@@ -1,23 +1,21 @@
-
-// DOMRect
 (function (global) {
 	function number(v) {
 		return v === undefined ? 0 : Number(v);
 	}
-	
-	function different(u, v) {
+
+ 	function different(u, v) {
 		return u !== v && !(isNaN(u) && isNaN(v));
 	}
 
-	function DOMRect(xArg, yArg, wArg, hArg) {
+ 	function DOMRect(xArg, yArg, wArg, hArg) {
 		var x, y, width, height, left, right, top, bottom;
 
-		x = number(xArg);
+ 		x = number(xArg);
 		y = number(yArg);
 		width = number(wArg);
 		height = number(hArg);
 
-		Object.defineProperties(this, {
+ 		Object.defineProperties(this, {
 			x: {
 				get: function () { return x; },
 				set: function (newX) {
@@ -96,6 +94,6 @@
 			}
 		});
 	}
-	
-	global.DOMRect = DOMRect;
-}(self));
+
+ 	global.DOMRect = DOMRect;
+}(this));

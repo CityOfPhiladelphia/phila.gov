@@ -117,10 +117,8 @@ class Custom_Background {
 
 		if ( isset( $_POST['reset-background'] ) ) {
 			check_admin_referer( 'custom-background-reset', '_wpnonce-custom-background-reset' );
-
 			remove_theme_mod( 'background_image' );
 			remove_theme_mod( 'background_image_thumb' );
-
 			$this->updated = true;
 			return;
 		}
@@ -128,10 +126,8 @@ class Custom_Background {
 		if ( isset( $_POST['remove-background'] ) ) {
 			// @todo Uploaded files are not removed here.
 			check_admin_referer( 'custom-background-remove', '_wpnonce-custom-background-remove' );
-
 			set_theme_mod( 'background_image', '' );
 			set_theme_mod( 'background_image_thumb', '' );
-
 			$this->updated = true;
 			wp_safe_redirect( $_POST['_wp_http_referer'] );
 			return;
@@ -208,10 +204,8 @@ class Custom_Background {
 
 		if ( isset( $_POST['background-color'] ) ) {
 			check_admin_referer( 'custom-background' );
-
 			$color = preg_replace( '/[^0-9a-fA-F]/', '', $_POST['background-color'] );
-
-			if ( strlen( $color ) === 6 || strlen( $color ) === 3 ) {
+			if ( strlen( $color ) == 6 || strlen( $color ) == 3 ) {
 				set_theme_mod( 'background_color', $color );
 			} else {
 				set_theme_mod( 'background_color', '' );
@@ -314,7 +308,7 @@ class Custom_Background {
 		<?php endif; ?>
 
 		<?php $default_image = get_theme_support( 'custom-background', 'default-image' ); ?>
-		<?php if ( $default_image && get_background_image() !== $default_image ) : ?>
+		<?php if ( $default_image && get_background_image() != $default_image ) : ?>
 <tr>
 <th scope="row"><?php _e( 'Restore Original Image' ); ?></th>
 <td>
@@ -490,7 +484,6 @@ class Custom_Background {
 		}
 
 		check_admin_referer( 'custom-background-upload', '_wpnonce-custom-background-upload' );
-
 		$overrides = array( 'test_form' => false );
 
 		$uploaded_file = $_FILES['import'];

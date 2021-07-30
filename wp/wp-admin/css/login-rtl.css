@@ -298,7 +298,6 @@ p {
 
 #backtoblog {
 	margin: 16px 0;
-	word-break: break-word;
 }
 
 .login #nav a,
@@ -336,10 +335,6 @@ p {
 	margin: 0 0 16px 6px;
 	min-height: 40px;
 	max-height: none;
-}
-
-.login input.password-input {
-	font-family: Consolas, Monaco, monospace;
 }
 
 .js.login input.password-input,
@@ -408,6 +403,10 @@ body.interim-login {
 /* Hide the Edge "reveal password" native button */
 input::-ms-reveal {
 	display: none;
+}
+
+@-ms-viewport {
+	width: device-width;
 }
 
 @media screen and (max-height: 550px) {

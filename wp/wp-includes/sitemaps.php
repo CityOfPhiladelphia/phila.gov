@@ -51,7 +51,6 @@ function wp_sitemaps_get_server() {
  */
 function wp_get_sitemap_providers() {
 	$sitemaps = wp_sitemaps_get_server();
-
 	return $sitemaps->registry->get_providers();
 }
 
@@ -66,7 +65,6 @@ function wp_get_sitemap_providers() {
  */
 function wp_register_sitemap_provider( $name, WP_Sitemaps_Provider $provider ) {
 	$sitemaps = wp_sitemaps_get_server();
-
 	return $sitemaps->registry->add_provider( $name, $provider );
 }
 
@@ -96,13 +94,12 @@ function wp_sitemaps_get_max_urls( $object_type ) {
  * @since 5.5.1
  *
  * @param string $name         The sitemap name.
- * @param string $subtype_name The sitemap subtype name. Default empty string.
- * @param int    $page         The page of the sitemap. Default 1.
+ * @param string $subtype_name The sitemap subtype name.  Default empty string.
+ * @param int    $page         The page of the sitemap.  Default 1.
  * @return string|false The sitemap URL or false if the sitemap doesn't exist.
  */
 function get_sitemap_url( $name, $subtype_name = '', $page = 1 ) {
 	$sitemaps = wp_sitemaps_get_server();
-
 	if ( ! $sitemaps ) {
 		return false;
 	}
@@ -124,6 +121,5 @@ function get_sitemap_url( $name, $subtype_name = '', $page = 1 ) {
 	if ( 0 >= $page ) {
 		$page = 1;
 	}
-
 	return $provider->get_sitemap_url( $subtype_name, $page );
 }

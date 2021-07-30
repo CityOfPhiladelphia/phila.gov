@@ -242,16 +242,7 @@ if ( isset( $_GET['updated'] ) ) {
 			<tr>
 				<th scope="row"><label for="illegal_names"><?php _e( 'Banned Names' ); ?></label></th>
 				<td>
-					<?php
-					$illegal_names = get_site_option( 'illegal_names' );
-
-					if ( empty( $illegal_names ) ) {
-						$illegal_names = '';
-					} elseif ( is_array( $illegal_names ) ) {
-						$illegal_names = implode( ' ', $illegal_names );
-					}
-					?>
-					<input name="illegal_names" type="text" id="illegal_names" aria-describedby="illegal-names-desc" class="large-text" value="<?php echo esc_attr( $illegal_names ); ?>" size="45" />
+					<input name="illegal_names" type="text" id="illegal_names" aria-describedby="illegal-names-desc" class="large-text" value="<?php echo esc_attr( implode( ' ', (array) get_site_option( 'illegal_names' ) ) ); ?>" size="45" />
 					<p class="description" id="illegal-names-desc">
 						<?php _e( 'Users are not allowed to register these sites. Separate names by spaces.' ); ?>
 					</p>
@@ -263,16 +254,10 @@ if ( isset( $_GET['updated'] ) ) {
 				<td>
 					<?php
 					$limited_email_domains = get_site_option( 'limited_email_domains' );
+					$limited_email_domains = str_replace( ' ', "\n", $limited_email_domains );
 
-					if ( empty( $limited_email_domains ) ) {
-						$limited_email_domains = '';
-					} else {
-						// Convert from an input field. Back-compat for WPMU < 1.0.
-						$limited_email_domains = str_replace( ' ', "\n", $limited_email_domains );
-
-						if ( is_array( $limited_email_domains ) ) {
-							$limited_email_domains = implode( "\n", $limited_email_domains );
-						}
+					if ( $limited_email_domains ) {
+						$limited_email_domains = implode( "\n", (array) $limited_email_domains );
 					}
 					?>
 					<textarea name="limited_email_domains" id="limited_email_domains" aria-describedby="limited-email-domains-desc" cols="45" rows="5">
@@ -289,10 +274,8 @@ if ( isset( $_GET['updated'] ) ) {
 					<?php
 					$banned_email_domains = get_site_option( 'banned_email_domains' );
 
-					if ( empty( $banned_email_domains ) ) {
-						$banned_email_domains = '';
-					} elseif ( is_array( $banned_email_domains ) ) {
-						$banned_email_domains = implode( "\n", $banned_email_domains );
+					if ( $banned_email_domains ) {
+						$banned_email_domains = implode( "\n", (array) $banned_email_domains );
 					}
 					?>
 					<textarea name="banned_email_domains" id="banned_email_domains" aria-describedby="banned-email-domains-desc" cols="45" rows="5">

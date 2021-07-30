@@ -8,11 +8,7 @@
 /**
  * Key-value field class.
  */
-class RWMB_Key_Value_Field extends RWMB_Input_Field {
-	public static function admin_enqueue_scripts() {
-		wp_enqueue_style( 'rwmb-key-value', RWMB_CSS_URL . 'key-value.css', array(), RWMB_VER );
-	}
-
+class RWMB_Key_Value_Field extends RWMB_Text_Field {
 	/**
 	 * Get field HTML.
 	 *
@@ -72,6 +68,17 @@ class RWMB_Key_Value_Field extends RWMB_Input_Field {
 	 * @return string
 	 */
 	public static function input_description( $field ) {
+		return '';
+	}
+
+	/**
+	 * Do not show field description.
+	 *
+	 * @param array $field Field parameters.
+	 *
+	 * @return string
+	 */
+	public static function label_description( $field ) {
 		return '';
 	}
 

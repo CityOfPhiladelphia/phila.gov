@@ -60,10 +60,9 @@ abstract class RWMB_Input_Field extends RWMB_Field {
 			$field,
 			array(
 				'autocomplete' => false,
+				'size'         => 30,
 				'datalist'     => false,
 				'readonly'     => false,
-				'maxlength'    => false,
-				'pattern'      => false,
 				'prepend'      => '',
 				'append'       => '',
 			)
@@ -98,11 +97,9 @@ abstract class RWMB_Input_Field extends RWMB_Field {
 				'value'        => $value,
 				'placeholder'  => $field['placeholder'],
 				'type'         => $field['type'],
+				'size'         => $field['size'],
 			)
 		);
-		if ( isset( $field['size'] ) ) {
-			$attributes['size'] = $field['size'];
-		}
 
 		return $attributes;
 	}

@@ -605,10 +605,6 @@ code {
 	line-height: 1;
 }
 
-.subtitle strong {
-	word-break: break-all;
-}
-
 .wrap .add-new-h2, /* deprecated */
 .wrap .add-new-h2:active, /* deprecated */
 .wrap .page-title-action,
@@ -882,8 +878,7 @@ hr {
 #media-items a.delete,
 #media-items a.delete-permanently,
 #nav-menu-footer .menu-delete,
-#delete-link a.delete,
-a#remove-post-thumbnail {
+#delete-link a.delete {
 	color: #b32d2e;
 }
 
@@ -900,8 +895,7 @@ span.required,
 #media-items a.delete:hover,
 #media-items a.delete-permanently:hover,
 #nav-menu-footer .menu-delete:hover,
-#delete-link a.delete:hover,
-a#remove-post-thumbnail:hover {
+#delete-link a.delete:hover {
 	color: #b32d2e;
 	border: none;
 }
@@ -2134,6 +2128,7 @@ html.wp-toolbar {
 .postbox .hndle,
 .stuffbox .hndle {
 	-webkit-user-select: none;
+	-ms-user-select: none;
 	user-select: none;
 }
 
@@ -3526,6 +3521,7 @@ img {
 	border-left: 1px solid #dcdcde;
 	border-right: 1px solid #dcdcde;
 	-webkit-user-select: none;
+	-ms-user-select: none;
 	user-select: none;
 }
 
@@ -3755,6 +3751,10 @@ img {
 		background-image: url(../images/spinner-2x.gif);
 	}
 
+}
+
+@-ms-viewport {
+	width: device-width;
 }
 
 @media screen and (max-width: 782px) {

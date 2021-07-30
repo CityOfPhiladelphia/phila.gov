@@ -741,7 +741,7 @@ window.wpWidgets = {
 	}
 };
 
-$( function(){ wpWidgets.init(); } );
+$document.ready( function(){ wpWidgets.init(); } );
 
 })(jQuery);
 

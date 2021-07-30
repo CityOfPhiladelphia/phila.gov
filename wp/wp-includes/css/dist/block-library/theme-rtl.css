@@ -68,6 +68,9 @@
 /**
  * Reset the WP Admin page styles for Gutenberg-like pages.
  */
+/**
+ * These are default block editor widths in case the theme doesn't provide them.
+ */
 #start-resizable-editor-section {
   display: none;
 }
@@ -130,15 +133,25 @@
   font-style: normal;
 }
 
+.wp-block-navigation ul,
+.wp-block-navigation ul li {
+  list-style: none;
+}
+
+.wp-block-navigation-link.wp-block-navigation-link {
+  margin: 0;
+}
+
 .wp-block-quote {
   border-right: 0.25em solid currentColor;
   margin: 0 0 1.75em 0;
   padding-right: 1em;
 }
 .wp-block-quote cite,
-.wp-block-quote footer {
+.wp-block-quote footer, .wp-block-quote__citation {
   color: currentColor;
   font-size: 0.8125em;
+  margin-top: 1em;
   position: relative;
   font-style: normal;
 }
@@ -174,7 +187,7 @@
   opacity: 0.4;
 }
 .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
-  width: 100px;
+  max-width: 100px;
 }
 .wp-block-separator.has-background:not(.is-style-dots) {
   border-bottom: none;
@@ -184,6 +197,9 @@
   height: 2px;
 }
 
+.wp-block-table {
+  border-collapse: collapse;
+}
 .wp-block-table thead {
   border-bottom: 3px solid;
 }

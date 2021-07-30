@@ -11,7 +11,6 @@
  *
  * @var int
  */
-global $block_core_latest_posts_excerpt_length;
 $block_core_latest_posts_excerpt_length = 0;
 
 /**

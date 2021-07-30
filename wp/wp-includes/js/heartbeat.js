@@ -234,7 +234,7 @@
 			window.setInterval( checkUserActivity, 30000 );
 
 			// Start one tick after DOM ready.
-			$( function() {
+			$document.ready( function() {
 				settings.lastTick = time();
 				scheduleNextTick();
 			});

@@ -85,12 +85,7 @@ class MBR_Storage_Handler {
 		$object_type   = str_replace( array( 'deleted_', 'delete_' ), '', current_filter() );
 		$relationships = $this->factory->filter_by( $object_type );
 		foreach ( $relationships as $relationship ) {
-			$setting = $this->factory->get_settings( $relationship->id );
-			$target  = null;
-			if ( $setting['from']['object_type'] !== $setting['to']['object_type'] ) {
-				$target = $setting['from']['object_type'] === $object_type ? 'from' : 'to';
-			}
-			$this->delete_object_relationships( $object_id, $relationship->id, $target );
+			$this->delete_object_relationships( $object_id, $relationship->id );
 		}
 	}
 
@@ -99,17 +94,14 @@ class MBR_Storage_Handler {
 	 *
 	 * @param int    $object_id ID of the object metadata is for.
 	 * @param string $type      The relationship type.
-	 * @param string $target    The relationship target.
 	 */
-	protected function delete_object_relationships( $object_id, $type, $target ) {
+	protected function delete_object_relationships( $object_id, $type ) {
 		global $wpdb;
-		$sql = $target
-			? "DELETE FROM $wpdb->mb_relationships WHERE `type`=%s AND `$target`=%d"
-			: "DELETE FROM $wpdb->mb_relationships WHERE `type`=%s AND (`from`=%d OR `to`=%d)";
 		$wpdb->query(
 			$wpdb->prepare(
-				$sql,
+				"DELETE FROM $wpdb->mb_relationships WHERE `type`=%s AND (`from`=%d OR `to`=%d)",
 				$type,
+				$object_id,
 				$object_id
 			)
 		);

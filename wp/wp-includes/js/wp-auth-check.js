@@ -144,7 +144,15 @@
 	 * @param {Object} e The heartbeat-tick event that has been triggered.
 	 * @param {Object} data Response data.
 	 */
-	$( function() {
+	$( document ).on( 'heartbeat-tick.wp-auth-check', function( e, data ) {
+		if ( 'wp-auth-check' in data ) {
+			if ( ! data['wp-auth-check'] && wrap.hasClass( 'hidden' ) && ! tempHidden ) {
+				show();
+			} else if ( data['wp-auth-check'] && ! wrap.hasClass( 'hidden' ) ) {
+				hide();
+			}
+		}
+	}).ready( function() {
 
 		/**
 		 * Hides the authentication form popup when the close icon is clicked.
@@ -158,14 +166,6 @@
 			hide();
 			setShowTimeout();
 		});
-	}).on( 'heartbeat-tick.wp-auth-check', function( e, data ) {
-		if ( 'wp-auth-check' in data ) {
-			if ( ! data['wp-auth-check'] && wrap.hasClass( 'hidden' ) && ! tempHidden ) {
-				show();
-			} else if ( data['wp-auth-check'] && ! wrap.hasClass( 'hidden' ) ) {
-				hide();
-			}
-		}
 	});
 
 }(jQuery));

@@ -289,6 +289,6 @@ window.inlineEditTax = {
 	}
 };
 
-$( function() { inlineEditTax.init(); } );
+$(document).ready(function(){inlineEditTax.init();});
 
 })( jQuery, window.wp );

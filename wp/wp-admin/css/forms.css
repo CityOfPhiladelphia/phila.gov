@@ -593,10 +593,6 @@ fieldset label,
 	opacity: 1;
 }
 
-.password-input-wrapper input {
-	font-family: Consolas, Monaco, monospace;
-}
-
 #pass1.short, #pass1-text.short {
 	border-color: #e65054;
 }

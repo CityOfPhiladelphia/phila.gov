@@ -27,8 +27,7 @@
 
 		// Trim the values and ensure they are unique.
 		$.each( array, function( key, val ) {
-			val = val || '';
-			val = val.trim();
+			val = $.trim( val );
 
 			if ( val && $.inArray( val, out ) === -1 ) {
 				out.push( val );
@@ -97,8 +96,7 @@
 
 			// Sanitize the current tags and push them as if they're new tags.
 			$.each( current_tags, function( key, val ) {
-				val = val || '';
-				val = val.trim();
+				val = $.trim( val );
 				if ( val ) {
 					new_tags.push( val );
 				}
@@ -150,8 +148,7 @@
 			$.each( current_tags, function( key, val ) {
 				var listItem, xbutton;
 
-				val = val || '';
-				val = val.trim();
+				val = $.trim( val );
 
 				if ( ! val )
 					return;

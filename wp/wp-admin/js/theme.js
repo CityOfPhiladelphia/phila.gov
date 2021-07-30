@@ -404,7 +404,11 @@ themes.view.Theme = wp.Backbone.View.extend({
 		var data = this.model.toJSON();
 
 		// Render themes using the html template.
-		this.$el.html( this.html( data ) ).attr( 'data-slug', data.id );
+		this.$el.html( this.html( data ) ).attr({
+			tabindex: 0,
+			'aria-describedby' : data.id + '-action ' + data.id + '-name',
+			'data-slug': data.id
+		});
 
 		// Renders active theme styles.
 		this.activeTheme();
@@ -760,7 +764,7 @@ themes.view.Details = wp.Backbone.View.extend({
 
 				// Return focus to the theme div.
 				if ( themes.focusedTheme ) {
-					themes.focusedTheme.find('.more-details').trigger( 'focus' );
+					themes.focusedTheme.trigger( 'focus' );
 				}
 			});
 		}
@@ -948,7 +952,7 @@ themes.view.Preview = themes.view.Details.extend({
 
 			// Return focus to the theme div.
 			if ( themes.focusedTheme ) {
-				themes.focusedTheme.find('.more-details').trigger( 'focus' );
+				themes.focusedTheme.trigger( 'focus' );
 			}
 		}).removeClass( 'iframe-ready' );
 
@@ -1961,7 +1965,7 @@ themes.RunInstaller = {
 		// Set up the view.
 		// Passes the default 'section' as an option.
 		this.view = new themes.view.Installer({
-			section: 'popular',
+			section: 'featured',
 			SearchView: themes.view.InstallerSearch
 		});
 
@@ -2028,12 +2032,12 @@ themes.RunInstaller = {
 		/*
 		 * Handles sorting / browsing routes.
 		 * Also handles the root URL triggering a sort request
-		 * for `popular`, the default view.
+		 * for `featured`, the default view.
 		 */
 		themes.router.on( 'route:sort', function( sort ) {
 			if ( ! sort ) {
-				sort = 'popular';
-				themes.router.navigate( themes.router.baseUrl( '?browse=popular' ), { replace: true } );
+				sort = 'featured';
+				themes.router.navigate( themes.router.baseUrl( '?browse=featured' ), { replace: true } );
 			}
 			self.view.sort( sort );
 
@@ -2057,7 +2061,7 @@ themes.RunInstaller = {
 };
 
 // Ready...
-$( function() {
+$( document ).ready(function() {
 	if ( themes.isInstall ) {
 		themes.RunInstaller.init();
 	} else {
@@ -2085,7 +2089,7 @@ $( function() {
 })( jQuery );
 
 // Align theme browser thickbox.
-jQuery( function($) {
+jQuery(document).ready( function($) {
 	window.tb_position = function() {
 		var tbWindow = $('#TB_window'),
 			width = $(window).width(),

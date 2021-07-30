@@ -319,6 +319,7 @@ table.fixed {
 .fixed .column-role,
 .fixed .column-posts {
 	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
 	hyphens: auto;
 }
 
@@ -1872,24 +1873,23 @@ div.action-links,
 		padding-top: 10px;
 	}
 
-	.row-actions {
-		margin-right: -8px;
-		margin-left: -8px;
-		padding-top: 4px;
-	}
-
 	/* Make row actions more easy to select on mobile */
 	body:not(.plugins-php) .row-actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
+		display: -ms-grid;
+		display: grid;
+		-ms-grid-columns: auto auto auto;
+		grid-template-columns: auto auto auto;
 		color: transparent;
+	}
+
+	.row-actions span {
+		padding: 4px 0;
 	}
 
 	.row-actions span a,
 	.row-actions span .button-link {
 		display: inline-block;
-		padding: 4px 8px;
+		padding: 4px 0;
 		line-height: 1.5;
 	}
 
@@ -2139,16 +2139,17 @@ div.action-links,
 		margin-left: 0;
 		width: 100%;
 	}
-
-	table.media .column-title .has-media-icon ~ .row-actions {
-		margin-right: 0;
-		clear: both;
-	}
 }
 
 @media screen and (max-width: 480px) {
 	.tablenav-pages .current-page {
 		margin: 0;
+	}
+
+	/* Drop row actions to two columns on a small screen */
+	.row-actions:not(.plugins-php) {
+		-ms-grid-columns: auto auto;
+		grid-template-columns: auto auto;
 	}
 
 	.tablenav.bottom .displaying-num {

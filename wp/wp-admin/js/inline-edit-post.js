@@ -516,16 +516,10 @@ window.wp = window.wp || {};
 	}
 };
 
-$( function() { inlineEditPost.init(); } );
+$( document ).ready( function(){ inlineEditPost.init(); } );
 
 // Show/hide locks on posts.
-$( function() {
-
-	// Set the heartbeat interval to 15 seconds.
-	if ( typeof wp !== 'undefined' && wp.heartbeat ) {
-		wp.heartbeat.interval( 15 );
-	}
-}).on( 'heartbeat-tick.wp-check-locked-posts', function( e, data ) {
+$( document ).on( 'heartbeat-tick.wp-check-locked-posts', function( e, data ) {
 	var locked = data['wp-check-locked-posts'] || {};
 
 	$('#the-list tr').each( function(i, el) {
@@ -565,6 +559,12 @@ $( function() {
 
 	if ( check.length ) {
 		data['wp-check-locked-posts'] = check;
+	}
+}).ready( function() {
+
+	// Set the heartbeat interval to 15 seconds.
+	if ( typeof wp !== 'undefined' && wp.heartbeat ) {
+		wp.heartbeat.interval( 15 );
 	}
 });
 

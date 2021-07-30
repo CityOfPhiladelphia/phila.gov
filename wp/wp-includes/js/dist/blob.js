@@ -82,12 +82,12 @@ this["wp"] = this["wp"] || {}; this["wp"]["blob"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "ca5x");
+/******/ 	return __webpack_require__(__webpack_require__.s = 296);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "ca5x":
+/***/ 296:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100,15 +100,14 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Browser dependencies
  */
-const {
-  createObjectURL,
-  revokeObjectURL
-} = window.URL;
+var _window$URL = window.URL,
+    createObjectURL = _window$URL.createObjectURL,
+    revokeObjectURL = _window$URL.revokeObjectURL;
 /**
  * @type {Record<string, File|undefined>}
  */
 
-const cache = {};
+var cache = {};
 /**
  * Create a blob URL from a file.
  *
@@ -118,7 +117,7 @@ const cache = {};
  */
 
 function createBlobURL(file) {
-  const url = createObjectURL(file);
+  var url = createObjectURL(file);
   cache[url] = file;
   return url;
 }
