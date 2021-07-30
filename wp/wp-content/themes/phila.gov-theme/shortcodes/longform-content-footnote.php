@@ -13,8 +13,7 @@ function longform_content_footnote_shortcode($atts, $content = null) {
     'id' => 0,
   ), $atts );
 
-
-  echo '<i data-id='.$a['id'].' data-content="'.$content.'" class="pls fas fa-space-station-moon" />';
+  return '<i data-id='.$a['id'].' data-content="'.$content.'" class="pls fas fa-space-station-moon" />';
 
   wp_reset_postdata();
 
