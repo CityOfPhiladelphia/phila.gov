@@ -52,7 +52,12 @@ class MBR_Query_Post {
 
 		$post_type = $query->get( 'post_type' );
 		if ( ! $post_type ) {
-			$query->set( 'post_type', 'any' );
+			$relationship = MB_Relationships_API::get_relationship( $args['id'] );
+			$target       = 'from' === $args['direction'] ? 'to' : 'from';
+			$post_type    = isset( $relationship->$target['field']['post_type'] )
+				? $relationship->$target['field']['post_type']
+				: 'any';
+			$query->set( 'post_type', $post_type );
 		}
 		$query->set( 'suppress_filters', false );
 		$query->set( 'ignore_sticky_posts', true );
