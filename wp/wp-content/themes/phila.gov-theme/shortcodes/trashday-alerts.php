@@ -15,8 +15,7 @@ function trashday_alerts_shortcode($atts) {
     'icon_padding' => 0,
   ), $atts );
 
-  // include( locate_template( 'partials/posts/trashday-alerts.php' ) );
-  return 'wow';
+  include( locate_template( 'partials/posts/trashday-alerts.php' ) );
 
   wp_reset_postdata();
 
