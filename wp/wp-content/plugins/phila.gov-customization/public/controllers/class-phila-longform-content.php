@@ -30,6 +30,7 @@ class Phila_Longform_Content_Controller {
     $post_id = $request['id'];
     $data = array();
     $post = get_post( $post_id );
+    return $post->post_content;
     // $post['content'] = ( string ) do_shortcode( $post['post_content'] );
     // $post['content'] = ( string ) $post->post_content;
     $longform_document['owners'] = ( array ) get_the_terms( $post->ID, 'category' );
