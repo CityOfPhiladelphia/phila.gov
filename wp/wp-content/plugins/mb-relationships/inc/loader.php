@@ -10,19 +10,12 @@
  * The loader class.
  */
 class MBR_Loader {
-	/**
-	 * Detect if the relationships table is created.
-	 *
-	 * @var bool
-	 */
-	protected $is_table_created = false;
 
 	/**
 	 * Plugin activation.
 	 */
 	public function activate() {
 		$this->create_table();
-		$this->is_table_created = true;
 	}
 
 	/**
@@ -39,9 +32,7 @@ class MBR_Loader {
 		 * If plugin is embed in another plugin, the table is not created during activation.
 		 * Thus, we have to create it while initializing.
 		 */
-		if ( ! $this->is_table_created ) {
-			$this->create_table();
-		}
+		$this->create_table();
 
 		$obj_factory = new MBR_Object_Factory();
 		$rel_factory = new MBR_Relationship_Factory( $obj_factory );
@@ -76,7 +67,11 @@ class MBR_Loader {
 		require __DIR__ . '/database/table.php';
 
 		$table = new MBR_Table();
-		$table->create();
+		$is_table_created = get_option( 'mbr_table_created' );
+		if ( ! $is_table_created ) {
+			$table->create();
+			update_option( 'mbr_table_created', 1 );
+		}
 	}
 
 	/**

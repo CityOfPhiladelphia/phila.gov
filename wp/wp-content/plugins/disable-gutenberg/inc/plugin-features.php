@@ -165,7 +165,7 @@ function disable_gutenberg_edit_form_top() {
 	
 	?>
 	
-	<input type="hidden" name="classic-editor" value="" />
+	<input type="hidden" name="classic-editor" value="1">
 	
 	<?php
 	
