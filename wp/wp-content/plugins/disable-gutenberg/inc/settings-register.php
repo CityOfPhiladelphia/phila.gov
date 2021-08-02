@@ -38,19 +38,20 @@ function disable_gutenberg_register_settings() {
 	add_settings_field('templates', __('Disable Templates', 'disable-gutenberg'), 'disable_gutenberg_callback_text', 'disable_gutenberg_options', 'settings_4', array('id' => 'templates', 'label' => esc_html__('Separate multiple templates with commas', 'disable-gutenberg')));
 	add_settings_field('post-ids',  __('Disable Post IDs',  'disable-gutenberg'), 'disable_gutenberg_callback_text', 'disable_gutenberg_options', 'settings_5', array('id' => 'post-ids',  'label' => esc_html__('Separate multiple post IDs with commas',  'disable-gutenberg')));
 	
-	add_settings_field('whitelist-id',    __('Whitelist Post IDs',    'disable-gutenberg'), 'disable_gutenberg_callback_text', 'disable_gutenberg_options', 'settings_6', array('id' => 'whitelist-id',    'label' => esc_html__('Post IDs that always should use the Block Editor',    'disable-gutenberg')));
-	add_settings_field('whitelist-slug',  __('Whitelist Post Slugs',  'disable-gutenberg'), 'disable_gutenberg_callback_text', 'disable_gutenberg_options', 'settings_6', array('id' => 'whitelist-slug',  'label' => esc_html__('Post slugs that always should use the Block Editor',  'disable-gutenberg')));
+	add_settings_field('whitelist-id',    __('Whitelist Post IDs',    'disable-gutenberg'), 'disable_gutenberg_callback_text', 'disable_gutenberg_options', 'settings_6', array('id' => 'whitelist-id',    'label' => esc_html__('Post IDs that always should use the Block Editor', 'disable-gutenberg')));
+	add_settings_field('whitelist-slug',  __('Whitelist Post Slugs',  'disable-gutenberg'), 'disable_gutenberg_callback_text', 'disable_gutenberg_options', 'settings_6', array('id' => 'whitelist-slug',  'label' => esc_html__('Post slugs that always should use the Block Editor', 'disable-gutenberg')));
 	add_settings_field('whitelist-title', __('Whitelist Post Titles', 'disable-gutenberg'), 'disable_gutenberg_callback_text', 'disable_gutenberg_options', 'settings_6', array('id' => 'whitelist-title', 'label' => esc_html__('Post titles that always should use the Block Editor', 'disable-gutenberg')));
 	
-	add_settings_field('disable-nag',   __('Disable Nag',         'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'disable-nag',   'label' => esc_html__('Disable "Try Gutenberg" nag', 'disable-gutenberg')));
-	add_settings_field('styles-enable', __('Enable Frontend',     'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'styles-enable', 'label' => esc_html__('Enable frontend Gutenberg styles', 'disable-gutenberg')));
-	add_settings_field('whitelist',     __('Whitelist Options',   'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'whitelist',     'label' => esc_html__('Display Whitelist settings', 'disable-gutenberg')));
-	add_settings_field('hide-menu',     __('Plugin Menu Item',    'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'hide-menu',     'label' => esc_html__('Hide this plugin&rsquo;s menu item', 'disable-gutenberg')));
-	add_settings_field('hide-gut',      __('Gutenberg Menu Item', 'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'hide-gut',      'label' => esc_html__('Hide Gutenberg plugin&rsquo;s menu item (for WP &lt; 5.0)', 'disable-gutenberg')));
-	add_settings_field('links-enable',  __('Display Edit Links',  'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'links-enable',  'label' => esc_html__('Display "Add New (Classic)" menu link and Classic/Block edit links', 'disable-gutenberg')));
-	add_settings_field('acf-enable',    __('ACF Support',         'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'acf-enable',    'label' => esc_html__('Enable Custom Fields Meta Box (ACF disables by default),', 'disable-gutenberg') .' <a target="_blank" rel="noopener noreferrer" href="https://m0n.co/acf">'. esc_html__('learn more', 'disable-gutenberg') .'</a>'));
-	add_settings_field('reset_options', __('Reset Options',       'disable-gutenberg'), 'disable_gutenberg_callback_reset',    'disable_gutenberg_options', 'settings_7', array('id' => 'reset_options', 'label' => esc_html__('Restore default plugin options', 'disable-gutenberg')));
-	add_settings_field('rate_plugin',   __('Rate Plugin',         'disable-gutenberg'), 'disable_gutenberg_callback_rate',     'disable_gutenberg_options', 'settings_7', array('id' => 'rate_plugin',   'label' => esc_html__('Show support with a 5-star rating&nbsp;&raquo;', 'disable-gutenberg')));
+	add_settings_field('classic-widgets', __('Classic Widgets',     'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'classic-widgets', 'label' => esc_html__('Disable Block Widgets and enable Classic Widgets', 'disable-gutenberg')));
+	add_settings_field('disable-nag',     __('Disable Nag',         'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'disable-nag',     'label' => esc_html__('Disable "Try Gutenberg" nag', 'disable-gutenberg')));
+	add_settings_field('styles-enable',   __('Enable Frontend',     'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'styles-enable',   'label' => esc_html__('Enable frontend Gutenberg styles', 'disable-gutenberg')));
+	add_settings_field('whitelist',       __('Whitelist Options',   'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'whitelist',       'label' => esc_html__('Display Whitelist settings', 'disable-gutenberg')));
+	add_settings_field('hide-menu',       __('Plugin Menu Item',    'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'hide-menu',       'label' => esc_html__('Hide this plugin&rsquo;s menu item', 'disable-gutenberg')));
+	add_settings_field('hide-gut',        __('Gutenberg Menu Item', 'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'hide-gut',        'label' => esc_html__('Hide Gutenberg plugin&rsquo;s menu item (for WP &lt; 5.0)', 'disable-gutenberg')));
+	add_settings_field('links-enable',    __('Display Edit Links',  'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'links-enable',    'label' => esc_html__('Display "Add New (Classic)" menu link and Classic/Block edit links', 'disable-gutenberg')));
+	add_settings_field('acf-enable',      __('ACF Support',         'disable-gutenberg'), 'disable_gutenberg_callback_checkbox', 'disable_gutenberg_options', 'settings_7', array('id' => 'acf-enable',      'label' => esc_html__('Enable Custom Fields Meta Box (ACF disables by default),', 'disable-gutenberg') .' <a target="_blank" rel="noopener noreferrer" href="https://m0n.co/acf">'. esc_html__('learn more', 'disable-gutenberg') .'</a>'));
+	add_settings_field('reset_options',   __('Reset Options',       'disable-gutenberg'), 'disable_gutenberg_callback_reset',    'disable_gutenberg_options', 'settings_7', array('id' => 'reset_options',   'label' => esc_html__('Restore default plugin options', 'disable-gutenberg')));
+	add_settings_field('rate_plugin',     __('Rate Plugin',         'disable-gutenberg'), 'disable_gutenberg_callback_rate',     'disable_gutenberg_options', 'settings_7', array('id' => 'rate_plugin',     'label' => esc_html__('Show support with a 5-star rating&nbsp;&raquo;', 'disable-gutenberg')));
 	
 }
 
@@ -95,6 +96,9 @@ function disable_gutenberg_validate_options($input) {
 	
 	if (!isset($input['disable-all'])) $input['disable-all'] = null;
 	$input['disable-all'] = ($input['disable-all'] == 1 ? 1 : 0);
+	
+	if (!isset($input['classic-widgets'])) $input['classic-widgets'] = null;
+	$input['classic-widgets'] = ($input['classic-widgets'] == 1 ? 1 : 0);
 	
 	if (!isset($input['disable-nag'])) $input['disable-nag'] = null;
 	$input['disable-nag'] = ($input['disable-nag'] == 1 ? 1 : 0);
@@ -159,7 +163,7 @@ function disable_gutenberg_settings_section_6() {
 
 function disable_gutenberg_settings_section_7() {
 	
-	echo '<p class="g7g-display"><a class="g7g-toggle" href="#more-tools" title="'. esc_attr__('Toggle More Tools', 'disable-gutenberg') .'">'. esc_html__('Click here', 'disable-gutenberg') .'</a> '. esc_html__('to display more tools and options. Note: these options remain in effect even when hidden on this page.', 'disable-gutenberg') .'</p>';
+	echo '<p class="g7g-display"><span class="fa fa-pad-more fa-gear"></span><strong><a class="g7g-toggle" href="#more-tools" title="'. esc_attr__('Toggle More Tools', 'disable-gutenberg') .'">'. esc_html__('Click here', 'disable-gutenberg') .'</a></strong> '. esc_html__('to display more tools and options. Note: these options remain in effect even when hidden on this page.', 'disable-gutenberg') .'</p>';
 	
 }
 
