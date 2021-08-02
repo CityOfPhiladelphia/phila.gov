@@ -31,7 +31,7 @@ class Phila_Longform_Content_Controller {
     $data = array();
     $post = get_post( $post_id );
     // $post['content'] = ( string ) do_shortcode( $post['post_content'] );
-    $post['content'] = ( string ) $post['post_content'];
+    $post['content'] = ( string ) $post->post_content;
     $longform_document['owners'] = ( array ) get_the_terms( $post->ID, 'category' );
     $longform_document['post'] = ( object ) $post;
     $longform_document['updateHistory'] = ( object ) rwmb_meta( 'phila_longform_document_update_history', '', $post->ID );
