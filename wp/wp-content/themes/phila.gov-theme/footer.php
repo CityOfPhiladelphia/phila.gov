@@ -23,7 +23,7 @@
   <?php endif; ?>
   <?php echo phila_get_dept_contact_blocks(); ?>
   <?php echo 'wow'; ?>
-  <?php get_sidebar('Home right sidebar'); ?>
+  <?php get_sidebar('home_right_1'); ?>
   <div id="full-footer-start" class="philly311">
     <section>
       <div class="row">
