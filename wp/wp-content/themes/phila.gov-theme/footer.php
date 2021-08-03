@@ -22,12 +22,12 @@
     <?php get_template_part( 'partials/content', 'feedback' ); ?>
   <?php endif; ?>
   <?php echo phila_get_dept_contact_blocks(); ?>
+  <?php echo get_sidebar() ?>
   <div id="full-footer-start" class="philly311">
     <section>
       <div class="row">
         <div class="columns intro">
           <h2 class="mbxs">Philly311</h2>
-          <?php echo do_shortcode('[MO_SAML_FORM]'); ?>
           <span><a href="/311" class="external" aria-label="Philly 311">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available.</span>
         </div>
       </div>
