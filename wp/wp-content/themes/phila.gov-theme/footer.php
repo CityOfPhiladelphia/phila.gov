@@ -22,7 +22,7 @@
     <?php get_template_part( 'partials/content', 'feedback' ); ?>
   <?php endif; ?>
   <?php echo phila_get_dept_contact_blocks(); ?>
-  <?php echo get_sidebar(); ?>
+  <?php echo get_sidebar('Home right sidebar'); ?>
   <div id="full-footer-start" class="philly311">
     <section>
       <div class="row">
