@@ -13,7 +13,7 @@ function longform_content_footnote_shortcode($atts, $content = null) {
     'id' => 0,
   ), $atts );
 
-  return '<i data-id='.$a['id'].' data-content="'.$content.'" class="pls fas fa-space-station-moon" ></i>';
+  return '<a href="#inline-footnote-'.$a['id'].'" data-footnote='.$a['id'].' data-title="'.$content.'" class="inline-footnote bg-dark-ben-franklin" tabIndex="0"></a>';
 
   wp_reset_postdata();
 
