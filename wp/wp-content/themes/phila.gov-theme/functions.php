@@ -415,7 +415,8 @@ function phila_gov_scripts() {
 function my_enqueue($hook) {
 
 
-    wp_enqueue_script( 'my_custom_script', get_stylesheet_directory_uri() . '/admin/js/departments-meta-box-sorting.js', array('jquery','wp-api'),'', true );
+    wp_enqueue_script( 'dept_meta_box_sorting', get_stylesheet_directory_uri() . '/admin/js/departments-meta-box-sorting.js', array('jquery','wp-api'),'', true );
+    wp_enqueue_script( 'style_loader', get_stylesheet_directory_uri() . '/admin/js/style-loader.js', array('jquery','wp-api'),'', true );
 }
 add_action( 'admin_enqueue_scripts', 'my_enqueue' );
 
@@ -479,9 +480,19 @@ require get_template_directory() . '/inc/utilities.php';
 require get_template_directory() . '/inc/date-translations.php';
 
 /**
+ * Load custom related content file.
+ */
+require get_template_directory() . '/inc/related-content.php';
+
+/**
  * Load custom Resource list switch file.
  */
 require get_template_directory() . '/inc/resource-list-switch.php';
+
+/**
+ * Load microsite webhook file.
+ */
+require get_template_directory() . '/inc/phila_microsite_triggers.php';
 
 foreach (glob( get_template_directory() . '/shortcodes/*.php') as $filename){
   require $filename;
@@ -623,7 +634,11 @@ function phila_get_dept_contact_blocks() {
 
 
 
-function phila_get_posted_on(){
+function phila_get_posted_on( $post_id = null ){
+  if ( $post_id ) {
+    global $post;
+    $post = get_post( $post_id );
+  }
   $posted_on_meta['author'] = array( esc_html( get_the_author()));
   $more_authors = rwmb_meta('phila_author');
   if ( !empty($more_authors) ) {
@@ -1281,6 +1296,25 @@ function phila_get_selected_template( $post_id = null, $modify_response = true )
   return $user_selected_template;
 }
 
+
+/**
+ * Returns true or false depending on if a post is featured or not
+ *
+ **/
+
+function phila_is_featured( $post_id = null ){
+
+  $featured = false;
+  $old_feature = get_post_meta( $post_id, 'phila_show_on_home', true);
+  $new_feature = get_post_meta( $post_id, 'phila_is_feature', true );
+
+  if ( $old_feature != 0 || $new_feature != 0  ){
+    $featured = true;
+  }
+
+  return $featured;
+}
+
 /**
  * Do the math to determine the correct column span for X items on a 24 column grid.
  *
@@ -1890,7 +1924,10 @@ add_action( 'mb_relationships_init', function() {
           'hidden' => array(
             'when' => array(
               array('phila_select_language', '!=', 'english'),
+              array('phila_template_select', '=', 'translated_press_release'),
+              array('phila_template_select', '=', 'translated_post'),
             ),
+            'relation' => 'or',
           ),
           'title' => 'Select translated posts',
           'context' => 'side', 
