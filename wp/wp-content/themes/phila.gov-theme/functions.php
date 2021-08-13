@@ -1960,6 +1960,9 @@ function phila_language_output($language){
     case 'bengali';
       $language = 'বাংলা';
       break;
+    case 'burmese'; 
+      $language = 'မြန်မာ';
+      break;
     case 'haitian';
       $language = 'Ayisyen';
       break;
