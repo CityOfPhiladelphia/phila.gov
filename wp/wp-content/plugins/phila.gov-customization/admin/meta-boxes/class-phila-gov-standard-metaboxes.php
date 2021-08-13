@@ -1538,6 +1538,7 @@ public static function phila_language_selector( $id = 'phila_select_language', $
       'english'     => 'English', 
       'arabic'      => 'Arabic',
       'bengali'     => 'Bengali',
+      'burmese'     => 'Burmese',
       'chinese'     => 'Chinese (simplifed)',
       'french'      => 'French',
       'haitian'     => 'Haitian Creole',
