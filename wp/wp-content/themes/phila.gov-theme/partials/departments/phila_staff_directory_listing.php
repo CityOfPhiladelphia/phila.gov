@@ -121,6 +121,6 @@ if ( has_category() ) {
 
   }?>
 
-<?php if (phila_get_selected_template() != 'homepage_v2') : ?>
+<?php if (phila_get_selected_template() != 'homepage_v2' && phila_get_selected_template() != 'homepage_v3') : ?>
   <?php get_template_part( 'partials/departments/v2/board_commission_member_list' ); ?>
 <?php endif?>

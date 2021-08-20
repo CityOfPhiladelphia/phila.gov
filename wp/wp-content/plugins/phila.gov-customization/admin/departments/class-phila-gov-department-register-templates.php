@@ -36,6 +36,7 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'placeholder'  => 'Select a template',
         'options' => array(
           'homepage_v2'             => 'Homepage',
+          'homepage_v3'             => 'Homepage 2021',
           'default'                 => 'Default',
           'repeating_rows'          => 'Repeating rows',
           'one_quarter_headings_v2' => '1/4 headings',
@@ -75,6 +76,7 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'hidden' => array(
           'when' => array(
             array('phila_template_select', '=', 'homepage_v2' ),
+            array('phila_template_select', '=', 'homepage_v3' ),
             array('phila_template_select', '=', 'one_quarter_headings_v2' ),
             array('phila_template_select', '=', 'contact_us_v2' ),
             array('phila_template_select', '=', 'all_services_v2' ),

@@ -2,8 +2,7 @@
 <header>
 
     <div class="hero-content" style="background-image:url(<?php echo $this->bg['desktop'] ?>) ">
-
-            <?php if ( $this->is_homepage_v2) : ?>
+            <?php if ( $this->is_homepage) : ?>
                 <img class="show-for-small-only" src="<?php echo $this->bg['mobile'] ?>" alt="">
             <?php endif; ?>
 
@@ -15,12 +14,12 @@
                   </div>
                 <?php endif; ?>
 
-                <div class="row expanded <?php echo $this->is_homepage_v2 ? 'pbs pvxxl-mu' : 'pbl' ?>">
+                <div class="row expanded <?php echo $this->is_homepage ? 'pbs pvxxl-mu' : 'pbl' ?>">
 
                         <div class="medium-18 small-centered columns text-overlay">
                             <?php echo phila_get_department_homepage_typography( $this->parent ); ?>
 
-                            <?php if ($this->is_homepage_v2): ?>
+                            <?php if ($this->is_homepage): ?>
                               <div class="row">
                                 <div class="medium-16 small-centered columns text-overlay">
                                   <p class="sub-title mbn-mu"><strong><?php echo phila_get_item_meta_desc( ); ?></strong></p>
