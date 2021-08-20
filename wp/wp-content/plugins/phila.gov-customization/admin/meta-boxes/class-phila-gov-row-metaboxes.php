@@ -274,9 +274,9 @@ class Phila_Gov_Row_Metaboxes {
             'type' => 'switch',
             'on_label'  => 'Yes',
             'off_label' => 'No',
-            'include' => array(
-              'custom' => 'is_homepage_v2',
-            ),
+            'visible' => array(
+              'phila_template_select', 'in', ['homepage_v2', 'homepage_v3']
+            )
           ),
         ),
       ),
@@ -307,6 +307,13 @@ class Phila_Gov_Row_Metaboxes {
         'visible' => array('phila_full_options_select', '=', 'phila_programs'),
         'fields'  => 
           Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true)
+      ),
+      array(
+        'id' => 'phila_services',
+        'type'  => 'group',
+        'clone' => false,
+        'visible' => array('phila_full_options_select', '=', 'phila_services'),
+        'fields' => Phila_Gov_Standard_Metaboxes::phila_our_services(),
       ),
       array(
         'id'  => 'phila_location_list',

@@ -199,8 +199,25 @@ class Phila_Gov_Register_Program_Templates {
       'pages' => array( 'programs', 'department_page', 'service_page' ),
       'priority' => 'high',
       'revision' => true,
-      'include' => array(
-        'custom' => 'is_phila_program',
+      'hidden' => array(
+        'when' => array(
+          array( 'phila_template_select', '=', 'prog_off_site' ),
+          array( 'phila_template_select', '=', 'homepage_v2' ),
+          array( 'phila_template_select', '=', 'resource_list_v2' ),
+          array( 'phila_template_select', '=', 'all_programs_v2' ),
+          array( 'phila_template_select', '=', 'all_services_v2' ),
+          array( 'phila_template_select', '=', 'translated_content' ),
+          array( 'phila_template_select', '=', 'covid_guidance' ),
+          array( 'phila_template_select', '=', 'tax_detail' ),
+        ),
+        'relation' => 'or',
+      ),
+      'visible' => array(
+        'when'  => array(
+          array( 'phila_template_select', '=', 'prog_association' ),
+          array( 'service_template_selection', '=', 'custom_content' )
+        ),
+        'relation' => 'or',
       ),
       'fields' => array(
         Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),

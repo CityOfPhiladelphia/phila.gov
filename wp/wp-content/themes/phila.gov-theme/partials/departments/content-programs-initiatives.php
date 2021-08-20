@@ -12,6 +12,7 @@
 
   // MetaBox variables
   $page_rows = rwmb_meta('phila_row');
+
 ?>
 <?php if (!phila_util_is_array_empty($page_rows)): ?>
 <!-- /Page content / programs + initiatives -->

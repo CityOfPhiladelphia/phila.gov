@@ -2,7 +2,7 @@
 
 <?php
 
-if (phila_get_selected_template() === 'homepage_v2') {
+if (phila_get_selected_template() === 'homepage_v2' || phila_get_selected_template() === 'homepage_v3') {
     $toggle = rwmb_meta('phila_v2_photo_callout_block__image_toggle');
     $subHeader = rwmb_meta('phila_v2_photo_callout_block__txt-sub-header');
     $header = rwmb_meta('phila_v2_photo_callout_block__txt-header');

@@ -35,7 +35,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
          ON $wpdb->posts.ID = $wpdb->postmeta.post_id
          WHERE $wpdb->posts.post_type = %s AND
          $wpdb->postmeta.meta_key = 'phila_template_select' AND
-         meta_value = 'homepage_v2'"
+         (meta_value = 'homepage_v2' OR meta_value = 'homepage_v3')"
       , $post_type ) );
 
 
