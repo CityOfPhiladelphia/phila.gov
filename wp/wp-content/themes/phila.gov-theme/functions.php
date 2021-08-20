@@ -79,6 +79,11 @@ function phila_gov_setup() {
       			'compare' => '=',
       		),
           array(
+      			'key'     => 'phila_template_select',
+      			'value'   => 'homepage_v3',
+      			'compare' => '=',
+      		),
+          array(
             'key'     => 'phila_template_select',
             'value'   => 'department_homepage',
             'compare' => '=',

@@ -467,8 +467,8 @@ function phila_register_meta_boxes( $meta_boxes ){
         'administrator', 'primary_department_homepage_editor', 'editor' ),
     ),
     'visible' => array(
-      'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2'),
+      'when'  => array(
+        array('phila_template_select', '=', 'homepage_v2' ),
       ),
     ),
 
@@ -502,7 +502,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'on_label'  => 'Yes',
         'off_label' => 'No',
         'visible' => array(
-          'phila_template_select', 'in', ['homepage_v2']
+          'phila_template_select', 'in', ['homepage_v2', 'homepage_v3']
         )
       ),
     ),
@@ -659,8 +659,8 @@ function phila_register_meta_boxes( $meta_boxes ){
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
     ),
     'visible' => array(
-      'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2'),
+      'when'  => array(
+        array('phila_template_select', '=', 'homepage_v2' ),
       ),
     ),
 
@@ -1123,10 +1123,10 @@ $meta_boxes[] = array(
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'visible' => array(
-    'when'  =>  array(
-        array('phila_template_select', '=', 'homepage_v2'),
-      ),
+    'when'  => array(
+      array('phila_template_select', '=', 'homepage_v2' ),
     ),
+  ),
   'fields' => 
     Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true),
 
@@ -1232,9 +1232,9 @@ $meta_boxes[] = array(
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'visible' => array(
-    'when'  =>  array(
-        array('phila_template_select', '=', 'homepage_v2'),
-      ),
+    'when'  => array(
+      array('phila_template_select', '=', 'homepage_v2' ),
+    ),
   ),
   'fields' => array(
     Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),

@@ -43,14 +43,14 @@ get_header(); ?>
 
     $parent = phila_util_get_furthest_ancestor($post);
 
-    if ( phila_util_is_v2_template( $parent->ID ) && $user_selected_template !== 'prog_association' ) :
+    if ( phila_util_is_new_template( $parent->ID ) && $user_selected_template !== 'prog_association' ) :
 
       /**
        * Department Homepage V2 Hero
        */
       $hero_data = array(
         'parent' => phila_util_get_furthest_ancestor($post),
-        'is_homepage_v2' => $user_selected_template == 'homepage_v2',
+        'is_homepage' => ($user_selected_template == 'homepage_v2' || $user_selected_template == 'homepage_v3'),
         'bg' => array(
           'desktop'      => phila_get_hero_header_v2( $parent->ID ),
           'mobile'       => phila_get_hero_header_v2( $parent->ID, true ),
