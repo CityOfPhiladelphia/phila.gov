@@ -79,6 +79,11 @@ function phila_gov_setup() {
       			'compare' => '=',
       		),
           array(
+      			'key'     => 'phila_template_select',
+      			'value'   => 'homepage_v3',
+      			'compare' => '=',
+      		),
+          array(
             'key'     => 'phila_template_select',
             'value'   => 'department_homepage',
             'compare' => '=',
@@ -1996,6 +2001,9 @@ function phila_language_output($language){
       break;
     case 'bengali';
       $language = 'বাংলা';
+      break;
+    case 'burmese'; 
+      $language = 'မြန်မာ';
       break;
     case 'haitian';
       $language = 'Ayisyen';
