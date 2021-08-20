@@ -15,13 +15,12 @@ class Phila_Gov_Post {
   
   function register_meta_boxes_posts($meta_boxes){
     $meta_boxes[] = array(
+      'id'    => 'post_multiple_authors',
       'title'    => 'Multiple authors',
       'pages'    => array( 'post' ),
       'context'  => 'after_title',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'post'),
-        ),
+      'include' => array(
+        'custom' => 'is_post',
       ),
       'fields'  => array(
         array(
@@ -34,6 +33,13 @@ class Phila_Gov_Post {
       ),
     )
   );
+
+  function is_post() {
+    if( isset($_GET['post']) === true && 
+      ( rwmb_meta( 'phila_template_select', array(), $_GET['post'] ) == 'post' ) )
+      return true;
+    return false;
+  }
 
   $meta_boxes[] = array(
       'title'    => 'Social media share pre-filled text',
@@ -55,10 +61,8 @@ class Phila_Gov_Post {
       'pages'    => array( 'post' ),
       'context'  => 'side',
       'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '!=', 'action_guide'),
-        ),
+      'exclude' => array(
+        'custom' => 'is_action_guide',
       ),
       'include' => array(
         'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
@@ -76,15 +80,27 @@ class Phila_Gov_Post {
       )
     );
 
+    function is_action_guide() {
+      if( isset($_GET['post']) === true && 
+        ( rwmb_meta( 'phila_template_select', array(), $_GET['post'] ) == 'action_guide' ) )
+        return true;
+      return false;
+    }
+
+    function is_action_guide_2() {
+      if( isset($_GET['post']) === true && 
+        ( rwmb_meta( 'phila_template_select', array(), $_GET['post'] ) == 'action_guide_2' ) )
+        return true;
+      return false;
+    }
+
     $meta_boxes[] = array (
       'title'    => 'Post options',
       'pages'    => array( 'post' ),
       'context'  => 'side',
       'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '!=', 'action_guide'),
-        ),
+      'exclude' => array(
+        'custom' => 'is_action_guide',
       ),
       'fields' => array(
         Phila_Gov_Standard_Metaboxes::phila_language_selector(),
@@ -125,14 +141,13 @@ class Phila_Gov_Post {
     );
 
     $meta_boxes[] = array(
+      'id'    => 'end_of_post_cta',
       'title'    => 'End of post call to action. Where should users go now?',
       'pages'    => array( 'post' ),
       'context'  => 'normal',
-      'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'post'),
-        ),
+      'priority' => 'high',      
+      'include' => array(
+        'custom' => 'is_post',
       ),
       'fields' => array(
         array(
@@ -163,14 +178,13 @@ class Phila_Gov_Post {
     /* Action guide specific metaboxes */
 
     $meta_boxes[] = array(
+      'id'    => 'get_informed',
       'title'    => 'Get informed',
       'pages'    => array( 'post' ),
       'context'  => 'normal',
       'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide'),
-        ),
+      'include' => array(
+        'custom' => 'is_action_guide',
       ),
       'fields' => array(
         array(
@@ -181,14 +195,13 @@ class Phila_Gov_Post {
     );
 
     $meta_boxes[] = array(
+      'id'    => 'know_the_facts',
       'title'    => 'Know the facts',
       'pages'    => array( 'post' ),
       'context'  => 'normal',
       'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide'),
-        ),
+      'include' => array(
+        'custom' => 'is_action_guide',
       ),
       'fields' => array(
         array(
@@ -204,17 +217,14 @@ class Phila_Gov_Post {
     );
 
     $meta_boxes[] = array(
+      'id'    => 'take_action',
       'title' => 'Take action',
       'pages' => array('post'),
       'context' => 'normal',
       'priority'  => 'high',
-
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide'),
-        ),
+      'include' => array(
+        'custom' => 'is_action_guide',
       ),
-
       'fields' => array(
         array(
           'type'  => 'heading',
@@ -255,14 +265,13 @@ class Phila_Gov_Post {
     );
     
     $meta_boxes[] = array(
+      'id'    => 'page_content',
       'title'    => 'Page content',
       'pages'    => array( 'post' ),
       'priority' => 'high',
       'revision' => true,
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide_2'),
-        ),
+      'include' => array(
+        'custom' => 'is_action_guide_2',
       ),
       'fields' => array(
         array(
@@ -281,14 +290,13 @@ class Phila_Gov_Post {
     );
 
     $meta_boxes[] = array(
+      'id'    => 'full_width_cta',
       'title'    => 'Full width call to action',
       'pages'    => array( 'post' ),
       'context'  => 'normal',
       'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '=', 'action_guide_2'),
-        ),
+      'include' => array(
+        'custom' => 'is_action_guide_2',
       ),
       'fields' => array(
         array(

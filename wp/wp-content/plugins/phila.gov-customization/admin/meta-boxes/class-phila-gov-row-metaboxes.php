@@ -74,6 +74,22 @@ class Phila_Gov_Row_Metaboxes {
 }
 
   public static function phila_metabox_full_options( ){
+
+    function is_homepage_v2() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'homepage_v2' ) )
+        return true;
+      return false;
+    }
+
+    function is_custom_content() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'custom_content' ) )
+        return true;
+      return false;
+    }
+
+
     return array(
     'name' => '',
     'id'   => 'phila_full_options',
@@ -682,8 +698,9 @@ class Phila_Gov_Row_Metaboxes {
         'type'  => 'switch',
         'on_label'  => 'Yes',
         'off_label' => 'No',
-        'hidden' => array('phila_template_select', '=', 'custom_content'),
-
+        'exclude' => array(
+          'custom' => 'is_custom_content',
+        ),
       ),
       array(
         'id' => 'phila_stepped_content',
