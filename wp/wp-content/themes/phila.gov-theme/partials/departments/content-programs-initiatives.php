@@ -323,6 +323,12 @@
               <!-- /Additional Content -->
             <?php endif;?>
 
+          <?php elseif ( $current_row_option == 'phila_services'): ?>
+
+            <!-- Our services -->
+            <?php include(locate_template('partials/departments/v2/our-services.php')); ?>
+            <!-- /Our services -->
+
         <?php endif;  /*end full row */?>
 
       </section>
