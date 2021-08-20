@@ -131,13 +131,23 @@ function phila_register_tax_detail_meta_boxes( $meta_boxes ){
     ),
   );
 
+
+  function is_tax_detail() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'tax_detail' ) )
+      return true;
+    return false;
+  }
+
   //Tax Detail Template
   $meta_boxes[] = array(
     'title' => 'Tax Highlights',
     'pages' => array('service_page'),
     'priority' => 'high',
 
-    'visible' => array('phila_template_select', 'tax_detail'),
+    'include' => array(
+      'custom' => 'is_tax_detail',
+    ),
 
     'fields'  => array(
       array(
@@ -177,7 +187,9 @@ function phila_register_tax_detail_meta_boxes( $meta_boxes ){
     'title' => 'Tax Details',
     'pages' => array('service_page'),
     'priority' => 'high',
-    'visible' => array('phila_template_select', 'tax_detail'),
+    'include' => array(
+      'custom' => 'is_tax_detail',
+    ),
 
     'fields'  => array(
       array(
@@ -230,7 +242,9 @@ function phila_register_tax_detail_meta_boxes( $meta_boxes ){
     'title' => 'How to pay',
     'pages' => array('service_page'),
     'priority' => 'high',
-    'visible' => array('phila_template_select', 'tax_detail'),
+    'include' => array(
+      'custom' => 'is_tax_detail',
+    ),
 
     'fields'  => array(
       array(
