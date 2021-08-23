@@ -2,7 +2,7 @@
 
 <?php
 
-if (phila_get_selected_template() === 'homepage_v2' || phila_get_selected_template() === 'homepage_v3') {
+if (phila_get_selected_template() === 'homepage_v2') {
     $toggle = rwmb_meta('phila_v2_photo_callout_block__image_toggle');
     $subHeader = rwmb_meta('phila_v2_photo_callout_block__txt-sub-header');
     $header = rwmb_meta('phila_v2_photo_callout_block__txt-header');
@@ -14,8 +14,7 @@ if (phila_get_selected_template() === 'homepage_v2' || phila_get_selected_templa
     $get_photo = rwmb_meta('phila_v2_photo_callout_block__photo');
     $photo = reset($get_photo)['full_url'];
     $alt = reset($get_photo)['alt'];
-
-  }else{
+} else {
     $photo_callout = isset($current_row['phila_full_options']['photo_callout']) ? $current_row['phila_full_options']['photo_callout'] : '';
     $toggle = isset($photo_callout['phila_v2_photo_callout_block__image_toggle']) ? $photo_callout['phila_v2_photo_callout_block__image_toggle'] : '';
     $header = $photo_callout['phila_v2_photo_callout_block__txt-header'];
@@ -25,7 +24,7 @@ if (phila_get_selected_template() === 'homepage_v2' || phila_get_selected_templa
     $btnTxt = $photo_callout['phila_v2_photo-callout-block__txt-btn-label'];
     $icon = $photo_callout['phila_v2_photo-callout-block__txt-icon'];
     $photo = wp_get_attachment_url( $photo_callout['phila_v2_photo_callout_block__photo'][0]);
-  }
+}
 
 ?>
 
