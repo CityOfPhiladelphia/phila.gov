@@ -12,6 +12,7 @@
 
   // MetaBox variables
   $page_rows = rwmb_meta('phila_row');
+
 ?>
 <?php if (!phila_util_is_array_empty($page_rows)): ?>
 <!-- /Page content / programs + initiatives -->
@@ -321,6 +322,12 @@
               <?php include(locate_template('partials/content-custom-additional.php')); ?>
               <!-- /Additional Content -->
             <?php endif;?>
+
+          <?php elseif ( $current_row_option == 'phila_services'): ?>
+
+            <!-- Our services -->
+            <?php include(locate_template('partials/departments/v2/our-services.php')); ?>
+            <!-- /Our services -->
 
         <?php endif;  /*end full row */?>
 

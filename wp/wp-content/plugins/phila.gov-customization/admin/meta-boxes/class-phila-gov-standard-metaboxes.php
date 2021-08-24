@@ -654,6 +654,39 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
+
+  public static function phila_our_services() {
+    return array(
+      array(
+        'id'       => 'phila_v2_homepage_services',
+        'title'    => 'Top services',
+        'context'  => 'normal',
+        'name'  => '<div>Add a maximum of 6 services to a homepage.</div>',
+        'priority' => 'high',
+        'type'  => 'group',
+        'clone' => true,
+        'sort_clone' => true,
+        'max_clone' => 6,
+        'add_button'  => '+ Add another service link',
+
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
+          Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector(),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Alternate title', 'alt_title' ),
+        ),
+      ),
+      array(
+        'id' => 'phila_v2_service_link',
+        'title' => 'See all services url',
+        'name'  => 'See all services url',
+        'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-services/',
+        'type'  => 'url',
+        'class' => 'metabox-url',
+      ),
+    );
+  }
+
+
   public static function phila_v2_phone(){
     return array(
       'id'  => 'phila_v2_phone',

@@ -220,7 +220,7 @@
     <?php
     $parent = phila_util_get_furthest_ancestor($post);
     $post_type = get_post_type();
-    if ( !phila_util_is_v2_template( $parent->ID ) &&
+    if ( !phila_util_is_new_template( $parent->ID ) &&
         !is_front_page() &&
         !is_404() &&
         !is_page_template('templates/the-latest.php') &&
