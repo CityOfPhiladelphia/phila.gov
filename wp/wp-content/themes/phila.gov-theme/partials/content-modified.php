@@ -16,6 +16,7 @@
     !is_page_template() &&
     $template != 'prog_landing_page' &&
     $template != 'homepage_v2' &&
+    $template != 'homepage_v3' &&
     $template !=  'off_site_department' &&
     $template != 'topic_page' &&
     $template != 'prog_association') : ?>

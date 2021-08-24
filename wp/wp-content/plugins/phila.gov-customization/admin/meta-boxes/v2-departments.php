@@ -8,7 +8,13 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'title' => 'Department media',
     'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'homepage_v2' ),
+    'visible' => array(
+      'when'  => array(
+        array('phila_template_select', '=', 'homepage_v2' ),
+        array('phila_template_select', '=', 'homepage_v3' ),
+      ),
+      'relation' => 'or',
+    ),
     'context'  => 'normal',
     'priority' => 'high',
     'include' => array(
@@ -87,7 +93,6 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'title' => 'Full-width call to action',
     'pages'    => array( 'department_page' ),
-    // 'visible' => array( 'phila_template_select', 'homepage_v2' ),
     'visible' => array(
       'when' => array(
         array('phila_template_select', 'homepage_v2'),
@@ -311,11 +316,12 @@ $meta_boxes[] = array(
       'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
     ),
     'visible' => array(
-      'when' => array(
-        array('phila_template_select', 'homepage_v2'),
-        array('phila_template_select', 'off_site_department')
+      'when'  => array(
+        array('phila_template_select', '=', 'homepage_v2' ),
+        array('phila_template_select', '=', 'homepage_v3' ),
+        array('phila_template_select', '=', 'off_site_department' ),
       ),
-      'relation' => 'or'
+      'relation' => 'or',
     ),
     'fields' => array(
       array(

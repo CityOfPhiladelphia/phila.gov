@@ -467,8 +467,8 @@ function phila_register_meta_boxes( $meta_boxes ){
         'administrator', 'primary_department_homepage_editor', 'editor' ),
     ),
     'visible' => array(
-      'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2'),
+      'when'  => array(
+        array('phila_template_select', '=', 'homepage_v2' ),
       ),
     ),
 
@@ -502,7 +502,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'on_label'  => 'Yes',
         'off_label' => 'No',
         'visible' => array(
-          'phila_template_select', 'in', ['homepage_v2']
+          'phila_template_select', 'in', ['homepage_v2', 'homepage_v3']
         )
       ),
     ),
@@ -659,8 +659,8 @@ function phila_register_meta_boxes( $meta_boxes ){
       'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
     ),
     'visible' => array(
-      'when' => array(
-        array( 'phila_template_select', '=', 'homepage_v2'),
+      'when'  => array(
+        array('phila_template_select', '=', 'homepage_v2' ),
       ),
     ),
 
@@ -1086,35 +1086,7 @@ $meta_boxes[] = array(
       ),
     'relation'  => 'or'
   ),
-
-  'fields' => array(
-    array(
-      'id'       => 'phila_v2_homepage_services',
-      'title'    => 'Top services',
-      'context'  => 'normal',
-      'name'  => '<div>Add a maximum of 6 services to a homepage.</div>',
-      'priority' => 'high',
-      'type'  => 'group',
-      'clone' => true,
-      'sort_clone' => true,
-      'max_clone' => 6,
-      'add_button'  => '+ Add another service link',
-
-      'fields' => array(
-        Phila_Gov_Standard_Metaboxes::phila_v2_icon_selection(),
-        Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector(),
-        Phila_Gov_Standard_Metaboxes::phila_metabox_title( 'Alternate title', 'alt_title' ),
-      ),
-    ),
-    array(
-      'id' => 'phila_v2_service_link',
-      'title' => 'See all services url',
-      'name'  => 'See all services url',
-      'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-services/',
-      'type'  => 'url',
-      'class' => 'metabox-url',
-    ),
-  ),
+  'fields' => Phila_Gov_Standard_Metaboxes::phila_our_services(),
 );
 
 $meta_boxes[] = array(
@@ -1123,10 +1095,10 @@ $meta_boxes[] = array(
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'visible' => array(
-    'when'  =>  array(
-        array('phila_template_select', '=', 'homepage_v2'),
-      ),
+    'when'  => array(
+      array('phila_template_select', '=', 'homepage_v2' ),
     ),
+  ),
   'fields' => 
     Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true),
 
@@ -1187,6 +1159,7 @@ $meta_boxes[] = array(
   'visible' => array(
     'when'  =>  array(
         array('phila_template_select', '=', 'homepage_v2'),
+        array('phila_template_select', '=', 'homepage_v3'),
         array('phila_template_select', '=', 'prog_landing_page')
       ),
     'relation'  => 'or'
@@ -1232,9 +1205,9 @@ $meta_boxes[] = array(
   'pages'    => array( 'department_page' ),
   'context'  => 'normal',
   'visible' => array(
-    'when'  =>  array(
-        array('phila_template_select', '=', 'homepage_v2'),
-      ),
+    'when'  => array(
+      array('phila_template_select', '=', 'homepage_v2' ),
+    ),
   ),
   'fields' => array(
     Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),

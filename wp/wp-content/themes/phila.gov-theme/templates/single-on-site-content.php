@@ -11,7 +11,7 @@ $parent                    = phila_util_get_furthest_ancestor($post);
 $user_selected_template    = phila_get_selected_template();
 ?>
 
-<?php if ( phila_util_is_v2_template( $parent->ID ) && $user_selected_template !== 'homepage_v2' && $is_stub != 'false'):?>
+<?php if ( phila_util_is_new_template( $parent->ID ) && ($user_selected_template !== 'homepage_v2' || $user_selected_template !== 'homepage_v3') && $is_stub != 'false'):?>
   <div class="mtl mbm">
     <?php get_template_part( 'partials/breadcrumbs' ); ?>
   </div>
@@ -36,7 +36,7 @@ $user_selected_template    = phila_get_selected_template();
 
     <?php get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' ); ?>
 
-    <?php if ($user_selected_template != 'homepage_v2') : ?>
+    <?php if ($user_selected_template != 'homepage_v2' && $user_selected_template != 'homepage_v3') : ?>
 
       <?php get_template_part( 'partials/departments/content', 'hero-header' ); ?>
 
@@ -132,6 +132,10 @@ HTML;
 
       phila_get_template_part($DEPT_USER_TEMPLATE_PATH.$user_selected_template, $homepage_v2_data );
 
+      break;
+
+    case 'homepage_v3':
+      get_template_part( 'partials/departments/content', 'programs-initiatives' );
       break;
 
     case 'off_site_department':
