@@ -135,10 +135,7 @@ HTML;
       break;
 
     case 'homepage_v3':
-
-      $_categories         = get_the_category();
       get_template_part( 'partials/departments/content', 'programs-initiatives' );
-
       break;
 
     case 'off_site_department':
