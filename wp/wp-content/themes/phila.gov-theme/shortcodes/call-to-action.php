@@ -10,13 +10,14 @@
 function call_to_action_shortcode($atts) {
 
   $a = shortcode_atts( array(
-    'title' => '',
-    'description' => '',
-    'link_text' => '',
-    'url' => '',
-    'external' => '',
-    'is_survey' => '',
-    'is_modal' => '',
+    'title' => 'title',
+    'description' => 'description',
+    'link_text' => 'link_text',
+    'url' => 'url',
+    'external' => 0,
+    'is_survey' => 0,
+    'is_modal' => 0,
+    'modal_icon' => '',
   ), $atts );
 
   include( locate_template( 'partials/posts/call-to-action.php' ) );
