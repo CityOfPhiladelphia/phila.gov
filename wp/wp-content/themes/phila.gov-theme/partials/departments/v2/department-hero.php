@@ -14,7 +14,7 @@
                   </div>
                 <?php endif; ?>
 
-                <div class="row expanded <?php echo $this->is_homepage ? 'pbs pvxxl-mu' : 'pbl' ?>">
+                <div class="row expanded <?php echo $this->is_homepage ? 'pbs pvxxl-mu' : 'pvl' ?>">
 
                         <div class="medium-18 small-centered columns text-overlay">
                             <?php echo phila_get_department_homepage_typography( $this->parent ); ?>
