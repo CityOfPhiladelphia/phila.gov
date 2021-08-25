@@ -28,9 +28,9 @@ call to action shortcode render
                 <i class="fa <?php echo $a['modal_icon'] ?> valign-cell" aria-hidden="true"></i>
                 <span class="accessible">Open modal</span>
               <?php endif; ?>
-                <div class="button-label valign-cell">
+                <span class="button-label valign-cell">
                   <?php echo $a['link_text']?>
-                </div>
+                </span>
               </div>
             </a>
           </div>
