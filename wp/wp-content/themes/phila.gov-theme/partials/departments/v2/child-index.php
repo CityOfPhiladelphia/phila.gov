@@ -10,14 +10,25 @@
     <div class="one-quarter-layout">
 
       <?php
-      $args = array(
-        'post_parent' => $post->ID,
-        'post_type'   => 'any',
-        'numberposts' => -1,
-        'orderby' => 'menu_order',
-        'order' => 'ASC',
-        'post_status' => array('publish', 'private')
-      );
+      if ( is_user_logged_in() ) {
+        $args = array(
+          'post_parent' => $post->ID,
+          'post_type'   => 'any',
+          'numberposts' => -1,
+          'orderby' => 'menu_order',
+          'order' => 'ASC',
+          'post_status' => array('publish', 'private', 'draft')
+        );
+      } else {
+        $args = array(
+          'post_parent' => $post->ID,
+          'post_type'   => 'any',
+          'numberposts' => -1,
+          'orderby' => 'menu_order',
+          'order' => 'ASC',
+          'post_status' => array('publish')
+        );
+      }
       $children = get_children( $args );
 
       $last_key = phila_util_is_last_in_array( (array) $children );
