@@ -20,9 +20,10 @@ function call_to_action_shortcode($atts) {
     'modal_icon' => '',
   ), $atts );
 
+  ob_start();
   include( locate_template( 'partials/posts/call-to-action.php' ) );
-
-  wp_reset_postdata();
+  $content = ob_get_clean();
+  return $content;
 
 }
 add_action( 'init', 'register_call_to_action_shortcode' );
