@@ -209,7 +209,8 @@ class Phila_Departments_Controller {
 
     if (isset( $schema['properties']['permalink'] )) {
       $permalink = get_permalink($post->ID);
-      $post_data['permalink'] = (string) $permalink;
+      $parsed_link = parse_url($permalink);
+      $post_data['permalink'] = (string) $parsed_link['path'];
     }
 
     return rest_ensure_response( $post_data );
