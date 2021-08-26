@@ -20,18 +20,22 @@ call to action shortcode render
           <a <?php echo ( !empty( $a['url'] ) && (empty($a['is_modal'] ) ) ) ?  "href=" . $a['url'] : "" ?> class="button <?php echo ( !empty($a['external']) || !empty($a['modal_icon']) ) ? 'icon ' : '';?> clearfix float-right"
             <?php echo ( !empty($a['is_modal'] ) && ( empty( $a['url'] ) ) ) ? "data-open=action-modal" : "" ?>>
             <?php if ( !empty( $a['link_text'] ) ) :?>
-            <div class="valign">
-              <?php if ( $a['external'] == 1 ) :?>
-                <i class="fas fa-external-link-alt valign-cell" aria-hidden="true"></i>
-                <span class="accessible">External link</span>
-              <?php elseif (!empty( $a['modal_icon'] ) ) :?>
-                <i class="fa <?php echo $a['modal_icon'] ?> valign-cell" aria-hidden="true"></i>
-                <span class="accessible">Open modal</span>
-              <?php endif; ?>
-                <span class="button-label valign-cell">
-                  <?php echo $a['link_text']?>
+              <span class="valign">
+                <?php if ( $a['external'] == 1 ) :?>
+                  <i class="fas fa-external-link-alt valign-cell" aria-hidden="true"></i>
+                  <span class="accessible">External link</span>
+                  <span class="button-label valign-cell">
+                    <?php echo $a['link_text']?>
+                  </span>
+                <?php elseif (!empty( $a['modal_icon'] ) ) :?>
+                  <i class="fa <?php echo $a['modal_icon'] ?> valign-cell" aria-hidden="true"></i>
+                  <span class="accessible">Open modal</span>
+                <?php else :?>
+                  <span class="valign-cell">
+                    <?php echo $a['link_text']?>
+                  </span>
+                  <?php endif; ?>
                 </span>
-              </div>
             </a>
           </div>
         </div>
