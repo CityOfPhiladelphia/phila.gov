@@ -56,7 +56,7 @@ module.exports = jQuery(document).ready(function($) {
 
     if ( item.tags === 'wordpress' || item.tags === 'app' ) {
       if(item.content_type  === 'programs') {
-        view.contentType = 'Program'
+        view.contentType = 'Program and initiative'
         view.icon = 'fas fa-info-circle'
       }else if(item.content_type === 'post' || item.content_type === 'press_release' || item.content_type === 'news' || item.content_type === 'phila_post' || item.content_type === 'news_post'){
         view.contentType = 'News & events'
