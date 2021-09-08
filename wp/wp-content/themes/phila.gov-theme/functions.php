@@ -198,7 +198,11 @@ function phila_filter_title( $title ){
 
     }elseif($post_type->name == 'service_page') {
 
-      $title['title'] = $page_title . $sep . 'Service' . $sep . $site_title;
+      $title['title'] = $page_title . $sep . 'Services' . $sep . $site_title;
+    
+    }elseif($post_type->name == 'programs') {
+
+      $title['title'] = $page_title . $sep . 'Programs and initiatives' . $sep . $site_title;
 
     }else{
 
