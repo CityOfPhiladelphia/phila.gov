@@ -10,9 +10,6 @@
 
 <?php
   $services_list = rwmb_meta( 'phila_v2_homepage_services' );
-  if ( count( $services_list ) == 0 ) {
-    $services_list = isset( $current_row['phila_full_options']['phila_services']['phila_v2_homepage_services'] ) ? $current_row['phila_full_options']['phila_services']['phila_v2_homepage_services'] : '';
-  }
   $services = phila_loop_clonable_metabox( $services_list );
 ?>
 <?php if ( !empty( $services ) ) :?>
@@ -62,13 +59,7 @@
     </div>
   </div>
 </div>
-<?php 
-  $all_services = rwmb_meta( 'phila_v2_service_link' );
-  if ( $all_services == '' ) {
-    $all_services = isset( $current_row['phila_full_options']['phila_services']['phila_v2_service_link'] ) ? $current_row['phila_full_options']['phila_services']['phila_v2_service_link'] : '';
-  }
-  
-?>
+<?php $all_services = rwmb_meta( 'phila_v2_service_link' ); ?>
 <?php if ( $all_services != '' ) :?>
 
   <div class="row mtm">
