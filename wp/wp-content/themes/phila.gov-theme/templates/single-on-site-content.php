@@ -135,6 +135,7 @@ HTML;
       break;
 
     case 'homepage_v3':
+      include(locate_template('partials/departments/v2/our-services.php'));
       get_template_part( 'partials/departments/content', 'programs-initiatives' );
       break;
 
