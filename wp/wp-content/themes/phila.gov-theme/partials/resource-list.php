@@ -58,7 +58,7 @@
       <div class="grid-x grid-padding-x mbxl <?php if( $item_count > 1 ) echo 'equal-height' ?>">
 
       <div class="cell">
-          <h2 class="h3">Featured <?php echo strtolower(the_title()) ?></h2>
+        <h2 class="h3">Featured <?php echo strtolower( get_the_title() ) ?></h2>
       </div>
 
         <?php
@@ -99,7 +99,7 @@
       <div class="grid-container">
         <section class="grid-x">
           <div class="cell">
-            <h2 class="h3 ptn">All <?php echo strtolower(the_title()) ?></h2>
+            <h2 class="h3 ptn">All <?php echo strtolower( get_the_title() ) ?></h2>
           </div>
         </section>
       <hr class="man" />
