@@ -77,7 +77,6 @@ function register_template_selection_metabox_departments( $meta_boxes ){
           'when' => array(
             array('phila_template_select', '=', 'homepage_v2' ),
             array('phila_template_select', '=', 'homepage_v3' ),
-            array('phila_template_select', '=', 'one_quarter_headings_v2' ),
             array('phila_template_select', '=', 'contact_us_v2' ),
             array('phila_template_select', '=', 'all_services_v2' ),
             array('phila_template_select', '=', 'all_programs_v2' ),
