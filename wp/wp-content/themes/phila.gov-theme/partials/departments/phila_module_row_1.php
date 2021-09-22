@@ -66,7 +66,7 @@ if ( !empty( $row_one_col_two_module ) ){
     <!-- End Column One -->
   <?php endif; ?>
   <?php if ( $row_one_col_two_type  == 'phila_module_row_1_col_2_connect_panel' ): ?>
-    <?php if ($user_selected_template == 'homepage_v2' && $user_selected_template == 'homepage_v3') : ?>
+    <?php if ($user_selected_template == 'homepage_v2') : ?>
       <?php get_template_part( 'partials/departments/v2/content', 'connect' ); ?>
     <?php else: ?>
       <?php

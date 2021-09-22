@@ -786,16 +786,25 @@ function phila_register_meta_boxes( $meta_boxes ){
             'id'    => 'phila_action_section_title_multi',
             'type'  => 'text',
           ),
+          array(
+            'name'  =>  'See all title (optional)',
+            'id'    => 'phila_url_title',
+            'type'  => 'text',
+          ),
+          array(
+            'name'  =>  'See all URL (optional)',
+            'id'    => 'phila_url',
+            'type'  => 'url',
+          ),
 
-        array(
-          'id'  => 'phila_call_to_action_multi_group',
-          'type' => 'group',
-          'clone'  => true,
-          'max_clone' => 4,
-          'sort_clone' => true,
+          array(
+            'id'  => 'phila_call_to_action_multi_group',
+            'type' => 'group',
+            'clone'  => true,
+            'max_clone' => 4,
+            'sort_clone' => true,
 
-          'fields' =>
-            Phila_Gov_Standard_Metaboxes::phila_call_to_action_group_content()
+            'fields' => Phila_Gov_Standard_Metaboxes::phila_call_to_action_group_content()
           ),
         ),
       ),
@@ -1166,8 +1175,13 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'title' => 'Our services',
   'pages'    => array( 'department_page', 'programs' ),
-  'include' => array(
-    'custom' => 'is_our_services',
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+        array('phila_template_select', '=', 'homepage_v3'),
+        array('phila_template_select', '=', 'prog_landing_page')
+      ),
+    'relation'  => 'or'
   ),
   'fields' => Phila_Gov_Standard_Metaboxes::phila_our_services(),
 );
@@ -1237,8 +1251,13 @@ $meta_boxes[] = array(
 $meta_boxes[] = array(
   'title' => 'Disclaimer Modal',
   'pages'    => array( 'department_page', 'programs' ),
-  'include' => array(
-    'custom' => 'is_disclaimer_modal',
+  'visible' => array(
+    'when'  =>  array(
+        array('phila_template_select', '=', 'homepage_v2'),
+        array('phila_template_select', '=', 'homepage_v3'),
+        array('phila_template_select', '=', 'prog_landing_page')
+      ),
+    'relation'  => 'or'
   ),
   'fields' => Phila_Gov_Standard_Metaboxes::phila_disclaimer_modal(),
 );
