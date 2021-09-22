@@ -21,6 +21,7 @@ class Phila_Gov_Row_Select_Options {
     'options' => array(
       'phila_grid_options_full' => 'Full Width',
       'phila_grid_options_thirds' => '2/3 x 1/3',
+      'phila_grid_options_quarters' => '1/4 x 3/4',
       ),
     );
   }
@@ -39,18 +40,18 @@ class Phila_Gov_Row_Select_Options {
         'phila_full_width_calendar' => 'Calendar',
         'phila_full_cta'  => 'Call to action (single, full)',
         'phila_resource_list' => 'Call to action (multiple)',
-        'phila_callout' => 'Callout',
+       // 'phila_callout' => 'Callout' - doesn't need to be an option - this can be added through a shortcode and "custom text"
         'phila_custom_text' => 'Custom text',
         'phila_custom_text_multi' => 'Custom text (multiple)',
-        'phila_faq' => 'FAQ',
+        //'phila_faq' => 'FAQ', can move to 1/4
         'phila_prereq' => 'FAQ list with icon (prereq approval style)',
-        'phila_feature_p_i' => 'Featured page content',
+        //'phila_feature_p_i' => 'Featured page content', no longer used, remove
         'phila_get_involved' => 'Get Involved',
         'phila_image_list' => 'Image list',
         'phila_content_heading_group' => 'Heading group',
-        'phila_heading_one_quarter_select' => '1/4 Heading group',
+        //'phila_heading_one_quarter_select' => '1/4 Heading group', move to new 1/4 template 
         'phila_list_items' => 'List items (grid)',
-        'phila_location_list' => 'Location List',
+        //'phila_location_list' => 'Location List', literally only used once for rebuild
         'phila_photo_callout' => 'Photo callout',
         'phila_full_width_press_releases' => 'Press Releases',
         'phila_programs'  => 'Program cards',
@@ -84,6 +85,20 @@ class Phila_Gov_Row_Select_Options {
       ),
     );
   }
+    // 2/3 x 1/3 Options
+    public static function phila_metabox_quarter_options( ){
+
+      return array(
+        'name' => '1/4 x 3/4 Options',
+        'id'   => 'phila_one_quarter_options',
+        'type' => 'group',
+        'revision' => true,
+
+        'fields' => array(
+          
+        ),
+      );
+    }
   
   public static function phila_metabox_tabbed_select(){
     return array(
