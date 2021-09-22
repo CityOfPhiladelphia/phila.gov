@@ -139,7 +139,7 @@
         </button>
         <div class="mtl"><?php echo do_shortcode($modal_content) ?></div>
       </div>
-      <div class="phm-mu"><a data-open="<?php echo sanitize_title_with_dashes($modal_link_text)?>"><i class="fas fa-info-circle"></i> <?php echo $modal_link_text ?></a></div>
+      <div class="phm-mu"><button class="link" data-open="<?php echo sanitize_title_with_dashes($modal_link_text)?>"><i class="fas fa-info-circle"></i> <?php echo $modal_link_text ?></button></div>
     <?php endif ?>
   </section>
 </div>
