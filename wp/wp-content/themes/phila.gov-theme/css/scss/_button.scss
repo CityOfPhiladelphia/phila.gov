@@ -60,6 +60,7 @@ button.link,
   text-transform: none;
   padding: 0;
   letter-spacing: 0;
+  text-decoration: underline;
   &:hover {
     color: color(dark-gray);
     background: transparent;
