@@ -86,45 +86,7 @@ class Phila_Gov_Admin_Templates {
       'id'       => 'service_template_selection',
       'title'    => 'Service page options',
       'post_types'    => array( 'service_page' ),
-      'context'  => 'after_title',
-
-      'fields' => array(
-        array(
-          'id'  => 'phila_template_select',
-          'type'  => 'select',
-          'options' => array(
-            'default_v2'  => 'Default',
-            'custom_content'  => 'Default (2020)',
-            'default'   => 'Generic (old default)',
-            'tax_detail' => 'Tax detail',
-            'start_process' => 'Start a process',
-            'topic_page' => 'Topic page',
-            'service_stub' => 'Service stub',
-            'vue_app'     => 'Vue app',
-          ),
-          'admin_columns' => array(
-            'position' => 'after date',
-            'title'    => __( 'Template' ),
-            'sort'     => true,
-          ),
-        ),
-        array(
-          'type'  => 'heading',
-          'name' => 'Alternate title',
-          'exclude' => array(
-            'custom' => 'is_service_stub',
-          ),
-        ),
-        array(
-          'id'  => 'phila_service_alt_title',
-          'type'  => 'text',
-          'desc' => 'Enter an alternate title for this service. This will appear in place of the page title on alphabetical lists of services.',
-          'size'  => 100,
-          'exclude' => array(
-            'custom' => 'is_service_stub',
-          ),
-        )
-      ),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_service_template_select_fields()
     );
 
     return $meta_boxes;
@@ -135,26 +97,7 @@ class Phila_Gov_Admin_Templates {
     $meta_boxes[] = array(
       'title'    => 'Select Template',
       'post_types'    => array( 'post' ),
-      'context'  => 'after_title',
-      'fields' => array(
-        array(
-          'placeholder'  => 'Select a template',
-          'id'  => 'phila_template_select',
-          'type'  => 'select',
-          'required'  => true,
-          'options' => array(
-            'post'   => 'Post',
-            'press_release' => 'Press Release',
-            'action_guide'  => 'Action Guide',
-            'action_guide_2'  => 'Action Guide V2'
-          ),
-          'admin_columns' => array(
-            'position' => 'after date',
-            'title'    => __( 'Template' ),
-            'sort'     => true,
-          ),
-        ),
-      ),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_post_template_select_fields()
     );
 
 

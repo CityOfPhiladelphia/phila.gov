@@ -1658,4 +1658,283 @@ public static function phila_get_service_updates( ){
 
 }
 
+public static function phila_department_template_select_fields( ){
+
+  return array(
+    array(
+      'id'    => 'phila_template_select',
+      'type'  => 'select',
+      'class' => 'template-select',
+      'clone' => false,
+      'placeholder'  => 'Select a template',
+      'options' => array(
+        'homepage_v2'             => 'Homepage',
+        'homepage_v3'             => 'Homepage 2021',
+        'default'                 => 'Default',
+        'repeating_rows'          => 'Repeating rows',
+        'one_quarter_headings_v2' => '1/4 headings',
+        'all_programs_v2'         => 'All programs',
+        'all_services_v2'         => 'All services',
+        'collection_page_v2'      => 'Collection page',
+        'contact_us_v2'           => 'Contact us',
+        'document_finder_v2'      => 'Document finder',
+        'forms_and_documents_v2'  => 'Forms & documents',
+        'child_index'             => 'List of child pages',
+        'off_site_department'     => 'Off-site department',
+        'our-locations'           => 'Our locations',
+        'resource_list_v2'        => 'Resource list',
+        'staff_directory_v2'      => 'Staff directory',
+        'department_stub'         => 'Stub',
+        'prog_association'        => 'Subpage with association',
+        'things-to-do'            => 'Things to do',
+        'timeline'                => 'Timeline',
+
+        ),
+        'admin_columns' => array(
+          'position' => 'after date',
+          'title'    => __( 'Template' ),
+          'sort'     => true,
+        ),
+    ),
+    array(
+      'name'  => 'Should this page appear in the City government directory?',
+      'id'    => 'phila_department_home_page',
+      'class' => 'hide-from-non-admin hide-on-load',
+      'type'  => 'switch',
+      'on_label'  => 'Yes',
+      'off_label' => 'No',
+      'include' => array(
+        'user_role'  => array( 'administrator', 'editor', 'primary_department_homepage_editor' ),
+      ),
+      'hidden' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'homepage_v2' ),
+          array('phila_template_select', '=', 'homepage_v3' ),
+          array('phila_template_select', '=', 'contact_us_v2' ),
+          array('phila_template_select', '=', 'all_services_v2' ),
+          array('phila_template_select', '=', 'all_programs_v2' ),
+          array('phila_template_select', '=', 'forms_and_documents_v2' ),
+          array('phila_template_select', '=', 'resource_list_v2' ),
+          array('phila_template_select', '=', 'staff_directory_v2' ),
+        ),
+        'relation' => 'or'
+      ),
+    ),
+    array(
+      'id' => 'phila_template_select_staff',
+      'class' => 'hide-on-load',
+      'type' => 'custom_html',
+      'std' => 'Visit <a href="/wp-admin/edit.php?post_type=staff_directory">staff members</a> section to add/edit staff.',
+      'visible' => array(
+        'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
+      )
+    ),
+    array(
+      'id'  => 'full_list',
+      'class' => 'hide-on-load',
+      'name'  => 'Display a list of every staff member assigned to this owner?',
+      'desc'  => 'Choosing this option will display all staff in a table regardless of unit and leadership assignment.',
+      'type' => 'switch',
+      'on_label'  => 'Yes',
+      'off_label' => 'No',
+      'visible' => array(
+        'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
+      )
+    ),
+    array(
+      'id'  => 'units',
+      'class' => 'hide-on-load',
+      'name'  => 'Display staff grouped by the following units?',
+      'type' => 'unit',
+      'visible' => array(
+        'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
+      )
+    ),
+    array(
+      'id'  => 'anchor_list',
+      'class' => 'hide-on-load',
+      'name'  => 'Add anchor links to each unit at the top of this page?',
+      'type' => 'switch',
+      'on_label'  => 'Yes',
+      'off_label' => 'No',
+        'visible' => array(
+        'phila_template_select', 'in', ['staff_directory_v2','staff_directory']
+      )
+    ),
+  );
+}
+
+public static function phila_program_template_select_fields( ){
+  return array(
+    array(
+      'desc'  => '',
+      'id'    => 'phila_template_select',
+      'type'  => 'select',
+      'class' => 'template-select',
+      'clone' => false,
+      'placeholder'  => 'Select a template',
+      'required' => true,
+
+      'options' => array(
+        'prog_landing_page'  => 'Homepage',
+        'phila_one_quarter'    => '1/4 Headings (subpage)',
+        'collection_page_v2'   => 'Collection page',
+        'covid_guidance'   =>  'Covid guidance',
+        'document_finder_v2'   =>  'Document finder',
+        'child_index'   => 'List of child pages',
+        'prog_off_site' => 'Off-site program',
+        'resource_list_v2'  => 'Resource list',
+        'stub'              => 'Stub',
+        'prog_association'  => 'Subpage with association',
+        'timeline'   =>  'Timeline',
+        'translated_content'   =>  'Translated content',
+      ),
+      'admin_columns' => array(
+        'position' => 'after date',
+        'title'    => __( 'Template' ),
+        'sort'     => true,
+      ),
+    ),
+  );
+}
+
+public static function phila_guide_template_select_fields( ){
+  return array(
+    array(
+      'name'  => 'Select template',
+      'desc'  => '',
+      'id'    => 'phila_template_select',
+      'type'  => 'select',
+      'class' => 'template-select',
+      'clone' => false,
+      'placeholder'  => 'Select a template',
+      'required' => true,
+      'options' => array(
+        'guide_landing_page'  => 'Homepage',
+        'guide_sub_page'    => 'Subpage',
+        'guide_resource_page' => 'Resource page'
+      ),
+      'admin_columns' => array(
+        'position' => 'after date',
+        'title'    => __( 'Template' ),
+        'sort'     => false,
+      ),
+    ),
+    array(
+      'name'  => 'Social intent',
+      'type' => 'textarea',
+      'required'  => true,
+      'id'  => 'phila_social_intent',
+      'limit' => 256,
+      'desc'  => 'Curate Tweet sharing text. Required. 256 character limit.  A link to this page will be automatically added. <br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
+      'hidden' => array(
+        'when' => array(
+          array('phila_template_select', '!=', 'guide_landing_page'),
+        ),
+      ),
+    ),
+    array(
+      'id' => 'guide_page_icon',
+      'type' => 'text',
+      'name'  => 'Page icon',
+      'desc'  => 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon to represent this page. E.g.: fas fa-bell.',
+      'columns' => 6,
+    ),
+    array(
+      'id' => 'guide_landing_page_title',
+      'type' => 'text',
+      'name'  => 'Name of this page',
+      'desc'  => 'Defaults to "Overview" if left empty',
+      'columns' => 6,
+      'std' => 'Overview',
+      'hidden' => array(
+        'when' => array(
+          array('phila_template_select', '!=', 'guide_landing_page'),
+        ),
+      ),
+    ),
+    array(
+      'name'          => 'Color picker',
+      'id'            => 'guide_color_picker',
+      'type'          => 'color',
+      'descripion'    => 'Choose a color to represent this page in navigation',
+      'columns' => 6,
+      'js_options'    => array(
+        'palettes' => array( '#26cef8', '#58c04d', '#9400c6', '#0f4d90', '#dd2662' )
+      ),
+      'hidden' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'guide_landing_page'),
+        ),
+      ),
+    ),
+  );
+}
+
+public static function phila_post_template_select_fields( ){
+  return array(
+    array(
+      'placeholder'  => 'Select a template',
+      'id'  => 'phila_template_select',
+      'type'  => 'select',
+      'required'  => true,
+      'options' => array(
+        'post'   => 'Post',
+        'press_release' => 'Press Release',
+        'action_guide'  => 'Action Guide',
+        'action_guide_2'  => 'Action Guide V2'
+      ),
+      'admin_columns' => array(
+        'position' => 'after date',
+        'title'    => __( 'Template' ),
+        'sort'     => true,
+      ),
+    ),
+  );
+}
+
+public static function phila_service_template_select_fields( ){
+  return array(
+    array(
+      'id'  => 'phila_template_select',
+      'type'  => 'select',
+      'options' => array(
+        'default_v2'  => 'Default',
+        'custom_content'  => 'Default (2020)',
+        'default'   => 'Generic (old default)',
+        'tax_detail' => 'Tax detail',
+        'start_process' => 'Start a process',
+        'topic_page' => 'Topic page',
+        'service_stub' => 'Service stub',
+        'vue_app'     => 'Vue app',
+      ),
+      'admin_columns' => array(
+        'position' => 'after date',
+        'title'    => __( 'Template' ),
+        'sort'     => true,
+      ),
+    ),
+    array(
+      'type'  => 'heading',
+      'name' => 'Alternate title',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '!=', 'service_stub'),
+        ),
+      ),
+    ),
+    array(
+      'id'  => 'phila_service_alt_title',
+      'type'  => 'text',
+      'desc' => 'Enter an alternate title for this service. This will appear in place of the page title on alphabetical lists of services.',
+      'size'  => 100,
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '!=', 'service_stub'),
+        ),
+      ),
+    )
+  );
+}
+
 }//end Class

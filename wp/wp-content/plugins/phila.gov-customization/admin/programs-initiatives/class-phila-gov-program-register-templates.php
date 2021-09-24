@@ -21,39 +21,8 @@ class Phila_Gov_Register_Program_Templates {
       'id'       => 'template_selection',
       'title'    => 'Select Template',
       'pages'    => array( 'programs' ),
-      'context'  => 'after_title',
 
-      'fields' => array(
-        array(
-          'desc'  => '',
-          'id'    => 'phila_template_select',
-          'type'  => 'select',
-          'class' => 'template-select',
-          'clone' => false,
-          'placeholder'  => 'Select a template',
-          'required' => true,
-
-          'options' => array(
-            'prog_landing_page'  => 'Homepage',
-            'phila_one_quarter'    => '1/4 Headings (subpage)',
-            'collection_page_v2'   => 'Collection page',
-            'covid_guidance'   =>  'Covid guidance',
-            'document_finder_v2'   =>  'Document finder',
-            'child_index'   => 'List of child pages',
-            'prog_off_site' => 'Off-site program',
-            'resource_list_v2'  => 'Resource list',
-            'stub'              => 'Stub',
-            'prog_association'  => 'Subpage with association',
-            'timeline'   =>  'Timeline',
-            'translated_content'   =>  'Translated content',
-          ),
-          'admin_columns' => array(
-            'position' => 'after date',
-            'title'    => __( 'Template' ),
-            'sort'     => true,
-          ),
-        ),
-      ),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_program_template_select_fields()
     );
 
     $meta_boxes[] = array(
