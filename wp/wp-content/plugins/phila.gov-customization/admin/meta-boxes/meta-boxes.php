@@ -1261,6 +1261,24 @@ $meta_boxes[] = array(
   ),
 );
 
+$meta_boxes[] = array(
+  'title'    => 'Select Template',
+  'pages'    => array( 'department_page' ),
+  'fields'   => Phila_Gov_Standard_Metaboxes::phila_department_template_select_fields()
+);
+
+$meta_boxes[] = array(
+  'title'    => 'Select Template',
+  'pages'    => array( 'post' ),
+  'fields'   => Phila_Gov_Standard_Metaboxes::phila_post_template_select_fields()
+);
+
+$meta_boxes[] = array(
+  'title'    => 'Select Template',
+  'pages'    => array( 'service_page' ),
+  'fields'   => Phila_Gov_Standard_Metaboxes::phila_service_template_select_fields()
+);
+
 return $meta_boxes;
 
 }
