@@ -4,10 +4,20 @@ add_filter( 'rwmb_meta_boxes', 'phila_register_department_contact_us' );
 
 function phila_register_department_contact_us( $meta_boxes ){
 
+  function is_contact_us_v2() {
+    if( isset($_GET['post']) === true && 
+      ( phila_get_selected_template($_GET['post']) == 'contact_us_v2' ) )
+      return true;
+    return false;
+  }
+
   $meta_boxes[] = array(
+    'id' => 'contact_us',
     'title' => 'Contact us',
     'pages' => array('department_page'),
-    'visible' => array( 'phila_template_select', 'contact_us_v2' ),
+    'include' => array(
+      'custom' => 'is_contact_us_v2',
+    ),
 
     'fields' => array(
       array(

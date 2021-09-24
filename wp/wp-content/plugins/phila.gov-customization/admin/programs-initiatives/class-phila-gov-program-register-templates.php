@@ -26,13 +26,12 @@ class Phila_Gov_Register_Program_Templates {
     );
 
     $meta_boxes[] = array(
+      'id' => 'program_link',
       'title' => 'Program link',
       'type'  => 'URL',
       'pages' => array( 'programs' ),
-      'visible' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'prog_off_site' )
-        ),
+      'include' => array(
+        'custom' => 'is_program_link',
       ),
       'fields' => array(
         array(
@@ -45,21 +44,22 @@ class Phila_Gov_Register_Program_Templates {
       ),
     );
 
+    function is_program_link() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'prog_off_site' ) )
+        return true;
+      return false;
+    }
+
     $meta_boxes[] = array(
       'id'       => 'phila_header',
       'title'    => 'Program images',
       'pages' => array( 'programs' ),
       'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'prog_landing_page' ),
-          array( 'phila_template_select', '=', 'prog_off_site' ),
-        ),
-        'relation'  => 'or'
-      ),
       'include' => array(
         'user_role'  => array( 'administrator', 'phila_master_homepage_editor', 'editor' ),
-        'relation' => 'or',
+        'custom' => 'is_phila_header',
+        'relation' => 'and',
       ),
       'fields' => array(
         array(
@@ -77,10 +77,8 @@ class Phila_Gov_Register_Program_Templates {
           'max_file_uploads' => 1,
           'desc'  => 'Required if subpages exist. Minimum size 700px by 500px.',
           'columns' => 3,
-          'hidden' => array(
-            'when' => array(
-              array( 'phila_template_select', '=', 'prog_off_site' ),
-            ),
+          'exclude' => array(
+            'custom' => 'is_prog_off_site',
           ),
         ),
         array(
@@ -90,10 +88,8 @@ class Phila_Gov_Register_Program_Templates {
           'desc'  => 'Optional. Image must be at least 600px wide.',
           'max_file_uploads' => 1,
           'columns' => 3,
-          'hidden' => array(
-            'when' => array(
-              array( 'phila_template_select', '=', 'prog_off_site' )
-            ),
+          'exclude' => array(
+            'custom' => 'is_prog_off_site',
           ),
         ),
         array(
@@ -103,11 +99,8 @@ class Phila_Gov_Register_Program_Templates {
           'desc'  => 'Optional. Appears in header. Must be white with no background.',
           'max_file_uploads' => 1,
           'columns' => 3,
-          'hidden' => array(
-            'when' => array(
-              array( 'phila_template_select', '=', 'prog_off_site' ),
-            ),
-            'relation'  => 'or'
+          'exclude' => array(
+            'custom' => 'is_prog_off_site',
           ),
         ),
         array(
@@ -118,18 +111,30 @@ class Phila_Gov_Register_Program_Templates {
       )
     );
 
+    function is_phila_header() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'prog_landing_page' ||
+          phila_get_selected_template($_GET['post']) == 'prog_off_site' ) )
+        return true;
+      return false;
+    }
+
+    function is_prog_off_site() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'prog_off_site' ) )
+        return true;
+      return false;
+    }
+
     $meta_boxes[] = array(
-      'id'       => 'phila_sub_association',
+      'id'       => 'phila_sub_association_content',
       'title'    => 'Association content',
       'pages' => array( 'programs', 'department_page' ),
       'priority' => 'high',
       'revision' => true,
-      'visible' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'prog_association' )
-        ),
+      'include' => array(
+        'custom' => 'is_phila_sub_association',
       ),
-
       'fields' => array(
         array(
           'id'    => 'prog_sub_head',
@@ -149,6 +154,13 @@ class Phila_Gov_Register_Program_Templates {
 
       )
     );
+
+    function is_phila_sub_association() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'prog_association' ) )
+        return true;
+      return false;
+    }
 
     $meta_boxes[] = array(
       'id'       => 'phila_program',
@@ -185,21 +197,45 @@ class Phila_Gov_Register_Program_Templates {
         ),
         'relation' => 'or',
       ),
-
       'fields' => array(
         Phila_Gov_Row_Metaboxes::phila_metabox_grid_row(),
       )
     );
+
+    function is_phila_program() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'child_index' ||
+          phila_get_selected_template($_GET['post']) == 'collection_page_v2' ||
+          phila_get_selected_template($_GET['post']) == 'contact_us_v2' ||
+          phila_get_selected_template($_GET['post']) == 'custom_content' ||
+          phila_get_selected_template($_GET['post']) == 'default' ||
+          phila_get_selected_template($_GET['post']) == 'default_v2' ||
+          phila_get_selected_template($_GET['post']) == 'document_finder_v2' ||
+          phila_get_selected_template($_GET['post']) == 'homepage_v2' ||
+          phila_get_selected_template($_GET['post']) == 'one_quarter_headings_v2' ||
+          phila_get_selected_template($_GET['post']) == 'our-locations' ||
+          phila_get_selected_template($_GET['post']) == 'phila_one_quarter' ||
+          phila_get_selected_template($_GET['post']) == 'prog_association' ||
+          phila_get_selected_template($_GET['post']) == 'prog_landing_page' ||
+          phila_get_selected_template($_GET['post']) == 'repeating_rows' ||
+          phila_get_selected_template($_GET['post']) == 'service_stub' ||
+          phila_get_selected_template($_GET['post']) == 'staff_directory_v2' ||
+          phila_get_selected_template($_GET['post']) == 'start_process' ||
+          phila_get_selected_template($_GET['post']) == 'stub' ||
+          phila_get_selected_template($_GET['post']) == 'things-to-do' ||
+          phila_get_selected_template($_GET['post']) == 'topic_page' ||
+          phila_get_selected_template($_GET['post']) == 'vue_app' ) )
+        return true;
+      return false;
+    } 
 
     $meta_boxes[] = array(
       'title' => 'Stub',
       'pages' => array('programs'),
       'context' => 'after_title',
       'priority' => 'low',
-      'visible' => array(
-        'when'  => array(
-          array('phila_template_select', '=', 'stub'),
-        ),
+      'include' => array(
+        'custom' => 'is_stub',
       ),
       'revision' => true,
     
@@ -224,6 +260,13 @@ class Phila_Gov_Register_Program_Templates {
         )
       )
     );
+
+    function is_stub() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'stub' ) )
+        return true;
+      return false;
+    }
 
     return $meta_boxes;
   }

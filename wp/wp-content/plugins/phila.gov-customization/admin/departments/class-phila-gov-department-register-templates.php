@@ -30,6 +30,7 @@ function register_template_selection_metabox_departments( $meta_boxes ){
   );
 
     return $meta_boxes;
+
   }
 
 }
