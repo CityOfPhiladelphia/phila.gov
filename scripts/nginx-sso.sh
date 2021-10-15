@@ -9,5 +9,5 @@ if test -f "$FILE"; then
 
 location /wp-login {
   return 301 '$SSO_LOGIN';
-}" > '/etc/nginx/server.d/sso.conf'
+}" > '/home/ubuntu/app/nginx/server.d/sso.conf'
 fi
