@@ -29,7 +29,7 @@
     <meta class="swiftype" name="published_at" data-type="date" content="<?php echo get_the_time('c', $post->ID); ?>" />
   <?php endif; ?>
 
-  <link rel="shortcut icon" type="image/x-icon" href="//cityofphiladelphia.github.io/patterns/images/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="//www.phila.gov/assets/images/favicon.ico">
 
   <?php wp_head(); ?>
 
@@ -123,7 +123,7 @@
               <div class="small-16 medium-6 columns valign small-push-4 medium-push-0">
                 <div class="valign-cell">
                   <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia">
-                    <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia.png" alt="City of Philadelphia">
+                    <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//www.phila.gov/assets/images/city-of-philadelphia.png" alt="City of Philadelphia">
                   </a>
                 </div>
               </div>
