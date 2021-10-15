@@ -21,5 +21,4 @@ if [ "$PHILA_TEST" ]; then
   $_dir/wp-config.sh
   $_dir/db-config.sh
   $_dir/local-db.sh
-  $_dir/nginx-sso.sh
 fi
