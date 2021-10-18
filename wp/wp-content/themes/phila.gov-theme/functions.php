@@ -2197,3 +2197,9 @@ function set_environment() {
 }
 
 add_action('init', 'set_environment');
+
+add_action('wp_logout', function()
+{
+    wp_redirect(get_home_url());
+    exit;
+});
