@@ -82,7 +82,7 @@ if (isset( $tag )) {
 
 <?php if(count($unique_langs) > 1) : ?>
   <div class="translated-headings">
-    <h2>Press Releases</h2>
+    <h2 id="press-releases">Press Releases</h2>
     <ul class="translated-list">
     <?php foreach ($unique_langs as $lang): ?>
         <?php if ($lang === 'english') : 
@@ -158,6 +158,6 @@ if (isset( $tag )) {
     </ul>
   </div>
   <?php else: ?>
-    <h2>Press Releases</h2>
+    <h2 id="press-releases">Press Releases</h2>
   <?php endif; ?>  
   <?php wp_reset_postdata();?>

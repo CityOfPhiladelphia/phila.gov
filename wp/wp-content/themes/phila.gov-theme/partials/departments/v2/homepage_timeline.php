@@ -39,7 +39,7 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
     <div class="grid-x">
       <div class="cell">
         <?php if (isset($timeline_title)) { ?>
-          <h2 class="contrast"><?php echo $timeline_title; ?></h2>
+          <h2 id="<?php echo strtolower(str_replace(' ', '-', $timeline_title)); ?>" class="contrast"><?php echo $timeline_title; ?></h2>
         <?php } ?>
         <?php 
           $h = 0;
