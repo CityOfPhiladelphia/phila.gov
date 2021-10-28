@@ -1,5 +1,3 @@
-var postscribe = require('postscribe');
-
 module.exports = $(function(){
   /* Async loaded feedback forms */
 
