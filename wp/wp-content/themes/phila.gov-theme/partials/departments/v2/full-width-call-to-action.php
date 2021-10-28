@@ -19,7 +19,7 @@
         <div class="grid-x align-middle">
           <div class="small-24 medium-18 cell">
             <?php if ( !empty( $link['title'] ) ) : ?>
-              <h3 id="<?php echo strtolower(str_replace(' ', '-', $link['title'])); ?>" class="mbn"><?php echo $link['title'] ?></h3>
+              <h3 id="<?php echo sanitize_title_with_dashes( $link['title']); ?>" class="mbn"><?php echo $link['title'] ?></h3>
             <?php endif; ?>
             <?php if ( !empty( $link['description'] ) ) : ?>
               <p class="mts"><?php echo $link['description'] ?></p>

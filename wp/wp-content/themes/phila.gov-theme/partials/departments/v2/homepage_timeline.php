@@ -39,7 +39,7 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
     <div class="grid-x">
       <div class="cell">
         <?php if (isset($timeline_title)) { ?>
-          <h2 id="<?php echo strtolower(str_replace(' ', '-', $timeline_title)); ?>" class="contrast"><?php echo $timeline_title; ?></h2>
+          <h2 id="<?php echo sanitize_title_with_dashes( $timeline_title); ?>" class="contrast"><?php echo $timeline_title; ?></h2>
         <?php } ?>
         <?php 
           $h = 0;
@@ -60,7 +60,7 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
               $i = 0;
             ?>
             <?php foreach($month_list as $month) { ?>
-              <span class="month-link"><a href="#<?php echo strtolower(str_replace(' ', '-', $month));?>"><?php echo $month; ?></a></span>
+              <span class="month-link"><a href="#<?php echo sanitize_title_with_dashes($month);?>"><?php echo $month; ?></a></span>
               <?php echo (++$i !== $numItems) ? '<span class="pipe"> |</>' : null; ?>
             <?php } ?>
           </div>
@@ -74,7 +74,7 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
               <?php $item_date = $item['phila_timeline_item_timestamp']; ?>
               <?php if( DateTime::createFromFormat('m-d-Y', $item['phila_timeline_item_timestamp'])->format($date_type) != $temp_month ) { ?>
                 <?php $temp_month = DateTime::createFromFormat('m-d-Y', $item_date)->format($date_type); ?>
-                <div class="month-label medium-6 columns" id="<?php echo strtolower(str_replace(' ', '-', $temp_month));?>">
+                <div class="month-label medium-6 columns" id="<?php echo sanitize_title_with_dashes( $temp_month);?>">
                   <div>
                     <span ><?php echo $temp_month; ?></span>
                   </div>

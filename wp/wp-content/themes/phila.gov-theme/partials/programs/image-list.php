@@ -30,7 +30,7 @@
     <div class="grid-x">
       <div class="cell">
         <header>
-          <h2 class="contrast"><?php echo $image_list_vars['title']?></h2>
+          <h2 id="<?php echo sanitize_title_with_dashes( $image_list_vars['title']); ?>" class="contrast"><?php echo $image_list_vars['title']?></h2>
           <?php echo !empty( $image_list_vars['sub_title'] ) ? '<h3>' .  $image_list_vars['sub_title'] . '</h3>' : '';  ?>
         </header>
       </div>
