@@ -41,7 +41,7 @@ if (phila_get_selected_template() === 'homepage_v2') {
                           <?php if ( !empty( $icon ) ) : ?>
                               <i class="<?php echo $icon ?> valign-cell fa-3x" aria-hidden="true"></i>
                           <?php endif; ?>
-                          <h2 id="<?php echo strtolower(str_replace(' ', '-', $header)); ?>" class="h2 photo-callout-block__txt-header callout-photo-toggle-false"><?php echo $header ?></h2>
+                          <h2 id="<?php echo sanitize_title_with_dashes( $header); ?>" class="h2 photo-callout-block__txt-header callout-photo-toggle-false"><?php echo $header ?></h2>
                           <?php if($btnLink): ?>
                               <a href="<?php echo $btnLink ?>" class="photo-callout-block__txt-btn button icon callout-photo-toggle-false">
                                   <div class="button-label valign-cell"><?php echo $btnTxt ?></div>

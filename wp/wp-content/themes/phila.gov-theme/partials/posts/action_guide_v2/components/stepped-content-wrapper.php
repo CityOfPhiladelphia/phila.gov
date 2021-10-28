@@ -3,7 +3,7 @@
   <div class="medium-24 cell pbm">
     <div class="mbl">	
       <?php if( isset($current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title'] )): ?>	
-        <?php $current_row_id = strtolower(str_replace(' ', '-', $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title']));?>
+        <?php $current_row_id = sanitize_title_with_dashes( $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title']);?>
         <h4 id="<?php echo $current_row_id;?>" class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title']; ?></h4>	
       <?php endif;?>	
       <?php if( isset($current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_content'] )): ?>	
