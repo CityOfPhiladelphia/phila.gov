@@ -176,7 +176,7 @@ if ( $staff_member_loop->have_posts() ):
     <div class="row staff-leadership <?php if ( $user_selected_template == 'staff_directory') echo 'mbl'; ?>">
       <div class="large-24 columns">
         <?php if ( $user_selected_template == 'homepage_v2' || $user_selected_template == 'prog_association' || $user_selected_template == 'homepage_v3' ) : ?>
-          <h2 class="contrast leadership">Leadership</h2>
+          <h2 id="leadership" class="contrast leadership">Leadership</h2>
         <?php endif; ?>
         <?php if ( isset( $unit )  ) : ?>
           <h4 class="leadership">Leadership</h4>
@@ -208,7 +208,7 @@ if ( $staff_member_loop->have_posts() ):
           </div>
         <?php endif ?>
           <?php if ($user_selected_template != 'staff_directory' && $user_selected_template != 'staff_directory_v2') : ?>
-            <h2 class="contrast">Staff</h2>
+            <h2 id="staff" class="contrast">Staff</h2>
           <?php endif; ?>
           <table role="grid" class="<?php echo ( $all_staff == 1) ? 'staff-directory': 'staff' ?> responsive js-hide-empty">
             <thead>

@@ -3,7 +3,7 @@
   <div class="medium-24 cell pbm">
     <div class="mbl">	
       <?php if( isset($current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_title'] )): ?>	
-        <?php $current_row_id = strtolower(str_replace(' ', '-', $current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_title']));?>
+        <?php $current_row_id = sanitize_title_with_dashes( $current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_title']);?>
         <h4 id="<?php echo $current_row_id;?>" class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_title']; ?></h4>	
       <?php endif;?>	
       <?php if( isset($current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_content'] )): ?>	
@@ -25,7 +25,7 @@
                 <?php $item_date = $item['phila_timeline_item_timestamp']; ?>
                 <?php if( phila_translate_date($item_date, $language, 'month-year') != $temp_month ) { ?>
                   <?php $temp_month = phila_translate_date($item_date, $language, 'month-year'); ?>
-                  <div class="month-label medium-6 columns" id="<?php echo strtolower(str_replace(' ', '-', $temp_month));?>">
+                  <div class="month-label medium-6 columns" id="<?php echo sanitize_title_with_dashes( $temp_month);?>">
                     <div>
                       <span ><?php echo $temp_month; ?></span>
                     </div>
