@@ -15,7 +15,7 @@
 <?php if ( !empty( $services ) ) :?>
 <div class="row mtl services-section">
   <div class="columns">
-    <h2 class="services-title">Services</h2>
+    <h2 id="services" class="services-title">Services</h2>
     <div class="row" data-equalizer>
       <div class="columns small-collapse">
         <div class="row inside-border-group" data-equalizer>

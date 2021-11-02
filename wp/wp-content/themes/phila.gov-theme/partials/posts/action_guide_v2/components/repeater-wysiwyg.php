@@ -6,7 +6,7 @@
       <?php foreach( $step_content as $content ) :?>
         <div class="mbl">
           <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
-            <?php $current_row_id = strtolower(str_replace(' ', '-', $content['phila_custom_wysiwyg']['phila_wysiwyg_title']));?>
+            <?php $current_row_id = sanitize_title_with_dashes( $content['phila_custom_wysiwyg']['phila_wysiwyg_title']);?>
             <h4 id="<?php echo $current_row_id;?>" class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h4>
           <?php endif;?>
           <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_content'] )): ?>

@@ -10,7 +10,7 @@
     <div class="grid-container">
         <div class="grid-x grid-padding-x">
           <div class="cell small-24">
-            <h2 class="contrast"><?php echo $location_list_title ?></h2>
+            <h2 id="<?php echo sanitize_title_with_dashes( $location_list_title ); ?>" class="contrast"><?php echo $location_list_title ?></h2>
           </div>
       </div>
     </div>
