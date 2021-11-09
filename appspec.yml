@@ -19,7 +19,7 @@ hooks:
     - location: scripts/predeploy.sh
       runas: ubuntu
   AfterInstall:
-  - location: scripts/sso-conf.sh
+    - location: scripts/sso-conf.sh
       runas: ubuntu
     - location: scripts/deploy.sh
       runas: ubuntu
