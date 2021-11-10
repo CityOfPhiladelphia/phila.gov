@@ -37,8 +37,10 @@
                     <?php echo $link['link_text']?>
                   </span>
                 <?php elseif (!empty( $link['modal_icon'] ) ) :?>
+                  <span class="button-label valign-cell">
+                    <?php echo $link['link_text']?>
+                </span>
                   <i class="fa <?php echo $link['modal_icon'] ?> valign-cell" aria-hidden="true"></i>
-                  <span class="accessible">Open modal</span>
                 <?php else :?>
                   <span class="valign-cell">
                     <?php echo $link['link_text']?>
