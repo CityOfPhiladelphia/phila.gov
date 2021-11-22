@@ -1,10 +1,10 @@
 === MB Relationships ===
-Contributors: metabox, rilwis, truongwp, hsimah
+Contributors: metabox, rilwis, truongwp, hsimah, anhdoanmis
 Donate link: https://metabox.io/pricing/
 Tags: relationship, relationships, connection, connections, posts to posts, post relationship, post relationships
 Requires at least: 4.8
-Tested up to: 5.8
-Stable tag: 1.10.6
+Tested up to: 5.8.1
+Stable tag: 1.10.9
 License: GPLv2 or later
 
 A lightweight solution for creating many-to-many posts to posts relationships.
@@ -91,6 +91,15 @@ Install **MB Relationships** extension
 3. Database structure
 
 == Changelog ==
+
+= 1.10.9 - 2021-09-18 =
+- Fix deleting post objects, relationships are not deleted
+
+= 1.10.8 - 2021-08-12 =
+- Fix querying by multiple relationships not working when a relationship has no connections.
+
+= 1.10.7 - 2021-08-05 =
+- Fix querying by multiple relationships showing a warning.
 
 = 1.10.6 - 2021-07-14 =
 - Fix reciprocal relationships not working with terms.
