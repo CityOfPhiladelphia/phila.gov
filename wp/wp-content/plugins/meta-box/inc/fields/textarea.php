@@ -22,18 +22,8 @@ class RWMB_Textarea_Field extends RWMB_Field {
 		return sprintf(
 			'<textarea %s>%s</textarea>',
 			self::render_attributes( $attributes ),
-			$meta
+			esc_textarea( $meta )
 		);
-	}
-
-	/**
-	 * Escape meta for field output.
-	 *
-	 * @param mixed $meta Meta value.
-	 * @return mixed
-	 */
-	public static function esc_meta( $meta ) {
-		return is_array( $meta ) ? array_map( 'esc_textarea', $meta ) : esc_textarea( $meta );
 	}
 
 	/**
@@ -48,7 +38,7 @@ class RWMB_Textarea_Field extends RWMB_Field {
 			$field,
 			array(
 				'autocomplete' => false,
-				'cols'         => 60,
+				'cols'         => false,
 				'rows'         => 3,
 				'maxlength'    => false,
 				'wrap'         => false,
@@ -81,7 +71,6 @@ class RWMB_Textarea_Field extends RWMB_Field {
 				'placeholder'  => $field['placeholder'],
 			)
 		);
-		$attributes['class'] .= ' large-text';
 
 		return $attributes;
 	}
