@@ -16,6 +16,8 @@ permissions:
     group: ubuntu
 hooks:
   BeforeInstall:
+    - location: scripts/sso-conf.sh
+      runas: ubuntu
     - location: scripts/predeploy.sh
       runas: ubuntu
   AfterInstall:
