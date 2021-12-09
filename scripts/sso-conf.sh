@@ -10,5 +10,5 @@ if test -f "$FILE"; then
     location /wp-login {
       return 301 $SSO_LOGIN;
     }
-    " > '/home/ubuntu/app/nginx/server.d/sso.conf'
+    " > '/home/ubuntu/app/wp/nothing.php'
 fi
