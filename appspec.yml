@@ -19,11 +19,11 @@ hooks:
     - location: scripts/predeploy.sh
       runas: ubuntu
   AfterInstall:
+    - location: scripts/sso-conf.sh
+      runas: ubuntu
     - location: scripts/deploy.sh
       runas: ubuntu
     - location: scripts/db-config.sh
-      runas: ubuntu
-    - location: scripts/sso-conf.sh
       runas: ubuntu
 branch_config:
   wip\/.*: null
