@@ -11,6 +11,9 @@ permissions:
   - object: /home/ubuntu/app/wp
     owner: ubuntu
     group: ubuntu
+  - object: /home/ubuntu/app/nginx
+    owner: ubuntu
+    group: ubuntu
   - object: /home/ubuntu/app/wp-cli.yml
     owner: ubuntu
     group: ubuntu
