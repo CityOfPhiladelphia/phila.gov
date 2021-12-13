@@ -31,11 +31,13 @@
 .rwmb-input-group,
 .rwmb-input select,
 .rwmb-input .select2-container,
-.rwmb-input textarea {
+.rwmb-input textarea:not([cols]) {
 	width: 100%;
 }
 .rwmb-input input[type="checkbox"],
-.rwmb-input input[type="radio"],
+.rwmb-input input[type="radio"] {
+	width: 1em;
+}
 .rwmb-input input[type="button"] {
 	width: auto;
 }
@@ -47,6 +49,7 @@
 .rwmb-clone {
 	min-height: 24px;
 	margin-bottom: 12px;
+	padding-right: 24px;
 	position: relative;
 	clear: both;
 	background: #fff;
@@ -118,7 +121,6 @@ select.rwmb-error {
 
 /* Styles for 'side' meta boxes
 -------------------------------------------------------------- */
-
 #side-sortables .rwmb-field {
 	flex-direction: column;
 }
@@ -128,7 +130,7 @@ select.rwmb-error {
 }
 
 /* Mobile style */
-@media (max-width: 1023px) {
+@media (max-width: 782px) {
 	.rwmb-field {
 		flex-direction: column;
 	}
@@ -136,11 +138,9 @@ select.rwmb-error {
 		width: 100%;
 		margin-bottom: 4px;
 	}
-}
-@media (max-width: 782px) {
 	.rwmb-input input[type="radio"],
 	.rwmb-input input[type="checkbox"] {
-		width: 1.5625em;
+		width: 1.5625rem;
 	}
 }
 
@@ -151,7 +151,7 @@ select.rwmb-error {
 	border: none;
 	box-shadow: none;
 }
-.rwmb-seamless .inside {
+.rwmb-seamless .inside.inside {
 	padding-left: 0;
 	padding-right: 0;
 }
@@ -170,4 +170,7 @@ select.rwmb-error {
 .postarea {
 	position: relative;
 	z-index: 0;
+}
+.rwmb-hidden-wrapper {
+	display: none;
 }
