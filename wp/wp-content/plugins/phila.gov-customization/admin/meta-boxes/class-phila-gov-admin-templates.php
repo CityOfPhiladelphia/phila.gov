@@ -38,13 +38,8 @@ class Phila_Gov_Admin_Templates {
     );
 
     $conditions['.additional-content'] = array(
-      'visible' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'default' ),
-          array( 'phila_template_select', '=', 'tax_detail' ),
-          array( 'phila_template_select', '=', 'start_process' ),
-        ),
-        'relation' => 'or'
+      'include' => array(
+        'custom' => 'is_additional_content_conditions',
       ),
     );
     //hide submit div when user is a readonly user
@@ -56,18 +51,32 @@ class Phila_Gov_Admin_Templates {
       ),
     );
     $conditions['#postdivrich'] = array(
-      'hidden' => array(
-        'when' => array(
-          array( 'phila_template_select', '=', 'topic_page' ),
-          array( 'phila_template_select', '=', 'service_stub' ),
-          array( 'phila_template_select', '=', 'off_site_department' ),
-          array( 'phila_template_select', '=', 'covid_guidance' ),
-          array( 'phila_template_select', '=', 'prog_off_site' ),
-          array( 'phila_template_select', '=', 'translated_content' ),
-        ),
-        'relation' => 'or'
+      'exclude' => array(
+        'custom' => 'is_postdivrich',
       ),
     );
+    
+    function is_additional_content_conditions() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'default' ||
+          phila_get_selected_template($_GET['post']) == 'tax_detail' ||
+          phila_get_selected_template($_GET['post']) == 'start_process' ) )
+        return true;
+      return false;
+    }
+
+    function is_postdivrich() {
+      if( isset($_GET['post']) === true && 
+        ( phila_get_selected_template($_GET['post']) == 'topic_page' ||
+          phila_get_selected_template($_GET['post']) == 'service_stub' ||
+          phila_get_selected_template($_GET['post']) == 'off_site_department' ||
+          phila_get_selected_template($_GET['post']) == 'covid_guidance' ||
+          phila_get_selected_template($_GET['post']) == 'prog_off_site' ||
+          phila_get_selected_template($_GET['post']) == 'translated_content' ) )
+        return true;
+      return false;
+    }
+
     return $conditions;
   }
 
@@ -77,50 +86,9 @@ class Phila_Gov_Admin_Templates {
       'id'       => 'service_template_selection',
       'title'    => 'Service page options',
       'post_types'    => array( 'service_page' ),
-      'context'  => 'after_title',
-
-      'fields' => array(
-        array(
-          'id'  => 'phila_template_select',
-          'type'  => 'select',
-          'options' => array(
-            'default_v2'  => 'Default',
-            'custom_content'  => 'Default (2020)',
-            'default'   => 'Generic (old default)',
-            'tax_detail' => 'Tax detail',
-            'start_process' => 'Start a process',
-            'topic_page' => 'Topic page',
-            'service_stub' => 'Service stub',
-            'vue_app'     => 'Vue app',
-          ),
-          'admin_columns' => array(
-            'position' => 'after date',
-            'title'    => __( 'Template' ),
-            'sort'     => true,
-          ),
-        ),
-        array(
-          'type'  => 'heading',
-          'name' => 'Alternate title',
-          'visible' => array(
-            'when' => array(
-              array('phila_template_select', '!=', 'service_stub'),
-            ),
-          ),
-        ),
-        array(
-          'id'  => 'phila_service_alt_title',
-          'type'  => 'text',
-          'desc' => 'Enter an alternate title for this service. This will appear in place of the page title on alphabetical lists of services.',
-          'size'  => 100,
-          'visible' => array(
-            'when' => array(
-              array('phila_template_select', '!=', 'service_stub'),
-            ),
-          ),
-        )
-      ),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_service_template_select_fields()
     );
+
     return $meta_boxes;
   }
 
@@ -129,26 +97,7 @@ class Phila_Gov_Admin_Templates {
     $meta_boxes[] = array(
       'title'    => 'Select Template',
       'post_types'    => array( 'post' ),
-      'context'  => 'after_title',
-      'fields' => array(
-        array(
-          'placeholder'  => 'Select a template',
-          'id'  => 'phila_template_select',
-          'type'  => 'select',
-          'required'  => true,
-          'options' => array(
-            'post'   => 'Post',
-            'press_release' => 'Press Release',
-            'action_guide'  => 'Action Guide',
-            'action_guide_2'  => 'Action Guide V2'
-          ),
-          'admin_columns' => array(
-            'position' => 'after date',
-            'title'    => __( 'Template' ),
-            'sort'     => true,
-          ),
-        ),
-      ),
+      'fields' => Phila_Gov_Standard_Metaboxes::phila_post_template_select_fields()
     );
 
 

@@ -43,7 +43,6 @@ function walk_ins_shortcode($atts, $content=null){
     $output .=  wp_kses($content, $allowed_html) ;
         
     $output .= '</div></div>';
-
     return $output;
 
   } else {
