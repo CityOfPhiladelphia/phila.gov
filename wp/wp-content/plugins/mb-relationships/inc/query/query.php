@@ -179,16 +179,22 @@ class MBR_Query {
 					$object_ids[] = $result->from;
 				}
 			}
-			if ( $object_ids ) {
-				$objects[] = $object_ids;
-			}
-		}
+			$objects[] = $object_ids;
 
-		$merge_object_ids = array_shift( $objects );
+		}
+		if ( empty( $objects ) ) {
+			$clauses['where'] .= ( empty( $clauses['where'] ) ? '' : ' AND' ) . " {$id_column} IN(-1)";
+			return ;
+		}
+		$merge_object_ids = $objects[0];
 		foreach ( $objects as $object ) {
 			$merge_object_ids = 'OR' === $relation
 				? array_merge( $merge_object_ids, $object )
 				: array_intersect( $merge_object_ids, $object );
+		}
+		if ( empty( $merge_object_ids ) ) {
+			$clauses['where'] .= ( empty( $clauses['where'] ) ? '' : ' AND' ) . " {$id_column} IN(-1)";
+			return ;
 		}
 		$merge_object_ids = array_unique( $merge_object_ids );
 		$merge_object_ids = implode( ',', $merge_object_ids );
