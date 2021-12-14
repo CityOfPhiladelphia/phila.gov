@@ -4,7 +4,7 @@ Contributors: contactjavas
 Donate link: https://www.paypal.me/bagusjavas
 Tags: jwt, jwt-auth, token-authentication, json-web-token
 Requires at least: 5.2
-Tested up to: 5.5
+Tested up to: 5.8
 Stable tag: trunk
 Requires PHP: 7.2
 License: GPLv3
@@ -151,12 +151,14 @@ If you're adding the filter inside theme and the whitelisting doesn't work, plea
 
 `
 add_filter( 'jwt_auth_whitelist', function ( $endpoints ) {
-	return array(
+	$your_endpoints = array(
 		'/wp-json/custom/v1/webhook/*',
 		'/wp-json/custom/v1/otp/*',
 		'/wp-json/custom/v1/account/check',
 		'/wp-json/custom/v1/register',
 	);
+
+	return array_unique( array_merge( $endpoints, $your_endpoints ) );
 } );
 `
 
@@ -221,7 +223,7 @@ If the token is invalid an error will be returned. Here are some samples of erro
 	"success": false,
 	"statusCode": 403,
 	"code": "jwt_auth_bad_config",
-	"message": "JWT is not configurated properly.",
+	"message": "JWT is not configured properly.",
 	"data": []
 }
 `
@@ -582,9 +584,44 @@ add_filter(
 );
 `
 
+### jwt_auth_extra_token_check
+
+The **jwt_auth_extra_token_check** allows you to add extra criterias to validate the token. If empty, has no problem to proceed. Use empty value to bypass the filter. Any other value will block the token access and returns response with code `jwt_auth_obsolete_token`.
+
+Default value:
+
+`
+''
+`
+
+Usage example:
+
+`
+/**
+ * Modify the validation of token. No-empty values block token validation.
+ *
+ * @param array $response An empty value ''.
+ * @param WP_User $user The authenticated user.
+ * @param string $token The raw token.
+ * @param array $payload The token data.
+ * .
+ * @return array The valid token response.
+ */
+add_filter(
+	'jwt_auth_extra_token_check',
+	function ( $response, $user, $token, $payload ) {
+		// Modify the response here.
+		return $response;
+	},
+	10,
+	4
+);
+`
+
 ## Credits
 [PHP-JWT from firebase](https://github.com/firebase/php-jwt)
 [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
+[Devices utility by pesseba](https://github.com/pesseba)
 
 == Installation ==
 
@@ -670,6 +707,13 @@ You can help this plugin stay alive and maintained by giving **5 Stars** Rating/
 3. Other error responses
 
 == Changelog ==
+= 2.0.0 =
+- Breaking change: rename `jwt_auth_valid_token_extra` filter to `jwt_auth_extra_token_check`. Please check if you use this filter.
+- Breaking bugfix: the actual http statusCode didn't follow the response statusCode. Now the actual http statusCode follows the response statusCode.
+- New feature: connected device. Thanks @pesseba.
+- Might be a breaking change: Add WordPress & WC default endpoints to `jwt_auth_default_whitelist` to prevent error when visiting WordPress admin area.
+- Documentation: prevent misleading example by updating the `jwt_auth_whitelist` usage.
+
 = 1.4.2 =
 - Bugfix: add `permission_callback` argument since it's required in WP 5.5
 

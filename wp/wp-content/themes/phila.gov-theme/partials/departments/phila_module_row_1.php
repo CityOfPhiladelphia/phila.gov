@@ -53,7 +53,7 @@ if ( !empty( $row_one_col_two_module ) ){
   <?php if ( $row_one_col_one_type  == 'phila_module_row_1_col_1_custom_text' ): ?>
     <!-- Begin Column One - custom text -->
     <div class="large-16 columns">
-      <h2 class="contrast"><?php echo($row_one_col_one_text_title); ?></h2>
+      <h2 id="<?php echo sanitize_title_with_dashes($row_one_col_one_text_title); ?>" class="contrast"><?php echo($row_one_col_one_text_title); ?></h2>
       <div>
         <?php echo apply_filters( 'the_content', $row_one_col_one_textarea ); ?>
       </div>
@@ -66,7 +66,7 @@ if ( !empty( $row_one_col_two_module ) ){
     <!-- End Column One -->
   <?php endif; ?>
   <?php if ( $row_one_col_two_type  == 'phila_module_row_1_col_2_connect_panel' ): ?>
-    <?php if ($user_selected_template == 'homepage_v2' && $user_selected_template == 'homepage_v3') : ?>
+    <?php if ($user_selected_template == 'homepage_v2') : ?>
       <?php get_template_part( 'partials/departments/v2/content', 'connect' ); ?>
     <?php else: ?>
       <?php

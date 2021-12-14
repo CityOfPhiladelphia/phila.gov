@@ -1062,6 +1062,11 @@ public static function phila_meta_var_connect(){
             'desc' => '(###)-###-####',
           ),
           array(
+            'id'  => 'phila_connect_phone_text',
+            'type'  => 'text',
+            'desc'  => 'Additional information about the main phone number'
+          ),
+          array(
             'name' => 'More phone numbers' ,
             'id'   => 'phila_connect_phone_multi',
             'type' => 'group',
@@ -1076,7 +1081,7 @@ public static function phila_meta_var_connect(){
               array(
                 'id'  => 'phila_connect_phone_text',
                 'type'  => 'text',
-                'desc'  => 'Addtional information about this phone number'
+                'desc'  => 'Additional information about this phone number'
               ),
             ),
           ),

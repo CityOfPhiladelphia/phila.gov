@@ -73,10 +73,13 @@
 
           $subscriber_number = ( $connect_vars['phone']['subscriber-number'] != '' ) ? '-' . $connect_vars['phone']['subscriber-number'] : '';
 
+          $phone_text = ( $connect_vars['phone']['helper-text'] != '') ? $connect_vars['phone']['helper-text'] : '';
+
           $full_phone = $area . $co_code . $subscriber_number;
           ?>
           <span class="type <?php echo ( !$connect_vars['fax'] ) ? 'accessible' : '';?>">Phone: </span>
           <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone); ?>" class="value phone-link"><?php echo $full_phone; ?></a>
+          <?php  echo ( $phone_text )  ? '<span class="phone-text">' . $phone_text . '</span>' : '' ; ?>
         </div>
         <?php if (isset($connect_vars['phone_multi'])): ?>
           <?php foreach ($connect_vars['phone_multi'] as $phone_multi) : ?>
@@ -88,12 +91,12 @@
 
             $subscriber_number = ( $phone_multi['subscriber-number'] != '' ) ? '-' . $phone_multi['subscriber-number'] : '';
             
-            $phone_text = ($phone_multi['helper-text'] != '') ? $phone_multi['helper-text'] : '';
+            $phone_text_2 = ($phone_multi['helper-text'] != '') ? $phone_multi['helper-text'] : '';
             
             $full_phone_2 = $area . $co_code . $subscriber_number;
             ?>
             <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone_2); ?>" class="value phone-link"><?php echo $full_phone_2; ?></a>
-            <?php  echo ( $phone_text )  ? '<span class="phone-text">' . $phone_text . '</span>' : '' ; ?>
+            <?php  echo ( $phone_text_2 )  ? '<span class="phone-text">' . $phone_text_2 . '</span>' : '' ; ?>
           </div>
           <?php endforeach; ?>
         <?php endif; ?>

@@ -3977,6 +3977,12 @@ function wp_prepare_attachment_for_js( $attachment ) {
 	$attachment_url = wp_get_attachment_url( $attachment->ID );
 	$base_url       = str_replace( wp_basename( $attachment_url ), '', $attachment_url );
 
+	$document_published = rwmb_meta( 'phila_document_page_release_date', $args = array(), $post_id = $attachment->ID );	
+
+	if ( empty($document_published) ){	
+		$document_published = get_the_date( $d = '', $attachment->ID );	
+	}
+
 	$response = array(
 		'id'            => $attachment->ID,
 		'title'         => $attachment->post_title,
@@ -3997,7 +4003,7 @@ function wp_prepare_attachment_for_js( $attachment ) {
 		'type'          => $type,
 		'subtype'       => $subtype,
 		'icon'          => wp_mime_type_icon( $attachment->ID ),
-		'dateFormatted' => mysql2date( __( 'F j, Y' ), $attachment->post_date ),
+		'dateFormatted' => $document_published,
 		'nonces'        => array(
 			'update' => false,
 			'delete' => false,

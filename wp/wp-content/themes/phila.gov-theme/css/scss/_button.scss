@@ -51,3 +51,18 @@
     }
   }
 }
+
+button.link, 
+.button.link {
+  font-family: "Open Sans", Helvetica, Roboto, Arial, sans-serif;
+  background-color: transparent;
+  color: color(dark-ben-franklin);
+  text-transform: none;
+  padding: 0;
+  letter-spacing: 0;
+  text-decoration: underline;
+  &:hover {
+    color: color(dark-gray);
+    background: transparent;
+  }
+}

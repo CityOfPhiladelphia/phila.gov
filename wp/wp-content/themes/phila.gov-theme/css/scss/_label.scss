@@ -1,5 +1,6 @@
 .post-label{
   padding-bottom:1rem;
+  color: color(dark-gray);
   i {
     margin-right:.5rem;
   }
@@ -8,39 +9,5 @@
     font-size: .8rem;
     vertical-align: -webkit-baseline-middle;
     text-transform: uppercase;
-  }
-  &.post-label--post{
-    color:map-get($post_content_types, post) !important;
-    &::before{
-      color:map-get($post_content_types, post) !important;
-    }
-  }
-  &.post-label--action_guide{
-    color:map-get($post_content_types, action_guide) !important;
-    &::before{
-      color:map-get($post_content_types, action_guide) !important;
-    }
-  }
-  &.post-label--announcement{
-    color: map-get($post_content_types, announcement) !important;
-  }
-  &.post-label--featured{
-    color: map-get($post_content_types, featured)!important;
-    &::before{
-      color:map-get($post_content_types, featured)!important;
-    }
-  }
-  &.post-label--calendar{
-    color:map-get($post_content_types, calendar)!important;
-
-    &::before{
-      color:map-get($post_content_types, calendar)!important;
-    }
-  }
-  &.post-label--press_release{
-    color:map-get($post_content_types, press_release)!important;
-    &::before{
-      color:map-get($post_content_types, press_release)!important;
-    }
   }
 }
