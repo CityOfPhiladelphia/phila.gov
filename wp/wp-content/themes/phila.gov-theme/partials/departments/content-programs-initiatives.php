@@ -256,7 +256,9 @@
               <!-- /Boards/Commission Members -->
             <?php endif;?>
             <?php elseif ( $current_row_option == 'phila_staff_table'):?>
-            <?php if ( isset( $current_row['phila_full_options']['phila_staff_directory_listing'] ) ): ?>
+            <?php if ( isset( $current_row['phila_full_options']['phila_staff_directory_listing'] ) ): 
+              $repeating_override = $current_row['phila_full_options']['phila_staff_directory_listing']['phila_get_staff_cats']['phila_staff_category'];
+              ?>
               <!-- Staff listing -->
               <?php include(locate_template('partials/departments/phila_staff_directory_listing.php')); ?>
               <!-- /Staff listing -->
