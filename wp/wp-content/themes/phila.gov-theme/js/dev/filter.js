@@ -32,16 +32,24 @@ jQuery(document).ready(function($) {
 
   $input.keyup(function(event) {
     searchFilter(event);
+    var parent = '';
+    var parentId = $(event.target).closest('.small-24.columns.results.mbm').attr('id');
+    if (parentId != undefined) {
+      parent = '#'+parentId;
+    }
     const key = event.key; // const {key} = event; ES6+
     if (key === "Backspace" || key === "Delete") {
-      $('.a-z-group .result').trigger('update');
+      $(parent+' .a-z-group .result').trigger('update');
       return false;
     }
   });
 
-
-
   function searchFilter(event){
+    var parent = '';
+    var parentId = $(event.target).closest('.small-24.columns.results.mbm').attr('id');
+    if (parentId != undefined) {
+      parent = '#'+parentId;
+    }
     function regexEscape(str) {
       return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
     }
@@ -55,7 +63,7 @@ jQuery(document).ready(function($) {
 
     var value = $input.val();
 
-    $(".list .result").not('is-hidden').each(function(i, v) {
+    $(parent+" .list .result").not('is-hidden').each(function(i, v) {
       if ( $( this ).text().search( reg( value ) ) < 0 ) {
         $(this).hide().addClass('is-hidden')
       }
@@ -64,15 +72,15 @@ jQuery(document).ready(function($) {
     //check if value is empty
     if ( !value ){
       parents.show();
-      $('.result').show().removeClass('is-hidden');
+      $(parent+' .result').show().removeClass('is-hidden');
     }
 
-    if ( $(".a-z-group:visible").length === 0) {
+    if ( $(parent+" .a-z-group:visible").length === 0) {
       $('.not-found').show();
     }else{
       $('.not-found').hide();
     }
-    $('.a-z-group .result').trigger('update');
+    $(parent+' .a-z-group .result').trigger('update');
   }
 
 });

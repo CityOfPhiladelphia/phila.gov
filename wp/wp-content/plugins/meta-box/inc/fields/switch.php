@@ -13,7 +13,7 @@ class RWMB_Switch_Field extends RWMB_Input_Field {
 	 * Enqueue scripts and styles.
 	 */
 	public static function admin_enqueue_scripts() {
-		wp_enqueue_style( 'rwmb-switch', RWMB_CSS_URL . 'switch.css', '', RWMB_VER );
+		// wp_enqueue_style( 'rwmb-switch', RWMB_CSS_URL . 'switch.css', '', RWMB_VER );
 	}
 
 	/**

@@ -15,8 +15,7 @@ if ($vue_or_not) {
   $vuejs_css_ids = [$program_file_path.'/css/chunk-vendors.css', $program_file_path.'/css/app.css'];
   
   include(locate_template( 'partials/vue-apps/vue-register.php' ) );
-}
-else {
+} else {
   $no_pagination = rwmb_meta('phila_doc_no_paginate');
   //ensure 0 index for js initialization
   $c = -1;

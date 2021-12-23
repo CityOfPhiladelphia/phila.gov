@@ -422,7 +422,7 @@ class AS3CF_Notices {
 	 * Enqueue notice scripts in the admin
 	 */
 	public function enqueue_notice_scripts() {
-		$this->as3cf->enqueue_style( 'as3cf-notice', 'assets/css/notice' );
+		// $this->as3cf->enqueue_style( 'as3cf-notice', 'assets/css/notice' );
 		$this->as3cf->enqueue_script( 'as3cf-notice', 'assets/js/notice', array( 'jquery' ) );
 
 		wp_localize_script( 'as3cf-notice', 'as3cf_notice', array(
