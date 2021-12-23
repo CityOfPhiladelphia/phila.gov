@@ -111,12 +111,14 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
           </div>
         <?php else : ?>
           <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
-            <img width="700" height="400" src="https://admin.phila.gov/media/20211010213319/Dia-de-los-Muertos-group-in-LOVE-Park-with-City-Hall-700x400.jpg" class="attachment-medium size-medium wp-post-image" alt="" loading="lazy">
-            <div class="phila-image-caption">
-              <p><strong>Photo by: John Doe</strong></p>
-              <?php echo wp_get_attachment_caption(); ?>
-              <p>Costumed Dia de los Muertos performers in LOVE Park with City Hall in the background. Now the text is even longer to make it wrap. you fools!</p>
-            </div>
+            <?php echo phila_get_thumbnails(); ?>
+            <?php $image_caption = wp_get_attachment_metadata(get_post_thumbnail_id()); ?>
+            <?php if ($image_caption && $image_caption['image_meta'] && $image_caption['image_meta']['caption']) { ?>
+              <div class="phila-image-caption">
+                <!-- <p><strong>Photo by: John Doe</strong></p> -->
+                <p><?php echo $image_caption['image_meta']['caption']; ?></p>
+              </div>
+            <?php } ?>
           </div>
         <?php endif;?>
       </div>
