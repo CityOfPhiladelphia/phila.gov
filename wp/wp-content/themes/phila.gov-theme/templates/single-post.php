@@ -89,6 +89,13 @@ $language_list = phila_get_translated_language( $language );
         <?php else : ?>
           <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
             <?php echo phila_get_thumbnails(); ?>
+            <?php $image_caption = wp_get_attachment_metadata(get_post_thumbnail_id()); ?>
+            <?php if ($image_caption && $image_caption['image_meta'] && $image_caption['image_meta']['caption']) { ?>
+              <div class="phila-image-caption">
+                <!-- <p><strong>Photo by: John Doe</strong></p> -->
+                <p><?php echo $image_caption['image_meta']['caption']; ?></p>
+              </div>
+            <?php } ?>
           </div>
         <?php endif;?>
       </div>
