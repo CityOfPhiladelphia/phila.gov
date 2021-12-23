@@ -1,0 +1,16 @@
+.image-list {
+  img{
+    max-width: 200px;
+    height:auto;
+  }
+}
+
+.phila-image-caption {
+  background-color: #f0f0f0;
+  padding: 16px 24px;
+  p {
+    margin-bottom: 0.25rem;
+    font-style: italic;
+    font-weight: 600;
+  }
+}
