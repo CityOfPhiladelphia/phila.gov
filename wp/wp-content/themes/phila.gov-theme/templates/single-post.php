@@ -94,7 +94,12 @@ $translated_options = rwmb_meta('translated_options');
           </div>
         <?php else : ?>
           <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
-            <?php echo phila_get_thumbnails(); ?>
+            <img width="700" height="400" src="https://admin.phila.gov/media/20211010213319/Dia-de-los-Muertos-group-in-LOVE-Park-with-City-Hall-700x400.jpg" class="attachment-medium size-medium wp-post-image" alt="" loading="lazy">
+            <div class="phila-image-caption">
+              <p><strong>Photo by: John Doe</strong></p>
+              <?php echo wp_get_attachment_caption(); ?>
+              <p>Costumed Dia de los Muertos performers in LOVE Park with City Hall in the background. Now the text is even longer to make it wrap. you fools!</p>
+            </div>
           </div>
         <?php endif;?>
       </div>
