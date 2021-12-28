@@ -48,8 +48,8 @@ if ( has_category() ) {
     foreach ( $unit_data as $unit ){
       /* The Staff Directory Loop, when there are units */
       $args = array(
-        'orderby' => 'title',
-        'order' => 'ASC',
+        'orderby' => 'phila_job_title',
+        'order' => 'DESC',
         'post_type' => 'staff_directory',
         'cat' => array($category_id),
         'posts_per_page' => -1,
@@ -63,8 +63,8 @@ if ( has_category() ) {
 
     /* Staff within units have been displayed, don't show them now */
     $args = array(
-      'orderby' => 'title',
-      'order' => 'ASC',
+      'orderby' => 'phila_job_title',
+      'order' => 'DESC',
       'post_type' => 'staff_directory',
       'cat' => array($category_id),
       'posts_per_page' => -1,
@@ -86,8 +86,8 @@ if ( has_category() ) {
 
       if ( !empty( $hidden ) ) {
         $args = array(
-          'orderby' => 'title',
-          'order' => 'ASC',
+          'orderby' => 'phila_job_title',
+          'order' => 'DESC',
           'post_type' => 'staff_directory',
           'cat' => array($category_id),
           'posts_per_page' => -1,
@@ -108,8 +108,8 @@ if ( has_category() ) {
 
         /* There are no units, display normally */
         $args = array(
-          'orderby' => 'title',
-          'order' => 'ASC',
+          'orderby' => 'phila_job_title',
+          'order' => 'DESC',
           'post_type' => 'staff_directory',
           'cat' => array($category_id),
           'posts_per_page' => -1,
