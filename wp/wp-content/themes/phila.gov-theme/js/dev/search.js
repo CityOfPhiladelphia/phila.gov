@@ -19,6 +19,12 @@ module.exports = jQuery(document).ready(function($) {
 
   resultTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr class="mhn">';
 
+  var legacyTemplate = '<article><header class="search-entry-header"><h3 class="entry-title">';
+
+  legacyTemplate += '<a href="{{&url}}" rel="bookmark">{{title}}</a></h3></header>';
+
+  legacyTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr class="mhn">';
+
   var SWIFTYPE_ENGINE = 'ALSW3neJArH_ozFvSDse';
 
   var $stSearchInput = $("#st-search-input");
@@ -66,6 +72,8 @@ module.exports = jQuery(document).ready(function($) {
         view.icon = 'fas fa-file-alt'
       }
       return Mustache.render(resultTemplate, view);
+    }else{
+      return Mustache.render(legacyTemplate, view);
     }
   };
 
