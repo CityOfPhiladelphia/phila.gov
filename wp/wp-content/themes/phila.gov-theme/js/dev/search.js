@@ -19,7 +19,7 @@ module.exports = jQuery(document).ready(function($) {
 
   resultTemplate += '<p class="entry-summary">{{&summary}}</p></article><hr class="mhn">';
 
-  var legacyTemplate = '<article><header class="search-entry-header"><h3 class="entry-title"><span class="label mrm bg-dark-gray">Legacy</span>';
+  var legacyTemplate = '<article><header class="search-entry-header"><h3 class="entry-title">';
 
   legacyTemplate += '<a href="{{&url}}" rel="bookmark">{{title}}</a></h3></header>';
 
@@ -73,7 +73,6 @@ module.exports = jQuery(document).ready(function($) {
       }
       return Mustache.render(resultTemplate, view);
     }else{
-      $('#legacy-content').css('display', 'block');
       return Mustache.render(legacyTemplate, view);
     }
   };
@@ -99,7 +98,6 @@ module.exports = jQuery(document).ready(function($) {
     if (totalResultCount === 0) {
       $resultCount.html("No results found for <i>" + data['info']['page']['query'] +
       "</i>. <div class='info panel mtm row'><div class='medium-3 columns hide-for-small-only'><i class='far fa-frown fa-4x'></i></div> <div class='text small-24 medium-21 columns'><p class='h3 mbm'>We're sorry, we didn't find any results that match your search terms.</h3> Suggestions: <ul><li>Check your spelling. </li><li>Try different search terms.</li></ul></div></div>");
-      $('#legacy-content').css('display', 'none');
 
     } else {
       $resultCount.html("Found <b><span>" + totalResultCount + "</span></b> results for \"<i>" + data['info']['page']['query'] +"\"</i>");
