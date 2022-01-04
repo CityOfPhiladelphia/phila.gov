@@ -1,7 +1,7 @@
-.info-block{
+.info-block p{
   font-size:1.5rem;
   font-style: italic;
-  .paragraph{
+  .paragraph {
     font-size: 1rem;
     font-style: normal;
   }
@@ -22,4 +22,7 @@
 
 .panel.info .large-text{
   font-size: 5rem;
+}
+.panel.survey p:last-of-type{
+  padding-right: 1rem;
 }

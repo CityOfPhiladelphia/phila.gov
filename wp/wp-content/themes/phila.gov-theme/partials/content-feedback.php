@@ -21,7 +21,6 @@
       <div class="feedback-form" data-type="feedback-form" style="display:none;">
         <div class="row">
           <div class="medium-18 large-14 column small-centered mbm clearfix" data-type="form-wrapper" >
-            <div id="form-container"><script type="text/javascript" src="https://phila.formstack.com/forms/js.php/philagov_feedback"></script><noscript><a href="https://phila.formstack.com/forms/philagov_feedback" title="Online Form">Online Form - phila.gov feedback</a></noscript></div>
           </div>
         </div>
       </div>
