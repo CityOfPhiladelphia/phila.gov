@@ -32,10 +32,6 @@ h6, .h6{
   text-transform: uppercase;
 }
 
-.global-nav .dropdown-pane .inner-wrapper .columns a span i {
-  padding-right: 0.4rem;
-}
-
 nav#side-nav ul li span {
   line-height: 1.3rem;
 }
@@ -50,4 +46,29 @@ nav#side-nav ul li span {
 
 .welcome-message h1{
   font-weight: 400 !important;
+}
+
+.global-nav .dropdown-pane .mega-menu-footer {
+  height: 60px;
+}
+
+.document .file-type {
+  font-size: 16px;
+}
+
+#site-nav {
+  text-transform: none;
+  font-size: 1rem;
+}
+
+.home .hero-content .welcome-message .h1{
+  font-weight: 400;
+}
+
+.post-label span {
+  font-size: 14px;
+  vertical-align: text-top;
+}
+button, .button {
+  padding: 1rem;
 }
