@@ -4,8 +4,8 @@
   "description": "A custom wordpress theme for phila.gov",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:css": "sass --load-path=node_modules/phila-standards/src/_vendor/foundation-sites/scss --load-path=node_modules/phila-standards/src/sass css/scss/base.scss css/styles.css",
-    "build:css": "sass --load-path=node_modules/phila-standards/src/_vendor/foundation-sites/scss --load-path=node_modules/phila-standards/src/sass css/scss/base.scss css/styles.min.css",
+    "dev:css": "node-sass --include-path node_modules/phila-standards/src/_vendor/foundation-sites/scss --include-path node_modules/phila-standards/src/sass --source-map true css/scss/base.scss css/styles.css",
+    "build:css": "node-sass --include-path node_modules/phila-standards/src/_vendor/foundation-sites/scss --include-path node_modules/phila-standards/src/sass --output-style compressed --source-map true css/scss/base.scss css/styles.min.css",
     "dev:js": "browserify js/dev/main.js -o js/phila-scripts.js",
     "build:js": "browserify -e js/dev/main.js | uglifyjs -c -m > js/phila-scripts.min.js",
     "dev:build": "npm run dev:css && npm run dev:js",
@@ -35,6 +35,7 @@
     "css-loader": "^6.5.1",
     "envify": "^4.1.0",
     "hoek": "^5.0.4",
+    "node-sass": "^7.0.0",
     "postcss-cli": "^9.1.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
