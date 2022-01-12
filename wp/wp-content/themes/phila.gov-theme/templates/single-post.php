@@ -60,9 +60,9 @@ $language_list = phila_get_translated_language( $language );
           <?php endif;?>
           </span>
         <?php endif?>
-        <span class="departments">
+        <div class="departments">
           <?php echo phila_get_current_department_name( $category, false, false ); ?>
-        </span>
+          </div>
       <?php endif; ?>
   </div>
   <?php if ( $last_updated ): ?>

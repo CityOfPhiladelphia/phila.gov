@@ -19,8 +19,8 @@
 
     printf ( _e('<span><strong>Published by:</strong> ' . $category . '</span>', 'phila-gov' ) ) ;
     if (!empty($press_contacts)) : ?>
-
-    <span><strong>Contact: </strong>
+    
+    <div><strong>Contact: </strong>
       <?php foreach( $press_contacts as $contact ) :
 
         $press_name = isset( $contact['phila_press_release_contact_name'] ) ? trim($contact['phila_press_release_contact_name'] ) : '';
@@ -47,7 +47,7 @@
       <?php endif;?>
 
     <?php endforeach;?>
-  </span>
+      </div>
 
   <?php endif;?>
 <?php endif; ?>

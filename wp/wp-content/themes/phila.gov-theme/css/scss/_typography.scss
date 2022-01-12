@@ -5,35 +5,31 @@ p, ul, ol, div, section {
 }
 h1, .h1 {
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 2.286rem;
 }
 h2, .h2 {
   font-weight: 600;
-  font-size: 1.75rem;
+  font-size: 2rem;
 }
 
 h3, .h3{
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.714rem;
 }
 
 h4, .h4{
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1.429rem;
 }
 
 h5, .h5{
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.143rem;
 }
 
 h6, .h6{
-  font-size: 1rem;
+  font-size: 1.143rem;
   text-transform: uppercase;
-}
-
-.global-nav .dropdown-pane .inner-wrapper .columns a span i {
-  padding-right: 0.4rem;
 }
 
 nav#side-nav ul li span {
@@ -50,4 +46,70 @@ nav#side-nav ul li span {
 
 .welcome-message h1{
   font-weight: 400 !important;
+}
+
+.document .file-type {
+  font-size: 16px;
+}
+
+#site-nav {
+  text-transform: none;
+  font-size: 1rem;
+}
+
+.home .hero-content .welcome-message .h1{
+  font-weight: 400;
+}
+
+.post-label span {
+  font-size: 14px;
+  vertical-align: text-top;
+}
+button, .button {
+  padding: 1rem;
+}
+
+.global-nav .dropdown-pane .mega-menu-footer {
+  height: 65px;
+}
+
+.global-nav .dropdown-pane .mega-menu-footer.left-arrow-indent:before {
+  border-top: 32px solid transparent;
+  border-bottom: 32px solid transparent;
+}
+.global-nav .dropdown-pane .inner-wrapper .columns a {
+  padding: 1.5rem 0 1.5rem 1rem;
+}
+
+.global-nav .dropdown-pane .inner-wrapper .columns a span i{
+  font-size: 20px;
+}
+
+.global-nav .dropdown-pane .inner-wrapper .columns a .text-label{
+  font-size:14px;
+}
+
+input[type=checkbox] + label[for] {
+  font-size: 16px;
+}
+
+input[type=radio] + label[for] {
+  font-size: 16px;
+}
+
+.single-service_page {
+  h2 {
+    //padding-bottom: 1.5rem;
+    margin-top:0;
+  }
+  h3{
+    margin-top: 3.5rem;
+  }
+  .panel.info.equal h3{
+    margin-top: 0;
+  }
+}
+
+a.card h1, a.card h2, a.card h3, a.card h4, a.card h5, a.card h6, a.card .h1, a.card .h2, a.card .h3, a.card .h4, a.card .h5, a.card .h6 {
+  font-size: 1.3rem;
 }
