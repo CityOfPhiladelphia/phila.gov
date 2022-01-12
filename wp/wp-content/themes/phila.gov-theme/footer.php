@@ -142,12 +142,9 @@
               </a>
             </li>
             <li class="pvxs">
-              <a href="https://www.phila.gov/channel64/Pages/default.aspx" class="prl">
+              <a href="https://www.phila.gov/departments/office-of-innovation-and-technology/phlgovtv/" class="prl">
                 <span class="fa fa-stack fa-lg">
-                  <i class="fa fa-tv fa-stack-2x" title="TV" aria-hidden="true"></i>
-                  <i class="fa fa-stack-1x">
-                    <span class="h4">64</span>
-                  </i>
+                  <i class="fa fa-tv" title="TV" aria-hidden="true"></i>
                   <span class="show-for-sr">TV 64</span>
                 </span>
               </a>
