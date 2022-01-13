@@ -33,7 +33,6 @@
 ?>
 
 <?php if( !phila_util_is_array_empty($content) ) :  ?>
-<!-- Additional Content-->
 <section>
   <?php if ( !empty($content['forms']) || !empty( $content['form_free'] )) : ?>
   <div class="row">
@@ -41,14 +40,13 @@
       <section>
         <h3 class="black bg-ghost-gray phm-mu mtl mbm">Forms & instructions</h3>
         <?php if (!empty( $content['forms']) ) : ?>
-          <div class="phm-mu">
+          <div class="pvs">
             <?php foreach ( $content['forms'] as $form ): ?>
-              <div class="pvs">
-                <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
+              <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
             <?php endforeach; ?>
-            <?php endif; ?>
-            <?php echo apply_filters( 'the_content', $content['form_free']); ?>
-          </div>
+            </div>
+          <?php endif; ?>
+          <?php echo apply_filters( 'the_content', $content['form_free']); ?>
       </section>
     </div>
   </div>
@@ -109,5 +107,4 @@
   <?php endif; ?>
   </div>
 </section>
-<!-- /Additional Content-->
 <?php endif; ?>
