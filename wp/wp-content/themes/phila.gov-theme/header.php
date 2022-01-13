@@ -10,8 +10,8 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
-  <?php get_template_part('partials/global/analytics'); ?>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
+  <?php get_template_part('partials/global/analytics'); ?>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="description" content="<?php echo ( is_archive() || is_search() || is_home() ) ? get_bloginfo('description') : phila_get_item_meta_desc(); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
