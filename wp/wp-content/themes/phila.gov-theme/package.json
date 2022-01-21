@@ -35,7 +35,7 @@
     "css-loader": "^3.2.0",
     "envify": "^4.1.0",
     "hoek": "^5.0.4",
-    "node-sass": "^7.0.0",
+    "node-sass": "^4.14",
     "postcss-cli": "^9.1.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
@@ -52,9 +52,6 @@
     "mustache": "^2.3.2",
     "phila-standards": "^1.2.0",
     "uglify-js": "^3.6.4"
-  },
-  "browser": {
-    "vue": "vue/dist/vue.common.js"
   },
   "browserify": {
     "transform": [
