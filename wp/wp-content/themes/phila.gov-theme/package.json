@@ -9,7 +9,8 @@
     "dev:js": "browserify js/dev/main.js -o js/phila-scripts.js",
     "build:js": "browserify -e js/dev/main.js | uglifyjs -c -m > js/phila-scripts.min.js",
     "dev:build": "npm run dev:css && npm run dev:js",
-    "build": "npm run build:css && npm run build:js"
+    "build": "npm run build:css && npm run build:js",
+    "postbuild": "echo \"Build complete\""
   },
   "repository": {
     "type": "git",
