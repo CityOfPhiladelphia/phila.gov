@@ -99,7 +99,7 @@
             <li class="pvxs"><a href="https://controller.phila.gov/">City Controller</a></li>
             <li class="pvxs"><a href="http://www.officeofphiladelphiasheriff.com/" class="external">Sheriff</a></li>
             <li class="pvxs"><a href="https://www.philadelphiavotes.com/" class="external">City Commissioners</a></li>
-            <li class="pvxs"><a href="http://secureprod.phila.gov/wills/">Register of Wills</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/departments/register-of-wills/">Register of Wills</a></li>
           </ul>
         </nav>
       </section>
@@ -109,10 +109,10 @@
           <ul>
             <li class="pvxs"><a href="https://data.phila.gov/visualizations/payments-aggregate/" class="">City Payments</a></li>
             <li class="pvxs"><a href="http://www.amlegal.com/codes/client/philadelphia_pa/" class="external">Philadelphia Code &amp; Charter</a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/records/index.html">City records</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/departments/department-of-records/">City records</a></li>
             <li class="pvxs"><a href="http://regulations.phila-records.com/">City agency regulations</a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/executiveorders/pages/default.aspx">Executive orders</a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/integrityworks/pages/default.aspx">Honesty in government</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/departments/mayor/executive-orders/">Executive orders</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/programs/integrity-works/">Honesty in government</a></li>
             <li class="pvxs"><a href="https://www.philadelphiavotes.com/" class="external">Voting & elections</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/programs/open-data-program/">Open data</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/documents/city-of-philadelphia-organization-chart/">City organization chart</a></li>
@@ -142,12 +142,9 @@
               </a>
             </li>
             <li class="pvxs">
-              <a href="https://www.phila.gov/channel64/Pages/default.aspx" class="prl">
+              <a href="https://www.phila.gov/departments/office-of-innovation-and-technology/phlgovtv/" class="prl">
                 <span class="fa fa-stack fa-lg">
                   <i class="fa fa-tv fa-stack-2x" title="TV" aria-hidden="true"></i>
-                  <i class="fa fa-stack-1x">
-                    <span class="h4">64</span>
-                  </i>
                   <span class="show-for-sr">TV 64</span>
                 </span>
               </a>
