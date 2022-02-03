@@ -70,12 +70,15 @@ button, .button {
 }
 
 .global-nav .dropdown-pane .mega-menu-footer {
-  height: 65px;
+  height: 61px;
 }
 
 .global-nav .dropdown-pane .mega-menu-footer.left-arrow-indent:before {
-  border-top: 32px solid transparent;
-  border-bottom: 32px solid transparent;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+.global-nav .dropdown-pane .placeholder {
+  min-height: 4.8rem;
 }
 .global-nav .dropdown-pane .inner-wrapper .columns a {
   padding: 1.5rem 0 1.5rem 1rem;
@@ -97,16 +100,17 @@ input[type=radio] + label[for] {
   font-size: 16px;
 }
 
-.single-service_page {
-  h2 {
-    //padding-bottom: 1.5rem;
-    margin-top:0;
-  }
-  h3{
-    margin-top: 3.5rem;
-  }
-  .panel.info.equal h3{
-    margin-top: 0;
+@include breakpoint(medium) {
+  .single-service_page {
+    h2 {
+      margin-top:0;
+    }
+    h3{
+      margin-top: 3.5rem;
+    }
+    .panel.info.equal h3{
+      margin-top: 0;
+    }
   }
 }
 
@@ -115,4 +119,19 @@ a.card h1, a.card h2, a.card h3, a.card h4, a.card h5, a.card h6, a.card .h1, a.
 }
 footer.site-footer.site-footer .fat h2 {
   font-size: 1.2rem;
+}
+
+@include breakpoint(small only) {
+  .global-nav .utility-nav {
+    min-height: 30px;
+  }
+}
+#site-search-button{
+  .search-text{
+    margin-top: 0.5rem;
+    display: block;
+  }
+}
+.global-nav .title-bar .title-bar-title{
+  display:block;
 }
