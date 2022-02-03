@@ -151,8 +151,8 @@
             <div class="small-5 medium-1 columns valign phn-m">
               <div class="valign-cell">
                 <button id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
-                  <i class="fas fa-search fa-2x" aria-hidden="true"></i>
-                  <span class="show-for-small-only">Search</span>
+                  <i class="fas fa-search fa-3x" aria-hidden="true"></i>
+                  <span class="search-text show-for-small-only">Search</span>
                   <span class="accessible" for="site-search-button">Search</span>
                 </button>
               </div>
