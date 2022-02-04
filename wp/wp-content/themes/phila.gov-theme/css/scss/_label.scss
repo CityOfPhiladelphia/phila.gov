@@ -6,8 +6,8 @@
   }
   span{
     @include secondary-font(normal);
-    font-size: .8rem;
-    vertical-align: -webkit-baseline-middle;
+    font-size: 14px;
+    vertical-align: text-top;
     text-transform: uppercase;
   }
 }
