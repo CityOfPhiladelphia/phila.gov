@@ -44,52 +44,13 @@ nav#side-nav ul li span {
   font-size: 1.2rem !important;
 }
 
-.welcome-message h1{
-  font-weight: 400 !important;
-}
-
-.document .file-type {
-  font-size: 16px;
-}
-
 #site-nav {
   text-transform: none;
   font-size: 1rem;
 }
 
-.home .hero-content .welcome-message .h1{
-  font-weight: 400;
-}
-
-.post-label span {
-  font-size: 14px;
-  vertical-align: text-top;
-}
 button, .button {
   padding: 1rem;
-}
-
-.global-nav .dropdown-pane .mega-menu-footer {
-  height: 61px;
-}
-
-.global-nav .dropdown-pane .mega-menu-footer.left-arrow-indent:before {
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-}
-.global-nav .dropdown-pane .placeholder {
-  min-height: 4.8rem;
-}
-.global-nav .dropdown-pane .inner-wrapper .columns a {
-  padding: 1.5rem 0 1.5rem 1rem;
-}
-
-.global-nav .dropdown-pane .inner-wrapper .columns a span i{
-  font-size: 20px;
-}
-
-.global-nav .dropdown-pane .inner-wrapper .columns a .text-label{
-  font-size:14px;
 }
 
 input[type=checkbox] + label[for] {
@@ -125,19 +86,13 @@ footer.site-footer.site-footer .fat h2 {
   .global-nav .utility-nav {
     min-height: 30px;
   }
+  .cell {
+    margin-bottom: 0rem;
+  }
 }
 #site-search-button{
   .search-text{
     margin-top: 0.5rem;
     display: block;
-  }
-}
-.global-nav .title-bar .title-bar-title{
-  display:block;
-}
-
-.site-wide-alert {
-  div {
-    font-size:14px;
   }
 }
