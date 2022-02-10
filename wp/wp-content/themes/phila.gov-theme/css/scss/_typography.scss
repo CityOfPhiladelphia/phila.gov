@@ -62,7 +62,7 @@ input[type=radio] + label[for] {
 }
 
 @include breakpoint(medium) {
-  .single-service_page {
+  #main .single-service_page {
     h2 {
       margin-top:0;
     }
@@ -80,6 +80,9 @@ a.card h1, a.card h2, a.card h3, a.card h4, a.card h5, a.card h6, a.card .h1, a.
 }
 footer.site-footer.site-footer .fat h2 {
   font-size: 1.2rem;
+}
+footer.site-footer .trending-requests a:link{
+  font-size: 16px;
 }
 
 @include breakpoint(small only) {
