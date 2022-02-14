@@ -48,7 +48,7 @@ function covid_response_level( $atts ) {
                 <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
               </div>
             </div>
-            <header class="bg-dark-gray">
+            <header class="bg-dark-gray center">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
                   <h4 class="mbn h5 white"><span class="stage">Extreme Caution</span></h4>
@@ -70,7 +70,7 @@ function covid_response_level( $atts ) {
                 <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
               </div>
             </div>
-            <header class="bg-dark-gray">
+            <header class="bg-dark-gray center">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
                   <h4 class="mbn h5 white"><span class="stage">Caution </span></h4>
@@ -94,7 +94,7 @@ function covid_response_level( $atts ) {
                 <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
               </div>
             </div>
-            <header class="bg-dark-gray">
+            <header class="bg-dark-gray center">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
                   <h4 class="mbn h5 white"><span class="stage">Mask Precautions</span></h4>
@@ -115,7 +115,7 @@ function covid_response_level( $atts ) {
                 <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
               </div>
             </div>
-            <header class="bg-dark-gray">
+            <header class="bg-dark-gray center">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
                   <h4 class="mbn h5 white"><span class="stage">All Clear</span></h4>
