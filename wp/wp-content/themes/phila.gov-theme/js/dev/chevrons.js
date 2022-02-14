@@ -1,5 +1,5 @@
 module.exports = $(function(){
-  $('.stage-tracker .chevron .bg-dark-gray').click(function(e){
+  $('.stage-tracker .chevron .bg-dark-gray').hover(function(e){
     e.preventDefault();
     e.stopPropagation();
     $('.stage-tracker .chevron').each(function() {
@@ -7,7 +7,7 @@ module.exports = $(function(){
     });
     $(this).closest(".chevron").toggleClass('open');
   });
-  $('.stage-tracker .chevron .description').click(function(e){
+  $('.stage-tracker .chevron .description').hover(function(e){
     e.preventDefault();
     e.stopPropagation();
   });
