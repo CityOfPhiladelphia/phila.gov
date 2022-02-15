@@ -20,6 +20,7 @@ class Phila_Gov_Custom_Taxonomies {
     add_action( 'init', array($this, 'audiences') );
     add_action( 'init', array($this, 'media_type') );
     add_action( 'init', array($this, 'media_author') );
+    add_action( 'init', array($this, 'media_credit') );
     add_action( 'init', array($this, 'media_category') );
     add_action( 'init', array($this, 'hierarchical_tags') );
   }
@@ -134,6 +135,33 @@ class Phila_Gov_Custom_Taxonomies {
       'show_admin_column' => true,
       'rewrite' => array(
         'slug' => 'media-author',
+        'with_front' => false,
+      ),
+    ));
+  }
+
+  function media_credit() {
+    register_taxonomy('media_credit',
+      array(
+        'attachment'
+      ),
+      array(
+      'hierarchical' => true,
+      'labels' => array(
+        'name' => _x( 'Media Credit', 'phila-gov'),
+        'singular_name' => _x( 'Media Credit', 'phila-gov'),
+        'search_items' =>  __( 'Search Media Credit' ),
+        'all_items' =>     __( 'All Media Credits' ),
+        'edit_item' =>     __( 'Edit Media Credit' ),
+        'update_item' =>   __( 'Update Media Credit' ),
+        'add_new_item' =>  __( 'Add New Media Credit' ),
+        'new_item_name' => __( 'New Media Credit Name' ),
+        'menu_name' =>     __( 'Media Credit' ),
+      ),
+      'public' => true,
+      'show_admin_column' => true,
+      'rewrite' => array(
+        'slug' => 'media-credit',
         'with_front' => false,
       ),
     ));

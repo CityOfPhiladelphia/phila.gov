@@ -60,9 +60,9 @@ $language_list = phila_get_translated_language( $language );
           <?php endif;?>
           </span>
         <?php endif?>
-        <span class="departments">
+        <div class="departments">
           <?php echo phila_get_current_department_name( $category, false, false ); ?>
-        </span>
+          </div>
       <?php endif; ?>
   </div>
   <?php if ( $last_updated ): ?>
@@ -89,6 +89,18 @@ $language_list = phila_get_translated_language( $language );
         <?php else : ?>
           <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
             <?php echo phila_get_thumbnails(); ?>
+            <?php $image_caption = get_post(get_post_thumbnail_id())->post_excerpt; ?>
+            <?php $image_credit = get_the_terms(get_post_thumbnail_id(), 'media_credit')[0]->name; ?>
+            <?php if ($image_caption || $image_credit) { ?>
+              <div class="phila-image-caption">
+                <?php if ($image_credit) { ?>
+                  <p><strong>Photo by: <?php echo $image_credit; ?></strong></p>
+                <?php } ?>
+                <?php if ($image_caption) { ?>
+                  <p><?php echo $image_caption; ?></p>
+                <?php } ?>
+              </div>
+            <?php } ?>
           </div>
         <?php endif;?>
       </div>

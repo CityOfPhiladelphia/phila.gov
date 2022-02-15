@@ -4,26 +4,32 @@
   h1,
   .h1 {
     font-size: rem-calc(75);
+    font-weight: 400;
   }
   h2,
   .h2 {
-    font-size: rem-calc(45);
+    font-size: rem-calc(45) !important;
+    font-weight: 400;
   }
   h3,
   .h3 {
-    font-size: rem-calc(32);
+    font-size: rem-calc(32) !important;
+    font-weight: 400;
   }
   h4,
   .h4 {
-    font-size: rem-calc(24);
+    font-size: rem-calc(24) !important;
+    font-weight: 400;
   }
   h5,
   .h5 {
-    font-size: rem-calc(20);
+    font-size: rem-calc(20) !important;
+    font-weight: 400;
   }
   h6,
   .h6 {
-    font-size: rem-calc(15);
+    font-size: rem-calc(15) !important;
+    font-weight: 400;
   }
 
   .social-media .fa,

@@ -144,7 +144,11 @@
             <li class="pvxs">
               <a href="https://www.phila.gov/departments/office-of-innovation-and-technology/phlgovtv/" class="prl">
                 <span class="fa fa-stack fa-lg">
+<<<<<<< HEAD
+                  <i class="fa fa-tv" title="TV" aria-hidden="true"></i>
+=======
                   <i class="fa fa-tv fa-stack-2x" title="TV" aria-hidden="true"></i>
+>>>>>>> typography-main
                   <span class="show-for-sr">TV 64</span>
                 </span>
               </a>
