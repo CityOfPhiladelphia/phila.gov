@@ -52,12 +52,10 @@
   }
 
   @include breakpoint(medium) {
-    .intro-text{
-      p {
-        margin-bottom: 3rem;
-        font-size: rem-calc(25);
-        line-height: 3rem;
-      }
+    .intro-text p {
+      font-size: rem-calc(25);
+      line-height: 2.8rem;
+      margin-bottom: 3rem;
       ul {
         padding-left: 2rem;
       }

@@ -13,7 +13,7 @@
       <div class="row" data-toggle="feedback">
         <div class="small-24 columns">
           <div class="call-to-action phs pvm center">
-            <a href="#" class="no-link"><span class="break-before-sm">We’re always working to improve phila.gov.</span>
+            <a href="#" class="no-link">We’re always working to improve phila.gov.
             <span class="break-before-sm"> How can we make this page better?</span></a>
           </div>
         </div>
@@ -21,6 +21,10 @@
       <div class="feedback-form" data-type="feedback-form" style="display:none;">
         <div class="row">
           <div class="medium-18 large-14 column small-centered mbm clearfix" data-type="form-wrapper" >
+<<<<<<< HEAD
+=======
+            <div id="feedback-container"><iframe src="https://phila.formstack.com/forms/philagov_feedback?referrer=<?php echo get_permalink()?>" title="phila.gov feedback" width="600" height="900" frameBorder="0"></iframe></div>
+>>>>>>> typography-main
           </div>
         </div>
       </div>

@@ -44,49 +44,13 @@ nav#side-nav ul li span {
   font-size: 1.2rem !important;
 }
 
-.welcome-message h1{
-  font-weight: 400 !important;
-}
-
-.document .file-type {
-  font-size: 16px;
-}
-
 #site-nav {
   text-transform: none;
   font-size: 1rem;
 }
 
-.home .hero-content .welcome-message .h1{
-  font-weight: 400;
-}
-
-.post-label span {
-  font-size: 14px;
-  vertical-align: text-top;
-}
 button, .button {
   padding: 1rem;
-}
-
-.global-nav .dropdown-pane .mega-menu-footer {
-  height: 65px;
-}
-
-.global-nav .dropdown-pane .mega-menu-footer.left-arrow-indent:before {
-  border-top: 32px solid transparent;
-  border-bottom: 32px solid transparent;
-}
-.global-nav .dropdown-pane .inner-wrapper .columns a {
-  padding: 1.5rem 0 1.5rem 1rem;
-}
-
-.global-nav .dropdown-pane .inner-wrapper .columns a span i{
-  font-size: 20px;
-}
-
-.global-nav .dropdown-pane .inner-wrapper .columns a .text-label{
-  font-size:14px;
 }
 
 input[type=checkbox] + label[for] {
@@ -97,19 +61,41 @@ input[type=radio] + label[for] {
   font-size: 16px;
 }
 
-.single-service_page {
-  h2 {
-    //padding-bottom: 1.5rem;
-    margin-top:0;
-  }
-  h3{
-    margin-top: 3.5rem;
-  }
-  .panel.info.equal h3{
-    margin-top: 0;
+@include breakpoint(medium) {
+  #main .single-service_page {
+    h2 {
+      margin-top:0;
+    }
+    h3{
+      margin-top: 3.5rem;
+    }
+    .panel.info.equal h3{
+      margin-top: 0;
+    }
   }
 }
 
 a.card h1, a.card h2, a.card h3, a.card h4, a.card h5, a.card h6, a.card .h1, a.card .h2, a.card .h3, a.card .h4, a.card .h5, a.card .h6 {
   font-size: 1.3rem;
+}
+footer.site-footer.site-footer .fat h2 {
+  font-size: 1.2rem;
+}
+footer.site-footer .trending-requests a:link{
+  font-size: 16px;
+}
+
+@include breakpoint(small only) {
+  .global-nav .utility-nav {
+    min-height: 30px;
+  }
+  .cell {
+    margin-bottom: 0rem;
+  }
+}
+#site-search-button{
+  .search-text{
+    margin-top: 0.5rem;
+    display: block;
+  }
 }
