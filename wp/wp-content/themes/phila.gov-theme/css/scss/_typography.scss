@@ -62,7 +62,7 @@ input[type=radio] + label[for] {
 }
 
 @include breakpoint(medium) {
-  #main .single-service_page {
+  .single-service_page #main {
     h2 {
       margin-top:0;
     }
