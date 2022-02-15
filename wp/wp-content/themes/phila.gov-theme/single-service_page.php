@@ -51,7 +51,7 @@
               </ul>
             </nav>
         </div>
-        <div class="cell medium-16 columns pbl flex-container auto margin-auto">
+        <div class="cell medium-16 columns pbxl flex-container auto margin-auto">
           <article class="full">
             <header class="entry-header">
               <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
