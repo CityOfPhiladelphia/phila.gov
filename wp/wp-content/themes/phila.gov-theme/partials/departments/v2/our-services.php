@@ -36,7 +36,7 @@
             <?php $alt_title = isset( $service['alt_title'] ) ? $service['alt_title'] : ''; ?>
             <div class="inside-border-group-item medium-<?php echo $columns ?> <?php echo ($item_count == '1') ? 'small-24' : 'small-12';?> columns end">
               <a href="<?php echo get_permalink( $service['phila_v2_service_page'] ) ?>" class="valign">
-                <div class="valign-cell pal phl-l" data-equalizer-watch>
+                <div class="valign-cell service-buttons" data-equalizer-watch>
                   <div><i class="<?php echo $service['phila_v2_icon'] ?> prm fa-2x" aria-hidden="true"></i></div>
                   <div class="<?php echo isset($short_desc) ? 'prl' : ''?>">
                   <?php if( $alt_title == '' ) : ?>
