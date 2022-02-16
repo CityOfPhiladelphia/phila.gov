@@ -57,8 +57,8 @@ function covid_response_level( $atts ) {
             </header>
             <div class="description">
               <ul>
-                <li>Patient-facing healthcare workers</li>
-                <li>Long-term care facility residents and staff</li>
+                <li>Present your vaccine card or exemption to dine indoors</li>
+                <li>Wear a mask when indoors in public places</li>
               </ul>
             </div>
           </section>
@@ -79,10 +79,8 @@ function covid_response_level( $atts ) {
             </header>
             <div class="description">
               <ul>
-                <li>Frontline essential workers at high risk for exposure</li>
-                <li>Individuals 65+</li>
-                <li>Those with the highest risk medical conditions</li>
-                <li>Those working or residing in congregate settings</li>
+                <li>Present your vaccine card or exemption or a negative test within 24 hours to dine indoors</li>
+                <li>Wear a mask when indoors in public places</li>
               </ul>
             </div>
           </section>
@@ -103,7 +101,7 @@ function covid_response_level( $atts ) {
             </header>
             <div class="description">
               <ul>
-                <li>Essential workers at lower risk of exposure</li>
+                <li>Wear a mask when indoors in public places</li>
               </ul>
             </div>
           </section>
@@ -122,11 +120,6 @@ function covid_response_level( $atts ) {
                 </div>
               </div>
             </header>
-            <div class="description">
-              <ul>
-                <li>Anyone 16+ not yet immunized</li>
-              </ul>
-            </div>
           </section>
         </div>
       </div>
