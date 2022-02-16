@@ -21,7 +21,6 @@ else
   echo 'Running prod tasks'
   npm rebuild node-sass
   npm run build
-  npm run postbuild
 fi
 cd /home/ubuntu/app
 
