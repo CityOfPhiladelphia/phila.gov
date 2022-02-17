@@ -41,7 +41,7 @@
     }
     .completed {
       margin-top: 57px;
-      .bg-dark-gray {
+      .stage-container {
         .right-arrow {
           h4 {
             color: #000;
@@ -54,7 +54,7 @@
     }
     .inactive {
       margin-top: 34px;
-      .bg-dark-gray {
+      .stage-container {
         background-color: #D8D8D8 !important;
         .right-arrow {
           h4 {
@@ -75,7 +75,7 @@
     }
   }
   .open {
-    .bg-dark-gray {
+    .stage-container {
       background-color: #F0F0F0 !important;
       .right-arrow {
         h4 {
@@ -90,9 +90,9 @@
       display: block;
     }
   }
-  .bg-dark-gray {
+  .stage-container {
     cursor: pointer;
-    &:hover {
+    &:hover, .hover {
       background-color: #0F4D90 !important;
       .right-arrow {
         h4 {

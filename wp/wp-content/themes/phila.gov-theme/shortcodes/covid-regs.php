@@ -41,17 +41,17 @@ function covid_response_level( $atts ) {
     <h2 class="stages-header mbm">Philadelphia COVID response levels</h2>
     <div class="process">
       <div class="row collapse process-bar">
-        <div class="small-6 medium-6 columns">
+        <div class="small-24 medium-6 columns">
           <section class="chevron <?php echo $stage_1; ?>">
             <div class="row collapse current-marker">
               <div class="columns center small-centered marker">
                 <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
               </div>
             </div>
-            <header class="bg-dark-gray center">
+            <header class="bg-dark-gray center stage-container">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><span class="stage">Extreme Caution</span></h4>
+                  <h4 class="mbn h5 white">Extreme Caution</h4>
                 </div>
               </div>
             </header>
@@ -63,17 +63,17 @@ function covid_response_level( $atts ) {
             </div>
           </section>
         </div>
-        <div class="small-6 medium-6 columns small-text">
+        <div class="small-24 medium-6 columns small-text">
           <section class="chevron <?php echo $stage_2; ?>">
             <div class="row collapse current-marker">
               <div class="columns center small-centered marker">
                 <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
               </div>
             </div>
-            <header class="bg-dark-gray center">
+            <header class="bg-dark-gray center stage-container">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><span class="stage">Caution </span></h4>
+                  <h4 class="mbn h5 white">Caution </h4>
                 </div>
               </div>
             </header>
@@ -85,17 +85,17 @@ function covid_response_level( $atts ) {
             </div>
           </section>
         </div>
-        <div class="small-6 medium-6 columns small-text">
+        <div class="small-24 medium-6 columns small-text">
           <section class="chevron <?php echo $stage_3; ?>">
             <div class="row collapse current-marker">
               <div class="columns center small-centered marker">
                 <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
               </div>
             </div>
-            <header class="bg-dark-gray center">
+            <header class="bg-dark-gray center stage-container">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><span class="stage">Mask Precautions</span></h4>
+                  <h4 class="mbn h5 white">Mask Precautions</h4>
                 </div>
               </div>
             </header>
@@ -106,17 +106,17 @@ function covid_response_level( $atts ) {
             </div>
           </section>
         </div>
-        <div class="small-6 medium-6 columns end">
+        <div class="small-24 medium-6 columns end">
           <section class="chevron <?php echo $stage_4; ?>">
             <div class="row collapse current-marker">
               <div class="columns center small-centered marker">
                 <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
               </div>
             </div>
-            <header class="bg-dark-gray center">
+            <header class="bg-dark-gray center stage-container">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white"><span class="stage">All Clear</span></h4>
+                  <h4 class="mbn h5 white">All Clear</h4>
                 </div>
               </div>
             </header>
