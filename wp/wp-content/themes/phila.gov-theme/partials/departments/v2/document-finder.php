@@ -30,7 +30,7 @@ else {
           <?php if( !empty( $table['phila_files'] ) ) :	
             $c++;	
             ?>	
-            <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ? '<h2 class="bmn" id="' .  sanitize_title_with_dashes($table['phila_custom_wysiwyg']['phila_wysiwyg_title']) .'">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] . '</h2>' : ''; ?>	
+            <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ? '<h3 class="bmn" id="' .  sanitize_title_with_dashes($table['phila_custom_wysiwyg']['phila_wysiwyg_title']) .'">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] . '</h3>' : ''; ?>	
             <div id="sortable-table-<?php echo $c?>" class="search-sort-table">	
               <?php if ( count($table['phila_files']) >= 7) : ?>	
                 <div class="search">	
