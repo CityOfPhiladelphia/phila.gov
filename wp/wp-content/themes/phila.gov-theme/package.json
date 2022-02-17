@@ -9,8 +9,7 @@
     "dev:js": "browserify js/dev/main.js -o js/phila-scripts.js",
     "build:js": "browserify -e js/dev/main.js | uglifyjs -c -m > js/phila-scripts.min.js",
     "dev:build": "npm run dev:css && npm run dev:js",
-    "build": "npm run build:css && npm run build:js",
-    "postbuild": "postcss --use autoprefixer -b 'last 2 versions' < css/styles.min.css -o css/styles.min.css"
+    "build": "npm run build:css && npm run build:js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +35,7 @@
     "envify": "^4.1.0",
     "hoek": "^5.0.4",
     "node-sass": "^4.14",
+    "postcss": "^8.4.5",
     "postcss-cli": "^9.1.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
