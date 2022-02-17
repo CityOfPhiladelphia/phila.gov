@@ -11,9 +11,9 @@ module.exports = $(function(){
     e.preventDefault();
     e.stopPropagation();
   });
-  $(document).on('click', function (e) {
-    $('.stage-tracker .chevron').each(function() {
-      $(this).removeClass('open');
-    });
+
+  $( '.stage-tracker .chevron .bg-dark-gray' ).on( "vmouseover", "p", function() {
+    $(this).closest(".chevron").toggleClass('open');
   });
+
 });
