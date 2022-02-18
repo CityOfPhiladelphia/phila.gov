@@ -41,7 +41,7 @@ function covid_response_level( $atts ) {
     <h2 class="stages-header mbm">Philadelphia COVID response levels</h2>
     <div class="process">
       <div class="row collapse process-bar">
-        <div class="small-24 medium-6 columns">
+        <div class="small-24 medium-12 large-6 columns">
           <section class="chevron <?php echo $stage_1; ?>">
             <div class="row collapse current-marker">
               <div class="columns center small-centered marker">
@@ -63,7 +63,7 @@ function covid_response_level( $atts ) {
             </div>
           </section>
         </div>
-        <div class="small-24 medium-6 columns small-text">
+        <div class="small-24 medium-12 large-6 columns small-text">
           <section class="chevron <?php echo $stage_2; ?>">
             <div class="row collapse current-marker">
               <div class="columns center small-centered marker">
@@ -85,7 +85,7 @@ function covid_response_level( $atts ) {
             </div>
           </section>
         </div>
-        <div class="small-24 medium-6 columns small-text">
+        <div class="small-24 medium-12 large-6 columns small-text">
           <section class="chevron <?php echo $stage_3; ?>">
             <div class="row collapse current-marker">
               <div class="columns center small-centered marker">
@@ -106,7 +106,7 @@ function covid_response_level( $atts ) {
             </div>
           </section>
         </div>
-        <div class="small-24 medium-6 columns end">
+        <div class="small-24 medium-12 large-6 columns end">
           <section class="chevron <?php echo $stage_4; ?>">
             <div class="row collapse current-marker">
               <div class="columns center small-centered marker">
