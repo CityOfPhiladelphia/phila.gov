@@ -76,7 +76,6 @@
   }
   .open {
     .stage-container {
-      background-color: #F0F0F0 !important;
       .right-arrow {
         h4 {
           color: #000;
@@ -91,33 +90,41 @@
     }
   }
   .stage-container {
-    cursor: pointer;
-    &:hover, .hover {
-      background-color: #0F4D90 !important;
-      .right-arrow {
-        h4 {
-          color: #FFF;
-        }
-        &::after {
-          border-left-color: #0F4D90;
+    @include breakpoint(large up) {
+      cursor: pointer;
+      &:hover, .hover {
+        background-color: #0F4D90 !important;
+        .right-arrow {
+          h4 {
+            color: #FFF;
+          }
+          &::after {
+            border-left-color: #0F4D90;
+          }
         }
       }
     }
   }
-  @media only screen and (max-width: 600px) {
-    padding: 0px;
+  @include breakpoint(large down) {
+    .stage-container {
+      cursor: default;
+    }
     .stage {
       display: none;
     }
     .description {
       left: 0px;
       width: 100%;
+      display: block;
     }
     .chevron {
       position: static;
     }
     .phase-header {
       display: block;
+    }
+    .description {
+      position: relative;
     }
   }
 }
