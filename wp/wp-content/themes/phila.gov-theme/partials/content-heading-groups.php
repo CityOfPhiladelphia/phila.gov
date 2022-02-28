@@ -13,7 +13,7 @@
   if ( !empty($heading_content) ) : ?>
   <?php foreach ( $heading_content as $content ): ?>
 
-  <div class="grid-x mvl">
+  <div class="grid-x">
     <div class="cell">
       <section>
         <?php $wysiwyg_heading = isset($content['phila_wysiwyg_heading']) ? $content['phila_wysiwyg_heading'] : '';?>
