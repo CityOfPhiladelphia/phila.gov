@@ -64,7 +64,7 @@ input[type=radio] + label[for] {
 @include breakpoint(medium) {
   .single-service_page #main {
     h2 {
-      margin-top:0;
+      margin: 0;
     }
     h3{
       margin-top: 3.5rem;
@@ -73,6 +73,10 @@ input[type=radio] + label[for] {
       margin-top: 0;
     }
   }
+}
+
+.single-service_page p:last-of-type{
+  margin-bottom: 0;
 }
 
 a.card h1, a.card h2, a.card h3, a.card h4, a.card h5, a.card h6, a.card .h1, a.card .h2, a.card .h3, a.card .h4, a.card .h5, a.card .h6 {
