@@ -7,7 +7,7 @@
 
 <?php $steps = phila_extract_stepped_content($step_group); ?>
   <?php if ( !empty($step_group['service_how_stepped_content_intro'] ) ): ?>
-      <h3><?php echo $step_group['service_how_stepped_content_intro'] ?> </h3>
+    <h4 class="step-header"><?php echo $step_group['service_how_stepped_content_intro'] ?> </h4>
   <?php endif; ?>
 
 <div class="step-group">

@@ -50,8 +50,8 @@
         <?php if (!empty( $content['forms']) ) : ?>
           <div class="phm-mu">
             <?php foreach ( $content['forms'] as $form ): ?>
-              <div class="pvs">
-                <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
+              <div>
+                <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt fa-fw" aria-hidden="true"></i><?php echo get_the_title($form); ?></a>
             <?php endforeach; ?>
             <?php endif; ?>
             <?php echo apply_filters( 'the_content', $content['form_free']); ?>
