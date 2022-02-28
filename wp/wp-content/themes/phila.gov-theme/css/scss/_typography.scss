@@ -75,9 +75,14 @@ input[type=radio] + label[for] {
   }
 }
 
-a.card h1, a.card h2, a.card h3, a.card h4, a.card h5, a.card h6, a.card .h1, a.card .h2, a.card .h3, a.card .h4, a.card .h5, a.card .h6 {
+.single-service_page #main #service-topic_page h3 {
+  margin-top: 0;
+}
+
+.single-service_page #main a.card h3 {
   font-size: 1.3rem;
 }
+
 footer.site-footer.site-footer .fat h2 {
   font-size: 1.2rem;
 }
