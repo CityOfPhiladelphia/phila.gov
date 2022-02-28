@@ -78,6 +78,9 @@ input[type=radio] + label[for] {
   .panel.info.equal h3{
     margin-top: 0;
   }
+  ul, ol{
+    margin-bottom:0;
+  }
 }
 
 .single-service_page p:last-of-type{
