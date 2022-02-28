@@ -49,7 +49,6 @@ a[href$="nav-menus.php?action=locations"],
   display: none;
 }
 /* Disable a number of form fields with CSS so duplicated items won't lose element value when edited. Applies only to existing items.*/
-.post-php.post-type-programs select.rwmb-select,
 .post-php.post-type-service_page #postbox-container-2 input[type='text'],
 .post-php.post-type-programs #phila_template_select,
 .post-php.post-type-programs #phila_meta_desc,

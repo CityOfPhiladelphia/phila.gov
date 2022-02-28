@@ -84,7 +84,11 @@ input[type=radio] + label[for] {
   margin-bottom: 0;
 }
 
-.single-service_page #main a.card h3{
+.single-service_page #main #service-topic_page h3 {
+  margin-top: 0;
+}
+
+.single-service_page #main a.card h3 {
   font-size: 1.3rem;
 }
 
