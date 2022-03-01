@@ -1,19 +1,19 @@
 module.exports = $(function(){
-  $('.covid-phases .chevron .bg-dark-gray').click(function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    $('.covid-phases .chevron').each(function() {
-      $(this).removeClass('open');
+
+  var size = Foundation.MediaQuery.is('large up');
+
+  if (size) {
+    $('.stage-container').hover(function(e){
+
+      $('.stage-tracker .chevron').each(function() {
+        $(this).removeClass('open');
+      });
+      $(this).closest(".chevron").toggleClass('open');
+
     });
-    $(this).closest(".chevron").toggleClass('open');
-  });
-  $('.covid-phases .chevron .description').click(function(e){
-    e.preventDefault();
-    e.stopPropagation();
-  });
-  $(document).on('click', function (e) {
-    $('.covid-phases .chevron').each(function() {
-      $(this).removeClass('open');
+    $('.stage-tracker .chevron .description').hover(function(e){
+      e.stopPropagation();
     });
-  });
+  }
+
 });

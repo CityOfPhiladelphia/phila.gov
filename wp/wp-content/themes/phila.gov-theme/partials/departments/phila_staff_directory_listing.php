@@ -39,6 +39,8 @@ if ( has_category() ) {
 
   if ( !empty( $category_override ) ) {
     $category_id = implode(", ", $category_override['phila_staff_category']);
+  }else if (!empty ($repeating_override)) {
+    $category_id = implode(", ", $repeating_override);
   }
 
   if (!empty( $unit_data ) ) {

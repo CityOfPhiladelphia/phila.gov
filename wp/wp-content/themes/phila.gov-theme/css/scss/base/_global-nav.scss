@@ -10,6 +10,10 @@
   @include secondary-font(400);
   position: relative;
   z-index: 1000;
+  
+  ul {
+    font-size:14px;
+  }
 
   &.no-js {
     //prevent content from jumping down after JS is loaded
@@ -93,7 +97,6 @@
       }
     }
     #google_translate_element {
-      padding: 0.25rem 0.5rem;
       a {
         padding: .2rem 2rem .3rem .5rem;
       }
@@ -158,6 +161,8 @@
       margin: 0;
       font-size: .8rem;
       text-transform: uppercase;
+      display:block;
+
     }
   }
 
@@ -396,7 +401,7 @@
 
     .placeholder{
       background: color(ghost-gray);
-      min-height: 5rem;
+      min-height: 4.8rem;
     }
 
     .inner-wrapper .columns {
@@ -409,7 +414,7 @@
 
       a {
         display:block;
-        padding: 1.5rem;
+        padding: 1.5rem 0 1.5rem 1rem;
         background-color: color(ghost-gray);
         width: 100%;
 
@@ -423,6 +428,7 @@
           line-height: 1.2;
           vertical-align: middle;
           max-width: calc(100% - 45px);
+          font-size:14px;
         }
         span{
           display:block;
@@ -430,12 +436,13 @@
             display: inline-block;
             vertical-align: middle;
             padding-right: 0.8rem;
+            font-size: 20px;
           }
         }
       }
     }
     .mega-menu-footer {
-      height: 66px;
+      height: 61px;
       border-left: 2px solid white;
       border-right: 2px solid white;
       a {
@@ -454,8 +461,8 @@
           content: '';
           width: 0;
           height: 0;
-          border-top: 33px solid transparent;
-          border-bottom: 33px solid transparent;
+          border-top: 30px solid transparent;
+          border-bottom: 30px solid transparent;
           border-left: 33px solid color(ghost-gray);
           position: absolute;
           left:0;

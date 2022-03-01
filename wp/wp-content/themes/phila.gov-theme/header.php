@@ -10,8 +10,8 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
-  <?php get_template_part('partials/global/analytics'); ?>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
+  <?php get_template_part('partials/global/analytics'); ?>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="description" content="<?php echo ( is_archive() || is_search() || is_home() ) ? get_bloginfo('description') : phila_get_item_meta_desc(); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +29,7 @@
     <meta class="swiftype" name="published_at" data-type="date" content="<?php echo get_the_time('c', $post->ID); ?>" />
   <?php endif; ?>
 
-  <link rel="shortcut icon" type="image/x-icon" href="//cityofphiladelphia.github.io/patterns/images/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="//www.phila.gov/assets/images/favicon.ico">
 
   <?php wp_head(); ?>
 
@@ -123,7 +123,7 @@
               <div class="small-16 medium-6 columns valign small-push-4 medium-push-0">
                 <div class="valign-cell">
                   <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia">
-                    <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia.png" alt="City of Philadelphia">
+                    <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//www.phila.gov/assets/images/city-of-philadelphia.png" alt="City of Philadelphia">
                   </a>
                 </div>
               </div>
@@ -151,8 +151,8 @@
             <div class="small-5 medium-1 columns valign phn-m">
               <div class="valign-cell">
                 <button id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
-                  <i class="fas fa-search fa-2x" aria-hidden="true"></i>
-                  <span class="show-for-small-only">Search</span>
+                  <i class="fas fa-search fa-3x" aria-hidden="true"></i>
+                  <span class="search-text show-for-small-only">Search</span>
                   <span class="accessible" for="site-search-button">Search</span>
                 </button>
               </div>

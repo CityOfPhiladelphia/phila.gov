@@ -19,22 +19,22 @@ if [ "$PHILA_TEST" ]; then
   npm run dev:build
 else
   echo 'Running prod tasks'
+  npm rebuild node-sass
   npm run build
-  npm run postbuild
 fi
 cd /home/ubuntu/app
 
 echo 'Modifying php configs'
 sudo ed -s /etc/php/7.4/fpm/pool.d/www.conf <<'EOF'
-g/^pm\.max_children/s/10/20
+g/^pm\.max_children/s/5/20
 w
 EOF
 sudo ed -s /etc/php/7.4/fpm/php.ini <<'EOF'
 g/^post_max_size/s/8/1000
 g/^upload_max_filesize/s/2/100
 g/^memory_limit/s/128/1024
-g/^max_execution_time/s/30/300
-g/^max_input_vars/s/100000/1000000
+g/^max_execution_time/s/30000000000000000/500
+g/^max_input_vars/s/10000000000000000000/2000000
 w
 EOF
 

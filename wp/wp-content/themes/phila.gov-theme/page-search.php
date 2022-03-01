@@ -41,8 +41,8 @@ get_header(); ?>
                       <label for="news-events">News & events</label>
                     </div>
                     <div>
-                      <input type="radio" id="publications" data-type="documents" class="content-type" name="content_type">
-                      <label for="publications">Publications & forms</label>
+                      <input type="radio" id="document" data-type="document" class="content-type" name="content_type">
+                      <label for="document">Publications & forms</label>
                     </div>
                     <div>
                       <input type="radio" id="departments" data-type="department_page" class="content-type" name="content_type">

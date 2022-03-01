@@ -26,7 +26,7 @@
   <section class="mvl">
     <div class="row">
       <div class="columns">
-        <h2><?php echo $action_panel_title; ?></h2>
+        <h2 id="<?php echo sanitize_title_with_dashes( $action_panel_title ); ?>"><?php echo $action_panel_title; ?></h2>
       </div>
     </div>
     <section class="get-involved-row">

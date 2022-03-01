@@ -68,8 +68,8 @@ class Auth {
 			$this->namespace,
 			'token',
 			array(
-				'methods'  => 'POST',
-				'callback' => array( $this, 'get_token' ),
+				'methods'             => 'POST',
+				'callback'            => array( $this, 'get_token' ),
 				'permission_callback' => '__return_true',
 			)
 		);
@@ -78,8 +78,8 @@ class Auth {
 			$this->namespace,
 			'token/validate',
 			array(
-				'methods'  => 'POST',
-				'callback' => array( $this, 'validate_token' ),
+				'methods'             => 'POST',
+				'callback'            => array( $this, 'validate_token' ),
 				'permission_callback' => '__return_true',
 			)
 		);
@@ -144,9 +144,10 @@ class Auth {
 					'success'    => false,
 					'statusCode' => 403,
 					'code'       => 'jwt_auth_bad_config',
-					'message'    => __( 'JWT is not configurated properly.', 'jwt-auth' ),
+					'message'    => __( 'JWT is not configured properly.', 'jwt-auth' ),
 					'data'       => array(),
-				)
+				),
+				403
 			);
 		}
 
@@ -163,7 +164,8 @@ class Auth {
 					'code'       => $error_code,
 					'message'    => strip_tags( $user->get_error_message( $error_code ) ),
 					'data'       => array(),
-				)
+				),
+				403
 			);
 		}
 
@@ -270,16 +272,17 @@ class Auth {
 	 * Main validation function, this function try to get the Autentication
 	 * headers and decoded.
 	 *
-	 * @param bool $output Whether to only return the payload or not.
+	 * @param bool $return_response Either to return full WP_REST_Response or to return the payload only.
 	 *
 	 * @return WP_REST_Response | Array Returns WP_REST_Response or token's $payload.
 	 */
-	public function validate_token( $output = true ) {
+	public function validate_token( $return_response = true ) {
 		/**
 		 * Looking for the HTTP_AUTHORIZATION header, if not present just
 		 * return the user.
 		 */
-		$auth = isset( $_SERVER['HTTP_AUTHORIZATION'] ) ? $_SERVER['HTTP_AUTHORIZATION'] : false;
+		$headerkey = apply_filters( 'jwt_auth_authorization_header', 'HTTP_AUTHORIZATION' );
+		$auth      = isset( $_SERVER[ $headerkey ] ) ? $_SERVER[ $headerkey ] : false;
 
 		// Double check for different auth header string (server dependent).
 		if ( ! $auth ) {
@@ -325,9 +328,10 @@ class Auth {
 					'success'    => false,
 					'statusCode' => 403,
 					'code'       => 'jwt_auth_bad_config',
-					'message'    => __( 'JWT is not configurated properly.', 'jwt-auth' ),
+					'message'    => __( 'JWT is not configured properly.', 'jwt-auth' ),
 					'data'       => array(),
-				)
+				),
+				403
 			);
 		}
 
@@ -346,7 +350,8 @@ class Auth {
 						'code'       => 'jwt_auth_bad_iss',
 						'message'    => __( 'The iss do not match with this server.', 'jwt-auth' ),
 						'data'       => array(),
-					)
+					),
+					403
 				);
 			}
 
@@ -360,7 +365,8 @@ class Auth {
 						'code'       => 'jwt_auth_bad_request',
 						'message'    => __( 'User ID not found in the token.', 'jwt-auth' ),
 						'data'       => array(),
-					)
+					),
+					403
 				);
 			}
 
@@ -376,12 +382,30 @@ class Auth {
 						'code'       => 'jwt_auth_user_not_found',
 						'message'    => __( "User doesn't exist", 'jwt-auth' ),
 						'data'       => array(),
-					)
+					),
+					403
 				);
 			}
 
-			// Everything looks good return the token if $output is set to false.
-			if ( ! $output ) {
+			// Check extra condition if exists.
+			$failed_msg = apply_filters( 'jwt_auth_extra_token_check', '', $user, $token, $payload );
+
+			if ( ! empty( $failed_msg ) ) {
+				// No user id in the token, abort!!
+				return new WP_REST_Response(
+					array(
+						'success'    => false,
+						'statusCode' => 403,
+						'code'       => 'jwt_auth_obsolete_token',
+						'message'    => __( 'Token is obsolete', 'jwt-auth' ),
+						'data'       => array(),
+					),
+					403
+				);
+			}
+
+			// Everything looks good, return the payload if $return_response is set to false.
+			if ( ! $return_response ) {
 				return $payload;
 			}
 
@@ -406,7 +430,8 @@ class Auth {
 					'code'       => 'jwt_auth_invalid_token',
 					'message'    => $e->getMessage(),
 					'data'       => array(),
-				)
+				),
+				403
 			);
 		}
 	}
@@ -435,7 +460,7 @@ class Auth {
 
 		/**
 		 * If the request URI is for validate the token don't do anything,
-		 * this avoid double calls to the validate_token function.
+		 * This avoid double calls to the validate_token function.
 		 */
 		$validate_uri = strpos( $_SERVER['REQUEST_URI'], 'token/validate' );
 
@@ -458,11 +483,13 @@ class Auth {
 					$default_whitelist = array(
 						// WooCommerce namespace.
 						$rest_api_slug . '/wc/',
+						$rest_api_slug . '/wc-admin/',
 						$rest_api_slug . '/wc-auth/',
 						$rest_api_slug . '/wc-analytics/',
 
 						// WordPress namespace.
 						$rest_api_slug . '/wp/v2/',
+						$rest_api_slug . '/oembed/',
 					);
 
 					// Well, we let you adjust this default whitelist :).
@@ -509,6 +536,10 @@ class Auth {
 
 		$request_uri = $_SERVER['REQUEST_URI'];
 
+		$prefix      = get_option( 'permalink_structure' ) ? rest_get_url_prefix() : '?rest_route=/';
+		$split       = explode( $prefix, $request_uri );
+		$request_uri = '/' . $prefix . ( ( count( $split ) > 1 ) ? $split[1] : $split[0] );
+
 		// Only use string before "?" sign if permalink is enabled.
 		if ( get_option( 'permalink_structure' ) && false !== stripos( $request_uri, '?' ) ) {
 			$split       = explode( '?', $request_uri );
@@ -527,13 +558,9 @@ class Auth {
 					return true;
 				}
 			} else {
-				/**
-				 * TODO: Maybe use regex to match glob-style pattern.
-				 */
-				$endpoint = str_ireplace( '*', '', $endpoint );
-				$endpoint = untrailingslashit( $endpoint );
+				$regex = '/' . str_replace( '/', '\/', $endpoint ) . '/';
 
-				if ( 0 === stripos( $request_uri, $endpoint ) ) {
+				if ( preg_match( $regex, $request_uri ) ) {
 					return true;
 				}
 			}

@@ -18,7 +18,7 @@
                 <?php $step_content = phila_loop_clonable_metabox( $current_row[$current_row_option]['step_repeater_wysiwyg'] ); ?>
                 <?php foreach( $step_content as $content ) :?>
                   <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
-                    <?php $current_row_id = strtolower(str_replace(' ', '-', $content['phila_custom_wysiwyg']['phila_wysiwyg_title']));?>
+                    <?php $current_row_id = sanitize_title_with_dashes( $content['phila_custom_wysiwyg']['phila_wysiwyg_title']);?>
                     <li class="pvs-mu phl-mu phs">
                       <a href="<?php echo '#'.$current_row_id;?>" class="anchor underline">- <?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></a>
                     </li>
@@ -27,7 +27,7 @@
               <?php elseif ( $current_row_option == 'phila_metabox_tabbed_stepped_content'):?>
 
                 <?php if( isset($current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title'] )): ?>
-                  <?php $current_row_id = strtolower(str_replace(' ', '-', $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title']));?>
+                  <?php $current_row_id = sanitize_title_with_dashes( $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title']);?>
                   <li class="pvs-mu phl-mu phs">
                     <a href="<?php echo '#'.$current_row_id;?>" class="anchor underline">- <?php echo $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title']; ?></a>
                   </li>
@@ -35,7 +35,7 @@
               <?php elseif ( $current_row_option == 'phila_metabox_tabbed_timeline_content'):?>
                 
                 <?php if( isset($current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_title'] )): ?>
-                  <?php $current_row_id = strtolower(str_replace(' ', '-', $current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_title']));?>
+                  <?php $current_row_id = sanitize_title_with_dashes( $current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_title']);?>
                   <li class="pvs-mu phl-mu phs">
                     <a href="<?php echo '#'.$current_row_id;?>" class="anchor underline">- <?php echo $current_row[$current_row_option]['phila_timeline_content']['phila_wysiwyg_title']; ?></a>
                   </li>

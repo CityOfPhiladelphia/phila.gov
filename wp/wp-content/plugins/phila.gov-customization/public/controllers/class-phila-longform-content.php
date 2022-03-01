@@ -271,11 +271,6 @@ class Phila_Longform_Content_Controller {
           'type'        => 'string',
           'readonly'    => true,
         ),
-        // 'dateFormatted' => array(
-        //   'description' => esc_html__('dateFormatted of the document.', 'phila-gov'),
-        //   'type'        => 'string',
-        //   'readonly'    => true,
-        // ),
         'editLink'  => array(
           'description' => esc_html__('editLink of the document.', 'phila-gov'),
           'type'        => 'string',
