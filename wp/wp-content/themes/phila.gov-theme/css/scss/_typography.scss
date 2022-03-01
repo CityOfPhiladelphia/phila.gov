@@ -77,6 +77,12 @@ input[type=radio] + label[for] {
   ul, ol{
     margin-bottom:0;
   }
+  .callout {
+    margin-bottom: 0;
+    h1, h2, h3, h4, h5, h6{
+      margin-top: 0;
+    }
+  }
 }
 
 .single-service_page p:last-of-type{
@@ -113,9 +119,6 @@ footer.site-footer .trending-requests a:link{
   }
 }
 
-.callout {
-  margin-bottom: 0;
-}
 
 .single-service_page h3#service-overview{
   margin-top: 2.57143rem;
