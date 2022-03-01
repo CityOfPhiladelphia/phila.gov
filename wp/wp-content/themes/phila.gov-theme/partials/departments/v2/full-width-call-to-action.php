@@ -19,7 +19,7 @@
         <div class="grid-x align-middle">
           <div class="small-24 medium-18 cell">
             <?php if ( !empty( $link['title'] ) ) : ?>
-              <h3 class="mbn"><?php echo $link['title'] ?></h3>
+              <h3 id="<?php echo sanitize_title_with_dashes( $link['title']); ?>" class="mbn"><?php echo $link['title'] ?></h3>
             <?php endif; ?>
             <?php if ( !empty( $link['description'] ) ) : ?>
               <p class="mts"><?php echo $link['description'] ?></p>
@@ -37,8 +37,10 @@
                     <?php echo $link['link_text']?>
                   </span>
                 <?php elseif (!empty( $link['modal_icon'] ) ) :?>
+                  <span class="button-label valign-cell">
+                    <?php echo $link['link_text']?>
+                </span>
                   <i class="fa <?php echo $link['modal_icon'] ?> valign-cell" aria-hidden="true"></i>
-                  <span class="accessible">Open modal</span>
                 <?php else :?>
                   <span class="valign-cell">
                     <?php echo $link['link_text']?>

@@ -56,7 +56,7 @@
             <header class="entry-header">
               <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
             </header>
-            <div data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
+            <div id="service-<?php echo $user_selected_template?>" data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
             <?php if ($user_selected_template == 'tax_detail') : 
               get_template_part('partials/services/content', 'tax-detail');
             

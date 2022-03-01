@@ -110,6 +110,7 @@ class MBR_Storage_Handler {
 			$wpdb->prepare(
 				$sql,
 				$type,
+				$object_id,
 				$object_id
 			)
 		);

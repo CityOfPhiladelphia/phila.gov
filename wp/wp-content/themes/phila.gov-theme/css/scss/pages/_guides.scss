@@ -46,12 +46,10 @@
   }
 
   @include breakpoint(medium) {
-    .intro-text {
+    .intro-text p {
       font-size: rem-calc(25);
-      line-height: 1.8rem;
-      p {
-        margin-bottom: 3rem;
-      }
+      line-height: 2.8rem;
+      margin-bottom: 3rem;
       ul {
         padding-left: 2rem;
       }
@@ -119,6 +117,7 @@
       font-size: 1.3rem;
       .is-active {
         padding: 0;
+        width: 100%;
       }
       ul {
         font-size: rem-calc(14);
