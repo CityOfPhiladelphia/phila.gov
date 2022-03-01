@@ -2,9 +2,7 @@
 <header>
 
     <div class="hero-content" style="background-image:url(<?php echo $this->bg['desktop'] ?>) ">
-            <?php if ( $this->is_homepage) : ?>
-                <img class="show-for-small-only" src="<?php echo $this->bg['mobile'] ?>" alt="">
-            <?php endif; ?>
+            <img class="show-for-small-only" src="<?php echo $this->bg['mobile'] ?>" alt="">
 
             <div class="hero-wrap">
 
