@@ -71,7 +71,8 @@ input[type=radio] + label[for] {
   h3{
     margin-top: 3.5rem;
   }
-  #service-topic_page h3{
+  #service-topic_page h3, 
+  #service-service_stub h3{
     margin-top:0;
   }
   .panel.info.equal h3{
