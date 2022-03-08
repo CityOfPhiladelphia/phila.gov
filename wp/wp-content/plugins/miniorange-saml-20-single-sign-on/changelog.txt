@@ -1,0 +1,288 @@
+=== SAML Single Sign On – SAML SSO Login ===
+
+== Archived Changelog Entries ==
+
+This file contains older changelog entries, so we can keep the size of the standard WordPress readme.txt file reasonable.
+For the latest changes, please refer to the "Changelog" section in the [readme.txt file](https://plugins.svn.wordpress.org/miniorange-saml-20-single-sign-on/trunk/readme.txt).
+
+= 4.8.99 =
+* Added new Add-on description
+
+= 4.8.98 =
+* SP Metadata Update
+
+= 4.8.97 =
+* Call setup fixes
+* Added contact phone number
+
+= 4.8.96 =
+* Added new IDP guides: Azure B2C and Gluu server
+* Updated XMLSecLibs
+
+= 4.8.95 =
+* Added Setup call feature
+
+= 4.8.94 =
+* Revamped add-ons tab
+
+= 4.8.93 =
+* Updated description for add-ons
+
+= 4.8.92 =
+* Security patches
+
+= 4.8.91 =
+* Added a new licensing plan
+
+= 4.8.90 =
+* Plugin tour fixes
+
+= 4.8.89 =
+* Adding more guides in SAML plugin
+
+= 4.8.88 =
+* Bug fixes
+
+= 4.8.87 =
+* Bug fixes in SAML SSO widget
+* Compatibility with WordPress 5.4
+
+= 4.8.86 =
+* Compatibility fixes with PHP5
+
+= 4.8.85 =
+* Visual Tour fixes
+* Fixed Telephone number input
+
+= 4.8.84 =
+* Security patches
+
+= 4.8.83 =
+* Nomenclature changes
+* Compatibility with PHP 7.4
+
+= 4.8.82 =
+* Added new SAML-compliant IdP guides
+* Bug fixes
+
+= 4.8.81 =
+* Updated SAML-compliant IdP guides
+
+= 4.8.80 =
+* Bug fixes
+
+= 4.8.79 =
+* Added Plugin-wide tour
+
+= 4.8.78 =
+* Request a demo feature.
+
+= 4.8.77 =
+* Bug Fixes
+
+= 4.8.76 =
+* Security Patches
+
+= 4.8.75 =
+* Visual-tour fixes
+
+= 4.8.74 =
+* Feedback form bug fix
+
+= 4.8.73 =
+* Security patches.
+
+= 4.8.72 =
+* Security patch.
+
+= 4.8.71 =
+* Security fixes.
+
+= 4.8.70 =
+* Bug fixes
+* Option to send plugin configuration with request
+
+= 4.8.69 =
+* Tested upto Wordpress 5.1.0
+* Replaced CURL calls with HTTP API calls.
+
+= 4.8.68 =
+* Tested upto Wordpress 5.0.2.
+* Updated to Latest XMLSeclibs library.
+* Compatibility with PHP 7.3.
+
+= 4.8.67 =
+* Description changes.
+
+= 4.8.66 =
+* Tested upto Wordpress 5.0.0.
+* Added option to disable character encoding.
+
+= 4.8.65 =
+* Bug Fixes
+
+= 4.8.64 =
+* Compatibility with PHP version 5.3+ upto latest version of PHP
+* Activation Issue Fixes
+
+= 4.8.63 =
+* Code enhancements.
+
+= 4.8.62 =
+* Fixed issues on plugin activation.
+
+= 4.8.61 =
+* Bug fixes.
+
+= 4.8.60 =
+* Updated to latest XMLSeclibs SAML library (version 3.0.1).
+* Added the visual tour to get familiar with plugin features and support.
+* Revamped the plugin UI.
+* Added the Add-On and their description.
+* Export plugin configurations.
+* SAML-compliant IdP guides.
+
+= 4.8.52 =
+* Tested upto Wordpress 4.9.8
+
+= 4.8.51 =
+* Added support for guest login
+* Added SAML-compliant IDP guide links
+
+
+= 4.8.50 =
+* Added feedback form.
+
+= 4.8.44 =
+* Tested upto WordPress 4.9.6
+
+= 4.8.43 =
+* Compatibility issue with PHP 7.2(Removed deprecated asserts )
+
+= 4.8.42 =
+* Input validation fixes.
+
+= 4.8.41 =
+* Support for PHP version 5.3 and above.
+
+= 4.8.40 =
+* Added feature for Exporting plugin configuration.
+* Added View SAML Request and Response
+
+= 4.8.35 =
+* Fixed the Entity ID/Issuer issues for AzureAD Idp.
+
+= 4.8.34 =
+* Introducing miniOrange on-premise IDP
+
+= 4.8.33 =
+* Compatibilty with Wordpress 4.9
+
+= 4.8.32 =
+* Introducing Standard version of SAML Plugin for small sized customers.
+* Fixed Registration issue.
+
+= 4.8.31 =
+* Introducing Standard version of SAML Plugin for small sized customers. Check Licensing Plans for more details.
+
+= 4.8.30 =
+* Fix the CSS and JS inclusion only in the plugin pages, removed it from frontend and backend of WordPress.
+
+= 4.8.28 =
+* Bug fix for PHP 5.4.x version.
+
+= 4.8.27 =
+* Support for Multiple Certificate via Metadata
+
+= 4.8.26 =
+* SAML Configuration by Uploading metadata.
+* Descriptive Error Messages.
+* Use miniorange as IdP feature.
+* More verbose instructions.
+* Compatibility with WordPress 4.8
+
+= 4.8.25 =
+Updating Licensing Plans
+
+= 4.8.24 =
+Updating Plugin Title : SAML SP Single Sign On
+
+= 3.8.14 =
+Pattern change on OTP Verification page
+
+= 3.8.12 =
+Major security fixes. It is recommended to update to this version.
+
+= 3.8.7 =
+Fixes for WordPress 4.5
+
+= 3.8.6 =
+Added features: Support for WordPress Multi-site (Network setup), support for Multiple SAML-compliant IDPs and some fixes for WordPress 4.5
+
+= 3.8.4 =
+Introducing Free Trial for the premium version.
+
+= 3.8.2 =
+Security fix for preventing non-admin users from changing the settings.
+
+= 3.8 =
+Security fix for SAML-compliant IDPs that signs only Assertion and not the complete SAML Response XML.
+
+= 3.7 =
+Support for Integrated Windows Authentication - contact <a href="mailto:info@xecurify.com">info@xecurify.com</a> if interested
+
+= 3.5 =
+Decrypt assertion bug fix
+
+= 3.4 =
+Added some requested features and some bug fixes.
+
+= 3.3 =
+Added support for Google Apps as an Identity Provider.
+
+= 3.2 =
+Some bug fixes in role mapping.
+
+= 3.1 =
+Some bug fixes in auto registration.
+
+= 3.0 =
+Added option to use miniOrange Single Sign On Service
+Made it simple to setup SAML authentication with your IdP.
+
+= 2.3 =
+Fixed forgot password bug for some users.
+
+= 2.2 =
+Added guides for configuring common Identity Providers like ADFS, SimpleSAMLphp, Salesforce, Okta and some bug fixes.
+
+= 2.1 =
+Removed unwanted JS files.
+
+= 2.0 =
+Added new feature like role mapping and auto redirect user to your SAML-compliant IdP.
+
+= 1.7.0 =
+Resolved UI issues for some users
+
+= 1.6.0 =
+Added help and troubleshooting guide.
+
+= 1.5.0 =
+Added error messaging.
+
+= 1.4.0 =
+Added fixes.
+
+= 1.3.0 =
+Added validations and fixes.
+UI Improvements.
+
+= 1.2.0 =
+* this is the third release.
+
+= 1.1.0 =
+* this is the second release.
+
+= 1.0.0 =
+* this is the first release.

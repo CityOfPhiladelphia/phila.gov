@@ -13,7 +13,7 @@ class RWMB_Input_List_Field extends RWMB_Choice_Field {
 	 * Enqueue scripts and styles
 	 */
 	public static function admin_enqueue_scripts() {
-		wp_enqueue_style( 'rwmb-input-list', RWMB_CSS_URL . 'input-list.css', array(), RWMB_VER );
+		// wp_enqueue_style( 'rwmb-input-list', RWMB_CSS_URL . 'input-list.css', array(), RWMB_VER );
 		wp_enqueue_script( 'rwmb-input-list', RWMB_JS_URL . 'input-list.js', array(), RWMB_VER, true );
 	}
 

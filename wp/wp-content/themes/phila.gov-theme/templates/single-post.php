@@ -12,17 +12,20 @@ $post_type = get_post_type();
 $post_obj = get_post_type_object( $post_type );
 $post_id = get_the_id();
 $template_type = phila_get_selected_template();
+$featured = phila_is_featured( $post_id );
 $last_updated = rwmb_meta('is_last_updated');
 $last_updated_date = rwmb_meta('last_updated_date');
 $date_formatted = new DateTime($last_updated_date);
 $last_updated_text = rwmb_meta('last_updated_text');
 $language = rwmb_meta('phila_select_language');
 $language_list = phila_get_translated_language( $language );
+$translated_options = rwmb_meta('translated_options');
 
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
+  <?php if ( ($template_type != 'translated_post') && ($template_type != 'translated_press_release') ) { ?> 
   <header class="post-header grid-container">
     <div class="grid-x grid-padding-x align-bottom">
       <div class="cell medium-18 post-title">
@@ -72,9 +75,12 @@ $language_list = phila_get_translated_language( $language );
     </div>
   <?php endif; ?>
   </header>
-  <?php  if ( count( $language_list ) >= 2 ): ?>
+  <?php } // endif for translated content = 0 ?>
+  <?php  if ( ($template_type == 'translated_post') || ($template_type == 'translated_press_release') ) { ?>
+    <?php include(locate_template('partials/global/translated-content.php')); ?>
+  <?php  } else if ( count( $language_list ) >= 2 && ($template_type != 'translated_post') && ($template_type != 'translated_press_release')  ) { ?>
     <?php include(locate_template ('partials/posts/post-translated-content.php') ); ?>
-  <?php endif; ?>
+  <?php } ?>
 
 
   <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') && ($template_type != 'press_release') ): ?>
@@ -88,7 +94,12 @@ $language_list = phila_get_translated_language( $language );
           </div>
         <?php else : ?>
           <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
-            <?php echo phila_get_thumbnails(); ?>
+            <img width="700" height="400" src="https://admin.phila.gov/media/20211010213319/Dia-de-los-Muertos-group-in-LOVE-Park-with-City-Hall-700x400.jpg" class="attachment-medium size-medium wp-post-image" alt="" loading="lazy">
+            <div class="phila-image-caption">
+              <p><strong>Photo by: John Doe</strong></p>
+              <?php echo wp_get_attachment_caption(); ?>
+              <p>Costumed Dia de los Muertos performers in LOVE Park with City Hall in the background. Now the text is even longer to make it wrap. you fools!</p>
+            </div>
           </div>
         <?php endif;?>
       </div>
