@@ -36,7 +36,7 @@ function callout_shortcode($atts, $content=null){
 
     $output .= $a['type'] == 'important' ? ' ' . $a['type'] . ' ' : ' ';
 
-    $output .= $a['inline'] == 'true' ? 'mtl">' : 'mbn">';
+    $output .= $a['inline'] == 'true' ? '">' : 'mbn">';
 
     $output .= wp_kses($content, $allowed_html);
     $output .= '</div>';
