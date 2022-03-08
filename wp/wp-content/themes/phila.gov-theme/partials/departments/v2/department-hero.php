@@ -2,9 +2,6 @@
 <header>
 
     <div class="hero-content" style="background-image:url(<?php echo $this->bg['desktop'] ?>) ">
-            <?php if ( $this->is_homepage) : ?>
-                <img class="show-for-small-only" src="<?php echo $this->bg['mobile'] ?>" alt="">
-            <?php endif; ?>
 
             <div class="hero-wrap">
 
@@ -14,7 +11,7 @@
                   </div>
                 <?php endif; ?>
 
-                <div class="row expanded <?php echo $this->is_homepage ? 'pbs pvxxl-mu' : 'pvl' ?>">
+                <div class="row expanded <?php echo $this->is_homepage ? 'pbs pvxxl-mu' : 'pvl-mu' ?>">
 
                         <div class="medium-18 small-centered columns text-overlay">
                             <?php echo phila_get_department_homepage_typography( $this->parent ); ?>
