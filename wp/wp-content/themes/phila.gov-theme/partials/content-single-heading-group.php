@@ -16,7 +16,7 @@ $source_template =  rwmb_meta( 'phila_template_select');
 <?php if ($source_template !== 'custom_content') : ?>
   <div class="grid-container">
 <?php endif; ?>
-<div class="grid-x mvl">
+<div class="grid-x">
   <div class="cell">
     <section>
       <?php if ($wysiwyg_heading != '') : ?>

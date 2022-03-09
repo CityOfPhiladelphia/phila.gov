@@ -41,7 +41,7 @@
           $accordion_icon = 'fas fa-tasks';
         }
       ?>
-      <div class="cell shrink hide-for-small-only"><i class="<?php echo $accordion_icon ?> fa-2x fa-fw"></i></div> 
+      <div class="cell shrink hide-for-small-only prs"><i class="<?php echo $accordion_icon ?> fa-2x fa-fw"></i></div> 
       <?php endif; ?>
         <div class="cell auto"><?php echo apply_filters( 'the_content', $accordion['phila_custom_wysiwyg']['phila_wysiwyg_title'] ); ?></div>
       </div>
