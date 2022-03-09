@@ -1,7 +1,7 @@
 
 <header>
 
-    <div class="hero-content" style="background-image:url(<?php echo $this->bg['desktop'] ?>) ">
+    <div class="hero-content" style="background-image:url(<?php echo $this->bg['desktop'] ?>) !important">
 
             <div class="hero-wrap">
 
