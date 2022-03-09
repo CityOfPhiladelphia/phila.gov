@@ -10,6 +10,7 @@ h1, .h1 {
 h2, .h2 {
   font-weight: 600;
   font-size: 2rem;
+  line-height: 2.2rem;
 }
 
 h3, .h3{
@@ -35,7 +36,9 @@ h6, .h6{
 nav#side-nav ul li span {
   line-height: 1.3rem;
 }
-
+.step-header{
+  margin-top: 2rem;
+}
 .step-group .step-label {
   font-weight: 600;
 }
@@ -61,18 +64,57 @@ input[type=radio] + label[for] {
   font-size: 16px;
 }
 
-@include breakpoint(medium) {
-  .single-service_page #main {
-    h2 {
-      margin-top:0;
-    }
-    h3{
-      margin-top: 3.5rem;
-    }
-    .panel.info.equal h3{
+.callout {
+  margin: 1rem 0;
+}
+.single-service_page #main {
+  h3{
+    margin-top: 3.5rem;
+  }
+  #service-topic_page h3, 
+  #service-service_stub h3{
+    margin-top:0;
+  }
+  .panel.info.equal h3{
+    margin-top: 0;
+  }
+  ul, ol{
+    margin-bottom:0;
+  }
+  .callout {
+    margin-top: 0rem;
+    h1, h2, h3, h4, h5, h6{
       margin-top: 0;
     }
   }
+  .panel p {
+    margin-bottom: 0;
+  }
+  p + .callout,
+  ol + .callout, 
+  ul + .callout, 
+  ul + p, 
+  ol + p {
+    margin-top:1rem;
+  }
+  table {
+    margin-bottom: 0;
+  }
+  .embed-container {
+    margin-top: 1rem;
+  }
+  .panel.info {
+    button, .button{
+      margin: 1rem 0 0 0;
+    }
+  }
+  .vue-app {
+    margin-top: 1rem;
+  }
+}
+
+.single-service_page p:last-of-type{
+  margin-bottom: 0;
 }
 
 .single-service_page #main #service-topic_page h3 {
@@ -103,4 +145,9 @@ footer.site-footer .trending-requests a:link{
     margin-top: 0.5rem;
     display: block;
   }
+}
+
+
+.single-service_page h3#service-overview{
+  margin-top: 2.57143rem;
 }
