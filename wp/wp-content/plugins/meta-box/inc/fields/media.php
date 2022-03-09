@@ -19,7 +19,7 @@ class RWMB_Media_Field extends RWMB_File_Field {
 		if ( ! is_admin() ) {
 			wp_register_script( 'media-grid', includes_url( 'js/media-grid.min.js' ), array( 'media-editor' ), '4.9.7', true );
 		}
-		wp_enqueue_style( 'rwmb-media', RWMB_CSS_URL . 'media.css', array(), RWMB_VER );
+		// wp_enqueue_style( 'rwmb-media', RWMB_CSS_URL . 'media.css', array(), RWMB_VER );
 		wp_enqueue_script( 'rwmb-media', RWMB_JS_URL . 'media.js', array( 'jquery-ui-sortable', 'underscore', 'backbone', 'media-grid' ), RWMB_VER, true );
 
 		RWMB_Helpers_Field::localize_script_once(
