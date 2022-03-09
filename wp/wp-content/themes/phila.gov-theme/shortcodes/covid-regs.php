@@ -38,7 +38,7 @@ function covid_response_level( $atts ) {
   ?>
 
   <section class="stage-tracker phl">
-    <h2 class="stages-header mbm">Philadelphia COVID response levels</h2>
+    <h2 class="stages-header mbm">Philadelphia COVID-19 response levels</h2>
     <div class="process">
       <div class="row collapse process-bar">
         <div class="small-24 medium-12 large-6 columns">
