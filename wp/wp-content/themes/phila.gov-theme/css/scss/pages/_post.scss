@@ -119,7 +119,7 @@
 
 .translations-container {
   .inline-list {
-    width: calc(100% - (36px + 7rem));
+    width: calc(100% - (34px + 7rem));
     display: flex;
     flex-wrap: wrap;
     li {
@@ -155,10 +155,11 @@
   .dropdown-container {
     width: auto;
     float: right;
-    padding: 1rem 2rem; 
+    padding: 1rem 1.5rem; 
     .dropdown {
       .dropdown-selector {
         padding: 0px 0px 0px 10px !important;
+        outline: none;
         &:after {
           border-color: #2C60AB transparent transparent !important;
         }
@@ -175,11 +176,11 @@
         .js-dropdown-active {
           background: color(ghost-gray);
           margin-top: 20px;
-          margin-left: -149px;
+          margin-left: -148px;
           @media screen and (max-width: 660px) {
             width: calc(100vw - 1rem);
             margin: 20px auto 0px auto;
-            right: -29px;
+            right: -30px;
           }
           li {
             width: 100%;
