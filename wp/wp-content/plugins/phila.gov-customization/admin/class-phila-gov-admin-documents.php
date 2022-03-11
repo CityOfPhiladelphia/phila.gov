@@ -106,6 +106,25 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
         ),
       )
     );
+
+    $meta_boxes[] = array(
+      'id'       => 'media_credit',
+      'title'    => 'Media Credit',
+      'post_types'    => array( 'attachment' ),
+      'context'  => 'side',
+      'priority' => 'high',
+
+      'fields' => array(
+        array(
+          'name'  => 'This field will appear as "Photo by: *field*" on featured images',
+          'id'    => $prefix . 'media_credit',
+          'type'  => 'text',
+          'clone' => false,
+          'desc'  => 'If you leave this field blank, there will be no credit for this item',
+        ),
+      )
+    );
+
     return $meta_boxes;
   }
 
