@@ -116,11 +116,11 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
 
       'fields' => array(
         array(
-          'name'  => 'This field will appear as "Photo by: *field*" on featured images',
+          'name'  => 'Optional credit for this item',
           'id'    => $prefix . 'media_credit',
           'type'  => 'text',
           'clone' => false,
-          'desc'  => 'If you leave this field blank, there will be no credit for this item',
+          'desc'  => 'This field will appear as "Photo by: *field*" on featured images',
         ),
       )
     );
