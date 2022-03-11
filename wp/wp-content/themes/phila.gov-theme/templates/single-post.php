@@ -108,7 +108,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
             <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
               <?php echo phila_get_thumbnails(); ?>
               <?php $image_caption = get_post(get_post_thumbnail_id())->post_excerpt; ?>
-              <?php $image_credit = get_the_terms(get_post_thumbnail_id(), 'media_credit')[0]->name; ?>
+              <?php $image_credit = get_the_terms(get_post_thumbnail_id(), 'phila_media_credit')[0]->name; ?>
               <?php if ($image_caption || $image_credit) { ?>
                 <div class="phila-image-caption">
                   <?php if ($image_credit) { ?>
@@ -125,7 +125,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
           <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
             <?php echo phila_get_thumbnails(); ?>
             <?php $image_caption = get_post(get_post_thumbnail_id())->post_excerpt; ?>
-            <?php $image_credit = get_the_terms(get_post_thumbnail_id(), 'media_credit')[0]->name; ?>
+            <?php $image_credit = get_the_terms(get_post_thumbnail_id(), 'phila_media_credit')[0]->name; ?>
             <?php if ($image_caption || $image_credit) { ?>
               <div class="phila-image-caption">
                 <?php if ($image_credit) { ?>
