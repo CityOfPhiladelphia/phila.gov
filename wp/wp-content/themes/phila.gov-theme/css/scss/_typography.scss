@@ -71,18 +71,18 @@ input[type=radio] + label[for] {
   h3{
     margin-top: 3.5rem;
   }
-  #service-topic_page h3, 
-  #service-service_stub h3{
-    margin-top:0;
+  #service-topic_page h3{
+    margin-top: 0;
   }
   .panel.info.equal h3{
     margin-top: 0;
   }
   ul, ol{
-    margin-bottom:0;
+    margin-bottom: 0;
+    margin-top: 1rem;
   }
   .callout {
-    margin-top: 0rem;
+    margin-top: 0;
     h1, h2, h3, h4, h5, h6{
       margin-top: 0;
     }
