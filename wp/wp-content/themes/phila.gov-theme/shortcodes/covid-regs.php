@@ -43,15 +43,15 @@ function covid_response_level( $atts ) {
       <div class="row collapse process-bar">
         <div class="small-24 medium-12 large-6 columns">
           <section class="chevron <?php echo $stage_1; ?>">
-            <div class="row collapse current-marker">
-              <div class="columns center small-centered marker">
-                <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
-              </div>
-            </div>
-            <header class="bg-dark-gray center stage-container">
+            <header class="bg-dark-gray stage-container">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white">Extreme Caution</h4>
+                  <h4 class="mbn h5 white">
+                    <?php if($stage_1 == 'current') { ?>
+                      <i class="fas fa-vial prs" aria-hidden="true"></i>
+                    <?php } ?>
+                    Extreme Caution
+                  </h4>
                 </div>
               </div>
             </header>
@@ -65,15 +65,15 @@ function covid_response_level( $atts ) {
         </div>
         <div class="small-24 medium-12 large-6 columns small-text">
           <section class="chevron <?php echo $stage_2; ?>">
-            <div class="row collapse current-marker">
-              <div class="columns center small-centered marker">
-                <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
-              </div>
-            </div>
-            <header class="bg-dark-gray center stage-container">
+            <header class="bg-dark-gray stage-container">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white">Caution </h4>
+                  <h4 class="mbn h5 white">
+                    <?php if($stage_2 == 'current') { ?>
+                      <i class="fas fa-vial prs" aria-hidden="true"></i>
+                    <?php } ?>
+                    Caution
+                  </h4>
                 </div>
               </div>
             </header>
@@ -87,15 +87,15 @@ function covid_response_level( $atts ) {
         </div>
         <div class="small-24 medium-12 large-6 columns small-text">
           <section class="chevron <?php echo $stage_3; ?>">
-            <div class="row collapse current-marker">
-              <div class="columns center small-centered marker">
-                <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
-              </div>
-            </div>
-            <header class="bg-dark-gray center stage-container">
+            <header class="bg-dark-gray stage-container">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white">Mask Precautions</h4>
+                  <h4 class="mbn h5 white">
+                    <?php if($stage_3 == 'current') { ?>
+                      <i class="fas fa-vial prs" aria-hidden="true"></i>
+                    <?php } ?>
+                    Mask Precautions
+                  </h4>
                 </div>
               </div>
             </header>
@@ -108,15 +108,15 @@ function covid_response_level( $atts ) {
         </div>
         <div class="small-24 medium-12 large-6 columns end">
           <section class="chevron <?php echo $stage_4; ?>">
-            <div class="row collapse current-marker">
-              <div class="columns center small-centered marker">
-                <i class="fas fa-map-marker-alt fa-2x" aria-hidden="true"></i>
-              </div>
-            </div>
-            <header class="bg-dark-gray center stage-container">
+            <header class="bg-dark-gray stage-container">
               <div class="valign process-label left-arrow-indent right-arrow">
                 <div class="valign-cell">
-                  <h4 class="mbn h5 white">All Clear</h4>
+                  <h4 class="mbn h5 white">
+                  <?php if($stage_4 == 'current') { ?>
+                    <i class="fas fa-vial prs" aria-hidden="true"></i>
+                  <?php } ?>
+                    All Clear
+                  </h4>
                 </div>
               </div>
             </header>
