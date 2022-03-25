@@ -111,12 +111,12 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
       'id'       => 'media_credit',
       'title'    => 'Media Credit',
       'post_types'    => array( 'attachment' ),
-      'context'  => 'side',
+      'media_modal' => true,
       'priority' => 'high',
 
       'fields' => array(
         array(
-          'name'  => 'Optional credit for this item',
+          'name'  => 'Media Credit',
           'id'    => $prefix . 'media_credit',
           'type'  => 'text',
           'clone' => false,

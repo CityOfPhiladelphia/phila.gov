@@ -87,7 +87,7 @@ $language_list = phila_get_translated_language( $language );
               <?php $image_caption = get_post(get_post_thumbnail_id())->post_excerpt; ?>
               <?php $image_credit = get_post(get_post_thumbnail_id())->phila_media_credit; ?>
               <?php if ($image_caption || $image_credit) { ?>
-                <div class="phila-image-caption">
+                <div class="phila-image-caption pam">
                   <?php if ($image_credit) { ?>
                     <p><strong>Photo by: <?php echo $image_credit; ?></strong></p>
                   <?php } ?>
@@ -104,7 +104,7 @@ $language_list = phila_get_translated_language( $language );
             <?php $image_caption = get_post(get_post_thumbnail_id())->post_excerpt; ?>
             <?php $image_credit = get_post(get_post_thumbnail_id())->phila_media_credit; ?>
             <?php if ($image_caption || $image_credit) { ?>
-              <div class="phila-image-caption">
+              <div class="phila-image-caption pam">
                 <?php if ($image_credit) { ?>
                   <p><strong>Photo by: <?php echo $image_credit; ?></strong></p>
                 <?php } ?>
