@@ -112,14 +112,11 @@ if ( class_exists("Phila_Gov_Admin_Documents" ) ){
       'title'    => 'Media Credit',
       'post_types'    => array( 'attachment' ),
       'media_modal' => true,
-      'priority' => 'high',
-
       'fields' => array(
         array(
           'name'  => 'Media Credit',
           'id'    => $prefix . 'media_credit',
           'type'  => 'text',
-          'clone' => false,
           'desc'  => 'This field will appear as "Photo by: *field*" on featured images',
         ),
       )
