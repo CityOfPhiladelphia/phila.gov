@@ -113,7 +113,6 @@ function covid_response_level( $atts ) {
                 <div class="valign-cell">
                   <h4 class="mbn h5 white">
                   <?php if($stage_4 == 'current') { ?>
-                    <i class=""></i>
                     <i class="fas fa-check-circle prs" aria-hidden="true"></i>
                   <?php } ?>
                     All Clear
