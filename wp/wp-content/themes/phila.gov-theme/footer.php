@@ -145,7 +145,9 @@
               <a href="https://www.phila.gov/departments/office-of-innovation-and-technology/phlgovtv/" class="prl">
                 <span class="fa fa-stack fa-lg">
                   <i class="fa fa-tv fa-stack-2x" title="TV" aria-hidden="true"></i>
-                  <span class="show-for-sr">TV 64</span>
+                  <i class="govtv-container fa fa-stack-1x">
+                    <span class="govtv-text">GovTV</span>
+                  </i>
                 </span>
               </a>
             </li>
