@@ -20,6 +20,11 @@ class Phila_Gov_Taxonomy_Meta {
 
       'fields' => array(
         array(
+          'name' => 'Category short name',
+          'id'   => 'phila_category_short_name',
+          'type' => 'text',
+        ),
+        array(
           'desc' => 'Prevent this owner from appearing on the user-facing site? Primarily used for staged content.',
           'id'   => 'hidden',
           'type' => 'checkbox',

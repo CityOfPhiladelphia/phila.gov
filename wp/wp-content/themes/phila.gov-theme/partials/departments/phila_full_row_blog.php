@@ -9,8 +9,7 @@
 
   $categories = get_the_category();
   if( !phila_util_is_array_empty($categories) ) {
-    $category_id = $categories[0]->cat_ID;
-    $slang_name = phila_get_owner_typography( $categories[0]->name );
+    $slang_name = phila_get_owner_typography( $categories[0] );
   }
 
   if ( empty($blog_see_all) ) : 
@@ -19,11 +18,11 @@
 
   if ( !empty( $blog_cat_override )) :
     if( is_object($blog_cat_override[0])) {
-      $slang_name = phila_get_owner_typography( $blog_cat_override[0]->name );
+      $slang_name = phila_get_owner_typography( $blog_cat_override[0] );
     }
     elseif( is_string($blog_cat_override[0])) {
       $cat_cleaned = phila_cat_id_to_cat_name($blog_cat_override[0]);
-      $slang_name = phila_get_owner_typography( $cat_cleaned->name );
+      $slang_name = phila_get_owner_typography( $cat_cleaned );
     }
 
   endif;

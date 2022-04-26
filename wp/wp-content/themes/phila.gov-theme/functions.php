@@ -1706,8 +1706,18 @@ function phila_get_department_typography( $parent ){
 }
 
 
-function phila_get_owner_typography( $page_title ){
-
+function phila_get_owner_typography( $category ){
+  if ( $category && $category->term_id ) {
+    $short_name = get_term_meta( $category->term_id , 'phila_category_short_name', true );
+    if( $short_name ) {
+      return $short_name;
+    }
+  }
+  if ($category && $category->name) {
+    $page_title = $category->name;
+  } else {
+    $page_title = '';
+  }
   $target_phrases = array(
     "City of Philadelphia",
     "Mayor's Commission on",
