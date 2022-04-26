@@ -1667,7 +1667,11 @@ function phila_get_department_logo_v2( $post ){
     }
 }
 
-function phila_get_department_homepage_typography( $parent, $return_stripped = false, $page_title = null ){
+function phila_get_department_typography( $parent ){
+
+  if ($parent) {
+    $page_title = $parent->post_title;
+  }
 
   $target_phrases = array(
     "City of Philadelphia",
@@ -1686,28 +1690,51 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "Division of"
   );
 
-  if ( !isset( $page_title ) ) {
-    $page_title = $parent->post_title;
+  foreach ($target_phrases as $phrase) {
+
+    if ( strpos( $page_title, $phrase ) !== false && $page_title) {
+      $c  = strlen( $phrase );
+      $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
+
+      break;  
+    }else{
+      $new_title = '<h1>' . $page_title . '</h1>';
+    }
   }
+
+  return $new_title;
+}
+
+
+function phila_get_owner_typography( $page_title ){
+
+  $target_phrases = array(
+    "City of Philadelphia",
+    "Mayor's Commission on",
+    "Mayor's Office of",
+    "Mural Arts Philadelphia",
+    "Philadelphia",
+    "Commission on",
+    "Zoning Board of",
+    "Board of",
+    "Office of the",
+    "Office of Policy and Strategic Initiatives for",
+    "Office of",
+    "Department of",
+    "Bureau of",
+    "Division of"
+  );
 
   foreach ($target_phrases as $phrase) {
 
     if ( strpos( $page_title, $phrase ) !== false ) {
       $c  = strlen( $phrase );
-
-      if( $return_stripped === true ){
-        return $new_title = preg_replace( '('.$phrase .')', '', $page_title);
-      }
-      $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
-
+      return $new_title = preg_replace( '('.$phrase .')', '', $page_title);
       break;
-    }elseif($return_stripped == false){
-      $new_title = '<h1>' . $page_title . '</h1>';
     }else{
       $new_title = $page_title;
     }
   }
-
 
   return $new_title;
 }
