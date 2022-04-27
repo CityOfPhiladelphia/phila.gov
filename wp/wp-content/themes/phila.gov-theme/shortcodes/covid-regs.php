@@ -48,7 +48,7 @@ function covid_response_level( $atts ) {
                 <div class="valign-cell">
                   <h4 class="mbn h5 white">
                     <?php if($stage_1 == 'current') { ?>
-                      <i class="fas fa-vial prs" aria-hidden="true"></i>
+                      <i class="fas fa-check-circle prs" aria-hidden="true"></i>
                     <?php } ?>
                     Extreme Caution
                   </h4>
@@ -70,7 +70,7 @@ function covid_response_level( $atts ) {
                 <div class="valign-cell">
                   <h4 class="mbn h5 white">
                     <?php if($stage_2 == 'current') { ?>
-                      <i class="fas fa-vial prs" aria-hidden="true"></i>
+                      <i class="fas fa-check-circle prs" aria-hidden="true"></i>
                     <?php } ?>
                     Caution
                   </h4>
@@ -92,7 +92,7 @@ function covid_response_level( $atts ) {
                 <div class="valign-cell">
                   <h4 class="mbn h5 white">
                     <?php if($stage_3 == 'current') { ?>
-                      <i class="fas fa-vial prs" aria-hidden="true"></i>
+                      <i class="fas fa-check-circle prs" aria-hidden="true"></i>
                     <?php } ?>
                     Mask Precautions
                   </h4>
@@ -113,7 +113,7 @@ function covid_response_level( $atts ) {
                 <div class="valign-cell">
                   <h4 class="mbn h5 white">
                   <?php if($stage_4 == 'current') { ?>
-                    <i class="fas fa-vial prs" aria-hidden="true"></i>
+                    <i class="fas fa-check-circle prs" aria-hidden="true"></i>
                   <?php } ?>
                     All Clear
                   </h4>

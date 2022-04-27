@@ -358,7 +358,7 @@ class Phila_Archives_Controller {
       $categories = get_the_category($post->ID);
 
       foreach ($categories as $category){
-          $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name );
+          $trimmed_name = phila_get_owner_typography( $category );
 
           $category->slang_name = html_entity_decode(trim($trimmed_name));
       }
@@ -479,7 +479,7 @@ class Phila_Archives_Controller {
 
     if (isset( $schema['properties']['slang_name'] )) {
 
-      $trimmed_name = phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $category->name );
+      $trimmed_name = phila_get_owner_typography( $category );
 
       $post_data['slang_name']  = (string) html_entity_decode(trim($trimmed_name));
     }

@@ -224,6 +224,9 @@
     margin: 0px;
     .row {
       width: 100%;
+      .columns {
+        margin: 0px;
+      }
       .medium-24 {
         &.float-right {
           margin-bottom: 0px;
