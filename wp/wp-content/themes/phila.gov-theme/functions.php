@@ -1667,13 +1667,8 @@ function phila_get_department_logo_v2( $post ){
     }
 }
 
-function phila_get_department_typography( $parent ){
-
-  if ($parent) {
-    $page_title = $parent->post_title;
-  }
-
-  $target_phrases = array(
+function get_target_phrases() {
+  return array(
     "City of Philadelphia",
     "Mayor's Commission on",
     "Mayor's Office of",
@@ -1689,6 +1684,15 @@ function phila_get_department_typography( $parent ){
     "Bureau of",
     "Division of"
   );
+}
+
+function phila_get_department_typography( $parent ){
+
+  if ($parent) {
+    $page_title = $parent->post_title;
+  }
+
+  $target_phrases = get_target_phrases();
 
   foreach ($target_phrases as $phrase) {
 
@@ -1707,6 +1711,7 @@ function phila_get_department_typography( $parent ){
 
 
 function phila_get_owner_typography( $category ){
+
   if ( $category && $category->term_id ) {
     $short_name = get_term_meta( $category->term_id , 'phila_category_short_name', true );
     if( $short_name ) {
@@ -1718,22 +1723,32 @@ function phila_get_owner_typography( $category ){
   } else {
     $page_title = '';
   }
-  $target_phrases = array(
-    "City of Philadelphia",
-    "Mayor's Commission on",
-    "Mayor's Office of",
-    "Mural Arts Philadelphia",
-    "Philadelphia",
-    "Commission on",
-    "Zoning Board of",
-    "Board of",
-    "Office of the",
-    "Office of Policy and Strategic Initiatives for",
-    "Office of",
-    "Department of",
-    "Bureau of",
-    "Division of"
-  );
+
+  $target_phrases = get_target_phrases();
+
+  foreach ($target_phrases as $phrase) {
+
+    if ( strpos( $page_title, $phrase ) !== false ) {
+      $c  = strlen( $phrase );
+      return $new_title = preg_replace( '('.$phrase .')', '', $page_title);
+      break;
+    }else{
+      $new_title = $page_title;
+    }
+  }
+
+  return $new_title;
+}
+
+function phila_shorten_department_name( $dept_name ){
+
+  if ($dept_name) {
+    $page_title = $dept_name;
+  } else {
+    $page_title = '';
+  }
+
+  $target_phrases = get_target_phrases();
 
   foreach ($target_phrases as $phrase) {
 
