@@ -6,12 +6,12 @@
 <?php $press_categories = isset( $category ) ? $category : '';?>
 <?php if ($press_categories) : ?>
   <?php foreach ($press_categories as $category ) {
-    $current_cat = get_the_category_by_ID($category);
-    $slang_name = html_entity_decode(trim(phila_get_department_homepage_typography( null, $return_stripped = true, $page_title = $current_cat )));
+    $current_cat = get_category($category);
+    $slang_name = html_entity_decode(trim(phila_get_owner_typography( $current_cat )));
   }
   ?>
   <?php else: 
-    $current_cat = '';
+    $current_cat = null;
     $slang_name = '';?>
 <?php endif; ?>
 
