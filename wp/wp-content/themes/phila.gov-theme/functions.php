@@ -1667,9 +1667,8 @@ function phila_get_department_logo_v2( $post ){
     }
 }
 
-function phila_get_department_homepage_typography( $parent, $return_stripped = false, $page_title = null ){
-
-  $target_phrases = array(
+function get_target_phrases() {
+  return array(
     "City of Philadelphia",
     "Mayor's Commission on",
     "Mayor's Office of",
@@ -1685,29 +1684,82 @@ function phila_get_department_homepage_typography( $parent, $return_stripped = f
     "Bureau of",
     "Division of"
   );
+}
 
-  if ( !isset( $page_title ) ) {
+function phila_get_department_typography( $parent ){
+
+  if ($parent) {
     $page_title = $parent->post_title;
   }
+
+  $target_phrases = get_target_phrases();
+
+  foreach ($target_phrases as $phrase) {
+
+    if ( strpos( $page_title, $phrase ) !== false && $page_title) {
+      $c  = strlen( $phrase );
+      $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
+
+      break;  
+    }else{
+      $new_title = '<h1>' . $page_title . '</h1>';
+    }
+  }
+
+  return $new_title;
+}
+
+
+function phila_get_owner_typography( $category ){
+
+  if ( $category && $category->term_id ) {
+    $short_name = get_term_meta( $category->term_id , 'phila_category_short_name', true );
+    if( $short_name ) {
+      return $short_name;
+    }
+  }
+  if ($category && $category->name) {
+    $page_title = $category->name;
+  } else {
+    $page_title = '';
+  }
+
+  $target_phrases = get_target_phrases();
 
   foreach ($target_phrases as $phrase) {
 
     if ( strpos( $page_title, $phrase ) !== false ) {
       $c  = strlen( $phrase );
-
-      if( $return_stripped === true ){
-        return $new_title = preg_replace( '('.$phrase .')', '', $page_title);
-      }
-      $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
-
+      return $new_title = preg_replace( '('.$phrase .')', '', $page_title);
       break;
-    }elseif($return_stripped == false){
-      $new_title = '<h1>' . $page_title . '</h1>';
     }else{
       $new_title = $page_title;
     }
   }
 
+  return $new_title;
+}
+
+function phila_shorten_department_name( $dept_name ){
+
+  if ($dept_name) {
+    $page_title = $dept_name;
+  } else {
+    $page_title = '';
+  }
+
+  $target_phrases = get_target_phrases();
+
+  foreach ($target_phrases as $phrase) {
+
+    if ( strpos( $page_title, $phrase ) !== false ) {
+      $c  = strlen( $phrase );
+      return $new_title = preg_replace( '('.$phrase .')', '', $page_title);
+      break;
+    }else{
+      $new_title = $page_title;
+    }
+  }
 
   return $new_title;
 }
