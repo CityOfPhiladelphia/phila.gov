@@ -31,13 +31,13 @@
             'shown' => true,
         ),
         'phila_full_row_blog'                    => array(
-                                                'type'=>'v2',
-                                                'shown' => true,
-                                              ),
+                                                'type'=>'v1',
+                                                'shown'=>$this->full_row_blog['exists'],
+        ),
         'phila_full_row_announcements'       => array(
-                                                  'type'=>'v2',
-                                                  'shown' => true,
-                                                ),
+                                                  'type'=>'v1',
+                                                  'shown'=>$this->full_row_announcements['exists'],
+                                            ),
         'full-width-call-to-action'      => array(
                                                 'type'=>'v2',
                                                 'shown'=>true
