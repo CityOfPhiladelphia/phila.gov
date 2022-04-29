@@ -82,7 +82,7 @@
         <?php $post_obj = get_post_type_object( $post_type ); ?>
             <div class="cell medium-<?php echo phila_grid_column_counter( $count ) ?> align-self-stretch">
               <?php if ($user_selected_template == 'custom_content' || $post_type_parent === 'guides'): ?>
-                <?php include( locate_template( 'partials/posts/custom-content-card.php' ) ); ?>
+                <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
               <?php else: ?>
                 <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
               <?php endif; ?>
