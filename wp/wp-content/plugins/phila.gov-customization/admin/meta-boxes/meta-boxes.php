@@ -81,7 +81,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'id'    => 'phila_announce_end_date',
         'type'  => 'date',
         'class' =>  'effective-end-time',
-        'desc'  => 'Choose a time for this announcement to expire. Announcements can only exist for a maximum of two weeks.',
+        'desc'  => 'Choose a time for this announcement to expire. Announcements can exist for a maximum of four weeks.',
         'required'=> true,
         'size'  =>  25,
         'timestamp'  => true,
@@ -89,7 +89,7 @@ function phila_register_meta_boxes( $meta_boxes ){
           'dateFormat' => 'yy/mm/dd',
           'controlType'=> 'select',
           'oneLine'=> true,
-          'maxDate' => '+2w'
+          'maxDate' => '+4w'
         ),
         'admin_columns' => array(
           'position' => 'after date',
