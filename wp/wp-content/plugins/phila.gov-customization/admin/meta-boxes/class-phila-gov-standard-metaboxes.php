@@ -619,6 +619,28 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
+  public static function phila_post_selector( $multiple = false ){
+    return array(
+      'id'  => 'phila_post_picker',
+      'name' => 'Select posts (3 total)',
+      'type'  => 'post',
+      'field_type' => 'select_advanced',
+      'post_type' => 'post',
+      'query_args'  => array(
+        'post_status' => 'any',
+        'orderby' => 'title',
+        'order' => 'ASC',
+        ),
+      'multiple'  => $multiple,
+      'placeholder' => ' ',
+      'desc'     =>  'Add posts. You can narrow your search options by typing in the field above.',
+      'js_options'  => array(
+        'width' => '100%',
+        'closeOnSelect' => false,
+      )
+    );
+  }
+
   public static function phila_program_page_selector( $multiple = false ){
 
     return array(
@@ -1303,6 +1325,46 @@ public static function phila_meta_var_connect(){
           'id'   => 'bio',
           'type' => 'wysiwyg',
           'options' =>  Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic($editor_height = 100)
+        ),
+      )
+    );
+  }
+
+  public static function phila_callout_v2(){
+    return array(
+      'id'  => 'phila_callout_v2',
+      'type' => 'group',
+      'fields' => array(
+        array(
+          'id'  => 'small_title',
+          'name'  => 'Small title',
+          'type'  => 'text',
+        ),
+        array(
+          'id'  => 'large_title',
+          'name'  => 'Large title',
+          'type'  => 'text',
+        ),
+        array(
+          'name' => 'Description',
+          'id'   => 'description',
+          'type' => 'wysiwyg',
+          'options' =>  Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+        ),
+        array(
+          'id'  => 'button_url',
+          'name'  => 'Button URL',
+          'type' => 'url',
+        ),
+        array(
+          'id'  => 'button_icon',
+          'name'  => 'Button icon',
+          'type'  => 'text',
+        ),
+        array(
+          'id'  => 'button_text',
+          'name'  => 'Button click text',
+          'type'  => 'text',
         ),
       )
     );
