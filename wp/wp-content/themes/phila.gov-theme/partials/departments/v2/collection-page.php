@@ -130,6 +130,10 @@ $row_content = rwmb_meta('collection_row');?>
         <?php include(locate_template('partials/departments/v2/stepped-process-wrapper.php')); ?>
       <?php endif; ?>
 
+      <?php if ($current_row_option === 'paragraph_text_with_photo') :  ?>
+        <?php include(locate_template('partials/departments/v2/paragraph-text-with-photo.php')); ?>
+      <?php endif; ?>
+
       <?php if ($last_key != $key) : ?>
         <hr class="margin-auto"/>
       <?php endif; ?>
