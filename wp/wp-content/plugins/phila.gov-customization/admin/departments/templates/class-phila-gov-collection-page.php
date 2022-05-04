@@ -123,11 +123,8 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields'  => array(
-                array(
-                  'type'=> 'wysiwyg',
-                  'name'  => 'Paragraph text with photo',
-                  'id'  => 'phila_paragraph_text_with_photo',
-                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
               )
             ),
             array(
