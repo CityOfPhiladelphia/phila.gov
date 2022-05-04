@@ -125,6 +125,11 @@ $row_content = rwmb_meta('collection_row');?>
 
       <?php endif; ?>
 
+      <?php if ($current_row_option === 'stepped_process') :  ?>
+        <?php $stepped_content = $current_row['stepped_process']; ?>
+        <?php include(locate_template('partials/departments/v2/stepped-process-wrapper.php')); ?>
+      <?php endif; ?>
+
       <?php if ($last_key != $key) : ?>
         <hr class="margin-auto"/>
       <?php endif; ?>
