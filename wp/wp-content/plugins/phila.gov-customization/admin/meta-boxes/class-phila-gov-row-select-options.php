@@ -34,6 +34,7 @@ class Phila_Gov_Row_Select_Options {
       'placeholder' => 'Select full-width row module...',
       'options' => array(
         'phila_content_additional_content' => 'Additional Content',
+        'phila_announcements' => 'Announcements',
         'phila_blog_posts' => 'Blog posts',
         'phila_board_commission'  => 'Board or commission members',
         'phila_full_width_calendar' => 'Calendar',

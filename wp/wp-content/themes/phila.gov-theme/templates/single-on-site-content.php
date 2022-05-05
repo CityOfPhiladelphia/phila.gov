@@ -116,9 +116,9 @@ HTML;
           'tag' => !empty($_tags_override['tag']) ? $_tags_override['tag'] : ''
         ),
 
-        'full_row_news'   => array(
-            'exists'=> rwmb_meta( 'phila_full_row_news_selected' ),
-            'category_id' => !empty($_news_cat_override) ? implode(", ", $_news_cat_override['phila_news_category']) : $_categories[0]->cat_ID
+        'full_row_announcements'   => array(
+          'exists'=> rwmb_meta('phila_full_row_announcements_selected' ),
+          'tag' => !empty($_tags_override['tag']) ? $_tags_override['tag'] : ''
         ),
 
         'full_width_press_releases'=>array(
