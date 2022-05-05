@@ -129,7 +129,7 @@
               <?php endif;?>	
               <div class="medium-24">
                 <?php
-                if ( count($resource_list_group['phila_resource_list_items']) > 4 ) : ?>
+                if ( count($resource_list_group['phila_resource_list_items']) > 3 ) : ?>
                   <div class="expandable" aria-controls="<?php echo $resource_list_slug . '-control' ?>" aria-expanded="false">
                 <?php endif; ?>
                 <div class="resource-list">
@@ -155,13 +155,13 @@
                   <?php endforeach; ?>
                 </ul>
               </div>
-              <?php if ( count($resource_list_group['phila_resource_list_items']) > 4 ) : ?>
+              <?php if ( count($resource_list_group['phila_resource_list_items']) > 3 ) : ?>
               </div><a href="#" data-toggle="expandable" class="float-right" id="<?php echo $resource_list_slug . '-control' ?>"> More + </a>
             <?php endif; ?>
           </div>
         </div>
         <?php if ($last_key != $key) : ?>
-          <hr class="mhn">
+          <hr class="grid-padding-x mhn">
         <?php endif ?>
       </div>
 
