@@ -103,6 +103,22 @@ class Phila_Gov_Row_Metaboxes {
         ),
       ),
       array(
+        'visible' => array('phila_full_options_select', '=', 'phila_announcements'),
+        'id'  => 'phila_announcements_group',
+        'type' => 'group',
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_ann_category', 'Display announcements from these owners.' ),
+          array(
+            'name'  => 'Filter by a tag',
+            'id'  => 'tag',
+            'type' => 'taxonomy_advanced',
+            'taxonomy'  => 'ann_tag',
+            'field_type' => 'select_advanced',
+            'desc'  => 'Display announcements using this tag.'
+          ),
+        ),
+      ),
+      array(
         'id' => 'phila_full_width_calendar',
         'type' => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_full_width_calendar'),
