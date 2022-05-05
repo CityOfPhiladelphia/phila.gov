@@ -136,17 +136,8 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields' => array(
-                array(
-                  'name'  => 'Resource group heading',
-                  'id'    => 'phila_resource_group_heading',
-                  'type'  => 'text',
-                ),
-                array(
-                  'type'=> 'wysiwyg',
-                  'name'  => 'Additional page copy',
-                  'id'  => 'phila_addtional_page_copy',
-                  'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
-                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
                 Phila_Gov_Standard_Metaboxes::phila_resource_list_v2(),
               )
             ),
