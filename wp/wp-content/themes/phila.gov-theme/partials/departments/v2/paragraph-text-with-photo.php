@@ -1,4 +1,4 @@
-<!-- Stepped process wrapper -->
+<!-- Paragraph text with photo -->
 <div class="row one-quarter-row mvl">
   <div class="columns medium-6">
       <?php if( isset($current_row['paragraph_text_with_photo']['phila_wysiwyg_title'] )): ?>	
@@ -16,4 +16,4 @@
     </div>
   </div>
 </div>      
-<!-- / Stepped process wrapper -->
+<!-- / Paragraph text with photo -->

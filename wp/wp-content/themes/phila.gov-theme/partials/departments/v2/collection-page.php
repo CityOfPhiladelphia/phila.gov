@@ -80,8 +80,8 @@ $row_content = rwmb_meta('collection_row');?>
             <div class="row fat-gutter program-card-row">
               <?php foreach( $current_row['program_pages']['phila_select_programs'] as $program_page ) : ?>
                 <div class="medium-12 columns end mbl">
-                  <?php $off_site = rwmb_meta('prog_off_site_link', $args = array(), $post_id =  $program_page); ?>
-                  <a href="<?php echo !empty($off_site) ? $off_site : get_the_permalink($post = $program_page); ?>" class="card program-card">
+                  <?php $off_site = rwmb_meta('prog_off_site_link', $args = array(), $program_page); ?>
+                  <a href="<?php echo !empty($off_site) ? $off_site : get_the_permalink($program_page); ?>" class="card program-card">
                     <?php
                     $img = rwmb_meta( 'prog_header_img', $args = array( 'size' => 'medium', 'limit' => 1 ), $program_page );
                     $img = reset( $img );?>
@@ -128,6 +128,10 @@ $row_content = rwmb_meta('collection_row');?>
       <?php if ($current_row_option === 'stepped_process') :  ?>
         <?php $stepped_content = $current_row['stepped_process']; ?>
         <?php include(locate_template('partials/departments/v2/stepped-process-wrapper.php')); ?>
+      <?php endif; ?>
+
+      <?php if ($current_row_option === 'phila_resource_group') :  ?>
+        <?php include(locate_template('partials/departments/v2/grouped-resources.php')); ?>
       <?php endif; ?>
 
       <?php if ($current_row_option === 'paragraph_text_with_photo') :  ?>

@@ -6,7 +6,6 @@
   <?php if (function_exists('rwmb_meta')): ?>
   <?php
   $user_selected_template = phila_get_selected_template();
-  $resource_list_groups = rwmb_meta( 'phila_resource_list' );
 
   $featured_resources = array();
 
@@ -116,17 +115,19 @@
 
           $outer_loop++;
           $resource_list_title = isset( $resource_list_group['phila_resource_list_title'] ) ? $resource_list_group['phila_resource_list_title'] : '';
+          $resource_list_description = isset( $resource_list_group['phila_resource_list_description'] ) ? $resource_list_group['phila_resource_list_description'] : '';
           $resource_list_slug = sanitize_title_with_dashes($resource_list_title); ?>
           <div class="grid-container">
             <div class="grid-x grid-padding-x one-quarter-row mvm">
-              <div class="cell medium-6">
-                <header>
-                  <?php if( isset($resource_list_title )): ?>	
-                    <h2 id="<?php echo $resource_list_slug ?>" class="<?php echo !empty( $featured_resources ) ? 'h4' : 'h3'; ?>"><?php echo  $resource_list_title ?></h2>
-                  <?php endif;?>	
-                </header>
-              </div>
-              <div class="cell medium-18">
+              <?php if (isset($resource_list_title)) { ?>
+                <div class="medium-24"><header><h2 id="<?php echo $resource_list_slug ?>" class="<?php echo !empty( $featured_resources ) ? 'h4' : 'h3'; ?>"><?php echo  $resource_list_title ?></h2></header></div>
+              <?php } ?>
+              <?php if( isset($resource_list_description )): ?>	
+                <div class="medium-24">	
+                  <?php echo apply_filters( 'the_content', $resource_list_description) ?>	
+                </div>	
+              <?php endif;?>	
+              <div class="medium-24">
                 <?php
                 if ( count($resource_list_group['phila_resource_list_items']) > 4 ) : ?>
                   <div class="expandable" aria-controls="<?php echo $resource_list_slug . '-control' ?>" aria-expanded="false">

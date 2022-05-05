@@ -1490,6 +1490,11 @@ public static function phila_meta_var_connect(){
       'fields' => array(
         Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text(__('Group title', 'rwmb'), 'phila_resource_list_title'),
         array(
+          'id'  => 'phila_resource_list_description',
+          'type'  => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading()
+        ),
+        array(
           'id'   => 'phila_resource_list_items',
           'type' => 'group',
           'clone'  => true,
