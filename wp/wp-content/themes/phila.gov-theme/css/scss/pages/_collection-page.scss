@@ -1,3 +1,14 @@
+.collection-callout {
+  .photo-callout-block__txt {
+    padding: 1rem;
+    .grid-x {
+      justify-content: left;
+      .small-22 {
+        width: 100%;
+      }
+    }
+  }
+}
 .collection-posts {
   .card {
     border-bottom: 5px solid #0f4d90;

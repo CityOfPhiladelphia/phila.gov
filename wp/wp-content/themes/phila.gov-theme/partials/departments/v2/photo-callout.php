@@ -14,6 +14,14 @@ if (phila_get_selected_template() === 'homepage_v2') {
     $get_photo = rwmb_meta('phila_v2_photo_callout_block__photo');
     $photo = reset($get_photo)['full_url'];
     $alt = reset($get_photo)['alt'];
+} else if ( phila_get_selected_template() === 'collection_page_v2' ) {
+    $photo_callout = isset($current_row['phila_callout_group']['phila_callout_v2']) ? $current_row['phila_callout_group']['phila_callout_v2'] : '';
+    $header = $photo_callout['large_title'];
+    $subHeader = $photo_callout['small_title'];    
+    $description = $photo_callout['description'];
+    $btnLink = $photo_callout['button_url'];
+    $btnTxt = $photo_callout['button_text'];
+    $icon = $photo_callout['button_icon'];
 } else {
     $photo_callout = isset($current_row['phila_full_options']['photo_callout']) ? $current_row['phila_full_options']['photo_callout'] : '';
     $toggle = isset($photo_callout['phila_v2_photo_callout_block__image_toggle']) ? $photo_callout['phila_v2_photo_callout_block__image_toggle'] : '';
@@ -33,7 +41,27 @@ if (phila_get_selected_template() === 'homepage_v2') {
 <section class="row">
   <div class="grid-container columns">
     <div class="mvl grid-x large-padding-collapse medium-padding-collapse small-padding-collapse small-margin-collapse align-center photo-callout-block ">
-        <?php if ((empty( $photo_callout['phila_v2_photo_callout_block__image_toggle'] ) || !isset( $photo_callout['phila_v2_photo_callout_block__photo'] )) && empty($toggle)) : ?>
+        <?php if (phila_get_selected_template() === 'collection_page_v2') : ?>
+            <div class="photo-callout-block__txt medium-24 cell">
+                <div class="grid align-center-middle grid-x">
+                    <div class="cell small-22 large-18 ">
+                        <h4 class="h5 photo-callout-block__txt-sub-header"><?php echo $subHeader ?></h4>
+                        <h2 class="h2 photo-callout-block__txt-header"><?php echo $header ?></h2>
+                        <p class="photo-callout-block__desc"><?php echo $description ?></p>
+                        <?php if($btnLink): ?>
+                        <a href="<?php echo $btnLink ?>" class="photo-callout-block__txt-btn button icon">
+                            <div class="valign">
+                                <?php if ( !empty( $icon ) ) : ?>
+                                    <i class="<?php echo $icon ?> valign-cell fa-3x" aria-hidden="true"></i>
+                                <?php endif; ?>
+                                <div class="button-label valign-cell"><?php echo $btnTxt ?></div>
+                            </div>
+                        </a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        <?php elseif ((empty( $toggle ) || !isset( $toggle )) && empty($toggle)) : ?>
             <div class="photo-callout-block__txt large-20 medium-20 small-20 cell callout-photo-toggle-false">
               <div class="grid align-center-middle grid-x">
                   <div class="cell small-22 large-18 ">
