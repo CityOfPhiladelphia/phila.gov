@@ -32,10 +32,10 @@ $row_content = rwmb_meta('collection_row');?>
                   </div>
                 </a>
               </div>
-          <?php endforeach; ?>
+            <?php endforeach; ?>
+            </div>
           </div>
         </div>
-      </div>
       <?php endif; ?>
 
       <?php if ($current_row_option === 'document') :  ?>
@@ -136,6 +136,10 @@ $row_content = rwmb_meta('collection_row');?>
 
       <?php if ($current_row_option === 'paragraph_text_with_photo') :  ?>
         <?php include(locate_template('partials/departments/v2/paragraph-text-with-photo.php')); ?>
+      <?php endif; ?>
+
+      <?php if ($current_row_option === 'post') :  ?>
+        <?php include(locate_template('partials/departments/v2/collection-posts.php')); ?>
       <?php endif; ?>
 
       <?php if ($last_key != $key) : ?>

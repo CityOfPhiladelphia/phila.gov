@@ -90,13 +90,7 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields'  => array(
-                array(
-                  'name' => '',
-                  'id'   => 'title',
-                  'type' => 'text',
-                  'class' => 'percent-100'
-                ),
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('1/4 Heading', 'phila_custom_text_title'),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
                 Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true ),
               )
             ),
