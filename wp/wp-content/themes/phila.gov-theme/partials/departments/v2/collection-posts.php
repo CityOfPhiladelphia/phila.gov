@@ -25,9 +25,9 @@
           <?php endif; ?>
           <a href="<?php echo the_permalink(); ?>" class="card flex-dir-row full-height columns medium-16">
             <div class="grid-x flex-dir-column">
-              <div class=" card--content pam flex-child-auto">
+              <div class=" card--content prm pvm flex-child-auto">
                 <div class="cell align-self-top post-label">
-                  <header class="cell mvm">
+                  <header class="cell mvs">
                     <h3><?php echo get_the_title(); ?></h3>
                   </header>
                 </div>
