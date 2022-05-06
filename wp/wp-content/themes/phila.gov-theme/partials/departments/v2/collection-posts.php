@@ -17,15 +17,15 @@
       ?>
       <?php $collection_post_count++; ?>
       <?php if ($collection_post_count < 4) {  ?>
-        <article id="post-<?php the_ID(); ?>" class="mbm">
+        <?php if ( has_post_thumbnail() ) : ?>
+        <div class="columns medium-8 flex-child-shrink">
+          <?php echo phila_get_thumbnails(); ?>
+        </div>
+        <?php endif; ?>
+        <article id="post-<?php the_ID(); ?>" class="mbm columns medium-16">
           <a href="<?php echo the_permalink(); ?>" class="card flex-container flex-dir-row full-height">
             <div class="grid-x flex-dir-column">
-              <div class="flex-child-shrink">
-                <?php if ( has_post_thumbnail() ) : ?>
-                    <?php echo phila_get_thumbnails(); ?>
-                <?php endif; ?>
-              </div>
-              <div class="card--content pam flex-child-auto">
+              <div class=" card--content pam flex-child-auto">
                 <div class="cell align-self-top post-label">
                   <header class="cell mvm">
                     <h3><?php echo get_the_title(); ?></h3>
