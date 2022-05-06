@@ -1,6 +1,6 @@
 <?php
 
-/* Displays a grouped list of links, with optional featured items */
+/* Collecton resource list */
 
 ?>
   <?php if (function_exists('rwmb_meta')): ?>
@@ -170,5 +170,5 @@
   <?php endif; ?>
 <?php endif; ?>
 </section>
-<!-- /Resource list -->
+<!--/ Collecton resource list -->
 <?php wp_reset_postdata(); ?>
