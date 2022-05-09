@@ -17,13 +17,13 @@
       ?>
       <?php $collection_post_count++; ?>
       <?php if ($collection_post_count < 4) {  ?>
-        <article id="post-<?php the_ID(); ?>" class="mbm flex-container row">
+        <article id="post-<?php the_ID(); ?>" class="mbm row">
           <?php if ( has_post_thumbnail() ) : ?>
-          <div class="columns small-24 medium-8">
+          <div class="columns medium-8">
             <?php echo phila_get_thumbnails(); ?>
           </div>
           <?php endif; ?>
-          <a href="<?php echo the_permalink(); ?>" class="card flex-dir-row full-height columns small-24 medium-16">
+          <a href="<?php echo the_permalink(); ?>" class="card full-height columns medium-16">
             <div class="grid-x flex-dir-column">
               <div class=" card--content prm pvm flex-child-auto">
                 <div class="cell align-self-top post-label">
