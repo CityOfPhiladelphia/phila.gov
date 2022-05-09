@@ -1,3 +1,14 @@
+.collection-callout {
+  .photo-callout-block__txt {
+    padding: 1rem;
+    .grid-x {
+      justify-content: left;
+      .small-22 {
+        width: 100%;
+      }
+    }
+  }
+}
 .collection-posts {
   .card {
     border-bottom: 5px solid #0f4d90;
@@ -6,6 +17,7 @@
       text-decoration: underline;
       line-height: 2rem;
       margin-top: 0.5rem;
+      font-size: 1.25rem;
     }
     .date-published {
       font-size: 1rem;
