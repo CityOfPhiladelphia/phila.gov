@@ -18,6 +18,7 @@
 .reveal{
   min-height:400px;
   padding-bottom: 4rem;
+  position: relative;
 
   &.reveal--auto{
     width:auto;
@@ -37,8 +38,8 @@
   }
   .reveal-footer{
     position: absolute;
-    bottom:0;
     margin-bottom:1rem;
+    background: white;
   }
 }
 
@@ -59,6 +60,9 @@ html.is-reveal-open body{
   position: static;
   //make sure page body stays centered when modal is open
   width:100%;
+  //prevent scroll
+  height: 100vh;
+  position: absolute !important;
 }
 //prevent page content from being hidden when modal is open
 body.is-reveal-open.no-scroll{
