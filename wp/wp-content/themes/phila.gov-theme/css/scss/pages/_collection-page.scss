@@ -11,6 +11,7 @@
 }
 .collection-posts {
   article {
+    width: 100%;
     .card {
       border-bottom: 5px solid #0f4d90;
       height: auto;
@@ -30,6 +31,7 @@
     @media screen and (max-width: 749px) {
       display: block;
       .card {
+        float: none;
         width: auto;
         margin-right: 0.53571rem;
         margin-left: 0.53571rem;
