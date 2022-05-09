@@ -17,7 +17,7 @@
       ?>
       <?php $collection_post_count++; ?>
       <?php if ($collection_post_count < 4) {  ?>
-        <article id="post-<?php the_ID(); ?>" class="mbm flex-container">
+        <article id="post-<?php the_ID(); ?>" class="mbm flex-container row">
           <?php if ( has_post_thumbnail() ) : ?>
           <div class="columns small-24 medium-8">
             <?php echo phila_get_thumbnails(); ?>
