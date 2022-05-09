@@ -31,7 +31,7 @@
     @media screen and (max-width: 749px) {
       display: block;
       .card {
-        float: none;
+        float: none !important;
         width: auto;
         margin-right: 0.53571rem;
         margin-left: 0.53571rem;
