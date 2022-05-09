@@ -80,14 +80,15 @@
         <?php $post_type = get_post_type(); ?>
         <?php $cats = get_the_category($post->ID); ?>
         <?php $post_obj = get_post_type_object( $post_type ); ?>
-            <div class="cell medium-<?php echo phila_grid_column_counter( $count ) ?> align-self-stretch">
-              <?php if ($user_selected_template == 'custom_content' || $post_type_parent === 'guides'): ?>
-                <?php include( locate_template( 'partials/posts/custom-content-card.php' ) ); ?>
-              <?php else: ?>
-                <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
-              <?php endif; ?>
+          <div class="cell medium-<?php echo phila_grid_column_counter( $count ) ?> align-self-stretch">
+            <?php if ($user_selected_template == 'custom_content' || $post_type_parent === 'guides'): ?>
+              <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
+            <?php else: ?>
+              <?php include( locate_template( 'partials/posts/content-card.php' ) ); ?>
+            <?php endif; ?>
           </div>
-          <div id="announcement-<?php the_ID(); ?>" class="reveal reveal--<?php echo $label_arr['label']?>" data-reveal data-deep-link="true" data-options="closeOnClick:false; closeOnEsc:false;">
+          <div id="announcement-<?php the_ID(); ?>" class="reveal reveal--<?php echo $label_arr['label']?>" data-reveal data-deep-link="true" data-options="closeOnClick:false; closeOnEsc:false;"
+          aria-labelledby="announcement-<?php the_ID(); ?>">
             <button class="close-button" data-close aria-label="Close modal" type="button">
               <span aria-hidden="true">&times;</span>
             </button>

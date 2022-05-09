@@ -63,7 +63,6 @@
       $override_url = $a['see_all'];
     }
     
-    include( locate_template( 'partials/posts/announcements-grid.php' ) );
     include( locate_template( 'partials/posts/post-grid.php' ) );
   
     wp_reset_postdata();

@@ -8,8 +8,13 @@
 
 $full_row_blog_selected =  rwmb_meta('phila_full_row_blog_selected');
 $full_row_blog = rwmb_meta('phila_full_row_blog');
+
+$full_row_ann_selected =  rwmb_meta('phila_full_row_announcements_selected');
+$full_row_ann = rwmb_meta('phila_full_row_announcements');
+
 $full_width_press_releases_selected = rwmb_meta('phila_full_row_press_releases_selected');
 $full_width_press_releases = rwmb_meta('phila_full_row_press_releases');
+
 $cal_id = rwmb_meta('phila_full_width_calendar_id');
 ?>
 <section>
@@ -39,9 +44,7 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
         <div class="expandable show-all-on-desktop">
           <div class="intro-text" id="guides-intro-text"><?php the_content(); ?></div>
         </div>
-       
           <a href="#" data-toggle="expandable" class="float-right more-button"> More + </a>
-       
       </div>
     </div>
   <?php endif; ?>
@@ -96,6 +99,18 @@ $cal_id = rwmb_meta('phila_full_width_calendar_id');
   </div>
 
 </div>
+
+<?php if (!empty($full_row_ann_selected)) : ?>
+  <?php $ann_cats = rwmb_meta('phila_get_ann_cats');
+    $ann_cat_override = isset($ann_cats['phila_announcement_category']) ? $ann_cats['phila_announcement_category'] : '';
+    $ann_tag_override = isset($ann_override['ann_tag']) ? $ann_override['ann_tag'] : ''; ?>
+
+  <!-- Announcement Content-->
+  <section class="announcements">
+    <?php include(locate_template('partials/global/phila_full_row_announcements.php')); ?>
+  </section>
+  <!-- /Announcement Content-->
+<?php endif; ?>
 
 <?php if (!empty($full_row_blog_selected)) : ?>
   <?php $blog_override = rwmb_meta('phila_get_post_cats');
