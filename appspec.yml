@@ -7,6 +7,7 @@ files:
     destination: /home/ubuntu/app/nginx
   - source: wp-cli.yml
     destination: /home/ubuntu/app
+file_exists_behavior: OVERWRITE
 permissions:
   - object: /home/ubuntu/app/wp
     owner: ubuntu
@@ -44,11 +45,10 @@ branch_config:
     deploymentConfig:
       autoRollbackConfiguration:
         enabled: false
-  master:
-    deploymentGroupName: beta.phila.gov
+  main:
+    deploymentGroupName: www-phila-gov-deployment-group
     deploymentGroupConfig:
       serviceRoleArn: 'arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy'
     deploymentConfig:
       autoRollbackConfiguration:
         enabled: false
-        
