@@ -28,6 +28,14 @@
         text-decoration: underline;
       }
     }
+    @media screen and (min-width: 750px) and (max-width: 960px) {
+      .medium-8 {
+        display: none;
+      }
+      .medium-16 {
+        width: 100%;
+      }
+    }
     @media screen and (max-width: 749px) {
       display: block;
       .card {
