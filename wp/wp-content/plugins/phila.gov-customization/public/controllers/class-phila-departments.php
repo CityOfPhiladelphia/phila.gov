@@ -148,11 +148,17 @@ class Phila_Departments_Controller {
     }
 
     if (isset( $schema['properties']['short_name'] )) {
-      $trimmed_name = phila_get_owner_typography( $post->post_title );
-
-      $trimmed_name = preg_replace('/( & )/', ' and ', $trimmed_name);
-
-      $post_data['short_name'] = (string) html_entity_decode(trim($trimmed_name));
+      $trimmed_name = '';
+      $categories = get_the_category($post->ID);
+      foreach ($categories as $category){
+        $trimmed_name = phila_get_owner_typography( $category );
+      }
+      if ($trimmed_name == '') {
+        $trimmed_name = phila_shorten_department_name($post->post_title);
+      }
+      $trimmed_name = preg_replace('/( & )/', ' and ', $trimmed_name);  
+      $trimmed_name = trim( $trimmed_name );
+      $post_data['short_name'] = (string) $trimmed_name;
     }
 
     if (isset( $schema['properties']['acronym'] )) {
