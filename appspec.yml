@@ -46,7 +46,7 @@ branch_config:
       autoRollbackConfiguration:
         enabled: false
   main:
-    deploymentGroupName: www-phila-gov-deployment-group
+    deploymentGroupName: www.phila.gov-deployer
     deploymentGroupConfig:
       serviceRoleArn: 'arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy'
     deploymentConfig:
