@@ -17,11 +17,11 @@ $row_content = rwmb_meta('collection_row');?>
 
       <?php if ($current_row_option === 'service') : ?>
         <?php $headline = isset($current_row['service_pages']['phila_custom_text_title']) ? $current_row['service_pages']['phila_custom_text_title'] : '<span class="placeholder">Please enter heading title</span>';?>
-        <div class="row one-quarter-row mvl">
+        <div class="row one-quarter-row mvl collection-services">
           <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
           </div>
-          <div class="columns medium-18 pbxl">
+          <div class="columns medium-18">
             <div class="row grid-x fat-gutter">
             <?php foreach( $current_row['service_pages']['phila_v2_service_page'] as $service_page ) : ?>
               <div class="flex-container auto small-24 medium-8 column end">
@@ -44,7 +44,7 @@ $row_content = rwmb_meta('collection_row');?>
           <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
           </div>
-          <div class="columns medium-18 pbxl">
+          <div class="columns medium-18">
             <?php foreach($current_row['document_pages']['document_page_group'] as $group): ?>
               <?php $title =    isset($group['phila_custom_wysiwyg']['phila_wysiwyg_title']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_title'] : '' ;
               $content = isset ($group['phila_custom_wysiwyg']['phila_wysiwyg_content']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_content'] : '';
@@ -76,7 +76,7 @@ $row_content = rwmb_meta('collection_row');?>
           <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
           </div>
-          <div class="columns medium-18 pbxl">
+          <div class="columns medium-18">
             <div class="row fat-gutter program-card-row">
               <?php foreach( $current_row['program_pages']['phila_select_programs'] as $program_page ) : ?>
                 <div class="medium-12 columns end mbl">
@@ -110,7 +110,7 @@ $row_content = rwmb_meta('collection_row');?>
             <div class="columns medium-6">
                 <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
             </div>
-            <div class="columns medium-18 pbxl">
+            <div class="columns medium-18">
             <?php if ($expand_collapse == 1) :?>
               <div class="expandable" aria-controls="<?php echo sanitize_title_with_dashes($headline, null, 'save') . '-control' ?>" aria-expanded="false">
             <?php endif; ?>
