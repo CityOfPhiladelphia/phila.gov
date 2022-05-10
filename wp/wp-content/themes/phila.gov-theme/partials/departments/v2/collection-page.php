@@ -145,7 +145,6 @@ $row_content = rwmb_meta('collection_row');?>
       <?php if ($current_row_option === 'phila_callout_v2') :  ?>
         <?php include(locate_template('partials/departments/v2/collection-callout.php')); ?>
       <?php endif; ?>
-
       <?php if ($last_key != $key) : ?>
         <hr class="margin-auto"/>
       <?php endif; ?>

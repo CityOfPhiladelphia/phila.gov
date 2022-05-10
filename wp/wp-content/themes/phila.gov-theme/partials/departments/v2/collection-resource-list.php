@@ -61,25 +61,25 @@
       </div>
 
         <?php
-        foreach ($featured_resources as $key => $value): ?>
+        foreach ($featured_resources as $resource_key => $value): ?>
         <div class="large-<?php echo $columns ?> cell">
-          <a href="<?php echo $featured_resources[$key]['url']; ?>"  class="card action-panel">
+          <a href="<?php echo $featured_resources[$resource_key]['url']; ?>"  class="card action-panel">
             <div class="panel <?php if( $item_count > 1 ) echo 'equal';?>">
             <header class="<?php echo $columns == '24' ? 'text-align-left' : ''; ?>">
               <div class="<?php echo $columns == '24' ? 'float-left mrm' : ''; ?>">
                 <span class="fa-stack <?php echo $columns == '24' ? 'fa-3x' : 'fa-4x'; ?> center" aria-hidden="true">
                   <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="<?php echo $featured_resources[$key]['icon']; ?> fa-stack-1x fa-inverse"></i>
+                  <i class="<?php echo $featured_resources[$resource_key]['icon']; ?> fa-stack-1x fa-inverse"></i>
                 </span>
               </div>
-              <?php if (!$featured_resources[$key]['alt-title'] == ''): ?>
-                <span class="<?php if ($featured_resources[$key]['external']) echo 'external';?>"><?php echo $featured_resources[$key]['alt-title']; ?></span>
-              <?php elseif (!$featured_resources[$key]['title'] == ''): ?>
-                <span class="<?php if ($featured_resources[$key]['external']) echo 'external';?>"><?php echo $featured_resources[$key]['title']; ?></span>
+              <?php if (!$featured_resources[$resource_key]['alt-title'] == ''): ?>
+                <span class="<?php if ($featured_resources[$resource_key]['external']) echo 'external';?>"><?php echo $featured_resources[$resource_key]['alt-title']; ?></span>
+              <?php elseif (!$featured_resources[$resource_key]['title'] == ''): ?>
+                <span class="<?php if ($featured_resources[$resource_key]['external']) echo 'external';?>"><?php echo $featured_resources[$resource_key]['title']; ?></span>
               <?php endif; ?>
             </header>
             <?php echo $columns == '24' ? '' : '<hr class="mll mrl">'; ?>
-              <span class="details"><?php echo $featured_resources[$key]['summary']; ?></span>
+              <span class="details"><?php echo $featured_resources[$resource_key]['summary']; ?></span>
             </div>
           </a>
         </div>
@@ -109,9 +109,9 @@
         $outer_loop = 0;
         $total = count($resource_list_groups);
 
-        $last_key = phila_util_is_last_in_array( (array) $resource_list_groups);
+        $last_resource_key = phila_util_is_last_in_array( (array) $resource_list_groups);
 
-        foreach ( $resource_list_groups as $key => $resource_list_group) :
+        foreach ( $resource_list_groups as $resource_key => $resource_list_group) :
 
           $outer_loop++;
           $resource_list_title = isset( $resource_list_group['phila_resource_list_title'] ) ? $resource_list_group['phila_resource_list_title'] : '';
@@ -160,7 +160,7 @@
             <?php endif; ?>
           </div>
         </div>
-        <?php if ($last_key != $key) : ?>
+        <?php if ($last_resource_key != $resource_key) : ?>
           <hr class="grid-padding-x mhn">
         <?php endif ?>
       </div>
