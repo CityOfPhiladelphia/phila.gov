@@ -17,7 +17,7 @@ $row_content = rwmb_meta('collection_row');?>
 
       <?php if ($current_row_option === 'service') : ?>
         <?php $headline = isset($current_row['service_pages']['phila_custom_text_title']) ? $current_row['service_pages']['phila_custom_text_title'] : '<span class="placeholder">Please enter heading title</span>';?>
-        <div class="row one-quarter-row mvl">
+        <div class="row one-quarter-row mvl collection-services">
           <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
           </div>
