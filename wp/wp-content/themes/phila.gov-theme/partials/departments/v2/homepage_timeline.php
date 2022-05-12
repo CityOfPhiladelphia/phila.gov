@@ -22,8 +22,6 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
   }
 ?>
 
-<?php 
-if ( !empty($timeline_page) ) :?>
 <?php $temp_month = ''; ?>
 <?php 
   $date_type = $timeline_toggle == 'year' ? 'Y' : 'F Y';
@@ -110,5 +108,3 @@ if ( !empty($timeline_page) ) :?>
   </div>
 </section>
 <!-- Timeline Section/ -->
-
-<?php endif; ?>
