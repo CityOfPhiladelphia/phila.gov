@@ -7,7 +7,6 @@ files:
     destination: /home/ubuntu/app/nginx
   - source: wp-cli.yml
     destination: /home/ubuntu/app
-file_exists_behavior: OVERWRITE
 permissions:
   - object: /home/ubuntu/app/wp
     owner: ubuntu
