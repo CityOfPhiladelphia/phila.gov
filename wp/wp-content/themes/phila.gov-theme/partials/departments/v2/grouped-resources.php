@@ -18,7 +18,7 @@
       <?php $resource_list_groups = $current_row['phila_resource_group']['phila_resource_list_v2']; ?>
       <div class="mbl">
         <div class="plm">
-          <?php include( locate_template( 'partials/departments/v2/collection-resource-list.php' ) ); ?>
+          <?php include( locate_template( 'partials/resource-list.php' ) ); ?>
         </div>
       </div>
     <?php endif; ?>
