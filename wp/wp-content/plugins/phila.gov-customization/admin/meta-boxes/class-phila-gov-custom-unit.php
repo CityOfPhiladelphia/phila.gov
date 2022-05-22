@@ -24,11 +24,6 @@ if ( class_exists( 'RWMB_Field' ) ) {
         global $pagenow;
 
         if (!is_admin()) return false;
-        if ( $pagenow === 'index.php' ) return true; //don't run on dashboard
-        if ( $pagenow === 'edit.php' ) return true; //doesn't prevent this from running
-        if ( $pagenow === 'plugins.php' ) return true; //don't run plugin pages
-        if ( $pagenow === 'admin.php' ) return true; //don't run on general admin pages
-
 
         if( $new_edit === 'edit' )
           return in_array( $pagenow, array( 'post.php' ) );
@@ -45,7 +40,7 @@ if ( class_exists( 'RWMB_Field' ) ) {
 
       $post_id = false;
   
-      if ( $pagenow =='edit.php' ) return; 
+      if ( $pagenow =='edit.php' ) return $field; 
 
       $post_status = RWMB_Unit_Field::is_edit_page('new');
       
@@ -61,12 +56,12 @@ if ( class_exists( 'RWMB_Field' ) ) {
       } elseif ( isset( $_POST['post_ID'] ) ) {
         $post_id = intval( $_POST['post_ID'] );
       }else{
-        return;
+        return $field;
       }
 
       $categories = (array) get_the_category($post_id);
 
-      if (empty($categories)) return;
+      if (empty($categories)) return $field;
 
       foreach ( (array) get_the_category($post->ID) as $cat ) {
 
