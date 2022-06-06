@@ -5,6 +5,7 @@
  * @package Meta Box
  * @see http://metabox.io/?post_type=docs&p=390
  */
+
 if ( class_exists( 'RWMB_Field' ) ) {
 
   class RWMB_Unit_Field extends RWMB_Checkbox_List_Field {
@@ -24,37 +25,43 @@ if ( class_exists( 'RWMB_Field' ) ) {
 
         if (!is_admin()) return false;
 
-        if( $new_edit == 'edit' )
+        if( $new_edit === 'edit' )
           return in_array( $pagenow, array( 'post.php' ) );
-
-        elseif($new_edit == 'new')
+        elseif($new_edit === 'new')
           return in_array( $pagenow, array( 'post-new.php' ) );
-
         else //check for either new or edit
-          return in_array( $pagenow, array( 'post.php', 'post-new.php' ) );
+          return in_array( $pagenow, array( 'post.php', 'post-new.php') );
       }
 
     public static function normalize( $field ) {
 
       global $post;
+      global $pagenow;
 
       $post_id = false;
-      $post_status = RWMB_Unit_Field::is_edit_page('new');
+  
+      if ( $pagenow =='edit.php' ) return $field; 
 
-      if ( $post_status ){
+      $post_status = RWMB_Unit_Field::is_edit_page('new');
+      
+
+      if ( $post_status && !is_null($field) ){
         $field = parent::normalize( $field );
         return $field;
       }
 
-      if ( isset( $_GET['post'] ) ) {
+
+      if ('post.php' === $pagenow &&  isset( $_GET['post'] ) ) {
         $post_id = intval( $_GET['post'] );
       } elseif ( isset( $_POST['post_ID'] ) ) {
         $post_id = intval( $_POST['post_ID'] );
       }else{
-        return;
+        return $field;
       }
 
       $categories = (array) get_the_category($post_id);
+
+      if (empty($categories)) return $field;
 
       foreach ( (array) get_the_category($post->ID) as $cat ) {
 
@@ -67,10 +74,11 @@ if ( class_exists( 'RWMB_Field' ) ) {
           if ( empty($category->slug ) ) {
             continue;
           }
+          $term_id = get_queried_object_id();
 
           // get data out of term meta field
-          $units = rwmb_meta( 'department_units', array( 'object_type' => 'term' ), $category->term_id);
-          
+          $units = rwmb_meta( 'department_units', array( 'object_type' => 'term' ), $category->term_id, false) ;
+
           if (!empty($units)) {
             foreach($units as $unit) {
               $options[urlencode($unit['name'])] = $category->name . ' - ' . $unit['name'];
@@ -78,12 +86,15 @@ if ( class_exists( 'RWMB_Field' ) ) {
           }
         }
 
+
         $field['options'] = $options;
       }
-
-      $field = parent::normalize( $field );
-
-      return $field;
+      
+      if (!is_null($field)) {
+        $field = parent::normalize( $field );
+        return $field;
+      }
     }
   }
 }
+?>
