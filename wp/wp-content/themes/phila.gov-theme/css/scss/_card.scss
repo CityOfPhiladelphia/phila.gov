@@ -1,7 +1,7 @@
 a.card,
 .card{
   position: relative;
-  margin-bottom:0;
+
   h1 {
     font-size: rem-calc(25);
     margin: 0;
@@ -209,6 +209,13 @@ a.faux-card {
   .cell{
     //Add breathing room to mobile view
     margin-bottom:1rem;
+  }
+  a.card {
+    margin-bottom:1rem;
+  }
+
+  .card {
+    margin-bottom: 1rem;
   }
 }
 
