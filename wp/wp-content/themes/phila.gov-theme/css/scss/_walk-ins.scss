@@ -15,7 +15,7 @@
 }
 
 @include breakpoint(small only) {
-  .walk-ins{
+  .walk-ins {
     border: none;
     background: color( ben-franklin-blue );
     color:white;
@@ -23,5 +23,8 @@
     .walk-ins-icon{
       padding: 1rem 0;
     }
+  }
+  .walk-ins-copy > a {
+    color:white;
   }
 }
