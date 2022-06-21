@@ -17,11 +17,11 @@ $row_content = rwmb_meta('collection_row');?>
 
       <?php if ($current_row_option === 'service') : ?>
         <?php $headline = isset($current_row['service_pages']['phila_custom_text_title']) ? $current_row['service_pages']['phila_custom_text_title'] : '<span class="placeholder">Please enter heading title</span>';?>
-        <div class="row one-quarter-row mvl">
+        <div class="row one-quarter-row mvl collection-services">
           <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
           </div>
-          <div class="columns medium-18 pbxl">
+          <div class="columns medium-18">
             <div class="row grid-x fat-gutter">
             <?php foreach( $current_row['service_pages']['phila_v2_service_page'] as $service_page ) : ?>
               <div class="flex-container auto small-24 medium-8 column end">
@@ -32,10 +32,10 @@ $row_content = rwmb_meta('collection_row');?>
                   </div>
                 </a>
               </div>
-          <?php endforeach; ?>
+            <?php endforeach; ?>
+            </div>
           </div>
         </div>
-      </div>
       <?php endif; ?>
 
       <?php if ($current_row_option === 'document') :  ?>
@@ -44,7 +44,7 @@ $row_content = rwmb_meta('collection_row');?>
           <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
           </div>
-          <div class="columns medium-18 pbxl">
+          <div class="columns medium-18">
             <?php foreach($current_row['document_pages']['document_page_group'] as $group): ?>
               <?php $title =    isset($group['phila_custom_wysiwyg']['phila_wysiwyg_title']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_title'] : '' ;
               $content = isset ($group['phila_custom_wysiwyg']['phila_wysiwyg_content']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_content'] : '';
@@ -76,12 +76,12 @@ $row_content = rwmb_meta('collection_row');?>
           <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
           </div>
-          <div class="columns medium-18 pbxl">
+          <div class="columns medium-18">
             <div class="row fat-gutter program-card-row">
               <?php foreach( $current_row['program_pages']['phila_select_programs'] as $program_page ) : ?>
                 <div class="medium-12 columns end mbl">
-                  <?php $off_site = rwmb_meta('prog_off_site_link', $args = array(), $post_id =  $program_page); ?>
-                  <a href="<?php echo !empty($off_site) ? $off_site : get_the_permalink($post = $program_page); ?>" class="card program-card">
+                  <?php $off_site = rwmb_meta('prog_off_site_link', $args = array(), $program_page); ?>
+                  <a href="<?php echo !empty($off_site) ? $off_site : get_the_permalink($program_page); ?>" class="card program-card">
                     <?php
                     $img = rwmb_meta( 'prog_header_img', $args = array( 'size' => 'medium', 'limit' => 1 ), $program_page );
                     $img = reset( $img );?>
@@ -110,7 +110,7 @@ $row_content = rwmb_meta('collection_row');?>
             <div class="columns medium-6">
                 <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
             </div>
-            <div class="columns medium-18 pbxl">
+            <div class="columns medium-18">
             <?php if ($expand_collapse == 1) :?>
               <div class="expandable" aria-controls="<?php echo sanitize_title_with_dashes($headline, null, 'save') . '-control' ?>" aria-expanded="false">
             <?php endif; ?>
@@ -125,6 +125,26 @@ $row_content = rwmb_meta('collection_row');?>
 
       <?php endif; ?>
 
+      <?php if ($current_row_option === 'stepped_process') :  ?>
+        <?php $stepped_content = $current_row['stepped_process']; ?>
+        <?php include(locate_template('partials/departments/v2/stepped-process-wrapper.php')); ?>
+      <?php endif; ?>
+
+      <?php if ($current_row_option === 'phila_resource_group') :  ?>
+        <?php include(locate_template('partials/departments/v2/grouped-resources.php')); ?>
+      <?php endif; ?>
+
+      <?php if ($current_row_option === 'paragraph_text_with_photo') :  ?>
+        <?php include(locate_template('partials/departments/v2/paragraph-text-with-photo.php')); ?>
+      <?php endif; ?>
+
+      <?php if ($current_row_option === 'post') :  ?>
+        <?php include(locate_template('partials/departments/v2/collection-posts.php')); ?>
+      <?php endif; ?>
+
+      <?php if ($current_row_option === 'phila_callout_v2') :  ?>
+        <?php include(locate_template('partials/departments/v2/collection-callout.php')); ?>
+      <?php endif; ?>
       <?php if ($last_key != $key) : ?>
         <hr class="margin-auto"/>
       <?php endif; ?>
