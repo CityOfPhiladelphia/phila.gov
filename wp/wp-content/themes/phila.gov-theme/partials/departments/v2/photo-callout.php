@@ -12,16 +12,8 @@ if (phila_get_selected_template() === 'homepage_v2') {
     $btnIcon = rwmb_meta('phila_v2_photo_callout_block__icon');
     $icon = rwmb_meta('phila_v2_photo-callout-block__txt-icon');
     $get_photo = rwmb_meta('phila_v2_photo_callout_block__photo');
-    $photo = reset($get_photo)['full_url'];
-    $alt = reset($get_photo)['alt'];
-} else if ( phila_get_selected_template() === 'collection_page_v2' ) {
-    $photo_callout = isset($current_row['phila_callout_group']['phila_callout_v2']) ? $current_row['phila_callout_group']['phila_callout_v2'] : '';
-    $header = $photo_callout['large_title'];
-    $subHeader = $photo_callout['small_title'];    
-    $description = $photo_callout['description'];
-    $btnLink = $photo_callout['button_url'];
-    $btnTxt = $photo_callout['button_text'];
-    $icon = $photo_callout['button_icon'];
+    $photo = (reset($get_photo)['full_url'] !== null ? reset($get_photo)['full_url'] : '' );
+    $alt = (reset($get_photo)['alt'] !== null ? reset($get_photo)['alt'] : '');
 } else {
     $photo_callout = isset($current_row['phila_full_options']['photo_callout']) ? $current_row['phila_full_options']['photo_callout'] : '';
     $toggle = isset($photo_callout['phila_v2_photo_callout_block__image_toggle']) ? $photo_callout['phila_v2_photo_callout_block__image_toggle'] : '';

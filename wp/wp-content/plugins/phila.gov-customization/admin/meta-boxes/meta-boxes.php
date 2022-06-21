@@ -630,7 +630,7 @@ function phila_register_meta_boxes( $meta_boxes ){
           'relation' => 'or',
         ),
         'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_post_category', 'Display posts from these owners. This will override page ownership selection entirely.'),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_post_category', 'Display posts from these owners. This will override page ownership selection.'),
           array(
             'name'  => 'Filter by a tag',
             'id'  => 'tag',
@@ -640,6 +640,57 @@ function phila_register_meta_boxes( $meta_boxes ){
             'desc'  => 'Display posts using this tag. "See all" will pre-filter on these terms.'
           ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_url('See all link override', 'override_url', '', 12 ),
+        ),
+      ),
+    ),
+  );
+
+  $meta_boxes[] = array(
+    'id'       => 'phila_full_row_announcements',
+    'title'    => 'Full row announcements',
+    'pages'    => array( 'department_page', 'guides' ),
+    'context'  => 'normal',
+    'priority' => 'high',
+
+    'include' => array(
+      'user_role'  => array( 'administrator', 'primary_department_homepage_editor', 'editor' ),
+    ),
+
+    'visible' => array(
+      'when' => array(
+        array( 'phila_template_select', '=', 'homepage_v2' ),
+        array( 'phila_template_select', '=', 'guide_landing_page' )
+      ),
+      'relation' => 'or', 
+    ),
+
+    'fields' => array(
+      array(
+        'name' => 'Display a full row of announcements?',
+        'id'   => 'phila_full_row_announcements_selected',
+        'type' => 'switch',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
+      ),
+      array(
+        'id'  => 'phila_get_ann_cats',
+        'type' => 'group',
+        'visible' => array(
+          'when' => array(
+            array( 'phila_full_row_announcements_selected', '=', 1 ),
+          ),
+          'relation' => 'or',
+        ),
+        'fields' => array(
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_announcement_category', 'Display announcements from these owners. This will override page ownership selection.'),
+          array(
+            'name'  => 'Filter by a tag',
+            'id'  => 'announcements_tag',
+            'type' => 'taxonomy_advanced',
+            'taxonomy'  => 'post_tag',
+            'field_type' => 'select_advanced',
+            'desc'  => 'Display announcements using this tag.'
+          ),
         ),
       ),
     ),

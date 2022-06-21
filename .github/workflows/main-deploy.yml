@@ -1,8 +1,8 @@
-name: Deploy to master
+name: Deploy to main
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -15,9 +15,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - uses: actions/checkout@v2
-      - id: master-deploy
-        uses: webfactory/create-aws-codedeploy-deployment@0.2.2
+      - id: main-deploy
+        uses: webfactory/create-aws-codedeploy-deployment@v0.3.0
         with: 
-          application: beta.phila.gov
+          application: www.phila.gov
       - run:
           aws cloudfront create-invalidation --distribution-id ${{ secrets.PROD_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
