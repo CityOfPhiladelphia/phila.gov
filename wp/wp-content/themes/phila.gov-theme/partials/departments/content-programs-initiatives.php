@@ -15,7 +15,7 @@
 
 ?>
 <?php if (!phila_util_is_array_empty($page_rows)): ?>
-<!-- /Page content / programs + initiatives -->
+<!-- Page content -->
 <section>
   <?php
     foreach ($page_rows as $key => $value):
@@ -36,6 +36,12 @@
           </div>
           <!-- /Blog Content -->
 
+          <?php elseif ( $current_row_option === 'phila_announcements' ): ?>
+          <!-- Announcement Content -->
+            <?php $ann_cat_override = isset( $current_row['phila_full_options']['phila_announcements_group']['phila_ann_category']) ? $current_row['phila_full_options']['phila_announcements_group']['phila_ann_category'] : ''; ?>
+            <?php $blog_tag_override = isset( $current_row['phila_full_options']['phila_announcements_group']['ann_tag']) ? $current_row['phila_full_options']['phila_announcements_group']['ann_tag'] : ''; ?>
+            <?php include( locate_template( 'partials/global/phila_full_row_announcements.php' ) ); ?>
+          <!-- /Announcement Content -->
           <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
             $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : null;
             $spotlight_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_event_spotlight'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_event_spotlight'] : '';
@@ -369,5 +375,5 @@
       <?php endif; ?>
     <?php endforeach; ?>
   </div>
-<!-- /Page content / programs + initiatives -->
+<!-- /Page content -->
 <?php endif; ?>

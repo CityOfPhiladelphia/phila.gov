@@ -87,4 +87,8 @@ define('JWT_AUTH_CORS_ENABLE', true);
 
 /** https://wordpress.org/support/topic/problem-after-the-recent-update */
 define('FS_METHOD', 'direct');
+
+/** Database charset to use in creating database tables. */
+define('DB_CHARSET','utf8mb4');
+
 PHP
