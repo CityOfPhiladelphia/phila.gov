@@ -37,7 +37,7 @@ $row_content = rwmb_meta('collection_row');?>
           </div>
         </div>
       <?php endif; ?>
-
+      <!-- Document pages [DEPRECATED] -->
       <?php if ($current_row_option === 'document') :  ?>
         <?php $headline = isset($current_row['document_pages']['phila_custom_text_title']) ? $current_row['document_pages']['phila_custom_text_title'] : '<span class="placeholder">Please enter heading title</span>';?>
         <div class="row one-quarter-row mvl">
@@ -67,7 +67,7 @@ $row_content = rwmb_meta('collection_row');?>
           </div>
         </div>
       <?php endif; ?>
-
+      <!-- / Document pages [DEPRECATED] -->
       <?php if ($current_row_option === 'program') :  ?>
 
         <?php $headline = isset($current_row['program_pages']['phila_custom_text_title']) ? $current_row['program_pages']['phila_custom_text_title'] : '<span class="placeholder">Please enter heading title</span>';?>

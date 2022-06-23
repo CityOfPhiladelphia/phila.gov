@@ -44,7 +44,7 @@ class Phila_Gov_Collection_Page {
               'placeholder' => 'Select...',
               'options' => array(
                 'phila_callout_v2' => 'App Callout',
-                'document' => 'Document pages',
+                'document' => 'Document pages [DEPRECATED]',
                 'free_text' => 'Free text area',
                 'paragraph_text_with_photo' => 'Paragraph text with photo',
                 'post' => 'Posts',
