@@ -497,9 +497,10 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_metabox_v2_phila_wysiwyg_title(){
+  public static function phila_metabox_v2_phila_wysiwyg_title($name = ''){
     return array(
       'id'  => 'phila_wysiwyg_title',
+      'name' => $name,
       'type'  => 'text',
       'class' => 'percent-100'
     );
@@ -637,6 +638,7 @@ class Phila_Gov_Standard_Metaboxes {
       'js_options'  => array(
         'width' => '100%',
         'closeOnSelect' => false,
+        'minimumInputLength' => 3
       )
     );
   }

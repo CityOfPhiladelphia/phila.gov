@@ -1,4 +1,4 @@
-<!-- Stepped process wrapper -->
+<!-- Resource group wrapper -->
 <div class="row one-quarter-row mvl">
   <div class="columns medium-6">
       <?php if( isset($current_row['phila_resource_group']['phila_wysiwyg_title'] )): ?>	
@@ -24,4 +24,4 @@
     <?php endif; ?>
   </div>
 </div>      
-<!-- / Stepped process wrapper -->
+<!-- / Resource group wrapper -->

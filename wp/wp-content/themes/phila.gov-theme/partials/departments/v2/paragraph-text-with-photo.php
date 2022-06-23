@@ -1,5 +1,5 @@
 <!-- Paragraph text with photo -->
-<div class="row one-quarter-row mvl">
+<div class="row one-quarter-row mvl photo-paragraph">
   <div class="columns medium-6">
       <?php if( isset($current_row['paragraph_text_with_photo']['phila_wysiwyg_title'] )): ?>	
         <?php $current_row_id = sanitize_title_with_dashes( $current_row['paragraph_text_with_photo']['phila_wysiwyg_title']);?>
