@@ -91,12 +91,16 @@ class PHL_AQI {
     }
   }
 
-  function register_scripts() {
-    wp_enqueue_script('highcharts-core', '//code.highcharts.com/6.2.0/highcharts.js', null, '', true);
-    wp_enqueue_script('highcharts-more', '//code.highcharts.com/6.2.0/highcharts-more.js', null, '', true);
-    wp_enqueue_script('phl-aqi-init', plugins_url('', __FILE__ ) . '/js/phl-aqi.js', 'jquery', '0.2', true);
-    wp_enqueue_style('aqi-css', plugins_url('', __FILE__ ) . '/css/phl-aqi.css', null, '0.2', 'all');
-  }
+
+    function register_scripts() {
+      $page_id = get_the_ID();
+      if ($page_id  ===  13050 ){
+        wp_enqueue_script('highcharts-core', '//code.highcharts.com/6.2.0/highcharts.js', null, '', true);
+        wp_enqueue_script('highcharts-more', '//code.highcharts.com/6.2.0/highcharts-more.js', null, '', true);
+        wp_enqueue_script('phl-aqi-init', plugins_url('', __FILE__ ) . '/js/phl-aqi.js', 'jquery', '0.2', true);
+        wp_enqueue_style('aqi-css', plugins_url('', __FILE__ ) . '/css/phl-aqi.css', null, '0.2', 'all');
+      }
+    }
 
   function add_aqi_shortcode() {
 
