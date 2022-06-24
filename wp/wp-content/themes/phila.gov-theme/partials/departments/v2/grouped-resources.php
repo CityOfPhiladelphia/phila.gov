@@ -1,4 +1,4 @@
-<!-- Resource group wrapper -->
+<!-- Resource group wrapper 123 -->
 <div class="row one-quarter-row mvl">
   <div class="columns medium-6">
       <?php if( isset($current_row['phila_resource_group']['phila_wysiwyg_title'] )): ?>	
@@ -7,19 +7,15 @@
       <?php endif;?>	
   </div>
   <div class="columns medium-18 pbxl">
-    <div class="mbl">	
-      <?php if( isset($current_row['phila_resource_group']['phila_wysiwyg_content'] )): ?>	
-        <div class="plm">	
-          <?php echo apply_filters( 'the_content', $current_row['phila_resource_group']['phila_wysiwyg_content']) ?>	
-        </div>	
-      <?php endif;?>	
-    </div>
+    <?php if( isset($current_row['phila_resource_group']['phila_wysiwyg_content'] )): ?>	
+      <div class="mbl">		
+        <?php echo apply_filters( 'the_content', $current_row['phila_resource_group']['phila_wysiwyg_content']) ?>	
+      </div>
+    <?php endif;?>	
     <?php if( isset($current_row['phila_resource_group']['phila_resource_list_v2']) && isset($current_row['phila_resource_group']['phila_resource_list_v2'])): ?>
       <?php $resource_list_groups = $current_row['phila_resource_group']['phila_resource_list_v2']; ?>
       <div class="mbl">
-        <div class="plm">
-          <?php include( locate_template( 'partials/resource-list.php' ) ); ?>
-        </div>
+        <?php include( locate_template( 'partials/resource-list.php' ) ); ?>
       </div>
     <?php endif; ?>
   </div>

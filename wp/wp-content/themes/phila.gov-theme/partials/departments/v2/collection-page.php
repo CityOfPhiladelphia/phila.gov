@@ -44,26 +44,35 @@ $row_content = rwmb_meta('collection_row');?>
           <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
           </div>
-          <div class="columns medium-18">
-            <?php foreach($current_row['document_pages']['document_page_group'] as $group): ?>
-              <?php $title =    isset($group['phila_custom_wysiwyg']['phila_wysiwyg_title']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_title'] : '' ;
-              $content = isset ($group['phila_custom_wysiwyg']['phila_wysiwyg_content']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_content'] : '';
-              ?>
-              <?php if ( $title ) : ?>
-                <h4><?php echo $title?></h4>
-              <?php endif; ?>
-              <?php if ( $content ) : ?>
-                <p><?php echo $content ?></p>
-              <?php endif; ?>
-              <div class="resource-list mbxl">
-                <ul>
-                  <?php foreach($group['phila_document_page_picker'] as $doc): ?>
-                  <li class="phm pvs clickable-row" data-href="<?php echo get_the_permalink($doc); ?>">
-                    <a href="<?php echo get_the_permalink($doc);?>">                <div><i class="fas fa-file-alt" aria-hidden="true"></i></div> <?php echo get_the_title($doc); ?></a></li>
-                  <?php endforeach; ?>
-                </ul>
-              </div>
-          <?php endforeach; ?>
+          <div class="columns medium-18 pbxl">
+            <div class="mbl">
+              <?php foreach($current_row['document_pages']['document_page_group'] as $group): ?>
+                  <?php $title =    isset($group['phila_custom_wysiwyg']['phila_wysiwyg_title']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_title'] : '' ;
+                  $content = isset ($group['phila_custom_wysiwyg']['phila_wysiwyg_content']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_content'] : '';
+                  ?>
+                  <?php if ( $title ) : ?>
+                    <h2 class="h3"><?php echo $title?></h2>
+                  <?php endif; ?>
+                  <?php if ( $content ) : ?>
+                    <div class="small-24 medium-24">	
+                      <p><?php echo $content ?></p>
+                    </div>	
+                  <?php endif; ?>
+                  <div class="resource-list">
+                    <ul>
+                      <?php foreach($group['phila_document_page_picker'] as $doc): ?>
+                      <li class="phm pvs clickable-row" data-href="<?php echo get_the_permalink($doc); ?>">
+                        <a href="<?php echo get_the_permalink($doc);?>">
+                          <div>
+                            <i class="fas fa-file-alt fa-lg" aria-hidden="true"></i>
+                          </div> <?php echo get_the_title($doc); ?>
+                        </a>
+                      </li>
+                      <?php endforeach; ?>
+                    </ul>
+                  </div>
+              <?php endforeach; ?>
+            </div>
           </div>
         </div>
       <?php endif; ?>
@@ -87,7 +96,7 @@ $row_content = rwmb_meta('collection_row');?>
                     $img = reset( $img );?>
                     <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt']?>">
                     <div class="content-block">
-                      <h4 class="h3"><?php echo get_the_title($program_page); ?></h3>
+                        <h3 class="h3"><?php echo get_the_title($program_page); ?></h3>
                       <?php echo rwmb_meta( 'phila_meta_desc', $args = '', $program_page ); ?></h4>
                     </div>
                   </a>
