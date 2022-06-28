@@ -19,6 +19,7 @@ if [ "$PHILA_TEST" ]; then
   npm run dev:build
 else
   echo 'Running prod tasks'
+  nvm use 14
   npm rebuild node-sass
   npm run build
 fi
