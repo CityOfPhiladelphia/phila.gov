@@ -639,7 +639,7 @@ class Phila_Gov_Standard_Metaboxes {
         'width' => '100%',
         'closeOnSelect' => false,
         'minimumInputLength' => 3
-      )
+      ),
     );
   }
 

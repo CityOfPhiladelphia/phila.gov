@@ -78,9 +78,8 @@ $row_content = rwmb_meta('collection_row');?>
       <?php endif; ?>
       <!-- / Document pages [DEPRECATED] -->
       <?php if ($current_row_option === 'program') :  ?>
-
+        <!-- Program pages -->
         <?php $headline = isset($current_row['program_pages']['phila_custom_text_title']) ? $current_row['program_pages']['phila_custom_text_title'] : '<span class="placeholder">Please enter heading title</span>';?>
-
         <div class="row one-quarter-row mvl">
           <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
@@ -103,17 +102,22 @@ $row_content = rwmb_meta('collection_row');?>
                 </div>
             <?php endforeach; ?>
           </div>
-          </div>
         </div>
+        <?php if ($current_row['program_pages']['phila_v2_programs_link'] ):  ?>
+          <div class="float-right">
+            <a href="<?php echo $current_row['program_pages']['phila_v2_programs_link']?>">See all programs ></a>
+          </div>
+        <?php endif; ?>
+      </div>
+      <!-- /Program pages -->
       <?php endif; ?>
 
       <?php if ($current_row_option === 'free_text') :  ?>
-
+        <!-- Free text -->
         <?php foreach( $current_row['free_text'] as $free_text ) :
           ?>
           <?php $headline = isset($free_text['phila_custom_wysiwyg']['phila_wysiwyg_title']) ? $free_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] : '<span class="placeholder">Please enter heading title</span>'; ?>
           <?php $expand_collapse = isset($free_text['expand_collapse']) ? $free_text['expand_collapse'] : ''; ?>
-
 
           <div class="row one-quarter-row mvl">
             <div class="columns medium-6">
@@ -131,7 +135,7 @@ $row_content = rwmb_meta('collection_row');?>
             
           </div>      
           <?php endforeach; ?>
-
+          <!-- Free text -->
       <?php endif; ?>
 
       <?php if ($current_row_option === 'stepped_process') :  ?>

@@ -1,4 +1,4 @@
-<!-- Collection posts -->
+<!-- Collection page posts -->
 <?php $collection_post_count = 0; ?>
 <div class="row one-quarter-row mvl collection-posts">
   <div class="columns medium-6">
@@ -42,8 +42,14 @@
         </article>
       <?php } ?>
     <?php endforeach; ?>
-    <?php wp_reset_postdata(); ?>
     </div>
   </div>
+  <?php if ( $current_row['posts'] ) :?>
+      <div class="float-right">
+      <a href="<?php echo $current_row['posts']['phila_v2_posts_link']?>">See all posts ></a>
+    </div>
+    <?php endif; ?>
 </div>      
+<?php wp_reset_postdata(); ?>
+
 <!-- / Collection posts -->

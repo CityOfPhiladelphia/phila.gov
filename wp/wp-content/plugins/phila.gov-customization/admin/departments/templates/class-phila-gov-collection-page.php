@@ -43,7 +43,7 @@ class Phila_Gov_Collection_Page {
               'type' => 'select',
               'placeholder' => 'Select...',
               'options' => array(
-                'phila_callout_v2' => 'App Callout',
+                'phila_callout_v2' => 'Image callout',
                 'document' => 'Document pages [DEPRECATED]',
                 'free_text' => 'Free text area',
                 'paragraph_text_with_photo' => 'Paragraph text with photo',
@@ -92,6 +92,14 @@ class Phila_Gov_Collection_Page {
               'fields'  => array(
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
                 Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true ),
+                array(
+                  'id' => 'phila_v2_posts_link',
+                  'title' => 'See all posts',
+                  'name'  => 'See all posts url',
+                  'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-programs/',
+                  'type'  => 'url',
+                  'class' => 'metabox-url',
+                ),
               )
             ),
             array(
