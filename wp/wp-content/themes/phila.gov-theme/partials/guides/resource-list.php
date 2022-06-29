@@ -47,9 +47,16 @@
   </div>
 <?php endif; ?>
 <?php foreach($resource_lists as $resource_list) : ?>
-  <h2 class="h5 bg-ghost-gray pas">
-    <?php echo $resource_list['phila_resource_list_title'] ?>
-  </h2>
+  <?php if( isset($resource_list['phila_resource_list_title'] )): ?>	
+    <h2 class="h5 bg-ghost-gray pas">
+      <?php echo $resource_list['phila_resource_list_title'] ?>
+    </h2>
+  <?php endif;?>
+  <?php if( isset($resource_list['phila_resource_list_description'] )): ?>	
+    <div class="pas">	
+      <?php echo apply_filters( 'the_content', $resource_list['phila_resource_list_description']) ?>	
+    </div>	
+  <?php endif;?>
   <?php foreach ($resource_list['phila_resource_list_items'] as $list ): ?>
   <?php if (isset($list['phila_list_item_type'] )): ?>
     <?php switch ($list['phila_list_item_type']) :
