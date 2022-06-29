@@ -91,7 +91,7 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields'  => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = '1/4 heading'),
                 Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true ),
                 array(
                   'id' => 'phila_v2_posts_link',
@@ -112,7 +112,7 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields'  => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title($name = '1/4 heading'),
                 Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true ),
                 array(
                   'id' => 'phila_v2_press_release_link',
@@ -133,7 +133,7 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = 'Stepped process title'),
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content()
               )
@@ -147,7 +147,7 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields'  => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = '1/4 heading'),
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
               )
             ),
@@ -160,7 +160,7 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title($name = '1/4 heading'),
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
                 Phila_Gov_Standard_Metaboxes::phila_resource_list_v2(),
               )

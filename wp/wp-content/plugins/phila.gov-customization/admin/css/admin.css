@@ -34,8 +34,7 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 }
 
 /*Clean up admin */
-#phila_module_row_1 .rwmb-column .rwmb-label,
-.rwmb-group-clone .rwmb-column .rwmb-label{
+#phila_module_row_1 .rwmb-column .rwmb-label{
   width:25%;
 }
 #phila_module_row_1 .rwmb-column .rwmb-label ~ .rwmb-input,
@@ -43,9 +42,6 @@ th[class*="column-taxonomy"], .fixed .column-tags{
   width:75%;
 }
 
-.rwmb-group-clone .rwmb-group-wrapper .rwmb-label {
-  padding: 0 0 20px 0;
-}
 /*Add breathing room between inputs */
 .rwmb-input{
   padding-bottom: 10px;
