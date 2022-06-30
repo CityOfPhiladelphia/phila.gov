@@ -35,7 +35,7 @@ define('NONCE_SALT',       '$WP_NONCE_SALT');
 EOF
 fi
 
-wp core config --dbname=${DB_NAME:-'wp'} --dbuser=${DB_USER:-'root'} ${DB_PASS+"--dbpass=$DB_PASS"} ${DB_HOST+"--dbhost=$DB_HOST"} --dbcharset=utf8mb4 --skip-check $SKIP_SALTS --extra-php <<PHP
+wp core config --dbname=${DB_NAME:-'wp'} --dbuser=${DB_USER:-'root'} ${DB_PASS+"--dbpass=$DB_PASS"} ${DB_HOST+"--dbhost=$DB_HOST"} --dbcharset='utf8mb4' --skip-check $SKIP_SALTS --extra-php <<PHP
 $DEBUG
 
 $SALTS
