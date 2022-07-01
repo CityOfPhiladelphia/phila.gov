@@ -3,11 +3,11 @@ os: linux
 files:
   - source: /wp
     destination: /home/ubuntu/app/wp
+file_exists_behavior: OVERWRITE
   - source: /nginx
     destination: /home/ubuntu/app/nginx
   - source: wp-cli.yml
     destination: /home/ubuntu/app
-file_exists_behavior: OVERWRITE
 permissions:
   - object: /home/ubuntu/app/wp
     owner: ubuntu
