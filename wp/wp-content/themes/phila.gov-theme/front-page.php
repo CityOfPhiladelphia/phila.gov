@@ -21,7 +21,7 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
         <div class="mask" style=""></div>
         <div class="row expanded ptl pbs pvxl-mu">
           <div class="medium-14 small-centered columns welcome-message">
-            <div class="small-text"><i>welcome to 123abcdef</i></div>
+            <div class="small-text"><i>welcome to philly</i></div>
             <div class="h1">phila.gov</div>
           </div>
         </div>
