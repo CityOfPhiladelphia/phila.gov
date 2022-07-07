@@ -70,17 +70,17 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 /* hide ability to duplicate from title columns */
 .title .clone,
 /* remove checkbox to auto-add pages to new menu items */
-.auto-add-pages, 
-table.media #taxonomy-media_type, 
-table.media .taxonomy-media_type, 
-table.media #taxonomy-media_author, 
+.auto-add-pages,
+table.media #taxonomy-media_type,
+table.media .taxonomy-media_type,
+table.media #taxonomy-media_author,
 table.media .taxonomy-media_category,
 table.media #taxonomy-media_category,
 table.media .taxonomy-media_category,
 table.media #parent,
 table.media .parent,
 table.media #author,
-table.media .taxonomy-media_author, 
+table.media .taxonomy-media_author,
 table.media td:nth-of-type(2),
 .updraftmanagermessage.error,
 .update-nag.notice.notice-warning.inline

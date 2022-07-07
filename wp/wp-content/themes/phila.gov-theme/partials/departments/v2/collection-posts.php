@@ -2,16 +2,16 @@
 <?php $collection_post_count = 0; ?>
 <div class="row one-quarter-row mvl collection-posts">
   <div class="columns medium-6">
-      <?php if( isset($current_row['posts']['phila_wysiwyg_title'] )): ?>	
+      <?php if( isset($current_row['posts']['phila_wysiwyg_title'] )): ?>
         <?php $current_row_id = sanitize_title_with_dashes( $current_row['posts']['phila_wysiwyg_title']);?>
         <h3 id="<?php echo $current_row_id;?>"><?php echo $current_row['posts']['phila_wysiwyg_title']; ?></h3>
-      <?php endif;?>	
+      <?php endif;?>
   </div>
   <div class="columns medium-18 pbxl">
-    <div class="mbl">	
+    <div class="mbl">
     <?php foreach( $current_row['posts']['phila_post_picker'] as $collection_post_id ) : ?>
-      <?php 
-        global $post; 
+      <?php
+        global $post;
         $post = get_post( $collection_post_id, OBJECT );
         setup_postdata( $post );
       ?>
@@ -49,7 +49,7 @@
       <a href="<?php echo $current_row['posts']['phila_v2_posts_link']?>">See all posts ></a>
     </div>
     <?php endif; ?>
-</div>      
+</div>
 <?php wp_reset_postdata(); ?>
 
 <!-- / Collection posts -->

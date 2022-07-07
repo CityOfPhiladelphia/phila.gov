@@ -132,18 +132,18 @@
                     </header>
                   </div>
                 <?php } ?>
-                <?php if( isset($resource_list_description )): ?>	
-                  <div class="small-24 medium-24">	
-                    <?php echo apply_filters( 'the_content', $resource_list_description) ?>	
-                  </div>	
-                <?php endif;?>	
+                <?php if( isset($resource_list_description )): ?>
+                  <div class="small-24 medium-24">
+                    <?php echo apply_filters( 'the_content', $resource_list_description) ?>
+                  </div>
+                <?php endif;?>
                 <div class="small-24 medium-24">
               <?php } else { ?>
                 <div class="cell medium-6">
                   <header>
-                    <?php if( isset($resource_list_title )): ?>	
+                    <?php if( isset($resource_list_title )): ?>
                       <h2 id="<?php echo $resource_list_slug ?>" class="<?php echo !empty( $featured_resources ) ? 'h4' : 'h3'; ?>"><?php echo  $resource_list_title ?></h2>
-                    <?php endif;?>	
+                    <?php endif;?>
                   </header>
                 </div>
                 <div class="cell medium-18">
@@ -166,7 +166,7 @@
                     $featured_summary = isset( $list_items['phila_featured_summary'] ) ? $list_items['phila_featured_summary'] : '';
 
                     $icon = phila_resource_list_switch( $item_resource_type );
-                    
+
                     ?>
 
                     <?php if (!empty($item_url)) : ?>

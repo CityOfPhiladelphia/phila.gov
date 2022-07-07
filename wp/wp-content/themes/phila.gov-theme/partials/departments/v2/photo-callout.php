@@ -1,5 +1,3 @@
-
-
 <?php
 
 if (phila_get_selected_template() === 'homepage_v2') {
@@ -16,7 +14,7 @@ if (phila_get_selected_template() === 'homepage_v2') {
 } else if ( phila_get_selected_template() === 'collection_page_v2' ) {
     $photo_callout = isset($current_row['phila_callout_group']['phila_callout_v2']) ? $current_row['phila_callout_group']['phila_callout_v2'] : '';
     $header = $photo_callout['large_title'];
-    $sub_header = $photo_callout['small_title'];    
+    $sub_header = $photo_callout['small_title'];
     $description = $photo_callout['description'];
     $button_link = $photo_callout['button_url'];
     $button_text = $photo_callout['button_text'];
@@ -25,7 +23,7 @@ if (phila_get_selected_template() === 'homepage_v2') {
     $photo_callout = isset($current_row['phila_full_options']['photo_callout']) ? $current_row['phila_full_options']['photo_callout'] : '';
     $toggle = isset($photo_callout['phila_v2_photo_callout_block__image_toggle']) ? $photo_callout['phila_v2_photo_callout_block__image_toggle'] : '';
     $header = $photo_callout['phila_v2_photo_callout_block__txt-header'];
-    $sub_header = $photo_callout['phila_v2_photo_callout_block__txt-sub-header'];    
+    $sub_header = $photo_callout['phila_v2_photo_callout_block__txt-sub-header'];
     $description = $photo_callout['phila_v2_photo-callout-block__desc'];
     $button_link = $photo_callout['phila_v2_photo_callout_block__link'];
     $button_text = $photo_callout['phila_v2_photo-callout-block__txt-btn-label'];
@@ -78,7 +76,7 @@ if (phila_get_selected_template() === 'homepage_v2') {
                   </div>
               </div>
             </div>
-                            
+
         <?php elseif (!empty($toggle)  || !empty($photo) ) : ?>
           <div class="photo-callout-block__img large-14 medium-12 small-20 cell">
               <img src="<?php echo $photo ?>" alt="" class="float-center">

@@ -37,8 +37,8 @@ $row_content = rwmb_meta('collection_row');?>
           </div>
         </div>
       <?php endif; ?>
-      <!-- Document pages [DEPRECATED] -->
       <?php if ($current_row_option === 'document') :  ?>
+        <!-- Document pages [DEPRECATED] -->
         <?php $headline = isset($current_row['document_pages']['phila_custom_text_title']) ? $current_row['document_pages']['phila_custom_text_title'] : '<span class="placeholder">Please enter heading title</span>';?>
         <div class="row one-quarter-row mvl">
           <div class="columns medium-6">
@@ -54,9 +54,9 @@ $row_content = rwmb_meta('collection_row');?>
                     <h2 class="h3"><?php echo $title?></h2>
                   <?php endif; ?>
                   <?php if ( $content ) : ?>
-                    <div class="small-24 medium-24">	
+                    <div class="small-24 medium-24">
                       <p><?php echo $content ?></p>
-                    </div>	
+                    </div>
                   <?php endif; ?>
                   <div class="resource-list">
                     <ul>
@@ -75,8 +75,8 @@ $row_content = rwmb_meta('collection_row');?>
             </div>
           </div>
         </div>
+        <!-- / Document pages [DEPRECATED] -->
       <?php endif; ?>
-      <!-- / Document pages [DEPRECATED] -->
       <?php if ($current_row_option === 'program') :  ?>
         <!-- Program pages -->
         <?php $headline = isset($current_row['program_pages']['phila_custom_text_title']) ? $current_row['program_pages']['phila_custom_text_title'] : '<span class="placeholder">Please enter heading title</span>';?>
@@ -103,7 +103,7 @@ $row_content = rwmb_meta('collection_row');?>
             <?php endforeach; ?>
           </div>
         </div>
-        <?php if ($current_row['program_pages']['phila_v2_programs_link'] ):  ?>
+        <?php if (isset($current_row['program_pages']['phila_v2_programs_link'] )):  ?>
           <div class="float-right">
             <a href="<?php echo $current_row['program_pages']['phila_v2_programs_link']?>">See all programs ></a>
           </div>
@@ -132,8 +132,8 @@ $row_content = rwmb_meta('collection_row');?>
                   </div><a href="#" data-toggle="expandable" class="float-right" id="<?php echo sanitize_title_with_dashes($headline, null, 'save') . '-control' ?>"> More + </a>
               <?php endif; ?>
             </div>
-            
-          </div>      
+
+          </div>
           <?php endforeach; ?>
           <!-- Free text -->
       <?php endif; ?>
@@ -170,5 +170,5 @@ $row_content = rwmb_meta('collection_row');?>
     </div>
     </section>
   <?php wp_reset_postdata(); ?>
-<!-- Collection page -->
+<!-- /Collection page -->
 <?php endif; ?>

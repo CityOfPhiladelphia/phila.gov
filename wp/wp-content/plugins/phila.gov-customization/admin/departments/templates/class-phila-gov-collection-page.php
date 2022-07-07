@@ -65,9 +65,9 @@ class Phila_Gov_Collection_Page {
                   ),
                 ),
 
-              'fields'  => 
+              'fields'  =>
                 Phila_Gov_Standard_Metaboxes::phila_program_page_selector( $multiple = true ),
-            
+
             ),
             array(
               'id'    => 'service_pages',
