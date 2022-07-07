@@ -1,7 +1,7 @@
 <?php /*
   *
   * Resource list template
-  * 
+  *
 */
 ?>
 <?php $template = phila_get_selected_template($post->ID);?>
@@ -9,9 +9,9 @@
 <?php if ( $template === 'guide_resource_page') : ?>
   <?php $print_all = rwmb_meta('guide_print_all');?>
   <?php if( $print_all ) :?>
-    <div class="guides-print-all-content"> 
-      <?php 
-        wp_reset_query(); 
+    <div class="guides-print-all-content">
+      <?php
+        wp_reset_query();
         global $post;
         $direct_parent = $post->post_parent;
 
@@ -37,7 +37,7 @@
     </div>
     <!-- End Guides-print-all-content -->
   <?php endif;?>
-<?php endif ?> 
+<?php endif ?>
 
 <?php $resource_lists = rwmb_meta('phila_resource_list_v2'); ?>
 <?php $more_copy = rwmb_meta('phila_addtional_page_copy');?>
@@ -47,9 +47,16 @@
   </div>
 <?php endif; ?>
 <?php foreach($resource_lists as $resource_list) : ?>
-  <h2 class="h5 bg-ghost-gray pas">
-    <?php echo $resource_list['phila_resource_list_title'] ?>
-  </h2>
+  <?php if( isset($resource_list['phila_resource_list_title'] )): ?>
+    <h2 class="h5 bg-ghost-gray pas">
+      <?php echo $resource_list['phila_resource_list_title'] ?>
+    </h2>
+  <?php endif;?>
+  <?php if( isset($resource_list['phila_resource_list_description'] )): ?>
+    <div class="pas">
+      <?php echo apply_filters( 'the_content', $resource_list['phila_resource_list_description']) ?>
+    </div>
+  <?php endif;?>
   <?php foreach ($resource_list['phila_resource_list_items'] as $list ): ?>
   <?php if (isset($list['phila_list_item_type'] )): ?>
     <?php switch ($list['phila_list_item_type']) :
@@ -65,7 +72,7 @@
           case 'video':
             $icon = 'play-circle';
             break;
-          default: 
+          default:
             $icon = 'link';
           endswitch;
       ?>
@@ -74,7 +81,7 @@
       <a href="<?php echo $list['phila_list_item_url']?>" class="<?php echo isset($list['phila_list_item_external']) ? 'external' : ''?>"><i class="fas fa-<?php echo $icon ?> fa-fw fa-lg mrm"></i> <?php echo $list['phila_list_item_title'];?></a>
     </div>
   <?php endforeach; ?>
-  
+
   <?php endforeach; ?>
 
 <?php if ( $template === 'guide_resource_page') : ?>

@@ -43,10 +43,16 @@ class Phila_Gov_Collection_Page {
               'type' => 'select',
               'placeholder' => 'Select...',
               'options' => array(
-                'service' => 'Service pages',
-                'program' => 'Program pages',
+                'phila_callout_v2' => 'Image callout',
+                'document' => 'Document pages [DEPRECATED]',
                 'free_text' => 'Free text area',
-                'document' => 'Document pages'
+                'paragraph_text_with_photo' => 'Paragraph text with photo',
+                'post' => 'Posts',
+                'press_releases' => 'Press releases',
+                'program' => 'Program pages',
+                'phila_resource_group' => 'Resource group',
+                'service' => 'Service pages',
+                'stepped_process' => 'Stepped process'
                 ),
               ),
               array(
@@ -59,9 +65,9 @@ class Phila_Gov_Collection_Page {
                   ),
                 ),
 
-              'fields'  => 
+              'fields'  =>
                 Phila_Gov_Standard_Metaboxes::phila_program_page_selector( $multiple = true ),
-            
+
             ),
             array(
               'id'    => 'service_pages',
@@ -74,6 +80,118 @@ class Phila_Gov_Collection_Page {
               'fields'  => array(
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('1/4 Heading', 'phila_custom_text_title'),
                 Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector( $multiple = true ),
+              )
+            ),
+            array(
+              'id'    => 'posts',
+              'type'  => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('phila_collection_options', '=', 'post'),
+                ),
+              ),
+              'fields'  => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = '1/4 heading'),
+                Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true ),
+                array(
+                  'id' => 'phila_v2_posts_link',
+                  'title' => 'See all posts',
+                  'name'  => 'See all posts url',
+                  'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-programs/',
+                  'type'  => 'url',
+                  'class' => 'metabox-url',
+                ),
+              )
+            ),
+            array(
+              'id'  => 'press_releases',
+              'type'  => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('phila_collection_options', '=', 'press_releases'),
+                ),
+              ),
+              'fields'  => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title($name = '1/4 heading'),
+                Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true ),
+                array(
+                  'id' => 'phila_v2_press_release_link',
+                  'title' => 'See all press releases',
+                  'name'  => 'URL',
+                  'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-programs/',
+                  'type'  => 'url',
+                  'class' => 'metabox-url',
+                ),
+              )
+            ),
+            array(
+              'id'    => 'stepped_process',
+              'type'  => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('phila_collection_options', '=', 'stepped_process'),
+                ),
+              ),
+              'fields' => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = 'Stepped process title'),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content()
+              )
+            ),
+            array(
+              'id'    => 'paragraph_text_with_photo',
+              'type'  => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('phila_collection_options', '=', 'paragraph_text_with_photo'),
+                ),
+              ),
+              'fields'  => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = '1/4 heading'),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
+              )
+            ),
+            array(
+              'id'  => 'phila_resource_group',
+              'type' => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('phila_collection_options', '=', 'phila_resource_group'),
+                ),
+              ),
+              'fields' => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title($name = '1/4 heading'),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
+                Phila_Gov_Standard_Metaboxes::phila_resource_list_v2(),
+              )
+            ),
+            array(
+              'id'  => 'phila_callout_group',
+              'type' => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('phila_collection_options', '=', 'phila_callout_v2'),
+                ),
+              ),
+              'fields' => array(
+                array(
+                  'name'  => 'Callout heading',
+                  'id'    => 'phila_callout_heading',
+                  'type'  => 'text',
+                ),
+                array(
+                  'type'=> 'wysiwyg',
+                  'name'  => 'Before callout copy',
+                  'id'  => 'phila_before_callout_copy',
+                  'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
+                ),
+                Phila_Gov_Standard_Metaboxes::phila_callout_v2(),
+                array(
+                  'type'=> 'wysiwyg',
+                  'name'  => 'After callout copy',
+                  'id'  => 'phila_after_callout_copy',
+                  'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
+                )
               )
             ),
             array(

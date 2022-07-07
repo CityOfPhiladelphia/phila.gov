@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @link              http://phila.gov
+ * @link              https://phila.gov
  * @package           phila-gov_customization
  *
  * @wordpress-plugin
@@ -9,7 +9,6 @@
  * Plugin URI:        https://github.com/CityOfPhiladelphia/phila.gov-customization
  * Description:       Custom Wordpress functionality, custom post types, custom taxonomies, etc.
  *
- * Version:           0.22.0
  * Author:            City of Philadelphia
  * Author URI:        http://phila.gov
  * License:           GPL-2.0+
