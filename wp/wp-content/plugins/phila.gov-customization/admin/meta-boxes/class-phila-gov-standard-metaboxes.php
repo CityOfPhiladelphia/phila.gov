@@ -191,7 +191,7 @@ class Phila_Gov_Standard_Metaboxes {
 
           'fields'  => array(
             Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content(),
-            
+
           )
         ),
       )
@@ -765,7 +765,7 @@ class Phila_Gov_Standard_Metaboxes {
       ),
     );
   }
-  
+
 
   public static function phila_metabox_title( $name, $id, $desc = null, $size = '30', $columns = '12'){
     return array(
@@ -1178,13 +1178,6 @@ public static function phila_meta_var_connect(){
       ),
       Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'cta_full_link'),
       array(
-        'id' => 'cta_is_survey',
-        'name'  => 'Is this a link to a survey or other form of feedback gathering?',
-        'type'  => 'switch',
-        'on_label'  => 'Yes',
-        'off_label' => 'No'
-      ),
-      array(
         'id' => 'cta_is_modal',
         'name'  => 'Should this content appear in a modal?',
         'type'  => 'switch',
@@ -1307,7 +1300,7 @@ public static function phila_meta_var_connect(){
       )
     );
   }
-  
+
   //v1 service page default
   public static function phila_meta_var_addtional_content() {
     return array(
@@ -1501,9 +1494,9 @@ public static function phila_meta_var_connect(){
         'add_button' => '+ Add accordion',
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg(
-            $section_name = 'Accordion title', 
-            $wysiwyg_desc = 'Accordion content', 
-            $columns = 12, 
+            $section_name = 'Accordion title',
+            $wysiwyg_desc = 'Accordion content',
+            $columns = 12,
             $clone = true ),
         )
       )
@@ -1515,13 +1508,13 @@ public static function phila_meta_var_connect(){
   return  array(
     array(
       'id'  => 'timeline-title',
-      'type'  => 'text', 
+      'type'  => 'text',
       'name'  => 'Title',
       'desc'  =>  'Content appears on homepage',
     ),
     array(
       'id'  => 'timeline-month-year-toggle',
-      'type'  => 'radio', 
+      'type'  => 'radio',
       'name'  => 'Date display',
       'options' => array(
         'day-month-year' => 'Day - Month - Year',
@@ -1573,7 +1566,7 @@ public static function phila_language_selector( $id = 'phila_select_language', $
     'type'  => 'select',
     'class' => $class,
     'options' => array(
-      'english'     => 'English', 
+      'english'     => 'English',
       'arabic'      => 'Arabic',
       'bengali'     => 'Bengali',
       'burmese'     => 'Burmese',
