@@ -51,5 +51,4 @@
     <?php endif; ?>
 </div>
 <?php wp_reset_postdata(); ?>
-
 <!-- / Collection press_releases -->
