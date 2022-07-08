@@ -32,7 +32,7 @@ hooks:
 branch_config:
   wip\/.*: null
   staging:
-    deploymentGroupName: staging-phila-gov-codedeploy-deploymentgroup
+    deploymentGroupName: staging-phila-gov
     deploymentGroupConfig:
       serviceRoleArn: 'arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy'
     deploymentConfig:

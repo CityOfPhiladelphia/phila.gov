@@ -34,8 +34,7 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 }
 
 /*Clean up admin */
-#phila_module_row_1 .rwmb-column .rwmb-label,
-.rwmb-group-clone .rwmb-column .rwmb-label{
+#phila_module_row_1 .rwmb-column .rwmb-label{
   width:25%;
 }
 #phila_module_row_1 .rwmb-column .rwmb-label ~ .rwmb-input,
@@ -43,9 +42,6 @@ th[class*="column-taxonomy"], .fixed .column-tags{
   width:75%;
 }
 
-.rwmb-group-clone .rwmb-group-wrapper .rwmb-label {
-  padding: 0 0 20px 0;
-}
 /*Add breathing room between inputs */
 .rwmb-input{
   padding-bottom: 10px;
@@ -74,17 +70,17 @@ th[class*="column-taxonomy"], .fixed .column-tags{
 /* hide ability to duplicate from title columns */
 .title .clone,
 /* remove checkbox to auto-add pages to new menu items */
-.auto-add-pages, 
-table.media #taxonomy-media_type, 
-table.media .taxonomy-media_type, 
-table.media #taxonomy-media_author, 
+.auto-add-pages,
+table.media #taxonomy-media_type,
+table.media .taxonomy-media_type,
+table.media #taxonomy-media_author,
 table.media .taxonomy-media_category,
 table.media #taxonomy-media_category,
 table.media .taxonomy-media_category,
 table.media #parent,
 table.media .parent,
 table.media #author,
-table.media .taxonomy-media_author, 
+table.media .taxonomy-media_author,
 table.media td:nth-of-type(2),
 .updraftmanagermessage.error,
 .update-nag.notice.notice-warning.inline
