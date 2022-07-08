@@ -640,6 +640,7 @@ class Phila_Gov_Standard_Metaboxes {
         'closeOnSelect' => false,
         'minimumInputLength' => 3
       ),
+
     );
   }
 

@@ -157,6 +157,7 @@ $row_content = rwmb_meta('collection_row');?>
 
       <?php if ($current_row_option === 'press_releases') :  ?>
         <?php include(locate_template('partials/departments/v2/collection-page-press-releases.php')); ?>
+
       <?php endif; ?>
 
       <?php if ($current_row_option === 'phila_callout_v2') :  ?>

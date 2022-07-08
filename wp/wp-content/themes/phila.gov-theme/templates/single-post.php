@@ -84,11 +84,35 @@ $language_list = phila_get_translated_language( $language );
           <div class="js-thumbnail-image">
             <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
               <?php echo phila_get_thumbnails(); ?>
+              <?php $image_caption = get_post(get_post_thumbnail_id())->post_excerpt; ?>
+              <?php $image_credit = get_post(get_post_thumbnail_id())->phila_media_credit; ?>
+              <?php if ($image_caption || $image_credit) { ?>
+                <div class="phila-image-caption pam">
+                  <?php if ($image_credit) { ?>
+                    <p><strong>Photo by: <?php echo $image_credit; ?></strong></p>
+                  <?php } ?>
+                  <?php if ($image_caption) { ?>
+                    <p><?php echo $image_caption; ?></p>
+                  <?php } ?>
+                </div>
+              <?php } ?>
             </div>
           </div>
         <?php else : ?>
           <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
             <?php echo phila_get_thumbnails(); ?>
+            <?php $image_caption = get_post(get_post_thumbnail_id())->post_excerpt; ?>
+            <?php $image_credit = get_post(get_post_thumbnail_id())->phila_media_credit; ?>
+            <?php if ($image_caption || $image_credit) { ?>
+              <div class="phila-image-caption pam">
+                <?php if ($image_credit) { ?>
+                  <p><strong>Photo by: <?php echo $image_credit; ?></strong></p>
+                <?php } ?>
+                <?php if ($image_caption) { ?>
+                  <p><?php echo $image_caption; ?></p>
+                <?php } ?>
+              </div>
+            <?php } ?>
           </div>
         <?php endif;?>
       </div>
