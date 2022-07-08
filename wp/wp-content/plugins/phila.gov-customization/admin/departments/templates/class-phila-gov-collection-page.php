@@ -43,11 +43,13 @@ class Phila_Gov_Collection_Page {
               'type' => 'select',
               'placeholder' => 'Select...',
               'options' => array(
-                'phila_callout_v2' => 'Callout',
-                'document' => 'Document pages',
+                'phila_callout_v2' => 'Image callout',
+                'document' => 'Document pages [DEPRECATED]',
                 'free_text' => 'Free text area',
                 'paragraph_text_with_photo' => 'Paragraph text with photo',
                 'post' => 'Posts',
+                'press_releases' => 'Press releases',
+
                 'program' => 'Program pages',
                 'phila_resource_group' => 'Resource group',
                 'service' => 'Service pages',
@@ -64,9 +66,9 @@ class Phila_Gov_Collection_Page {
                   ),
                 ),
 
-              'fields'  => 
+              'fields'  =>
                 Phila_Gov_Standard_Metaboxes::phila_program_page_selector( $multiple = true ),
-            
+
             ),
             array(
               'id'    => 'service_pages',
@@ -90,8 +92,37 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields'  => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = '1/4 heading'),
                 Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true ),
+                array(
+                  'id' => 'phila_v2_posts_link',
+                  'title' => 'See all posts',
+                  'name'  => 'See all posts url',
+                  'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-programs/',
+                  'type'  => 'url',
+                  'class' => 'metabox-url',
+                ),
+              )
+            ),
+            array(
+              'id'  => 'press_releases',
+              'type'  => 'group',
+              'visible' => array(
+                'when' => array(
+                  array('phila_collection_options', '=', 'press_releases'),
+                ),
+              ),
+              'fields'  => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title($name = '1/4 heading'),
+                Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true ),
+                array(
+                  'id' => 'phila_v2_press_release_link',
+                  'title' => 'See all press releases',
+                  'name'  => 'URL',
+                  'placeholder' => 'E.g. https://phila.gov/departments/department-of-commerce/all-programs/',
+                  'type'  => 'url',
+                  'class' => 'metabox-url',
+                ),
               )
             ),
             array(
@@ -103,7 +134,8 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = 'Stepped process title'),
+
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content()
               )
@@ -117,7 +149,8 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields'  => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = '1/4 heading'),
+
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
               )
             ),
@@ -130,7 +163,7 @@ class Phila_Gov_Collection_Page {
                 ),
               ),
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title($name = '1/4 heading'),
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
                 Phila_Gov_Standard_Metaboxes::phila_resource_list_v2(),
               )

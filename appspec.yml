@@ -7,6 +7,7 @@ files:
     destination: /home/ubuntu/app/nginx
   - source: wp-cli.yml
     destination: /home/ubuntu/app
+file_exists_behavior: OVERWRITE
 permissions:
   - object: /home/ubuntu/app/wp
     owner: ubuntu
@@ -31,7 +32,7 @@ hooks:
 branch_config:
   wip\/.*: null
   staging:
-    deploymentGroupName: staging-phila-gov-codedeploy-deploymentgroup
+    deploymentGroupName: staging-phila-gov
     deploymentGroupConfig:
       serviceRoleArn: 'arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy'
     deploymentConfig:

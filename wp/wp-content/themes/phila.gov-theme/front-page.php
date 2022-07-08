@@ -249,4 +249,3 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
 </div><!-- .site-main .home -->
 
 <?php get_footer(); ?>
-

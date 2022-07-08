@@ -37,41 +37,49 @@ $row_content = rwmb_meta('collection_row');?>
           </div>
         </div>
       <?php endif; ?>
-
       <?php if ($current_row_option === 'document') :  ?>
+        <!-- Document pages [DEPRECATED] -->
         <?php $headline = isset($current_row['document_pages']['phila_custom_text_title']) ? $current_row['document_pages']['phila_custom_text_title'] : '<span class="placeholder">Please enter heading title</span>';?>
         <div class="row one-quarter-row mvl">
           <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
           </div>
-          <div class="columns medium-18">
-            <?php foreach($current_row['document_pages']['document_page_group'] as $group): ?>
-              <?php $title =    isset($group['phila_custom_wysiwyg']['phila_wysiwyg_title']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_title'] : '' ;
-              $content = isset ($group['phila_custom_wysiwyg']['phila_wysiwyg_content']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_content'] : '';
-              ?>
-              <?php if ( $title ) : ?>
-                <h4><?php echo $title?></h4>
-              <?php endif; ?>
-              <?php if ( $content ) : ?>
-                <p><?php echo $content ?></p>
-              <?php endif; ?>
-              <div class="resource-list mbxl">
-                <ul>
-                  <?php foreach($group['phila_document_page_picker'] as $doc): ?>
-                  <li class="phm pvs clickable-row" data-href="<?php echo get_the_permalink($doc); ?>">
-                    <a href="<?php echo get_the_permalink($doc);?>">                <div><i class="fas fa-file-alt" aria-hidden="true"></i></div> <?php echo get_the_title($doc); ?></a></li>
-                  <?php endforeach; ?>
-                </ul>
-              </div>
-          <?php endforeach; ?>
+          <div class="columns medium-18 pbxl">
+            <div class="mbl">
+              <?php foreach($current_row['document_pages']['document_page_group'] as $group): ?>
+                  <?php $title =    isset($group['phila_custom_wysiwyg']['phila_wysiwyg_title']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_title'] : '' ;
+                  $content = isset ($group['phila_custom_wysiwyg']['phila_wysiwyg_content']) ? $group['phila_custom_wysiwyg']['phila_wysiwyg_content'] : '';
+                  ?>
+                  <?php if ( $title ) : ?>
+                    <h2 class="h3"><?php echo $title?></h2>
+                  <?php endif; ?>
+                  <?php if ( $content ) : ?>
+                    <div class="small-24 medium-24">
+                      <p><?php echo $content ?></p>
+                    </div>
+                  <?php endif; ?>
+                  <div class="resource-list">
+                    <ul>
+                      <?php foreach($group['phila_document_page_picker'] as $doc): ?>
+                      <li class="phm pvs clickable-row" data-href="<?php echo get_the_permalink($doc); ?>">
+                        <a href="<?php echo get_the_permalink($doc);?>">
+                          <div>
+                            <i class="fas fa-file-alt fa-lg" aria-hidden="true"></i>
+                          </div> <?php echo get_the_title($doc); ?>
+                        </a>
+                      </li>
+                      <?php endforeach; ?>
+                    </ul>
+                  </div>
+              <?php endforeach; ?>
+            </div>
           </div>
         </div>
+        <!-- / Document pages [DEPRECATED] -->
       <?php endif; ?>
-
       <?php if ($current_row_option === 'program') :  ?>
-
+        <!-- Program pages -->
         <?php $headline = isset($current_row['program_pages']['phila_custom_text_title']) ? $current_row['program_pages']['phila_custom_text_title'] : '<span class="placeholder">Please enter heading title</span>';?>
-
         <div class="row one-quarter-row mvl">
           <div class="columns medium-6">
             <h3 id="<?php echo sanitize_title_with_dashes($headline, null, 'save')?>"><?php echo $headline ?></h3>
@@ -87,24 +95,29 @@ $row_content = rwmb_meta('collection_row');?>
                     $img = reset( $img );?>
                     <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt']?>">
                     <div class="content-block">
-                      <h4 class="h3"><?php echo get_the_title($program_page); ?></h3>
+                        <h3 class="h3"><?php echo get_the_title($program_page); ?></h3>
                       <?php echo rwmb_meta( 'phila_meta_desc', $args = '', $program_page ); ?></h4>
                     </div>
                   </a>
                 </div>
             <?php endforeach; ?>
           </div>
-          </div>
         </div>
+        <?php if (isset($current_row['program_pages']['phila_v2_programs_link'] )):  ?>
+          <div class="float-right">
+            <a href="<?php echo $current_row['program_pages']['phila_v2_programs_link']?>">See all programs ></a>
+          </div>
+        <?php endif; ?>
+      </div>
+      <!-- /Program pages -->
       <?php endif; ?>
 
       <?php if ($current_row_option === 'free_text') :  ?>
-
+        <!-- Free text -->
         <?php foreach( $current_row['free_text'] as $free_text ) :
           ?>
           <?php $headline = isset($free_text['phila_custom_wysiwyg']['phila_wysiwyg_title']) ? $free_text['phila_custom_wysiwyg']['phila_wysiwyg_title'] : '<span class="placeholder">Please enter heading title</span>'; ?>
           <?php $expand_collapse = isset($free_text['expand_collapse']) ? $free_text['expand_collapse'] : ''; ?>
-
 
           <div class="row one-quarter-row mvl">
             <div class="columns medium-6">
@@ -119,10 +132,10 @@ $row_content = rwmb_meta('collection_row');?>
                   </div><a href="#" data-toggle="expandable" class="float-right" id="<?php echo sanitize_title_with_dashes($headline, null, 'save') . '-control' ?>"> More + </a>
               <?php endif; ?>
             </div>
-            
-          </div>      
-          <?php endforeach; ?>
 
+          </div>
+          <?php endforeach; ?>
+          <!-- Free text -->
       <?php endif; ?>
 
       <?php if ($current_row_option === 'stepped_process') :  ?>
@@ -142,6 +155,11 @@ $row_content = rwmb_meta('collection_row');?>
         <?php include(locate_template('partials/departments/v2/collection-posts.php')); ?>
       <?php endif; ?>
 
+      <?php if ($current_row_option === 'press_releases') :  ?>
+        <?php include(locate_template('partials/departments/v2/collection-page-press-releases.php')); ?>
+
+      <?php endif; ?>
+
       <?php if ($current_row_option === 'phila_callout_v2') :  ?>
         <?php include(locate_template('partials/departments/v2/collection-callout.php')); ?>
       <?php endif; ?>
@@ -153,5 +171,5 @@ $row_content = rwmb_meta('collection_row');?>
     </div>
     </section>
   <?php wp_reset_postdata(); ?>
-<!-- Collection page -->
+<!-- /Collection page -->
 <?php endif; ?>
