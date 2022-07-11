@@ -1202,13 +1202,6 @@ public static function phila_meta_var_connect(){
       ),
       Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'cta_full_link'),
       array(
-        'id' => 'cta_is_survey',
-        'name'  => 'Is this a link to a survey or other form of feedback gathering?',
-        'type'  => 'switch',
-        'on_label'  => 'Yes',
-        'off_label' => 'No'
-      ),
-      array(
         'id' => 'cta_is_modal',
         'name'  => 'Should this content appear in a modal?',
         'type'  => 'switch',
