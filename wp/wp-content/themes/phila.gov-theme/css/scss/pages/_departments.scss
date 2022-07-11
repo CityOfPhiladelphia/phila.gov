@@ -204,10 +204,3 @@
     word-break: break-word;
   }
 }
-.panel {
-  &.survey{
-    @media screen and (min-width: 40em) {
-      @include check-bg( 84%, 17% );
-    }
-  }
-}
