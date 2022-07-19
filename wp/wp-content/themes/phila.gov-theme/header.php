@@ -56,6 +56,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 <?php endif; ?>
+<a href="#page" aria-hidden="false" class="skip-to-content">Skip to main content</a>
   <header class="global-nav no-js pbm pbn-mu mbn-mu">
     <h1 class="accessible">City of Philadelphia</h1>
 
@@ -127,7 +128,6 @@
                   </a>
                 </div>
               </div>
-              <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
               <div class="medium-17 columns show-for-medium desktop-nav">
                 <div class="top-bar-right valign-mu">
                   <nav data-swiftype-index="false" class="phila-global-nav-menu valign-mu" aria-label="main-nav">

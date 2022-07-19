@@ -645,3 +645,22 @@ header {
     }
   }
 }
+
+.skip-to-content {
+  white-space: nowrap;
+  margin: 1em auto;
+  top: 0;
+  position: fixed;
+  left: 50%;
+  margin-left: -72px;
+  opacity: 0;
+  color: white !important;
+}
+.skip-to-content:focus {
+  transform: translateY(0%);
+  opacity: 1;
+  background-color: #0f4d90;
+  padding: 0.5em;
+  border: 1px solid black;
+  z-index: 10001;
+}
