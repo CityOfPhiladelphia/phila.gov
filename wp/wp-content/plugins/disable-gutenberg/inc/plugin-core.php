@@ -178,7 +178,7 @@ function disable_gutenberg_disable_post_type() {
 	
 	if ($pagenow === 'edit.php') {
 		
-		if (empty($typenow)) $typenow = 'post';
+		// if (empty($typenow)) $typenow = 'post';
 		
 		$post_type = $typenow;
 		

@@ -9,9 +9,9 @@ Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Contributors: specialk
 Requires at least: 4.9
-Tested up to: 5.8
-Stable tag: 2.5.1
-Version: 2.5.1
+Tested up to: 6.0
+Stable tag: 2.7
+Version: 2.7
 Requires PHP: 5.6.20
 Text Domain: disable-gutenberg
 Domain Path: /languages
@@ -54,10 +54,10 @@ Just activate and done! The default plugin settings are configured to hide all t
 * Option to hide the Gutenberg plugin menu item (settings link)
 * Adds "Classic Editor" link to each post on the Posts screen
 * Adds item to the WP sidebar menu: "Add New (Classic)"
-* NEW! Option to enable Custom Fields Meta Box for ACF
-* NEW! Choose which editor to use for each post
-* NEW! Whitelist any post title, slug, or ID
-* NEW! Option to disables frontend Gutenberg stylesheet
+* Option to enable Custom Fields Meta Box for ACF
+* Choose which editor to use for each post
+* Whitelist any post title, slug, or ID
+* Option to enable/disable frontend Gutenberg stylesheet
 
 > Works same as Classic Editor plugin, but can do a LOT more!
 > Lightweight and super fast, built with WP APIs :)
@@ -178,7 +178,7 @@ The settings include a "More Tools" link. Clicking it toggles open some advanced
 * ACF Support - Enables the Custom Fields Meta Box (ACF plugin disables by default)
 * Reset Options - Restores the default plugin options
 
-If there are any questions about these items or anything else, feel free to [contact me directly](https://perishablepress.com/contact/) or post in the [WP Support Forums](https://wordpress.org/support/plugin/disable-gutenberg/).
+If there are any questions about these items or anything else, feel free to [contact me directly](https://plugin-planet.com/support/#contact) or post in the [WP Support Forums](https://wordpress.org/support/plugin/disable-gutenberg/).
 
 
 **Uninstalling**
@@ -232,7 +232,7 @@ Yes, you can install and activate Disable Gutenberg on any supported WordPress v
 Yes, if both plugins are active at the same time, Disable Gutenberg gives priority to Classic Editor plugin. So if you want to use Disable Gutenberg, deactivate the Classic Editor plugin (you do not have to remove it, just deactivate via the Plugins screen).
 
 
-**Classic Editor expires in 2022, what about Disable Gutenberg?**
+**Classic Editor planned to expire in 2022, what about Disable Gutenberg?**
 
 I can't make any promises, but I intend to develop with WordPress for the long-haul. Who knows what the future holds, but the plan is to keep Disable Gutenberg going for many years to come. Why? Because the original RTE/Visual Editor is awesome. I strongly feel it's one of the many reasons why WordPress has enjoyed its great success. I've been using the original/classic editor for over 10 years now and it's always been 100% smooth experience. I've tried Gutenberg, and yes it is much better now than in previous versions, but for me it's just not as comfortable or streamlined as the classic editor. So yeah, will do everything possible to keep Disable Gutenberg (and the Classic Editor) going well beyond 2022.
 
@@ -269,7 +269,7 @@ The default Gutenberg/Block styles are disabled by default when DG plugin is act
 
 **Got a question?**
 
-Send any questions or feedback via my [contact form](https://perishablepress.com/contact/)
+Send any questions or feedback via my [contact form](https://plugin-planet.com/support/#contact)
 
 
 
@@ -281,6 +281,7 @@ I develop and maintain this free plugin with love for the WordPress community. T
 * [Digging into WordPress](https://digwp.com/)
 * [.htaccess made easy](https://htaccessbook.com/)
 * [WordPress Themes In Depth](https://wp-tao.com/wordpress-themes-book/)
+* [Wizard's SQL Recipes for WordPress](https://books.perishablepress.com/downloads/wizards-collection-sql-recipes-wordpress/)
 
 And/or purchase one of my premium WordPress plugins:
 
@@ -298,8 +299,25 @@ Links, tweets and likes also appreciated. Thanks! :)
 
 Thank you to everyone for using Disable Gutenberg and for all the [awesome 5-star reviews](https://wordpress.org/support/plugin/disable-gutenberg/reviews/)!
 
-If you have any feedback or suggestions to make this plugin the absolute best it can be, and/or would like to help with development, please reach me via my [contact form](https://perishablepress.com/contact/) at Perishable Press.
+If you have any feedback or suggestions to make this plugin the absolute best it can be, and/or would like to help with development, please reach me via the [contact form](https://plugin-planet.com/support/#contact) at Plugin Planet.
 
+
+**2.7 (2022/05/15)**
+
+* Disable block widgets option now enabled by default
+* Disables new global `theme.json` styles on front end
+* Disables new hidden SVG block content on front end
+* Fixes bug with `disable_gutenberg_disable_post_type()`
+* Tests on WordPress 6.0
+
+**2.6 (2022/01/10)**
+
+* Improves loading of translations
+* Improves clarity on settings page
+* Removes Edit Links when Gutenberg is disabled
+* Updates some links to external resources
+* Generates new default translation template
+* Tests on WordPress 5.9
 
 **2.5.1 (2021/07/25)**
 
