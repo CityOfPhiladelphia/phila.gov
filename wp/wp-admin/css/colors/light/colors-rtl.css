@@ -704,6 +704,23 @@ div#wp-responsive-toggle a:before {
   color: #0073aa;
 }
 
+/* Welcome Panel */
+.welcome-panel {
+  background-color: #e1f4f9;
+}
+
+.welcome-panel-header-image .about-six {
+  fill: #04a4cc;
+}
+
+.welcome-panel-header-image .about-zero {
+  fill: #999;
+}
+
+[class*=welcome-panel-icon] {
+  background-color: #333;
+}
+
 /* Override the theme filter highlight color for this scheme */
 .theme-section.current,
 .theme-filter.current {

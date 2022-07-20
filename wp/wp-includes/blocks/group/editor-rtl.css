@@ -41,6 +41,12 @@
  * These variables do not appear to be used anywhere else.
  */
 /**
+*  Converts a hex value into the rgb equivalent.
+*
+* @param {string} hex - the hexadecimal value to convert
+* @return {string} comma separated rgb values
+*/
+/**
  * Breakpoint mixins
  */
 /**
@@ -83,4 +89,30 @@
 [data-type="core/group"].is-selected .has-background .block-list-appender {
   margin-top: 18px;
   margin-bottom: 18px;
+}
+
+.is-layout-flex.block-editor-block-list__block .block-list-appender:only-child {
+  gap: inherit;
+  pointer-events: none;
+}
+.is-layout-flex.block-editor-block-list__block .block-list-appender:only-child,
+.is-layout-flex.block-editor-block-list__block .block-list-appender:only-child .block-editor-default-block-appender__content,
+.is-layout-flex.block-editor-block-list__block .block-list-appender:only-child .block-editor-inserter {
+  display: inherit;
+  width: 100%;
+  flex-direction: inherit;
+  flex: 1;
+}
+.is-layout-flex.block-editor-block-list__block .block-list-appender:only-child::after {
+  content: "";
+  display: flex;
+  border: 1px dashed currentColor;
+  opacity: 0.4;
+  border-radius: 2px;
+  flex: 1;
+  pointer-events: none;
+  min-height: 48px;
+}
+.is-layout-flex.block-editor-block-list__block .block-list-appender:only-child .block-editor-inserter {
+  pointer-events: all;
 }
