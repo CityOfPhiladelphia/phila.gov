@@ -1,98 +1,112 @@
-=== JWT Auth - WordPress JSON Web Token Authentication ===
+# JWT Auth
 
-Contributors: contactjavas
-Donate link: https://www.paypal.me/bagusjavas
-Tags: jwt, jwt-auth, token-authentication, json-web-token
-Requires at least: 5.2
-Tested up to: 5.8
-Stable tag: trunk
-Requires PHP: 7.2
-License: GPLv3
-License URI: https://oss.ninja/gpl-3.0?organization=Useful%20Team&project=WordPress%20JWT%20Auth
+WordPress JWT (JSON Web Token) Authentication allows you to do REST API authentication via token. It's a simple, non-complex, and easy to use.
 
-Create JSON Web Token Authentication in WordPress.
-
-== Description ==
-WordPress JSON Web Token Authentication allows you to do REST API authentication via token. It is a simple, non-complex, and easy to use. This plugin probably is the most convenient way to do JWT Authentication in WordPress. 
+This plugin probably is the most convenient way to do JWT Authentication in WordPress. Download it from [WordPress plugin page](https://wordpress.org/plugins/jwt-auth/).
 
 - Support & question: [WordPress support forum](https://wordpress.org/support/plugin/jwt-auth/)
 - Reporting plugin's bug: [GitHub issues tracker](https://github.com/usefulteam/jwt-auth/issues)
 - [Discord channel](https://discord.gg/DgECpEg) also available for faster response.
 
-## Enable PHP HTTP Authorization Header
+## Requirements
 
-= Shared Hosts =
+### PHP
+
+Minimum PHP version: 7.2
+
+### Enable PHP HTTP Authorization Header
+
+#### Shared Hosts
 
 Most shared hosts have disabled the **HTTP Authorization Header** by default.
 
 To enable this option you'll need to edit your **.htaccess** file by adding the following:
 
-`
+```
 RewriteEngine on
 RewriteCond %{HTTP:Authorization} ^(.*)
 RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
-`
+```
 
-= WPEngine =
+#### WPEngine
 
 To enable this option you'll need to edit your **.htaccess** file by adding the following (see [this issue](https://github.com/Tmeister/wp-api-jwt-auth/issues/1)):
 
-`
+```
 SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
-`
+```
+
+## Installation
+
+### Through the WordPress Administrative Area:
+
+- From WordPress administrative area, go to Plugins -> Add New
+- Search for _JWT Auth_
+- Install it
+- Easily configure it (see [Configuration](#configuration) below)
+- and then activate it
+
+### Download Manually:
+
+- Download the plugin from [WordPress plugins page](https://wordpress.org/plugins/jwt-auth/)
+- Upload to your wp-content directory
+- Easily configure it (see [Configuration](#configuration) below)
+- Activate it from _Plugins_ menu in admin area
 
 ## Configuration
 
-= Configurate the Secret Key =
+### Configurate the Secret Key
 
-The JWT needs a **secret key** to sign the token. This **secret key** must be unique and never be revealed.
+The JWT needs a **secret key** to sign the token. It must be unique and never be revealed.
 
 To add the **secret key**, edit your wp-config.php file and add a new constant called **JWT_AUTH_SECRET_KEY**.
 
-`
+```php
 define('JWT_AUTH_SECRET_KEY', 'your-top-secret-key');
-`
+```
 
-You can use a string from [here](https://api.wordpress.org/secret-key/1.1/salt/)
+You can use a string from here https://api.wordpress.org/secret-key/1.1/salt/
 
-= Configurate CORs Support =
+### Configurate CORs Support
 
-This plugin has the option to activate [CORs](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) support.
+This plugin has the option to enable [CORs](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) support.
 
 To enable the CORs Support edit your wp-config.php file and add a new constant called **JWT_AUTH_CORS_ENABLE**
 
-`
+```php
 define('JWT_AUTH_CORS_ENABLE', true);
-`
+```
+
+Finally activate the plugin within the plugin dashboard.
 
 ## Namespace and Endpoints
 
 When the plugin is activated, a new namespace is added.
 
-`
+```
 /jwt-auth/v1
-`
+```
 
-Also, two new *POST* endpoints are added to this namespace.
+Also, two new endpoints are added to this namespace.
 
-`
-/wp-json/jwt-auth/v1/token
-/wp-json/jwt-auth/v1/token/validate
-`
+| Endpoint                              | HTTP Verb |
+| ------------------------------------- | --------- |
+| _/wp-json/jwt-auth/v1/token_          | POST      |
+| _/wp-json/jwt-auth/v1/token/validate_ | POST      |
 
 ## Requesting/ Generating Token
 
-`
-/wp-json/jwt-auth/v1/token
-`
+`/wp-json/jwt-auth/v1/token`
 
 To generate token, submit a POST request to this endpoint. With `username` and `password` as the parameters.
 
 It will validates the user credentials, and returns success response including a token if the authentication is correct or returns an error response if the authentication is failed.
 
-= Sample of success response when trying to generate token: =
+You can use the optional parameter `device` with the device identifier to let user manage the device access in your profile. If this parameter is empty, it is ignored.
 
-`
+#### Sample of success response when trying to generate token:
+
+```json
 {
 	"success": true,
 	"statusCode": 200,
@@ -108,11 +122,11 @@ It will validates the user credentials, and returns success response including a
 		"displayName": "contactjavas"
 	}
 }
-`
+```
 
-= Sample of error response when trying to generate token: =
+#### Sample of error response when trying to generate token:
 
-`
+```json
 {
 	"success": false,
 	"statusCode": 403,
@@ -120,11 +134,12 @@ It will validates the user credentials, and returns success response including a
 	"message": "Unknown username. Try again or check your email address.",
 	"data": []
 }
-`
+```
 
 Once you get the token, you must store it somewhere in your application. It can be:
-- using **cookie** 
-- or using **localstorage** 
+
+- using **cookie**
+- or using **localstorage**
 - or using a wrapper like [localForage](https://localforage.github.io/localForage/) or [PouchDB](https://pouchdb.com/)
 - or using local database like SQLite or [Hive](https://docs.hivedb.dev/#/)
 - or your choice based on app you develop ;)
@@ -135,9 +150,9 @@ Then you should pass this token as _Bearer Authentication_ header to every API c
 
 and here's an example:
 
-`
+```
 "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvcG9pbnRzLmNvdXZlZS5jby5pZCIsImlhdCI6MTU4ODQ5OTE0OSwibmJmIjoxNTg4NDk5MTQ5LCJleHAiOjE1ODkxMDM5NDksImRhdGEiOnsidXNlciI6eyJpZCI6MX19fQ.w3pf5PslhviHohmiGF-JlPZV00XWE9c2MfvBK7Su9Fw";
-`
+```
 
 The **jwt-auth** will intercept every call to the server and will look for the authorization header, if the authorization header is present, it will try to decode the token and will set the user according with the data stored in it.
 
@@ -149,7 +164,7 @@ Every call to the server (except the token creation some default whitelist) will
 
 If you're adding the filter inside theme and the whitelisting doesn't work, please create a small 1 file plugin and add your filter there.
 
-`
+```php
 add_filter( 'jwt_auth_whitelist', function ( $endpoints ) {
 	$your_endpoints = array(
 		'/wp-json/custom/v1/webhook/*',
@@ -160,13 +175,13 @@ add_filter( 'jwt_auth_whitelist', function ( $endpoints ) {
 
 	return array_unique( array_merge( $endpoints, $your_endpoints ) );
 } );
-`
+```
 
 ## Default Whitelisted Endpoints
 
 We whitelist some endpoints by default. This is to prevent error regarding WordPress & WooCommerce. These are the default whitelisted endpoints (without trailing *&#42;* char):
 
-`
+```php
 // Whitelist some endpoints by default (without trailing * char).
 $default_whitelist = array(
 	// WooCommerce namespace.
@@ -177,18 +192,18 @@ $default_whitelist = array(
 	// WordPress namespace.
 	$rest_api_slug . '/wp/v2/',
 );
-`
+```
 
 You might want to **remove** or modify the existing **default whitelist**. You can use `jwt_auth_default_whitelist` filter to do it. Please simply add this filter directly (without hook). Or, you can add it to `plugins_loaded`. Adding this filter inside `init` (or later) will not work. 
 
 If you're adding the filter inside theme and the it doesn't work, please create a small 1 file plugin and add your filter there. It should fix the issue.
 
-`
+```php
 add_filter( 'jwt_auth_default_whitelist', function ( $default_whitelist ) {
 	// Modify the $default_whitelist here.
 	return $default_whitelist;
 } );
-`
+```
 
 ## Validating Token
 
@@ -196,13 +211,11 @@ You likely **don't need** to validate the token your self. The plugin handle it 
 
 But if you want to test or validate the token manually, then send a **POST** request to this endpoint (don't forget to set your _Bearer Authorization_ header):
 
-`
-/wp-json/jwt-auth/v1/token/validate
-`
+`/wp-json/jwt-auth/v1/token/validate`
 
-= Valid Token Response: =
+#### Valid Token Response
 
-`
+```
 {
 	"success": true,
 	"statusCode": 200,
@@ -210,15 +223,15 @@ But if you want to test or validate the token manually, then send a **POST** req
 	"message": "Token is valid",
 	"data": []
 }
-`
+```
 
-## Errors
+## Error Responses
 
 If the token is invalid an error will be returned. Here are some samples of errors:
 
-= No Secret Key =
+**No Secret Key**
 
-`
+```json
 {
 	"success": false,
 	"statusCode": 403,
@@ -226,11 +239,11 @@ If the token is invalid an error will be returned. Here are some samples of erro
 	"message": "JWT is not configured properly.",
 	"data": []
 }
-`
+```
 
-= No HTTP_AUTHORIZATION Header =
+**No HTTP_AUTHORIZATION Header**
 
-`
+```json
 {
 	"success": false,
 	"statusCode": 403,
@@ -238,11 +251,11 @@ If the token is invalid an error will be returned. Here are some samples of erro
 	"message": "Authorization header not found.",
 	"data": []
 }
-`
+```
 
-= Bad Iss =
+**Bad Iss**
 
-`
+```json
 {
 	"success": false,
 	"statusCode": 403,
@@ -250,11 +263,11 @@ If the token is invalid an error will be returned. Here are some samples of erro
 	"message": "The iss do not match with this server.",
 	"data": []
 }
-`
+```
 
-= Invalid Signature =
+**Invalid Signature**
 
-`
+```json
 {
 	"success": false,
 	"statusCode": 403,
@@ -262,11 +275,11 @@ If the token is invalid an error will be returned. Here are some samples of erro
 	"message": "Signature verification failed",
 	"data": []
 }
-`
+```
 
-= Bad Request =
+**Bad Request**
 
-`
+```json
 {
 	"success": false,
 	"statusCode": 403,
@@ -274,11 +287,11 @@ If the token is invalid an error will be returned. Here are some samples of erro
 	"message": "User ID not found in the token.",
 	"data": []
 }
-`
+```
 
-= User Not Found =
+**User Not Found**
 
-`
+```json
 {
 	"success": false,
 	"statusCode": 403,
@@ -286,11 +299,11 @@ If the token is invalid an error will be returned. Here are some samples of erro
 	"message": "User doesn't exist",
 	"data": []
 }
-`
+```
 
-= Expired Token =
+**Expired Token**
 
-`
+```json
 {
 	"success": false,
 	"statusCode": 403,
@@ -298,25 +311,37 @@ If the token is invalid an error will be returned. Here are some samples of erro
 	"message": "Expired token",
 	"data": []
 }
-`
+```
+
+**Obsolete Token**
+
+```json
+{
+	"success": false,
+	"statusCode": 403,
+	"code": "jwt_auth_obsolete_token",
+	"message": "Token is obsolete",
+	"data": []
+}
+```
 
 ## Available Filter Hooks
 
 **JWT Auth** is developer friendly and has some filters available to override the default settings.
 
-= jwt_auth_cors_allow_headers =
+### jwt_auth_cors_allow_headers
 
 The `jwt_auth_cors_allow_headers` allows you to modify the available headers when the CORs support is enabled.
 
 Default Value:
 
-`
+```
 'X-Requested-With, Content-Type, Accept, Origin, Authorization'
-`
+```
 
 Usage example:
 
-`
+```php
 /**
  * Change the allowed CORS headers.
  *
@@ -330,21 +355,54 @@ add_filter(
 		return $headers;
 	}
 );
-`
+```
 
-= jwt_auth_iss =
+
+### jwt_auth_authorization_header
+
+The **jwt_auth_authorization_header** allows you to modify the Authorization header key used to validating a token. Useful when the server already uses the 'Authorization' key for another auth method.
+
+Default value:
+
+```
+'HTTP_AUTHORIZATION'
+```
+
+Usage example:
+
+```php
+/**
+ * Modify the response of Authorization header key.
+ *
+ * @param string $header The Authorization header key.
+ * .
+ * @return string The Authorization header key.
+ */
+add_filter(
+	'jwt_auth_authorization_header',
+	function ( $header ) {
+		// Modify the response here.
+		return $header;
+	},
+	10,
+	1
+);
+```
+
+
+### jwt_auth_iss
 
 The **jwt_auth_iss** allows you to change the [**iss**](https://tools.ietf.org/html/rfc7519#section-4.1.1) value before the payload is encoded to be a token.
 
 Default Value:
 
-`
+```
 get_bloginfo( 'url' )
-`
+```
 
 Usage example:
 
-`
+```php
 /**
  * Change the token issuer.
  *
@@ -358,22 +416,22 @@ add_filter(
 		return $iss;
 	}
 );
-`
+```
 
-= jwt_auth_not_before =
+### jwt_auth_not_before
 
-The `jwt_auth_not_before` allows you to change the [**nbf**](https://tools.ietf.org/html/rfc7519#section-4.1.5) value before the payload is encoded to be a token.
+The `jwt_auth_not_before` allows you to change the [**nbf**](https://tools.ietf.org/html/rfc7519#section-4.1.5) value before the payload is encoded to be a token
 
 Default Value:
 
-`
+```
 // Creation time.
 time()
-`
+```
 
 Usage example:
 
-`
+```php
 /**
  * Change the token's nbf value.
  *
@@ -391,21 +449,21 @@ add_filter(
 	10,
 	2
 );
-`
+```
 
-= jwt_auth_expire =
+### jwt_auth_expire
 
-The `jwt_auth_expire` allows you to change the value [**exp**](https://tools.ietf.org/html/rfc7519#section-4.1.4) before the payload is encoded to be a token.
+The `jwt_auth_expire` allows you to change the [**exp**](https://tools.ietf.org/html/rfc7519#section-4.1.4) value before the payload is encoded to be a token
 
 Default Value:
 
-`
+```
 time() + (DAY_IN_SECONDS * 7)
-`
+```
 
 Usage example:
 
-`
+```php
 /**
  * Change the token's expire value.
  *
@@ -423,21 +481,21 @@ add_filter(
 	10,
 	2
 );
-`
+```
 
-= jwt_auth_alg =
+### jwt_auth_alg
 
 The `jwt_auth_alg` allows you to change the supported signing [algorithm](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40) for your application.
 
 Default Value:
 
-`
+```
 'HS256'
-`
+```
 
 Usage example:
 
-`
+```php
 /**
  * Change the token's signing algorithm.
  *
@@ -451,15 +509,15 @@ add_filter(
 		return $alg;
 	}
 );
-`
+```
 
-= jwt_auth_payload =
+### jwt_auth_payload
 
 The `jwt_auth_payload` allows you to modify all the payload / token data before being encoded and signed.
 
 Default value:
 
-`
+```php
 <?php
 $token = array(
     'iss' => get_bloginfo('url'),
@@ -472,11 +530,11 @@ $token = array(
         )
     )
 );
-`
+```
 
 Usage example:
 
-`
+```php
 /**
  * Modify the payload/ token's data before being encoded & signed.
  *
@@ -494,15 +552,15 @@ add_filter(
 	10,
 	2
 );
-`
+```
 
-= jwt_auth_valid_credential_response =
+### jwt_auth_valid_credential_response
 
 The `jwt_auth_valid_credential_response` allows you to modify the valid credential response when generating a token.
 
 Default value:
 
-`
+```php
 <?php
 $response = array(
     'success'    => true,
@@ -519,11 +577,11 @@ $response = array(
         'displayName' => $user->display_name,
     ),
 );
-`
+```
 
 Usage example:
 
-`
+```php
 /**
  * Modify the response of valid credential.
  *
@@ -541,7 +599,7 @@ add_filter(
 	10,
 	2
 );
-`
+```
 
 ### jwt_auth_valid_token_response
 
@@ -549,7 +607,7 @@ The **jwt_auth_valid_token_response** allows you to modify the valid token respo
 
 Default value:
 
-`
+```php
 <?php
 $response = array(
 	'success'    => true,
@@ -558,11 +616,11 @@ $response = array(
 	'message'    => __( 'Token is valid', 'jwt-auth' ),
 	'data'       => array(),
 );
-`
+```
 
 Usage example:
 
-`
+```php
 /**
  * Modify the response of valid token.
  *
@@ -582,7 +640,8 @@ add_filter(
 	10,
 	4
 );
-`
+```
+
 
 ### jwt_auth_extra_token_check
 
@@ -590,13 +649,13 @@ The **jwt_auth_extra_token_check** allows you to add extra criterias to validate
 
 Default value:
 
-`
+```
 ''
-`
+```
 
 Usage example:
 
-`
+```php
 /**
  * Modify the validation of token. No-empty values block token validation.
  *
@@ -616,144 +675,35 @@ add_filter(
 	10,
 	4
 );
-`
+```
+
 
 ## Credits
-[PHP-JWT from firebase](https://github.com/firebase/php-jwt)
-[JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
-[Devices utility by pesseba](https://github.com/pesseba)
-The [awesome maintainers](https://github.com/usefulteam/jwt-auth/collaborators) and [contributors](https://github.com/usefulteam/jwt-auth/graphs/contributors)
 
-== Installation ==
+- [PHP-JWT from firebase](https://github.com/firebase/php-jwt)
+- [JWT Authentication for WP REST API](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/). This _JWT-Auth_ plugin was a "copy-then-modify" of _JWT Authentication for WP REST API_ plugin.
+- [Devices utility by pesseba](https://github.com/pesseba)
+- The [awesome maintainers](https://github.com/usefulteam/jwt-auth/collaborators) and [contributors](https://github.com/usefulteam/jwt-auth/graphs/contributors)
 
-**Enable PHP HTTP Authorization Header**
+## License
 
-= Shared Hosts =
+[GPL-3.0 License](https://oss.ninja/gpl-3.0?organization=Useful%20Team&project=WordPress%20JWT%20Auth)
 
-Most shared hosts have disabled the **HTTP Authorization Header** by default.
+## Keep This Plugin Alive & Maintained
 
-To enable this option you'll need to edit your **.htaccess** file by adding the following:
+You can help me to keep this plugin alive and continue to maintain it by:
 
-`
-RewriteEngine on
-RewriteCond %{HTTP:Authorization} ^(.*)
-RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
-`
+- Giving **5 Stars** [review here](https://wordpress.org/plugins/jwt-auth/)
+- [Donate Now](#donate)
 
-= WPEngine =
+## Donate
 
-To enable this option you'll need to edit your **.htaccess** file by adding the following (see [this issue](https://github.com/Tmeister/wp-api-jwt-auth/issues/1)):
+- If you use this plugin to help you in your work,
+- Or if this plugin benefit you, resulting money for you
+- Or if your project depends on this plugin, and you want it to keep alive and maintained
 
-`
-SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
-`
+Then **let's be fair** and feel free to donate me via:
 
-= Installing Through the WordPress Administrative Area: =
-- From WordPress administrative area, go to Plugins -> Add New
-- Search for _JWT Auth_
-- Install it
-- Easily configure it (see "Configuration" below)
-- and then activate it
+- [PayPal](https://www.paypal.me/bagusjavas)
 
-= Installing by Downloading Manually: =
-- Download the plugin from [WordPress plugins page](https://wordpress.org/plugins/jwt-auth/)
-- Upload to your wp-content directory
-- Easily configure it (see "Configuration" below)
-- Activate it from _Plugins_ menu in admin area
-
-**Configuration**
-
-= Configurate the Secret Key =
-
-The JWT needs a **secret key** to sign the token. It must be unique and never be revealed.
-
-To add the **secret key**, edit your wp-config.php file and add a new constant called **JWT_AUTH_SECRET_KEY**.
-
-`
-define('JWT_AUTH_SECRET_KEY', 'your-top-secret-key');
-`
-
-You can use a string from [here](https://api.wordpress.org/secret-key/1.1/salt/)
-
-= Configurate CORs Support =
-
-This plugin has the option to enable [CORs](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) support.
-
-To enable the CORs Support edit your wp-config.php file and add a new constant called **JWT_AUTH_CORS_ENABLE**
-
-`
-define('JWT_AUTH_CORS_ENABLE', true);
-`
-
-Finally activate the plugin within the plugin dashboard.
-
-== Frequently Asked Questions ==
-= Now almost all REST routes are intercepted. How to exclude some routes/ endpoints? =
-
-There's `jwt_auth_whitelist` that you can use to whitelist specific endpoints. For more information, pease read **Whitelisting Endpoints** section in the Description tab.
-
-= Do you have GitHub repository for this plugin? =
-
-You can visit the GitHub repository [here](https://github.com/usefulteam/jwt-auth/)
-
-= I use this plugin on my projects. I want this plugin to keep alive and maintained, how can i help? =
-
-You can help this plugin stay alive and maintained by giving **5 Stars** Rating/ Review or donating me via:
-- [PayPal](https://paypal.me/bagusjavas)
-
-== Screenshots ==
-1. Success response when trying to generate token
-2. Error response when trying to generate token
-3. Other error responses
-
-== Changelog ==
-= 2.1.0 =
-- It's possible now to whitelist an endpoint with specific method (GET/POST). See [PR #47](https://github.com/usefulteam/jwt-auth/pull/47)
-
-= 2.0.0 =
-- Breaking change: rename `jwt_auth_valid_token_extra` filter to `jwt_auth_extra_token_check`. Please check if you use this filter.
-- Breaking bugfix: the actual http statusCode didn't follow the response statusCode. Now the actual http statusCode follows the response statusCode.
-- New feature: connected device. Thanks @pesseba.
-- Might be a breaking change: Add WordPress & WC default endpoints to `jwt_auth_default_whitelist` to prevent error when visiting WordPress admin area.
-- Documentation: prevent misleading example by updating the `jwt_auth_whitelist` usage.
-
-= 1.4.2 =
-- Bugfix: add `permission_callback` argument since it's required in WP 5.5
-
-= 1.4.1 =
-- Bugfix: the previous `/wp-json/wp/v2/*` whitelisting didn't work. It should be `/wp-json/wp/v2/` (without the star char).
-
-= 1.4.0 =
-- Whitelist `/wp-json/wp/v2/*` by default. This will prevent the plugin from breaking the default WordPress administration (gutenberg, etc).
-- Bugfix: fix the problem with WordPress subdir installation. [See issue](https://github.com/usefulteam/jwt-auth/issues/2).
-
-= 1.3.0 =
-- **Filter Change**: `jwt_auth_valid_token_response` should only filter the $response array instead of the whole `WP_REST_Response`. Please check if you use this filter :)
-- README update about `jwt_auth_whitelist` filter usage. That filter should be added directly (without hook) OR inside `plugins_loaded`. Adding it to `init` (or after that) will not work.
-
-= 1.2.0 =
-- **Critical Bugfix**: WooCommerce admin breaks. With this change, WooCommerce admin should be good.
-- New Filter: We whitelist some endpoints by default to support common plugin like WooCommerce. These default whitelisted endpoints are change-able via `jwt_auth_default_whitelist` filter.
-
-= 1.1.0 =
-- Support WooCommerce by ignoring `/wp-json/wc/` and `/wp-json/wc-auth/` namespace. You can use `jwt_auth_whitelist` filter if you want to whiteist other endpoints. See **Whitelisting Endpoints** section in the description tab.
-
-= 1.0.0 =
-- **Filter Change**: Rename `jwt_auth_token_payload` filter to `jwt_auth_payload`
-- **Filter Change**: Rename `jwt_auth_token_response` filter to `jwt_auth_valid_credential_response`
-- **Critical Bugfix**: The auth only restricted wp-json/jwt-auth/v1/* endpoints. So endpoints under other namespace were not restricted. With this change, other endpoints are restricted now. If you need to whitelist some endpoints, please read about **Whitelisting Endpoints** section in the description tab.
-- New Filter: `jwt_auth_valid_token_response`
-- New Filter: Make possible to whitelist specific endpoints via `jwt_auth_whitelist` filter.
-- New Filter: Make possible to change the token issuer by providing `jwt_auth_iss` filter.
-- New Filter: Make possible to change the supported algorithm by providing `jwt_auth_alg` filter.
-- New Filter: Make possible to change the valid token response by providing `jwt_auth_valid_token_response` filter.
-- Add support for site with disabled permalink.
-
-= 0.1.3 =
-- Add `jwt_auth_do_custom_auth` filter so that developer can use custom authentication like OTP authentication or any other.
-
-= 0.1.2 =
-- Working version.
-
-== Upgrade Notice ==
-Just update the plugin
+Thank You!
