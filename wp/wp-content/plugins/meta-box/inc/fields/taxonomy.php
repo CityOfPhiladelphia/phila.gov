@@ -32,11 +32,11 @@ class RWMB_Taxonomy_Field extends RWMB_Object_Choice_Field {
 		$field['_original_id'] = $field['id'];
 
 		// Search.
-		$field['query_args']['name__like'] = $request->filter_post( 'term', FILTER_SANITIZE_STRING );
+		$field['query_args']['name__like'] = $request->filter_post( 'term' );
 
 		// Pagination.
 		$limit = isset( $field['query_args']['number'] ) ? (int) $field['query_args']['number'] : 0;
-		if ( 'query:append' === $request->filter_post( '_type', FILTER_SANITIZE_STRING ) ) {
+		if ( 'query:append' === $request->filter_post( '_type' ) ) {
 			$page                          = $request->filter_post( 'page', FILTER_SANITIZE_NUMBER_INT );
 			$field['query_args']['offset'] = $limit * ( $page - 1 );
 		}
@@ -215,7 +215,9 @@ class RWMB_Taxonomy_Field extends RWMB_Object_Choice_Field {
 
 		$taxonomy = reset( $field['taxonomy'] );
 		$term     = wp_insert_term( $term, $taxonomy );
-
+		if ( is_wp_error( $term ) ) {
+			return null;
+		}
 		return isset( $term['term_id'] ) ? $term['term_id'] : null;
 	}
 
@@ -280,21 +282,32 @@ class RWMB_Taxonomy_Field extends RWMB_Object_Choice_Field {
 	/**
 	 * Format a single value for the helper functions. Sub-fields should overwrite this method if necessary.
 	 *
-	 * @param array    $field   Field parameters.
-	 * @param string   $value   The value.
-	 * @param array    $args    Additional arguments. Rarely used. See specific fields for details.
-	 * @param int|null $post_id Post ID. null for current post. Optional.
+	 * @param array        $field   Field parameters.
+	 * @param object|array $value   The value.
+	 * @param array        $args    Additional arguments. Rarely used. See specific fields for details.
+	 * @param ?int         $post_id Post ID. null for current post. Optional.
 	 *
 	 * @return string
 	 */
 	public static function format_single_value( $field, $value, $args, $post_id ) {
-		return sprintf(
-			'<a href="%s" title="%s">%s</a>',
-			// @codingStandardsIgnoreLine
-			esc_url( get_term_link( $value ) ),
-			esc_attr( $value->name ),
-			esc_html( $value->name )
-		);
+		if ( empty( $value ) ) {
+			return '';
+		}
+
+		$link = isset( $args['link'] ) ? $args['link'] : 'view';
+		$text = $value->name;
+
+		if ( false === $link ) {
+			return $text;
+		}
+		if ( 'view' === $link ) {
+			$url = get_term_link( $value );
+		}
+		if ( 'edit' === $link ) {
+			$url = get_edit_term_link( $value );
+		}
+
+		return sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html( $text ) );
 	}
 
 	/**
