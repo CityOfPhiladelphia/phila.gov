@@ -95,7 +95,7 @@
                 <i class="fas fa-lock"></i>
               </span>
               <span class="icon-text">https://</span>
-            </div> 
+            </div>
             <div class="trust-details">The <strong>https://</strong> in the address bar means your information is encrypted and can not be accessed by anyone else</div>
           </div>
         </div>
@@ -104,9 +104,9 @@
             <div class="trust-icon">
               <span class="icon circle-icon">
                 <i class="fas fa-university"></i>
-              </span> 
+              </span>
               <span class="icon-text">.gov</span>
-            </div> 
+            </div>
             <div class="trust-details">Only government entities in the U.S. can end in .gov</div>
           </div>
         </div>
@@ -212,11 +212,11 @@
       </div>
     </div>
   </div>
-</header>
-<div id="page">
   <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
+</header>
+<div id="page">
     <?php
     $parent = phila_util_get_furthest_ancestor($post);
     $post_type = get_post_type();
