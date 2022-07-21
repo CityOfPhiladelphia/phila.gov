@@ -1,12 +1,14 @@
 .site-wide-alert {
   background: color(dark-ben-franklin);
   color: white;
+  font-family: $body-font-family;
   div {
     font-size:14px;
   }
   a:link, a:visited{
     color: white;
     text-decoration: underline;
+    font-size: 14px;
   }
   &.orange {
     background: #F5A623;
