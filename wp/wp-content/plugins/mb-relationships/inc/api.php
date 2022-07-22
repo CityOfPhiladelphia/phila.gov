@@ -188,10 +188,9 @@ class MB_Relationships_API {
 	 */
 	private static function filter( $items, $object_id, $relationship_key ) {
 		$items = array_filter( $items, function( $item ) use ( $object_id, $relationship_key ) {
-			$item = (array) $item;
-			return ( isset( $item[$relationship_key] ) && $item[$relationship_key] == $object_id )
-				|| ( isset( $item['mbr_from'] ) && $item['mbr_from'] == $object_id )
-				|| ( isset( $item['mbr_to'] ) && $item['mbr_to'] == $object_id );
+			return ( isset( $item->$relationship_key ) && $item->$relationship_key == $object_id )
+				|| ( isset( $item->mbr_from ) && $item->mbr_from == $object_id )
+				|| ( isset( $item->mbr_to ) && $item->mbr_to == $object_id );
 		} );
 		return $items;
 	}

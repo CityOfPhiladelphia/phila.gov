@@ -103,16 +103,13 @@ class MBR_Storage_Handler {
 	 */
 	protected function delete_object_relationships( $object_id, $type, $target ) {
 		global $wpdb;
-		$sql = $target
-			? "DELETE FROM $wpdb->mb_relationships WHERE `type`=%s AND `$target`=%d"
-			: "DELETE FROM $wpdb->mb_relationships WHERE `type`=%s AND (`from`=%d OR `to`=%d)";
-		$wpdb->query(
-			$wpdb->prepare(
-				$sql,
-				$type,
-				$object_id,
-				$object_id
-			)
-		);
+
+		if ( $target ) {
+			$sql = "DELETE FROM $wpdb->mb_relationships WHERE `type`=%s AND `$target`=%d";
+			$wpdb->query( $wpdb->prepare( $sql, $type, $object_id ) );
+		} else {
+			$sql = "DELETE FROM $wpdb->mb_relationships WHERE `type`=%s AND (`from`=%d OR `to`=%d)";
+			$wpdb->query( $wpdb->prepare( $sql, $type, $object_id, $object_id ) );
+		}
 	}
 }

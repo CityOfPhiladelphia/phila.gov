@@ -68,6 +68,7 @@ class MBR_Shortcodes {
 				'direction' => 'from',
 				'mode'      => 'ul',
 				'separator' => '',
+				'link'      => 'true',
 			),
 			$atts
 		);
@@ -78,7 +79,12 @@ class MBR_Shortcodes {
 		if ( empty( $items ) ) {
 			return '';
 		}
-		$items = array_map( array( $object, 'render' ), $items );
+		$items = array_map(
+			function( $item ) use ( $object, $atts ) {
+				return $object->render( $item, $atts );
+			},
+			$items
+		);
 
 		switch ( $atts['mode'] ) {
 			case 'ul':
