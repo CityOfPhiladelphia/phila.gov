@@ -16,7 +16,7 @@ meta-box-conditional-logic-1.6.17.zip
 meta-box-group-1.3.14.zip
 meta-box-include-exclude-1.0.11.zip
 meta-box-tabs-1.1.13.zip
-wp-nested-pages-phila-3.1.15.zip
+wp-nested-pages-phila-3.1.14.zip
 meta-box-tooltip-1.1.4.zip
 wpfront-user-role-editor-personal-pro-2.14.5.zip
 miniorange-saml-20-single-sign-on.4.9.08.zip"
