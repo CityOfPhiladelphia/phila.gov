@@ -116,10 +116,10 @@
     <?php if ( !phila_util_is_array_empty($connect_vars['website']) )  : ?>
       <tr>
         <th scope="row">
-          <i class="fas fa-globe fa-2x" aria-hidden="true"></i>
+          <i class="fas fa-link fa-2x" aria-hidden="true"></i>
         </th>
         <td>
-          <a href="<?php echo $connect_vars['website']['url'] ?>" class="website <?php echo isset($connect_vars['website']['external']) ? 'external' : ''?>">
+          <a href="<?php echo $connect_vars['website']['url'] ?>" class="website <?php echo $connect_vars['website']['external'] ? 'external' : ''?>">
             <?php echo $connect_vars['website']['text'] ?>
           </a>
         </td>
