@@ -324,7 +324,7 @@ class RW_Meta_Box {
 	 * @return bool
 	 */
 	public function validate() {
-		$nonce = rwmb_request()->filter_post( "nonce_{$this->id}", FILTER_SANITIZE_STRING );
+		$nonce = rwmb_request()->filter_post( "nonce_{$this->id}" );
 
 		return ! $this->saved
 			&& ( ! defined( 'DOING_AUTOSAVE' ) || $this->autosave )
@@ -440,7 +440,7 @@ class RW_Meta_Box {
 			$screen = get_current_screen();
 		}
 
-		return 'post' === $screen->base && in_array( $screen->post_type, $this->post_types, true );
+		return in_array( $screen->base, array( 'post', 'upload' ), true ) && in_array( $screen->post_type, $this->post_types, true );
 	}
 
 	/**

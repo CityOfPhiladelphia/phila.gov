@@ -31,7 +31,7 @@ interface MBR_Object_Interface {
 	 *
 	 * @return string
 	 */
-	public function render( $item );
+	public function render( $item, $atts );
 
 	/**
 	 * Get HTML link to the object.

@@ -49,7 +49,10 @@ class MBR_Post implements MBR_Object_Interface {
 	 * @param WP_Post $item Post object.
 	 * @return string
 	 */
-	public function render( $item ) {
+	public function render( $item, $atts ) {
+		if ( 'false' === $atts['link'] ) {
+			return get_the_title( $item );
+		}
 		return '<a href="' . get_permalink( $item ) . '">' . get_the_title( $item ) . '</a>';
 	}
 
