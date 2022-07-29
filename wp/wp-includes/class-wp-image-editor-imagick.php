@@ -129,7 +129,7 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 		}
 
 		if ( ! is_file( $this->file ) && ! wp_is_stream( $this->file ) ) {
-			return new WP_Error( 'error_loading_image', __( 'File doesn&#8217;t exist?' ), $this->file );
+			return new WP_Error( 'error_loading_image', __( 'File does not exist?' ), $this->file );
 		}
 
 		/*
@@ -444,7 +444,7 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 *     If one of the two is set to null, the resize will
 	 *     maintain aspect ratio according to the provided dimension.
 	 *
-	 *     @type array $size {
+	 *     @type array ...$0 {
 	 *         Array of height, width values, and whether to crop.
 	 *
 	 *         @type int  $width  Image width. Optional if `$height` is specified.
@@ -589,7 +589,7 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 		try {
 			$this->image->rotateImage( new ImagickPixel( 'none' ), 360 - $angle );
 
-			// Normalise EXIF orientation data so that display is consistent across devices.
+			// Normalize EXIF orientation data so that display is consistent across devices.
 			if ( is_callable( array( $this->image, 'setImageOrientation' ) ) && defined( 'Imagick::ORIENTATION_TOPLEFT' ) ) {
 				$this->image->setImageOrientation( Imagick::ORIENTATION_TOPLEFT );
 			}
@@ -627,7 +627,7 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 				$this->image->flopImage();
 			}
 
-			// Normalise EXIF orientation data so that display is consistent across devices.
+			// Normalize EXIF orientation data so that display is consistent across devices.
 			if ( is_callable( array( $this->image, 'setImageOrientation' ) ) && defined( 'Imagick::ORIENTATION_TOPLEFT' ) ) {
 				$this->image->setImageOrientation( Imagick::ORIENTATION_TOPLEFT );
 			}
@@ -662,8 +662,8 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 *
 	 * @since 3.5.0
 	 *
-	 * @param string $destfilename
-	 * @param string $mime_type
+	 * @param string $destfilename Optional. Destination filename. Default null.
+	 * @param string $mime_type    Optional. The mime-type. Default null.
 	 * @return array|WP_Error {'path'=>string, 'file'=>string, 'width'=>int, 'height'=>int, 'mime-type'=>string}
 	 */
 	public function save( $destfilename = null, $mime_type = null ) {
@@ -729,6 +729,7 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 			'width'     => $this->size['width'],
 			'height'    => $this->size['height'],
 			'mime-type' => $mime_type,
+			'filesize'  => wp_filesize( $filename ),
 		);
 	}
 
@@ -901,7 +902,7 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 *
 	 * @since 5.6.0
 	 *
-	 * @return true|WP_error
+	 * @return true|WP_Error
 	 */
 	protected function pdf_load_source() {
 		$filename = $this->pdf_setup();

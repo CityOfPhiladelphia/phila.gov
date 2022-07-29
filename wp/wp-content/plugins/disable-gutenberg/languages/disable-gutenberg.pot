@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Disable Gutenberg\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-13 18:47+0000\n"
+"POT-Creation-Date: 2022-01-10 23:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -26,11 +26,11 @@ msgstr ""
 msgid "ACF Support"
 msgstr ""
 
-#: inc/plugin-features.php:84
+#: inc/plugin-features.php:86
 msgid "Block Edit"
 msgstr ""
 
-#: inc/plugin-features.php:94
+#: inc/plugin-features.php:96
 msgid "Classic Edit"
 msgstr ""
 
@@ -59,7 +59,7 @@ msgid "Default options restored."
 msgstr ""
 
 #: inc/settings-register.php:46
-msgid "Disable \"Try Gutenberg\" nag"
+msgid "Disable \"Try Gutenberg\" nag (for older versions of WP)"
 msgstr ""
 
 #: inc/settings-register.php:45
@@ -110,12 +110,12 @@ msgstr ""
 msgid "Display Whitelist settings"
 msgstr ""
 
-#: inc/plugin-features.php:86
+#: inc/plugin-features.php:88
 #, php-format
 msgid "Edit &#8220;%s&#8221; in the Block Editor"
 msgstr ""
 
-#: inc/plugin-features.php:96
+#: inc/plugin-features.php:98
 #, php-format
 msgid "Edit &#8220;%s&#8221; in the Classic Editor"
 msgstr ""
@@ -129,7 +129,7 @@ msgid "Enable Frontend"
 msgstr ""
 
 #: inc/settings-register.php:47
-msgid "Enable frontend Gutenberg styles"
+msgid "Enable frontend Gutenberg/block styles"
 msgstr ""
 
 #: inc/settings-register.php:130
