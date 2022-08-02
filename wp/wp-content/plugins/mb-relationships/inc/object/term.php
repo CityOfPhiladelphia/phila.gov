@@ -47,7 +47,10 @@ class MBR_Term implements MBR_Object_Interface {
 	 *
 	 * @return string
 	 */
-	public function render( $item ) {
+	public function render( $item, $atts ) {
+		if ( 'false' === $atts['link'] ) {
+			return esc_html( $item->name );
+		}
 		return '<a href="' . get_term_link( $item ) . '">' . esc_html( $item->name ) . '</a>';
 	}
 

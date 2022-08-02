@@ -1,12 +1,13 @@
 === GatherContent Plugin ===
-Contributors:      gathercontent, mathew-chapman, namshee, jtsternberg, justinsainton
-Donate link:       http://www.gathercontent.com
-Tags               structured content, gather content, gathercontent, import, migrate, export, mapping, production, writing, collaboration, platform, connect, link, gather, client, word, production
-Requires at least: 3.8
-Tested up to:      5.2
-Stable tag:        3.1.14
-License:           GPL-2.0+
-License URI:       https://opensource.org/licenses/GPL-2.0
+Contributors: gathercontent, mathew-chapman, namshee, justinsainton
+Donate link: http://www.gathercontent.com
+Tags: structured content, gather content, gathercontent, import, migrate, export, mapping, production, writing, collaboration, platform, connect, link, gather, client, word, production
+Requires at least: 5.6.0
+Tested up to: 6.0
+Stable tag: 3.2.12
+License: GPL-2.0+
+Requires PHP: 7.0
+License URI: https://opensource.org/licenses/GPL-2.0
 
 Quickly transfer structured content to and from your GatherContent projects and your WordPress site.
 
@@ -63,6 +64,48 @@ Below the text box is a button that will allow you to simply save all of that in
 6. Or change the item's GatherContent status in quick-edit mode.
 
 == Changelog ==
+
+= 3.2.12 =
+* Reformat readme.txt
+
+= 3.2.11 =
+* Updated the readme.txt to include testing up to WordPress 6.0
+
+= 3.2.10 =
+* Fixed the missing status colors on the template mapping screen.
+
+= 3.2.9 =
+* Added support for Bynder images, which do not include an extension in their filenames by default.
+* Importing files from attachment fields in GatherContent, will now be done using the result of the content endpoint for the item, and will no longer call the files endpoint.
+
+= 3.2.8 =
+* Pulling will no longer happen using wp_remote_post as it was causing issues with local environments and firewalls, where leaving the server and re-calling it via the host wasn't possible.
+
+= 3.2.7 =
+* Fixed issue where GatherContent to WordPress mapping was not taking effect
+
+= 3.2.6 =
+* Bump version
+
+= 3.2.5 =
+* Fixed issue for PHP8 and Yoast SEO compatibility
+
+= 3.2.4 =
+* Updated readme.txt stable tag version and changelog
+
+= 3.2.3 =
+* Update change log and readme, forgotten during previous tag
+
+= 3.2.2 =
+* Fixed syntax error, causing issue during install
+
+= 3.2.1 =
+* Resolve build process dependency error.
+
+= 3.2.0 =
+* Add ability to edit Alt Text on media
+* Update dependencies
+* Support Components and Repeatable fields
 
 = 3.1.14 =
 * Fix yoast integration
