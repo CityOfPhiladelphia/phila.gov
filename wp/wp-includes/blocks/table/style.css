@@ -41,6 +41,12 @@
  * These variables do not appear to be used anywhere else.
  */
 /**
+*  Converts a hex value into the rgb equivalent.
+*
+* @param {string} hex - the hexadecimal value to convert
+* @return {string} comma separated rgb values
+*/
+/**
  * Breakpoint mixins
  */
 /**
@@ -148,4 +154,5 @@
 .wp-block-table table[style*=border-width] th,
 .wp-block-table table[style*=border-width] td {
   border-width: inherit;
+  border-style: inherit;
 }

@@ -56,6 +56,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 <?php endif; ?>
+<a href="#page" aria-hidden="false" class="skip-to-content">Skip to main content</a>
   <header class="global-nav no-js pbm pbn-mu mbn-mu">
     <h1 class="accessible">City of Philadelphia</h1>
 
@@ -94,7 +95,7 @@
                 <i class="fas fa-lock"></i>
               </span>
               <span class="icon-text">https://</span>
-            </div> 
+            </div>
             <div class="trust-details">The <strong>https://</strong> in the address bar means your information is encrypted and can not be accessed by anyone else</div>
           </div>
         </div>
@@ -103,9 +104,9 @@
             <div class="trust-icon">
               <span class="icon circle-icon">
                 <i class="fas fa-university"></i>
-              </span> 
+              </span>
               <span class="icon-text">.gov</span>
-            </div> 
+            </div>
             <div class="trust-details">Only government entities in the U.S. can end in .gov</div>
           </div>
         </div>
@@ -127,7 +128,6 @@
                   </a>
                 </div>
               </div>
-              <a href="#page" aria-hidden="false" class="accessible">Skip to main content</a>
               <div class="medium-17 columns show-for-medium desktop-nav">
                 <div class="top-bar-right valign-mu">
                   <nav data-swiftype-index="false" class="phila-global-nav-menu valign-mu" aria-label="main-nav">
@@ -212,11 +212,11 @@
       </div>
     </div>
   </div>
-</header>
-<div id="page">
   <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
+</header>
+<div id="page">
     <?php
     $parent = phila_util_get_furthest_ancestor($post);
     $post_type = get_post_type();

@@ -9,8 +9,8 @@
 <?php
   $additional_content = rwmb_meta('phila_additional_content');
   $page_template = rwmb_meta( 'phila_template_select');
-  if( !empty ($additional_content ) 
-    && $page_template != 'default_v2' 
+  if( !empty ($additional_content )
+    && $page_template != 'default_v2'
     && $page_template != 'topic_page'
     && $page_template != 'service_stub'
     && $page_template != 'custom_content'
@@ -52,10 +52,10 @@
             <?php foreach ( $content['forms'] as $form ): ?>
               <div>
                 <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt fa-fw" aria-hidden="true"></i><?php echo get_the_title($form); ?></a>
+              </div>
             <?php endforeach; ?>
-            <?php endif; ?>
-            <?php echo apply_filters( 'the_content', $content['form_free']); ?>
-          </div>
+          <?php endif; ?>
+        <?php echo apply_filters( 'the_content', $content['form_free']); ?>
       </section>
     </div>
   </div>

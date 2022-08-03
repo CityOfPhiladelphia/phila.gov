@@ -3,8 +3,8 @@ Contributors: metabox, rilwis, truongwp, hsimah, anhdoanmis
 Donate link: https://metabox.io/pricing/
 Tags: relationship, relationships, connection, connections, posts to posts, post relationship, post relationships
 Requires at least: 4.8
-Tested up to: 5.8.1
-Stable tag: 1.10.9
+Tested up to: 5.9.1
+Stable tag: 1.10.11
 License: GPLv2 or later
 
 A lightweight solution for creating many-to-many posts to posts relationships.
@@ -91,6 +91,13 @@ Install **MB Relationships** extension
 3. Database structure
 
 == Changelog ==
+
+= 1.10.11 - 2022-03-08 =
+- Shortcode: support removing the link to items with `link="false"`
+
+= 1.10.10 - 2021-12-14 =
+- Fix php notice when delete an object
+- Fix each_connected does not working for users
 
 = 1.10.9 - 2021-09-18 =
 - Fix deleting post objects, relationships are not deleted

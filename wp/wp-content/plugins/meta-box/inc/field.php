@@ -93,22 +93,25 @@ abstract class RWMB_Field {
 	public static function begin_html( $meta, $field ) {
 		$field_label = '';
 		if ( $field['name'] ) {
+			// Change "for" attribute in label
 			$field_label = sprintf(
 				'<div class="rwmb-label">
 					<label for="%s">%s%s</label>
 					%s
 				</div>',
-				esc_attr( $field['id'] ),
+				( isset( $field['attributes']['id'] ) ) ? esc_attr( $field['attributes']['id'] ) : esc_attr( $field['id'] ),
 				$field['name'],
 				$field['required'] || ! empty( $field['attributes']['required'] ) ? '<span class="rwmb-required">*</span>' : '',
 				self::label_description( $field )
 			);
 		}
 
+		$data_min_clone = is_numeric( $field['min_clone'] ) && $field['min_clone'] > 1 ? ' data-min-clone=' . $field['min_clone'] : '';
 		$data_max_clone = is_numeric( $field['max_clone'] ) && $field['max_clone'] > 1 ? ' data-max-clone=' . $field['max_clone'] : '';
 
 		$input_open = sprintf(
-			'<div class="rwmb-input"%s>',
+			'<div class="rwmb-input" %s %s>',
+			$data_min_clone,
 			$data_max_clone
 		);
 
@@ -339,6 +342,7 @@ abstract class RWMB_Field {
 				'save_field'        => true,
 
 				'clone'             => false,
+				'min_clone'         => 0,
 				'max_clone'         => 0,
 				'sort_clone'        => false,
 				'add_button'        => __( '+ Add more', 'meta-box' ),
@@ -548,9 +552,6 @@ abstract class RWMB_Field {
 
 	/**
 	 * Call a method of a field.
-	 * This should be replaced by static::$method( $args ) in PHP 5.3.
-	 *
-	 * @return mixed
 	 */
 	public static function call() {
 		$args = func_get_args();
@@ -561,7 +562,9 @@ abstract class RWMB_Field {
 		if ( is_string( $check ) ) {
 			$method = array_shift( $args );
 			$field  = reset( $args ); // Keep field as 1st param.
-		} else {
+		}
+		// Params: field, method name, other params.
+		else {
 			$field  = array_shift( $args );
 			$method = array_shift( $args );
 
@@ -573,7 +576,12 @@ abstract class RWMB_Field {
 			}
 		}
 
-		return call_user_func_array( array( RWMB_Helpers_Field::get_class( $field ), $method ), $args );
+		$class = RWMB_Helpers_Field::get_class( $field );
+		if ( method_exists( $class, $method ) ) {
+			return call_user_func_array( array( $class, $method ), $args );
+		} else {
+			_deprecated_function( "$class::$method", '5.4.8' );
+		}
 	}
 
 	/**
