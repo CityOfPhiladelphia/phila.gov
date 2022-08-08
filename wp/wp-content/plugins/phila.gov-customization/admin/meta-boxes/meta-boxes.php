@@ -44,7 +44,7 @@ function phila_setup_tiny_mce_basic( array $options ){
 
   if ( $options['format_select'] == true) {
 
-    $output['toolbar1'] = 'formatselect, bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext, superscript, subscript, hr';
+    $output['toolbar1'] = 'formatselect, bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext, superscript, subscript, hr, table';
 
   }
 
@@ -57,7 +57,7 @@ function phila_setup_tiny_mce_basic( array $options ){
 
   if ( $options['format_select'] == false ) {
 
-    $output['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext, superscript, subscript';
+    $output['toolbar1'] = 'bold, italic, bullist, numlist, link, unlink, outdent, indent, removeformat, pastetext, superscript, subscript, table';
 
   }
   return $output;
@@ -608,7 +608,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         array( 'phila_template_select', '=', 'homepage_v2' ),
         array( 'phila_template_select', '=', 'guide_landing_page' )
       ),
-      'relation' => 'or', 
+      'relation' => 'or',
     ),
 
     'fields' => array(
@@ -661,7 +661,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         array( 'phila_template_select', '=', 'homepage_v2' ),
         array( 'phila_template_select', '=', 'guide_landing_page' )
       ),
-      'relation' => 'or', 
+      'relation' => 'or',
     ),
 
     'fields' => array(
@@ -1027,7 +1027,7 @@ $meta_boxes[] = array(
       'id'  => 'phila_vue_toggle',
       'type'  => 'switch',
       'name'  => 'Use data tables?',
-      'on_label'  => 'Yes',	
+      'on_label'  => 'Yes',
       'off_label' => 'No'
     ),
     array(
@@ -1158,7 +1158,7 @@ $meta_boxes[] = array(
       array('phila_template_select', '=', 'homepage_v2' ),
     ),
   ),
-  'fields' => 
+  'fields' =>
     Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true),
 
 );
