@@ -175,6 +175,11 @@ class Phila_Gov_Role_Administration {
         wp_enqueue_style( 'group-adder', plugins_url( 'css/group-adder.css' , __FILE__  ), 'admin-department-author' );
 
       }
+      if ( array_key_exists( 'secondary_blog_contributor',  $user->caps ) ) {
+        wp_register_style( 'blog-contributor', plugins_url( 'css/blog-contributor.css' , __FILE__  ) );
+        wp_enqueue_style( 'blog-contributor', plugins_url( 'css/blog-contributor.css' , __FILE__  ), 'admin-department-author' );
+
+      }
 
     }
   }
