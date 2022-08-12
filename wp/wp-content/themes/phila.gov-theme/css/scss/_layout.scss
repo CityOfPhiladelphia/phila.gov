@@ -108,7 +108,7 @@ table.connect{
 ol, ul {
   padding-left:2rem;
 }
-ol + h4, 
+ol + h4,
 ul + h4{
   margin-top:2rem;
 }
@@ -137,8 +137,8 @@ hr {
 @media screen and (min-width: 40em) {
   .columns-3-mu {
     column-count: 3;
-    column-gap: 1.42857rem; 
-  } 
+    column-gap: 1.42857rem;
+  }
 }
 
 caption {
@@ -159,7 +159,7 @@ caption {
 }
 //TODO: Fix in standards
 #google_translate_element .goog-te-gadget-simple span {
-  vertical-align: middle !important; 
+  vertical-align: middle !important;
 }
 
 .step-group .step:last-of-type{
@@ -167,14 +167,22 @@ caption {
 }
 .post {
   .last-updated{
-    font-size: .9rem;
-    p{
-      line-height: 1.5rem;
+    margin: 1.5rem 0 1rem 0;
+    background-color: rgba(255, 239, 162, 0.5);
+    &.icon{
+      margin-right: 10px;
     }
-    .last-updated-text{
-      border-top: 1px solid #444;
-      display: inline-block;
+    .content{
+      padding: .5rem 1rem;
+      p{
+        line-height: 1.5rem;
+        margin-bottom: 0;
+      }
+      .last-updated-text{
+        font-weight: bold;
+      }
     }
+
   }
 }
 
