@@ -1,0 +1,54 @@
+footer {
+  .phila-footer {
+    padding: $spacing-medium 0;
+    background: color(dark-ben-franklin);
+    h1, h2, h3, h4, h5, h6 {
+      font-size:rem-calc(13);
+      border-bottom: 0;
+      padding: 0;
+      color: white;
+      text-transform: none;
+    }
+    h2 {
+      font-size: 1.2rem;
+    }
+    section {
+      border-bottom: 1px solid #a2a2a2;
+      &:last-of-type {
+        border-bottom: 0;
+      }
+      @media only screen and (min-width: 40em) {
+        border-bottom: 0;
+        border-right: 1px solid #a2a2a2;
+        &:last-of-type {
+          border-right: 0;
+        }
+      }
+      a:link,
+      a:visited {
+        color: #e5e5e5;
+      }
+      a:hover,
+      a:active {
+        color: color(electric-blue);
+      }
+      ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+        line-height: 1.6rem;
+      }
+    }
+    .city-social {
+      li {
+        margin-bottom: .75rem;
+      }
+      .fa-stack {
+        vertical-align: inherit;
+      }
+    }
+  }
+  .trending-requests a:link{
+    font-size: 16px;
+  }
+}

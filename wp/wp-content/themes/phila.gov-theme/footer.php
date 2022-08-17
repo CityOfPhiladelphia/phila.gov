@@ -86,7 +86,7 @@
       </div>
     </section>
   </div>
-  <div class="fat">
+  <div class="phila-footer">
     <div class="row pvs ptl-mu phm equal-height">
       <section class="medium-8 columns phm pvm pvn-mu equal">
         <h2 class="mtn mbm">Elected officials</h2>
@@ -187,7 +187,7 @@
         </nav>
       </section>
     </div> <!-- row -->
-  </div><!-- fat -->
+  </div><!-- /phila-footer -->
   <div class="bg-black">
     <div class="row classic">
       <nav class="columns center">

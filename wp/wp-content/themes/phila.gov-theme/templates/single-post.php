@@ -67,7 +67,7 @@ $language_list = phila_get_translated_language( $language );
   </div>
   <?php if ( $last_updated ): ?>
     <div class="grid-x">
-      <div class="cell shrink last-updated icon">
+      <div class="cell shrink last-updated icon hide-for-small-only">
           <i class="fas fa-clock-rotate-left fa-2x pam"></i>
       </div>
       <div class="cell auto last-updated">
