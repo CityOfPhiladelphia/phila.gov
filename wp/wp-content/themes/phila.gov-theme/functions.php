@@ -199,7 +199,7 @@ function phila_filter_title( $title ){
     }elseif($post_type->name == 'service_page') {
 
       $title['title'] = $page_title . $sep . 'Services' . $sep . $site_title;
-    
+
     }elseif($post_type->name == 'programs') {
 
       $title['title'] = $page_title . $sep . 'Programs and initiatives' . $sep . $site_title;
@@ -970,7 +970,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
 
 function phila_get_department_owner_ids( $categories ){
-  if( !empty( $categories ) && $categories[0]->slug != 'uncategorized' ) { 
+  if( !empty( $categories ) && $categories[0]->slug != 'uncategorized' ) {
 
 
     $cat_ids = array();
@@ -1051,7 +1051,7 @@ function phila_get_service_updates(){
 
       $service_effective_start = isset( $service_update_details['phila_effective_start_date'] ) ? $service_update_details['phila_effective_start_date'] : '';
       $service_effective_end = isset( $service_update_details['phila_effective_end_date'] ) ? $service_update_details['phila_effective_end_date'] : '';
-      
+
       $valid_update = filter_var(
         $current_time,
         FILTER_VALIDATE_INT,
@@ -1519,7 +1519,7 @@ function phila_connect_panel($connect_panel) {
       'co-code' => isset( $connect_panel['phila_connect_general']['phila_connect_phone']['phone-co-code'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone']['phone-co-code'] : '',
 
       'subscriber-number' => isset( $connect_panel['phila_connect_general']['phila_connect_phone']['phone-subscriber-number'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone']['phone-subscriber-number']  : '',
-      
+
       'helper-text' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_text'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_text'] : '',
     );
 
@@ -1529,11 +1529,11 @@ function phila_connect_panel($connect_panel) {
 
         $output_array['phone_multi'][$key] = array(
           'area' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['area'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['area'] : '',
-    
+
           'co-code' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-co-code'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-co-code'] : '',
-    
+
           'subscriber-number' => isset( $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone']['phone-subscriber-number']  : '',
-        
+
           'helper-text' => isset($connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone_text'] ) ? $connect_panel['phila_connect_general']['phila_connect_phone_multi'][$key]['phila_connect_phone_text'] : ''
         );
       }
@@ -1700,7 +1700,7 @@ function phila_get_department_typography( $parent ){
       $c  = strlen( $phrase );
       $new_title = '<h1><span class="h3 break-after">'  . $phrase . '</span>' . substr( $page_title, $c ) . '</h1>';
 
-      break;  
+      break;
     }else{
       $new_title = '<h1>' . $page_title . '</h1>';
     }
@@ -1932,7 +1932,7 @@ add_action( 'mb_relationships_init', function() {
             ),
           ),
           'title' => 'Select translated posts',
-          'context' => 'side', 
+          'context' => 'side',
           'priority' => 'high',
           'field' => array(
             'name'  => 'Choose',
@@ -1955,7 +1955,7 @@ add_action( 'mb_relationships_init', function() {
           ),
 
         ),
-      ),      
+      ),
       'to'   => array(
         'object_type'  => 'post',
         'post_type'   => 'post',
@@ -1976,10 +1976,10 @@ add_action( 'mb_relationships_init', function() {
 function phila_language_output($language){
   switch ($language) {
     case 'english';
-      $language = 'English'; 
+      $language = 'English';
       break;
     case 'french';
-      $language = 'Français'; 
+      $language = 'Français';
       break;
     case 'spanish';
       $language = 'Español';
@@ -1999,7 +1999,7 @@ function phila_language_output($language){
     case 'bengali';
       $language = 'বাংলা';
       break;
-    case 'burmese'; 
+    case 'burmese';
       $language = 'မြန်မာ';
       break;
     case 'haitian';
@@ -2008,26 +2008,26 @@ function phila_language_output($language){
     case 'hindo';
       $language = 'Hindo';
       break;
-    case 'indonesian'; 
+    case 'indonesian';
       $language = 'Bahasa Indonesia';
       break;
-    case 'urdu'; 
+    case 'urdu';
       $language = 'اردو';
       break;
-    case 'korean'; 
+    case 'korean';
       $language = '한국어';
       break;
-    case 'khmer'; 
+    case 'khmer';
       $language = 'ខ្មែរ';
       break;
-    case 'portuguese'; 
+    case 'portuguese';
       $language = 'Português';
       break;
     case 'swahili';
       $language = 'Kiswahili';
       break;
     default;
-      $language = 'English'; 
+      $language = 'English';
       break;
   }
   return $language;
@@ -2049,15 +2049,15 @@ function phila_get_translated_language( $language, $post_id = null ) {
 
       'relationship' => array(
         'id'   => 'post_to_post_translations',
-        'to' => $post->ID, 
+        'to' => $post->ID,
       ),
       'post_status'  => array(
         'publish',
         'private',
         'draft',
-      ), 
+      ),
       'nopaging'     => true,
-    ) ); 
+    ) );
       $language_list['english'] = get_the_permalink();
 
   }else{
@@ -2071,11 +2071,11 @@ function phila_get_translated_language( $language, $post_id = null ) {
       ),
       'relationship' => array(
         'id'   => 'post_to_post_translations',
-        'from' => $post->ID, 
-      ), 
+        'from' => $post->ID,
+      ),
       'nopaging'     => true,
     ) );
-    while ( $connected->have_posts() ) : $connected->the_post(); 
+    while ( $connected->have_posts() ) : $connected->the_post();
 
       $connected_source = new WP_Query( array(
         'post_type'  => $post->post_type,
@@ -2086,8 +2086,8 @@ function phila_get_translated_language( $language, $post_id = null ) {
         ),
         'relationship' => array(
           'id'   => 'post_to_post_translations',
-          'to' => $post->ID, 
-        ), 
+          'to' => $post->ID,
+        ),
         'nopaging'     => true,
       ) );
       while ( $connected_source->have_posts() ) : $connected_source->the_post();
@@ -2135,7 +2135,7 @@ function phila_apply_modal_to_children_pages() {
     $modal_exists = true;
     if (    (  in_array('department_page-template-default',$classes) && in_array('department-landing',$classes )) ||
             ( in_array('programs-template-default',$classes) && wp_get_post_parent_id( get_the_ID()) == 0) ) {
-        $modal_content = rwmb_meta( 'disclaimer_modal_text' ); 
+        $modal_content = rwmb_meta( 'disclaimer_modal_text' );
         $modal_button_text = rwmb_meta( 'disclaimer_modal_button_text' );
     }
     else if (   ( in_array('department_page-template-default',$classes) && !in_array('department-landing',$classes )) ||
@@ -2144,9 +2144,9 @@ function phila_apply_modal_to_children_pages() {
         $modal_content = get_post_meta( $post_parent, 'disclaimer_modal_text', TRUE );
         $modal_button_text = get_post_meta( $post_parent, 'disclaimer_modal_button_text', TRUE );
     }
-    if( $modal_content == null || 
-        $modal_content == '' || 
-        $modal_button_text == null || 
+    if( $modal_content == null ||
+        $modal_content == '' ||
+        $modal_button_text == null ||
         $modal_button_text == ''
     ) {
         $modal_exists = false;
@@ -2179,17 +2179,20 @@ add_filter('wp_insert_post_data', 'force_type_private', 10, 2);
 
 function set_environment() {
   global $phila_environment;
-  if(strpos($_SERVER['HTTP_HOST'],'staging') !== false) {
-    $phila_environment = 'staging';
-  }
-  else if(strpos($_SERVER['HTTP_HOST'],'test') !== false) {
-    $phila_environment = 'test';
-  }
-  else if(strpos($_SERVER['HTTP_HOST'],'localhost') !== false) {
-    $phila_environment = 'local';
-  }
-  else {
-    $phila_environment = 'production';
+    if (isset($_SERVER['HTTP_HOST'])) {
+
+    if(strpos($_SERVER['HTTP_HOST'],'staging') !== false) {
+      $phila_environment = 'staging';
+    }
+    else if(strpos($_SERVER['HTTP_HOST'],'test') !== false) {
+      $phila_environment = 'test';
+    }
+    else if(strpos($_SERVER['HTTP_HOST'],'localhost') !== false) {
+      $phila_environment = 'local';
+    }
+    else {
+      $phila_environment = 'production';
+    }
   }
 }
 
