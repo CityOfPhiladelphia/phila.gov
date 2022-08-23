@@ -91,9 +91,9 @@ input[type=radio] + label[for] {
     margin-bottom: 0;
   }
   p + .callout,
-  ol + .callout, 
-  ul + .callout, 
-  ul + p, 
+  ol + .callout,
+  ul + .callout,
+  ul + p,
   ol + p {
     margin-top:1rem;
   }
@@ -125,13 +125,6 @@ input[type=radio] + label[for] {
   font-size: 1.3rem;
 }
 
-footer.site-footer.site-footer .fat h2 {
-  font-size: 1.2rem;
-}
-footer.site-footer .trending-requests a:link{
-  font-size: 16px;
-}
-
 @include breakpoint(small only) {
   .global-nav .utility-nav {
     min-height: 30px;
@@ -153,4 +146,4 @@ footer.site-footer .trending-requests a:link{
 
 #service-service_stub .content-block h3 {
   margin-top: 0;
-} 
+}

@@ -1,4 +1,6 @@
-
+<?php
+  /* Department hero header */
+?>
 <header>
     <div class="hero-content" style="background-image:url(<?php echo $this->bg['desktop'] ?>) ">
         <div class="hero-subpage" style="background-image:url(<?php echo $this->bg['desktop']; ?>)">
