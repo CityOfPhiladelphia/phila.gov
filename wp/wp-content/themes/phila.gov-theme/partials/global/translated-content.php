@@ -5,25 +5,10 @@
  */
 ?>
 <?php
-/**
- * See all programs template
- * @version 0.23.0
- * @package phila-gov
- */
+$translated_content = rwmb_meta('phila_v2_translated_content');
 
-get_header(); ?>
-
-<?php
-
-global $phila_environment;
-$app_id = 'vue-app';
-$program_file_path = 'https://www.phila.gov/embedded/translated-content/'.$phila_environment;
-
-$vuejs_js_ids = [$program_file_path.'/js/chunk-vendors.js', $program_file_path.'/js/app.js'];
-$vuejs_css_ids = [$program_file_path.'/css/chunk-vendors.css', $program_file_path.'/css/app.css'];
-
-include(locate_template( 'partials/vue-apps/vue-register.php' ) );
-
+foreach ($translated_content as $content) {
+  echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title'];
+  echo $content['phila_custom_wysiwyg']['phila_wysiwyg_content'];
+}
 ?>
-
-<?php get_footer(); ?>
