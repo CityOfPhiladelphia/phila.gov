@@ -12,6 +12,7 @@ function phila_options_page( $settings_pages ) {
       'general' => 'General Settings',
       'jobs'  => 'Featured jobs',
       'closures'  => 'Closures',
+      'feature_flags'  => 'Feature flags',
     ),
   );
   return $settings_pages;
@@ -171,6 +172,31 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             'required'  => true,
           ),
         ),
+      ),
+    ),
+  );
+
+
+  $meta_boxes[] = array(
+    'id'             => 'feature_flags',
+    'title'          => 'Feature flags',
+    'settings_pages' => 'phila_gov',
+    'tab'            => 'feature_flags',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor' ),
+    ),
+    'fields'  => array(
+      array(
+        'name'  => 'Display voting banner',
+        'desc'  => 'When active, the voting banner will be displayed on all pages',
+        'id'    => 'display_voting_banner',
+        'type'  => 'radio',
+        'inline' => false,
+        'std' => '0',
+        'options' =>  array(
+            '0' => 'Hide',
+            '1' => 'Display',
+        )
       ),
     ),
   );
