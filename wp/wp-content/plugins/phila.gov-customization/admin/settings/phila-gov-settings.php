@@ -12,7 +12,7 @@ function phila_options_page( $settings_pages ) {
       'general' => 'General Settings',
       'jobs'  => 'Featured jobs',
       'closures'  => 'Closures',
-      'feature_flags'  => 'Feature flags',
+      'sitewide_settings'  => 'Site-wide settings',
     ),
   );
   return $settings_pages;
@@ -178,10 +178,10 @@ function prefix_options_meta_boxes( $meta_boxes ) {
 
 
   $meta_boxes[] = array(
-    'id'             => 'feature_flags',
-    'title'          => 'Feature flags',
+    'id'             => 'sitewide_settings',
+    'title'          => 'Sitewide settings',
     'settings_pages' => 'phila_gov',
-    'tab'            => 'feature_flags',
+    'tab'            => 'sitewide_settings',
     'include' => array(
       'user_role'  => array( 'administrator', 'editor' ),
     ),
