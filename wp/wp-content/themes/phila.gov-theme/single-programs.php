@@ -34,8 +34,6 @@ get_header();
   <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
 
 <?php
-  $language = rwmb_meta('phila_v2_translated_content');
-
   include(locate_template ('partials/posts/post-translated-content.php') );
   include(locate_template('partials/global/translated-content.php'));
   get_footer();

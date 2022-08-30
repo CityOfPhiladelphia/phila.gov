@@ -5,10 +5,31 @@
  */
 ?>
 <?php
-$translated_content = rwmb_meta('phila_v2_translated_content');
 
 foreach ($translated_content as $content) {
-  echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title'];
-  echo $content['phila_custom_wysiwyg']['phila_wysiwyg_content'];
+  ?>
+  <div id="<?php echo $content['translated_language'].'-form'; ?>" class="embedded-translated-form">
+    <div class="row one-quarter-row mvl">
+      <div class="small-24 columns">
+          <?php if( isset($content['phila_custom_wysiwyg']['phila_wysiwyg_title'] )): ?>
+            <?php $content_id = sanitize_title_with_dashes( $content['phila_custom_wysiwyg']['phila_wysiwyg_title']);?>
+            <h3 id="<?php echo $content_id;?>"><?php echo $content['phila_custom_wysiwyg']['phila_wysiwyg_title']; ?></h3>
+          <?php endif;?>
+      </div>
+    </div>
+    <?php
+      if( $content['phila_custom_wysiwyg']['phila_wysiwyg_content'] != '' ) : ?>
+        <!-- WYSIWYG content -->
+        <section class="wysiwyg-content">
+          <div class="row">
+            <div class="small-24 columns">
+              <p><?php echo apply_filters('the_content', $content['phila_custom_wysiwyg']['phila_wysiwyg_content']); ?></p>
+            </div>
+          </div>
+        </section>
+        <!-- End WYSIWYG content -->
+    <?php endif;?>
+  </div>
+  <?php
 }
 ?>
