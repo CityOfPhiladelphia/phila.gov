@@ -27,3 +27,34 @@
     }
   }
 }
+.voting-banner {
+  min-height: 60px;
+  background-color: #f0f0f0;
+  .vote-button{
+    color: black;
+    height: auto;
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 0px;
+    a:link {
+      color: black;
+    }
+    a:link:hover{
+      color: white;
+    }
+  }
+}
+.voting-banner {
+  .fas {
+    font-size: 28px;
+    vertical-align: super;
+    padding-right: 2px;
+    margin-right: 13px;
+  }
+  .vote-deadline {
+    font-size: 14px;
+  }
+  .voting-text {
+    display: inline-block;
+  }
+}
