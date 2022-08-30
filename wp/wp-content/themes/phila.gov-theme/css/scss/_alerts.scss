@@ -29,15 +29,18 @@
 }
 .voting-banner {
   min-height: 60px;
-  background-color: lightgray;
+  background-color: #f0f0f0;
   .vote-button{
     color: black;
     height: auto;
     text-align: center;
     margin-top: 3px;
     margin-bottom: 0px;
-    a:link, a:visited{
+    a:link {
       color: black;
+    a:link:hover{
+      color: white;
+    }
     }
   }
 }
