@@ -84,7 +84,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
                     <i class="fas fa-check-to-slot fa-fw fa-2x icon hide-for-small-only" aria-hidden="true"></i>
                     <div class="voting-text">
                       <p class="mbn"><b>Election day is Nov. 8, 2022</b></p>
-                      <p class="vote-deadline">The deadline to register to vote is Oct. 24, 2022.</p>
+                      <p class="vote-deadline mbn">The deadline to register to vote is Oct. 24, 2022.</p>
                       </div>
                     </div>
                     <div class="cell medium-auto medium-shrink small-12 align-self-right">
