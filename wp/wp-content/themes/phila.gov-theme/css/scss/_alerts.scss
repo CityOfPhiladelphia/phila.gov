@@ -27,3 +27,26 @@
     }
   }
 }
+.voting-banner {
+  height: 60px;
+  background-color: lightgray;
+  .vote-button{
+    position: absolute;
+    right: 0px;
+    color: black;
+    height: auto;
+    text-align: center;
+    padding-right: 50px;
+    a:link, a:visited{
+      color: black;
+    }
+  }
+}
+.fa-check-to-slot{
+  font-size: 24px;
+  padding-right: 0.71429rem;
+  padding-left:  0.71429rem;
+}
+.vote-deadline {
+  font-size: 14px;
+}

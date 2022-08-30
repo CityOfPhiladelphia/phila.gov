@@ -76,8 +76,29 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
               </div>
             </div>
           </div>
+          <div class="voting-banner">
+            <div class="row">
+              <div class="medium centered">
+                <div class="grid-x grid-padding-x align-top pvs">
+                <div class="cell auto shrink center icon hide-for-small-only align-self-middle">
+                <i class="fas fa-check-to-slot" aria-hidden="true"></i>
+                  </div>
+                  <div class="cell medium-auto medium-shrink small-24 align-self-middle">
+                    <p class="mbn"><b>Election day is Nov. 8, 2022</b></p>
+                    <p class="vote-deadline">The deadline to register to vote is Oct. 24, 2022.</p>
+                  </div>
+                  <div class="cell auto shrink center icon hide-for-small-only align-self-right">
+                  <div class="vote-button">
+                    <button><a href="https://vote.phila.gov/my-vote-my-way/"><b>MAKE A PLAN TO VOTE</b></a>
+                    </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <?php
-        
+
         }else if ( ($alert_start <= $now && $alert_end == 0 ) || $alert_start <= $now && ( $alert_end >= $now ) ){ ?>
           <div class="site-wide-alert <?php echo $alert_color?>" data-alert="alert-<?php echo $alert_start ?>-<?php echo $alert_end; ?>-<?php echo get_the_ID(); ?>" data-swiftype-index="false">
           <div class="row">
@@ -106,7 +127,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
             </div>
           </div>
         </div>
-        <?php 
+        <?php
         }
       }
     }
