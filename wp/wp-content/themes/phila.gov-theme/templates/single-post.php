@@ -66,9 +66,16 @@ $language_list = phila_get_translated_language( $language );
       <?php endif; ?>
   </div>
   <?php if ( $last_updated ): ?>
-    <div class="last-updated mtm">
-      <span class="last-updated-text ptm">Last updated:</span> <?php echo $date_formatted->format('F d, Y'); ?> 
-      <?php echo !empty($last_updated_text) ?  apply_filters('the_content', $last_updated_text) : ''; ?>
+    <div class="grid-x">
+      <div class="cell shrink last-updated icon hide-for-small-only">
+          <i class="fas fa-clock-rotate-left fa-2x pam"></i>
+      </div>
+      <div class="cell auto last-updated">
+        <div class="content">
+          <span class="last-updated-text">Last updated <?php echo $date_formatted->format('F d, Y'); ?></span>
+          <?php echo !empty($last_updated_text) ?  apply_filters('the_content', $last_updated_text) : ''; ?>
+        </div>
+      </div>
     </div>
   <?php endif; ?>
   </header>
@@ -119,11 +126,11 @@ $language_list = phila_get_translated_language( $language );
     </div>
   <?php endif ?>
   <div class="grid-container post-content <?php echo $language == 'arabic' ? $language : '' ?>">
-    <?php 
+    <?php
       if ( !empty( $translations ) ) :
         foreach ( $translations as $translation ) : ?>
-        <?php 
-        $lang = get_post_meta( $translation, 'phila_select_language' ); 
+        <?php
+        $lang = get_post_meta( $translation, 'phila_select_language' );
         $id = intval( $translation );
         $link = get_the_permalink( $id );
         ?>

@@ -128,6 +128,11 @@
       a {
         display: block;
         padding: 1rem;
+        &.active {
+          color: #ffffff;
+          font-weight: 600;
+          background: color(dark-gray);
+        }
       }
       &:hover {
         cursor: pointer;
@@ -136,18 +141,14 @@
           color: #ffffff;
         }
       }
-      &.active {
-        padding: 1rem;
-        color: #ffffff;
-        font-weight: 600;
-        background: color(dark-gray);
-      }
     }
     &.no-dropdown {
       width: calc(100% - 5rem);
       li {
-        padding-left: 2rem;
-        padding-right: 2rem;
+        a {
+          padding-left: 2rem;
+          padding-right: 2rem; 
+        }
         flex: none;
       }
     }
@@ -155,7 +156,7 @@
   .dropdown-container {
     width: auto;
     float: right;
-    padding: 1rem 1.5rem; 
+    padding: 1rem 1.5rem;
     .dropdown {
       .dropdown-selector {
         padding: 0px 0px 0px 10px !important;

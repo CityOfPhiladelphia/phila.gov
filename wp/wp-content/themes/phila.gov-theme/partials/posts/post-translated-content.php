@@ -1,6 +1,14 @@
 <!-- Translated content -->
 <?php 
 
+if (isset($user_selected_template) && $user_selected_template == 'translated_content') {
+  $translated_content = rwmb_meta('phila_v2_translated_content');
+
+  foreach ($translated_content as $content) {
+    $language_list[$content['translated_language']] = $content['translated_language'];
+  }
+}
+
 // unset english item
 
 if ($key = array_search('english', array_keys($language_list)) !== false) {
