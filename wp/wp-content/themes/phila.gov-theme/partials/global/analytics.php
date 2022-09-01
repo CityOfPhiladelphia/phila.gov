@@ -17,12 +17,21 @@ if ( !is_user_logged_in() ):
         "contentModifiedDepartment": "<?php echo $departments ?>",
         "lastUpdated": "<?php the_modified_time('Y-m-d H:i:s'); ?>",
         "templateType": "<?php echo phila_get_selected_template() ?>",
-      <?php if ( is_single() && get_post_type() === 'post') : ?>
+      <?php if ( is_single() && get_post_type() === 'post') : 
+        $tag = get_the_tags( $post->ID );
+        $tags = array();
+        if (!empty($tag)) {
+          foreach($tag as $t){
+            $tags[] = $t->name;
+          }
+        }
+        ?>
         "articleTitle": "<?php echo get_the_title() ?>",
         "articleAuthor": "<?php echo get_the_author_meta('display_name') ?>",
         "publish": "<?php echo get_the_date() ?>",
         "articleCategory": "<?php echo phila_get_selected_template() ?>",
-        "articleLanguage": "<?php echo $lang; ?>"
+        "articleLanguage": "<?php echo $lang; ?>",
+        "articleTag": "<?php echo implode (', ', $tags); ?>"
         <?php endif; ?>
         <?php if ( get_post_type() === 'programs' && phila_get_selected_template() === 'prog_landing_page'): 
         $category = get_the_terms( $post->ID, 'service_type' );
