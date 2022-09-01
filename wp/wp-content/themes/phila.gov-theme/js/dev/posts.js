@@ -158,11 +158,11 @@ $(function(){
 
 function updateActiveLanguage(activeLang) {
   $('.embedded-translated-form').hide();
-  $("#main-translation-bar>li>a.active").removeClass("active");
-  $('#main-translation-bar >li > a').each(function () {
+  $(".translation-link.active").removeClass("active");
+  $('.translation-link').each(function () {
     if ($(this).hasClass(activeLang+"-translation")) {
       $(this).addClass("active");
       $('#'+activeLang+'-form').show();
     }
-  });  
+  });
 }
