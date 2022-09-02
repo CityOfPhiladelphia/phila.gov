@@ -41,6 +41,7 @@ class Phila_Gov_Post {
         array(
           'id'  => 'phila_author_group',
           'type' => 'group',
+          'desc'  => 'byline reminder to subscribe frequent guest authors',
           'clone'  => true,
           'sort_clone' => true,
           'add_button' => '+ Add author',
