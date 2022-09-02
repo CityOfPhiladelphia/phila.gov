@@ -609,9 +609,15 @@ function phila_get_dept_contact_blocks() {
 
 
 function phila_get_posted_on(){
-  $posted_on_meta['author'] = array( esc_html( get_the_author()));
-  $more_authors = rwmb_meta('phila_author');
-  if ( !empty($more_authors) ) {
+  $exclude_author = rwmb_meta('phila_exclude_author');
+  $author_group = rwmb_meta('phila_author_group');
+  $more_authors = rwmb_meta('phila_author'); // deprecated, now hidden on admin
+  $exclude_author ? $posted_on_meta['author'] = [] : $posted_on_meta['author'] = array( esc_html( get_the_author()));
+  if ( !empty($author_group) ) {
+    foreach ($author_group as $author) {
+      array_push($posted_on_meta['author'], $author['phila_additional_author']);
+    }
+  } else if ( !empty($more_authors) ) {
     foreach ($more_authors as $author) {
       $user = get_userdata($author);
       array_push($posted_on_meta['author'], $user->display_name);
