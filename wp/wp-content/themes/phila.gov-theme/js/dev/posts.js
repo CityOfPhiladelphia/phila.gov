@@ -35,18 +35,15 @@ if (typeof phila_language_list !== 'undefined') {
 
   for (let item in phila_language_list) {
     let li = document.createElement("li");
-    if(phila_language_list[item].value == window.location.href.split(/[?#]/)[0]) {
-      li.className += " phm";
-      li.className += " active"
-      li.className += " phs"
-      li.innerHTML = phila_language_list[item].key;
-    }
-    else {
+    if ($('.single-post').length ) { 
       let a_tag = document.createElement("a");
       a_tag.className += " phm";
       a_tag.className += " translation-link";
       a_tag.className += " phs";
       a_tag.className += " "+phila_language_list[item].language+'-translation';
+      if(phila_language_list[item].value == window.location.href.split(/[?#]/)[0]) {
+        a_tag.className += " active"
+      }
       a_tag.href = phila_language_list[item].value;
       a_tag.innerHTML = phila_language_list[item].key;
       a_tag.addEventListener("click", function() {
@@ -59,6 +56,39 @@ if (typeof phila_language_list !== 'undefined') {
       });
       
       li.appendChild(a_tag);
+    } else { // programs - translated content template
+      const urlParams = new URLSearchParams(window.location.search);
+      let activeLang = urlParams.get('lang');
+      if (!activeLang) {
+        activeLang = 'english';
+      }
+      let a_tag = document.createElement("a");
+      if(phila_language_list[item].value == activeLang) {
+        a_tag.className += " active";
+      }
+      a_tag.className += " phm";
+      a_tag.className += " translation-link";
+      a_tag.className += " phs";
+      a_tag.className += " "+phila_language_list[item].language+'-translation';
+      a_tag.href += "?lang="+phila_language_list[item].value;
+      a_tag.innerHTML = phila_language_list[item].key;
+      a_tag.addEventListener("click", function(event) {
+        event.preventDefault();
+        if (history.pushState) {
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?lang="+phila_language_list[item].value;
+            window.history.pushState({path:newurl},'',newurl);
+        }
+        updateActiveLanguage(phila_language_list[item].value);
+        window.dataLayer.push({
+          'event' : 'GAEvent',
+          'eventCategory' : 'Translation Services',
+          'eventAction' : phila_language_list[item].language,
+          'eventLabel' : window.location.pathname,
+        });
+      });
+      
+      li.appendChild(a_tag);
+      $('#'+activeLang+'-form').show();
     }
 
     if (window.matchMedia('(max-width: 660px)').matches && i >= 2 && phila_language_list_count >= 3) {
@@ -125,3 +155,14 @@ $(function(){
     }
   }
 });
+
+function updateActiveLanguage(activeLang) {
+  $('.embedded-translated-form').hide();
+  $(".translation-link.active").removeClass("active");
+  $('.translation-link').each(function () {
+    if ($(this).hasClass(activeLang+"-translation")) {
+      $(this).addClass("active");
+      $('#'+activeLang+'-form').show();
+    }
+  });
+}

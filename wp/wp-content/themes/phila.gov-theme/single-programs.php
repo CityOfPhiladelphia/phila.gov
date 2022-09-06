@@ -23,7 +23,7 @@ get_header();
 <?php if ($user_selected_template == 'stub'): ?>
   <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
 
-<?php  
+<?php
   include(locate_template('partials/programs/stub.php'));
   get_footer();
 
@@ -33,7 +33,8 @@ get_header();
 <?php if ($user_selected_template == 'translated_content'): ?>
   <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
 
-<?php  
+<?php
+  include(locate_template ('partials/posts/post-translated-content.php') );
   include(locate_template('partials/global/translated-content.php'));
   get_footer();
 
@@ -43,7 +44,7 @@ get_header();
 <?php if ($user_selected_template == 'covid_guidance'): ?>
   <?php include( locate_template( 'partials/programs/header.php' ) ); ?>
 
-<?php  
+<?php
   include(locate_template('partials/programs/covid-guidance.php'));
   get_footer();
 
@@ -68,7 +69,7 @@ get_header();
 
       <?php get_template_part( 'partials/departments/v2/our', 'services' );?>
 
-      <?php 
+      <?php
       switch ($user_selected_template){
         case ('phila_one_quarter'):
           get_template_part( 'partials/departments/v2/content', 'one-quarter' );
@@ -77,7 +78,7 @@ get_header();
           include(locate_template('partials/resource-list.php'));
           break;
         case('collection_page_v2') :
-          include(locate_template('partials/departments/v2/collection-page.php')); 
+          include(locate_template('partials/departments/v2/collection-page.php'));
           break;
         case('document_finder_v2'):
           include(locate_template('partials/departments/v2/document-finder.php'));
