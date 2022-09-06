@@ -10,7 +10,8 @@ if ( is_user_logged_in() && (phila_get_selected_template() == 'post' || phila_ge
     array_push($error_messages, $item1);
     array_push($error_messages, $item2);
   }
-  if ( empty($posted_on_meta['author'])) {
+  $posted_on_values = phila_get_posted_on();
+  if ( empty($posted_on_values['author'])) {
     $error_message_title = "Warning: This blog post doesn't have an author attributed to it.";
     $error_messages = [];
     $item1['link'] = '';

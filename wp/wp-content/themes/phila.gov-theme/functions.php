@@ -612,7 +612,7 @@ function phila_get_posted_on(){
   $exclude_author = rwmb_meta('phila_exclude_author');
   $author_group = rwmb_meta('phila_author_group');
   $more_authors = rwmb_meta('phila_author'); // deprecated, now hidden on admin
-  $exclude_author ? $posted_on_meta['author'] = [] : $posted_on_meta['author'] = array( esc_html( get_the_author()));
+  $exclude_author ? $posted_on_meta['author'] = [] : $posted_on_meta['author'] = array( esc_html( get_userdata(get_post_field ('post_author', get_the_ID()))->display_name ));
   if ( !empty($author_group) ) {
     foreach ($author_group as $author) {
       array_push($posted_on_meta['author'], $author['phila_additional_author']);
