@@ -63,7 +63,6 @@ class Phila_Gov_Admin_Templates {
           array( 'phila_template_select', '=', 'off_site_department' ),
           array( 'phila_template_select', '=', 'covid_guidance' ),
           array( 'phila_template_select', '=', 'prog_off_site' ),
-          array( 'phila_template_select', '=', 'translated_content' ),
         ),
         'relation' => 'or'
       ),
