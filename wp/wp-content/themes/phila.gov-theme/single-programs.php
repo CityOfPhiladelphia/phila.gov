@@ -35,11 +35,6 @@ get_header();
 
 <?php
   include(locate_template ('partials/posts/post-translated-content.php') );
-  get_template_part( 'partials/content', 'custom-markup-before-wysiwyg' );
-  if( !empty( get_the_content() ) ) {
-    include( locate_template( 'partials/content-basic.php' ) );
-  }
-  get_template_part( 'partials/content', 'custom-markup-after-wysiwyg' );
   include(locate_template('partials/global/translated-content.php'));
   get_footer();
 
