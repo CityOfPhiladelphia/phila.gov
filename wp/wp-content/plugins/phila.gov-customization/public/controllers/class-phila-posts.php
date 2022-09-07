@@ -380,6 +380,10 @@ class Phila_Archives_Controller {
       $post_data['archived']  = (bool) $archived;
     }
 
+    if (isset( $schema['properties']['updated_at'] )) {
+      $post_data['updated_at']  = get_the_modified_date('Y-m-d', $post->ID);
+    }
+
     return rest_ensure_response( $post_data );
 }
 
@@ -464,6 +468,11 @@ class Phila_Archives_Controller {
         'archived'  => array(
           'description' => esc_html__('The archive status of a post', 'phila-gov'),
           'type'  => 'bool',
+        ),
+        'updated_at' => array(
+          'description'  => esc_html__( 'Last updated time.', 'phila-gov' ),
+          'type'         => 'date',
+          'readonly'     => true,
         ),
       ),
     );
