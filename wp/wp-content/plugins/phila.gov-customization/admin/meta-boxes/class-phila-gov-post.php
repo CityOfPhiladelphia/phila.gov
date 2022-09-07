@@ -97,6 +97,23 @@ class Phila_Gov_Post {
           'off_label' => 'No',
         ),
         array(
+          'name'    => 'Archive settings',
+          'id'      => 'phila_archive_post',
+          'type'    => 'radio',
+          'std'     => '0',
+          'inline'  => false,
+          'visible' => array(
+            'when' => array(
+              array('phila_template_select', '=', 'post'),
+            ),
+          ),
+          'options' =>  array(
+            '0'   => 'Default',
+            '1'   => 'Do not archive',
+            '2'   => 'Archive now',
+          )
+        ),
+        array(
           'name'  => 'Last updated date',
           'id'    => 'last_updated_date',
           'type'  => 'date',
