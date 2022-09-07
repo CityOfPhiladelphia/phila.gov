@@ -150,7 +150,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
       ),
       array(
         'type' => 'heading',
-        'name' => 'Holiday List',
+        'name' => 'Holiday list',
       ),
       array(
         'id'  => 'phila_holidays',
@@ -199,6 +199,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         )
       ),
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       array(
         'type' => 'heading',
@@ -229,6 +230,57 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'required'  => true
       )
 >>>>>>> bb2323ca5 (sitewide banner fixed)
+=======
+      array(
+        'type' => 'heading',
+        'name' => 'Election events',
+      ),
+      array(
+        'id'  => 'phila_election_events',
+        'type'   => 'group',
+        'clone' => true,
+        'add_button' => '+ Add another event',
+
+        'fields'  => array(
+          array(
+            'id'  => 'event_label',
+            'name'  => 'Event label',
+            'type'  => 'text',
+            'required'  => true
+          ),
+          array(
+            'id'  => 'event_text',
+            'name'  => 'Event text',
+            'type'  => 'text',
+            'required'  => true
+          ),
+          array(
+            'id'  => 'button_text',
+            'name'  => 'Button text',
+            'type'  => 'text',
+            'required'  => true
+          ),
+          array(
+            'id'  => 'button_url',
+            'name'  => 'Button URL',
+            'type'  => 'url',
+            'required'  => true
+          ),
+          array(
+            'id'  => 'start_date',
+            'name' => 'Event start date',
+            'type'  => 'date',
+            'required'  => true,
+          ),
+          array(
+            'id'  => 'end_date',
+            'name' => 'Event end date',
+            'type'  => 'date',
+            'required'  => true,
+          ),
+        ),
+      ),
+>>>>>>> 2e74cfb71 (voting banner fields)
     ),
   );
   return $meta_boxes;
