@@ -41,7 +41,7 @@ class Phila_Gov_Post {
         array(
           'id'  => 'phila_author_group',
           'type' => 'group',
-          'desc'  => 'byline reminder to subscribe frequent guest authors',
+          'desc'  => 'Use this feature to manually enter an authors name. If a person will author several posts, you should instead request that they get byline access in WordPress.',
           'clone'  => true,
           'sort_clone' => true,
           'add_button' => '+ Add author',
