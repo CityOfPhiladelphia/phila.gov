@@ -34,13 +34,18 @@ if(isset($voting_banner_feature_flag) && $voting_banner_feature_flag != 0 && iss
         </div>
         <div class="cell auto message align-self-middle">
           <div class="voting-text">
-            <p class="mbn"><b><?php echo $phila_active_event['event_label']; ?></b></p>
-            <p class="vote-deadline mbn"><?php echo $phila_active_event['event_text']; ?></p>
+            <?php if(isset($phila_active_event['event_label'])) { ?>
+              <p class="mbn"><b><?php echo $phila_active_event['event_label']; ?></b></p>
+            <?php } if(isset($phila_active_event['event_text'])) {  ?>
+              <p class="vote-deadline mbn"><?php echo $phila_active_event['event_text']; ?></p>
+            <?php } ?>
           </div>
         </div>
-        <div class="cell medium-auto medium-shrink small-24 align-self-right">
-          <a class="vote-button button" href="<?php echo $phila_active_event['button_url']; ?>"><b><?php echo $phila_active_event['button_text']; ?></b></a>
-        </div>
+        <?php if(isset($phila_active_event['button_url']) && isset($phila_active_event['button_text'])) { ?>
+          <div class="cell medium-auto medium-shrink small-24 align-self-right">
+            <a class="vote-button button" href="<?php echo $phila_active_event['button_url']; ?>"><b><?php echo $phila_active_event['button_text']; ?></b></a>
+          </div>
+        <?php } ?>
       </div>
     </div>
   </div>
