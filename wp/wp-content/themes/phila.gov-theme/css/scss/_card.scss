@@ -39,12 +39,13 @@ a.card,
       }
       @include breakpoint(medium up) {
         img {
-          height: 184px;
+          height: 250px;
           width: auto;
         }
       }
       .content-block{
         display: inline-block;
+        vertical-align: middle
       }
     }
   }
@@ -265,7 +266,7 @@ a.card.sub-topic{
 }
 
 .press-grid,
-.announcement-grid {  
+.announcement-grid {
   .card {
     &.custom {
       display: flex;
