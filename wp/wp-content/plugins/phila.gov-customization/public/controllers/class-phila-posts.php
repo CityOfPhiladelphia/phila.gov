@@ -369,7 +369,7 @@ class Phila_Archives_Controller {
     if (isset( $schema['properties']['archived'] )) {
       $archived = rwmb_meta('phila_archive_post', '', $post->ID);
       $post_is_old = false;
-      if (date('Y-m-d', strtotime('-200 days')) > $post->post_date) { // if posts are 200+ days old
+      if (date('Y-m-d', strtotime('-2 years')) > $post->post_date) { // if posts are 2 years old
         $post_is_old = true;
       }
       if (((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $post_is_old) || $archived == 'archive_now') {
