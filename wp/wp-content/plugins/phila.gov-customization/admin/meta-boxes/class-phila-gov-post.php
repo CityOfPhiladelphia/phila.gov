@@ -100,7 +100,6 @@ class Phila_Gov_Post {
           'name'    => 'Archive settings',
           'id'      => 'phila_archive_post',
           'type'    => 'radio',
-          'std'     => '0',
           'inline'  => false,
           'visible' => array(
             'when' => array(
@@ -108,10 +107,16 @@ class Phila_Gov_Post {
             ),
           ),
           'options' =>  array(
-            '0'   => 'Default',
-            '1'   => 'Do not archive',
-            '2'   => 'Archive now',
-          )
+            'default'   => 'Default',
+            'do_not_archive'   => 'Do not archive',
+            'archive_now'   => 'Archive now',
+          ),
+          'admin_columns' => array(
+            'position' => 'after date',
+            'title'    => __( 'Archive' ),
+            'sort'     => true,
+          ),
+          'std'     => 'default'
         ),
         array(
           'name'  => 'Last updated date',

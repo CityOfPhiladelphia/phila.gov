@@ -372,7 +372,7 @@ class Phila_Archives_Controller {
       if (date('Y-m-d', strtotime('-200 days')) > $post->post_date) { // if posts are 200+ days old
         $post_is_old = true;
       }
-      if (((empty( $archived ) || !isset($archived) || $archived == '0') &&  $post_is_old) || $archived == '2') { // if default and post is aged out OR archive now
+      if (((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $post_is_old) || $archived == 'archive_now') {
         $archived = true;
       } else {
         $archived = false;
