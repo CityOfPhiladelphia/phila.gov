@@ -57,7 +57,7 @@
   <!-- End Google Tag Manager (noscript) -->
 <?php endif; ?>
 <a href="#page" aria-hidden="false" class="skip-to-content">Skip to main content</a>
-  <header class="global-nav no-js pbm pbn-mu mbn-mu">
+  <header class="global-nav no-js pbn-mu mbn-mu">
     <h1 class="accessible">City of Philadelphia</h1>
 
     <!-- Utility Navigation -->
