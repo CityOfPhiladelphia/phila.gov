@@ -305,5 +305,4 @@ class Phila_Gov_Post {
 
     return $meta_boxes;
   }
-
 }
