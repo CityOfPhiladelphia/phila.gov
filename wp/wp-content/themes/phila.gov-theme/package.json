@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:css": "sass --load-path=node_modules/phila-standards/src/_vendor/foundation-sites/scss --load-path=node_modules/phila-standards/src/sass --source-map css/scss/base.scss css/styles.css",
-    "build:css": "sass --style=compressed --source-map css/scss/base.scss css/styles.min.css",
+    "build:css": "sass --load-path=node_modules/phila-standards/src/_vendor/foundation-sites/scss --load-path=node_modules/phila-standards/src/sass --style=compressed --source-map css/scss/base.scss css/styles.min.css",
     "dev:js": "browserify js/dev/main.js -o js/phila-scripts.js",
     "build:js": "browserify -e js/dev/main.js | uglifyjs -c -m > js/phila-scripts.min.js",
     "dev:build": "npm run dev:css && npm run dev:js",
@@ -31,11 +31,13 @@
     "babelify": "^7.3.0",
     "browserify": "^14.5.0",
     "browserify-shim": "^3.8.14",
+    "chokidar": "^3.5.3",
     "css-loader": "^3.2.0",
     "envify": "^4.1.0",
     "hoek": "^5.0.4",
     "postcss": "^8.4.5",
     "postcss-cli": "^9.1.0",
+    "sass": "^1.54.9",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^4.9.1"
@@ -50,7 +52,6 @@
     "moment": "^2.29.1",
     "mustache": "^2.3.2",
     "phila-standards": "^1.2.0",
-    "sass": "^1.54.9",
     "uglify-js": "^3.6.4"
   },
   "browserify": {
