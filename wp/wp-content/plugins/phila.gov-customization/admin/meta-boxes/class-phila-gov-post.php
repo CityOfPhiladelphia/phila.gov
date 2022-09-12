@@ -51,8 +51,7 @@ class Phila_Gov_Post {
               'id'   => 'phila_additional_author',
               'type' => 'text',
               'desc'  => 'The author of this post will be listed first, with authors chosen here appearing after, in the order listed.',
-              'size' => 50,
-              'columns' => 12,
+              'size' => 50
             ),
           )
         )
