@@ -77,6 +77,21 @@ class Phila_Gov_Post {
     );
 
     $meta_boxes[] = array (
+      'title'    => 'Language options',
+      'pages'    => array( 'post' ),
+      'context'  => 'side',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '!=', 'action_guide'),
+        ),
+      ),
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_language_selector()
+      )
+    );
+
+    $meta_boxes[] = array (
       'title'    => 'Post options',
       'pages'    => array( 'post' ),
       'context'  => 'side',
@@ -87,7 +102,6 @@ class Phila_Gov_Post {
         ),
       ),
       'fields' => array(
-        Phila_Gov_Standard_Metaboxes::phila_language_selector(),
         array(
           'name'  => 'Include last updated?',
           'id'    => 'is_last_updated',
@@ -95,6 +109,28 @@ class Phila_Gov_Post {
           'std'=> '0',
           'on_label'  => 'Yes',
           'off_label' => 'No',
+        ),
+        array(
+          'name'    => 'Archive settings',
+          'id'      => 'phila_archive_post',
+          'type'    => 'radio',
+          'inline'  => false,
+          'visible' => array(
+            'when' => array(
+              array('phila_template_select', '=', 'post'),
+            ),
+          ),
+          'options' =>  array(
+            'default'   => 'Default',
+            'do_not_archive'   => 'Do not archive',
+            'archive_now'   => 'Archive now',
+          ),
+          'admin_columns' => array(
+            'position' => 'after date',
+            'title'    => __( 'Archive' ),
+            'sort'     => true,
+          ),
+          'std'     => 'default'
         ),
         array(
           'name'  => 'Last updated date',
