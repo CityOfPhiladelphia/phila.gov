@@ -15,7 +15,7 @@ cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 npm install
 if [ "$PHILA_TEST" ]; then
   echo 'Running test machine tasks'
-  npm run build
+  npm run dev:build
 else
   echo 'Running prod tasks'
   npm run build
