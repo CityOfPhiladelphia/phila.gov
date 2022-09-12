@@ -28,10 +28,33 @@ class Phila_Gov_Post {
           'id'  => 'phila_author',
           'type' => 'user',
           'multiple' => true,
+          'hidden' => true,
           'field_type'  => 'select_advanced',
           'placeholder' => 'Select more authors',
           'desc'  => 'The author of this post will be listed first, with authors chosen here appearing after, in the order listed.'
       ),
+        array(
+          'id'  => 'phila_exclude_author',
+          'type'  => 'checkbox',
+          'name'  => 'Exclude default author from list?'
+        ),
+        array(
+          'id'  => 'phila_author_group',
+          'type' => 'group',
+          'desc'  => 'Use this feature to manually enter an authors name. If a person will author several posts, you should instead request that they get byline access in WordPress.',
+          'clone'  => true,
+          'sort_clone' => true,
+          'add_button' => '+ Add author',
+          'fields' => array(
+            array(
+              'name' => 'Additional author',
+              'id'   => 'phila_additional_author',
+              'type' => 'text',
+              'desc'  => 'The author of this post will be listed first, with authors chosen here appearing after, in the order listed.',
+              'size' => 50
+            ),
+          )
+        )
     )
   );
 
