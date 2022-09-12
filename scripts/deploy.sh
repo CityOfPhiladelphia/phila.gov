@@ -15,12 +15,10 @@ cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 npm install
 if [ "$PHILA_TEST" ]; then
   echo 'Running test machine tasks'
-  # npm rebuild node-sass
-  # npm run dev:build
+  npm run build
 else
   echo 'Running prod tasks'
-  # npm rebuild node-sass
-  # npm run build
+  npm run build
 fi
 cd /home/ubuntu/app
 
