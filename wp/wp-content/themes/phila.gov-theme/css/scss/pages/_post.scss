@@ -68,6 +68,16 @@
   }
 
 }
+
+.archived-tag {
+  background-color: #444;
+  display: inline;
+  color: white;
+  padding: 3px 10px;
+  font-weight: bold;
+}
+
+
 @include breakpoint(small only) {
   .city-seal{
     max-width:200px;

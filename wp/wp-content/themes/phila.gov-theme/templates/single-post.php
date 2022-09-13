@@ -18,22 +18,35 @@ $date_formatted = new DateTime($last_updated_date);
 $last_updated_text = rwmb_meta('last_updated_text');
 $language = rwmb_meta('phila_select_language');
 $language_list = phila_get_translated_language( $language );
-
+$archived_state = 0; //default state of not archived
+$archived = rwmb_meta('phila_archive_post');
+$post_is_old = false;
+if (date('Y-m-d', strtotime('-2 years')) > $post->post_date) { // if posts are 2 years old
+  $post_is_old = true;
+}
+if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $post_is_old)  {
+  $archived_state = 1; //archived after two years
+} else if ($archived == 'archive_now') {
+  $archived_state = 2; //archived manually
+}
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
   <header class="post-header grid-container">
+  <div class="cell medium-6 align-self-bottom">
+        <?php get_template_part('partials/social-media') ?>
+      </div>
     <div class="grid-x grid-padding-x align-bottom">
-      <div class="cell medium-18 post-title">
+      <div class="cell medium-24 post-title">
         <?php if ( $template_type == 'action_guide' || $template_type == 'action_guide_2' ) { ?>
           <?php include( locate_template( 'partials/posts/action-guide-title.php' ) ); ?>
         <?php } else {  ?>
-          <?php the_title( '<h1>', '</h1>' ); ?>
+          <?php if ( $archived_state !== 0 ) : ?>
+            <div class="archived-tag">Archived</div>
+          <?php endif; ?>
+          <?php the_title( '<h1 style="display:inline">', '</h1>' ); ?>
         <?php } ?>
-      </div>
-      <div class="cell medium-6 align-self-bottom">
-        <?php get_template_part('partials/social-media') ?>
       </div>
       <div class="border-bottom-fat"></div>
     </div>
@@ -73,6 +86,9 @@ $language_list = phila_get_translated_language( $language );
       <div class="cell auto last-updated">
         <div class="content">
           <span class="last-updated-text">Last updated <?php echo $date_formatted->format('F d, Y'); ?></span>
+          <?php if ( $archived_state == 2 ): ?>
+          <p> This post was reviewed and manually archived because some of the content is out of date. </p>
+          <?php endif; ?>
           <?php echo !empty($last_updated_text) ?  apply_filters('the_content', $last_updated_text) : ''; ?>
         </div>
       </div>
