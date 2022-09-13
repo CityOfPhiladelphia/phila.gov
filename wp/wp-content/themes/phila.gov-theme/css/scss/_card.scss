@@ -39,16 +39,18 @@ a.card,
       }
       @include breakpoint(medium up) {
         img {
-          height: 250px;
+          height: 184px;
           width: auto;
+          vertical-align: top;
         }
       }
-      .content-block{
-        display: inline-block;
-        vertical-align: middle
-      }
+        .content-block{
+          display: inline-block;
+          vertical-align: middle
+        }
     }
   }
+
   &.card--list {
     @include xy-grid;
     border-bottom: none;
