@@ -34,9 +34,9 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
   <header class="post-header grid-container">
-  <div class="cell medium-6 align-self-bottom">
-        <?php get_template_part('partials/social-media') ?>
-      </div>
+    <div class="cell medium-6 align-self-bottom">
+      <?php get_template_part('partials/social-media') ?>
+    </div>
     <div class="grid-x grid-padding-x align-bottom">
       <div class="cell medium-24 post-title">
         <?php if ( $template_type == 'action_guide' || $template_type == 'action_guide_2' ) { ?>
