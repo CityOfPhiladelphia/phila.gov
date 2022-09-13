@@ -187,9 +187,9 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     ),
     'fields'  => array(
       array(
-        'name'  => 'Display voting banner',
-        'desc'  => 'When active, the voting banner will be displayed on all pages',
-        'id'    => 'display_voting_banner',
+        'name'  => 'Display site-wide banner',
+        'desc'  => 'When active, the site-wide banner will be displayed on all pages',
+        'id'    => 'display_site_wide_banner',
         'type'  => 'radio',
         'inline' => false,
         'std' => '0',
@@ -198,6 +198,37 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             '1' => 'Display',
         )
       ),
+<<<<<<< HEAD
+=======
+      array(
+        'type' => 'heading',
+        'name' => 'Site-wide banner settings',
+      ),
+      array(
+        'id'  => 'heading_text',
+        'name'  => 'Heading text',
+        'type'  => 'text',
+        'required'  => true
+      ),
+      array(
+        'id'  => 'banner_subtext',
+        'name'  => 'Banner subtext',
+        'type'  => 'text',
+        'required'  => true
+      ),
+      array(
+        'id'  => 'button_text',
+        'name'  => 'Button text',
+        'type'  => 'text',
+        'required'  => true
+      ),
+      array(
+        'id'  => 'button_url',
+        'name'  => 'Button URL',
+        'type'  => 'url',
+        'required'  => true
+      )
+>>>>>>> bb2323ca5 (sitewide banner fixed)
     ),
   );
   return $meta_boxes;
