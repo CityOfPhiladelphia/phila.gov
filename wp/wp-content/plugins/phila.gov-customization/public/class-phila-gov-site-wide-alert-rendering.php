@@ -76,7 +76,7 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
               </div>
             </div>
           </div>
-          <?php $voting_banner_feature_flag = rwmb_meta( 'display_voting_banner', array( 'object_type' => 'setting' ), 'phila_settings' );
+          <?php $voting_banner_feature_flag = rwmb_meta( 'display_site_wide_banner', array( 'object_type' => 'setting' ), 'phila_settings' );
             if(isset($voting_banner_feature_flag) && $voting_banner_feature_flag != 0) {
           ?>
           <div class="voting-banner">
