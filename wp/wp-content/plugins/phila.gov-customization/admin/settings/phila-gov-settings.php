@@ -225,7 +225,13 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'name'  => 'Button URL',
         'type'  => 'url',
         'required'  => true
-      )
+      ),
+      array(
+        'id'  => 'icon',
+        'name' => 'Icon',
+        'type'  => 'text',
+        'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
+      ),
     ),
   );
   return $meta_boxes;
