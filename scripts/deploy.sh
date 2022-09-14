@@ -18,7 +18,6 @@ if [ "$PHILA_TEST" ]; then
   npm run dev:build
 else
   echo 'Running prod tasks'
-  node -v
   npm run build
 fi
 cd /home/ubuntu/app
