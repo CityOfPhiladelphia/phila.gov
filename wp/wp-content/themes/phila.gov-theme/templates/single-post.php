@@ -78,7 +78,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
         </span>
       <?php endif; ?>
   </div>
-  <?php if ( $last_updated ): ?>
+  <?php if ( $last_updated || $archived_state == 2 ): ?>
     <div class="grid-x">
       <div class="cell shrink last-updated icon hide-for-small-only">
           <i class="fas fa-clock-rotate-left fa-2x pam"></i>
