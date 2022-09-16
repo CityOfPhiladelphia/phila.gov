@@ -27,10 +27,10 @@
     }
   }
 }
-.voting-banner {
+.site-wide-banner {
   min-height: 60px;
   background-color: color(ghost-gray);
-  .vote-button{
+  .banner-button{
     margin-top: 3px;
     float: left;
   }
@@ -38,13 +38,17 @@
     font-size: 28px;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   .vote-deadline {
 =======
   .banner-deadline {
 >>>>>>> 65dfbe37a (class name change)
+=======
+  .site-wide-deadline {
+>>>>>>> 0769ea747 (site-wide-banner update)
     font-size: 14px;
   }
-  .voting-text {
+  .banner-text {
     display: inline-block;
   }
 }
