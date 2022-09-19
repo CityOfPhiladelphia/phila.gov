@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 add_filter( 'mb_settings_pages', 'phila_options_page' );
 
@@ -205,26 +205,22 @@ function prefix_options_meta_boxes( $meta_boxes ) {
       array(
         'id'  => 'heading_text',
         'name'  => 'Heading text',
-        'type'  => 'text',
-        'required'  => true
+        'type'  => 'text'
       ),
       array(
         'id'  => 'banner_subtext',
         'name'  => 'Banner subtext',
-        'type'  => 'text',
-        'required'  => true
+        'type'  => 'text'
       ),
       array(
         'id'  => 'button_text',
         'name'  => 'Button text',
-        'type'  => 'text',
-        'required'  => true
+        'type'  => 'text'
       ),
       array(
         'id'  => 'button_url',
         'name'  => 'Button URL',
-        'type'  => 'url',
-        'required'  => true
+        'type'  => 'url'
       ),
       array(
         'id'  => 'icon',
