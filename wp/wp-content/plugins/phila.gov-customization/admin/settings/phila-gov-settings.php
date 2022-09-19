@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 add_filter( 'mb_settings_pages', 'phila_options_page' );
 
@@ -187,9 +187,9 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     ),
     'fields'  => array(
       array(
-        'name'  => 'Display voting banner',
-        'desc'  => 'When active, the voting banner will be displayed on all pages',
-        'id'    => 'display_voting_banner',
+        'name'  => 'Display site-wide banner',
+        'desc'  => 'When active, the site-wide banner will be displayed on all pages',
+        'id'    => 'display_site_wide_banner',
         'type'  => 'radio',
         'inline' => false,
         'std' => '0',
@@ -200,52 +200,33 @@ function prefix_options_meta_boxes( $meta_boxes ) {
       ),
       array(
         'type' => 'heading',
-        'name' => 'Election events',
+        'name' => 'Site-wide banner settings',
       ),
       array(
-        'id'  => 'phila_election_events',
-        'type'   => 'group',
-        'clone' => true,
-        'add_button' => '+ Add another event',
-
-        'fields'  => array(
-          array(
-            'id'  => 'event_label',
-            'name'  => 'Event label',
-            'type'  => 'text',
-            'required'  => true
-          ),
-          array(
-            'id'  => 'event_text',
-            'name'  => 'Event text',
-            'type'  => 'text',
-            'required'  => true
-          ),
-          array(
-            'id'  => 'button_text',
-            'name'  => 'Button text',
-            'type'  => 'text',
-            'required'  => true
-          ),
-          array(
-            'id'  => 'button_url',
-            'name'  => 'Button URL',
-            'type'  => 'url',
-            'required'  => true
-          ),
-          array(
-            'id'  => 'start_date',
-            'name' => 'Event start date',
-            'type'  => 'date',
-            'required'  => true,
-          ),
-          array(
-            'id'  => 'end_date',
-            'name' => 'Event end date',
-            'type'  => 'date',
-            'required'  => true,
-          ),
-        ),
+        'id'  => 'heading_text',
+        'name'  => 'Heading text',
+        'type'  => 'text'
+      ),
+      array(
+        'id'  => 'banner_subtext',
+        'name'  => 'Banner subtext',
+        'type'  => 'text'
+      ),
+      array(
+        'id'  => 'button_text',
+        'name'  => 'Button text',
+        'type'  => 'text'
+      ),
+      array(
+        'id'  => 'button_url',
+        'name'  => 'Button URL',
+        'type'  => 'url'
+      ),
+      array(
+        'id'  => 'icon',
+        'name' => 'Icon',
+        'type'  => 'text',
+        'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
       ),
     ),
   );
