@@ -1,5 +1,5 @@
-<?php $voting_banner_feature_flag = rwmb_meta( 'display_site_wide_banner', array( 'object_type' => 'setting' ), 'phila_settings' );
-  if(isset($voting_banner_feature_flag) && $voting_banner_feature_flag != 0) {
+<?php $site_banner_feature_flag = rwmb_meta( 'display_site_wide_banner', array( 'object_type' => 'setting' ), 'phila_settings' );
+  if(isset($site_banner_feature_flag) && $site_banner_feature_flag != 0) {
     //declare variables
     $banner_heading_text = rwmb_meta( 'heading_text', array( 'object_type' => 'setting' ), 'phila_settings' );
     $site_banner_subtext = rwmb_meta( 'banner_subtext', array( 'object_type' => 'setting' ), 'phila_settings' );
@@ -36,4 +36,4 @@
     </div>
   </div>
 </div>
-<?php } // voting banner feature flag ?>
+<?php } // sitewide banner feature flag ?>
