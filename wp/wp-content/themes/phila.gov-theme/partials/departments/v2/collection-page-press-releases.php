@@ -46,7 +46,7 @@
   </div>
   <?php if ( $current_row['press_releases'] ) :?>
     <div class="float-right">
-      <a href="<?php echo $current_row['press_releases']['phila_v2_press_releases_link']?>">See all press_releases ></a>
+      <a href="<?php echo $current_row['press_releases']['phila_v2_press_release_link']?>">See all press releases ></a>
     </div>
     <?php endif; ?>
 </div>
