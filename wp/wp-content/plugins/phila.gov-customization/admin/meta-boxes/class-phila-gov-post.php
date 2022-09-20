@@ -12,7 +12,7 @@ class Phila_Gov_Post {
     add_filter( 'rwmb_meta_boxes', array($this, 'register_meta_boxes_posts' ), 10 );
 
   }
-  
+
   function register_meta_boxes_posts($meta_boxes){
     $meta_boxes[] = array(
       'title'    => 'Multiple authors',
@@ -28,33 +28,10 @@ class Phila_Gov_Post {
           'id'  => 'phila_author',
           'type' => 'user',
           'multiple' => true,
-          'hidden' => true,
           'field_type'  => 'select_advanced',
           'placeholder' => 'Select more authors',
           'desc'  => 'The author of this post will be listed first, with authors chosen here appearing after, in the order listed.'
       ),
-        array(
-          'id'  => 'phila_exclude_author',
-          'type'  => 'checkbox',
-          'name'  => 'Exclude default author from list?'
-        ),
-        array(
-          'id'  => 'phila_author_group',
-          'type' => 'group',
-          'desc'  => 'Use this feature to manually enter an authors name. If a person will author several posts, you should instead request that they get byline access in WordPress.',
-          'clone'  => true,
-          'sort_clone' => true,
-          'add_button' => '+ Add author',
-          'fields' => array(
-            array(
-              'name' => 'Additional author',
-              'id'   => 'phila_additional_author',
-              'type' => 'text',
-              'desc'  => 'The author of this post will be listed first, with authors chosen here appearing after, in the order listed.',
-              'size' => 50
-            ),
-          )
-        )
     )
   );
 
@@ -98,22 +75,6 @@ class Phila_Gov_Post {
         ),
       )
     );
-
-    $meta_boxes[] = array (
-      'title'    => 'Language options',
-      'pages'    => array( 'post' ),
-      'context'  => 'side',
-      'priority' => 'high',
-      'visible' => array(
-        'when' => array(
-          array('phila_template_select', '!=', 'action_guide'),
-        ),
-      ),
-      'fields' => array(
-        Phila_Gov_Standard_Metaboxes::phila_language_selector()
-      )
-    );
-
     $meta_boxes[] = array (
       'title'    => 'Post options',
       'pages'    => array( 'post' ),
@@ -125,6 +86,7 @@ class Phila_Gov_Post {
         ),
       ),
       'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_language_selector(),
         array(
           'name'  => 'Include last updated?',
           'id'    => 'is_last_updated',
@@ -132,28 +94,6 @@ class Phila_Gov_Post {
           'std'=> '0',
           'on_label'  => 'Yes',
           'off_label' => 'No',
-        ),
-        array(
-          'name'    => 'Archive settings',
-          'id'      => 'phila_archive_post',
-          'type'    => 'radio',
-          'inline'  => false,
-          'visible' => array(
-            'when' => array(
-              array('phila_template_select', '=', 'post'),
-            ),
-          ),
-          'options' =>  array(
-            'default'   => 'Default',
-            'do_not_archive'   => 'Do not archive',
-            'archive_now'   => 'Archive now',
-          ),
-          'admin_columns' => array(
-            'position' => 'after date',
-            'title'    => __( 'Archive' ),
-            'sort'     => true,
-          ),
-          'std'     => 'default'
         ),
         array(
           'name'  => 'Last updated date',
@@ -312,7 +252,7 @@ class Phila_Gov_Post {
         ),
       ),
     );
-    
+
     $meta_boxes[] = array(
       'title'    => 'Page content',
       'pages'    => array( 'post' ),
