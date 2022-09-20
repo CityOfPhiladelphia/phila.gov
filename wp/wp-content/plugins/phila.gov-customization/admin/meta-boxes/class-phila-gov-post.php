@@ -12,7 +12,7 @@ class Phila_Gov_Post {
     add_filter( 'rwmb_meta_boxes', array($this, 'register_meta_boxes_posts' ), 10 );
 
   }
-  
+
   function register_meta_boxes_posts($meta_boxes){
     $meta_boxes[] = array(
       'title'    => 'Multiple authors',
@@ -75,7 +75,10 @@ class Phila_Gov_Post {
         ),
       )
     );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1973fa6ff (merge clean up)
     $meta_boxes[] = array (
       'title'    => 'Post options',
       'pages'    => array( 'post' ),
@@ -253,7 +256,7 @@ class Phila_Gov_Post {
         ),
       ),
     );
-    
+
     $meta_boxes[] = array(
       'title'    => 'Page content',
       'pages'    => array( 'post' ),
