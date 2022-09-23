@@ -41,14 +41,8 @@ a.card,
         img {
           height: 184px;
           width: auto;
-          vertical-align: top;
         }
       }
-        .content-block{
-          display: inline-block;
-          vertical-align: middle
-        }
-    }
   }
 
   &.card--list {
@@ -268,7 +262,6 @@ a.card.sub-topic{
 }
 
 .press-grid,
-.announcement-grid {
   .card {
     &.custom {
       display: flex;
@@ -302,4 +295,3 @@ a.card.sub-topic{
       border-bottom: none !important;
     }
   }
-}
