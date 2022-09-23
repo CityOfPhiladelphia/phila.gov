@@ -41,12 +41,15 @@ a.card,
         img {
           height: 184px;
           width: auto;
+          vertical-align: top;
         }
       }
-      .content-block {
+      .content-block{
         display: inline-block;
+        vertical-align: middle
       }
     }
+  }
 
   &.card--list {
     @include xy-grid;
@@ -263,15 +266,13 @@ a.card.sub-topic{
     }
   }
 }
-
-  .press-grid,
-  .announcement-grid {
-    .card {
-      &.custom {
-        display: flex;
-        border-bottom:1px solid #444444 !important;
-        background: none;
-
+.press-grid,
+.announcement-grid {
+  .card {
+    &.custom {
+      display: flex;
+      border-bottom:1px solid #444444 !important;
+      background: none;
         time {
           font-size: 14px;
           font-weight: bold;

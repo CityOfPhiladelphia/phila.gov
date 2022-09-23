@@ -44,7 +44,7 @@
     <?php endforeach; ?>
     </div>
   </div>
-  <?php if ( $current_row['posts'] ) :?>
+  <?php if ( $current_row['posts'] && isset($current_row['posts']['phila_v2_posts_link']) ) :?>
     <div class="float-right">
       <a href="<?php echo $current_row['posts']['phila_v2_posts_link']?>">See all posts ></a>
     </div>
