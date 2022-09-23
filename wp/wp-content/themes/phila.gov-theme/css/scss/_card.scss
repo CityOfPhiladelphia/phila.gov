@@ -43,7 +43,7 @@ a.card,
           width: auto;
         }
       }
-  }
+    }
 
   &.card--list {
     @include xy-grid;
@@ -294,4 +294,5 @@ a.card.sub-topic{
     .card {
       border-bottom: none !important;
     }
+  }
   }

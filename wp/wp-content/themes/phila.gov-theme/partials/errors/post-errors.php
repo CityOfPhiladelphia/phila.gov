@@ -1,4 +1,6 @@
 <?php
+  if ( is_user_logged_in() ) {
+    if ( !has_post_thumbnail() && (phila_get_selected_template() == 'post' || phila_get_selected_template() == 'translated_post') ) {
     $error_message_title = "Warning: This blog post doesn't have a featured image.";
     $error_messages = [];
     $item1['link'] = '';
