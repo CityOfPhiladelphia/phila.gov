@@ -10,7 +10,7 @@ files:
   - source: wp-cli.yml
     destination: /home/ubuntu/app
     overwrite: true
-  file_exists_behavior: OVERWRITE
+file_exists_behavior: OVERWRITE
 permissions:
   - object: /home/ubuntu/app/wp
     owner: ubuntu
