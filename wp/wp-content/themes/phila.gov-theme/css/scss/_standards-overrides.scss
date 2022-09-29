@@ -27,3 +27,13 @@ footer.site-footer.site-footer .fat h1, footer.site-footer.site-footer .fat h2, 
   font-size: .9rem;
   font-family: "Open Sans";
 }
+
+footer.site-footer .contact {
+  border: none;
+}
+
+@include breakpoint(small only) {
+  #full-footer-start{
+    margin-top: 1rem;
+  }
+}
