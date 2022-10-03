@@ -29,9 +29,11 @@ $ancestors = get_post_ancestors($post);
 $parent = wp_get_post_parent_id($post);
 $user_selected_template = phila_get_selected_template();
 
-if (phila_get_selected_template($parent) == 'prog_association' ) {
-  $user_selected_template = 'prog_association';
-  $association = true;
+foreach($ancestors as $ancestor_id) {
+  if (phila_get_selected_template($ancestor_id) == 'prog_association' ) {
+    $user_selected_template = 'prog_association';
+    $association = true;
+  }
 }
 
 get_header(); ?>
@@ -44,7 +46,7 @@ get_header(); ?>
     $parent = phila_util_get_furthest_ancestor($post);
 
     if ( phila_util_is_new_template( $parent->ID ) && $user_selected_template !== 'prog_association' ) :
-
+      
       /**
        * Department Homepage V2 Hero
        */

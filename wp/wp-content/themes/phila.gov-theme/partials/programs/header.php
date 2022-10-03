@@ -14,9 +14,9 @@
 
   $heading = get_the_title();
 
-  if ( !empty( $sub_hero ) ):
+  if ( !empty( $sub_hero ) ) {
     $sub_hero = reset( $sub_hero );
-  else:
+  } else {
     // foreach is ordered closest ancestor to further ancestor
     foreach($ancestors as $ancestor_id) {
       if (empty( $sub_hero )) {
@@ -32,8 +32,9 @@
         $heading = get_the_title( $ancestor_id );
       }
     }
-  endif;
+  }
   if ( isset( $association )) {
+
     $parent = wp_get_post_parent_id($post);
     $sub_hero = rwmb_meta( 'prog_association_img', array( 'limit' => 1 ), $parent);
     $sub_hero =  !empty( $sub_hero ) ? reset( $sub_hero ) : '' ;
