@@ -76,9 +76,8 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
+
           <?php include( locate_template( 'partials/global/site-wide-banner.php' ) ); ?>
-=======
           <?php $voting_banner_feature_flag = rwmb_meta( 'display_site_wide_banner', array( 'object_type' => 'setting' ), 'phila_settings' );
             if(isset($voting_banner_feature_flag) && $voting_banner_feature_flag != 0) {
           ?>
@@ -103,7 +102,6 @@ class Phila_Gov_Site_Wide_Alert_Rendering {
             </div>
           </div>
           <?php } // voting banner feature flag ?>
->>>>>>> bb2323ca5 (sitewide banner fixed)
           <?php
         }else if ( ($alert_start <= $now && $alert_end == 0 ) || $alert_start <= $now && ( $alert_end >= $now ) ){ ?>
           <div class="site-wide-alert <?php echo $alert_color?>" data-alert="alert-<?php echo $alert_start ?>-<?php echo $alert_end; ?>-<?php echo get_the_ID(); ?>" data-swiftype-index="false">
