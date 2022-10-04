@@ -198,9 +198,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             '1' => 'Display',
         )
       ),
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+      
       array(
         'type' => 'heading',
         'name' => 'Site-wide banner settings',
@@ -229,8 +227,6 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'type'  => 'url',
         'required'  => true
       )
->>>>>>> bb2323ca5 (sitewide banner fixed)
-=======
       array(
         'type' => 'heading',
         'name' => 'Election events',
@@ -280,7 +276,6 @@ function prefix_options_meta_boxes( $meta_boxes ) {
           ),
         ),
       ),
->>>>>>> 2e74cfb71 (voting banner fields)
     ),
   );
   return $meta_boxes;
