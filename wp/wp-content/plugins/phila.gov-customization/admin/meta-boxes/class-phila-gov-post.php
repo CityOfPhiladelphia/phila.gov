@@ -75,10 +75,7 @@ class Phila_Gov_Post {
         ),
       )
     );
-<<<<<<< HEAD
-
-=======
->>>>>>> 1973fa6ff (merge clean up)
+    
     $meta_boxes[] = array (
       'title'    => 'Post options',
       'pages'    => array( 'post' ),
