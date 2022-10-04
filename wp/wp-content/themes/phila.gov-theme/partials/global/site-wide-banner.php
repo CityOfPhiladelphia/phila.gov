@@ -18,7 +18,6 @@
         <?php } ?>
         </div>
         <div class="cell auto message align-self-middle">
-<<<<<<< HEAD
         <div class="banner-text">
         <?php if(isset($banner_heading_text)) { ?>
           <p class="mbn"><b><?php echo $banner_heading_text; ?></b></p>
@@ -32,7 +31,6 @@
           <?php if(isset($site_button_text) && (isset($site_button_url))) { ?>
           <a class="banner-button button" href="<?php echo $site_button_url;?>"><b><?php echo $site_button_text; ?></b></a>
           <?php } ?>
-=======
           <div class="banner-text">
             <p class="mbn"><b>Election day is Nov. 8, 2022</b></p>
             <p class="site-wide-deadline mbn">The deadline to register to vote is Oct. 24, 2022.</p>
@@ -40,7 +38,6 @@
         </div>
         <div class="cell medium-auto medium-shrink small-24 align-self-right">
           <a class="banner-button button" href="https://vote.phila.gov/voting/my-vote-my-way/"><b>Make a plan to vote</b></a>
->>>>>>> 0769ea747 (site-wide-banner update)
         </div>
       </div>
     </div>
