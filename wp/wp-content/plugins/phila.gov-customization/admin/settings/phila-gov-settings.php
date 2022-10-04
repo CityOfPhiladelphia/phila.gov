@@ -198,7 +198,6 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             '1' => 'Display',
         )
       ),
-      
       array(
         'type' => 'heading',
         'name' => 'Site-wide banner settings',
