@@ -44,16 +44,13 @@ a.card,
           vertical-align: top;
         }
       }
-<<<<<<< HEAD
         .content-block{
           display: inline-block;
           vertical-align: middle
         }
-=======
       .content-block {
         display: inline-block;
       }
->>>>>>> 71ced40b1 (scss fixes)
     }
   }
 
@@ -273,7 +270,6 @@ a.card.sub-topic{
   }
 }
 
-<<<<<<< HEAD
 .press-grid,
 .announcement-grid {
   .card {
@@ -281,7 +277,6 @@ a.card.sub-topic{
       display: flex;
       border-bottom:1px solid #444444 !important;
       background: none;
-=======
   .press-grid,
   .announcement-grid {
     .card {
@@ -289,7 +284,6 @@ a.card.sub-topic{
         display: flex;
         border-bottom:1px solid #444444 !important;
         background: none;
->>>>>>> 71ced40b1 (scss fixes)
 
         time {
           font-size: 14px;
@@ -319,12 +313,9 @@ a.card.sub-topic{
       }
     }
   }
-<<<<<<< HEAD
   .card--last {
     .card {
       border-bottom: none !important;
     }
   }
-=======
->>>>>>> 71ced40b1 (scss fixes)
 }
