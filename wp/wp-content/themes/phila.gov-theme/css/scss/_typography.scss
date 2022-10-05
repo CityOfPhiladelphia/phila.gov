@@ -126,7 +126,7 @@ input[type=radio] + label[for] {
 }
 
 section ol {
-  padding-left:2rem;
+  padding-left:2rem !important;
 }
 
 @include breakpoint(small only) {
