@@ -15,6 +15,7 @@ wp/wp-content/plugins/two-factor-authentication-premium/
 wp/wp-content/plugins/wpfront-user-role-editor-personal-pro/
 wp/wp-content/plugins/wp-nested-pages/
 wp/wp-content/themes/phila.gov-theme/yarn-error.log
+wp/wp-content/themes/phila.gov-theme/package-lock.json
 node_moddules
 # Ignore compiled files
 wp/wp-content/themes/phila.gov-theme/css/styles.css
