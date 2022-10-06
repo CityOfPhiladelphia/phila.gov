@@ -1580,6 +1580,19 @@ function phila_connect_panel($connect_panel) {
   // return $connect_panel;
 }
 
+function phila_connect_panel_from_phila_row($phila_row) {
+  if ($phila_row) {
+    foreach ($phila_row as $row) {
+      if ($row['phila_grid_options'] == 'phila_grid_options_thirds') {
+        if($row['phila_two_thirds_options']['phila_one_third_col']['phila_one_third_col_option'] == 'phila_connect_panel') {
+          return phila_connect_panel($row['phila_two_thirds_options']['phila_one_third_col']['phila_connect_panel']);
+        }
+      }
+    }
+  }
+  return null;
+}
+
 function phila_image_list($image_list) {
 
   $output_array = array();
