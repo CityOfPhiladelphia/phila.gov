@@ -233,7 +233,6 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
       ),
     ),
-  ),
-);
+),
   return $meta_boxes;
 }
