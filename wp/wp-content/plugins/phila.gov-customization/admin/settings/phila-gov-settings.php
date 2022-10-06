@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 add_filter( 'mb_settings_pages', 'phila_options_page' );
 
@@ -225,57 +225,15 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'name'  => 'Button URL',
         'type'  => 'url',
         'required'  => true
-      )
-      array(
-        'type' => 'heading',
-        'name' => 'Election events',
       ),
       array(
-        'id'  => 'phila_election_events',
-        'type'   => 'group',
-        'clone' => true,
-        'add_button' => '+ Add another event',
-
-        'fields'  => array(
-          array(
-            'id'  => 'event_label',
-            'name'  => 'Event label',
-            'type'  => 'text',
-            'required'  => true
-          ),
-          array(
-            'id'  => 'event_text',
-            'name'  => 'Event text',
-            'type'  => 'text',
-            'required'  => true
-          ),
-          array(
-            'id'  => 'button_text',
-            'name'  => 'Button text',
-            'type'  => 'text',
-            'required'  => true
-          ),
-          array(
-            'id'  => 'button_url',
-            'name'  => 'Button URL',
-            'type'  => 'url',
-            'required'  => true
-          ),
-          array(
-            'id'  => 'start_date',
-            'name' => 'Event start date',
-            'type'  => 'date',
-            'required'  => true,
-          ),
-          array(
-            'id'  => 'end_date',
-            'name' => 'Event end date',
-            'type'  => 'date',
-            'required'  => true,
-          ),
-        ),
+        'id'  => 'icon',
+        'name' => 'Icon',
+        'type'  => 'text',
+        'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
       ),
     ),
-  );
+  ),
+);
   return $meta_boxes;
 }
