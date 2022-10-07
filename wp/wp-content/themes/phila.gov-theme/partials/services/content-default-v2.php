@@ -5,19 +5,19 @@
  *
  */
 ?>
-  
-<?php 
-  $who = trim( rwmb_meta( 'service_who' ) ); 
+
+<?php
+  $who = trim( rwmb_meta( 'service_who' ) );
   $who = isset( $who ) ? phila_remove_empty_p_tags( $who ) : false;
 
-  $requirements = trim( rwmb_meta( 'service_requirements' ) ); 
+  $requirements = trim( rwmb_meta( 'service_requirements' ) );
   $requirements = isset( $requirements ) ? phila_remove_empty_p_tags( $requirements ) : false;
 
   $requirements_prereq_select = rwmb_meta( 'service_accordion_select' );
   $requirements_prereq = rwmb_meta( 'accordion_row' );
   $requirements_prereq_title = rwmb_meta( 'accordion_row' );
 
-  $where_when = trim( rwmb_meta( 'service_where_when' ) ); 
+  $where_when = trim( rwmb_meta( 'service_where_when' ) );
   $where_when = isset( $where_when ) ? phila_remove_empty_p_tags( $where_when ) : false;
 
   $is_address = rwmb_meta('service_where_when_address_select');
@@ -50,7 +50,7 @@
 ?>
 
 
-<?php 
+<?php
   $process = rwmb_meta( 'service_before_you_begin' );
 ?>
 
@@ -92,7 +92,7 @@
       $override_icon = isset($requirements_prereq_title['phila_v2_icon']) ? $requirements_prereq_title['phila_v2_icon'] : '';
       $accordion_title = '';
       $accordion_group = $requirements_prereq['accordion_group'];
-      $is_full_width = false; 
+      $is_full_width = false;
       $use_icon = true; ?>
       <?php include(locate_template('partials/global/accordion.php')); ?>
   </div>
@@ -120,7 +120,7 @@
               <div class="title pvxs"> <?php echo $callout['heading'] ?></div>
               <span class="symbol">
                 $<span class="large-text"><?php echo $callout['amount']; ?></span>
-              </span>  
+              </span>
                 <?php if ( isset($callout['description'] ) ) : ?>
                   <div class="pam">
                     <?php echo apply_filters( 'the_content', $callout['description']) ?>
@@ -131,7 +131,7 @@
         <?php endforeach; ?>
         </div>
       <?php endif; ?>
-    <div class="phm-mu <?php echo !empty( $is_cost_callout) ? 'ptl' : '' ?>"><?php echo apply_filters( 'the_content', $cost) ?></div>
+    <div class="phm-mu"><?php echo apply_filters( 'the_content', $cost) ?></div>
     <?php if ( !empty($is_modal) && !empty( $modal_link_text ) ) : ?>
       <div class="reveal reveal--announcement" id="<?php echo sanitize_title_with_dashes($modal_link_text)?>" data-reveal aria-labelledby="<?php echo sanitize_title_with_dashes($modal_link_text)?>">
         <button class="close-button" data-close aria-label="Close modal" type="button">
