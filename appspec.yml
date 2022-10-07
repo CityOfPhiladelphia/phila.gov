@@ -3,10 +3,13 @@ os: linux
 files:
   - source: /wp
     destination: /home/ubuntu/app/wp
+    overwrite: true
   - source: /nginx
     destination: /home/ubuntu/app/nginx
+    overwrite: true
   - source: wp-cli.yml
     destination: /home/ubuntu/app
+    overwrite: true
 file_exists_behavior: OVERWRITE
 permissions:
   - object: /home/ubuntu/app/wp
@@ -29,6 +32,10 @@ hooks:
       runas: ubuntu
     - location: scripts/db-config.sh
       runas: ubuntu
+    - location: scripts/composer.sh
+      runas: ubuntu
+    - location: scripts/postdeploy.sh
+      runas: ubuntu
 branch_config:
   wip\/.*: null
   staging:
@@ -46,7 +53,7 @@ branch_config:
       autoRollbackConfiguration:
         enabled: false
   main:
-    deploymentGroupName: www.phila.gov-deployer
+    deploymentGroupName: prod-phila-gov
     deploymentGroupConfig:
       serviceRoleArn: 'arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy'
     deploymentConfig:
