@@ -49,6 +49,7 @@ class Phila_Gov_Collection_Page {
                 'paragraph_text_with_photo' => 'Paragraph text with photo',
                 'post' => 'Posts',
                 'press_releases' => 'Press releases',
+
                 'program' => 'Program pages',
                 'phila_resource_group' => 'Resource group',
                 'service' => 'Service pages',
@@ -134,6 +135,7 @@ class Phila_Gov_Collection_Page {
               ),
               'fields' => array(
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = 'Stepped process title'),
+
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content()
               )
@@ -148,6 +150,7 @@ class Phila_Gov_Collection_Page {
               ),
               'fields'  => array(
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = '1/4 heading'),
+
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
               )
             ),
