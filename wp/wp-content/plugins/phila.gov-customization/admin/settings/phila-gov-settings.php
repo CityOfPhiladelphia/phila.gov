@@ -205,22 +205,26 @@ function prefix_options_meta_boxes( $meta_boxes ) {
       array(
         'id'  => 'heading_text',
         'name'  => 'Heading text',
-        'type'  => 'text'
+        'type'  => 'text',
+        'required'  => true
       ),
       array(
         'id'  => 'banner_subtext',
         'name'  => 'Banner subtext',
-        'type'  => 'text'
+        'type'  => 'text',
+        'required'  => true
       ),
       array(
         'id'  => 'button_text',
         'name'  => 'Button text',
-        'type'  => 'text'
+        'type'  => 'text',
+        'required'  => true
       ),
       array(
         'id'  => 'button_url',
         'name'  => 'Button URL',
-        'type'  => 'url'
+        'type'  => 'url',
+        'required'  => true
       ),
       array(
         'id'  => 'icon',
