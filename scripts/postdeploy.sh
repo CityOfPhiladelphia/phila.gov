@@ -1,1 +1,1 @@
-composer update -d /app/wp
+composer update -d ~/app/wp

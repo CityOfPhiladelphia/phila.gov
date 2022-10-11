@@ -1,5 +1,5 @@
 source ~/.ssh/environment
-sudo chmod 777 /app/wp
+sudo chmod 777 ~/app/wp
 echo '
 {
   "name": "cityofphiladelphia/phila.gov",
@@ -38,4 +38,4 @@ echo '
     }
   }
 }
-' > /app/wp/composer.json
+' > ~/app/wp/composer.json
