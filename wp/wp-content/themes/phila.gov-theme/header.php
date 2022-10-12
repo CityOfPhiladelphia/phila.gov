@@ -61,26 +61,49 @@
     <h1 class="accessible">City of Philadelphia</h1>
 
     <!-- Utility Navigation -->
-    <div class="row columns bg-ben-franklin-blue expanded utility-nav" data-swiftype-index="false">
+    <div class="columns bg-ghost-gray expanded utility-nav" data-swiftype-index="false">
       <div class="row">
         <div class="medium-12 small-16 columns">
           <ul class="medium-horizontal menu">
             <li class="gov-site show-for-medium">
               <span>An official website of the City of Philadelphia government </span>
-              <a href="" class="trusted-site-toggle">Here's how you know</a>
+              <a href="" class="trusted-site-toggle valign-cell">Here's how you know</a>
             </li>
             <li class="gov-site show-for-small-only">
               <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
             </li>
           </ul>
         </div>
-        <div class="medium-12 small-8 columns">
-          <ul class="medium-horizontal menu float-right">
-            <li class="show-for-medium"><a href="/departments/mayor/">Office of the Mayor</a></li>
-            <li class="show-for-medium"><a href="/city-government-directory/">City government directory</a></li>
+        <!-- Translation Nav -->
+        <div class="medium-12 small-8 columns translations-nav">
+          <ul class="translations-dropdown float-right dropdown menu" data-dropdown-menu>
             <li>
-              <div id="google_translate_element" class="no-js"><span class="show-for-sr">Google Translate</span></div>
+                <a href="#" class="dropdown-selector">
+                    <i class="fas fa-globe"></i> <span class="show-for-small-only">Translate</span>
+                </a>
+                <ul class="menu" data-dropdown-content>
+                  <div class="show-for-small-only">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Español</a></li>
+                    <li><a href="#">中文</a></li>
+                    <li><a href="#">عربي</a></li>
+                  </div>
+                    <li><a href="#">Pусский</a></li>
+                    <li><a href="#">Português</a></li>  
+                    <li><a href="#">Tiếng Việt</a></li>  
+                    <li><a href="#">Ayisyen</a></li>
+                    <li><a href="#">Kiswahili</a></li>
+                    <li><a href="#">More Languages+</a></li>
+                    <li><a href="#"><i class="fa fa-messages"></i> Feedback and Support</a></li>
+                    <li><a href="#"><i class="fa fa-file-lines"></i> Translated Publications</a></li>
+                </ul>
             </li>
+          </ul>
+          <ul class="medium-horizontal float-right menu valign-mu show-for-medium">
+            <li><a href="#">English</a></li>
+            <li><a href="#">Español</a></li>
+            <li><a href="#">中文</a></li>
+            <li><a href="#">عربي</a></li>
           </ul>
         </div>
       </div>
