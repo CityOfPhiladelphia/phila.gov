@@ -77,14 +77,16 @@
         <div class="medium-12 small-8 columns translations-nav">
           <ul class="translations-dropdown float-right dropdown menu" data-dropdown-menu>
             <li>
-                <a href="#" class="translations-icon dropdown-selector" data-dropdown="drop">
+                <a href="#" class="dropdown-selector">
                     <i class="fas fa-globe"></i> <span class="show-for-small-only">Translate</span>
                 </a>
-                <ul id="translations-options" class="menu float-left" data-dropdown-content>
-                    <li class="show-for-small-only"><a href="#">English</a></li>
-                    <li class="show-for-small-only"><a href="#">Español</a></li>
-                    <li class="show-for-small-only"><a href="#">中文</a></li>
-                    <li class="show-for-small-only"><a href="#">عربي</a></li>
+                <ul class="menu" data-dropdown-content>
+                  <div class="show-for-small-only">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Español</a></li>
+                    <li><a href="#">中文</a></li>
+                    <li><a href="#">عربي</a></li>
+                  </div>
                     <li><a href="#">Pусский</a></li>
                     <li><a href="#">Português</a></li>  
                     <li><a href="#">Tiếng Việt</a></li>  
@@ -96,7 +98,7 @@
                 </ul>
             </li>
           </ul>
-          <ul class="float-right menu show-for-medium">
+          <ul class="medium-horizontal float-right menu valign-mu show-for-medium">
             <li><a href="#">English</a></li>
             <li><a href="#">Español</a></li>
             <li><a href="#">中文</a></li>

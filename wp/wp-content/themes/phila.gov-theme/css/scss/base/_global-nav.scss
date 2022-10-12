@@ -49,6 +49,7 @@
     }
 
     ul {
+
       li {
         &:last-of-type::after {
           content: none;
@@ -62,7 +63,7 @@
         a {
           padding: $spacing-small;
           color: color(dark-ben-franklin);
-          text-align: left;
+          text-align: center;
 
           &:hover,
           &:active{
@@ -78,6 +79,7 @@
             &:hover,
             &:active{
               color:color(dark-ben-franklin);
+              background: color(light-blue);
             }
           }
         }
