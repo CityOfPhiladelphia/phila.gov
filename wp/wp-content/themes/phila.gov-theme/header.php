@@ -91,42 +91,45 @@
         </div>
     </div>
     <!-- Utility Navigation -->
-        <!-- <div class="columns bg-ghost-gray expanded utility-nav" data-swiftype-index="false">
+    <div class="columns bg-ghost-gray expanded utility-nav" data-swiftype-index="false">
       <div class="row">
         <div class="medium-12 small-16 columns">
           <ul class="medium-horizontal menu">
-            <li class="gov-site show-for-medium valign-cell">
-              An official website of the City of Philadelphia government <a href="#" class="trusted-site-toggle">Here's how you know <i class="fas fa-solid fa-caret-down"></i></a>
+            <li class="gov-site show-for-medium">
+              <span>An official website of the City of Philadelphia government </span>
+              <a href="" class="trusted-site-toggle valign-cell">Here's how you know</a>
             </li>
             <li class="gov-site show-for-small-only">
                 <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
             </li>
           </ul>
-        </div> -->
+        </div>
         <!-- Translation Nav -->
-        <!-- <div class="medium-12 small-8 columns translations-nav">
-          <ul class="translations-dropdown dropdown menu" data-dropdown-menu>
+        <div class="medium-12 small-8 columns translations-nav">
+          <ul class="translations-dropdown float-right dropdown menu" data-dropdown-menu>
             <li>
-                <a href="#" class="translations-icon dropdown-selector" data-dropdown="drop">
+                <a href="#" class="dropdown-selector">
                     <i class="fas fa-globe"></i> <span class="show-for-small-only">Translate</span>
                 </a>
-                <ul id="translations-options" class="menu" data-dropdown-content>
-                    <li class="show-for-small-only"><a href="#">English</a></li>
-                    <li class="show-for-small-only"><a href="#">Español</a></li>
-                    <li class="show-for-small-only"><a href="#">中文</a></li>
-                    <li class="show-for-small-only"><a href="#">عربي</a></li>
+                <ul class="menu" data-dropdown-content>
+                  <div class="show-for-small-only">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Español</a></li>
+                    <li><a href="#">中文</a></li>
+                    <li><a href="#">عربي</a></li>
+                  </div>
                     <li><a href="#">Pусский</a></li>
                     <li><a href="#">Português</a></li>  
                     <li><a href="#">Tiếng Việt</a></li>  
                     <li><a href="#">Ayisyen</a></li>
                     <li><a href="#">Kiswahili</a></li>
-                    <li><div id="google_translate_element" class="no-js"><span class="show-for-sr">More Languages+</span></div></li>
+                    <li><a href="#">More Languages+</a></li>
                     <li><a href="#"><i class="fa fa-messages"></i> Feedback and Support</a></li>
                     <li><a href="#"><i class="fa fa-file-lines"></i> Translated Publications</a></li>
                 </ul>
-             </li>
+            </li>
           </ul>
-          <ul class="menu show-for-medium">
+          <ul class="medium-horizontal float-right menu valign-mu show-for-medium">
             <li><a href="#">English</a></li>
             <li><a href="#">Español</a></li>
             <li><a href="#">中文</a></li>
