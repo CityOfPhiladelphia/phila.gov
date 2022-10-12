@@ -26,7 +26,6 @@
     &:hover,
     &:active{
       color:color(dark-ben-franklin);
-      background: color(light-blue);
     }
   }
 
@@ -40,51 +39,50 @@
   //utility nav
   .utility-nav {
     font-size: .85rem;
-    min-height: 25px;
+    min-height: 10px;
 
     @include breakpoint(small only) {
       height:10px;
     }
 
     ul {
-
       li {
         &:last-of-type::after {
           content: none;
         }
         &::after {
           display: inline;
-          content: '|';
-          background: color(ben-franklin-blue);
-          color: rgba(color(light-ben-franklin), .6);
-          padding: 0 10px;
+          background: color(ghost-gray);
+          color: rgba(color(ghost-gray), .6);
         }
 
         a {
           display: inline-block;
           padding: $spacing-small;
-          color: white;
+          color: color(dark-ben-franklin);
           text-align: center;
 
           &:hover,
           &:active{
-            background: color(light-blue);
             color:color(dark-ben-franklin);
+            background: color(ghost-gray);
+            text-decoration: underline;
+            font-weight: bold;
           }
           &.js-is-current{
             background:color(dark-gray);
             color:white;
+            text-decoration: underline;
             &:hover,
             &:active{
               color:color(dark-ben-franklin);
-              background: color(light-blue);
             }
           }
         }
         &.gov-site {
           span {
             font-size: 0.75rem;
-            color: white;
+            color: black;
           }
           a {
             font-size: .75rem;
@@ -103,6 +101,14 @@
       .goog-te-gadget-simple .goog-te-menu-value::after {
         top: 6px;
       }
+    } 
+    .translations-nav {
+        .translations-dropdown > li > a {
+            background: color(ghost-gray);
+        }
+        .is-dropdown-submenu {
+            background: color(ghost-gray);
+        }
     }
   }
 
@@ -276,7 +282,6 @@
         }
         a:active, a:hover {
           color: color(dark-ben-franklin);
-          background: color(light-blue);
         }
       }
     }
