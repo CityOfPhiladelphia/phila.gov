@@ -27,20 +27,20 @@
     }
   }
 }
-.voting-banner {
+.site-wide-banner {
   min-height: 60px;
   background-color: color(ghost-gray);
-  .vote-button{
+  .banner-button{
     margin-top: 3px;
     float: left;
   }
   .fas {
     font-size: 28px;
   }
-  .vote-deadline {
+  .banner-deadline {
     font-size: 14px;
   }
-  .voting-text {
+  .banner-text {
     display: inline-block;
   }
 }

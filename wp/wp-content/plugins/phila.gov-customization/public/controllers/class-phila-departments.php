@@ -139,7 +139,8 @@ class Phila_Departments_Controller {
 
    // fetch connect box information and description from metaboxes
     $connect_panel = rwmb_meta('module_row_1_col_2_connect_panel', array(), $post->ID);
-    $connect_info = phila_connect_panel($connect_panel);
+    $phila_row = rwmb_meta('phila_row', array(), $post->ID);
+    $connect_info = phila_connect_panel_from_phila_row($phila_row) ? phila_connect_panel_from_phila_row($phila_row) : phila_connect_panel($connect_panel);
     $description = rwmb_meta( 'phila_meta_desc', '', $post->ID );
 
     if (isset( $schema['properties']['name'] )) {

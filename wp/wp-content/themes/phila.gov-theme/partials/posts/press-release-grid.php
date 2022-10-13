@@ -94,7 +94,7 @@ if( !empty($tag) ) {
           <?php if ($count == 1) :?>
             <div class="grid-x grid-margin-x grid-full-height">
           <?php elseif( $count == 3 ) : ?>
-            <div class="grid-x grid-margin-x grid-full-height mtm">
+            <div class="grid-x grid-margin-x grid-full-height">
           <?php endif;?>
           <?php if ($count <= 4) : ?>
             <?php if ($user_selected_template == 'custom_content' || $post_type_parent == 'guides'): ?>
