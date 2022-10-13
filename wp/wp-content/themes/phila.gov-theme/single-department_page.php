@@ -44,7 +44,7 @@ get_header(); ?>
     $parent = phila_util_get_furthest_ancestor($post);
 
     if ( phila_util_is_new_template( $parent->ID ) && $user_selected_template !== 'prog_association' ) :
-
+      
       /**
        * Department Homepage V2 Hero
        */
