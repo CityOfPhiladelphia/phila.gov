@@ -12,7 +12,7 @@
   z-index: 1000;
   
   ul {
-    font-size:14px;
+    font-size:12px;
   }
 
   &.no-js {
@@ -38,8 +38,11 @@
   }
   //utility nav
   .utility-nav {
+  
     font-size: .85rem;
-    min-height: 10px;
+    @include breakpoint(medium up) {
+        padding: 1rem;
+    }
 
     @include breakpoint(small only) {
       height:10px;
@@ -53,14 +56,13 @@
         &::after {
           display: inline;
           background: color(ghost-gray);
-          color: rgba(color(ghost-gray), .6);
+          content: none;
         }
 
         a {
-          display: inline-block;
           padding: $spacing-small;
           color: color(dark-ben-franklin);
-          text-align: center;
+          text-align: left;
 
           &:hover,
           &:active{
@@ -71,7 +73,7 @@
           }
           &.js-is-current{
             background:color(dark-gray);
-            color:white;
+            color:color(dark-ben-franklin);
             text-decoration: underline;
             &:hover,
             &:active{
@@ -80,34 +82,49 @@
           }
         }
         &.gov-site {
-          span {
-            font-size: 0.75rem;
-            color: black;
-          }
-          a {
-            font-size: .75rem;
-            text-decoration: underline;
-          }
-          &::after {
-            display: none;
-          }
+            li { 
+                text-align: left;
+            }
+            span {
+                color: black;
+                padding: $spacing-small;
+            }
+            a {
+                text-decoration: underline;
+            }
+            &::after {
+                display: none;
+            }
         }
       }
     }
-    #google_translate_element {
-      a {
-        padding: .2rem 2rem .3rem .5rem;
-      }
-      .goog-te-gadget-simple .goog-te-menu-value::after {
-        top: 6px;
-      }
-    } 
     .translations-nav {
-        .translations-dropdown > li > a {
-            background: color(ghost-gray);
+
+        .translations-dropdown > li {
+            a {
+                background: color(ghost-gray);
+                &:hover,
+                &:active {
+                    background: color(dark-ben-franklin);
+                    color:white;
+                }
+            }
+            .translations-icon {
+                &:hover,
+                &:active{
+                    background: color(ghost-gray);
+                    color:color(dark-ben-franklin);
+                }
+
+            }
         }
-        .is-dropdown-submenu {
-            background: color(ghost-gray);
+        .is-dropdown-submenu-parent > a {
+            color: color(dark-ben-franklin); 
+           
+            &::after {
+                border-color:color(dark-ben-franklin) transparent transparent ;
+            }
+
         }
     }
   }
