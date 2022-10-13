@@ -15,7 +15,7 @@ class Phila_Gov_Post {
 
   function register_meta_boxes_posts($meta_boxes){
     $meta_boxes[] = array(
-      'title'    => 'Multiple authors',
+      'title'    => 'Additional authors',
       'pages'    => array( 'post' ),
       'context'  => 'after_title',
       'visible' => array(
@@ -36,21 +36,21 @@ class Phila_Gov_Post {
         array(
           'id'  => 'phila_exclude_author',
           'type'  => 'checkbox',
-          'name'  => 'Exclude default author from list?'
+          'name'  => 'Exclude primary author from list?'
         ),
         array(
           'id'  => 'phila_author_group',
           'type' => 'group',
-          'desc'  => 'Use this feature to manually enter an authors name. If a person will author several posts, you should instead request that they get byline access in WordPress.',
+          'desc'  => "Use this feature to manually enter an author's name or display multiple authors.",
           'clone'  => true,
           'sort_clone' => true,
-          'add_button' => '+ Add author',
+          'add_button' => '+ Add another author',
           'fields' => array(
             array(
-              'name' => 'Additional author',
+              'name' => 'Author name',
               'id'   => 'phila_additional_author',
               'type' => 'text',
-              'desc'  => 'The author of this post will be listed first, with authors chosen here appearing after, in the order listed.',
+              'desc'  => "Enter the author's full name. For example: William Penn",
               'size' => 50
             ),
           )
@@ -115,7 +115,7 @@ class Phila_Gov_Post {
     );
 
     $meta_boxes[] = array (
-      'title'    => 'Post options',
+      'title'    => 'Updates and archiving',
       'pages'    => array( 'post' ),
       'context'  => 'side',
       'priority' => 'high',
@@ -126,37 +126,16 @@ class Phila_Gov_Post {
       ),
       'fields' => array(
         array(
-          'name'  => 'Include last updated?',
+          'name'  => 'Add last updated component?',
           'id'    => 'is_last_updated',
+          'desc'  =>  'Use this option to add an editorial note and describe important changes to the post.',
           'type'  => 'switch',
           'std'=> '0',
           'on_label'  => 'Yes',
           'off_label' => 'No',
         ),
         array(
-          'name'    => 'Archive settings',
-          'id'      => 'phila_archive_post',
-          'type'    => 'radio',
-          'inline'  => false,
-          'visible' => array(
-            'when' => array(
-              array('phila_template_select', '=', 'post'),
-            ),
-          ),
-          'options' =>  array(
-            'default'   => 'Default',
-            'do_not_archive'   => 'Do not archive',
-            'archive_now'   => 'Archive now',
-          ),
-          'admin_columns' => array(
-            'position' => 'after date',
-            'title'    => __( 'Archive' ),
-            'sort'     => true,
-          ),
-          'std'     => 'default'
-        ),
-        array(
-          'name'  => 'Last updated date',
+          'name'  => 'Date for last updated',
           'id'    => 'last_updated_date',
           'type'  => 'date',
           'js_options'=> array(
@@ -170,15 +149,37 @@ class Phila_Gov_Post {
           ),
         ),
         array(
-          'name'  => 'Last updated explaination',
+          'name'  => 'Note for last updated',
           'id'    => 'last_updated_text',
           'type'  => 'textarea',
-          'desc'  =>  'A short explanation of the changes.',
           'visible' => array(
             'when' => array(
               array('is_last_updated', '=', '1'),
             ),
           ),
+        ),
+        array(
+          'name'    => 'Post archiving options',
+          'id'      => 'phila_archive_post',
+          'type'    => 'radio',
+          'inline'  => false,
+          'desc'  =>  'Posts are marked "Archived" two years after publication.',
+          'visible' => array(
+            'when' => array(
+              array('phila_template_select', '=', 'post'),
+            ),
+          ),
+          'options' =>  array(
+            'archive_now'     => 'Archive this post now',
+            'do_not_archive'  => 'Never archive this post',
+            'default'         => 'Follow archive schedule (Default)',
+          ),
+          'admin_columns' => array(
+            'position' => 'after date',
+            'title'    => __( 'Archive' ),
+            'sort'     => true,
+          ),
+          'std'     => 'default'
         ),
       )
     );
