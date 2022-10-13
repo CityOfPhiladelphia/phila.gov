@@ -125,6 +125,11 @@ input[type=radio] + label[for] {
   font-size: 1.3rem;
 }
 
+section ol {
+  padding-left:2rem !important;
+  margin-left: 0.75rem;
+}
+
 @include breakpoint(small only) {
   .global-nav .utility-nav {
     min-height: 30px;
