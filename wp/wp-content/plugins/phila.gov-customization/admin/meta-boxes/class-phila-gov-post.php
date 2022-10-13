@@ -15,7 +15,7 @@ class Phila_Gov_Post {
 
   function register_meta_boxes_posts($meta_boxes){
     $meta_boxes[] = array(
-      'title'    => 'Multiple authors',
+      'title'    => 'Additional authors',
       'pages'    => array( 'post' ),
       'context'  => 'after_title',
       'visible' => array(
@@ -36,21 +36,21 @@ class Phila_Gov_Post {
         array(
           'id'  => 'phila_exclude_author',
           'type'  => 'checkbox',
-          'name'  => 'Exclude default author from list?'
+          'name'  => 'Exclude primary author from list?'
         ),
         array(
           'id'  => 'phila_author_group',
           'type' => 'group',
-          'desc'  => 'Use this feature to manually enter an authors name. If a person will author several posts, you should instead request that they get byline access in WordPress.',
+          'desc'  => "Use this feature to manually enter an author's name or display multiple authors.",
           'clone'  => true,
           'sort_clone' => true,
-          'add_button' => '+ Add author',
+          'add_button' => '+ Add another author',
           'fields' => array(
             array(
-              'name' => 'Additional author',
+              'name' => 'Author name',
               'id'   => 'phila_additional_author',
               'type' => 'text',
-              'desc'  => 'The author of this post will be listed first, with authors chosen here appearing after, in the order listed.',
+              'desc'  => "Enter the author's full name. For example: William Penn",
               'size' => 50
             ),
           )
