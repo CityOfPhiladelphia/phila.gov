@@ -373,7 +373,7 @@ class Phila_Archives_Controller {
       if (date('Y-m-d', strtotime('-2 years')) > $post->post_date) { // if posts are 2 years old
         $post_is_old = true;
       }
-      if ((((empty( $archived ) || !isset($archived) || $archived == 'default') && $post_is_old) || $archived == 'archive_now') && $phila_template == 'post') {
+      if ((((empty( $archived ) || !isset($archived) || $archived == 'default') && $post_is_old) || $archived == 'archive_now') && ($phila_template == 'post' || $phila_template == '')) {
         $archived = true;
       } else {
         $archived = false;
