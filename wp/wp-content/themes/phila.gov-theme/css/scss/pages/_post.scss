@@ -71,11 +71,17 @@
 
 .archived-tag {
   background-color: #444;
-  display: inline;
+  display: block;
   color: white;
   padding: 3px 10px;
   font-weight: bold;
-  vertical-align: super;
+  width: fit-content;
+  margin-bottom: $spacing-medium;
+  @include breakpoint(medium) {
+    vertical-align: super;
+    display: inline;
+    margin-bottom: $spacing-none;;
+  }
 }
 
 

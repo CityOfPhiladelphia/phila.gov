@@ -43,7 +43,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') && $post
           <?php include( locate_template( 'partials/posts/action-guide-title.php' ) ); ?>
         <?php } else {  ?>
           <?php if ( $archived_state !== 0 ) : ?>
-            <div class="archived-tag">Archived</div>
+            <div class="archived-tag mrm">Archived</div>
           <?php endif; ?>
           <?php the_title( '<h1 style="display:inline">', '</h1>' ); ?>
         <?php } ?>
