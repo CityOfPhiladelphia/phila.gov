@@ -79,7 +79,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') && $post
       <?php endif; ?>
   </div>
   <?php if ( $last_updated || $archived_state == 2 ): ?>
-    <div class="grid-x">
+    <div class="grid-x mtm">
       <div class="cell shrink last-updated icon hide-for-small-only">
           <i class="fas fa-clock-rotate-left fa-2x pam"></i>
       </div>
