@@ -24,7 +24,7 @@ $post_is_old = false;
 if (date('Y-m-d', strtotime('-2 years')) > $post->post_date) { // if posts are 2 years old
   $post_is_old = true;
 }
-if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $post_is_old)  {
+if ((empty( $archived ) || !isset($archived) || $archived == 'default') && $post_is_old && ( $template_type == 'phila_post' || $template_type == 'post' ) )  {
   $archived_state = 1; //archived after two years
 } else if ($archived == 'archive_now') {
   $archived_state = 2; //archived manually
