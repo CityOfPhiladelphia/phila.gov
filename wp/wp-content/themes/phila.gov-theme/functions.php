@@ -2216,3 +2216,12 @@ function set_environment() {
 }
 
 add_action('init', 'set_environment');
+
+/**
+ * Swaps author label with "Default Author
+ */
+add_action('add_meta_boxes', 'change_author_metabox_label');
+function change_author_metabox_label() {
+    global $wp_meta_boxes;
+    $wp_meta_boxes['post']['normal']['core']['authordiv']['title']= 'Default Author';
+}
