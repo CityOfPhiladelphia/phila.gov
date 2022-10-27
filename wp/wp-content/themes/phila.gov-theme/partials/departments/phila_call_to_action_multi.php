@@ -46,9 +46,9 @@
       <?php if (!$action_panel_link == ''): ?>
       <a href="<?php echo $action_panel_link; ?>"  class="card action-panel">
         <div class="panel <?php if( $item_count > 1 ) echo 'equal';?>">
-        <header class="<?php echo $columns == '24' ? 'text-align-left' : ''; ?>">
+        <header class="<?php echo $columns == '24' ? 'desktop-text-align-left' : ''; ?>">
         <?php if ($action_panel_fa): ?>
-          <div class="<?php echo $columns == '24' ? 'float-left mrm' : ''; ?>">
+          <div class="<?php echo $columns == '24' ? 'desktop-float-left' : ''; ?>">
             <span class="fa-stack <?php echo $columns == '24' ? 'fa-3x' : 'fa-4x'; ?> center" aria-hidden="true">
               <i class="fas fa-circle fa-stack-2x"></i>
               <i class="<?php echo $action_panel_fa; ?> fa-stack-1x fa-inverse"></i>

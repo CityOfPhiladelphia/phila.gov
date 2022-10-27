@@ -27,3 +27,9 @@
 .panel.survey p:last-of-type{
   padding-right: 1rem;
 }
+
+@include breakpoint (medium up) {
+.action-panel{
+  
+}
+}
