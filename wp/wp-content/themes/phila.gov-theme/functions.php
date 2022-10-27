@@ -623,6 +623,10 @@ function phila_get_posted_on(){
       array_push($posted_on_meta['author'], $user->display_name);
     }
   }
+  if(empty($posted_on_meta['author'] )) { // catch all to prevent empty author field by re-adding the primary author
+    $posted_on_meta['author'] = array( esc_html( get_userdata(get_post_field ('post_author', get_the_ID()))->display_name ));
+  }
+  var_dump($posted_on_meta['author']);
   $posted_on_meta['authorURL'] = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
   $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
   $time_string = sprintf( $time_string,
@@ -2216,3 +2220,12 @@ function set_environment() {
 }
 
 add_action('init', 'set_environment');
+
+/**
+ * Swaps author label with "Default Author
+ */
+add_action('add_meta_boxes', 'change_author_metabox_label');
+function change_author_metabox_label() {
+    global $wp_meta_boxes;
+    $wp_meta_boxes['post']['normal']['core']['authordiv']['title']= 'Primary Author';
+}
