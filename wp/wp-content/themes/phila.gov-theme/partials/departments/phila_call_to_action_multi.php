@@ -59,7 +59,7 @@
           <span class="<?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></span>
         <?php endif; ?>
         </header>
-        <?php echo $columns == '24' ? '' : '<hr class="mll mrl">'; ?>
+        <?php echo $columns == '24' ? '<hr class="mll mrl show-for-small-only"' : '<hr class="mll mrl">'; ?>
           <span class="details"><?php echo $action_panel_summary; ?></span>
         </div>
       </a>

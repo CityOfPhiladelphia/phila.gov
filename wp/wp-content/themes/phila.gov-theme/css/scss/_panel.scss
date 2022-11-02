@@ -29,7 +29,13 @@
 }
 
 @include breakpoint (medium up) {
-.action-panel{
-  
-}
+  a.card.action-panel{
+    .desktop-float-left {
+      float:left;
+      padding-right:1rem;
+    }
+    header.desktop-text-align-left {
+      text-align: left;
+    }
+  }
 }
