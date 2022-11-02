@@ -144,7 +144,7 @@ $result->post_count = count( $result->posts );
 <?php $count = 0; ?>
 <?php $label = 'post'; ?>
 <div class="post-grid">
-  <div class="grid-container mbm">
+  <div class="grid-container">
     <?php if ( $result->have_posts() ) : ?>
       <?php include( locate_template( 'partials/posts/post-translated-langs-see-all.php' ) ); ?>
         <div class="grid-x grid-margin-x align-stretch">
