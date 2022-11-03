@@ -44,10 +44,13 @@
   .utility-nav {
 
     background: color(ghost-gray);
-    padding: $spacing-small;
     font-size: 1rem;
 
     @include top-bar-unstack;
+
+    @include breakpoint(medium up) {
+      padding: 1rem;
+    }
 
     @include breakpoint(small only) {
       font-size: 12px;
@@ -136,16 +139,21 @@
         font-weight: bold;
       }
 
-      .dropdown.menu>li>a {
-        background: color(ghost-gray);
-        font-size: 1rem;
-
-        &:hover {
-          font-style: underline;
-        }
-
-        &:active {
-          font-weight: bold;
+      .dropdown.menu>li {
+        a {
+            background: color(ghost-gray);
+            font-size: 1rem;
+        
+            &:hover {
+              font-style: underline;
+            }
+        
+            &:active {
+              font-weight: bold;
+            }
+          }
+        &.is-dropdown-submenu-parent>a::after {
+          content: none;
         }
       }
 
@@ -168,13 +176,6 @@
             color: color(dark-ben-franklin);
           }
         }
-      }
-
-      .is-dropdown-submenu-parent>a {
-        &::after {
-          border-color: color(dark-ben-franklin) transparent transparent;
-        }
-
       }
     }
   }
@@ -435,25 +436,6 @@
         &:hover::after,
         &:active::after {
           border-color: color(dark-ben-franklin) transparent transparent transparent;
-        }
-
-        &::after {
-          //little arrow
-          display: inline;
-          margin: auto 0;
-          content: '';
-          width: 0;
-          height: 0;
-          border: inset 5px;
-          border-color: color(dark-ben-franklin) transparent transparent;
-          border-top-style: solid;
-          border-bottom-width: 0;
-          left: 74%;
-          position: absolute;
-          float: none;
-          top: 0;
-          bottom: 0;
-          height: 10px;
         }
 
         &.js-is-current {

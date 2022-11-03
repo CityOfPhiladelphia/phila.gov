@@ -62,7 +62,7 @@
 
     <!-- Utility Navigation -->
     <div class="utility-nav">
-    <div class="grid-container row bg-ghost-gray">
+    <div class="grid-container bg-ghost-gray">
         <div class="top-bar bg-ghost-gray" id="responsive-menu">
           <div class="top-bar-left valign-mu">
             <ul class="menu">
@@ -89,7 +89,7 @@
                     <li class="show-for-small-only"><a href="#">English</a></li>
                     <li class="show-for-small-only"><a href="#">Español</a></li>
                     <li class="show-for-small-only"><a href="#">中文</a></li>
-                    <li class="show-for-small-only"><a href="#">عربي</a></li>
+                    <li class="show-for-small-only text-left"><a href="#">عربي</a></li>
                     <li><a href="#">Pусский</a></li>
                     <li><a href="#">Português</a></li>  
                     <li><a href="#">Tiếng Việt</a></li>  
