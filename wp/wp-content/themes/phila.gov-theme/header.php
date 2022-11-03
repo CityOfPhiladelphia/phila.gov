@@ -62,9 +62,9 @@
 
     <!-- Utility Navigation -->
     <div class="utility-nav">
-    <div class="grid-container bg-ghost-gray">
-        <div class="top-bar bg-ghost-gray">
-          <div class="top-bar-left">
+    <div class="grid-container row bg-ghost-gray">
+        <div class="top-bar bg-ghost-gray" id="responsive-menu">
+          <div class="top-bar-left valign-mu">
             <ul class="menu">
               <li class="gov-site show-for-medium">
                   An official website of the City of Philadelphia government 
@@ -75,7 +75,7 @@
               </li>
             </ul> 
           </div>
-          <div class="top-bar-right translations-nav valign-cell">
+          <div class="top-bar-right translations-nav">
             <ul class="dropdown menu" data-dropdown-menu>
               <li class="show-for-medium"><a href="#">English</a></li>
               <li class="show-for-medium"><a href="#">Español</a></li>
@@ -83,7 +83,7 @@
               <li class="show-for-medium"><a href="#">عربي</a></li> 
               <li>
                 <a href="#" class="dropdown-selector">
-                    <i class="fas fa-globe"></i> <span class="show-for-small-only">Translate</span>
+                    <i class="fas fa-globe"></i> <span class="show-for-small-only">Translate</span><i class="fas fa-solid fa-caret-down"></i>
                 </a>
                 <ul class="translations-dropdown menu" data-dropdown-content>
                     <li class="show-for-small-only"><a href="#">English</a></li>
@@ -105,6 +105,7 @@
         </div>
       </div>
   </div>
+
     <!-- <div class="columns bg-ghost-gray expanded utility-nav" data-swiftype-index="false">
       <div class="row">
         <div class="medium-12 small-16 columns">
