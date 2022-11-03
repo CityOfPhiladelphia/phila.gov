@@ -39,8 +39,7 @@
   //utility nav
     .utility-nav {
   
-      font-size: 1rem;
-      background: color(ghost-gray) !important;
+      background: color(ghost-gray);
   
       @include top-bar-unstack;
   
@@ -49,8 +48,7 @@
       }
   
       @include breakpoint(small only) {
-        background: color(ghost-gray);
-        height: 10px;
+        height: 36px;
       }
   
       ul {
@@ -69,17 +67,20 @@
           }
   
           a {
+
             padding: $spacing-small;
             color: color(dark-ben-franklin);
             text-align: center;
-            font-weight: bold;
-  
+ 
+            &.trusted-site-toggle {
+              font-weight: bold;
+            }
+ 
             &:hover,
             &:active {
               color: color(dark-ben-franklin);
               background: color(ghost-gray);
               text-decoration: underline;
-              font-weight: bold;
             }
   
             &.js-is-current {
@@ -127,16 +128,29 @@
       }
   
       .translations-nav {
-  
+        background: color(ghost-gray);
+
+        .dropdown-selector>span {
+          font-weight: bold;
+        }
+
+        .dropdown.menu>li>a{
+          background: color(ghost-gray);
+          
+          &:hover,
+          &:active {
+            font-weight: bold;
+          }
+        }
         .translations-dropdown>li {
           a {
-            background: color(ghost-gray);
-            font-weight: normal;
-  
+
             &:hover,
             &:active {
-              color: color(dark-ben-franklin);
+              background: color(dark-ben-franklin);
+              color: white;
               font-weight: bold;
+              font-style: underline;
             }
           }
   
@@ -151,7 +165,6 @@
         }
   
         .is-dropdown-submenu-parent>a {
-          color: color(dark-ben-franklin);
   
           &::after {
             border-color: color(dark-ben-franklin) transparent transparent;
