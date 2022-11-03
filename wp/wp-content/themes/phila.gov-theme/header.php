@@ -61,7 +61,49 @@
     <h1 class="accessible">City of Philadelphia</h1>
 
     <!-- Utility Navigation -->
-    <div class="columns bg-ghost-gray expanded utility-nav" data-swiftype-index="false">
+    <div class="grid-container full bg-ghost-gray ">
+        <div class="top-bar bg-ghost-gray utility-nav">
+          <div class="top-bar-left">
+            <ul class="menu">
+              <li class="gov-site show-for-medium">
+                  An official website of the City of Philadelphia government 
+              </li>
+              <li class="gov-site show-for-medium"><a href="#" class="trusted-site-toggle">Here's how you know <i class="fas fa-solid fa-caret-down"></i></a></li>
+              <li class="gov-site show-for-small-only">
+                  <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
+              </li>
+            </ul> 
+          </div>
+          <div class="top-bar-right translations-nav">
+            <ul class="translations-dropdown dropdown menu" data-dropdown-menu>
+              <li class="show-for-medium"><a href="#">English</a></li>
+              <li class="show-for-medium"><a href="#">Español</a></li>
+              <li class="show-for-medium"><a href="#">中文</a></li>
+              <li class="show-for-medium"><a href="#">عربي</a></li> 
+              <li>
+                <a href="#" class="dropdown-selector">
+                    <i class="fas fa-globe"></i> <span class="show-for-small-only">Translate</span>
+                </a>
+                <ul class="menu" data-dropdown-content>
+                    <li class="show-for-small-only"><a href="#">English</a></li>
+                    <li class="show-for-small-only"><a href="#">Español</a></li>
+                    <li class="show-for-small-only"><a href="#">中文</a></li>
+                    <li class="show-for-small-only"><a href="#">عربي</a></li>
+                    <li><a href="#">Pусский</a></li>
+                    <li><a href="#">Português</a></li>  
+                    <li><a href="#">Tiếng Việt</a></li>  
+                    <li><a href="#">Ayisyen</a></li>
+                    <li><a href="#">Kiswahili</a></li>
+                    <li><a href="#">More Languages+</a></li>
+                    <li><a href="#"><i class="fa fa-messages"></i> Feedback and Support</a></li>
+                    <li><a href="#"><i class="fa fa-file-lines"></i> Translated Publications</a></li>
+                </ul>
+              </li>
+            </ul> 
+          </div>
+        </div>
+      </div>
+    <!-- <div class="columns bg-ghost-gray expanded utility-nav" data-swiftype-index="false">
       <div class="row">
         <div class="medium-12 small-16 columns">
           <ul class="medium-horizontal menu float-left">
@@ -74,7 +116,7 @@
           </ul>
         </div>
         <!-- Translation Nav -->
-        <div class="medium-12 small-8 columns translations-nav">
+        <!-- <div class="medium-12 small-8 columns translations-nav">
           <ul class="translations-dropdown float-right dropdown menu" data-dropdown-menu>
             <li>
                 <a href="#" class="dropdown-selector">
@@ -106,7 +148,7 @@
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Trusted Site -->
     <div class="row columns expanded" data-swiftype-index="false" id="trusted-site">
       <div class="row pvm">
