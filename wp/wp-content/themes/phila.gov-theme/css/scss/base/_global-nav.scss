@@ -135,46 +135,54 @@
     .translations-nav {
       background: color(ghost-gray);
 
+
+      .is-dropdown-submenu {
+          @include breakpoint(medium up) {
+              margin-top: 1rem;
+              border: color(dark-gray);
+              border-width: 0 1px 1px 1px;
+              border-style: solid;
+          }
+      
+          @include breakpoint(small only) {
+              width: 100vw;
+              height: 100vh;
+          }
+        }
+      
+
       .dropdown-selector>span {
         font-weight: bold;
       }
 
       .dropdown.menu>li {
+
         a {
-            background: color(ghost-gray);
-            font-size: 1rem;
-        
-            &:hover {
-              font-style: underline;
-            }
-        
-            &:active {
-              font-weight: bold;
-            }
+          background: color(ghost-gray);
+          font-size: 1rem;
+          text-align: left;
+
+          &:hover {
+            font-style: underline;
           }
+
+          &:active {
+            font-weight: bold;
+          }
+        }
+
         &.is-dropdown-submenu-parent>a::after {
           content: none;
         }
       }
 
-      .translations-dropdown>li {
-        a {
+      .translations-dropdown li>a {
 
-          &:hover,
-          &:active {
-            background: color(dark-ben-franklin);
-            color: white;
-            font-style: underline;
-          }
-        }
-
-        .translations-icon {
-
-          &:hover,
-          &:active {
-            background: color(ghost-gray);
-            color: color(dark-ben-franklin);
-          }
+        &:hover,
+        &:active {
+          background: color(dark-ben-franklin);
+          color: white;
+          font-style: underline;
         }
       }
     }
