@@ -137,21 +137,32 @@
 
 
       .is-dropdown-submenu {
-          @include breakpoint(medium up) {
-              margin-top: 1rem;
-              border: color(medium-gray);
-              border-width: 0 1px 1px 1px;
-              border-style: solid;
-              min-width: 230px;
-            
-              li>a{
-                padding: 1rem !important;
-             }
+      
+          .dropdown-selector {
+            position: absolute;
+          }
+      
+          li {
+            .is-active>a{
+              color: color(dark-ben-franklin);
             }
+            a {
+              padding: 1rem !important;
+            }
+          }
+      
+          @include breakpoint(medium up) {
+            margin-top: 1rem;
+            border: color(medium-gray);
+            border-width: 0 1px 1px 1px;
+            border-style: solid;
+            min-width: 230px;
+          }
       
           @include breakpoint(small only) {
-              width: 100vw;
-              height: 100vh;
+            position: relative;
+            width: 100vw;
+            height: 100vh;
           }
         }
       

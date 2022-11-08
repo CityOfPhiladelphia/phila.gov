@@ -84,7 +84,7 @@
               <li class="show-for-medium"><a href="#">عربي</a></li> 
               <li>
                 <a href="#" class="dropdown-selector">
-                    <i class="fas fa-globe"></i> <span class="show-for-small-only">Translate</span><i class="fas fa-solid fa-caret-down"></i>
+                    <i class="fa-solid fa-earth-americas"></i> <span class="show-for-small-only">Translate</span><i class="fas fa-solid fa-caret-down"></i>
                 </a>
                 <ul class="translations-dropdown menu" data-dropdown-content>
                     <li class="show-for-small-only"><a href="#">English</a></li>
