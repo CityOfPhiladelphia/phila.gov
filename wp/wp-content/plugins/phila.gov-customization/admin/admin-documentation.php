@@ -2,19 +2,21 @@
 
 add_action('admin_menu', 'phila_resource_hub_page');
 
-function phila_resource_hub_page() {
-  add_menu_page( 'Resource hub', 'Resource hub', 'read', 'resource-hub', 'phila_resource_hub_content', 'dashicons-book-alt' );
+function phila_resource_hub_page()
+{
+  add_menu_page('Resource hub', 'Resource hub', 'read', 'resource-hub', 'phila_resource_hub_content', 'dashicons-book-alt');
 }
 
-function phila_resource_hub_content(){
-  ?>
+function phila_resource_hub_content()
+{
+?>
   <style>
   ul{
     list-style: disc;
     margin-left: 2em;
   }
   </style>
-  <h1 id="resource-hub">Resource hub</h1>
+<h1 id="resource-hub">Resource hub</h1>
 <p>The following resources may be useful as you create and manage content on phila.gov.  </p>
 <h2 id="resources-for-site-editors">Resources for site editors</h2>
 <p><a href="https://standards.phila.gov/">Digital standards</a> </p>
@@ -38,8 +40,6 @@ function phila_resource_hub_content(){
 <p>This changelog tracks updates to the phila.gov platform and notes what has been added, changed, or fixed with each release. </p>
 <h2 id="need-help-">Need help?</h2>
 <p>If you have questions or need help with your website, contact the Digital Services team at websupport@phila.gov. </p>
-
-  
   <?php
 }
-?>
+  ?>
