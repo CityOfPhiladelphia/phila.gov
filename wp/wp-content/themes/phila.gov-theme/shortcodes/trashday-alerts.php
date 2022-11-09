@@ -15,7 +15,7 @@ function trashday_alerts_shortcode($atts) {
     'icon_padding' => 0,
   ), $atts );
 
-  ob_start(); 
+  ob_start();
   include( locate_template( 'partials/posts/trashday-alerts.php' ) );
   $content = ob_get_clean();
   return $content;
