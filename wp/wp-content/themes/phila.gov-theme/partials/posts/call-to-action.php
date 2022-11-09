@@ -44,8 +44,8 @@ call to action shortcode render
           <div class="reveal center" id="action-modal" data-reveal data-deep-link="true">
             <?php echo $a['modal_content']; ?>
             <button class="close-button bg-white" data-close aria-label="Close modal" type="button">
-             <span aria-hidden="true">&times;</span>
-           </button>
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
         <?php endif; ?>
     </div>
