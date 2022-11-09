@@ -48,14 +48,6 @@
 
     @include top-bar-unstack;
 
-    @include breakpoint(medium up) {
-      padding: 1rem;
-    }
-
-    @include breakpoint(small only) {
-      font-size: 12px;
-    }
-
     ul {
 
       background: color(ghost-gray);
@@ -73,7 +65,7 @@
 
         a {
 
-          padding: $spacing-small !important;
+          padding: 1rem !important;
           color: color(dark-ben-franklin);
           text-align: center;
 
@@ -96,7 +88,6 @@
             &:hover,
             &:active {
               color: color(dark-ben-franklin);
-              background: color(light-blue);
             }
           }
         }
@@ -135,62 +126,59 @@
     .translations-nav {
       background: color(ghost-gray);
 
+      .dropdown.menu>li {
+        a {
+          font-size: 1rem;
+          background: color(ghost-gray);
+          padding: 1rem 0.5rem !important;
+        }
+        &.is-active>a {
+          color: color(dark-ben-franklin);
+        }
+        
+        &.is-dropdown-submenu-parent>a::after {
+          content: none;
+        }
 
-      .is-dropdown-submenu {
-      
-          .dropdown-selector {
-            position: absolute;
-          }
-      
-          li {
-            .is-active>a{
-              color: color(dark-ben-franklin);
+      }
+
+      .translations-dropdown {
+
+        li {
+          a {
+            background: color(ghost-gray);
+            text-align: left;
+
+            &:hover {
+              font-style: underline;
             }
-            a {
-              padding: 1rem !important;
+
+            &:active {
+              font-weight: bold;
             }
-          }
-      
-          @include breakpoint(medium up) {
-            margin-top: 1rem;
-            border: color(medium-gray);
-            border-width: 0 1px 1px 1px;
-            border-style: solid;
-            min-width: 230px;
-          }
-      
-          @include breakpoint(small only) {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
           }
         }
-      
+
+        @include breakpoint(medium up) {
+          border: color(medium-gray);
+          border-width: 0 1px 1px 1px;
+          border-style: solid;
+          min-width: 230px;
+        }
+
+        @include breakpoint(small only) {
+          width: 101vw;
+          height: 101vh;
+          transform: translateX(-98%);
+          left: 100% !important;
+        }
+      }
+
 
       .dropdown-selector>span {
         font-weight: bold;
       }
 
-      .dropdown.menu>li {
-
-        a {
-          background: color(ghost-gray);
-          font-size: 1rem;
-          text-align: left;
-
-          &:hover {
-            font-style: underline;
-          }
-
-          &:active {
-            font-weight: bold;
-          }
-        }
-
-        &.is-dropdown-submenu-parent>a::after {
-          content: none;
-        }
-      }
 
       .translations-dropdown li>a {
 
