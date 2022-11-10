@@ -77,7 +77,7 @@
           </div>
           <!-- Translations Navigation -->
           <div class="top-bar-right translations-nav">
-            <ul class="dropdown menu" data-dropdown-menu>
+            <ul id="translations-menu" class="dropdown menu" data-dropdown-menu>
               <li class="show-for-medium"><a href="#">English</a></li>
               <li class="show-for-medium"><a href="#">Español</a></li>
               <li class="show-for-medium"><a href="#">中文</a></li>
@@ -97,8 +97,8 @@
                     <li><a href="#">Ayisyen</a></li>
                     <li><a href="#">Kiswahili</a></li>
                     <li><a href="#"><i class="fa fa-plus"></i> More Languages</a></li>
-                    <li><a href="#"><i class="fa fa-messages"></i> Feedback and Support</a></li>
-                    <li><a href="#"><i class="fa fa-file-lines"></i> Translated Publications</a></li>
+                    <li class="translations-support"><a href="#"><i class="fa fa-messages"></i> Feedback and Support</a></li>
+                    <li class="translations-support"><a href="#"><i class="fa fa-file-lines"></i> Translated Publications</a></li>
                 </ul>
               </li>
             </ul> 

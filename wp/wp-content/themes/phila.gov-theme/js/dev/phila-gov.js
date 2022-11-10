@@ -210,4 +210,7 @@ module.exports = $(function(){
   }
   var mainContent = $('.guide-content').eq(0);
 
+  $('#translations-menu').on('show.zf.dropdown', function () {
+    console.log('Hello');
+  });
 });

@@ -113,24 +113,42 @@
       }
     }
 
-    #google_translate_element {
-      a {
-        padding: .2rem 2rem .3rem .5rem;
-      }
-
-      .goog-te-gadget-simple .goog-te-menu-value::after {
-        top: 6px;
-      }
-    }
-
     .translations-nav {
       background: color(ghost-gray);
+
+      @include breakpoint(medium up) { 
+        .translations-dropdown {
+          border: color(medium-gray);
+          border-width: 0 1px 1px 1px;
+          border-style: solid;
+          min-width: 230px;
+        }
+        .dropdown.menu>li>a {
+          padding: 1rem .5rem !important;
+        } 
+      }
+
+      @include breakpoint(small only) { 
+        .translations-dropdown {
+          width: 101vw;
+          height: 101vh;
+          transform: translateX(-98%);
+          left: 100% !important;  
+
+          li>a{
+            padding-left: 1.5rem !important
+          }
+
+          .translations-support>a{
+            font-weight: bold;
+          }
+        }
+      }
 
       .dropdown.menu>li {
         a {
           font-size: 1rem;
           background: color(ghost-gray);
-          padding: 1rem 0.5rem !important;
         }
         &.is-active>a {
           color: color(dark-ben-franklin);
@@ -158,25 +176,12 @@
             }
           }
         }
-
-        @include breakpoint(medium up) {
-          border: color(medium-gray);
-          border-width: 0 1px 1px 1px;
-          border-style: solid;
-          min-width: 230px;
-        }
-
-        @include breakpoint(small only) {
-          width: 101vw;
-          height: 101vh;
-          transform: translateX(-98%);
-          left: 100% !important;
-        }
       }
 
 
       .dropdown-selector>span {
         font-weight: bold;
+        padding-right: 4px;
       }
 
 
