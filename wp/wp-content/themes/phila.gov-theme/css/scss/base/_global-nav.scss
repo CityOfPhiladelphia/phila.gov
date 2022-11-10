@@ -48,6 +48,10 @@
 
     @include top-bar-unstack;
 
+    @include breakpoint(small only) { 
+      min-height: 42px;
+    }
+
     ul {
 
       background: color(ghost-gray);
@@ -133,10 +137,10 @@
           width: 101vw;
           height: 101vh;
           transform: translateX(-98%);
-          left: 100% !important;  
+          left: 100% !important;
 
           li>a{
-            padding-left: 1.5rem !important
+            padding-left: 2rem !important
           }
 
           .translations-support>a{

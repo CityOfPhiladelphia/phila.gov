@@ -77,7 +77,7 @@
           </div>
           <!-- Translations Navigation -->
           <div class="top-bar-right translations-nav">
-            <ul id="translations-menu" class="dropdown menu" data-dropdown-menu>
+            <ul data-toggler=".expanded" id="translations-menu" class="dropdown menu" data-dropdown-menu>
               <li class="show-for-medium"><a href="#">English</a></li>
               <li class="show-for-medium"><a href="#">Español</a></li>
               <li class="show-for-medium"><a href="#">中文</a></li>
