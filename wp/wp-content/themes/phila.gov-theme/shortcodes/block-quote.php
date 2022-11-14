@@ -22,5 +22,5 @@ ob_start();
 add_action( 'init', 'register_block_quote_shortcode' );
 
 function register_block_quote_shortcode(){
-    add_shortcode( 'block_quote', 'block_quote_shortcode' );
+    add_shortcode( 'block-quote', 'block_quote_shortcode' );
 }
