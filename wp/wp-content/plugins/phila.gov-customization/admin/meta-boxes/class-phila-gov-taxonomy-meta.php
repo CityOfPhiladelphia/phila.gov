@@ -23,6 +23,13 @@ class Phila_Gov_Taxonomy_Meta {
           'name' => 'Category short name',
           'id'   => 'phila_category_short_name',
           'type' => 'text',
+          'size'  =>  50,
+        ),
+        array(
+          'name' => 'Translation department billing code',
+          'id'   => 'phila_department_billing_code',
+          'type' => 'text',
+          'size'  =>  50,
         ),
         array(
           'desc' => 'Prevent this owner from appearing on the user-facing site? Primarily used for staged content.',
