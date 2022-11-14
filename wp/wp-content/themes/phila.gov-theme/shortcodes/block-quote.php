@@ -1,5 +1,11 @@
 <?php
-
+/**
+*
+* Shortcode for displaying a block quote that takes in text parameter
+* @param @atts - 'text'
+*
+* @package phila-gov_customization
+*/
 
 function block_quote_shortcode($atts) {
 
