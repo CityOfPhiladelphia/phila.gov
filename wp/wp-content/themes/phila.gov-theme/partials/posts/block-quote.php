@@ -1,5 +1,7 @@
 <?php
-
+/*
+block quote shortcode render
+*/
 ?>
 
 <div class="grid-container block-quote">
