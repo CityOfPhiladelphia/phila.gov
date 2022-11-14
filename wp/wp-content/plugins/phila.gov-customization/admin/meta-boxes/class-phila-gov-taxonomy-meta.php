@@ -26,7 +26,7 @@ class Phila_Gov_Taxonomy_Meta {
           'size'  =>  50,
         ),
         array(
-          'name' => 'Department billing code',
+          'name' => 'Translation department billing code',
           'id'   => 'phila_department_billing_code',
           'type' => 'text',
           'size'  =>  50,
