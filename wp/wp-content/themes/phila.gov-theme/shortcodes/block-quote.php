@@ -1,11 +1,5 @@
 <?php
-/**
-*
-* Shortcode for displaying filtered press releases
-* @param @atts - conditionally add table wrapper, default false
-*
-* @package phila-gov_customization
-*/
+
 
 function block_quote_shortcode($atts) {
 
