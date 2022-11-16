@@ -146,8 +146,9 @@ class Phila_Gov_Admin_Templates {
           'required'  => true,
           'options' => array(
             'post'   => 'Post',
-            'press_release' => 'Press Release',
-            'action_guide'  => 'Action Guide',
+            'press_release'   => 'Press Release',
+            'advanced_post'   => 'Advanced Post',
+            'action_guide'    => 'Action Guide',
             'action_guide_2'  => 'Action Guide V2'
           ),
           'admin_columns' => array(

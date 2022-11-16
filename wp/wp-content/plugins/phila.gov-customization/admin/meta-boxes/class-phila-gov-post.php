@@ -20,8 +20,10 @@ class Phila_Gov_Post {
       'context'  => 'after_title',
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'post'),
+          array('phila_template_select', '=', 'advanced_post'),
+          array('phila_template_select', '=', 'post')
         ),
+        'relation' => 'or'
       ),
       'fields'  => array(
         array(
@@ -192,8 +194,10 @@ class Phila_Gov_Post {
       'priority' => 'high',
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'post'),
+          array('phila_template_select', '=', 'advanced_post'),
+          array('phila_template_select', '=', 'post')
         ),
+        'relation' => 'or'
       ),
       'fields' => array(
         array(
@@ -362,6 +366,29 @@ class Phila_Gov_Post {
             Phila_Gov_Standard_Metaboxes::phila_meta_var_full_width_cta()
         ),
       ),
+    );
+
+    $meta_boxes[] = array(
+      'title'    => 'Page content',
+      'pages'    => array( 'post' ),
+      'priority' => 'high',
+      'revision' => true,
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'advanced_post'),
+        ),
+      ),
+      'fields' => array(
+        array(
+          'id' => 'phila_tabbed_content',
+          'type' => 'group',
+          'clone'  => true,
+          'sort_clone' => true,
+          'add_button'  => '+ Add tab',
+          'fields' => array(
+          ),
+        )
+      )
     );
 
     return $meta_boxes;
