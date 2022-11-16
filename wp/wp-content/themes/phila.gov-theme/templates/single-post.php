@@ -155,6 +155,9 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
     <?php endif; ?>
     <div class="medium-18 medium-centered mtm">
       <?php the_content(); ?>
+      <?php if ( $template_type == 'advanced_post' ) { ?>
+        <?php include(locate_template ('partials/posts/advanced-post-content.php') ); ?> 
+      <?php } ?>
       <?php include(locate_template ('partials/posts/post-end-cta.php') ); ?>
     </div>
     <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ) : ?>
