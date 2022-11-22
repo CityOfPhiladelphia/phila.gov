@@ -230,6 +230,10 @@
     }
   }
 
+  .top-bar-right {
+    width:100%;
+  }
+
   @include breakpoint(small only) {
     .mega-menu-dropdown.dropdown-pane{
       display: none;
@@ -269,9 +273,9 @@
         > a {
           text-align: center;
           height: inherit;
-
-          text-transform: uppercase;
-
+          font-weight:700;
+          font-size: 14px;
+          text-transform: none !important;
           padding: $spacing-large 1.5rem;
         }
         a:active, a:hover {

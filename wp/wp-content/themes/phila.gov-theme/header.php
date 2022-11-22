@@ -76,8 +76,6 @@
         </div>
         <div class="medium-12 small-8 columns">
           <ul class="medium-horizontal menu float-right">
-            <li class="show-for-medium"><a href="/departments/mayor/">Office of the Mayor</a></li>
-            <li class="show-for-medium"><a href="/city-government-directory/">City government directory</a></li>
             <li>
               <div id="google_translate_element" class="no-js"><span class="show-for-sr">Google Translate</span></div>
             </li>
@@ -148,7 +146,7 @@
                         <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/publications-forms/" class="valign-cell"> Publications</a>
                       </li>
                       <li>
-                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/the-latest/" class="valign-cell">News</a>
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/the-latest/" class="valign-cell"><i class="fa-solid fa-newspaper"></i> News</a>
                       </li>
                     </ul>
                 </nav>
@@ -196,18 +194,22 @@
                     </ul>
                     </li>
                     <li tabindex="0">
-                      <a href="/programs-initiatives/#/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs &amp; initiatives</a>
-                    </li>
-                    <li tabindex="0">
-                      <a href="/the-latest/" class="valign-cell"><i class="fas fa-microphone"></i> News &amp; events</a>
-                    </li>
-                    <li tabindex="0">
-                      <a href="/publications-forms/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications &amp; forms</a>
+                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/programs-initiatives/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs</a>
                     </li>
                     <li class="bg-sidewalk" tabindex="0">
-                      <a href="/mayor/"><i class="fas fa-university"></i> Mayor's Office</a>
+                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/city-government-directory/" class="valign-cell"><i class="fas fa-sitemap"></i> Departments</a>
                     </li>
-                    <li class="bg-sidewalk" tabindex="0"><a href="/city-government-directory/"><i class="fas fa-sitemap"></i> City government directory</a>
+                    <li tabindex="0">
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/tools/" class="valign-cell"><i class="fas fa-hammer"></i> Tools</a>
+                      </li>
+                      <li tabindex="0">
+                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/publications-forms/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications</a>
+                    </li>
+                      <li tabindex="0">
+                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/the-latest/" class="valign-cell"><i class="fas fa-newspaper"></i> News</a>
+                    </li>
+                    <li class="bg-sidewalk" tabindex="0">
+                    <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/mayor/" class="valign-cell"><i class="fas fa-university"></i> Mayor's Office</a>
                     </li>
                   </ul>
                 </nav>
