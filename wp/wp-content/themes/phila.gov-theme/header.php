@@ -136,13 +136,19 @@
                         <a href="" class="no-link valign-cell" data-link="/service-directory/" onclick="noLink(event)">Services</a>
                       </li>
                       <li>
-                        <a href="/programs-initiatives/#/" class="valign-cell">Programs &amp; initiatives</a>
+                        <a href="<?php echo $DOMAIN ?>/programs-initiatives/#/" class="valign-cell">Programs</a>
                       </li>
                       <li>
-                        <a href="/the-latest/" class="valign-cell"> News &amp; events</a>
+                        <a href="<?php echo $DOMAIN ?>/publications-forms/" class="valign-cell">Departments</a>
                       </li>
                       <li>
-                        <a href="/publications-forms/" class="valign-cell"> Publications &amp; forms</a>
+                        <a href="<?php echo $DOMAIN ?>/tools/" class="valign-cell">Tools</a>
+                      </li>
+                      <li>
+                        <a href="<?php echo $DOMAIN ?>/publications-forms/" class="valign-cell"> Publications</a>
+                      </li>
+                      <li>
+                        <a href="<?php echo $DOMAIN ?>/the-latest/" class="valign-cell">News</a>
                       </li>
                     </ul>
                 </nav>
