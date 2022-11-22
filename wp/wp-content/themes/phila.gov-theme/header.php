@@ -136,19 +136,19 @@
                         <a href="" class="no-link valign-cell" data-link="/service-directory/" onclick="noLink(event)">Services</a>
                       </li>
                       <li>
-                        <a href="<?php echo $DOMAIN ?>/programs-initiatives/#/" class="valign-cell">Programs</a>
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/programs-initiatives/" class="valign-cell">Programs</a>
                       </li>
                       <li>
-                        <a href="<?php echo $DOMAIN ?>/publications-forms/" class="valign-cell">Departments</a>
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/city-government-directory/" class="valign-cell">Departments</a>
                       </li>
                       <li>
-                        <a href="<?php echo $DOMAIN ?>/tools/" class="valign-cell">Tools</a>
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/tools/" class="valign-cell">Tools</a>
                       </li>
                       <li>
-                        <a href="<?php echo $DOMAIN ?>/publications-forms/" class="valign-cell"> Publications</a>
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/publications-forms/" class="valign-cell"> Publications</a>
                       </li>
                       <li>
-                        <a href="<?php echo $DOMAIN ?>/the-latest/" class="valign-cell">News</a>
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/the-latest/" class="valign-cell">News</a>
                       </li>
                     </ul>
                 </nav>
