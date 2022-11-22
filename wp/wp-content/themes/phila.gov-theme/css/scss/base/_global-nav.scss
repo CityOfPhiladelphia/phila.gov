@@ -10,9 +10,9 @@
   @include secondary-font(400);
   position: relative;
   z-index: 1000;
-
+  
   ul {
-    font-size:12px;
+    font-size:14px;
   }
 
   &.no-js {
@@ -26,6 +26,7 @@
     &:hover,
     &:active{
       color:color(dark-ben-franklin);
+      background: color(light-blue);
     }
   }
 
@@ -38,51 +39,52 @@
   }
   //utility nav
   .utility-nav {
-  
     font-size: .85rem;
-    min-height: 10px;
+    min-height: 25px;
 
     @include breakpoint(small only) {
       height:10px;
     }
 
     ul {
+
       li {
         &:last-of-type::after {
           content: none;
         }
         &::after {
           display: inline;
-          background: color(ghost-gray);
-          color: rgba(color(ghost-gray), .6);
+          content: '|';
+          background: color(ben-franklin-blue);
+          color: rgba(color(light-ben-franklin), .6);
+          padding: 0 10px;
         }
 
         a {
+          display: inline-block;
           padding: $spacing-small;
-          color: color(dark-ben-franklin);
+          color: white;
           text-align: center;
 
           &:hover,
           &:active{
+            background: color(light-blue);
             color:color(dark-ben-franklin);
-            background: color(ghost-gray);
-            text-decoration: underline;
-            font-weight: bold;
           }
           &.js-is-current{
             background:color(dark-gray);
             color:white;
-            text-decoration: underline;
             &:hover,
             &:active{
               color:color(dark-ben-franklin);
+              background: color(light-blue);
             }
           }
         }
         &.gov-site {
           span {
             font-size: 0.75rem;
-            color: black;
+            color: white;
           }
           a {
             font-size: .75rem;
@@ -102,14 +104,6 @@
         top: 6px;
       }
     } 
-    .translations-nav {
-        .translations-dropdown > li > a {
-            background: color(ghost-gray);
-        }
-        .is-dropdown-submenu {
-            background: color(ghost-gray);
-        }
-    }
   }
 
 
@@ -129,7 +123,7 @@
     }
 
     .sticky-header-width{
-      max-width: 90rem;
+      max-width: 75rem;
       margin-left: auto;
       margin-right: auto;
     }
@@ -275,6 +269,14 @@
       ul {
         background-color:white;
       }
+
+      .menu{
+        display: flex;
+        justify-content:space-around;
+        list-style-type:none;
+        position: relative;
+      }
+      
       .menu>li {
         > a {
           text-align: center;
@@ -286,6 +288,7 @@
         }
         a:active, a:hover {
           color: color(dark-ben-franklin);
+          background: color(light-blue);
         }
       }
     }
@@ -563,7 +566,7 @@ header {
         width: 100px;
         display: inline-block;
         vertical-align: middle;
-        .circle-icon {
+        .circle-icon {          
           line-height: 1.5rem;
           align-items: center;
           display: inline-flex;
