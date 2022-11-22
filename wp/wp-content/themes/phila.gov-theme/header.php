@@ -59,82 +59,30 @@
 <a href="#page" aria-hidden="false" class="skip-to-content">Skip to main content</a>
   <header class="global-nav no-js pbn-mu mbn-mu">
     <h1 class="accessible">City of Philadelphia</h1>
-    <div class="grid-container full bg-ghost-gray utility-nav">
-        <div class="grid-x grid-margin-x">
-            <div class="cell small-8 medium-8 large-8">
-                <ul class="menu">
-                    <li class="gov-site show-for-medium valign-cell">
-                        An official website of the City of Philadelphia government 
-                    </li>
-                    <li class="gov-site show-for-medium valign-cell">
-                        <a href="#" class="trusted-site-toggle">Here's how you know <i class="fas fa-solid fa-caret-down"></i></a>
-                    </li>
-                    <li class="gov-site show-for-small-only">
-                        <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="cell small-4 medium-4 large-4">
-                <ul class="dropdown menu" data-dropdown-menu>
-                  <li>
-                    <a href="#">Item 1</a>
-                    <ul class="menu align-right">
-                      <li><a href="#">Item 1A</a></li>
-                      <!-- ... -->
-                    </ul>
-                  </li>
-                  <li><a href="#">Item 2</a></li>
-                  <li><a href="#">Item 3</a></li>
-                  <li><a href="#">Item 4</a></li>
-                </ul> 
-            </div>
-        </div>
-    </div>
+
     <!-- Utility Navigation -->
-        <!-- <div class="columns bg-ghost-gray expanded utility-nav" data-swiftype-index="false">
+    <div class="row columns bg-ben-franklin-blue expanded utility-nav" data-swiftype-index="false">
       <div class="row">
         <div class="medium-12 small-16 columns">
           <ul class="medium-horizontal menu">
-            <li class="gov-site show-for-medium valign-cell">
-              An official website of the City of Philadelphia government <a href="#" class="trusted-site-toggle">Here's how you know <i class="fas fa-solid fa-caret-down"></i></a>
+            <li class="gov-site show-for-medium">
+              <span>An official website of the City of Philadelphia government </span>
+              <a href="" class="trusted-site-toggle">Here's how you know</a>
             </li>
             <li class="gov-site show-for-small-only">
-                <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
+              <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
             </li>
           </ul>
-        </div> -->
-        <!-- Translation Nav -->
-        <!-- <div class="medium-12 small-8 columns translations-nav">
-          <ul class="translations-dropdown dropdown menu" data-dropdown-menu>
+        </div>
+        <div class="medium-12 small-8 columns">
+          <ul class="medium-horizontal menu float-right">
             <li>
-                <a href="#" class="dropdown-selector">
-                    <i class="fas fa-globe"></i> <span class="show-for-small-only">Translate</span>
-                </a>
-                <ul id="translations-options" class="menu" data-dropdown-content>
-                    <li class="show-for-small-only"><a href="#">English</a></li>
-                    <li class="show-for-small-only"><a href="#">Español</a></li>
-                    <li class="show-for-small-only"><a href="#">中文</a></li>
-                    <li class="show-for-small-only"><a href="#">عربي</a></li>
-                    <li><a href="#">Pусский</a></li>
-                    <li><a href="#">Português</a></li>  
-                    <li><a href="#">Tiếng Việt</a></li>  
-                    <li><a href="#">Ayisyen</a></li>
-                    <li><a href="#">Kiswahili</a></li>
-                    <li><div id="google_translate_element" class="no-js"><span class="show-for-sr">More Languages+</span></div></li>
-                    <li><a href="#"><i class="fa fa-messages"></i> Feedback and Support</a></li>
-                    <li><a href="#"><i class="fa fa-file-lines"></i> Translated Publications</a></li>
-                </ul>
-             </li>
-          </ul>
-          <ul class="menu show-for-medium">
-            <li><a href="#">English</a></li>
-            <li><a href="#">Español</a></li>
-            <li><a href="#">中文</a></li>
-            <li><a href="#">عربي</a></li>
+              <div id="google_translate_element" class="no-js"><span class="show-for-sr">Google Translate</span></div>
+            </li>
           </ul>
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- Trusted Site -->
     <div class="row columns expanded" data-swiftype-index="false" id="trusted-site">
       <div class="row pvm">
@@ -178,21 +126,27 @@
                   </a>
                 </div>
               </div>
-              <div class="medium-17 columns show-for-medium desktop-nav">
-                <div class="top-bar-right valign-mu">
-                  <nav data-swiftype-index="false" class="phila-global-nav-menu valign-mu" aria-label="main-nav">
-                    <ul class="horizontal menu pan valign-mu">
+              <div class="medium-16 columns pan show-for-medium desktop-nav">
+                <div class="top-bar-right">
+                  <nav data-swiftype-index="false" class="global-nav" aria-label="main-nav">
+                    <ul class="menu">
                       <li class="services-menu-link" data-toggle="services-mega-menu">
-                        <a href="" class="no-link valign-cell" data-link="/service-directory/" onclick="noLink(event)">Services</a>
+                        <a href="" class="no-link " data-link="/service-directory/" onclick="noLink(event)">Services</a>
                       </li>
-                      <li>
-                        <a href="/programs-initiatives/#/" class="valign-cell">Programs &amp; initiatives</a>
+                      <li class="programs-menu-link">
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/programs-initiatives/" class="">Programs</a>
                       </li>
-                      <li>
-                        <a href="/the-latest/" class="valign-cell"> News &amp; events</a>
+                      <li class="departments-menu-link">
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/city-government-directory/" class="">Departments</a>
                       </li>
-                      <li>
-                        <a href="/publications-forms/" class="valign-cell"> Publications &amp; forms</a>
+                      <li class="tools-menu-link">
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/tools/" class="">Tools</a>
+                      </li>
+                      <li class="publications-menu-link">
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/publications-forms/" class=""> Publications</a>
+                      </li>
+                      <li class="news-menu-link">
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/the-latest/" class=""><i class="fa-solid fa-newspaper"></i> News</a>
                       </li>
                     </ul>
                 </nav>
@@ -240,18 +194,22 @@
                     </ul>
                     </li>
                     <li tabindex="0">
-                      <a href="/programs-initiatives/#/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs &amp; initiatives</a>
-                    </li>
-                    <li tabindex="0">
-                      <a href="/the-latest/" class="valign-cell"><i class="fas fa-microphone"></i> News &amp; events</a>
-                    </li>
-                    <li tabindex="0">
-                      <a href="/publications-forms/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications &amp; forms</a>
+                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/programs-initiatives/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs</a>
                     </li>
                     <li class="bg-sidewalk" tabindex="0">
-                      <a href="/mayor/"><i class="fas fa-university"></i> Mayor's Office</a>
+                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/city-government-directory/" class="valign-cell"><i class="fas fa-sitemap"></i> Departments</a>
                     </li>
-                    <li class="bg-sidewalk" tabindex="0"><a href="/city-government-directory/"><i class="fas fa-sitemap"></i> City government directory</a>
+                    <li tabindex="0">
+                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/tools/" class="valign-cell"><i class="fas fa-hammer"></i> Tools</a>
+                      </li>
+                      <li tabindex="0">
+                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/publications-forms/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications</a>
+                    </li>
+                      <li tabindex="0">
+                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/the-latest/" class="valign-cell"><i class="fas fa-newspaper"></i> News</a>
+                    </li>
+                    <li class="bg-sidewalk" tabindex="0">
+                    <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/mayor/" class="valign-cell"><i class="fas fa-university"></i> Mayor's Office</a>
                     </li>
                   </ul>
                 </nav>
