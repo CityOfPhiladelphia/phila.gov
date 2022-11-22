@@ -134,19 +134,19 @@
                         <a href="" class="no-link " data-link="/service-directory/" onclick="noLink(event)">Services</a>
                       </li>
                       <li class="programs-menu-link">
-                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/programs-initiatives/" class="">Programs</a>
+                        <a href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/programs-initiatives/" class="">Programs</a>
                       </li>
                       <li class="departments-menu-link">
-                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/city-government-directory/" class="">Departments</a>
+                        <a href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/city-government-directory/" class="">Departments</a>
                       </li>
                       <li class="tools-menu-link">
-                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/tools/" class="">Tools</a>
+                        <a href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/tools/" class="">Tools</a>
                       </li>
                       <li class="publications-menu-link">
-                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/publications-forms/" class=""> Publications</a>
+                        <a href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/publications-forms/" class=""> Publications</a>
                       </li>
                       <li class="news-menu-link">
-                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/the-latest/" class=""><i class="fa-solid fa-newspaper"></i> News</a>
+                        <a href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/the-latest/" class=""><i class="fa-solid fa-newspaper"></i> News</a>
                       </li>
                     </ul>
                 </nav>
@@ -194,22 +194,22 @@
                     </ul>
                     </li>
                     <li tabindex="0">
-                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/programs-initiatives/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs</a>
+                      <a href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/programs-initiatives/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs</a>
                     </li>
                     <li class="bg-sidewalk" tabindex="0">
-                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/city-government-directory/" class="valign-cell"><i class="fas fa-sitemap"></i> Departments</a>
+                      <a href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/city-government-directory/" class="valign-cell"><i class="fas fa-sitemap"></i> Departments</a>
                     </li>
                     <li tabindex="0">
-                        <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/tools/" class="valign-cell"><i class="fas fa-hammer"></i> Tools</a>
+                        <a href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/tools/" class="valign-cell"><i class="fas fa-hammer"></i> Tools</a>
                       </li>
                       <li tabindex="0">
-                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/publications-forms/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications</a>
+                      <a href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/publications-forms/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications</a>
                     </li>
                       <li tabindex="0">
-                      <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/the-latest/" class="valign-cell"><i class="fas fa-newspaper"></i> News</a>
+                      <a href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/the-latest/" class="valign-cell"><i class="fas fa-newspaper"></i> News</a>
                     </li>
                     <li class="bg-sidewalk" tabindex="0">
-                    <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/mayor/" class="valign-cell"><i class="fas fa-university"></i> Mayor's Office</a>
+                    <a href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/mayor/" class="valign-cell"><i class="fas fa-university"></i> Mayor's Office</a>
                     </li>
                   </ul>
                 </nav>
