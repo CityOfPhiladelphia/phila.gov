@@ -38,6 +38,7 @@ class Phila_Gov_Custom_Post_Types{
     add_action( 'init', array( $this, 'create_phila_posts' ) );
     add_action( 'init', array( $this, 'create_phila_news_post' ) );
     add_action( 'init', array( $this, 'create_phila_press_release' ) );
+    add_action( 'init', array( $this, 'create_phila_advanced_post' ) );
 
   }
 
@@ -65,6 +66,10 @@ class Phila_Gov_Custom_Post_Types{
         wp_redirect(admin_url('edit.php', 'http'), 301);
         exit;
     }
+    if($pagenow == 'edit.php' && isset($_GET['post_type']) && $_GET['post_type'] == 'advanced_post'){
+      wp_redirect(admin_url('edit.php', 'http'), 301);
+      exit;
+  }
   }
 
   function create_phila_service_updates() {
@@ -320,6 +325,43 @@ class Phila_Gov_Custom_Post_Types{
         'hierarchical' => false,
         'rewrite' => array(
             'slug' => 'press-releases',
+            'with_front' => false,
+        ),
+      )
+    );
+  }
+  function create_phila_advanced_post() {
+    register_post_type( 'advanced_post',
+      array(
+        'labels' => array(
+          'name' => __( 'Advanced Posts' ),
+          'menu_name' => __( 'Advanced Posts' ),
+          'singular_name' => __( 'Advanced Post' ),
+          'add_new'   => __( 'Add Advanced Post' ),
+          'all_items'   => __( 'All Advanced Posts' ),
+          'add_new_item' => __( 'Add New Advanced Post' ),
+          'edit_item'   => __( 'Edit Advanced Post' ),
+          'view_item'   => __( 'View Advanced Posts' ),
+          'search_items'   => __( 'Search Advanced Posts' ),
+          'not_found'   => __( 'Advanced Post Not Found' ),
+          'not_found_in_trash'   => __( 'Advanced Post not found in trash' ),
+        ),
+        'taxonomies' => array( 'category' ),
+        'supports' => array(
+          'editor',
+          'title',
+          'revisions',
+          'author'
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'show_in_menu'  => false,
+        'show_in_rest' => true,
+        'rest_base' => 'advanced-posts',
+        'menu_icon' => 'dashicons-editor-justify',
+        'hierarchical' => false,
+        'rewrite' => array(
+            'slug' => 'advanced-posts',
             'with_front' => false,
         ),
       )
