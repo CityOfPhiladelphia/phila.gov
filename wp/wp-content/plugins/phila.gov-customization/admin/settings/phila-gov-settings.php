@@ -150,7 +150,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
       ),
       array(
         'type' => 'heading',
-        'name' => 'Holiday list',
+        'name' => 'Holiday List',
       ),
       array(
         'id'  => 'phila_holidays',
@@ -197,40 +197,6 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             '0' => 'Hide',
             '1' => 'Display',
         )
-      ),
-      array(
-        'type' => 'heading',
-        'name' => 'Site-wide banner settings',
-      ),
-      array(
-        'id'  => 'heading_text',
-        'name'  => 'Heading text',
-        'type'  => 'text',
-        'required'  => true
-      ),
-      array(
-        'id'  => 'banner_subtext',
-        'name'  => 'Banner subtext',
-        'type'  => 'text',
-        'required'  => true
-      ),
-      array(
-        'id'  => 'button_text',
-        'name'  => 'Button text',
-        'type'  => 'text',
-        'required'  => true
-      ),
-      array(
-        'id'  => 'button_url',
-        'name'  => 'Button URL',
-        'type'  => 'url',
-        'required'  => true
-      ),
-      array(
-        'id'  => 'icon',
-        'name' => 'Icon',
-        'type'  => 'text',
-        'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
       ),
     ),
   );
