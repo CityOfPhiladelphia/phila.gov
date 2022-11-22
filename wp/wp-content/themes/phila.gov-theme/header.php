@@ -133,19 +133,19 @@
                       <li class="services-menu-link" data-toggle="services-mega-menu">
                         <a href="" class="no-link " data-link="/service-directory/" onclick="noLink(event)">Services</a>
                       </li>
-                      <li>
+                      <li class="programs-menu-link">
                         <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/programs-initiatives/" class="">Programs</a>
                       </li>
-                      <li>
+                      <li class="departments-menu-link">
                         <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/city-government-directory/" class="">Departments</a>
                       </li>
-                      <li>
+                      <li class="tools-menu-link">
                         <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/tools/" class="">Tools</a>
                       </li>
-                      <li>
+                      <li class="publications-menu-link">
                         <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/publications-forms/" class=""> Publications</a>
                       </li>
-                      <li>
+                      <li class="news-menu-link">
                         <a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>/the-latest/" class=""><i class="fa-solid fa-newspaper"></i> News</a>
                       </li>
                     </ul>
