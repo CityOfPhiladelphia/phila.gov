@@ -269,6 +269,14 @@
       ul {
         background-color:white;
       }
+
+      .menu{
+        display: flex;
+        justify-content:space-around;
+        list-style-type:none;
+        position: relative;
+      }
+      
       .menu>li {
         > a {
           text-align: center;
