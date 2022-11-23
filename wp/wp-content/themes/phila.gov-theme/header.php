@@ -80,8 +80,6 @@
             <ul data-toggler=".expanded" id="translations-menu" class="dropdown menu" data-dropdown-menu>
               <li class="show-for-medium"><a href="#">English</a></li>
               <li class="show-for-medium"><a href="#">Español</a></li>
-              <li class="show-for-medium"><a href="#">中文</a></li>
-              <li class="show-for-medium"><a href="#">عربي</a></li> 
               <li>
                 <a href="#" class="dropdown-selector">
                     <i class="fa-solid fa-earth-americas"></i> <span class="show-for-small-only">Translate</span><i class="fas fa-solid fa-caret-down"></i>
@@ -89,14 +87,7 @@
                 <ul class="translations-dropdown menu" data-dropdown-content>
                     <li class="show-for-small-only"><a href="#">English</a></li>
                     <li class="show-for-small-only"><a href="#">Español</a></li>
-                    <li class="show-for-small-only"><a href="#">中文</a></li>
-                    <li class="show-for-small-only text-left"><a href="#">عربي</a></li>
-                    <li><a href="#">Pусский</a></li>
-                    <li><a href="#">Português</a></li>  
-                    <li><a href="#">Tiếng Việt</a></li>  
-                    <li><a href="#">Ayisyen</a></li>
-                    <li><a href="#">Kiswahili</a></li>
-                    <li><a href="#"><i class="fa fa-plus"></i> More Languages</a></li>
+                    <li id="google_translate_element"></li>
                     <li class="translations-support"><a href="#"><i class="fa fa-messages"></i> Feedback and Support</a></li>
                     <li class="translations-support"><a href="#"><i class="fa fa-file-lines"></i> Translated Publications</a></li>
                 </ul>

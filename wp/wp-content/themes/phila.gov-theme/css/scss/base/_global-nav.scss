@@ -181,13 +181,40 @@
           }
         }
       }
+       
+      #google_translate_element {
 
+          .goog-te-gadget-simple {
+              .goog-te-menu-value:before{
+                  content: 'More Languages';
+              }
+              .googe-te-menu-value span {
+                  display: inline-block;
+
+                  &:hover {
+                      color: white;
+                      background-color:color(dark-ben-franklin);
+                  }
+              }
+              a {
+                  padding: .5rem 2rem .5rem .5rem !important;
+
+                  &:hover {
+                      color: white;
+                      background-color:color(dark-ben-franklin);
+                  }
+                  &::before {
+                      color: white;
+                      background-color:color(ghost-gray);
+                  }
+              }
+          }
+      }
 
       .dropdown-selector>span {
         font-weight: bold;
         padding-right: 4px;
       }
-
 
       .translations-dropdown li>a {
 
