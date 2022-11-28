@@ -38,8 +38,5 @@
                 phila_get_menu();
             ?>
 
-        </div> <!-- END .hero-wrap  -->
-
-    </div>
-
+    </div> <!-- END .hero-wrap  -->
 </header>
