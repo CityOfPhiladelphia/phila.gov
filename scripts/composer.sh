@@ -26,6 +26,7 @@ echo '
     "meta-box/meta-box-tabs":"dev-master",
     "meta-box/meta-box-tooltip":"dev-master",
     "wpackagist-plugin/better-search-replace":"1.4.1",
+    "wpackagist-plugin/disable-gutenberg":"2.8.1",
     "wpackagist-plugin/meta-box":"^5.6.5",
     "wpackagist-plugin/mb-rest-api":"^1.4.1",
     "wpackagist-plugin/amazon-s3-and-cloudfront":"^2.6.2",
