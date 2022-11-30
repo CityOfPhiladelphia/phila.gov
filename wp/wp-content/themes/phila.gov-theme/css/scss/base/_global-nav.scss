@@ -217,6 +217,10 @@
                   text-transform: capitalize;
                   font-family: "Montserrat","Tahoma",sans-serif;
                     
+                  @include breakpoint(small only) {
+                    padding-left: 1rem; 
+                  }
+
                   &:before{
                     margin-right: 4px;
                     font: var(--fa-font-solid);
