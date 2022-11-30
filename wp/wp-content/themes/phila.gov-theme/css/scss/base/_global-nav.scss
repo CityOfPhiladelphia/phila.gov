@@ -165,46 +165,76 @@
       }
 
       .translations-dropdown {
-
         li {
           a {
             background: color(ghost-gray);
             text-align: left;
+            display: block; 
 
             &:hover {
-              font-style: underline;
+              text-decoration: underline;
             }
 
             &:active {
               font-weight: bold;
+            }
+            .fa {
+              margin: 4px;
             }
           }
         }
       }
        
       #google_translate_element {
+          display: inherit;
+          padding: inherit;
 
+          &:hover {
+              color: white;
+              background-color:color(dark-ben-franklin);
+          }
           .goog-te-gadget-simple {
-              .goog-te-menu-value:before{
-                  content: 'More Languages';
-              }
-              .googe-te-menu-value span {
-                  display: inline-block;
 
+              display: block;
+
+              .goog-te-menu-value .fa-globe::before {
+                  display: none;
+              }
+              .goog-te-menu-value:before{
                   &:hover {
                       color: white;
-                      background-color:color(dark-ben-franklin);
+                      background-color: color(dark-ben-franklin);
+                  }
+              }
+
+              .goog-te-menu-value::after {
+                  display: none;
+              }
+
+              .goog-te-menu-value span:first-of-type {
+                  display: inline;
+                  text-transform: capitalize;
+                  font-family: "Montserrat","Tahoma",sans-serif;
+                    
+                  &:before{
+                    margin-right: 4px;
+                    font: var(--fa-font-solid);
+                    content: "\2b";
+                  }
+
+                  &:hover {
+                      color: white !important;
+                      background-color: inherit;
                   }
               }
               a {
-                  padding: .5rem 2rem .5rem .5rem !important;
-
+                  display: block;
+                
                   &:hover {
                       color: white;
-                      background-color:color(dark-ben-franklin);
+                      background-color:color(dark-ben-franklin);  
                   }
-                  &::before {
-                      color: white;
+                  &:hover::before {
                       background-color:color(ghost-gray);
                   }
               }
@@ -222,7 +252,7 @@
         &:active {
           background: color(dark-ben-franklin);
           color: white;
-          font-style: underline;
+          text-decoration: underline;
         }
       }
     }

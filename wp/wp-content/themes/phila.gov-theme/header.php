@@ -88,8 +88,8 @@
                     <li class="show-for-small-only"><a href="#">English</a></li>
                     <li class="show-for-small-only"><a href="#">Español</a></li>
                     <li id="google_translate_element"></li>
-                    <li class="translations-support"><a href="#"><i class="fa fa-messages"></i> Feedback and Support</a></li>
-                    <li class="translations-support"><a href="#"><i class="fa fa-file-lines"></i> Translated Publications</a></li>
+                    <li class="translations-support"><a href="#"><i class="fa fa-messages"></i>Feedback and Support</a></li>
+                    <li class="translations-support"><a href="#"><i class="fa fa-file-lines"></i>Translated Publications</a></li>
                 </ul>
               </li>
             </ul> 
