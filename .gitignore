@@ -4,7 +4,10 @@
 .vagrant
 wp/readme.*
 wp/xmlrpc.php
+wp/composer.json
+wp/composer.lock
 wp/wp-config.php
+wp/vendor
 wp/wp-content/debug.log
 wp/wp-content/uploads/
 wp/wp-content/plugins/meta-box-*
