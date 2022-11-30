@@ -28,6 +28,7 @@ echo '
     "wpackagist-plugin/better-search-replace":"1.4.1",
     "wpackagist-plugin/disable-gutenberg":"2.8.1",
     "wpackagist-plugin/meta-box":"^5.6.5",
+    "wpackagist-plugin/meta-box-text-limiter":"^1.1.3",
     "wpackagist-plugin/mb-rest-api":"^1.4.1",
     "wpackagist-plugin/amazon-s3-and-cloudfront":"^2.6.2",
     "wpackagist-plugin/classic-editor":"^1.6.2",
