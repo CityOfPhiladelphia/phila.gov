@@ -243,6 +243,8 @@ module.exports = $(function () {
         var pathItem = urlPath[1];
         
         switch(pathItem) {
+            case "zh":
+                urlLanguage = "中文";
             case "es":
                 urlLanguage = "Español";
                 break;
