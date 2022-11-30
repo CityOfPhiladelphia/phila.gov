@@ -35,6 +35,7 @@ echo '
     "wpackagist-plugin/amazon-s3-and-cloudfront":"^2.6.2",
     "wpackagist-plugin/classic-editor":"^1.6.2",
     "wpackagist-plugin/wp-rest-api-v2-menus":"^0.10",
+    "wpackagist-plugin/wordpress-importer":"^0.8",
     "wpackagist-plugin/tinymce-advanced":"^5.6.0"
   },
   "config": {
