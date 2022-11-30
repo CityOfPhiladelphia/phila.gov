@@ -27,6 +27,7 @@ echo '
     "meta-box/meta-box-tooltip":"dev-master",
     "wpackagist-plugin/better-search-replace":"1.4.1",
     "wpackagist-plugin/disable-gutenberg":"2.8.1",
+    "wpackagist-plugin/jwt-auth":"2.1.3",
     "wpackagist-plugin/jwt-authentication-for-wp-rest-api":"1.3.2",
     "wpackagist-plugin/meta-box":"^5.6.5",
     "wpackagist-plugin/meta-box-text-limiter":"^1.1.3",
