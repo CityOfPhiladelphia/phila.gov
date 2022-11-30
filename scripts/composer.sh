@@ -31,6 +31,7 @@ echo '
     "wpackagist-plugin/meta-box-text-limiter":"^1.1.3",
     "wpackagist-plugin/mb-relationships":"^1.10.11",
     "wpackagist-plugin/mb-rest-api":"^1.4.1",
+    "wpackagist-plugin/miniorange-saml-20-single-sign-on":"^4.9.29",
     "wpackagist-plugin/amazon-s3-and-cloudfront":"^2.6.2",
     "wpackagist-plugin/classic-editor":"^1.6.2",
     "wpackagist-plugin/wp-rest-api-v2-menus":"^0.10",
