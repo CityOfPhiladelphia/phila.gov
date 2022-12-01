@@ -12,9 +12,14 @@ echo '
     {
       "type": "composer",
       "url": "https://packages.metabox.io/'$METABOX_LICENSE'"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization.git"
     }
   ],
   "require": {
+    "cityofphiladelphia/phila.gov-customization": "dev-main",
     "meta-box/mb-admin-columns":"dev-master",
     "meta-box/mb-revision":"dev-master",
     "meta-box/mb-settings-page":"dev-master",
