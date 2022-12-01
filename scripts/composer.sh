@@ -20,10 +20,15 @@ echo '
     {
       "type": "vcs",
       "url": "https://github.com/CityOfPhiladelphia/phl-aqi-plugin.git"
+    }, 
+    {
+      "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila-duplicate-and-merge-posts.git"
     }
   ],
   "require": {
     "cityofphiladelphia/phila.gov-customization": "dev-main",
+    "cityofphiladelphia/duplicate-and-merge-posts": "dev-main",
     "cityofphiladelphia/phl-aqi": "dev-main",
     "meta-box/mb-admin-columns":"dev-master",
     "meta-box/mb-revision":"dev-master",
