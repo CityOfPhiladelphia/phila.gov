@@ -1,3 +1,4 @@
+branch=$(git symbolic-ref --short HEAD)
 source ~/.ssh/environment
 sudo chmod 777 ~/app/wp
 echo '
@@ -35,11 +36,11 @@ echo '
     }
   ],
   "require": {
-    "cityofphiladelphia/phila.gov-customization": "dev-main",
-    "cityofphiladelphia/phl-aqi": "dev-main",
-    "cityofphiladelphia/duplicate-and-merge-posts": "dev-main",
-    "cityofphiladelphia/google-calendar-events": "dev-main",
-    "cityofphiladelphia/restrict-categories": "dev-main",
+    "cityofphiladelphia/phila.gov-customization": "dev-'$branch'",
+    "cityofphiladelphia/phl-aqi": "dev-'$branch'",
+    "cityofphiladelphia/duplicate-and-merge-posts": "dev-'$branch'",
+    "cityofphiladelphia/google-calendar-events": "dev-'$branch'",
+    "cityofphiladelphia/restrict-categories": "dev-'$branch'",
     "meta-box/mb-admin-columns":"dev-master",
     "meta-box/mb-revision":"dev-master",
     "meta-box/mb-settings-page":"dev-master",
