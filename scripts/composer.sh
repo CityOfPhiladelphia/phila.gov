@@ -20,16 +20,21 @@ echo '
     {
       "type": "vcs",
       "url": "https://github.com/CityOfPhiladelphia/phl-aqi-plugin.git"
-    }, 
+    },
     {
       "type": "vcs",
       "url": "https://github.com/CityOfPhiladelphia/phila-duplicate-and-merge-posts.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila-google-calendar-events.git"
     }
   ],
   "require": {
     "cityofphiladelphia/phila.gov-customization": "dev-main",
-    "cityofphiladelphia/duplicate-and-merge-posts": "dev-main",
     "cityofphiladelphia/phl-aqi": "dev-main",
+    "cityofphiladelphia/duplicate-and-merge-posts": "dev-main",
+    "cityofphiladelphia/google-calendar-events": "dev-main",
     "meta-box/mb-admin-columns":"dev-master",
     "meta-box/mb-revision":"dev-master",
     "meta-box/mb-settings-page":"dev-master",
