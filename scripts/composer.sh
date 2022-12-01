@@ -28,6 +28,10 @@ echo '
     {
       "type": "vcs",
       "url": "https://github.com/CityOfPhiladelphia/phila-google-calendar-events.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila-restrict-categories.git"
     }
   ],
   "require": {
@@ -35,6 +39,7 @@ echo '
     "cityofphiladelphia/phl-aqi": "dev-main",
     "cityofphiladelphia/duplicate-and-merge-posts": "dev-main",
     "cityofphiladelphia/google-calendar-events": "dev-main",
+    "cityofphiladelphia/restrict-categories": "dev-main",
     "meta-box/mb-admin-columns":"dev-master",
     "meta-box/mb-revision":"dev-master",
     "meta-box/mb-settings-page":"dev-master",
