@@ -41,6 +41,7 @@
 
 <?php if( !phila_util_is_array_empty($content) ) :  ?>
 <!-- Additional Content-->
+</div>
 <section>
   <?php if ( !empty($content['forms']) || !empty( $content['form_free'] )) : ?>
   <div class="row">
