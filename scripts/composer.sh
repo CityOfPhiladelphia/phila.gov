@@ -1,5 +1,6 @@
 branch=$(git symbolic-ref --short HEAD)
 source ~/.ssh/environment
+composer config --global github-oauth.github.com $GITHUB_AUTH_TOKEN
 sudo chmod 777 ~/app/wp
 echo '
 {
