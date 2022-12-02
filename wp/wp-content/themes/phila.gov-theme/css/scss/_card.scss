@@ -48,6 +48,9 @@ a.card,
           display: inline-block;
           vertical-align: middle
         }
+      .content-block {
+        display: inline-block;
+      }
     }
   }
 
@@ -205,6 +208,23 @@ a.faux-card {
   .post-2 .post-label{
     min-height: 280px; //TODO: find a better solution to force date to stay at bottom of card. Currently, the image in this card prevents the flex grid from calcuating the available height correctly.
   }
+  //These were styles that used to be forced with foundation classes
+  .post-grid {
+    .grid-container {
+      margin-bottom: 1rem;
+    }
+  }
+  .press-grid {
+    .grid-container{
+      .grid-x:nth-child(2){
+        margin-bottom:1rem;
+      }
+    }
+  }
+
+  .padding-right-medium-up {
+    padding-right: 1rem;
+  }
 }
 
 
@@ -213,6 +233,12 @@ a.faux-card {
     //Add breathing room to mobile view
     margin-bottom:1rem;
   }
+  
+  //same padding on posts and press releases on mobile
+  article.type-post  {
+    padding-bottom: 1rem !important;
+  }
+
 }
 
 .see-all-card{
@@ -267,32 +293,38 @@ a.card.sub-topic{
   }
 }
 
-.press-grid,
-.announcement-grid {
-  .card {
-    &.custom {
-      display: flex;
-      border-bottom:1px solid #444444 !important;
-      background: none;
+  .press-grid,
+  .announcement-grid {
+    .card {
+      &.custom {
+        display: flex;
+        border-bottom:1px solid #444444 !important;
+        background: none;
 
-      time {
-        font-size: 14px;
-        font-weight: bold;
+        time {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        a {
+          font-weight: bold;
+          font-size: 14px;
+          margin-bottom: 1rem;
+          line-height: 1.8rem;
+        }
+        .far,
+        .fal {
+          margin-left: auto;
+          margin-right: auto;
+          width: fit-content;
+          display: block;
+        }
+        &.card--last {
+          border-bottom: none !important;
+        }
       }
-      a {
-        font-weight: bold;
-        font-size: 14px;
-        margin-bottom: 1rem;
-        line-height: 1.8rem;
-      }
-      .far,
-      .fal {
-        margin-left: auto;
-        margin-right: auto;
-        width: fit-content;
-        display: block;
-      }
-      &.card--last {
+    }
+    .card--last {
+      .card {
         border-bottom: none !important;
       }
     }
@@ -302,4 +334,4 @@ a.card.sub-topic{
       border-bottom: none !important;
     }
   }
-}
+
