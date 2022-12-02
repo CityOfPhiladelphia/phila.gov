@@ -24,13 +24,12 @@
 
 <?php $topic_children = new WP_Query( $topic_args ); ?>
 <?php if ( $topic_children->have_posts() ): ?>
+  <div class="row grid-x fat-gutter">
+
   <?php while ( $topic_children->have_posts() ) : ?>
     <?php $topic_children->the_post(); ?>
     <?php $counter++; ?>
-    <?php if($counter % 3 == 1) :?>
-      <div class="row grid-x fat-gutter">
-    <?php endif;?>
-      <div class="flex-container auto small-24 medium-8 column end">
+      <div class="flex-container auto small-24 medium-12 column">
         <a href="<?php the_permalink(); ?>" class="card sub-topic">
           <div class="content-block">
             <h3><?php the_title(); ?></h3>
@@ -38,11 +37,8 @@
           </div>
         </a>
       </div>
-    <?php if($counter % 3 == 0) :?>
-      </div>
-    <?php endif;?>
   <?php endwhile;?>
+  </div>
 <?php endif; ?>
 <?php wp_reset_query(); ?>
-
 <?php get_template_part( 'partials/content', 'additional' ); ?>
