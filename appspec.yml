@@ -38,7 +38,7 @@ hooks:
       runas: ubuntu
 branch_config:
   wip\/.*: null
-  staging:
+  composer-to-staging-2:
     deploymentGroupName: staging-phila-gov
     deploymentGroupConfig:
       serviceRoleArn: 'arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy'
