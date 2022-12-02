@@ -1,4 +1,3 @@
-branch=$(git symbolic-ref --short HEAD)
 source ~/.ssh/environment
 composer config --global github-oauth.github.com $GITHUB_AUTH_TOKEN
 sudo chmod 777 ~/app/wp
@@ -37,11 +36,11 @@ echo '
     }
   ],
   "require": {
-    "cityofphiladelphia/phila.gov-customization": "dev-'$branch'",
-    "cityofphiladelphia/phl-aqi": "dev-'$branch'",
-    "cityofphiladelphia/duplicate-and-merge-posts": "dev-'$branch'",
-    "cityofphiladelphia/google-calendar-events": "dev-'$branch'",
-    "cityofphiladelphia/restrict-categories": "dev-'$branch'",
+    "cityofphiladelphia/phila.gov-customization": "dev-'$GITHUB_BRANCH'",
+    "cityofphiladelphia/phl-aqi": "dev-'$GITHUB_BRANCH'",
+    "cityofphiladelphia/duplicate-and-merge-posts": "dev-'$GITHUB_BRANCH'",
+    "cityofphiladelphia/google-calendar-events": "dev-'$GITHUB_BRANCH'",
+    "cityofphiladelphia/restrict-categories": "dev-'$GITHUB_BRANCH'",
     "meta-box/mb-admin-columns":"dev-master",
     "meta-box/mb-revision":"dev-master",
     "meta-box/mb-settings-page":"dev-master",
