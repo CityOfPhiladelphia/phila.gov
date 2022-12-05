@@ -77,19 +77,23 @@
           </div>
           <!-- Translations Navigation -->
           <div class="top-bar-right translations-nav">
-            <ul data-toggler=".expanded" id="translations-menu" class="dropdown menu" data-dropdown-menu>
+            <ul id="translations-menu" class="dropdown menu" data-dropdown-menu>
               <li class="show-for-medium"><a href="#">English</a></li>
+<?php if ( (is_front_page() === True) && (get_post_type($post->ID) === 'post') ): ?>
               <li class="show-for-medium"><a href="#">Español</a></li>
               <li class="show-for-medium"><a href="#">中文</a></li>
+<?php endif; ?>
               <li>
                 <a href="#" class="dropdown-selector">
                     <i class="fa-solid fa-earth-americas"></i> <span class="show-for-small-only">Translate</span><i class="fas fa-solid fa-caret-down"></i>
                 </a>
                 <ul class="translations-dropdown menu" data-dropdown-content>
                     <li class="show-for-small-only"><a href="#">English</a></li>
-                    <li class="show-for-small-only"><a href="#">Español</a></li>
+ <?php if ( (is_front_page() === True) && (get_post_type($post->ID) === 'post') ): ?>
+                   <li class="show-for-small-only"><a href="#">Español</a></li>
                     <li class="show-for-small-only"><a href="#">中文</a></li>
-                    <li id="google_translate_element"></li>
+ <?php endif; ?>
+                   <li id="google_translate_element"></li>
                     <li class="translations-support"><a href="#"><i class="fa fa-messages"></i>Feedback and Support</a></li>
                     <li class="translations-support"><a href="#"><i class="fa fa-file-lines"></i>Translated Publications</a></li>
                 </ul>
