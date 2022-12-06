@@ -40,7 +40,7 @@ echo '
     }
   ],
   "require": {
-    "cityofphiladelphia/phila.gov-theme": "dev-'$GITHUB_BRANCH'",
+    "cityofphiladelphia/phila.gov-theme": "dev-main",
     "cityofphiladelphia/phila.gov-customization": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/phl-aqi": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/duplicate-and-merge-posts": "dev-'$GITHUB_BRANCH'",
