@@ -1,16 +1,11 @@
 <?php
 
-/* resource list */
+/* Collecton resource list */
 
 ?>
   <?php if (function_exists('rwmb_meta')): ?>
   <?php
   $user_selected_template = phila_get_selected_template();
-  $resource_count = 3;
-  if ($user_selected_template != 'collection_page_v2') {
-    $resource_list_groups = rwmb_meta( 'phila_resource_list' );
-    $resource_count = 4;
-  }
 
   $featured_resources = array();
 
@@ -44,7 +39,7 @@
   <?php endforeach ?>
 
 <?php endforeach ?>
-<section class="<?php if(isset($current_row['phila_resource_group']['phila_wysiwyg_content'] ) || $user_selected_template != 'collection_page_v2') { echo "mtl"; } ?>">
+<section class="mtl">
     <?php if ( !empty( $featured_resources ) ):?>
   <!-- Featured resources -->
       <?php
@@ -123,32 +118,18 @@
           $resource_list_description = isset( $resource_list_group['phila_resource_list_description'] ) ? $resource_list_group['phila_resource_list_description'] : '';
           $resource_list_slug = sanitize_title_with_dashes($resource_list_title); ?>
           <div class="grid-container">
-            <div class="grid-x grid-padding-x one-quarter-row  <?php if(isset($current_row['phila_resource_group']['phila_wysiwyg_content'] ) || $user_selected_template != 'collection_page_v2') { echo "mvm"; } ?>">
-              <?php if ($user_selected_template == 'collection_page_v2') { ?>
-                <?php if (isset($resource_list_title)) { ?>
-                  <div class="small-24 medium-24">
-                    <header>
-                      <h2 id="<?php echo $resource_list_slug ?>" class="<?php echo !empty( $featured_resources ) ? 'h4' : 'h3'; ?>"><?php echo  $resource_list_title ?></h2>
-                    </header>
-                  </div>
-                <?php } ?>
-                <?php if( isset($resource_list_description )): ?>
-                  <div class="small-24 medium-24">
-                    <?php echo apply_filters( 'the_content', $resource_list_description) ?>
-                  </div>
-                <?php endif;?>
-                <div class="small-24 medium-24">
-              <?php } else { ?>
-                <div class="cell medium-6">
-                  <header>
-                    <?php if( isset($resource_list_title )): ?>
-                      <h2 id="<?php echo $resource_list_slug ?>" class="<?php echo !empty( $featured_resources ) ? 'h4' : 'h3'; ?>"><?php echo  $resource_list_title ?></h2>
-                    <?php endif;?>
-                  </header>
-                </div>
-                <div class="cell medium-18">
+            <div class="grid-x grid-padding-x one-quarter-row mvm">
+              <?php if (isset($resource_list_title)) { ?>
+                <div class="small-24 medium-24"><header><h2 id="<?php echo $resource_list_slug ?>" class="<?php echo !empty( $featured_resources ) ? 'h4' : 'h3'; ?>"><?php echo  $resource_list_title ?></h2></header></div>
               <?php } ?>
-              <?php
+              <?php if( isset($resource_list_description )): ?>	
+                <div class="small-24 medium-24">	
+                  <?php echo apply_filters( 'the_content', $resource_list_description) ?>	
+                </div>	
+              <?php endif;?>	
+              <div class="small-24 medium-24">
+                <?php
+                if ( count($resource_list_group['phila_resource_list_items']) > 3 ) : ?>
                   <div class="expandable" aria-controls="<?php echo $resource_list_slug . '-control' ?>" aria-expanded="false">
                 <?php endif; ?>
                 <div class="resource-list">
@@ -165,30 +146,22 @@
                     $featured_summary = isset( $list_items['phila_featured_summary'] ) ? $list_items['phila_featured_summary'] : '';
 
                     $icon = phila_resource_list_switch( $item_resource_type );
-
+                    
                     ?>
 
                     <?php if (!empty($item_url)) : ?>
-                      <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>">
-                        <a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>>
-                          <i class="<?php echo $icon ?> fa-lg" aria-hidden="true"></i><?php echo $item_title ?>
-                        </a>
-                      </li>
+                      <li class="phm pvs clickable-row" data-href="<?php echo $item_url ?>"><a href="<?php echo $item_url ?>" <?php echo ($item_external) ? 'class="external"' : ''?>><i class="<?php echo $icon ?> fa-lg" aria-hidden="true"></i><?php echo $item_title ?></a></li>
                     <?php endif; ?>
                   <?php endforeach; ?>
                 </ul>
               </div>
-              <?php if ( count($resource_list_group['phila_resource_list_items']) > $resource_count ) : ?>
+              <?php if ( count($resource_list_group['phila_resource_list_items']) > 3 ) : ?>
               </div><a href="#" data-toggle="expandable" class="float-right" id="<?php echo $resource_list_slug . '-control' ?>"> More + </a>
             <?php endif; ?>
           </div>
         </div>
         <?php if ($last_resource_key != $resource_key) : ?>
-          <?php if ($user_selected_template == 'collection_page_v2') { ?>
-            <hr class="grid-padding-x mhn">
-          <?php } else { ?>
-            <hr class="mhn">
-          <?php } ?>
+          <hr class="grid-padding-x mhn">
         <?php endif ?>
       </div>
 
@@ -197,5 +170,5 @@
   <?php endif; ?>
 <?php endif; ?>
 </section>
-<!--/ resource list -->
+<!--/ Collecton resource list -->
 <?php wp_reset_postdata(); ?>
