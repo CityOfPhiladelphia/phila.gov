@@ -33,9 +33,14 @@ echo '
     {
       "type": "vcs",
       "url": "https://github.com/CityOfPhiladelphia/phila-restrict-categories.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git"
     }
   ],
   "require": {
+    "cityofphiladelphia/phila.gov-theme": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/phila.gov-customization": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/phl-aqi": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/duplicate-and-merge-posts": "dev-'$GITHUB_BRANCH'",
