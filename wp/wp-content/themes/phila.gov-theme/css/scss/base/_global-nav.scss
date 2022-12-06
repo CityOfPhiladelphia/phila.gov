@@ -230,6 +230,10 @@
     }
   }
 
+  .top-bar-right {
+    width:100%;
+  }
+
   @include breakpoint(small only) {
     .mega-menu-dropdown.dropdown-pane{
       display: none;
@@ -265,13 +269,21 @@
       ul {
         background-color:white;
       }
+
+      .menu{
+        display: flex;
+        justify-content:space-around;
+        list-style-type:none;
+        position: relative;
+      }
+      
       .menu>li {
         > a {
           text-align: center;
           height: inherit;
-
-          text-transform: uppercase;
-
+          font-weight:650;
+          font-size: 14px;
+          text-transform: none !important;
           padding: $spacing-large 1.5rem;
         }
         a:active, a:hover {
@@ -519,7 +531,15 @@
 
   }
 
+  @media screen and (min-width:950px) {
+    .news-menu-link{
+      min-width:101px;
+    }
+  }
+
 }
+
+
 
 header {
   .logo {

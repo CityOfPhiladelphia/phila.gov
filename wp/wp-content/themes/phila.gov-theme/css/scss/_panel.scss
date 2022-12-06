@@ -27,3 +27,15 @@
 .panel.survey p:last-of-type{
   padding-right: 1rem;
 }
+
+@include breakpoint (medium up) {
+  a.card.action-panel{
+    .desktop-float-left {
+      float:left;
+      padding-right:1rem;
+    }
+    header.desktop-text-align-left {
+      text-align: left;
+    }
+  }
+}
