@@ -26,13 +26,13 @@ hooks:
     - location: scripts/predeploy.sh
       runas: ubuntu
   AfterInstall:
+    - location: scripts/composer.sh
+      runas: ubuntu
     - location: scripts/sso-conf.sh
       runas: ubuntu
     - location: scripts/deploy.sh
       runas: ubuntu
     - location: scripts/db-config.sh
-      runas: ubuntu
-    - location: scripts/composer.sh
       runas: ubuntu
     - location: scripts/postdeploy.sh
       runas: ubuntu
