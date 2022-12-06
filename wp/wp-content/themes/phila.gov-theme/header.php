@@ -79,7 +79,7 @@
           <div class="top-bar-right translations-nav">
             <ul id="translations-menu" class="dropdown menu" data-dropdown-menu>
               <li class="show-for-medium"><a href="#">English</a></li>
-<?php if ( (is_front_page() === True) && (get_post_type($post->ID) === 'post') ): ?>
+<?php if ( (is_front_page() === True) or (get_post_type($post->ID) != 'post') ): ?>
               <li class="show-for-medium"><a href="#">Español</a></li>
               <li class="show-for-medium"><a href="#">中文</a></li>
 <?php endif; ?>
@@ -89,7 +89,7 @@
                 </a>
                 <ul class="translations-dropdown menu" data-dropdown-content>
                     <li class="show-for-small-only"><a href="#">English</a></li>
- <?php if ( (is_front_page() === True) && (get_post_type($post->ID) === 'post') ): ?>
+ <?php if ( (is_front_page() === True) or (get_post_type($post->ID) != 'post') ): ?>
                    <li class="show-for-small-only"><a href="#">Español</a></li>
                     <li class="show-for-small-only"><a href="#">中文</a></li>
  <?php endif; ?>
