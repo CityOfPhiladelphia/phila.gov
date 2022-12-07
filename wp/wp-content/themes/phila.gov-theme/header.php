@@ -63,7 +63,7 @@
     <!-- Utility Navigation -->
     <div class="row columns bg-ben-franklin-blue expanded utility-nav" data-swiftype-index="false">
       <div class="row">
-        <div class="medium-12 small-16 columns">
+        <div class="medium-16 small-16 columns">
           <ul class="medium-horizontal menu">
             <li class="gov-site show-for-medium">
               <span>An official website of the City of Philadelphia government </span>
@@ -74,7 +74,7 @@
             </li>
           </ul>
         </div>
-        <div class="medium-12 small-8 columns">
+        <div class="medium-8 small-8 columns">
           <ul class="medium-horizontal menu float-right">
             <li>
               <div id="google_translate_element" class="no-js"><span class="show-for-sr">Google Translate</span></div>
