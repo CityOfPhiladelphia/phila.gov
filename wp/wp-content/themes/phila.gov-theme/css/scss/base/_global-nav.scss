@@ -278,13 +278,13 @@
 
   }
 
-  .top-bar-right .menu>li {
-    >a:link {
-      @media screen and (min-width: 750px) and (max-width:950px) {
-        font-size: .75rem;
+  @media screen and (min-width: 750px) and (max-width:950px) {
+  .top-bar-right .menu li a {
+      
+        font-size: 1rem;
         padding: 2rem .5rem;
       }
-    }
+    
   }
 
   @include breakpoint(medium) {
