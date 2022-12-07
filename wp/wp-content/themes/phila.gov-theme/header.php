@@ -119,7 +119,7 @@
         <div class="row primary-menu" data-sticky-container data-swiftype-index="false">
           <div class="columns phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
             <div class="row sticky-header-width">
-              <div class="small-16 medium-6 columns valign small-push-4 medium-push-0">
+              <div class="small-16 medium-4 columns valign small-push-4 medium-push-0">
                 <div class="valign-cell">
                   <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia">
                     <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//www.phila.gov/assets/images/city-of-philadelphia.png" alt="City of Philadelphia">
