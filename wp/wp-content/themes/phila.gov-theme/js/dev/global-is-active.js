@@ -10,7 +10,7 @@ module.exports = jQuery(document).ready(function($) {
       $('.services-menu-link a').addClass('js-is-current');
     }else if( currentPath.indexOf('/programs-initiatives/') === 0 ){
       $('.programs-menu-link a').addClass('js-is-current');
-    }else if( currentPath.indexOf('/city-government-directory/') === 0 ){
+    }else if( currentPath.indexOf('/departments/') === 0 ){
       $('.departments-menu-link a').addClass('js-is-current');
     }else if( currentPath.indexOf('/the-latest/') === 0 ){
       $('.news-menu-link a').addClass('js-is-current');
