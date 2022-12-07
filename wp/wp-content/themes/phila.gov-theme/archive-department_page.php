@@ -14,12 +14,12 @@
 get_header(); ?>
 
 <div class="row">
-        <header class="small-24 columns">
-          <h1 class="contrast">
-            Departments and other agencies
-          </h1>
-        </header>
-      </div>
+  <header class="small-24 columns">
+    <h1 class="contrast">
+      Departments and other agencies
+    </h1>
+  </header>
+</div>
 <?php
 
 global $phila_environment;
