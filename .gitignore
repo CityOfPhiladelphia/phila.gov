@@ -4,16 +4,40 @@
 .vagrant
 wp/readme.*
 wp/xmlrpc.php
+wp/composer.json
+wp/composer.lock
 wp/wp-config.php
+wp/vendor
 wp/wp-content/debug.log
 wp/wp-content/uploads/
 wp/wp-content/plugins/meta-box-*
-!wp/wp-content/plugins/meta-box-text-limiter
 wp/wp-content/plugins/mb-*
-!wp/wp-content/plugins/mb-relationships
+wp/wp-content/plugins/mb-relationships
 wp/wp-content/plugins/two-factor-authentication-premium/
 wp/wp-content/plugins/wpfront-user-role-editor-personal-pro/
 wp/wp-content/plugins/wp-nested-pages/
+wp/wp-content/plugins/google-calendar-events/
+wp/wp-content/plugins/meta-box-text-limiter/
+wp/wp-content/plugins/disable-gutenberg/
+wp/wp-content/plugins/amazon-s3-and-cloudfront/
+wp/wp-content/plugins/better-search-replace/
+wp/wp-content/plugins/classic-editor/
+wp/wp-content/plugins/meta-box/
+wp/wp-content/plugins/phl-aqi/
+wp/wp-content/plugins/phl-aqi/
+wp/wp-content/plugins/duplicate-and-merge-posts/
+wp/wp-content/plugins/phila.gov-customization/
+wp/wp-content/plugins/miniorange-saml-20-single-sign-on/
+wp/wp-content/plugins/tinymce-advanced/
+wp/wp-content/plugins/wp-rest-api-v2-menus/
+wp/wp-content/plugins/wordpress-importer/
+wp/wp-content/plugins/restrict-categories/
+wp/wp-content/plugins/reusable-text-blocks
+wp/wp-content/plugins/jwt-authentication-for-wp-rest-api
+wp/wp-content/plugins/gathercontent-import
+wp/wp-content/plugins/jwt-auth/
+wp/wp-content/plugins/easy-wp-smtp/
+wp/wp-content/plugins/admin-email-as-from-address/
 wp/wp-content/themes/phila.gov-theme/yarn-error.log
 node_moddules
 # Ignore compiled files
@@ -32,3 +56,4 @@ wp/wp-content/themes/phila.gov-theme/js/phila-scripts.min.js.map
 .DS_Store
 
 .vscode/*
+tags

@@ -32,6 +32,10 @@ hooks:
       runas: ubuntu
     - location: scripts/db-config.sh
       runas: ubuntu
+    - location: scripts/composer.sh
+      runas: ubuntu
+    - location: scripts/postdeploy.sh
+      runas: ubuntu
 branch_config:
   wip\/.*: null
   staging:

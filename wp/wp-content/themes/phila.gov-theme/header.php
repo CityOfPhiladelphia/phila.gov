@@ -137,7 +137,11 @@
                         <a href="<?php echo get_site_url() ?>/programs-initiatives/" class="">Programs</a>
                       </li>
                       <li class="departments-menu-link">
+<<<<<<< HEAD
                         <a href="<?php echo get_site_url() ?>/departments/" class="">Departments</a>
+=======
+                        <a href="<?php echo get_site_url() ?>/city-government-directory/" class="">Departments</a>
+>>>>>>> origin/staging
                       </li>
                       <li class="tools-menu-link">
                         <a href="<?php echo get_site_url() ?>/tools/" class="">Tools</a>
@@ -197,7 +201,11 @@
                       <a href="<?php echo get_site_url() ?>/programs-initiatives/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs</a>
                     </li>
                     <li class="bg-sidewalk" tabindex="0">
+<<<<<<< HEAD
                       <a href="<?php echo get_site_url() ?>/departments/" class="valign-cell"><i class="fas fa-sitemap"></i> Departments</a>
+=======
+                      <a href="<?php echo get_site_url() ?>/city-government-directory/" class="valign-cell"><i class="fas fa-sitemap"></i> Departments</a>
+>>>>>>> origin/staging
                     </li>
                     <li tabindex="0">
                         <a href="<?php echo get_site_url() ?>/tools/" class="valign-cell"><i class="fas fa-hammer"></i> Tools</a>
