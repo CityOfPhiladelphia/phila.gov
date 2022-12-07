@@ -280,9 +280,20 @@
 
   @media screen and (min-width: 750px) and (max-width:950px) {
   .top-bar-right .menu li a {
-      
-        font-size: 1rem;
-        padding: 2rem .5rem;
+      font-size: 1rem !important;
+      padding: 2rem .75rem;
+      }
+
+      .news-menu-link a{
+        min-width:80px;
+      }
+
+      .global-nav .services-menu-link a {
+        padding: 2rem 2rem 2rem .75rem !important;
+      }
+
+      a.logo {
+        width:120px;
       }
     
   }
