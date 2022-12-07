@@ -41,7 +41,7 @@ class Phila_Gov_Departments{
           'thumbnail'
         ),
         'public' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'show_in_rest' => true,
         'rest_base' => 'departments',
         'show_in_nav_menus' => true,
