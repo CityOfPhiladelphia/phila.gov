@@ -83,3 +83,4 @@ echo '
 }
 ' > ~/app/wp/composer.json
 composer update -d ~/app/wp
+sudo cp ~/.ssh/.npmrc ~/app/wp/wp-content/themes/phila.gov-theme/.npmrc
