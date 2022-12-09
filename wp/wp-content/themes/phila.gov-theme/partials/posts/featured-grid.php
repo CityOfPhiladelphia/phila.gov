@@ -8,7 +8,7 @@
 
 <?php $main_feature_args  = array(
   'posts_per_page' => 1,
-  'post_type' => array('post', 'news_post'),
+  'post_type' => array('post'),
   'order' => 'desc',
   'orderby' => 'date',
   'meta_query'  => array(
@@ -19,16 +19,9 @@
       'compare' => '=',
     ),
     array(
-      'relation'  => 'AND',
-      array(
         'key' => 'phila_is_feature',
         'value' => '1',
         'compare' => '=',
-      ),
-      array(
-        'key' => '_thumbnail_id',
-        'compare' => 'EXISTS'
-      ),
     ),
   ),
   'ignore_sticky_posts' => 1, // We have to ignore sticky, otherwise we might show more than one post
@@ -60,7 +53,7 @@
 
       <?php $feature_args  = array(
         'posts_per_page' => 3,
-        'post_type' => array('post', 'news_post'),
+        'post_type' => array('post'),
         'order' => 'desc',
         'orderby' => 'date',
         'post__not_in' => array( $main_feature_id ),
