@@ -39,7 +39,7 @@ wp/wp-content/plugins/jwt-auth/
 wp/wp-content/plugins/easy-wp-smtp/
 wp/wp-content/plugins/admin-email-as-from-address/
 node_moddules
-wp/wp-content/themes/
+wp/wp-content/themes
 
 # OSX file
 .DS_Store
