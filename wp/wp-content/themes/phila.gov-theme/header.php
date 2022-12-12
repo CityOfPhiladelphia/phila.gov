@@ -139,28 +139,34 @@
         <div class="row primary-menu" data-sticky-container data-swiftype-index="false">
           <div class="columns phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
             <div class="row sticky-header-width">
-              <div class="small-16 medium-6 columns valign small-push-4 medium-push-0">
+              <div class="small-16 medium-4 columns valign small-push-4 medium-push-0">
                 <div class="valign-cell">
                   <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia">
                     <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//www.phila.gov/assets/images/city-of-philadelphia.png" alt="City of Philadelphia">
                   </a>
                 </div>
               </div>
-              <div class="medium-17 columns show-for-medium desktop-nav">
-                <div class="top-bar-right valign-mu">
-                  <nav data-swiftype-index="false" class="phila-global-nav-menu valign-mu" aria-label="main-nav">
-                    <ul class="horizontal menu pan valign-mu">
+              <div class="medium-16 columns pan show-for-medium desktop-nav">
+                <div class="top-bar-right">
+                  <nav data-swiftype-index="false" class="global-nav" aria-label="main-nav">
+                    <ul class="menu">
                       <li class="services-menu-link" data-toggle="services-mega-menu">
-                        <a href="" class="no-link valign-cell" data-link="/service-directory/" onclick="noLink(event)">Services</a>
+                        <a href="" class="no-link " data-link="/service-directory/" onclick="noLink(event)">Services</a>
                       </li>
-                      <li>
-                        <a href="/programs-initiatives/#/" class="valign-cell">Programs &amp; initiatives</a>
+                      <li class="programs-menu-link">
+                        <a href="<?php echo get_site_url() ?>/programs-initiatives/" class="">Programs</a>
                       </li>
-                      <li>
-                        <a href="/the-latest/" class="valign-cell"> News &amp; events</a>
+                      <li class="departments-menu-link">
+                        <a href="<?php echo get_site_url() ?>/departments/" class="">Departments</a>
                       </li>
-                      <li>
-                        <a href="/publications-forms/" class="valign-cell"> Publications &amp; forms</a>
+                      <li class="tools-menu-link">
+                        <a href="<?php echo get_site_url() ?>/tools/" class="">Tools</a>
+                      </li>
+                      <li class="publications-menu-link">
+                        <a href="<?php echo get_site_url() ?>/publications-forms/" class=""> Publications</a>
+                      </li>
+                      <li class="news-menu-link">
+                        <a href="<?php echo get_site_url() ?>/the-latest/" class=""><i class="fa-solid fa-newspaper"></i> News</a>
                       </li>
                     </ul>
                 </nav>
@@ -208,18 +214,22 @@
                     </ul>
                     </li>
                     <li tabindex="0">
-                      <a href="/programs-initiatives/#/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs &amp; initiatives</a>
-                    </li>
-                    <li tabindex="0">
-                      <a href="/the-latest/" class="valign-cell"><i class="fas fa-microphone"></i> News &amp; events</a>
-                    </li>
-                    <li tabindex="0">
-                      <a href="/publications-forms/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications &amp; forms</a>
+                      <a href="<?php echo get_site_url() ?>/programs-initiatives/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs</a>
                     </li>
                     <li class="bg-sidewalk" tabindex="0">
-                      <a href="/mayor/"><i class="fas fa-university"></i> Mayor's Office</a>
+                      <a href="<?php echo get_site_url() ?>/departments/" class="valign-cell"><i class="fas fa-sitemap"></i> Departments</a>
                     </li>
-                    <li class="bg-sidewalk" tabindex="0"><a href="/city-government-directory/"><i class="fas fa-sitemap"></i> City government directory</a>
+                    <li tabindex="0">
+                        <a href="<?php echo get_site_url() ?>/tools/" class="valign-cell"><i class="fas fa-hammer"></i> Tools</a>
+                      </li>
+                      <li tabindex="0">
+                      <a href="<?php echo get_site_url() ?>/publications-forms/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications</a>
+                    </li>
+                      <li tabindex="0">
+                      <a href="<?php echo get_site_url() ?>/the-latest/" class="valign-cell"><i class="fas fa-newspaper"></i> News</a>
+                    </li>
+                    <li class="bg-sidewalk" tabindex="0">
+                    <a href="<?php echo get_site_url() ?>/mayor/" class="valign-cell"><i class="fas fa-university"></i> Mayor's Office</a>
                     </li>
                   </ul>
                 </nav>

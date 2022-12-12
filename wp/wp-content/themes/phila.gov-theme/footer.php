@@ -27,7 +27,7 @@
       <div class="row">
         <div class="columns intro">
           <h2 class="mbxs">Philly311</h2>
-          <span><a href="/311" class="external" aria-label="Philly 311">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available.</span>
+          <span><a href="https://www.phila.gov/departments/philly311/" aria-label="Philly 311">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available.</span>
         </div>
       </div>
       <div class="row pvn pvl-mu equal-height">
@@ -39,12 +39,12 @@
                 <div class="button-label valign-cell">Report a problem</div>
               </div>
             </a>
-            <a href="https://www.phila.gov/311/findananswer/Pages/default.aspx" class="button icon full-width clearfix">
+            <a href="https://www.phila.gov/departments/philly311/	" class="button icon full-width clearfix">
               <div class="valign">
                 <div class="button-label valign-cell">Ask a question</div>
               </div>
             </a>
-            <a href="https://cityofphiladelphia.github.io/service-request-tracker/" class="button icon full-width clearfix">
+            <a href="https://www.phila.gov/services/property-lots-housing/track-a-service-request-with-311/#/" class="button icon full-width clearfix">
               <div class="valign">
                 <div class="button-label valign-cell">Track a request</div>
               </div>
@@ -57,10 +57,10 @@
             <!-- TODO: Begin pulling these in from 311 -->
               <ul class="columns-2-mu">
                 <li>
-                  <a href="https://www.phila.gov/services/property-lots-housing/get-the-homestead-exemption/" class="trending-requests">Apply for a Homestead Exemption</a>
+                  <a href="https://www.phila.gov/services/property-lots-housing/property-taxes/get-real-estate-tax-relief/get-the-homestead-exemption/" class="trending-requests">Apply for a Homestead Exemption</a>
                 </li>
                 <li>
-                  <a href="https://www.phila.gov/prisons/Facilities/Pages/default.aspx" class="trending-requests">Correctional facilities</a>
+                  <a href="https://www.phila.gov/departments/philadelphia-department-of-prisons/about/facilities/" class="trending-requests">Correctional facilities</a>
                 </li>
                 <li>
                   <a href="https://onlineserviceshub.com/ParkingPortal/Philadelphia" class="trending-requests">Pay a parking violation</a>
@@ -75,10 +75,10 @@
                   <a href="https://property.phila.gov/" class="trending-requests">Search for property information</a>
                 </li>
                 <li>
-                  <a href="https://www.phila.gov/services/trash-recycling-city-upkeep/residential-trash-and-recycling/find-your-trash-and-recycling-collection-day/#/" class="trending-requests">Trash and recycling schedule</a>
+                  <a href="https://www.phila.gov/services/trash-recycling-city-upkeep/find-your-trash-and-recycling-collection-day/#/" class="trending-requests">Trash and recycling schedule</a>
                 </li>
                 <li>
-                  <a href="https://www.phila.gov/services/water-gas-utilities/water-sewer-services/become-a-water-customer/" class="trending-requests">Turn water service on or off</a>
+                  <a href="https://www.phila.gov/services/water-gas-utilities/become-a-water-customer/" class="trending-requests">Turn water service on or off</a>
                 </li>
               </ul>
             </section>
@@ -95,10 +95,10 @@
             <li class="pvxs"><a href="https://www.phila.gov/departments/mayor/">Mayor</a></li>
             <li class="pvxs"><a href="http://phlcouncil.com/" class="external">City Council</a></li>
             <li class="pvxs"><a href="http://www.courts.phila.gov/">Courts</a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/districtattorney/pages/default.aspx">District Attorney</a></li>
+            <li class="pvxs"><a href="https://phillyda.org/" class="external">District Attorney</a></li>
             <li class="pvxs"><a href="https://controller.phila.gov/">City Controller</a></li>
-            <li class="pvxs"><a href="http://www.officeofphiladelphiasheriff.com/" class="external">Sheriff</a></li>
-            <li class="pvxs"><a href="https://www.philadelphiavotes.com/" class="external">City Commissioners</a></li>
+            <li class="pvxs"><a href="https://phillysheriff.com/" class="external">Sheriff</a></li>
+            <li class="pvxs"><a href="https://vote.phila.gov/	">City Commissioners</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/departments/register-of-wills/">Register of Wills</a></li>
           </ul>
         </nav>
@@ -107,8 +107,7 @@
         <h2 class="mtn mbm">Open government</h2>
         <nav class="take-action">
           <ul>
-            <li class="pvxs"><a href="https://data.phila.gov/visualizations/payments-aggregate/" class="">City Payments</a></li>
-            <li class="pvxs"><a href="http://www.amlegal.com/codes/client/philadelphia_pa/" class="external">Philadelphia Code &amp; Charter</a></li>
+            <li class="pvxs"><a href="https://codelibrary.amlegal.com/codes/philadelphia/latest/overview" class="external">Philadelphia Code &amp; Charter</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/departments/department-of-records/">City records</a></li>
             <li class="pvxs"><a href="http://regulations.phila-records.com/">City agency regulations</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/departments/mayor/executive-orders/">Executive orders</a></li>
@@ -179,7 +178,7 @@
         </nav>
         <nav>
           <ul>
-            <li class="pvxs"><a href="https://www.phila.gov/city-government-directory/">City government directory</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/departments/">Departments</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/service-directory/">Service directory</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/programs-initiatives/#/">Programs & initiatives </a></li>
             <li class="pvxs"><a href="https://www.phila.gov/publications-forms/">Publications & forms </a></li>

@@ -63,7 +63,7 @@ function phila_breadcrumbs() {
 
     } elseif ( is_post_type_archive('department_page' ) ) {
 
-        echo '<li>' . __( 'City government directory', 'phila.gov' ) . '</li>';
+        echo '<li>' . __( 'Departments and other agencies', 'phila.gov' ) . '</li>';
 
     } elseif ( is_post_type_archive('service_page' ) ) {
 
