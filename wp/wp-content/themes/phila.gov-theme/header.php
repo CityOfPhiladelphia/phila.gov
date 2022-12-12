@@ -61,28 +61,48 @@
     <h1 class="accessible">City of Philadelphia</h1>
 
     <!-- Utility Navigation -->
-    <div class="row columns bg-ben-franklin-blue expanded utility-nav" data-swiftype-index="false">
-      <div class="row">
-        <div class="medium-16 small-16 columns">
-          <ul class="medium-horizontal menu">
-            <li class="gov-site show-for-medium">
-              <span>An official website of the City of Philadelphia government </span>
-              <a href="" class="trusted-site-toggle">Here's how you know</a>
-            </li>
-            <li class="gov-site show-for-small-only">
-              <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
-            </li>
-          </ul>
-        </div>
-        <div class="medium-8 small-8 columns">
-          <ul class="medium-horizontal menu float-right">
-            <li>
-              <div id="google_translate_element" class="no-js"><span class="show-for-sr">Google Translate</span></div>
-            </li>
-          </ul>
+    <div class="utility-nav">
+    <div class="grid-container bg-ghost-gray">
+        <div class="top-bar bg-ghost-gray" id="responsive-menu">
+          <div class="top-bar-left valign-mu">
+            <ul class="menu">
+              <li class="gov-site show-for-medium">
+                  An official website of the City of Philadelphia government 
+              </li>
+              <li class="gov-site show-for-medium"><a href="#" class="trusted-site-toggle">Here's how you know <i class="fas fa-solid fa-caret-down"></i></a></li>
+              <li class="gov-site show-for-small-only">
+                  <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
+              </li>
+            </ul> 
+          </div>
+          <!-- Translations Navigation -->
+          <div class="top-bar-right translations-nav">
+            <ul id="translations-menu" class="dropdown menu" data-dropdown-menu>
+              <li class="show-for-medium"><a href="#">English</a></li>
+<?php if ( (is_front_page() === True) or (get_post_type($post->ID) != 'post') ): ?>
+              <li class="show-for-medium"><a href="#">Español</a></li>
+              <li class="show-for-medium"><a href="#">中文</a></li>
+<?php endif; ?>
+              <li>
+                <a href="#" class="dropdown-selector">
+                    <i class="fa-solid fa-earth-americas"></i> <span class="show-for-small-only">Translate</span><i class="fas fa-solid fa-caret-down"></i>
+                </a>
+                <ul class="translations-dropdown menu" data-dropdown-content>
+                    <li class="show-for-small-only"><a href="#">English</a></li>
+ <?php if ( (is_front_page() === True) or (get_post_type($post->ID) != 'post') ): ?>
+                   <li class="show-for-small-only"><a href="#">Español</a></li>
+                    <li class="show-for-small-only"><a href="#">中文</a></li>
+ <?php endif; ?>
+                   <li id="google_translate_element"></li>
+                    <li class="translations-support"><a href="#"><i class="fa fa-messages"></i>Feedback and Support</a></li>
+                    <li class="translations-support"><a href="#"><i class="fa fa-file-lines"></i>Translated Publications</a></li>
+                </ul>
+              </li>
+            </ul> 
+          </div>
         </div>
       </div>
-    </div>
+  </div>
     <!-- Trusted Site -->
     <div class="row columns expanded" data-swiftype-index="false" id="trusted-site">
       <div class="row pvm">
