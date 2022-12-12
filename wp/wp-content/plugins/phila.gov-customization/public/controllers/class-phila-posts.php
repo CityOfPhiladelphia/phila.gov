@@ -366,6 +366,25 @@ class Phila_Archives_Controller {
       $post_data['categories']  = (array) $categories;
     }
 
+    if (isset( $schema['properties']['archived'] )) {
+      $archived = rwmb_meta('phila_archive_post', '', $post->ID);
+      $phila_template = rwmb_meta('phila_template_select', '', $post->ID);
+      $post_is_old = false;
+      if (date('Y-m-d', strtotime('-2 years')) > $post->post_date) { // if posts are 2 years old
+        $post_is_old = true;
+      }
+      if ((((empty( $archived ) || !isset($archived) || $archived == 'default') && $post_is_old) || $archived == 'archive_now') && ($phila_template == 'post' || $phila_template == '')) {
+        $archived = true;
+      } else {
+        $archived = false;
+      }
+      $post_data['archived']  = (bool) $archived;
+    }
+
+    if (isset( $schema['properties']['updated_at'] )) {
+      $post_data['updated_at']  = get_the_modified_date('Y-m-d', $post->ID);
+    }
+
     return rest_ensure_response( $post_data );
 }
 
@@ -446,6 +465,15 @@ class Phila_Archives_Controller {
         'categories'  => array(
           'description' => esc_html__('The categories assigned to this object.', 'phila-gov'),
           'type'  => 'array',
+        ),
+        'archived'  => array(
+          'description' => esc_html__('The archive status of a post', 'phila-gov'),
+          'type'  => 'bool',
+        ),
+        'updated_at' => array(
+          'description'  => esc_html__( 'Last updated time.', 'phila-gov' ),
+          'type'         => 'date',
+          'readonly'     => true,
         ),
       ),
     );
