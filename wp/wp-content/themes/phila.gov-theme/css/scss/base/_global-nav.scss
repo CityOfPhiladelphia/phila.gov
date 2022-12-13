@@ -599,6 +599,12 @@
 
   }
 
+  @media screen and (min-width:950px) {
+    .news-menu-link{
+      min-width:101px;
+    }
+  }
+
 }
 
 @media screen and (min-width:950px) {
