@@ -1,0 +1,41 @@
+.info-block p{
+  font-size:1.5rem;
+  font-style: italic;
+  .paragraph {
+    font-size: 1rem;
+    font-style: normal;
+  }
+}
+
+.card.action-panel .panel{
+  padding-bottom: 3.5rem;
+  text-decoration: none;
+  color: #444;
+
+  .fa-stack{
+    margin-bottom:2rem;
+  }
+}
+
+.panel.info .title{
+  text-transform: none;
+}
+
+.panel.info .large-text{
+  font-size: 5rem;
+}
+.panel.survey p:last-of-type{
+  padding-right: 1rem;
+}
+
+@include breakpoint (medium up) {
+  a.card.action-panel{
+    .desktop-float-left {
+      float:left;
+      padding-right:1rem;
+    }
+    header.desktop-text-align-left {
+      text-align: left;
+    }
+  }
+}

@@ -16,10 +16,6 @@ echo '
     },
     {
       "type": "vcs",
-      "url": "https://github.com/CityOfPhiladelphia/phila.gov-customization.git"
-    },
-    {
-      "type": "vcs",
       "url": "https://github.com/CityOfPhiladelphia/phl-aqi-plugin.git"
     },
     {
@@ -40,8 +36,6 @@ echo '
     }
   ],
   "require": {
-    "cityofphiladelphia/phila.gov-theme": "dev-'$GITHUB_BRANCH'",
-    "cityofphiladelphia/phila.gov-customization": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/phl-aqi": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/duplicate-and-merge-posts": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/google-calendar-events": "dev-'$GITHUB_BRANCH'",
