@@ -29,6 +29,10 @@ echo '
     {
       "type": "vcs",
       "url": "https://github.com/CityOfPhiladelphia/phila-restrict-categories.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git"
     }
   ],
   "require": {
@@ -72,3 +76,5 @@ echo '
   }
 }
 ' > ~/app/wp/composer.json
+composer update -d ~/app/wp
+sudo cp ~/.ssh/.npmrc ~/app/wp/wp-content/themes/phila.gov-theme/.npmrc
