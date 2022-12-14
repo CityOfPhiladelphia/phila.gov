@@ -1,0 +1,68 @@
+{
+  "name": "phila.gov-theme",
+  "version": "0.16.10",
+  "description": "A custom wordpress theme for phila.gov",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:css": "sass --load-path=node_modules/phila-standards/src/_vendor/foundation-sites/scss --load-path=node_modules/phila-standards/src/sass --source-map css/scss/base.scss css/styles.css",
+    "build:css": "sass --load-path=node_modules/phila-standards/src/_vendor/foundation-sites/scss --load-path=node_modules/phila-standards/src/sass --style=compressed --source-map css/scss/base.scss css/styles.min.css",
+    "dev:js": "browserify js/dev/main.js -o js/phila-scripts.js",
+    "build:js": "browserify -e js/dev/main.js | uglifyjs -c -m > js/phila-scripts.min.js",
+    "dev:build": "npm run dev:css && npm run dev:js",
+    "build": "npm run build:css && npm run build:js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme.git"
+  },
+  "keywords": [
+    "theme"
+  ],
+  "author": "City of Philadelphia",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/CityOfPhiladelphia/phila.gov-theme/issues"
+  },
+  "homepage": "https://github.com/CityOfPhiladelphia/phila.gov-theme",
+  "devDependencies": {
+    "autoprefixer": "^7.2.6",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.5.0",
+    "browserify-shim": "^3.8.14",
+    "css-loader": "^3.2.0",
+    "envify": "^4.1.0",
+    "hoek": "^5.0.4",
+    "postcss": "^8.4.5",
+    "postcss-cli": "^9.1.0",
+    "sass": "^1.54.9",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-pro": "^6.1.2",
+    "babel-polyfill": "^6.26.0",
+    "jquery": "^3.5.0",
+    "js-cookie": "^3.0.1",
+    "list.js": "^2.3.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "mustache": "^2.3.2",
+    "phila-standards": "^1.2.0",
+    "uglify-js": "^3.6.4"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "env"
+          ]
+        }
+      ]
+    ]
+  }
+}

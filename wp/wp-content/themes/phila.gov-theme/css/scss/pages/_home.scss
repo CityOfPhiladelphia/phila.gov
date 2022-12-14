@@ -1,0 +1,408 @@
+/*
+ *
+ * Home
+ *
+ *
+*/
+.home{
+
+  .hero-content {
+    margin-top:0;
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+    @media only screen and (min-width: 40em) {
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .welcome-message {
+      .small-text{
+        font-style: italic;
+        font-family: 'Times New Roman';
+        font-size: 2rem;
+      }
+      .h1 {
+        font-size: 3.5rem;
+        line-height: 1;
+        margin-top: 0;
+        text-transform: uppercase;
+        @media only screen and (min-width: 40em) {
+          font-size: 3.5rem;
+        }
+      }
+      .sub-title {
+        font-size: 1.5rem;
+        line-height: 1.25;
+
+        @media only screen and (min-width: 40em) {
+          font-size: 2rem;
+        }
+      }
+    }
+    .mask {
+      position: absolute;
+      bottom: 0;
+      z-index: 0;
+      width: 100%;
+      height: 45px;
+      background-color: white;
+    }
+    .overlap {
+      position: relative;
+      background:none;
+    }
+    .photo-credit.small-text {
+      display:none;
+      @media only screen and (min-width: 66em) {
+        display:inline-block;
+        font-style: italic;
+        font-size: .75rem;
+        color: color(medium-gray);
+        padding: 0.25rem 0.5rem;
+        position: absolute;
+        bottom: 45px;
+        right: 0;
+      }
+    }
+    .call-to-action {
+      margin: 0;
+      font-family: 'Montserrat', 'Tahoma', sans-serif;
+
+      a {
+        color:black;
+        [class*="fa-"], p {
+          color: color(dark-ben-franklin);
+        }
+        [class*="fa-"] {
+          font-size: 5rem;
+          line-height: 5rem;
+          @media only screen and (min-width: 40em) {
+            font-size: 3rem;
+            line-height: 4rem;
+          }
+          @media only screen and (min-width: 64em) {
+            font-size: 3.8rem;
+          }
+        }
+        .fa-home {
+          font-size: 6rem;
+          line-height: 5rem;
+          @media only screen and (min-width: 40em) {
+            font-size: 4rem;
+            line-height: 4rem;
+          }
+          @media only screen and (min-width: 64em) {
+            font-size: 4rem;
+          }
+        }
+    }
+      p {
+        margin:0;
+        font-size: 1rem;
+        line-height: 1.25;
+        @media only screen and (min-width: 40em) {
+          font-size: .85rem;
+        }
+        @media only screen and (min-width: 64em) {
+          font-size: 1rem;
+        }
+      }
+      a {
+        background-color: #daedfe;
+        display: block;
+        @include transition(opacity, .25s);
+
+
+        &:hover{
+          @include transition(opacity, .25s);
+          opacity: .5;
+          }
+        }
+      }
+    }
+  .feedback {
+    .up {
+      background: color(ghost-gray);
+    }
+  }
+  .service-update th{
+    width:25%;
+  }
+}
+
+
+.neighborhood-resources {
+  .resource-row {
+    .row {
+      .panel {
+        background-color: rgba(255, 255, 255, 0.7);
+        margin: 0 auto;
+        text-align: center;
+        @include transition(opacity, .25s);
+        &:hover{
+          @include transition(opacity, .25s);
+          opacity: .5;
+        }
+        header {
+          font-family: 'Montserrat', 'Tahoma', sans-serif;
+          font-weight: 400;
+        }
+        .icon {
+          margin-top: .75rem;
+          margin-bottom: .75rem;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 40em) {
+    .contrast {
+      border-bottom: 0;
+    }
+    .resource-row {
+      background:url("../img/beta_homepage_neighborhood_resources.jpg") no-repeat center top;
+      background-size: cover;
+
+      .panel {
+        max-width: 155px;
+        min-height: 161px;
+      }
+    }
+  }
+}
+
+.phila-redesign {
+  .about {
+    border-color: color(sidewalk);
+  }
+  .process {
+    .marker {
+      .fa, .fab, .fal, .far, .fas {
+          width: 100%;
+      }
+    }
+    .process-bar {
+      margin-top: -10px;
+
+      .description {
+        text-align: center;
+        &:before {
+          content: '';
+          border-right: 1px solid color(medium-gray);
+          display: inline-block;
+          height: 30px;
+          width: 0;
+        }
+        &.current {
+          &:before {
+            border-right: 1px solid color(ben-franklin-blue);
+          }
+        }
+        span {
+          text-align: left;
+        }
+      }
+    }
+    .process-label {
+      text-transform: uppercase;
+      width: 100%;
+      text-align: center;
+      height:40px;
+      color:white;
+
+      .h5 {
+        font-weight: bold;
+      }
+    }
+    .marker {
+      &:after {
+        content: '';
+        text-align: center;
+        border-right: 1px solid color(ben-franklin-blue);
+        display: inline-block;
+        height: 20px;
+        width: 0px;
+        margin-top: -10px;
+      }
+    }
+
+    .left-arrow-indent {
+      position: relative;
+
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        border-left: 15px solid;
+        position: absolute;
+        margin-top: 0px;
+        left: 0px;
+      }
+      &.left-arrow-white {
+        &:before {
+          border-left-color: white;
+        }
+      }
+      &.left-arrow-dark-gray {
+        &:before {
+          border-left-color: color(dark-gray);
+        }
+      }
+      &.left-arrow-ben-franklin-blue {
+        &:before {
+          border-left-color: color(ben-franklin-blue);
+        }
+      }
+    }
+    .right-arrow {
+      position:relative;
+
+      &:after {
+        position: absolute;
+        background-color: white;
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 15px solid color(dark-gray);
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        right: -1px;
+        padding-left: 2px;
+      }
+      &.right-arrow-ben-franklin-blue{
+        &:after {
+          border-left-color: color(ben-franklin-blue);
+        }
+      }
+    }
+  }
+  &.covid-phases {
+    .phases-header {
+      display: none;
+    }
+    .chevron {
+      position: relative;
+    }
+    .active-marker {
+      display: none;
+      margin-bottom: -5px;
+      .marker {
+        color: #58C04D;
+        &::after {
+          height: 28px;
+          border-right: 3px solid #58C04D;
+        }
+      }
+    }
+    .description {
+      display: none;
+      position: absolute;
+      padding: 0.5rem;
+      width: calc( 100% - 16px );
+      background-color: #F0F0F0;
+      &::before {
+        display: none !important;
+      }
+      ul {
+        margin: 0;
+        li {
+          text-align: left;
+        }
+      }
+    }
+    h4 {
+      font-family: 'Open Sans';
+      font-weight: 600 !important;
+      text-transform: none;
+    }
+    .completed {
+      margin-top: 57px;
+      .bg-dark-gray {
+        background-color: #58C04D !important;
+        .right-arrow {
+          h4 {
+            color: #000;
+          }
+          &::after {
+            border-left-color: #58C04D;
+          }
+        }
+      }
+    }
+    .upcoming {
+      margin-top: 57px;
+      .bg-dark-gray {
+        background-color: #D8D8D8 !important;
+        .right-arrow {
+          h4 {
+            color: #444;
+          }
+          &::after {
+            border-left-color: #D8D8D8;
+          }
+        }
+      }
+    }
+    .active {
+      .active-marker {
+        display: block;
+      }
+      .bg-dark-gray {
+        background-color: #58C04D !important;
+        .right-arrow {
+          h4 {
+            color: #000;
+          }
+          &::after {
+            border-left-color: #58C04D;
+          }
+        }
+      }
+    }
+    .open {
+      .bg-dark-gray {
+        background-color: #F0F0F0 !important;
+        .right-arrow {
+          h4 {
+            color: #000;
+          }
+          &::after {
+            border-left-color: #F0F0F0;
+          }
+        }
+      }
+      .description {
+        display: block;
+      }
+    }
+    .bg-dark-gray {
+      cursor: pointer;
+      &:hover {
+        background-color: #0F4D90 !important;
+        .right-arrow {
+          h4 {
+            color: #FFF;
+          }
+          &::after {
+            border-left-color: #0F4D90;
+          }
+        }
+      }
+    }
+    @media only screen and (max-width: 600px) {
+      padding: 0px;
+      .phase {
+        display: none;
+      }
+      .description {
+        left: 0px;
+        width: 100%;
+      }
+      .chevron {
+        position: static;
+      }
+      .phases-header {
+        display: block;
+      }
+    }
+  }
+}

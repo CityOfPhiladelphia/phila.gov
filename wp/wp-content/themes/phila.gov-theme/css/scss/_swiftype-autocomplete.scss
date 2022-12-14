@@ -1,0 +1,109 @@
+@media screen and (max-width: 39.9375em) {
+  .site-search-dropdown{
+    background:color(ghost-gray);
+    height:100%;
+  }
+}
+.swiftype-widget .autocomplete {
+  background-color: #fff;
+  border: 1px solid color(ghost-gray);
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+}
+
+.swiftype-widget .autocomplete ul {
+  background-color: #fff;
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.swiftype-widget .autocomplete li {
+  border-top: 1px solid color(ghost-gray);
+  border-bottom: 1px solid #fff;
+  cursor: pointer;
+  font-size: 13px;
+  list-style-type: none;
+  background-image: none;
+  margin: 0;
+}
+
+.swiftype-widget .autocomplete li:first-child {
+  border-top: 1px solid #fff;
+}
+
+.swiftype-widget .autocomplete li:last-child {
+}
+
+.swiftype-widget .autocomplete li.active {
+  border-top: 1px solid color(dark-ben-franklin);
+  border-bottom: 1px solid color(dark-ben-franklin);
+  background-color: color(dark-ben-franklin);
+}
+
+.swiftype-widget .autocomplete li.active a {
+  color: white;
+}
+
+.swiftype-widget .autocomplete li p {
+  font-size: 13px;
+  line-height: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.swiftype-widget .autocomplete li p.title {
+  font-weight: bold;
+  color: color(dark-ben-franklin);
+}
+
+.swiftype-widget .autocomplete li p.title em {
+  color: #0b2644;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.swiftype-widget .autocomplete li.active p.title {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.swiftype-widget .autocomplete li.active p.title em {
+  color: #fff;
+  font-style: normal;
+}
+
+.swiftype-widget .autocomplete li .sections {
+  color: #999;
+  font-size: 11px;
+}
+
+.swiftype-widget .autocomplete li .sections em {
+  color: #666;
+  font-style: normal;
+}
+
+.swiftype-widget .autocomplete li .sections .section {
+  display: inline;
+}
+
+.swiftype-widget .autocomplete li.active .sections {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  color: #a9d7f1;
+}
+
+.swiftype-widget .autocomplete li.active .sections em {
+  color: #a9d7f1;
+  font-style: normal;
+}
+
+.autocomplete-link {
+  display: block;
+  padding: 10px 8px;
+}

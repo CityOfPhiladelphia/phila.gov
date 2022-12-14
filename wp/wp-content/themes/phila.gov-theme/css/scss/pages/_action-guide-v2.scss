@@ -1,0 +1,143 @@
+.action-guide-v2-tabs {
+  .grid-x {
+    .tab-label {
+      flex: 1 0 10%;
+      text-align: center;
+      margin: 0px;
+      &:first-child {
+        margin-right: 3px;
+      }
+      &:last-child {
+        margin-left: 3px;
+      }
+      &:not(.active) {
+        cursor: pointer;
+      }
+      i {
+        padding: 8px 0px;
+      }
+      .label-copy {
+        font-family: "Montserrat";
+        font-size: 18px;
+        letter-spacing: 0;
+        line-height: 22px;
+        text-decoration: underline;
+        max-width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .active-bar {
+        display: block;
+        height: 10px;
+      }
+      &.active {
+        background: none !important;
+        color: #444444;
+      }
+    }
+  }
+}
+
+.action-guide-v2 {
+  display: none;
+  &.active {
+    display: block;
+  }
+  &.content-action_guide {
+    .mbl {
+      li {
+        margin-bottom: 1rem;
+      }
+      .no-bullet {
+        li {
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+
+  .tab-nav {
+    color: #0F4D90;
+    font-family: "Montserrat";
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 22px;
+    text-decoration: underline;
+    font-weight: 600;
+    span, i {
+      cursor: pointer;
+    }
+    .next-tab {
+      font-weight: 600;
+      text-align: right;
+      display: block;
+      i {
+        text-decoration: underline;
+      }
+    }
+    .prev-tab {
+      font-weight: 600;
+      display: block;
+      text-align: left;
+      i {
+        text-decoration: underline;
+      }
+    }
+  }
+  .underline {
+    text-decoration: underline;
+  }
+  .anchor {
+    font-weight: 600;
+  }
+}
+
+.action-guide-v2-container-desktop {
+  @media screen and (max-width: 749px) {
+  display: none;
+  }
+}
+.action-guide-v2-container-mobile {
+  display: none;
+  @media screen and (max-width: 749px) {
+    display: block;
+    .accordion {
+      background: none;
+      .accordion-item {
+        background: #f0f0f0;
+        .accordion-title {
+          &:before {
+            border-left: 5px solid white;
+            padding: 0.8rem 0.95rem;
+          }
+        } 
+        .accordion-content {
+          ul {
+            list-style-type: disc;
+          }
+        }
+        &.is-active {
+          .accordion-title {
+            &:before {
+              padding: 0.6rem 0.95rem 1rem 0.95rem !important;
+            }
+          }
+        }
+      }
+    }
+    }
+}
+
+.action-guide-v2-cta {
+  a {
+    @media screen and (max-width: 749px) {
+      float: none !important;
+      padding: 0px;
+    }
+    @media screen and (max-width: 450px) {
+      width: 100%;
+    }
+  }
+}

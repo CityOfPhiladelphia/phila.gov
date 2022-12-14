@@ -1,0 +1,164 @@
+.programs-header {
+  &:after {
+    content: none;
+  }
+  .header-wrap {
+    text-align: center;
+
+    h2 {
+      color: color(ben-franklin-blue);
+      font-family: "Open Sans",sans-serif;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+    }
+    hr {
+      display: none;
+    }
+    img {
+      display:none;
+    }
+  }
+
+  @media only screen and (min-width: 40.063em) {
+    .header-wrap {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      height:200px;
+
+      h2 {
+          position: relative;
+          z-index: 2;
+          display: inline-block;
+          color: color(ben-franklin-blue);
+          // border-bottom: 1px solid color(ben-franklin-blue);
+          // border-top: 1px solid color(ben-franklin-blue);
+          font-size: 3.5rem;
+          font-weight: 700;
+          margin: 0;
+      }
+      hr{
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid color(ben-franklin-blue);
+        // background: color(ben-franklin-blue);
+        margin: 0 32%;
+      }
+      img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          max-width: none;
+          height: auto;
+          opacity: 0.25;
+          display: inline-block;
+      }
+    }
+  }
+}
+
+.hero-subpage{
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &.associated-sub {
+    h1 {
+      font-size: 3.5rem;
+    }
+    hr{
+      width: 40%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.program #site-nav {
+  text-align: left;
+  @include breakpoint(medium up) {
+    margin-bottom:0;
+    margin-top:-15px;
+    text-align: center;
+    .secondary-menu{
+      display: inline-block;
+    }
+    .secondary-menu {
+      border: 3px solid white;
+      background: white;
+
+      .dropdown li{
+        border-bottom:2px solid white;
+        &:last-child{
+          border-bottom:2px solid white;
+        }
+      }
+      >li {
+        display: inline-block;
+        background-color: color(ben-franklin-blue);
+        &.opens-right{
+          >a {
+            padding: $spacing-small $spacing-large;
+          }
+          > a::after{
+            display: inline;
+            margin: auto 0;
+            left: 5px;
+            position: relative;
+            float: none;
+            top: 10px;
+            bottom: 0;
+          }
+          &.is-active,
+          &.current-menu-ancestor{
+            > a{
+              background: color(dark-gray);
+              color:white;
+            }
+          }
+        }
+        >a {
+          color: white;
+          padding: $spacing-small $spacing-medium;
+        }
+      }
+      a {
+        border:none;
+        &:hover, &:active {
+          background: color(dark-gray);
+          color:white;
+        }
+      }
+      .is-dropdown-submenu {
+        top: auto;
+        left:0;
+        a{
+          background: color(ghost-gray);
+          color:color(ben-franklin-blue);
+          &:hover, &:active {
+            background: color(dark-gray);
+            color:white;
+          }
+        }
+      }
+      .current-menu-item {
+        > a{
+          background: color(dark-gray);
+          color:white;
+        }
+      }
+    }
+  }
+}
+.medium-text{
+  font-size:1.5rem;
+}
+.program-card-row {
+  display: flex;
+  flex-wrap: wrap;
+  .medium-8, .medium-12 {
+    display: block;
+    .program-card {
+      height: 100%;
+    }
+  }
+}

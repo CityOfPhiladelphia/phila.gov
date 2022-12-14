@@ -1,0 +1,13 @@
+.post-label{
+  padding-bottom:1rem;
+  color: color(dark-gray);
+  i {
+    margin-right:.5rem;
+  }
+  span{
+    @include secondary-font(normal);
+    font-size: 14px;
+    vertical-align: text-top;
+    text-transform: uppercase;
+  }
+}

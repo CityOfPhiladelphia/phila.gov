@@ -1,0 +1,50 @@
+/*
+ *
+ * updated feedback form
+ *
+ *
+*/
+
+.feedback-updated {
+  color: color(dark-gray);
+
+  .feedback-form {
+    background: color(ghost-gray);
+    min-height:500px;
+    p {
+      font-size: 1rem;
+    }
+  }
+  .form-line-active {
+    background: none;
+  }
+  .call-to-action {
+    background: color(electric-blue);
+    font-family: 'Montserrat', 'Tahoma', sans-serif;
+    font-weight: 400;
+    letter-spacing: .05rem;
+    cursor: pointer;
+
+    a:link,
+    a:active,
+    a:hover,
+    a:visited{
+      font-weight: 400;
+      color: color(dark-gray);
+      text-decoration: underline;
+    }
+  }
+}
+
+#feedback-container {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	min-height: 900px;
+}
+#feedback-container iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}

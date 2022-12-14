@@ -1,0 +1,32 @@
+/* =======================================================================
+  Linked Image Grid
+========================================================================== */
+.phila-linked-image-grid{
+    padding:10px 0 0 0;
+}
+
+.phila-linked-image-grid__item{
+    padding: 0 3px;
+    margin-bottom: 50px;
+}
+
+@include breakpoint(medium down) {
+    .phila-linked-image-grid__item{
+        text-align: center;
+    }
+}
+
+.phila-linked-image-grid__item-photo{
+    display: block;
+    img{
+        width: 100%;
+        max-width: 320px;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.phila-linked-image-grid__item-title{
+    padding-top:10px;
+    font-size: 1.3rem;
+}

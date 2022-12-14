@@ -1,0 +1,206 @@
+/*
+ *
+ * Department Pages
+ *
+ *
+*/
+.city-government-directory  {
+  table.connect th,
+  table tbody,
+  table.no-alternate tr{
+    background: white;
+  }
+  .fa, .fab, .fal, .far, .fas{
+    font-size:1.5rem;
+  }
+  .list-heading{
+    font-weight:bold;
+  }
+  hr.strong{
+    border-bottom: 2px solid black;
+    margin:0;
+  }
+  .hidden{
+    display: none;
+  }
+}
+
+.department-home, .department-landing{
+  //hide secondary page title, we don't need it
+  h2.sub-page-title{
+    display: none;
+  }
+  .press_releases{
+    ul{
+      display: block;
+    }
+  }
+}
+.department {
+  .external-site-link-left,
+  .external-site-link-right{
+      text-align: center;
+  }
+  .external-site-link-left{
+    @media only screen and (min-width: 40em) {
+        text-align: left;
+    }
+  }
+  .external-site-link-right{
+    @media only screen and (min-width: 40em) {
+        text-align: right;
+    }
+  }
+  .logo {
+    img {
+      width:100%;
+      height:auto;
+    }
+    text-align:center;
+    margin: 0 0 20px 0;
+  }
+
+  .contact{
+    background:color(ghost-gray);
+    padding:$spacing-medium;
+
+    aside{
+      font-size: 0.85rem;
+    }
+
+    .logo{
+      padding:1rem 0;
+    }
+  }
+
+  .inner {
+    background:color(ghost-gray);
+    padding:20px;
+  }
+
+  .widget-title {
+    font-size:1rem;
+    margin-top:0;
+    margin-bottom: 0;
+  }
+
+  .button.alternate.full{
+    margin-bottom: 0;
+  }
+
+  .featured-content{
+    font-size: .95rem;
+    position: relative;
+
+    @media screen and (max-width: 39.9375em) {
+      text-align: center;
+     }
+
+    img{
+      max-width: 35%;
+      float:left;
+
+      @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+        max-width: 10%;
+        margin-bottom:none;
+      }
+      @media screen and (min-width: 64em) {
+        margin-bottom:3rem;
+      }
+       @media screen and (max-width: 39.9375em) {
+        float:none;
+      }
+    }
+
+
+    &.programs {
+
+      @media screen and (max-width: 39.9375em) {
+        text-align: center;
+        p {
+          margin-left: .5rem;
+          margin-right: .5rem;
+          text-align: left;
+        }
+      }
+
+      div {
+        display:table-cell;
+        &.featured-thumbnail {
+          float:left;
+          @media screen and (max-width: 39.9375em) {
+            float:none;
+          }
+        }
+        @media screen and (max-width: 39.9375em) {
+          display:inline-block;
+        }
+      }
+      img {
+        max-width: 100%;
+        float:left;
+
+        @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+          max-width: 100%;
+          margin-bottom:none;
+        }
+        @media screen and (min-width: 64em) {
+          max-width: 105px;
+          margin-bottom:0;
+        }
+      }
+      h4{
+        font-size: 1rem;
+      }
+    }
+  }
+
+}//department
+@media screen and (min-width: 40em) {
+  .medium-center{
+    text-align: center;
+  }
+}
+.menu-old{
+  #site-nav {
+    @media screen and (min-width: 40em){
+      background-color:#daedfe;
+    }
+
+    .dropdown.menu.medium-horizontal > li.is-dropdown-submenu-parent > a::after{
+      border-color: color(dark-gray) transparent transparent;
+    }
+    .is-drilldown-submenu-parent.current-department_page-ancestor>a::after{
+      border-color: transparent transparent transparent #fff;
+      border-left-style: solid;
+      border-right-width: 0;
+    }
+    .dropdown li{
+      &:last-child{
+        border-bottom: none;
+      }
+    }
+    li[class*="current-menu-item"] > a{
+      background: color(ben-franklin-blue);
+      color:white;
+      &:hover{
+        color:black;
+      }
+    }
+
+  }
+}
+
+.post-type-archive-department_page .list li{
+  border-bottom: 1px solid color(ghost-gray);
+  margin: 1rem 0;
+}
+
+.connect {
+  .panel{
+    background:color(ghost-gray);
+  }
+  .email{
+    word-break: break-word;
+  }
+}

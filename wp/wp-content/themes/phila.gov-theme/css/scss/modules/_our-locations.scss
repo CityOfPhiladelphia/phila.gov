@@ -1,0 +1,89 @@
+/* =======================================================================
+  Featured Locations
+========================================================================== */
+.ppr-feat-locations{
+    margin-top: 50px;
+    .grid-container{
+        padding:10px 0 0 0;
+    }
+}
+#ppr-feat-locations__grid{
+
+}
+
+.ppr-feat-locationType{
+    position: relative;
+    transition: all 1s ease-in-out;
+    margin-bottom:30px;
+
+    .ppr-feat-locationType__img-container{
+        position: relative;
+        max-width: 320px;
+        margin: 0 auto;
+        img{
+            width: 100%;
+            display: block;
+        }
+    }
+
+
+    .ppr-feat-locationType__count-badge{
+        position: absolute;
+        top: 10px;
+        left:10px;
+        z-index: 1000;
+        background: #fff;
+
+        padding: 3px 5px;
+        border-bottom: 2px solid color(pride-purple);
+        opacity: 0;
+        border-radius: 3px;
+        .fa{ padding: 0 10px 0 5px; }
+    }
+
+
+    & > *:not(.ppr-loader){
+        transition: all 0.5s ease;
+        opacity: 0;
+    }
+    &.error{
+        border-bottom: 3px solid color(love-park-red);
+    }
+    &.loaded{
+        *{opacity: 1;}
+    }
+}
+
+.ppr-feat-locationType__name{
+    color: color(ben-franklin-blue);
+    padding:10px 0;
+}
+
+.ppr-feat-locationType__name,
+.ppr-feat-locationType__desc{
+    display: block;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.ppr-feat-locationType__desc{
+    margin-bottom:0;
+}
+.ppr-feat-locationType__learn-more{
+    margin: 0;
+    padding-top: 5px;
+}
+
+.ppr-feat-locationType__location{
+    width: 100%;
+    margin: 20px 0 30px 0;
+    * {color: color(dark-ben-franklin);}
+    .fa-map-marker{ padding-right: 10px; }
+}
+
+
+.ppr-feat-locationType__location-header{
+    margin: 0;
+    padding:0;
+    font-weight: 700;
+}

@@ -1,0 +1,40 @@
+.entry-summary {
+  margin: 0;
+}
+.swiftype-widget .autocomplete li p.title {
+  color: color(dark-ben-franklin);
+}
+.result-count {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.st-page {
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+.st-next {
+  float: right;
+  margin-bottom: 0.75rem;
+}
+.search-page {
+  .search {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+  .search-head h1 {
+    font-size: 1.4rem;
+    margin-top: 0;
+  }
+  #property-link,
+  #legacy-content {
+    display: none;
+  }
+  .entry-summary {
+    em {
+      background-color: color(medium-gray);
+      color: white;
+      font-weight: bold;
+      padding: 0 0.35rem;
+    }
+  }
+}

@@ -1,0 +1,123 @@
+.stage-tracker {
+  .stage-header {
+    display: none;
+  }
+  header{
+    padding: 1rem;
+  }
+  .chevron {
+    position: relative;
+  }
+  .description {
+    border: 2px solid #fff;
+    display: none;
+    position: absolute;
+    padding: 0.5rem;
+    width: calc( 100% - 16px );
+    background-color: #F0F0F0;
+    &::before {
+      display: none !important;
+    }
+    ul {
+      margin: 0;
+      li {
+        text-align: left;
+      }
+    }
+  }
+  h4 {
+    font-family: 'Open Sans';
+    font-weight: 600 !important;
+    text-transform: none;
+  }
+  .stage-container {
+    border: 2px solid #fff;
+    .fas {
+      color: #fff;
+    }
+  }
+  .completed {
+    margin-top: 57px;
+    .stage-container {
+      .right-arrow {
+        h4 {
+          color: #000;
+        }
+        &::after {
+          border-left-color: #444;
+        }
+      }
+    }
+  }
+  .inactive {
+    .stage-container {
+      background-color: #D8D8D8 !important;
+      .right-arrow {
+        h4 {
+          color: #444;
+        }
+        &::after {
+          border-left-color: #D8D8D8;
+        }
+      }
+    }
+  }
+  .current {
+    h4 {
+      color: #fff !important;
+    }
+  }
+  .open {
+    .stage-container {
+      .right-arrow {
+        h4 {
+          color: #000;
+        }
+        &::after {
+          border-left-color: #F0F0F0;
+        }
+      }
+    }
+    .description {
+      display: block;
+    }
+  }
+  .stage-container {
+    @include breakpoint(large up) {
+      cursor: pointer;
+      &:hover, .hover {
+        background-color: #0F4D90 !important;
+        .right-arrow {
+          h4 {
+            color: #FFF;
+          }
+          &::after {
+            border-left-color: #0F4D90;
+          }
+        }
+      }
+    }
+  }
+  @include breakpoint(large down) {
+    .stage-container {
+      cursor: default;
+    }
+    .stage {
+      display: none;
+    }
+    .description {
+      left: 0px;
+      width: 100%;
+      display: block;
+    }
+    .chevron {
+      position: static;
+    }
+    .phase-header {
+      display: block;
+    }
+    .description {
+      position: relative;
+    }
+  }
+}

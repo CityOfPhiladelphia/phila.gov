@@ -1,0 +1,31 @@
+.registration{
+  .open{
+    background: transparentize( color(light-kelly-drive), 0.5);
+    .fa-inverse{
+      color: #ddf9d8;
+    }
+  }
+
+  .closed{
+    background: transparentize( color(light-bell), 0.5);
+    .fa-inverse{
+      color: #fef7d0;
+    }
+  }
+  .status{
+    padding:1rem 2rem 3rem 1rem;
+  }
+  .copy{
+    padding:1rem 0 0 1rem;
+  }
+  /* another button style! */
+  a.button{
+    background-color: color(dark-gray);
+    color: white;
+    margin-right:2rem;
+  }
+  a.button:hover, a.button:active, a.button:focus{
+    background: white;
+    color: color(dark-gray);
+  }
+}

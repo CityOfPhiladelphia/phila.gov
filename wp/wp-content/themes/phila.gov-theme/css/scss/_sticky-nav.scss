@@ -1,0 +1,129 @@
+.global-nav {
+  .phila-sticky {
+    background: white;
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+
+    .sticky-header-width{
+      max-width: 75rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.sticky {
+  &.sticky--in-page {
+    text-transform: uppercase;
+
+    &.is-stuck{
+      background: color(dark-ben-franklin);
+
+      li{
+        border-right:none;
+
+        .fa, .fab, .fal, .far, .fas{
+          visibility: hidden;
+        }
+
+        a:link, a:visited {
+          color:white;
+        }
+        a.is-active, a:hover{
+          color:color(electric-blue) !important;
+        }
+      }
+
+    }
+    a:link, a:visited {
+      color:color(dark-gray);
+    }
+    li{
+      border-right: 1px solid color(dark-gray);
+      &.featured{
+        a:hover, a:active{
+          color:color(dark-ben-franklin);
+        }
+      }
+      &.announcement{
+        a:hover, a:active{
+          color:color(ben-franklin-blue);
+        }
+      }
+      &.post{
+        a:hover, a:active{
+          color:color(pride-purple);
+        }
+      }
+      &.action_guide{
+        a:hover, a:active{
+          color:color(punk-pink);
+        }
+      }
+      &.event{
+        a:hover, a:active{
+          color:color(phanatic-green);
+        }
+      }
+      &.press_release{
+        a:hover, a:active{
+          color:color(love-park-red);
+        }
+      }
+      &:last-of-type{
+        border: none;
+      }
+    }
+    li div {
+      padding: 1rem 0 .3rem 0;
+
+    }
+    @include breakpoint(small only) {
+      &.menu a{
+        padding: 0.5rem 0 .8rem 0;
+      }
+      ul{
+        margin:0;
+        padding:0;
+        text-align: left;
+      }
+      .fa-3x{
+        font-size: 1.5rem;
+        margin-left:1rem;
+      }
+      li{
+        border-right: none;
+        border-bottom: 1px solid color(ghost-gray);
+        width: 100%;
+        div{
+          display: inline-block;
+          padding-top:0;
+        }
+      }
+    }
+  }
+}
+.event-spotlight{
+  .menu a{
+    padding: 0 1rem;
+  }
+} 
+
+@include breakpoint(small only) {
+  .sticky{
+    //TODO: Add to standards
+    top: 0 !important;
+  }
+  .event-spotlight{
+    .menu a{
+      padding: 1rem;
+    }
+  }
+}
+
+.page-template-the-latest{
+  .global-nav .sticky.is-stuck {
+    box-shadow: none;
+  }
+}

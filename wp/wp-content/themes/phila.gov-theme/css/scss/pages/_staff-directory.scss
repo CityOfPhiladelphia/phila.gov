@@ -1,0 +1,83 @@
+.staff-directory {
+  .all-staff-table {
+    .social {
+      .social-link {
+        padding-left: .5rem;
+        padding-right: .5rem;
+        &:first-of-type {
+          padding-left:0;
+        }
+      }
+      @media screen and (min-width: 40em){
+        text-align: center;
+      }
+    }
+  }
+  .staff-leadership {
+    // margin-bottom: $spacing-medium;
+    .staff-highlight{
+      padding-bottom: $spacing-extra;
+
+      &:first-of-type{
+        padding-top: $spacing-medium;
+      }
+      &:last-of-type{
+        padding-bottom: $spacing-large;
+      }
+    }
+    .staff-thumbnail {
+      width:100%;
+    }
+    .staff-contact {
+      margin-top: $spacing-medium;
+      margin-bottom: $spacing-medium;
+
+
+      .name,
+      .job-title,
+      .tel,
+      .email {
+        word-break: break-word;
+      }
+      .social {
+        a {
+          padding-left: .5rem;
+          padding-right: .5rem;
+
+          &:first-of-type{
+            padding-left: 0;
+          }
+        }
+      }
+
+      @media screen and (min-width: 40em){
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+    }
+    .staff-summary {
+      .staff-bio{
+        min-height: 200px;
+        div{
+          margin-bottom: 1rem;
+        }
+      }
+    }
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.staff, 
+.staff-directory{
+  td.email{
+    text-transform: lowercase;
+  }
+}
+.single-department_page {
+  .staff-directory {
+    padding-top: 3rem;
+  }
+}

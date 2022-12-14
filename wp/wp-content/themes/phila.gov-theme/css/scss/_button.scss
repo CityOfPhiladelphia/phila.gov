@@ -1,0 +1,77 @@
+@mixin inverse-button(){
+  color:white;
+  text-align: center;
+  &:hover, &:active, &:focus{
+    background: color(dark-gray);
+  }
+}
+.button{
+  text-decoration: none;
+  &[class*='content-type']{
+    .fa, .fab, .fal, .far, .fas{
+      padding-left:.5rem;
+    }
+  }
+  &.content-type-action_guide{
+    @include inverse-button();
+    margin-top:5px soild white;
+    background: color(punk-pink);
+  }
+  &.content-type-events{
+    @include inverse-button();
+    background: color(phanatic-green);
+  }
+  &.content-type-featured{
+    @include inverse-button();
+    background: color(dark-ben-franklin);
+  }
+  &.content-type-press_release{
+    @include inverse-button();
+    background: color(love-park-red);
+  }
+  &.content-type-post,
+  &.content-type-announcement{
+    @include inverse-button();
+    background: color(pride-purple);
+  }
+}
+
+#site-wide-alert button,
+#site-wide-alert .button{
+  background-color:transparent;
+}
+
+.custom {
+  .button { 
+    &.content-type-press_release,
+    &.content-type-post {
+      color: color(dark-ben-franklin);
+      background: transparent;
+      font-weight: 900 !important;
+    }
+  }
+}
+
+button.link, 
+.button.link {
+  font-family: "Open Sans", Helvetica, Roboto, Arial, sans-serif;
+  background-color: transparent;
+  color: color(dark-ben-franklin);
+  text-transform: none;
+  padding: 0;
+  letter-spacing: 0;
+  text-decoration: underline;
+  &:hover {
+    color: color(dark-gray);
+    background: transparent;
+  }
+}
+
+
+.service-buttons {
+  padding: 2rem 1.5rem;
+}
+
+button.icon .fa, button.icon .fas, button.icon .far, button.icon .fab, button.icon .fal, .button.icon .fa, .button.icon .fas, .button.icon .far, .button.icon .fab, .button.icon .fal {
+  font-size: 1.4em;
+}

@@ -1,0 +1,81 @@
+//Service Updates
+.home{
+  .service-update-row{
+    padding-top: $spacing-medium;
+  }
+}
+.service-update-row{
+  background: white;
+  padding-top: $spacing-extra;
+}
+
+.service-update{
+  color: #444444;
+  margin: 0;
+
+  &.critical {
+    .service-update-icon{
+      background: #FE0000;
+    }
+  }
+  &.warning {
+    .service-update-icon{
+      background: #F3C800;
+    }
+  }
+  .service-update-icon {
+    width: 70px;
+    height: 100%;
+    text-align: center;
+    max-height: none;
+    background: #54C247;
+    color:#fff;
+    font-size: 3rem;
+
+    .fa, .fab, .fal, .far, .fas{
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .icon-label{
+      font-weight: normal;
+      font-family:'Montserrat', 'Tahoma', sans-serif;
+      color: #fff;
+      font-size: .9rem;
+    }
+    @media only screen and (min-width: 40em) {
+      font-size: 2rem;
+
+      .icon-label{
+        font-size: .7rem;
+      }
+    }
+  }
+
+  .service-update-details {
+    color: #444444;
+    background: #f0f0f0;
+    text-align: left;
+    text-transform: none;
+    margin-left: 75px;
+    font-weight: bold;
+
+    .date {
+      font-weight: normal;
+    }
+  }
+  .icon-only {
+    width: 1%;
+    padding: 1rem;
+    .service-icon {
+      padding: 0px;
+      &.plm-mu {
+        padding: 0 0 1rem 0 !important;
+      }
+    }
+  }
+  .icon-label {
+    padding-top: 3px;
+  }
+
+}

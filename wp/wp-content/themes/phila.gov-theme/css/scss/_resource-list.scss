@@ -1,0 +1,36 @@
+.resource-list {
+
+  header {
+    background-color: color(dark-gray);
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-size: 1rem;
+    h2{
+      margin-top:0;
+      margin-bottom:0;
+    }
+  }
+  ul {
+      list-style: none;
+      margin: 0;
+      padding-left: 0;
+      display: block;
+    li {
+      &:first-child{
+        margin-top:0;
+      }
+      background-color: color(ghost-gray);
+      margin: .75rem 0rem;
+      a {
+        display: table;
+        div {
+          display: table-cell;
+          vertical-align: middle;
+        }
+        i {
+          margin: 0 1rem 0 0;
+        }
+      }
+    }
+  }
+}
