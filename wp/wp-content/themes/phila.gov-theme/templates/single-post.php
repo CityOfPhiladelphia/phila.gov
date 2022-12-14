@@ -24,7 +24,7 @@ $post_is_old = false;
 if (date('Y-m-d', strtotime('-2 years')) > $post->post_date) { // if posts are 2 years old
   $post_is_old = true;
 }
-if ((empty( $archived ) || !isset($archived) || $archived == 'default') && $post_is_old && ( $template_type == 'phila_post' || $template_type == 'post' ) )  {
+if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $post_is_old)  {
   $archived_state = 1; //archived after two years
 } else if ($archived == 'archive_now') {
   $archived_state = 2; //archived manually
@@ -43,7 +43,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') && $post
           <?php include( locate_template( 'partials/posts/action-guide-title.php' ) ); ?>
         <?php } else {  ?>
           <?php if ( $archived_state !== 0 ) : ?>
-            <div class="archived-tag mrm">Archived</div>
+            <div class="archived-tag">Archived</div>
           <?php endif; ?>
           <?php the_title( '<h1 style="display:inline">', '</h1>' ); ?>
         <?php } ?>
@@ -79,7 +79,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') && $post
       <?php endif; ?>
   </div>
   <?php if ( $last_updated || $archived_state == 2 ): ?>
-    <div class="grid-x mtm">
+    <div class="grid-x">
       <div class="cell shrink last-updated icon hide-for-small-only">
           <i class="fas fa-clock-rotate-left fa-2x pam"></i>
       </div>

@@ -745,12 +745,6 @@
 
   }
 
-  @media screen and (min-width:950px) {
-    .news-menu-link{
-      min-width:101px;
-    }
-  }
-
 }
 
 @media screen and (min-width:950px) {
@@ -796,6 +790,7 @@ header {
         width: 100px;
         display: inline-block;
         vertical-align: middle;
+        
         .circle-icon {
           line-height: 1.5rem;
           align-items: center;

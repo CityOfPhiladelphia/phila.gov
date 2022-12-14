@@ -1,0 +1,214 @@
+/* for all users */
+/* Recent metabox update is hidding submit div for some pages */
+#submitdiv,
+#categorydiv{
+  display: block !important;
+}
+.full-width,
+input[type="url"],
+.full-width > .rwmb-input > .rwmb-text
+#post_name{
+  width:100%;
+}
+.percent-95,
+.percent-100 .rwmb-input,
+.percent-100 .rwmb-select.rwmb-select,
+.percent-95 > .rwmb-input > .rwmb-text{
+  width:95%;
+}
+
+.percent-100,
+.percent-100 .rwmb-input,
+.percent-100 .rwmb-select.rwmb-select,
+.percent-100 > .rwmb-input > .rwmb-text,
+.rwmb-column-6 .percent-100 .rwmb-input{
+  width:100%;
+}
+
+/*better column widths*/
+.fixed .column-categories, .fixed .column-role {
+    width: 25%;
+}
+th[class*="column-taxonomy"], .fixed .column-tags{
+  width:10%;
+}
+
+/*Clean up admin */
+#phila_module_row_1 .rwmb-column .rwmb-label{
+  width:25%;
+}
+#phila_module_row_1 .rwmb-column .rwmb-label ~ .rwmb-input,
+.rwmb-group-clone .rwmb-label ~ .rwmb-input{
+  width:75%;
+}
+
+/*Add breathing room between inputs */
+.rwmb-input{
+  padding-bottom: 10px;
+}
+
+/* hide wp target=_blank selector */
+#wp-link .link-target label:first-child,
+#wp-link-target,
+#slugdiv,
+/*Don't display user role editor on every single page*/
+#wpfront-user-role-editor-role-permission,
+#dashboard_quick_press,
+.menu-icon-comments,
+#trackbacksdiv,
+#postexcerpt,
+#commentstatusdiv,
+/*Hide View Attachment Page on Admin*/
+.attachment-info .view-attachment,
+.post-type-event_spotlight #postdivrich,
+#try-gutenberg-panel,
+/* Hide user role column from all users */
+#wpfront-user-role-editor-role-permission-column-key,
+.column-wpfront-user-role-editor-role-permission-column-key,
+/* tags must be added from menu  */
+#post_tag-adder,
+/* hide ability to duplicate from title columns */
+.title .clone,
+/* remove checkbox to auto-add pages to new menu items */
+.auto-add-pages,
+table.media #taxonomy-media_type,
+table.media .taxonomy-media_type,
+table.media #taxonomy-media_author,
+table.media .taxonomy-media_category,
+table.media #taxonomy-media_category,
+table.media .taxonomy-media_category,
+table.media #parent,
+table.media .parent,
+table.media #author,
+table.media .taxonomy-media_author,
+table.media td:nth-of-type(2),
+.updraftmanagermessage.error,
+.update-nag.notice.notice-warning.inline
+{
+  display: none !important;
+}
+/* Table  */
+table.media #title{
+  width: 40%;
+}
+table.media #categories{
+  width: 30%;
+}
+table.media #date{
+  width: 30%;
+}
+
+.hide-on-load {
+  display: none;
+}
+
+.rwmb-button.remove-clone:hover {
+  background: #C00;
+}
+
+#phila_resource_list .rwmb-sort-clone {
+  padding-left: 0;
+}
+
+#phila_resource_list .rwmb-clone-icon {
+  top: 8px;
+}
+
+#phila_resource_list .rwmb-group-wrapper .rwmb-group-clone {
+  border: 1px solid #efefef;
+}
+
+#phila_resource_list .rwmb-group-wrapper .rwmb-field{
+  padding: .5rem .5rem 0;
+  padding-left: 15px;
+}
+
+#phila_resource_list .rwmb-field.rwmb-group-wrapper {
+  padding: 0;
+}
+
+#phila_resource_list .rwmb-group-wrapper .rwmb-group-wrapper .rwmb-clone.rwmb-group-clone {
+  padding: 0 .5rem 0;
+  background: #efefef;
+  margin: 0;
+}
+
+#phila_resource_list .rwmb-group-wrapper .rwmb-clone:after {
+  content: "";
+  display: block;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+#phila_resource_list a.rwmb-button.button-primary.add-clone {
+  float: right;
+  margin-bottom: 0;
+}
+
+#phila_resource_list .rwmb-group-wrapper .rwmb-group-clone a.rwmb-button.button-primary.add-clone {
+  margin-right: .5rem;
+}
+
+.rwmb-button.remove-clone {
+  background: #555;
+  margin: .5rem .5rem 0;
+}
+
+input.error, textarea.error, select.error {
+  border-color: #c00 !important;
+  background: #ffebe8 !important;
+}
+
+/*action guide clean up */
+#know-the-facts .rwmb-label{
+  width: 100%;
+}
+#know-the-facts .rwmb-input input{
+  width: 100%;
+}
+
+/*Appearance -> Menus -> Departments Sidebar*/
+ul#department_page-search-checklist li .menu-item-title small.pparent {
+  line-height: 1.3 !important;
+  display: block;
+  margin-bottom: 10px;
+  font-style: italic;
+  color:#8f9bab;
+}
+
+ul#department_page-search-checklist li .menu-item-title small.pparent span {
+  font-weight:600;
+}
+
+ul#department_page-search-checklist li{
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.percent-75 .rwmb-select.rwmb-select{
+  width: 75%;
+}
+
+#newpost_tag_parent,
+#addtag .form-field.term-parent-wrap {
+  display: none;
+}
+/* Override 25% width on rwmb-label, so editing meta fields on tags is normal */
+#edittag .rwmb-group-clone .rwmb-column .rwmb-label {
+  width: 250px;
+}
+#edittag .rwmb-field {
+  display: block;
+}
+.rwmb-row:not(:last-of-type) {
+  margin-bottom: 0px;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+/* Override rwmb-columns attempt to make all fields width: 100% */
+.rwmb-column .rwmb-input input:not([type="checkbox"]):not([type="radio"]), .rwmb-column .rwmb-input-group, .rwmb-column .rwmb-input select, .rwmb-column .rwmb-input .select2-container {
+  width: auto !important;
+}
