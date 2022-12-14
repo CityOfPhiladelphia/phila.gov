@@ -1,0 +1,23 @@
+.block-quote {
+    h3 {
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-weight: bold;
+        color: #000;
+    }
+}
+blockquote {
+    border-left: 0px;
+    p {
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 24px;
+        color: #000;
+    }
+    &::before {
+        content: "\f10d";
+        font-family: "Font Awesome 5 Pro";
+        font-weight: 800;
+    }
+}
