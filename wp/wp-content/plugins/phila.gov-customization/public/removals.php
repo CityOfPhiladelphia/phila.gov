@@ -13,6 +13,9 @@ remove_action('wp_head', 'wp_shortlink_wp_head');
 remove_action('template_redirect', 'wp_shortlink_header', 11);
 add_filter( 'pre_get_shortlink', '__return_empty_string' );
 
+// Turn off xmlrpc
+// https://wordpress.org/plugins/disable-xml-rpc/
+add_action( 'xmlrpc_enabled', '__return_false' );
 
 // Remove pingback from HTTP headers
 // https://wordpress.org/support/topic/how-to-remove-x-pingback-httpwwwexamplecomxmlrpcphp

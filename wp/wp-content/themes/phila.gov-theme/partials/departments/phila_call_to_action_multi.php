@@ -42,13 +42,13 @@
       $action_panel_fa = isset( $call_to_action['phila_action_panel_fa_multi'] ) ? $call_to_action['phila_action_panel_fa_multi'] : '';
       ?>
       <?php phila_grid_column_counter( $item_count ); ?>
-    <div class="large-<?php echo $columns ?> columns">
+    <div class="large-<?php echo $columns ?> columns pbm">
       <?php if (!$action_panel_link == ''): ?>
       <a href="<?php echo $action_panel_link; ?>"  class="card action-panel">
         <div class="panel <?php if( $item_count > 1 ) echo 'equal';?>">
-        <header class="<?php echo $columns == '24' ? 'text-align-left' : ''; ?>">
+        <header class="<?php echo $columns == '24' ? 'desktop-text-align-left' : ''; ?>">
         <?php if ($action_panel_fa): ?>
-          <div class="<?php echo $columns == '24' ? 'float-left mrm' : ''; ?>">
+          <div class="<?php echo $columns == '24' ? 'desktop-float-left' : ''; ?>">
             <span class="fa-stack <?php echo $columns == '24' ? 'fa-3x' : 'fa-4x'; ?> center" aria-hidden="true">
               <i class="fas fa-circle fa-stack-2x"></i>
               <i class="<?php echo $action_panel_fa; ?> fa-stack-1x fa-inverse"></i>
@@ -59,7 +59,7 @@
           <span class="<?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></span>
         <?php endif; ?>
         </header>
-        <?php echo $columns == '24' ? '' : '<hr class="mll mrl">'; ?>
+        <?php echo $columns == '24' ? '<hr class="mll mrl show-for-small-only"' : '<hr class="mll mrl">'; ?>
           <span class="details"><?php echo $action_panel_summary; ?></span>
         </div>
       </a>

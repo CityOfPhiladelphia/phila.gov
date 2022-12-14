@@ -64,7 +64,7 @@ class Phila_Last_Updated_Controller {
         'updated_at' => ''
       ),
       array(
-        'link'  => '/city-government-directory/',
+        'link'  => '/departments/',
         'updated_at' => ''
       ),
       array(

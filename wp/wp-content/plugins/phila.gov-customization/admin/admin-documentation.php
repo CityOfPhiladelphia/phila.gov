@@ -1,98 +1,45 @@
 <?php
 
-add_action('admin_menu', 'phila_documentation_menu');
+add_action('admin_menu', 'phila_resource_hub_page');
 
-function phila_documentation_menu() {
-  add_menu_page( 'Documentation', 'Documentation', 'read', 'documentation', 'phila_documentation_content', 'dashicons-book-alt' );
+function phila_resource_hub_page()
+{
+  add_menu_page('Resource hub', 'Resource hub', 'read', 'resource-hub', 'phila_resource_hub_content', 'dashicons-book-alt');
 }
 
-function phila_documentation_content(){
-  ?>
+function phila_resource_hub_content()
+{
+?>
   <style>
-  section ul{
+  ul{
     list-style: disc;
     margin-left: 2em;
   }
   </style>
-  <div class="wrap">
-    <h2>phila.gov Documentation</h2>
-  </div>
-  <section id="intro">
-    <p>The following documentation is intended to address workflows specific to phila.gov. If you don't see a topic listed, assume that the workflow is unchanged from that of a standard WordPress implementation and consult the original source of documentation.</p>
-  </section>
-  <nav>
-    <span>Help Topics: <a href="#mailchimp">MailChimp</a> <br>
-      Guidelines: <a href="#file-names">File Naming Conventions</a> | <a href="#urls">Creating URLs</a></span>
-  <nav>
-  <hr>
-  <section id="mailchimp">
-    <h2>MailChimp</h2>
-    <h3>Adding a new MailChimp form</h3>
-      <ol class="new-mailchimp-form">
-        <li>
-          Create a "naked" embedded form in mailchimp.
-        </li>
-        <li>
-          Remove extra spaces from the markup.
-        </li>
-        <li>
-          Ensure the form is wrapped in <code>&lt;div id="mc_embed_signup"&gt;</code> and the form element has an ID of <code>mc-embedded-subscribe-form</code>.
-        </li>
-        <li>
-          Modify the form action URL from <code>subscribe/post</code> to <code>subscribe/post-json</code>.
-        </li>
-      </ol>
-  </section>
-  <hr>
-  <section id="file-names">
-    <h2>File Naming Conventions</h2>
-      <ul>
-        <li>Use hyphens to separate words.</li>
-        <li>Lowercase is better, because it’s easier to type and to remember.</li>
-        <li>Use the right extension — PDFs should have .pdf at the end, JPGs should have .jpg at the end, etc.</li>
-        <li>Avoid the use of special characters beyond the hyphen and period, unless absolutely necessary. Do not include spaces (use hyphens in their place).</li>
-        <li>Avoid unnecessary abbreviations.</li>
-      </ul>
-
-      <p>Shorter is best, but the content should be descriptive to the user. It’s better to have long descriptive filenames than short, obscure ones.</p>
-      <p>If the owner of the file is important to the context, include that.
-      </p>
-      <blockquote>
-        <code>mayor-influental-women-collage.jpg</code><br>
-        <strong>-NOT-</strong><br>
-        <code>womenmosaicfinal.jpg</code>
-      </blockquote>
-      <p>If the file content is based on a date or time, include that information at the beginning.</p>
-      <blockquote>
-        <code>2015-income-based-wage-tax-refund-petition-spanish.pdf</code><br>
-        <strong>-NOT-</strong><br>
-        <code>incomebasedWAGETAXREFUNDpetition2015SP.pdf</code><br>
-      </blockquote>
-      <p><small>This content has been heavily influenced by <a href="https://pages.18f.gov/content-guide/urls-and-filenames/"> https://pages.18f.gov/content-guide/urls-and-filenames/</a></small></p>
-  </section>
-  <hr>
-  <section id="urls">
-    <h2>Creating URLs</h2>
-
-      <ul>
-        <li>URLs should be short, memorable, easy to type, and well-structured.</li>
-        <li>Words in a url should be separated by a dash.</li>
-        <li>Omit articles (a/an/the).</li>
-      </ul>
-
-      <p>When a page is created, WordpPress will automatically use dashes to separate words based on the title of the page when it was saved. This is expected behavior and the dashes should not be removed.</p>
-
-      <p>However, WordPress generated URLs can be cleaned up to remove unnecessary articles and to correct tone, as stated above.</p>
-
-      <blockquote>
-        <code>/documents/philadelphia-water-department-regulations/</code><br>
-        <strong>-NOT-</strong><br>
-        <code>/documents/thephillywaterregs/</code>
-      </blockquote>
-
-
-  <p><small>This content has been heavily influenced by <a href="https://pages.18f.gov/content-guide/urls-and-filenames/"> https://pages.18f.gov/content-guide/urls-and-filenames/</a></small></p>
-  </section>
+<h1 id="resource-hub">Resource hub</h1>
+<p>The following resources may be useful as you create and manage content on phila.gov.  </p>
+<h2 id="resources-for-site-editors">Resources for site editors</h2>
+<p><a href="https://standards.phila.gov/">Digital standards</a> </p>
+<p>The digital standards are guides for design, development, and content for City websites. </p>
+<hr>
+<p><a href="https://phila.sharepoint.com/:f:/s/Teams-OIT-PhilagovProjectTeam/EuFE222ofUBNi_XknL-R6WcBGAwpdXhlikRBTyZAXiEzKQ?e=vsRAtu">Training presentations, guidance, and tip sheets</a> </p>
+<p>This is a collection of training presentations and other guidance produced by the Digital Services team. It also includes:  </p>
+<ul>
+<li><p>Documentation for various WordPress features. </p>
+</li>
+<li><p>Links to City stock photos and other imagery sources for blogs. </p>
+</li>
+<li><p>Links to useful tools and websites. </p>
+</li>
+</ul>
+<hr>
+<p><a href="https://us10.campaign-archive.com/home/?u=d8a1c28b2fe0bfca8576b5af0&amp;id=4e76664556">Newsletter archives</a> </p>
+<p>The Digital Services team produces a newsletter where they share best practices and announce new features. By subscribing to this mailing list, you&#39;ll also be notified about the team&#39;s open office hours.  </p>
+<hr>
+<p><a href="https://github.com/CityOfPhiladelphia/phila.gov/releases">Phila.gov changelog</a> </p>
+<p>This changelog tracks updates to the phila.gov platform and notes what has been added, changed, or fixed with each release. </p>
+<h2 id="need-help-">Need help?</h2>
+<p>If you have questions or need help with your website, contact the Digital Services team at websupport@phila.gov. </p>
   <?php
 }
-?>
+  ?>

@@ -64,7 +64,7 @@ function register_template_selection_metabox_departments( $meta_boxes ){
           ),
       ),
       array(
-        'name'  => 'Should this page appear in the City government directory?',
+        'name'  => 'Should this page appear in the department and city agency list?',
         'id'    => 'phila_department_home_page',
         'class' => 'hide-from-non-admin hide-on-load',
         'type'  => 'switch',
