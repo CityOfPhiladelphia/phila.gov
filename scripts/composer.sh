@@ -68,7 +68,8 @@ echo '
     "wpackagist-plugin/classic-editor":"^1.6.2",
     "wpackagist-plugin/wp-rest-api-v2-menus":"^0.10",
     "wpackagist-plugin/wordpress-importer":"^0.8",
-    "wpackagist-plugin/tinymce-advanced":"^5.6.0"
+    "wpackagist-plugin/tinymce-advanced":"^5.6.0",
+    "wpackagist-plugin/wpfront-user-role-editor-personal-pro":"^2.14.5"
   },
   "config": {
     "allow-plugins": {
