@@ -6,7 +6,20 @@ source /home/ubuntu/.ssh/environment
 # wps-hide-login.1.5.7.zip <- hide login plugin
 
 _dir="$(dirname "$0")"
-plugins="wpfront-user-role-editor-personal-pro-2.14.5.zip"
+plugins="mb-admin-columns-1.6.2.zip
+mb-rest-api-1.5.0.zip
+mb-revision-1.3.3.zip
+mb-settings-page-2.1.7.zip
+mb-term-meta-1.2.10.zip
+meta-box-columns-1.2.15.zip
+meta-box-conditional-logic-1.6.17.zip
+meta-box-group-1.3.14.zip
+meta-box-include-exclude-1.0.11.zip
+meta-box-tabs-1.1.13.zip
+wp-nested-pages-phila-3.1.14.zip
+meta-box-tooltip-1.1.4.zip
+wpfront-user-role-editor-personal-pro-2.14.5.zip
+miniorange-saml-20-single-sign-on.4.9.08.zip"
 
 cd /home/ubuntu/app
 for plugin in $plugins; do
