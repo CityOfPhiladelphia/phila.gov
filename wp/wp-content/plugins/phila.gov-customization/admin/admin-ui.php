@@ -15,7 +15,7 @@
  * @package phila-gov_customization
  */
 if (!function_exists('is_plugin_active')) {
-  add_action( 'admin_init', 'phila_restrict_categories_custom_loader', 1 );	  include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+  include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 }
 if (is_plugin_active('restrict-categories')) {
   add_action( 'admin_init', 'phila_restrict_categories_custom_loader', 1 );
