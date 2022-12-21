@@ -8,13 +8,16 @@
 }
 blockquote {
     border-left: 0px;
-    margin-left: 2rem;
+    padding-left: 0.7142857143rem;
+    padding-right: 0.7142857143rem;
+    margin: 0;
     p {
         font-family: 'Times New Roman', Times, serif;
         font-style: italic;
         font-weight: bold;
         font-size: 24px;
         color: #000;
+        margin-left: 2rem;
     }
     &::before {
         content: "\f10d";
