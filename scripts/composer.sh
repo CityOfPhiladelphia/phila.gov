@@ -64,7 +64,8 @@ echo '
     "wpackagist-plugin/wp-rest-api-v2-menus":"^0.10",
     "wpackagist-plugin/wordpress-importer":"^0.8",
     "wpackagist-plugin/tinymce-advanced":"^5.6.0",
-    "nesbot/carbon": "^2.64"
+    "nesbot/carbon": "^2.64",
+    "google/apiclient": "^2.13"
   },
   "config": {
     "allow-plugins": {
