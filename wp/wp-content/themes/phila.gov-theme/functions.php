@@ -256,7 +256,10 @@ function phila_open_graph() {
 
   $post_id = isset($post->ID) ? $post->ID : '';
 
-  if( has_post_thumbnail() ){
+  if (is_front_page()) {
+    $img_src = 'https://www.phila.gov/media/20160715133810/phila-gov.jpg';
+    $alt_text = 'phila.gov';
+  } elseif ( has_post_thumbnail() ){
     $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'large' );
     $img_src = array_shift( $img );
     $type = 'article';
