@@ -28,12 +28,17 @@ echo '
     },
     {
       "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila-google-calendar-events.git"
+    },
+    {
+      "type": "vcs",
       "url": "https://github.com/CityOfPhiladelphia/wp-nested-pages.git"
     }
   ],
   "require": {
     "cityofphiladelphia/phl-aqi": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/duplicate-and-merge-posts": "dev-'$GITHUB_BRANCH'",
+    "cityofphiladelphia/google-calendar-events": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/restrict-categories": "dev-'$GITHUB_BRANCH'",
     "kylephillips/nestedpages": "dev-main",
     "meta-box/mb-admin-columns":"dev-master",
