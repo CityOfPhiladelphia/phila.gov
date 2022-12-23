@@ -33,6 +33,10 @@ echo '
     {
       "type": "vcs",
       "url": "https://github.com/CityOfPhiladelphia/wp-nested-pages.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila-wpfront-user-role-editor-personal-pro.git"
     }
   ],
   "require": {
@@ -40,6 +44,7 @@ echo '
     "cityofphiladelphia/duplicate-and-merge-posts": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/google-calendar-events": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/restrict-categories": "dev-'$GITHUB_BRANCH'",
+    "cityofphiladelphia/wpfront-user-role-editor-personal-pro 2": "dev-'$GITHUB_BRANCH'",
     "kylephillips/nestedpages": "dev-main",
     "meta-box/mb-admin-columns":"dev-master",
     "meta-box/mb-revision":"dev-master",
