@@ -13,6 +13,7 @@ function delete_translated_post() {
     array(  'type' => $post_type,
             'path' => $post_path,
             'status' => 'publish'
+
           ));
   $args = array(
     'method' => 'DELETE',
@@ -24,32 +25,53 @@ function delete_translated_post() {
   return wp_remote_post($webhook, $args);
 }
 
+function phila_get_current_post_type() {
+  global $post, $typenow, $current_screen;
+
+  if ($post && $post->post_type) return $post->post_type;
+    elseif($typenow) return $typenow;
+    elseif($current_screen && $current_screen->post_type) return $current_screen->post_type;
+    elseif(isset($_REQUEST['post_type'])) return sanitize_key($_REQUEST['post_type']);
+  return null;
+
+}
+
 function publish_translated_post($new_status, $old_status, $post) {
   $post_path = substr(substr(str_replace(home_url(),'',get_permalink($post->ID)), 1), 0, -1);
   $endpoint = rwmb_meta( 'phila_translations_deploy_url', array( 'object_type' => 'setting' ), 'phila_settings' );
   $billing_code = rwmb_meta( 'phila_translations_default_billing_code', array( 'object_type' => 'setting' ), 'phila_settings' );
+  $post_type = phila_get_current_post_type();
+
+  switch ($post_type) {
+    case 'post';
+    case 'calendar':
+    case 'site_wide_alert':
+    case 'longform_content';
+    return;
+  }
 
   //TODO: make billing from settings page a fallback - pull data from individual page settings
-
-  $webhook = $endpoint.'handle-page';
-  if('publish' === $new_status ) {
+  //example payload: { "page_slug": "services/culture-recreation", "department_code":"1 - ABC" }
+  $webhook = $endpoint;
+  if( 'publish' === $new_status ) {
     if(isset( $post->post_type )) {
       $post_type = $post->post_type;
     }
     $data = json_encode(
       array(
-        'id' => $post->ID,
-        'path' => $post_path,
-        'status' => 'publish',
-        'billing_code'  => $billing_code,
+        //'id' => $post->ID,
+        'page_slug' => $post_path,
+        'department_code'  => $billing_code,
       ));
-    $args = array(
-      'method' => 'POST',
-      'headers'  => array(
-        'Content-type: application/json'
-      ),
-      'body' => $data
-    );
+      $args = array(
+        'method' => 'POST',
+        'headers'  => array(
+          'Content-type: application/json',
+          'Content-Length: ' . strlen(json_encode($data)),
+          'Accept: application/json',
+        ),
+        'body' => $data,
+      );
     return wp_remote_post($webhook, $args);
   }
 }
