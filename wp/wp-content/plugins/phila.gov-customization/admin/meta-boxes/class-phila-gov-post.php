@@ -80,7 +80,7 @@ class Phila_Gov_Post {
       'priority' => 'high',
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '!=', 'action_guide'),
+          array('phila_template_select', '=', 'post'),
         ),
       ),
       'include' => array(
@@ -98,7 +98,7 @@ class Phila_Gov_Post {
         ),
       )
     );
-    
+
     $meta_boxes[] = array (
       'title'    => 'Language options',
       'pages'    => array( 'post' ),
