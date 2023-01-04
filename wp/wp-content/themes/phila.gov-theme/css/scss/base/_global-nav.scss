@@ -146,10 +146,6 @@
           li>a{
             padding-left: 2rem !important
           }
-
-          .translations-support>a{
-            font-weight: bold;
-          }
         }
       }
 
@@ -169,10 +165,14 @@
         &.is-dropdown-submenu-parent>a::after {
           content: none;
         }
-
       }
 
       .translations-dropdown {
+
+        .translations-support>a{
+            font-weight: bold ;
+          }
+
         li {
           a {
             background: color(ghost-gray);
