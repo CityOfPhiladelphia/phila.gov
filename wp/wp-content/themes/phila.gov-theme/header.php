@@ -228,9 +228,6 @@
                       <li tabindex="0">
                       <a href="<?php echo get_site_url() ?>/the-latest/" class="valign-cell"><i class="fas fa-newspaper"></i> News</a>
                     </li>
-                    <li class="bg-sidewalk" tabindex="0">
-                    <a href="<?php echo get_site_url() ?>/mayor/" class="valign-cell"><i class="fas fa-university"></i> Mayor's Office</a>
-                    </li>
                   </ul>
                 </nav>
               </div>
