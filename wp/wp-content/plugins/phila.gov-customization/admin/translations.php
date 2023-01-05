@@ -41,6 +41,22 @@ function publish_translated_post($new_status, $old_status, $post) {
   $endpoint = rwmb_meta( 'phila_translations_deploy_url', array( 'object_type' => 'setting' ), 'phila_settings' );
   $billing_code = rwmb_meta( 'phila_translations_default_billing_code', array( 'object_type' => 'setting' ), 'phila_settings' );
   $post_type = phila_get_current_post_type();
+  $categories = get_the_category($post->ID);
+  $dept_billing_code = 0;
+  $send_to_translation = rwmb_meta( 'phila_send_to_translation', $post->ID );
+
+  foreach ( $categories as $category ) {
+    if ( empty($category->slug ) ) {
+      continue;
+    }
+
+    $dept_billing_code = get_term_meta( $category->term_id , 'phila_department_billing_code', true );
+
+    if($dept_billing_code != 0){ // Check if dept billing code exists
+      $billing_code = $dept_billing_code;
+    }
+  }
+  
 
   switch ($post_type) {
     case 'post';
@@ -53,7 +69,7 @@ function publish_translated_post($new_status, $old_status, $post) {
   //TODO: make billing from settings page a fallback - pull data from individual page settings
   //example payload: { "page_slug": "services/culture-recreation", "department_code":"1 - ABC" }
   $webhook = $endpoint;
-  if( 'publish' === $new_status ) {
+  if( 'publish' === $new_status  && $send_to_translation == true) {
     if(isset( $post->post_type )) {
       $post_type = $post->post_type;
     }
