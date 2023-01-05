@@ -69,7 +69,7 @@ function publish_translated_post($new_status, $old_status, $post) {
   //TODO: make billing from settings page a fallback - pull data from individual page settings
   //example payload: { "page_slug": "services/culture-recreation", "department_code":"1 - ABC" }
   $webhook = $endpoint;
-  if( 'publish' === $new_status  && $send_to_translation == true) {
+  if( 'publish' === $new_status && $send_to_translation == true) {
     if(isset( $post->post_type )) {
       $post_type = $post->post_type;
     }
