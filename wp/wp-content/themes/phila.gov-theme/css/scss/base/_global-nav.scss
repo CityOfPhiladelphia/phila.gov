@@ -129,6 +129,7 @@
           border-width: 0 1px 1px 1px;
           border-style: solid;
           min-width: 230px;
+          z-index: 1001;
         }
         .dropdown.menu>li>a {
           padding: 1rem .5rem !important;
@@ -144,10 +145,6 @@
 
           li>a{
             padding-left: 2rem !important
-          }
-
-          .translations-support>a{
-            font-weight: bold;
           }
         }
       }
@@ -168,10 +165,14 @@
         &.is-dropdown-submenu-parent>a::after {
           content: none;
         }
-
       }
 
       .translations-dropdown {
+
+        .translations-support>a{
+            font-weight: bold ;
+          }
+
         li {
           a {
             background: color(ghost-gray);
