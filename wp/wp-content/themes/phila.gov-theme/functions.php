@@ -2223,7 +2223,7 @@ function inject_translation_slug()
   $url_parts = parse_url($current_url);
   $path = $url_parts['path'];
   $path_segments = explode('/', $path);
-  $language_codes = array('zh', 'es', 'en', 'ar', 'fr', 'ru', 'ms', 'hi', 'pt', 'bn', 'id', 'sw', 'ja', 'de', 'ko', 'it', 'fa', 'tr', 'nl', 'te');
+  $language_codes = array('zh', 'es', 'en', 'ar', 'fr', 'ru', 'ms', 'hi', 'pt', 'bn', 'id', 'sw', 'ja', 'de', 'ko', 'it', 'fa', 'tr', 'nl', 'te', 'vi', 'ht');
   //TODO: Use get_available_languages() instead of hardcoded lang codes;
 
   $new_path_segments = array();
