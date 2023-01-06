@@ -2217,7 +2217,7 @@ function set_environment() {
 
 add_action('init', 'set_environment');
 
-function get_current_url_path()
+function inject_translation_slug()
 {
   $current_url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
   $url_parts = parse_url($current_url);
