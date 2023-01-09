@@ -37,61 +37,70 @@ function phila_get_current_post_type() {
 }
 
 function publish_translated_post($new_status, $old_status, $post) {
-  $post_path = substr(substr(str_replace(home_url(),'',get_permalink($post->ID)), 1), 0, -1);
-  $endpoint = rwmb_meta( 'phila_translations_deploy_url', array( 'object_type' => 'setting' ), 'phila_settings' );
-  $billing_code = rwmb_meta( 'phila_translations_default_billing_code', array( 'object_type' => 'setting' ), 'phila_settings' );
+  $post_path = substr(substr(str_replace(home_url(), '', get_permalink($post->ID)), 1), 0, -1);
+  $endpoint = rwmb_meta('phila_translations_deploy_url', array('object_type' => 'setting'), 'phila_settings');
+  $default_billing_code= rwmb_meta('phila_translations_default_billing_code', array('object_type' => 'setting'), 'phila_settings');
   $post_type = phila_get_current_post_type();
   $categories = get_the_category($post->ID);
-  $dept_billing_code = 0;
-  $send_to_translation = rwmb_meta( 'phila_send_to_translation', $post->ID );
+  $dept_billing_codes = array();
+  $send_to_translation = rwmb_meta('phila_send_to_translation', $post->ID);
+  $owner_amount = 0;
 
-  foreach ( $categories as $category ) {
-    if ( empty($category->slug ) ) {
+  foreach ($categories as $category) {
+    if (empty($category->slug)) {
       continue;
     }
-
-    $dept_billing_code = get_term_meta( $category->term_id , 'phila_department_billing_code', true );
-
-    if($dept_billing_code != 0){ // Check if dept billing code exists
-      $billing_code = $dept_billing_code;
+    $owner_amount++;
+    $dept_billing_code = get_term_meta($category->term_id, 'phila_department_billing_code', true);
+    
+    // Add billing codes if they exist
+    if (strlen($dept_billing_code) !== 0 && (!in_array($dept_billing_code, $dept_billing_codes))) {
+      $dept_billing_codes[] = $dept_billing_code;
     }
   }
-  
-
-  switch ($post_type) {
-    case 'post';
-    case 'calendar':
-    case 'site_wide_alert':
-    case 'longform_content';
-    return;
+ 
+  // Add default billing if a billing code does not exist
+  if($owner_amount > count($dept_billing_codes) && (!in_array($default_billing_code, $dept_billing_codes))) {
+    $dept_billing_codes[] = $default_billing_code;
   }
 
-  //TODO: make billing from settings page a fallback - pull data from individual page settings
+  exit(var_dump($dept_billing_codes));
+
+  switch ($post_type) {
+    case 'post':
+    case 'calendar':
+    case 'site_wide_alert':
+    case 'longform_content':
+      return;
+  }
+
   //example payload: { "page_slug": "services/culture-recreation", "department_code":"1 - ABC" }
   $webhook = $endpoint;
-  if( 'publish' === $new_status && $send_to_translation == true) {
-    if(isset( $post->post_type )) {
+  if ('publish' === $new_status && $send_to_translation == true) {
+    if (isset($post->post_type)) {
       $post_type = $post->post_type;
     }
     $data = json_encode(
       array(
         //'id' => $post->ID,
         'page_slug' => $post_path,
-        'department_code'  => $billing_code,
-      ));
-      $args = array(
-        'method' => 'POST',
-        'headers'  => array(
-          'Content-type: application/json',
-          'Content-Length: ' . strlen(json_encode($data)),
-          'Accept: application/json',
-        ),
-        'body' => $data,
-      );
+        'department_code'  => $dept_billing_codes,
+      )
+    );
+    $args = array(
+      'method' => 'POST',
+      'headers'  => array(
+        'Content-type: application/json',
+        'Content-Length: ' . strlen(json_encode($data)),
+        'Accept: application/json',
+      ),
+      'body' => $data,
+    );
     return wp_remote_post($webhook, $args);
   }
 }
 
+add_action('wp_update_post', 'publish_translated_post');
 // add_action( 'trashed_post', 'delete_translated_post', 10, 0 );
 add_action( 'transition_post_status', 'publish_translated_post', 10, 3 );
 ?>
