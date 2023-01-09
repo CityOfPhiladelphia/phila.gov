@@ -3,6 +3,7 @@
 //TODO: Create delete functionality
 function delete_translated_post() {
   global $post;
+
   $endpoint = rwmb_meta( 'phila_translations_deploy_url', array( 'object_type' => 'setting' ), 'phila_settings' );
   $webhook = $endpoint.'delete-page';
   $post_path = substr(substr(str_replace(home_url(),'',get_permalink($post->ID)), 1), 0, -1);
@@ -63,9 +64,7 @@ function publish_translated_post($new_status, $old_status, $post) {
   if($owner_amount > count($dept_billing_codes) && (!in_array($default_billing_code, $dept_billing_codes))) {
     $dept_billing_codes[] = $default_billing_code;
   }
-
-  exit(var_dump($dept_billing_codes));
-
+  
   switch ($post_type) {
     case 'post':
     case 'calendar':
