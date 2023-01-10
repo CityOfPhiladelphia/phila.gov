@@ -13,6 +13,7 @@ function phila_options_page( $settings_pages ) {
       'jobs'  => 'Featured jobs',
       'closures'  => 'Closures',
       'sitewide_settings'  => 'Site-wide settings',
+      'translations'      => 'Translations'
     ),
   );
   return $settings_pages;
@@ -234,5 +235,31 @@ function prefix_options_meta_boxes( $meta_boxes ) {
       ),
     ),
   );
+  $meta_boxes[] = array(
+    'id'             => 'phila_translations_settings',
+    'title'          => 'Translations deployment settings',
+    'settings_pages' => 'phila_gov',
+    'tab'            => 'translations',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor' ),
+    ),
+    'fields'         => array(
+      array(
+        'name' => 'Endpoint URL',
+        'id'   => 'phila_translations_deploy_url',
+        'type'  => 'text',
+        'required'  => true,
+        'desc'  => 'Include trailing slash'
+      ),
+      array(
+        'name' => 'Default billing code',
+        'id'   => 'phila_translations_default_billing_code',
+        'type'  => 'text',
+        'required'  => true,
+        'desc'  => 'Consult OIA team for code to use'
+      ),
+    ),
+  );
+
   return $meta_boxes;
 }
