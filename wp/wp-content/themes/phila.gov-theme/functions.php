@@ -2217,23 +2217,9 @@ function set_environment() {
 
 add_action('init', 'set_environment');
 
-function inject_translation_slug()
+function inject_translation_slug($language)
 {
-  $current_url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-  $url_parts = parse_url($current_url);
-  $path = $url_parts['path'];
-  $path_segments = explode('/', $path);
-  $language_codes = array('zh', 'es', 'en', 'ar', 'fr', 'ru', 'ms', 'hi', 'pt', 'bn', 'id', 'sw', 'ja', 'de', 'ko', 'it', 'fa', 'tr', 'nl', 'te', 'vi', 'ht');
-  //TODO: Use get_available_languages() instead of hardcoded lang codes;
+  $current_url = "https://" . $_SERVER['HTTP_HOST'] . $language . $_SERVER['REQUEST_URI'];
 
-  $new_path_segments = array();
-  foreach ($path_segments as $segment) {
-    if (!in_array($segment, $language_codes)) {
-      $new_path_segments[] = $segment;
-    }
-  }
-
-  $new_path = implode('/', $new_path_segments);
-
-  return $new_path;
+  return $current_url;
 }
