@@ -242,7 +242,6 @@ module.exports = $(function () {
         var urlPath = windowPath.split('/');
         var pathItem = urlPath[1];
         
-        console.log(urlPath);
         switch(pathItem) {
             case "zh":
                 urlLanguage = "中文";
