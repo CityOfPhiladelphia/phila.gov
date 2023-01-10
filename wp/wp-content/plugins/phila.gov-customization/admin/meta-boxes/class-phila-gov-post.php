@@ -80,7 +80,7 @@ class Phila_Gov_Post {
       'priority' => 'high',
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '!=', 'action_guide'),
+          array('phila_template_select', '=', 'post'),
         ),
       ),
       'include' => array(
