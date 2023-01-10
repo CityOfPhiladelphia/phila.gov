@@ -43,9 +43,10 @@ function publish_translated_post($new_status, $old_status, $post) {
   $default_billing_code= rwmb_meta('phila_translations_default_billing_code', array('object_type' => 'setting'), 'phila_settings');
   $post_type = phila_get_current_post_type();
   $categories = get_the_category($post->ID);
-  $dept_billing_codes = array();
+  $dept_billing_codes = "";
   $send_to_translation = rwmb_meta('phila_send_to_translation', $post->ID);
   $owner_amount = 0;
+  $dept_code_count = count(explode(',', $dept_billing_codes));
 
   foreach ($categories as $category) {
     if (empty($category->slug)) {
@@ -53,18 +54,22 @@ function publish_translated_post($new_status, $old_status, $post) {
     }
     $owner_amount++;
     $dept_billing_code = get_term_meta($category->term_id, 'phila_department_billing_code', true);
-    
+
     // Add billing codes if they exist
-    if (strlen($dept_billing_code) !== 0 && (!in_array($dept_billing_code, $dept_billing_codes))) {
-      $dept_billing_codes[] = $dept_billing_code;
+    if ($dept_billing_code) {
+      if ($dept_code_count !== 0 && (!strpos($dept_billing_codes, $dept_billing_code))) {
+        $dept_billing_codes = trim($dept_billing_codes . ',' . $dept_billing_code, ',');
+      }
     }
   }
- 
+
   // Add default billing if a billing code does not exist
-  if($owner_amount > count($dept_billing_codes) && (!in_array($default_billing_code, $dept_billing_codes))) {
-    $dept_billing_codes[] = $default_billing_code;
+  if ($default_billing_code) {
+    if ($owner_amount > $dept_code_count  && (!strpos($dept_billing_codes, $default_billing_code))) {
+      $dept_billing_codes = trim($dept_billing_codes . ',' . $default_billing_code, ',');
+    }
   }
-  
+
   switch ($post_type) {
     case 'post':
     case 'calendar':
