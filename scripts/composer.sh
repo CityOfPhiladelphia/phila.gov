@@ -24,15 +24,19 @@ echo '
     },
     {
       "type": "vcs",
-      "url": "https://github.com/CityOfPhiladelphia/phila-google-calendar-events.git"
-    },
-    {
-      "type": "vcs",
       "url": "https://github.com/CityOfPhiladelphia/phila-restrict-categories.git"
     },
     {
       "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila-google-calendar-events.git"
+    },
+    {
+      "type": "vcs",
       "url": "https://github.com/CityOfPhiladelphia/wp-nested-pages.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/CityOfPhiladelphia/phila-wpfront-user-role-editor-personal-pro.git"
     }
   ],
   "require": {
@@ -40,6 +44,7 @@ echo '
     "cityofphiladelphia/duplicate-and-merge-posts": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/google-calendar-events": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/restrict-categories": "dev-'$GITHUB_BRANCH'",
+    "cityofphiladelphia/wpfront-user-role-editor-personal-pro-2": "dev-'$GITHUB_BRANCH'",
     "kylephillips/nestedpages": "dev-main",
     "meta-box/mb-admin-columns":"dev-master",
     "meta-box/mb-revision":"dev-master",
@@ -68,7 +73,9 @@ echo '
     "wpackagist-plugin/classic-editor":"^1.6.2",
     "wpackagist-plugin/wp-rest-api-v2-menus":"^0.10",
     "wpackagist-plugin/wordpress-importer":"^0.8",
-    "wpackagist-plugin/tinymce-advanced":"^5.6.0"
+    "wpackagist-plugin/tinymce-advanced":"^5.6.0",
+    "nesbot/carbon": "^2.64",
+    "google/apiclient": "^2.13"
   },
   "config": {
     "allow-plugins": {
