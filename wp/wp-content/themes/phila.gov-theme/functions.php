@@ -2219,7 +2219,25 @@ add_action('init', 'set_environment');
 
 function inject_translation_slug($language)
 {
-  $current_url = "https://" . $_SERVER['HTTP_HOST'] . $language . $_SERVER['REQUEST_URI'];
+  $current_url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  $url_parts = parse_url($current_url);
+  $path = $url_parts['path'];
+  $path_segments = explode('/', $path);
+  $default_lang = 'en';
+  $language_codes = array('zh', 'es','ar', 'fr', 'ru', 'ms', 'hi', 'pt', 'bn', 'id', 'sw', 'ja', 'de', 'ko', 'it', 'fa', 'tr', 'nl', 'te', 'vi', 'ht');
+  $new_path_segments = array();
+  
+  foreach ($path_segments as $segment) {
+    if (!in_array($segment, $language_codes)) {
+      $new_path_segments[] = $segment;
+    }
+  }
+  $new_path = implode('/', $new_path_segments);
+  if($language !== $default_lang){
+    $new_url = "https://" . $_SERVER['HTTP_HOST'] . '/' . $language . $new_path;
+  } else if ($language === $default_lang) {
+    $new_url = "https://" . $_SERVER['HTTP_HOST'] . $new_path;
+  }
 
-  return $current_url;
+  return $new_url;
 }
