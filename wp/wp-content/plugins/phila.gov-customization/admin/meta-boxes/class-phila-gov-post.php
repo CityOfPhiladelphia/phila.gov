@@ -98,7 +98,7 @@ class Phila_Gov_Post {
         ),
       )
     );
-
+    
     $meta_boxes[] = array (
       'title'    => 'Language options',
       'pages'    => array( 'post' ),
