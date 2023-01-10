@@ -91,7 +91,6 @@
             background: color(dark-gray);
             color: color(dark-ben-franklin);
             text-decoration: underline;
-
             &:hover,
             &:active {
               color: color(dark-ben-franklin);
@@ -430,6 +429,7 @@
       @media screen and (min-width: 750px) and (max-width:950px) {
         font-size: .75rem;
         padding: 2rem .5rem;
+
       }
 
       .news-menu-link a{
