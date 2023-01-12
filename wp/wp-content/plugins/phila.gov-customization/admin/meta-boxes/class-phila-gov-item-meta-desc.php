@@ -40,10 +40,10 @@ class Phila_Item_Meta_Desc {
     );
 
     $meta_boxes[] = array(
-      'title' => 'Send to Translation',
+      'title' => 'Translation Settings',
       'context'  => 'side',
       'post_types' => array(
-        'phila_post', 'news_post',  'department_page', 'service_page', 'document', 'press_release', 'page', 'post', 'programs', 'event_spotlight', 'guides'
+        'department_page', 'service_page', 'document', 'page', 'programs', 'event_spotlight', 'guides'
       ),
 
       'fields' => array(
