@@ -52,6 +52,7 @@ class Phila_Item_Meta_Desc {
           'name' => 'Ready to send to translation?',
           'type' => 'switch',
           'style' => 'rounded',
+          'std' => 1,
           'on_label' => 'Yes',
           'off_label' => 'No',
         ),
