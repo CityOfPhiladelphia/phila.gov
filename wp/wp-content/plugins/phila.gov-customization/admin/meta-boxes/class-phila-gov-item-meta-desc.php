@@ -36,14 +36,25 @@ class Phila_Item_Meta_Desc {
           'desc'  => 'Enter a short description of this content. This description will appear in lists that include this item, search results, and social media link previews. 140 character maximum.',
           'required'  => true
         ),
+      ),
+    );
+
+    $meta_boxes[] = array(
+      'title' => 'Send to Translation',
+      'context'  => 'side',
+      'post_types' => array(
+        'phila_post', 'news_post',  'department_page', 'service_page', 'document', 'press_release', 'page', 'post', 'programs', 'event_spotlight', 'guides'
+      ),
+
+      'fields' => array(
         array(
           'id' => $prefix . 'send_to_translation',
-          'name' => 'Send To Translation?',
+          'name' => 'Ready to send to translation?',
           'type' => 'switch',
           'style' => 'rounded',
           'on_label' => 'Yes',
           'off_label' => 'No',
-        )
+        ),
       ),
     );
 
