@@ -3,7 +3,7 @@
 FILE=/home/ubuntu/.ssh/environment
 if test -f "$FILE"; then
 		source $FILE
-		echo "#location ^~ /wp-login.php {
+		echo "location ^~ /wp-login.php {
 			return 301 $SSO_LOGIN;
 		}
 
