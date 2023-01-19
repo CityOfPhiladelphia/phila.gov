@@ -10,7 +10,7 @@
 <?php $label_arr = phila_get_post_label(phila_get_selected_template($post->ID)); ?>
 
 <?php if ( $related_posts->have_posts() ) : ?>
-    <h2><?php _e( 'Related content' ); ?></h2>
+    <h2><?php _e( 'Related posts' ); ?></h2>
       <?php while ( $related_posts->have_posts() ) : $related_posts->the_post(); ?>
         <?php $count++; ?>
         <?php if ( isset( $is_press_release ) ):  ?>
