@@ -45,7 +45,9 @@ class Phila_Item_Meta_Desc {
       'post_types' => array(
         'department_page', 'service_page', 'document', 'page', 'programs', 'event_spotlight', 'guides'
       ),
-
+      'include' => array(
+        'user_role'  => array( 'administrator' ),
+      ), 
       'fields' => array(
         array(
           'id' => $prefix . 'send_to_translation',
