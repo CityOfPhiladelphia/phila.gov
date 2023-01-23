@@ -16,8 +16,14 @@ if (typeof phila_js_vars !== 'undefined') {
     $.ajax(ajaxURL).done(function (response) {
       var fullSizeImg = response._embedded["wp:featuredmedia"]["0"].media_details.sizes.full.source_url;
       var featuredCaption = response._embedded["wp:featuredmedia"]["0"].caption.rendered;
-
       $modal.html('<div class="lightbox-content"><img src="' + fullSizeImg + '" alt=""></div>');
+
+      if(response._embedded["wp:featuredmedia"]["0"].meta_box.phila_media_credit.length) {
+        var featuredCredit = document.createElement("p");
+        featuredCredit.innerHTML = '<strong>Photo by: '+response._embedded["wp:featuredmedia"]["0"].meta_box.phila_media_credit+'</strong>';
+        $modal.append(featuredCredit);
+      }
+      
       $modal.append(featuredCaption);
       $modal.append( closeButton );
     })
