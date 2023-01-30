@@ -140,7 +140,8 @@ class Phila_Gov_Admin_Templates {
             'post'   => 'Post',
             'press_release' => 'Press Release',
             'action_guide'  => 'Action Guide',
-            'action_guide_2'  => 'Action Guide V2'
+            'action_guide_2'  => 'Action Guide V2',
+            'series'  => 'Series'
           ),
           'admin_columns' => array(
             'position' => 'after date',

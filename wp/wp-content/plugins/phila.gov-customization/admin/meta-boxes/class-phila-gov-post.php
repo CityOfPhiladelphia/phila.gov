@@ -363,6 +363,21 @@ class Phila_Gov_Post {
       ),
     );
 
+    $meta_boxes[] = array(
+      'title'    => 'Series post selector',
+      'pages'    => array( 'post' ),
+      'context'  => 'normal',
+      'priority' => 'high',
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'series'),
+        ),
+      ),
+      'fields'  => array(
+        Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true ),
+      )
+    );
+
     return $meta_boxes;
   }
 
