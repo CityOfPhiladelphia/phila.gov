@@ -84,3 +84,4 @@ echo '
   }
 }
 ' > ~/app/wp/composer.json
+composer update -d ~/app/wp

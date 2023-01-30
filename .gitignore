@@ -40,19 +40,9 @@ wp/wp-content/plugins/admin-email-as-from-address/
 wp/wp-content/plugins/nestedpages/
 wp/wp-content/themes/phila.gov-theme/yarn-error.log
 node_moddules
-# Ignore compiled files
-wp/wp-content/themes/phila.gov-theme/css/styles.css
-wp/wp-content/themes/phila.gov-theme/css/styles.css.map
-wp/wp-content/themes/phila.gov-theme/css/styles.min.css
-wp/wp-content/themes/phila.gov-theme/css/styles.min.css.map
-wp/wp-contnet/themes/phila.gov-theme/css/base.css
-wp/wp-contnet/themes/phila.gov-theme/js/app.js
-wp/wp-contnet/themes/phila.gov-theme/js/main.js
-wp/wp-content/themes/phila.gov-theme/js/phila-scripts.js
-wp/wp-content/themes/phila.gov-theme/js/phila-scripts.min.js
-wp/wp-content/themes/phila.gov-theme/js/phila-scripts.min.js.map
 
 # OSX file
 .DS_Store
 
 .vscode/*
+tags
