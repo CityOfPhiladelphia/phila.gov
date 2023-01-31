@@ -36,6 +36,8 @@ g/^max_input_vars/s/2000000/3000000
 w
 EOF
 
+"$_dir/private-plugins.sh"
+
 echo 'Reloading php-fpm'
 sudo service php7.4-fpm reload
 
