@@ -15,9 +15,11 @@ cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
 npm install
 if [ "$PHILA_TEST" ]; then
   echo 'Running test machine tasks'
+  # npm rebuild node-sass
   npm run dev:build
 else
   echo 'Running prod tasks'
+  # npm rebuild node-sass
   npm run build
 fi
 cd /home/ubuntu/app
@@ -29,10 +31,10 @@ w
 EOF
 sudo ed -s /etc/php/7.4/fpm/php.ini <<'EOF'
 g/^post_max_size/s/8/1000
-g/^upload_max_filesize/s/100/500
+g/^upload_max_filesize/s/2/100
 g/^memory_limit/s/128/1024
-g/^max_execution_time/s/500/600
-g/^max_input_vars/s/2000000/3000000
+g/^max_execution_time/s/30000000000000000/500
+g/^max_input_vars/s/10000000000000000000/2000000
 w
 EOF
 
