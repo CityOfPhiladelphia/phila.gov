@@ -117,7 +117,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
       </div>
     </div>
   <?php endif ?>
-  <div class="grid-container post-content <?php echo $language == 'arabic' ? $language : '' ?>">
+  <div class="grid-container post-content <?php echo $language == 'arabic' ? $language : '' ?> <?php echo ($template_type == 'series' ) ? 'grid-x grid-padding-x mvl' : '' ?>">
     <?php
       if ( !empty( $translations ) ) :
         foreach ( $translations as $translation ) : ?>
@@ -129,7 +129,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
           <a href="<?php echo $link ?>"><?php echo $lang[0] ?></a>
       <?php endforeach; ?>
     <?php endif; ?>
-    <div class="medium-18 medium-centered mtm">
+    <div class=" medium-centered mtm <?php echo ($template_type == 'series' ) ? 'medium-24' : 'medium-18' ?>">
       <?php the_content(); ?>
       <?php include(locate_template ('partials/posts/post-end-cta.php') ); ?>
     </div>
