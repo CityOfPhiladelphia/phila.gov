@@ -136,8 +136,8 @@
       box-shadow: 0 3px 10px rgba(color(medium-gray), .5);
     }
 
-    .sticky-header-width {
-      max-width: 75rem;
+    .sticky-header-width{
+      max-width: 90rem;
       margin-left: auto;
       margin-right: auto;
     }
@@ -644,7 +644,6 @@ header {
         width: 100px;
         display: inline-block;
         vertical-align: middle;
-
         .circle-icon {
           line-height: 1.5rem;
           align-items: center;
