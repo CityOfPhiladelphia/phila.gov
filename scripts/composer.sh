@@ -36,7 +36,7 @@ echo '
     },
     {
       "type": "vcs",
-      "url": "https://github.com/CityOfPhiladelphia/phila-wpfront-user-role-editor-personal-pro.git"
+      "url": "https://github.com/CityOfPhiladelphia/phila-wpfront-user-role-editor.git"
     }
   ],
   "require": {
@@ -84,4 +84,3 @@ echo '
   }
 }
 ' > ~/app/wp/composer.json
-composer update -d ~/app/wp
