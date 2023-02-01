@@ -256,4 +256,10 @@ module.exports = $(function () {
     }
     getUrlLanguage();
     //END Translation Bar
+
+    $(document).ready(function() {
+        $('#google_translate_element').bind('DOMNodeInserted', function() {
+            $('.goog-te-menu-value span:first').html('More Languages');
+        });  
+    });
 });
