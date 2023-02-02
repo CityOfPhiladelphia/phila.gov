@@ -12,7 +12,7 @@
   <div class="grid-container post-content grid-x grid-padding-x mvm">
     <?php the_content(); ?>
   </div>
-  <div class="grid-container post-content grid-x grid-padding-x mvm pan">
+  <div class="grid-container post-content grid-x grid-padding-x mvl pan">
     <?php include(locate_template ('partials/posts/series/series-post-grid.php') ); ?>
   </div>
 
