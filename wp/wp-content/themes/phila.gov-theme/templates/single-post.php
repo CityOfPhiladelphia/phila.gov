@@ -30,6 +30,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
   $archived_state = 2; //archived manually
 }
 
+if ( $template_type != 'series') {
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
@@ -140,13 +141,15 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
       <?php include(locate_template ('partials/posts/action-guide-content.php') ); ?>
     <?php } else if ( $template_type == 'action_guide_2' ) { ?>
       <?php include(locate_template ('partials/posts/action_guide_v2/action-guide-content-v2.php') ); ?>
-    <?php } else if ( $template_type == 'series' ) { ?>
-      <?php include(locate_template ('partials/posts/series/series-post-grid.php') ); ?>
     <?php } ?>
   </div>
   
   <hr class="margin-auto"/>
 </article>
+
+<?php } else {
+  include(locate_template ('partials/posts/series/series-archive.php') );
+} // if not series ?>
 
 <?php wp_reset_postdata(); ?>
 <?php

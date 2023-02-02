@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="cell medium-8 mbxl">
+<div class="cell large-6 medium-8 mbxl series-card">
   <article id="post-<?php the_ID(); ?>" <?php post_class('full-height'); ?>>
     <a href="<?php echo the_permalink(); ?>" class="card card--<?php echo $label_arr['label'] ?> flex-container flex-dir-row full-height">
       <div class="grid-x flex-dir-column">
