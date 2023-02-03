@@ -21,13 +21,13 @@ foreach( $series_posts as $collection_post_id ) {
         <div class="grid-x flex-dir-column">
           <div class="flex-child-shrink">
             <?php if ( has_post_thumbnail() ) : ?>
-                <?php echo phila_get_thumbnails(); ?>
+                <?php echo get_the_post_thumbnail( null, 'phila-thumb' ) ?>
             <?php endif; ?>
           </div>
           <div class="card--content pvm flex-child-auto">
             <div class="cell align-self-top post-label post-label--<?php echo $label_arr['label']?>">
               <div><?php echo $label_arr['nice']; ?></div>
-              <header class="cell mvm">
+              <header class="mvm">
                 <h1><?php echo get_the_title(); ?></h1>
               </header>
             </div>

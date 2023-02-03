@@ -14,6 +14,7 @@ if (typeof phila_js_vars !== 'undefined') {
     var ajaxURL = '/wp-json/wp/v2/' + postRestBase + '/' + postID + '/' + '?_embed=true' ;
     $modal.html('Loading...');
     $.ajax(ajaxURL).done(function (response) {
+      
       var fullSizeImg = response._embedded["wp:featuredmedia"]["0"].media_details.sizes.full.source_url;
       var featuredCaption = response._embedded["wp:featuredmedia"]["0"].caption.rendered;
 
