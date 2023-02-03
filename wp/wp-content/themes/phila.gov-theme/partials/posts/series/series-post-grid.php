@@ -24,17 +24,15 @@ foreach( $series_posts as $collection_post_id ) {
                 <?php echo phila_get_thumbnails(); ?>
             <?php endif; ?>
           </div>
-          <div class="card--content pam flex-child-auto">
+          <div class="card--content pvm flex-child-auto">
             <div class="cell align-self-top post-label post-label--<?php echo $label_arr['label']?>">
-              <i class="<?php echo $label_arr['icon'] ?> fa-lg" aria-hidden="true"></i> <span><?php echo $label_arr['nice']; ?></span>
+              <div><?php echo $label_arr['nice']; ?></div>
               <header class="cell mvm">
                 <h1><?php echo get_the_title(); ?></h1>
               </header>
             </div>
-            <div class="cell align-self-bottom">
-              <div class="post-meta">
-                <span class="date-published"><time datetime="<?php echo get_post_time('Y-m-d'); ?>"><?php echo get_the_date();?></time></span>
-              </div>
+            <div class="post-meta date-published">
+              <time datetime="<?php echo get_post_time('Y-m-d'); ?>"><?php echo get_the_date();?></time>
             </div>
           </div>
         </div>
