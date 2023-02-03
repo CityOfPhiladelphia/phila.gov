@@ -1,7 +1,6 @@
 blockquote {
     border-left: 0px;
-    padding-left: 0.7142857143rem;
-    padding-right: 0.7142857143rem;
+    padding: 0px;
     margin: 0;
     p {
         font-family: 'Times New Roman', Times, serif;
@@ -9,11 +8,18 @@ blockquote {
         font-weight: bold;
         font-size: 24px;
         color: #000;
-        margin-left: 2rem;
+        margin-left: 3rem;
+        margin-bottom: 30px;
+        display: inline-block;
+        margin-top: -30px;
     }
     &::before {
-        content: "\f10d";
-        font-family: "Font Awesome 5 Pro";
-        font-weight: 800;
+        content: "“";
+        display: inline-block;
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 49px;
+        color: #000;
     }
 }
