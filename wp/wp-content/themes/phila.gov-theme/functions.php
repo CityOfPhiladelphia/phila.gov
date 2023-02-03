@@ -2238,9 +2238,9 @@ function inject_translation_slug($language)
   }
   $new_path = implode('/', $new_path_segments);
   if($language !== $default_lang){
-    $new_url = "https://" . $_SERVER['HTTP_HOST'] . '/' . $language . $new_path;
+    $new_url = '/' . $language . $new_path;
   } else if ($language === $default_lang) {
-    $new_url = "https://" . $_SERVER['HTTP_HOST'] . $new_path;
+    $new_url = $new_path;
   }
 
   return $new_url;
