@@ -5,7 +5,6 @@ module.exports = $(function () {
     var navHeight = $('.global-nav').height();
     var windowWidth = $(window).width();
     var windowPath = $(location).attr('pathname'); 
-    var urlLanguage = '';
 
     //Generic class for links that should prevent clickthrough
     $('.no-link').click(function (e) {
@@ -228,11 +227,12 @@ module.exports = $(function () {
         });
     });
 
-    function setActiveLanguage() {
+    function setActiveLanguage(urlLanguage) {
         $('#translations-menu> li').find('a').each(
             function() {
                 if (urlLanguage === $(this).text()){
-                    $(this).addClass('active'); 
+                    $(this).addClass('active');
+                    console.log("Set active language: " + urlLanguage)
                 } else {
                     $(this).removeClass('active');
                 }
@@ -241,6 +241,7 @@ module.exports = $(function () {
     function getUrlLanguage() {
         var urlPath = windowPath.split('/');
         var pathItem = urlPath[1];
+        var urlLanguage = "";
         
         switch(pathItem) {
             case "zh":
@@ -252,14 +253,15 @@ module.exports = $(function () {
             default:
                 urlLanguage = "English";
         }
-        setActiveLanguage();
+        setActiveLanguage(urlLanguage);
+        console.log("getUrlLanguage: " + urlLanguage);
     }
     getUrlLanguage();
     //END Translation Bar
 
     $(document).ready(function() {
         $('#google_translate_element').bind('DOMNodeInserted', function() {
-            $('.goog-te-menu-value span:first').html('More Languages');
+            $($('.goog-te-gadget-icon span:first')[0]).html('More Languages');
         });  
     });
 });
