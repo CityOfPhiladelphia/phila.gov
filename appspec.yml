@@ -36,7 +36,7 @@ hooks:
       runas: ubuntu
 branch_config:
   wip\/.*: null
-  lang-switcher-styling:
+  staging:
     deploymentGroupName: staging-phila-gov
     deploymentGroupConfig:
       serviceRoleArn: 'arn:aws:iam::676612114792:role/beta.phila.gov_CodeDeploy'
