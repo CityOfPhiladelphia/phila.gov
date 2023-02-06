@@ -2,7 +2,7 @@ name: Deploy to staging
 on:
   push:
     branches:
-      - staging
+      - lang-switcher-styling
 
 jobs:
   deploy:
