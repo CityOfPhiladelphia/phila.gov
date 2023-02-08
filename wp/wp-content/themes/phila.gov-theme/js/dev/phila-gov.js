@@ -228,15 +228,17 @@ module.exports = $(function () {
     });
 
     function setActiveLanguage(urlLanguage) {
-        $('#translations-menu> li').find('a').each(
-            function() {
-                if (urlLanguage === $(this).text()){
-                    $(this).addClass('active');
-                    console.log("Set active language: " + urlLanguage)
-                } else {
-                    $(this).removeClass('active');
-                }
-            });
+        console.log('setActiveLanguage running')
+        $('#translations-menu> li').find('a').each(function () {
+            console.log($(this).text());
+            console.log(urlLanguage);
+            if (urlLanguage == $(this).text()){
+                $(this).addClass('active');
+                console.log("Set active language: " + urlLanguage)
+            } else {
+                $(this).removeClass('active');
+            }
+        });
     }
     function getUrlLanguage() {
         var urlPath = windowPath.split('/');
