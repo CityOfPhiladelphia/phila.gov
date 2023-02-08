@@ -227,18 +227,15 @@ module.exports = $(function () {
         });
     });
 
-    function setActiveLanguage(urlLanguage) {
-        console.log('setActiveLanguage running')
-        $('#translations-menu> li').find('a').each(function () {
-            console.log($(this).text());
-            console.log(urlLanguage);
-            if (urlLanguage == $(this).text()){
-                $(this).addClass('active');
-                console.log("Set active language: " + urlLanguage)
-            } else {
-                $(this).removeClass('active');
-            }
-        });
+    function setActiveLanguage() {
+        $('#translations-menu> li').find('a').each(
+            function() {
+                if (urlLanguage === $.trim($(this).text())){
+                    $(this).addClass('active'); 
+                } else {
+                    $(this).removeClass('active');
+                }
+            });
     }
     function getUrlLanguage() {
         var urlPath = windowPath.split('/');
@@ -256,7 +253,6 @@ module.exports = $(function () {
                 urlLanguage = "English";
         }
         setActiveLanguage(urlLanguage);
-        console.log("getUrlLanguage: " + urlLanguage);
     }
     getUrlLanguage();
     //END Translation Bar
