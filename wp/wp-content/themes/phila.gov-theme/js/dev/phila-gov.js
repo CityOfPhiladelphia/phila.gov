@@ -231,7 +231,7 @@ module.exports = $(function () {
     function setActiveLanguage() {
         $('#translations-menu> li').find('a').each(
             function() {
-                if (urlLanguage === $(this).text()){
+                if (urlLanguage === $.trim($(this).text())){
                     $(this).addClass('active'); 
                 } else {
                     $(this).removeClass('active');
