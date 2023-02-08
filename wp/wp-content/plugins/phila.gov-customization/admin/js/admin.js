@@ -6,11 +6,7 @@ function phila_get_user_roles_callback() {
   }
 }
 function phila_get_user_roles_is_admin() {
-  if (phila_WP_User.includes('administrator') ){
-    return true;
-  }else{
-    return false;
-  }
+  return phila_WP_User.includes('administrator');
 }
 function phila_user_read_only(){
   if ( phila_WP_User.includes( 'primary_admin_read_only' ) ){
