@@ -202,49 +202,46 @@
 
               display: block;
 
-              .goog-te-menu-value .fa-globe::before {
+              .fa-globe::before {
                   display: none;
               }
-              .goog-te-menu-value:before{
+              ::before{
                   &:hover {
                       color: white;
                       background-color: color(dark-ben-franklin);
                   }
               }
 
-              .goog-te-menu-value::after {
+              ::after {
                   display: none;
               }
 
-              .goog-te-menu-value span:first-of-type {
-                  display: inline;
+              a {
+                  display: block;
                   text-transform: capitalize;
                   font-family: "Montserrat","Tahoma",sans-serif;
-                    
+                  padding-left: 1rem !important;
+
                   @include breakpoint(small only) {
-                    padding-left: 1rem; 
+                    padding-left: 2rem !important; 
                   }
 
-                  &:before{
+
+                 &:before{
                     margin-right: 4px;
                     font: var(--fa-font-solid);
                     content: "\2b";
+
                   }
 
-                  &:hover {
-                      color: white !important;
-                      background-color: inherit;
-                  }
-              }
-              a {
-                  display: block;
-                
                   &:hover {
                       color: white;
                       background-color:color(dark-ben-franklin);  
                   }
+
                   &:hover::before {
-                      background-color:color(ghost-gray);
+                      color: white;
+                      background-color:color(dark-ben-franklin);  
                   }
               }
           }
