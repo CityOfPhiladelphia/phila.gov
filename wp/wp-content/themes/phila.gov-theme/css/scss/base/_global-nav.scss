@@ -156,6 +156,7 @@
         }
         a.active {
             font-weight: bold;
+            text-decoration: none;
         }
         &.is-active>a {
           color: color(dark-ben-franklin);
@@ -282,8 +283,8 @@
       box-shadow: 0 3px 10px rgba(color(medium-gray), .5);
     }
 
-    .sticky-header-width {
-      max-width: 75rem;
+    .sticky-header-width{
+      max-width: 90rem;
       margin-left: auto;
       margin-right: auto;
     }
@@ -473,7 +474,7 @@
           font-weight: 650;
           font-size: 14px;
           text-transform: none !important;
-          padding: 2rem 1.5rem;
+          padding: 2rem 2rem;
         }
 
         a:active,
@@ -750,10 +751,9 @@
 
 @media screen and (min-width:950px) {
   .news-menu-link {
-    min-width: 101px;
+    min-width: 115px;
   }
 }
-
 
 header {
   .logo {

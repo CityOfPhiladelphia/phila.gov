@@ -71,28 +71,6 @@
         [class*="fa-"], p {
           color: color(dark-ben-franklin);
         }
-        [class*="fa-"] {
-          font-size: 5rem;
-          line-height: 5rem;
-          @media only screen and (min-width: 40em) {
-            font-size: 3rem;
-            line-height: 4rem;
-          }
-          @media only screen and (min-width: 64em) {
-            font-size: 3.8rem;
-          }
-        }
-        .fa-home {
-          font-size: 6rem;
-          line-height: 5rem;
-          @media only screen and (min-width: 40em) {
-            font-size: 4rem;
-            line-height: 4rem;
-          }
-          @media only screen and (min-width: 64em) {
-            font-size: 4rem;
-          }
-        }
     }
       p {
         margin:0;
