@@ -156,6 +156,7 @@
         }
         a.active {
             font-weight: bold;
+            text-decoration: none;
         }
         &.is-active>a {
           color: color(dark-ben-franklin);
