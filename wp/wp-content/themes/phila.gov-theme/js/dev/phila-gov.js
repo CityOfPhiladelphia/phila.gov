@@ -227,7 +227,7 @@ module.exports = $(function () {
         });
     });
 
-    function setActiveLanguage() {
+    function setActiveLanguage(urlLanguage) {
         $('#translations-menu> li').find('a').each(
             function() {
                 if (urlLanguage === $.trim($(this).text())){
@@ -254,12 +254,14 @@ module.exports = $(function () {
         }
         setActiveLanguage(urlLanguage);
     }
-    getUrlLanguage();
+    getUrlLanguage(urlLanguage);
     //END Translation Bar
 
     $(document).ready(function() {
         $('#google_translate_element').bind('DOMNodeInserted', function() {
-            $($('.goog-te-gadget-icon span:first')[0]).html('More Languages');
+            $('.goog-te-gadget .goog-te-gadget-simple span:first').replaceWith(function() { 
+                return "<a role='menuitem'>More Languages</>"; 
+            });
         });  
     });
 });
