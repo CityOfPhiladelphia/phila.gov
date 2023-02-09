@@ -227,7 +227,7 @@ module.exports = $(function () {
         });
     });
 
-    function setActiveLanguage() {
+    function setActiveLanguage(urlLanguage) {
         $('#translations-menu> li').find('a').each(
             function() {
                 if (urlLanguage === $.trim($(this).text())){
@@ -254,7 +254,7 @@ module.exports = $(function () {
         }
         setActiveLanguage(urlLanguage);
     }
-    getUrlLanguage();
+    getUrlLanguage(urlLanguage);
     //END Translation Bar
 
     $(document).ready(function() {
