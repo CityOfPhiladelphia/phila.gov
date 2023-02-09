@@ -11,7 +11,7 @@ if (typeof phila_js_vars !== 'undefined') {
 
   $(document).on('open.zf.reveal', '#phila-lightbox-feature', function (e) {
     var $modal = $(this);
-    var ajaxURL = '/wp-json/wp/v2/' + postRestBase + '/' + postID + '/' + '?_embed=true' ;
+    var ajaxURL = 'https://flbjdoa008.execute-api.us-east-1.amazonaws.com/'+postID;
     $modal.html('Loading...');
     $.ajax(ajaxURL).done(function (response) {
       var fullSizeImg = response._embedded["wp:featuredmedia"]["0"].media_details.sizes.full.source_url;
