@@ -254,7 +254,7 @@ module.exports = $(function () {
         }
         setActiveLanguage(urlLanguage);
     }
-    getUrlLanguage(urlLanguage);
+    getUrlLanguage();
     //END Translation Bar
 
     $(document).ready(function() {
