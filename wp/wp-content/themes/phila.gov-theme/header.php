@@ -94,7 +94,7 @@
                     <li class="show-for-small-only"><a href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
  <?php endif; ?>
                    <li id="google_translate_element"></li>
-                    <li class="translations-support"><a href="#"><i class="fa fa-messages"></i>Feedback and Support</a></li>
+                    <li class="translations-support"><a href="#"><i class="fa fa-messages"></i>Feedback and support</a></li>
                 </ul>
               </li>
             </ul> 
