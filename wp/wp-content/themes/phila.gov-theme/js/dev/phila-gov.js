@@ -210,4 +210,11 @@ module.exports = $(function(){
   }
   var mainContent = $('.guide-content').eq(0);
 
+  $(document).ready(function() {
+    $('#google_translate_element').bind('DOMNodeInserted', function() {
+        $('.goog-te-gadget .goog-te-gadget-simple span:first').replaceWith(function() { 
+            return "<a role='menuitem'><i class='fas fa-solid fa-caret-down'></i></>"; 
+        });
+    });  
+});
 });

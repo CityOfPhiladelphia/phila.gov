@@ -112,10 +112,15 @@
     #google_translate_element {
       a {
         padding: .2rem 2rem .3rem .5rem;
+        max-width: 45px;
       }
 
       .goog-te-gadget-simple .goog-te-menu-value::after {
         top: 6px;
+      }
+
+      .fa-caret-down {
+        padding-left: .5rem;
       }
     }
   }
