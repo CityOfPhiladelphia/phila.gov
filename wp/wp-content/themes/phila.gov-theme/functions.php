@@ -2249,7 +2249,7 @@ function inject_translation_slug($language)
 }
 
 function load_vue_mobile_menu() {
-  wp_enqueue_script('mobile-menu-chunk-js', 'https://philagov-vue-apps.s3.amazonaws.com/mobile-menu/production/js/chunk-vendors.js?test', array(), null, true );
-  wp_enqueue_script('mobile-menu-app-js', 'https://philagov-vue-apps.s3.amazonaws.com/mobile-menu/production/js/app.js?test', array(), null, true );
-  wp_enqueue_style('mobile-menu-app-css', 'https://philagov-vue-apps.s3.amazonaws.com/mobile-menu/production/css/app.css?test');
+  wp_enqueue_script('mobile-menu-chunk-js', 'https://www.phila.gov/embedded/mobile-menu/production/js/chunk-vendors.js?cachebreaker', array(), null, true );
+  wp_enqueue_script('mobile-menu-app-js', 'https://www.phila.gov/embedded/mobile-menu/production/js/app.js?cachebreaker', array(), null, true );
+  wp_enqueue_style('mobile-menu-app-css', 'https://www.phila.gov/embedded/mobile-menu/production/css/app.css?cachebreaker');
 }
