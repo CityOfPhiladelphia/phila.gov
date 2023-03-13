@@ -170,53 +170,12 @@
                 <span class="title-bar-title">Menu</span>
               </button>
             </div>
-            <div class="primary-menu medium-15 medium-push-2 small-24 columns valign-mu" id="mobile-nav">
-              <div class="top-bar-right valign-mu show-for-small-only">
-              <nav data-swiftype-index="false" class="phila-mobile-nav-menu valign-mu" aria-label="mobile-nav">
-                <ul id="mobile-nav-drilldown" class="vertical menu pan valign-mu">
-                  <li><a href="/"><i class="fas fa-home fa-lg"></i> Home</a></li>
-                  <li class="is-drilldown-submenu-parent" tabindex="0">
-                    <a href="#service-directory" class="valign-cell"><i class="far fa-list show-for-small-only"></i> Services</a>
-                    <ul class="menu vertical menu-top-offset" tabindex="0">
-                      <li tabindex="0"><a href="/service-directory/"> Service directory</a></li>
-                      <?php
-                        $args = array(
-                          //TODO: only display pages with taxonomy applied
-                          'post_type' => 'service_page',
-                          'orderby' => 'menu_order',
-                          'order' => 'ASC',
-                          'title_li' => '',
-                          'link_before' => '<span>',
-                          'link_after'  => '</span>',
-                        );
-                        wp_list_pages($args);
-                      ?>
-                    </ul>
-                    </li>
-                    <li tabindex="0">
-                      <a href="<?php echo get_site_url() ?>/programs-initiatives/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs</a>
-                    </li>
-                    <li class="bg-sidewalk" tabindex="0">
-                      <a href="<?php echo get_site_url() ?>/departments/" class="valign-cell"><i class="fas fa-sitemap"></i> Departments</a>
-                    </li>
-                    <li tabindex="0">
-                        <a href="<?php echo get_site_url() ?>/tools/" class="valign-cell"><i class="fas fa-hammer"></i> Tools</a>
-                      </li>
-                      <li tabindex="0">
-                      <a href="<?php echo get_site_url() ?>/publications-forms/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications</a>
-                    </li>
-                      <li tabindex="0">
-                      <a href="<?php echo get_site_url() ?>/the-latest/" class="valign-cell"><i class="fas fa-newspaper"></i> News</a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
           </div><!--End mobile nav -->
         </div><!-- close columns -->
       </div>
     </div>
   </div>
+  <div id="phila-mobile-menu"></div>
   <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>

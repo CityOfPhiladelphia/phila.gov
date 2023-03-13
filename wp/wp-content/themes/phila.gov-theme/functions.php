@@ -391,6 +391,8 @@ function phila_gov_scripts() {
 
   wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 
+  load_vue_mobile_menu();
+
   if  ( is_user_logged_in() ){
     wp_enqueue_script( 'logged-in-js', get_stylesheet_directory_uri() . '/admin/js/front-end.js', array( 'phila-scripts' ), '', true );
 
@@ -2220,3 +2222,34 @@ function set_environment() {
 }
 
 add_action('init', 'set_environment');
+
+function inject_translation_slug($language)
+{
+  $current_url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  $url_parts = parse_url($current_url);
+  $path = $url_parts['path'];
+  $path_segments = explode('/', $path);
+  $default_lang = 'en';
+  $language_codes = array('zh', 'es','ar', 'fr', 'ru', 'ms', 'hi', 'pt', 'bn', 'id', 'sw', 'ja', 'de', 'ko', 'it', 'fa', 'tr', 'nl', 'te', 'vi', 'ht');
+  $new_path_segments = array();
+  
+  foreach ($path_segments as $segment) {
+    if (!in_array($segment, $language_codes)) {
+      $new_path_segments[] = $segment;
+    }
+  }
+  $new_path = implode('/', $new_path_segments);
+  if($language !== $default_lang){
+    $new_url = '/' . $language . $new_path;
+  } else if ($language === $default_lang) {
+    $new_url = $new_path;
+  }
+
+  return $new_url;
+}
+
+function load_vue_mobile_menu() {
+  wp_enqueue_script('mobile-menu-chunk-js', 'https://philagov-vue-apps.s3.amazonaws.com/mobile-menu/production/js/chunk-vendors.js?test', array(), null, true );
+  wp_enqueue_script('mobile-menu-app-js', 'https://philagov-vue-apps.s3.amazonaws.com/mobile-menu/production/js/app.js?test', array(), null, true );
+  wp_enqueue_style('mobile-menu-app-css', 'https://philagov-vue-apps.s3.amazonaws.com/mobile-menu/production/css/app.css?test');
+}
