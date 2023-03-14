@@ -297,10 +297,13 @@
     min-width: 56px;
     width: auto;
     height: auto;
-    padding: 1rem;
+    padding: 1.3rem;
     margin-left: 0;
     background: white;
     color: color(dark-ben-franklin);
+    .fass {
+      font-size: 1.5rem;
+    }
 
     .fa {
       display: block;
@@ -723,6 +726,9 @@
       cursor: pointer;
       font-weight: normal;
       background: none;
+      .fass {
+        font-size: 1.5rem;
+      }
 
       @include breakpoint(medium up) {
         margin-top: .75rem;
@@ -732,7 +738,7 @@
         min-width: 60px;
         font-size: inherit;
         float: right;
-        padding: 1rem;
+        padding: 1.3rem;
 
         .fa {
           display: block;
