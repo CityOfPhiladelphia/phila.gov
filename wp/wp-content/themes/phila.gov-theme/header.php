@@ -121,7 +121,7 @@
             <div class="row sticky-header-width">
               <div class="small-4 columns menu-icon-container" data-responsive-toggle="mobile-nav" data-swiftype-index="false" data-hide-for="medium">
                 <button class="menu-icon" type="button" data-toggle>
-                  <i class="fass fa-bars fa-2x" aria-hidden="true"></i>
+                  <i class="fass fa-bars" aria-hidden="true"></i>
                 </button>
               </div>
               <div class="small-16 medium-4 columns valign medium-push-0 logo-container">
@@ -157,7 +157,7 @@
             </div>
             <div class="small-4 medium-1 columns phn-m prn site-search-container">
               <button id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
-                <i class="fass fa-magnifying-glass fa-2x" aria-hidden="true"></i>
+                <i class="fass fa-magnifying-glass" aria-hidden="true"></i>
               </button>
             </div>
           </div> <!-- close row -->
