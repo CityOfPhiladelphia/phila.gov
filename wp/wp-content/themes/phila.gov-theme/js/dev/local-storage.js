@@ -23,9 +23,8 @@ module.exports = $(function(){
         return item.value
     }
 
-
     // opens disclaimer-modal if exists for department & program pages
-    $(document).ready(function() {
+    function openDisclaimerModal() {
         let modalSlug = window.location.pathname.split('/');
 
         if( ( modalSlug[1] == 'departments' || modalSlug[1] == 'programs') && modalSlug[2] ) {
@@ -46,6 +45,16 @@ module.exports = $(function(){
             // two week expiry
             setWithExpiry('phila-modal-'+modalSlug, 'seen', 1209600000);
         });
+    }
+
+    // opens translations-modal if English isn't the detected local language
+    function openTranslationsModal() {
+        $('#translations-modal').foundation('open');
+    }
+
+    $(document).ready(function() {
+        openDisclaimerModal();
+        openTranslationsModal();
     });
     
 });
