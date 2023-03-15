@@ -48,12 +48,11 @@ module.exports = $(function(){
 
   });
 
-  function extendMenuToggle(){
-    $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-times');
-    $('.menu-icon .title-bar-title').text( ( $('.menu-icon .title-bar-title' ).text() === 'Menu' ) ? 'Close' : 'Menu' );
+  function extendMenuToggle() {
+    $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-xmark');
     $('.global-nav .menu-icon').toggleClass('active');
-    $('#page').toggleClass('hide');
-    $('footer').toggleClass('hide');
+    $('#vue-mobile-menu').toggleClass('hide');
+    $('html').toggleClass('is-reveal-open');
   }
 
   function checkBrowserHeight(){
@@ -225,14 +224,6 @@ module.exports = $(function(){
         $('.site-search i').addClass('fa-search').removeClass('fa-times');
 
     });
-
-    function extendMenuToggle() {
-        $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-xmark');
-        $('.menu-icon .title-bar-title').text(($('.menu-icon .title-bar-title').text() === 'Menu') ? 'Close' : 'Menu');
-        $('.global-nav .menu-icon').toggleClass('active');
-        $('#vue-mobile-menu').toggleClass('hide');
-        $('html').toggleClass('is-reveal-open');
-    }
 
     function checkBrowserHeight() {
         if ($('body').hasClass('logged-in')) {
