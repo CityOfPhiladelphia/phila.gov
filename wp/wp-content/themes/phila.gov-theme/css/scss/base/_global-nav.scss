@@ -46,6 +46,14 @@
   //utility nav
   .utility-nav {
 
+    .grid-container {
+      padding: 0px;
+
+      .top-bar-left {
+        margin-left: .5rem;
+      }
+    }
+
     background: color(ghost-gray);
     font-size: 1rem;
 
@@ -140,7 +148,7 @@
         .translations-dropdown {
           width: 101vw;
           height: 101vh;
-          transform: translateX(-98%);
+          transform: translateX(-100%);
           left: 100% !important;
 
           li>a{
@@ -149,11 +157,15 @@
         }
       }
 
+ 
       .dropdown.menu>li {
         a {
           font-size: 1rem;
           background: color(ghost-gray);
           
+          .fa-caret-down::before {
+            padding-left: 4px;
+          }
         }
         a.active {
             font-weight: bold;
@@ -161,6 +173,7 @@
         }
         &.is-active>a {
           color: color(dark-ben-franklin);
+          text-decoration: none;
         }
         
         &.is-dropdown-submenu-parent>a::after {
