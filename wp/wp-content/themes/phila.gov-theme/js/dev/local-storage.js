@@ -39,14 +39,38 @@ module.exports = $(function(){
         }
         let parts = loc.split('-');
         let langs = {
-            'en': 'English',
-            'enm': 'English',
-            'eng': 'English',
-            'es': 'Spanish',
-            'spa': 'Spanish',
-            'zh': 'Chinese',
-            'zho': 'Chinese',
-            'chi': 'Chinese',
+            'en': {
+                    english:'English',
+                    native:'English'
+                },
+            'enm': {
+                    english:'English',
+                    native:'English'
+                },
+            'eng': {
+                    english:'English',
+                    native:'English'
+                },
+            'es': {
+                    english:'Spanish',
+                    native:'Español'
+                },
+            'spa': {
+                    english:'Spanish',
+                    native:'Español'
+                },
+            'zh': {
+                    english:'Chinese',
+                    native:'中文'
+                },
+            'zho': {
+                    english:'Chinese',
+                    native:'中文'
+                },
+            'chi': {
+                english:'Chinese',
+                native:'中文'
+            },
         }
         if (parts.length) {
             return langs[parts[0]];
@@ -73,8 +97,16 @@ module.exports = $(function(){
 
     // opens translations-modal if English isn't the detected local language
     function openTranslationsModal() {
-        $('#translations-modal-lang').html(philaLocaleCodeToEnglish(navigator.language));
-        openModalWithExpiry('#translations-modal-lang', 'translations');
+        if (navigator.language) {
+            // let lang = philaLocaleCodeToEnglish(navigator.language);
+            let lang = philaLocaleCodeToEnglish('es');
+            $('#translations-modal-lang').html(lang.english);
+            $('#translate-page').click(function() {
+                setActiveLanguage(lang.native);
+            });
+        }
+        // openModalWithExpiry('#translations-modal-lang', 'translations');
+        $('#translations-modal').foundation('open');
     }
 
     $(document).ready(function() {

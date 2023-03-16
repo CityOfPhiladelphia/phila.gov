@@ -78,10 +78,10 @@
           <!-- Translations Navigation -->
           <div class="top-bar-right translations-nav">
             <ul id="translations-menu" class="dropdown menu" data-dropdown-menu>
-              <li class="show-for-medium"><a href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
+              <li class="show-for-medium"><a id="translate-english" href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
 <?php if ( (is_front_page() === True) or (get_post_type($post->ID) != 'post') ): ?>
-              <li class="show-for-medium"><a href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
-              <li class="show-for-medium"><a href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
+              <li class="show-for-medium"><a id="translate-spanish" href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
+              <li class="show-for-medium"><a id="translate-chinese" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
 <?php endif; ?>
               <li>
                 <a href="#" class="dropdown-selector">
