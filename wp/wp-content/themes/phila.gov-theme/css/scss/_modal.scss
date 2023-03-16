@@ -1,4 +1,7 @@
 .phila-modal {
+    @include breakpoint(medium up) { 
+        margin-top: 10vh;
+    }
     .content {
         margin-top: 20px;
         h3 {
@@ -11,6 +14,7 @@
             text-align: left;
         }
         .button-text {
+            cursor: pointer;
             margin-top: 10px;
             padding: 0.75rem 1.5rem;
         }

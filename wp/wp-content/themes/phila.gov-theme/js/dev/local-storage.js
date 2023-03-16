@@ -30,18 +30,42 @@ module.exports = $(function(){
         if( ( modalSlug[1] == 'departments' || modalSlug[1] == 'programs') && modalSlug[2] ) {
             modalSlug = modalSlug.slice(1,3).join('-');
         }
+        openModalWithExpiry('#disclaimer-modal', modalSlug);
+    }
 
-        if(getWithExpiry('phila-modal-'+modalSlug) == null && $('#disclaimer-modal').length) {
-            $('#disclaimer-modal').foundation('open');
+    function philaLocaleCodeToEnglish(loc) {
+        if (typeof loc !== 'string') {
+            loc = loc[0];
+        }
+        let parts = loc.split('-');
+        let langs = {
+            'en': 'English',
+            'enm': 'English',
+            'eng': 'English',
+            'es': 'Spanish',
+            'spa': 'Spanish',
+            'zh': 'Chinese',
+            'zho': 'Chinese',
+            'chi': 'Chinese',
+        }
+        if (parts.length) {
+            return langs[parts[0]];
+        }
+        return 'language';
+    }
+
+    function openModalWithExpiry(modalId, modalSlug) {
+        if(getWithExpiry('phila-modal-'+modalSlug) == null && $(modalId).length) {
+            $(modalId).foundation('open');
 
             if ($('.reveal--announcement')[0]) {
 
                 $('.reveal--announcement').on('closed.zf.reveal', function () {
-                    $('#disclaimer-modal').foundation('open'); 
+                    $(modalId).foundation('open'); 
                 });
             }
         }
-        $('#disclaimer-modal .button-text').click(function() {
+        $(modalId+' .button-text').click(function() {
             // two week expiry
             setWithExpiry('phila-modal-'+modalSlug, 'seen', 1209600000);
         });
@@ -49,7 +73,8 @@ module.exports = $(function(){
 
     // opens translations-modal if English isn't the detected local language
     function openTranslationsModal() {
-        $('#translations-modal').foundation('open');
+        $('#translations-modal-lang').html(philaLocaleCodeToEnglish(navigator.language));
+        openModalWithExpiry('#translations-modal-lang', 'translations');
     }
 
     $(document).ready(function() {
