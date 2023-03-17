@@ -99,14 +99,13 @@ module.exports = $(function(){
     function openTranslationsModal() {
         if (navigator.language) {
             // let lang = philaLocaleCodeToEnglish(navigator.language);
-            let lang = philaLocaleCodeToEnglish('es');
+            let lang = philaLocaleCodeToEnglish(navigator.language);
             $('#translations-modal-lang').html(lang.english);
             $('#translate-page').click(function() {
-                setActiveLanguage(lang.native);
+                $('#translate-'+lang.english.toLowerCase())[0].click();
             });
         }
-        // openModalWithExpiry('#translations-modal-lang', 'translations');
-        $('#translations-modal').foundation('open');
+        openModalWithExpiry('#translations-modal-lang', 'translations');
     }
 
     $(document).ready(function() {
