@@ -125,8 +125,8 @@ module.exports = $(function(){
 
     function setLangWithExpiry() {
         $("#translations-menu a").click(function(){
-            var urlPath = $(this)[0].href.split('/');
-            var pathItem = urlPath[3];
+            let urlPath = $(this)[0].href.split('/');
+            let pathItem = urlPath[3];
             let lang = philaLocaleCodeToEnglish(pathItem);
             if (lang) {
                 setWithExpiry('phila-active-language', lang.english, 2629800000);
