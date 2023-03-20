@@ -123,16 +123,13 @@ module.exports = $(function(){
         }
     }
 
-    function selectLangWithExpiry() {
+    function setLangWithExpiry() {
         $("#translations-menu a").click(function(){
-            var urlPath = $(this).href.split('/');
-            console.log(urlPath)
-            console.log(pathItem)
-            var pathItem = urlPath[1];
-            
+            var urlPath = $(this)[0].href.split('/');
+            var pathItem = urlPath[3];
             let lang = philaLocaleCodeToEnglish(pathItem);
             if (lang) {
-                setWithExpiry('phila-active-language', lang, 2629800000);
+                setWithExpiry('phila-active-language', lang.english, 2629800000);
             }
         });
     }
@@ -140,7 +137,7 @@ module.exports = $(function(){
     $(document).ready(function() {
         openDisclaimerModal();
         openTranslationsModal();
-        selectLangWithExpiry();
+        setLangWithExpiry();
     });
     
   });
