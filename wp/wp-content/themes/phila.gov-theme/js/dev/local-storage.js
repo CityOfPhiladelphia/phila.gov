@@ -70,10 +70,7 @@ module.exports = $(function(){
                 native:'中文'
             },
         }
-        if (parts.length) {
-            return langs[parts[0]];
-        }
-        return 'language';
+        return parts.length ? langs[parts[0]] : null;
     }
   
     function openModalWithExpiry(modalId, modalSlug) {
@@ -125,10 +122,25 @@ module.exports = $(function(){
             openTranslationsModalWithExpiry('#translations-modal', lang.english);
         }
     }
+
+    function selectLangWithExpiry() {
+        $("#translations-menu a").click(function(){
+            var urlPath = $(this).href.split('/');
+            console.log(urlPath)
+            console.log(pathItem)
+            var pathItem = urlPath[1];
+            
+            let lang = philaLocaleCodeToEnglish(pathItem);
+            if (lang) {
+                setWithExpiry('phila-active-language', lang, 2629800000);
+            }
+        });
+    }
   
     $(document).ready(function() {
         openDisclaimerModal();
         openTranslationsModal();
+        selectLangWithExpiry();
     });
     
   });
