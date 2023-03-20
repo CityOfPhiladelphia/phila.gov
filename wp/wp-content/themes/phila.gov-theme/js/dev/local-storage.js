@@ -8,7 +8,7 @@ module.exports = $(function(){
         }
         localStorage.setItem(key, JSON.stringify(item))
     }
-
+  
     function getWithExpiry(key) {
         const itemStr = localStorage.getItem(key)
         if (!itemStr) {
@@ -22,17 +22,15 @@ module.exports = $(function(){
         }
         return item.value
     }
-
     // opens disclaimer-modal if exists for department & program pages
     function openDisclaimerModal() {
         let modalSlug = window.location.pathname.split('/');
-
         if( ( modalSlug[1] == 'departments' || modalSlug[1] == 'programs') && modalSlug[2] ) {
             modalSlug = modalSlug.slice(1,3).join('-');
         }
         openModalWithExpiry('#disclaimer-modal', modalSlug);
     }
-
+  
     function philaLocaleCodeToEnglish(loc) {
         if (typeof loc !== 'string') {
             loc = loc[0];
@@ -77,13 +75,13 @@ module.exports = $(function(){
         }
         return 'language';
     }
-
+  
     function openModalWithExpiry(modalId, modalSlug) {
         if(getWithExpiry('phila-modal-'+modalSlug) == null && $(modalId).length) {
             $(modalId).foundation('open');
-
+  
             if ($('.reveal--announcement')[0]) {
-
+  
                 $('.reveal--announcement').on('closed.zf.reveal', function () {
                     $(modalId).foundation('open'); 
                 });
@@ -94,23 +92,43 @@ module.exports = $(function(){
             setWithExpiry('phila-modal-'+modalSlug, 'seen', 1209600000);
         });
     }
-
+  
+    function openTranslationsModalWithExpiry(modalId, lang) {
+        if(getWithExpiry('phila-active-language') == null && $(modalId).length) {
+            $(modalId).foundation('open');
+  
+            if ($('.reveal--announcement')[0]) {
+  
+                $('.reveal--announcement').on('closed.zf.reveal', function () {
+                    $(modalId).foundation('open'); 
+                });
+            }
+        } else if (lang != getWithExpiry('phila-active-language')) {
+            $('#translate-'+lang.toLowerCase())[0].click();
+        }
+        if (lang.length) {
+            $(modalId+' .button-text').click(function() {
+                // two week expiry
+                setWithExpiry('phila-active-language', lang, 1209600000);
+            });
+        }
+    }
+  
     // opens translations-modal if English isn't the detected local language
     function openTranslationsModal() {
-        if (navigator.language) {
-            // let lang = philaLocaleCodeToEnglish(navigator.language);
+        if (navigator.language && getWithExpiry('phila-active-language') != null) {
             let lang = philaLocaleCodeToEnglish(navigator.language);
             $('#translations-modal-lang').html(lang.english);
             $('#translate-page').click(function() {
                 $('#translate-'+lang.english.toLowerCase())[0].click();
             });
+            openTranslationsModalWithExpiry('#translations-modal', lang.english);
         }
-        openModalWithExpiry('#translations-modal-lang', 'translations');
     }
-
+  
     $(document).ready(function() {
         openDisclaimerModal();
         openTranslationsModal();
     });
     
-});
+  });
