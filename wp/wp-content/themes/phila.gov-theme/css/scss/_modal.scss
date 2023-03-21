@@ -42,9 +42,11 @@
             margin-top: 0px;
         }
         .button-container {
-            position: absolute;
-            bottom: 0px;
-            right: 0px;
+            @include breakpoint(medium up) { 
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+            }
             .translate-close {
                 background: #fff;
             }
@@ -56,12 +58,18 @@
                 font-family: 'Montserrat', 'Tahoma', sans-serif;
                 font-weight: 600;
                 border: 3px solid color(dark-ben-franklin);
-                padding: 1.2rem 2rem;
+                padding: 1.2rem;
+                min-width: 140px;
                 &:hover,
                 &:focus {
                     color: #fff;
                     background-color: #444;
                     border-color: #444;
+                }
+                @media (max-width: 400px) {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
             }
         }
