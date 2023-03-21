@@ -104,7 +104,7 @@ module.exports = $(function(){
             $('#translate-'+lang.toLowerCase())[0].click();
         }
         if (lang.length) {
-            $(modalId+' .button-text').click(function() {
+            $(modalId+' #translate-page').click(function() {
                 // one month expiry
                 setWithExpiry('phila-active-language', lang, 2629800000);
             });
