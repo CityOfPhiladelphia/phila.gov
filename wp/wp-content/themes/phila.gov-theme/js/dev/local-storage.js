@@ -36,41 +36,33 @@ module.exports = $(function(){
             loc = loc[0];
         }
         let parts = loc.split('-');
-        let langs = {
-            'en': {
+        switch (parts[0]) {
+            case 'enm':
+            case 'eng':
+            case 'en':
+                return {
                     english:'English',
                     native:'English'
-                },
-            'enm': {
-                    english:'English',
-                    native:'English'
-                },
-            'eng': {
-                    english:'English',
-                    native:'English'
-                },
-            'es': {
+                }
+            case 'es':
+            case 'spa':
+                return {
                     english:'Spanish',
                     native:'Español'
-                },
-            'spa': {
-                    english:'Spanish',
-                    native:'Español'
-                },
-            'zh': {
+                }
+            case 'zh':
+            case 'zho':
+            case 'chi':
+                return {
                     english:'Chinese',
                     native:'中文'
-                },
-            'zho': {
-                    english:'Chinese',
-                    native:'中文'
-                },
-            'chi': {
-                english:'Chinese',
-                native:'中文'
-            },
+                }
+            default:
+                return {
+                    english:'English',
+                    native:'English'
+                }
         }
-        return parts.length ? langs[parts[0]] : null;
     }
   
     function openModalWithExpiry(modalId, modalSlug) {
@@ -104,6 +96,7 @@ module.exports = $(function(){
             $('#translate-'+lang.toLowerCase())[0].click();
         }
         if (lang.length) {
+            console.log('oh no');
             $(modalId+' #translate-page').click(function() {
                 // one month expiry
                 setWithExpiry('phila-active-language', lang, 2629800000);
@@ -114,22 +107,30 @@ module.exports = $(function(){
     // opens translations-modal if English isn't the detected local language
     function openTranslationsModal() {
         console.log(navigator.language);
-        console.log(getWithExpiry('phila-active-language'));
-        if (navigator.language && getWithExpiry('phila-active-language') === null) {
+        if (navigator.language) {
             let lang = philaLocaleCodeToEnglish(navigator.language);
-            $('#translations-modal-lang').html(lang.native);
-            $('#translate-page').click(function() {
-                $('#translate-'+lang.english.toLowerCase())[0].click();
-            });
+            let localLang = getWithExpiry('phila-active-language');
             let currentUrl = window.location.pathname.split('/');
             let pathItem = currentUrl[1];
-            let currentLang = philaLocaleCodeToEnglish(pathItem);
-            console.log(currentUrl)
-            console.log(pathItem)
-            console.log(currentLang)
-            if (currentLang && lang.english != currentLang.english) {
-                console.log('hello');
-                openTranslationsModalWithExpiry('#translations-modal', lang.english);
+            let currentPageLang = philaLocaleCodeToEnglish(pathItem);
+            console.log('localLang'+localLang)
+            console.log('currentPageLang'+currentPageLang)
+            if (localLang === null) {
+            
+                $('#translations-modal-lang').html(lang.native);
+                $('#translate-page').click(function() {
+                    $('#translate-'+lang.english.toLowerCase())[0].click();
+                });
+                console.log(currentUrl)
+                console.log(pathItem)
+                console.log(currentPageLang)
+                if (currentPageLang && lang.english != currentPageLang.english) {
+                    console.log('hello');
+                    openTranslationsModalWithExpiry('#translations-modal', lang.english);
+                }
+            } else if (localLang && currentPageLang && localLang != currentPageLang.english) {
+                console.log('working');
+                $('#translate-'+localLang.toLowerCase())[0].click();
             }
         }
     }
