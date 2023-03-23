@@ -79,6 +79,9 @@
           &.trusted-site-toggle {
             font-weight: bold;
             padding-left: 4px !important;
+            @include breakpoint(small only) { 
+              padding-right: 0.75rem !important;
+            }
           }
 
           &:hover,
@@ -291,43 +294,43 @@
 
   }
 
-  .title-bar {
-    position: absolute;
-    top: 0;
 
-    .menu-icon {
-      position: relative;
-      width: auto;
-      height: auto;
-      padding: .75rem;
-      margin-left: 0;
-      background: white;
-      color: color(dark-ben-franklin);
-
-      .fa {
-        display: block;
-      }
-
-      &:after,
-      &:before {
-        background: color(dark-ben-franklin);
-        box-shadow: none;
-        height: 0;
-      }
-
-      &.active {
-        background-color: color(ghost-gray);
-        color: color(dark-ben-franklin);
-      }
+  .menu-icon {
+    position: relative;
+    min-width: 56px;
+    width: auto;
+    height: auto;
+    padding: 1.3rem;
+    margin-left: 0;
+    background: white;
+    color: color(dark-ben-franklin);
+    .fass {
+      font-size: 1.5rem;
     }
 
-    .title-bar-title {
-      margin: 0;
-      font-size: .8rem;
-      text-transform: uppercase;
+    .fa {
       display: block;
-
     }
+
+    &:after,
+    &:before {
+      background: color(dark-ben-franklin);
+      box-shadow: none;
+      height: 0;
+    }
+
+    &.active {
+      background-color: color(ghost-gray);
+      color: color(dark-ben-franklin);
+    }
+  }
+
+  .title-bar-title {
+    margin: 0;
+    font-size: .8rem;
+    text-transform: uppercase;
+    display: block;
+
   }
 
   .is-drilldown {
@@ -715,36 +718,47 @@
       overflow: scroll;
     }
   }
-
-  button.site-search {
-    font-size: .5rem;
-    position: relative;
-    padding: 1rem 0;
-    cursor: pointer;
-    font-weight: normal;
-    background: none;
-
-    @include breakpoint(medium up) {
-      margin-top: .75rem;
-    }
-
+  .site-search-container {
     @include breakpoint(small only) {
-      font-size: .7rem;
-      float: right;
-      //matches padding on menu-icon
-      padding-top: .75rem;
-      padding-bottom: .75rem;
-
-      .fa {
-        display: block;
-        padding-bottom: $spacing-small;
-        font-size: 3.7em;
-      }
+      padding: 0px;
     }
+    button.site-search {
+      font-size: .5rem;
+      position: relative;
+      padding: 1rem 0;
+      cursor: pointer;
+      font-weight: normal;
+      background: none;
+      .fass {
+        font-size: 1.5rem;
+      }
 
-    color:color(dark-ben-franklin);
-    text-transform: uppercase;
+      @include breakpoint(medium up) {
+        margin-top: .75rem;
+      }
 
+      @include breakpoint(small only) {
+        min-width: 60px;
+        font-size: inherit;
+        float: right;
+        padding: 1.3rem;
+
+        .fa {
+          display: block;
+          padding-bottom: $spacing-small;
+          font-size: 3.7em;
+        }
+      }
+
+      color:color(dark-ben-franklin);
+      text-transform: uppercase;
+
+    }
+  }
+  .menu-icon-container {
+    @include breakpoint(small only) {
+      padding: 0px;
+    }
   }
 
 }
@@ -756,9 +770,14 @@
 }
 
 header {
+  .logo-container {
+    @include breakpoint(small only) {
+      padding: 0px;
+    }
+  }
   .logo {
     display: block;
-    margin: .75rem 0 0 0;
+    margin: 0.5rem auto !important;
     opacity: 1;
     transition: opacity .25s ease-in-out;
     -moz-transition: opacity .25s ease-in-out;

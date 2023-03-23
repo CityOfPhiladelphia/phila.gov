@@ -50,11 +50,11 @@ module.exports = $(function () {
     });
 
     function extendMenuToggle() {
-        $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-times');
+        $('.menu-icon i').toggleClass('fa-bars').toggleClass('fa-xmark');
         $('.menu-icon .title-bar-title').text(($('.menu-icon .title-bar-title').text() === 'Menu') ? 'Close' : 'Menu');
         $('.global-nav .menu-icon').toggleClass('active');
-        $('#page').toggleClass('hide');
-        $('footer').toggleClass('hide');
+        $('#vue-mobile-menu').toggleClass('hide');
+        $('html').toggleClass('is-reveal-open');
     }
 
     function checkBrowserHeight() {

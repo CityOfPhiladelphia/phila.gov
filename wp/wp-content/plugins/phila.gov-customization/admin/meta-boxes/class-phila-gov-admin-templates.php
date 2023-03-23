@@ -37,6 +37,14 @@ class Phila_Gov_Admin_Templates {
       ),
     );
 
+    $conditions['#translation-settings'] = array(
+      'hidden' => array(
+        'when' => array(
+          array('phila_get_user_roles_is_admin()', false ),
+        ),
+      ),
+    );    
+
     $conditions['.additional-content'] = array(
       'visible' => array(
         'when' => array(
