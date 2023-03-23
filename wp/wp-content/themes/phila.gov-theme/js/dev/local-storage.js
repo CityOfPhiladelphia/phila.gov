@@ -113,13 +113,24 @@ module.exports = $(function(){
   
     // opens translations-modal if English isn't the detected local language
     function openTranslationsModal() {
+        console.log(navigator.language);
+        console.log(getWithExpiry('phila-active-language'));
         if (navigator.language && getWithExpiry('phila-active-language') === null) {
             let lang = philaLocaleCodeToEnglish(navigator.language);
-            $('#translations-modal-lang').html(lang.english);
+            $('#translations-modal-lang').html(lang.native);
             $('#translate-page').click(function() {
                 $('#translate-'+lang.english.toLowerCase())[0].click();
             });
-            openTranslationsModalWithExpiry('#translations-modal', lang.english);
+            let currentUrl = window.location.pathname.split('/');
+            let pathItem = currentUrl[1];
+            let currentLang = philaLocaleCodeToEnglish(pathItem);
+            console.log(currentUrl)
+            console.log(pathItem)
+            console.log(currentLang)
+            if (currentLang && lang.english != currentLang.english) {
+                console.log('hello');
+                openTranslationsModalWithExpiry('#translations-modal', lang.english);
+            }
         }
     }
 
@@ -127,6 +138,7 @@ module.exports = $(function(){
         $("#translations-menu a").click(function(){
             let urlPath = $(this)[0].href.split('/');
             let pathItem = urlPath[3];
+            console.log('pathItem'+pathItem);
             let lang = philaLocaleCodeToEnglish(pathItem);
             if (lang) {
                 setWithExpiry('phila-active-language', lang.english, 2629800000);
