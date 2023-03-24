@@ -117,7 +117,7 @@ module.exports = $(function(){
             console.log('currentPageLang'+currentPageLang)
             if (localLang === null) {
             
-                $('#translations-modal-lang').html(lang.native);
+                $('#translations-modal-lang').html(lang.english);
                 $('#translate-page').click(function() {
                     $('#translate-'+lang.english.toLowerCase())[0].click();
                 });
