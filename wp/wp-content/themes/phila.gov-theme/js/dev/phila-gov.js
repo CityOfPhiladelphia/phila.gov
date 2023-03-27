@@ -213,18 +213,27 @@ module.exports = $(function () {
 
 
     //BEGIN Translation Bar
-    $('#translations-menu').on('show.zf.dropdownMenu', function () {
-        $('html, body').css({
+    $('#translations-menu').on({
+        'show.zf.dropdownMenu': function () {
+          $('html, body').css({
             overflow: 'hidden',
             height: '100%'
-        });
-    });
-
-    $('#translations-menu').on('hide.zf.dropdownMenu', function () {
-        $('html, body').css({
+          });
+        },
+        'hide.zf.dropdownMenu': function () {
+          $('html, body').css({
             overflow: 'auto',
             height: 'auto'
-        });
+          });
+        },
+        'click': function() {
+            $(this).find('.menu').toggle();
+            if ($(this).find('#lang-dropdown').css('display') === 'none') {
+                $(this).removeClass('display-block');
+              } else {
+                $(this).addClass('display-block');
+              }
+        }
     });
 
     function setActiveLanguage(urlLanguage) {
@@ -255,7 +264,6 @@ module.exports = $(function () {
         setActiveLanguage(urlLanguage);
     }
     getUrlLanguage();
-    //END Translation Bar
 
     $(document).ready(function() {
         $('#google_translate_element').bind('DOMNodeInserted', function() {
@@ -265,3 +273,4 @@ module.exports = $(function () {
         });  
     });
 });
+    //END Translation Bar

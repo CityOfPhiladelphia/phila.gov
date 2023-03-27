@@ -180,6 +180,10 @@
           content: none;
         }
       }
+      
+      #translations-menu.display-block>li>a>i.fa-caret-down::before{
+          content: "\f0d8";
+      }
 
       .translations-dropdown {
 
@@ -265,7 +269,10 @@
 
       .dropdown-selector>span {
         font-weight: bold;
-        padding-right: 4px;
+      }
+
+      .fa-caret-down {
+        padding-left: 4px;
       }
 
       .translations-dropdown li>a {

@@ -87,7 +87,7 @@
                 <a href="#" class="dropdown-selector">
                     <i class="fa-solid fa-earth-americas"></i> <span class="show-for-small-only">Translate</span><i class="fas fa-solid fa-caret-down"></i>
                 </a>
-                <ul class="translations-dropdown menu" data-dropdown-content>
+                <ul class="translations-dropdown menu" id="lang-dropdown" data-options="data-close-on-click: true" data-dropdown-content>
                     <li class="show-for-small-only"><a href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
  <?php if ( (is_front_page() === True) or (get_post_type($post->ID) != 'post') ): ?>
                    <li class="show-for-small-only"><a href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
