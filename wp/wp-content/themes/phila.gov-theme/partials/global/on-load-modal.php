@@ -3,7 +3,7 @@
 ?>
 
 <?php if( $modal_exists ) { ?>
-    <div class="reveal center disclaimer-modal" id="disclaimer-modal" data-reveal data-deep-link="true" data-options="closeOnClick:false; closeOnEsc:false;">
+    <div class="reveal center phila-modal" id="disclaimer-modal" data-reveal data-deep-link="true" data-options="closeOnClick:false; closeOnEsc:false;">
         <div class="content">
             <?php echo $modal_content; ?>
             <button class="button-text" aria-label="Close modal" type="button" data-close>

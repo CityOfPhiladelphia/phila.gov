@@ -244,7 +244,6 @@ module.exports = $(function () {
 
     });
 
-
     function checkBrowserHeight() {
         if ($('body').hasClass('logged-in')) {
             return;
@@ -447,8 +446,8 @@ module.exports = $(function () {
 
     $(document).ready(function() {
         $('#google_translate_element').bind('DOMNodeInserted', function() {
-            $('.goog-te-gadget .goog-te-gadget-simple span:first').replaceWith(function() { 
-                return "<a role='menuitem'>More Languages</>"; 
+            $($('.goog-te-gadget .goog-te-gadget-simple span:first')[0]).replaceWith(function() { 
+                return "<a>More languages</a>"; 
             });
         });  
     });
