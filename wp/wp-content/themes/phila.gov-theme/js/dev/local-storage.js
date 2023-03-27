@@ -96,7 +96,6 @@ module.exports = $(function(){
             $('#translate-'+lang.toLowerCase())[0].click();
         }
         if (lang.length) {
-            console.log('oh no');
             $(modalId+' #translate-page').click(function() {
                 // one month expiry
                 setWithExpiry('phila-active-language', lang, 2629800000);
@@ -106,30 +105,22 @@ module.exports = $(function(){
   
     // opens translations-modal if English isn't the detected local language
     function openTranslationsModal() {
-        console.log(navigator.language);
         if (navigator.language) {
             let lang = philaLocaleCodeToEnglish(navigator.language);
             let localLang = getWithExpiry('phila-active-language');
             let currentUrl = window.location.pathname.split('/');
             let pathItem = currentUrl[1];
             let currentPageLang = philaLocaleCodeToEnglish(pathItem);
-            console.log('localLang'+localLang)
-            console.log('currentPageLang'+currentPageLang)
             if (localLang === null) {
             
                 $('#translations-modal-lang').html(lang.english);
                 $('#translate-page').click(function() {
                     $('#translate-'+lang.english.toLowerCase())[0].click();
                 });
-                console.log(currentUrl)
-                console.log(pathItem)
-                console.log(currentPageLang)
                 if (currentPageLang && lang.english != currentPageLang.english) {
-                    console.log('hello');
                     openTranslationsModalWithExpiry('#translations-modal', lang.english);
                 }
             } else if (localLang && currentPageLang && localLang != currentPageLang.english) {
-                console.log('working');
                 $('#translate-'+localLang.toLowerCase())[0].click();
             }
         }
@@ -139,7 +130,6 @@ module.exports = $(function(){
         $("#translations-menu a").click(function(){
             let urlPath = $(this)[0].href.split('/');
             let pathItem = urlPath[3];
-            console.log('pathItem'+pathItem);
             let lang = philaLocaleCodeToEnglish(pathItem);
             if (lang) {
                 setWithExpiry('phila-active-language', lang.english, 2629800000);
