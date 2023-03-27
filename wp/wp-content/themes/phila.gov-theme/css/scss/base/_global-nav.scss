@@ -38,21 +38,26 @@
     font-weight: normal;
 
     @include breakpoint(medium up) {
-      font-size: .85rem;
+      font-size: 1rem;
     }
 
   }
 
   //utility nav
   .utility-nav {
-    font-size: .85rem;
-    min-height: 25px;
 
-    @include breakpoint(small only) {
-      height: 10px;
+    background: color(ghost-gray);
+    font-size: 1rem;
+
+    @include top-bar-unstack;
+
+    @include breakpoint(small only) { 
+      min-height: 42px;
     }
 
     ul {
+
+      background: color(ghost-gray);
 
       li {
         &:last-of-type::after {
@@ -61,16 +66,14 @@
 
         &::after {
           display: inline;
-          content: '|';
-          background: color(ben-franklin-blue);
-          color: rgba(color(light-ben-franklin), .6);
-          padding: 0 10px;
+          background: color(ghost-gray);
+          content: none;
         }
 
         a {
-          display: inline-block;
-          padding: $spacing-small;
-          color: white;
+
+          padding: 1rem !important;
+          color: color(dark-ben-franklin);
           text-align: center;
 
           &.trusted-site-toggle {
@@ -82,30 +85,33 @@
 
           &:hover,
           &:active {
-            background: color(light-blue);
             color: color(dark-ben-franklin);
+            background: color(ghost-gray);
+            text-decoration: underline;
           }
 
           &.js-is-current {
             background: color(dark-gray);
-            color: white;
-
+            color: color(dark-ben-franklin);
+            text-decoration: underline;
             &:hover,
             &:active {
               color: color(dark-ben-franklin);
-              background: color(light-blue);
             }
           }
         }
 
         &.gov-site {
+          li {
+            text-align: left;
+          }
+
           span {
-            font-size: 0.75rem;
-            color: white;
+            color: black;
+            padding: $spacing-small;
           }
 
           a {
-            font-size: .75rem;
             text-decoration: underline;
           }
 
@@ -116,14 +122,145 @@
       }
     }
 
-    #google_translate_element {
-      a {
-        padding: .2rem 2rem .3rem .5rem;
-        max-width: 45px;
+    .translations-nav {
+      background: color(ghost-gray);
+    
+      @include breakpoint(medium up) { 
+        .translations-dropdown {
+          border: color(medium-gray);
+          border-width: 0 1px 1px 1px;
+          border-style: solid;
+          min-width: 230px;
+          z-index: 1001;
+        }
+        .dropdown.menu>li>a {
+          padding: 1rem .5rem !important;
+        } 
       }
 
-      .goog-te-gadget-simple .goog-te-menu-value::after {
-        top: 6px;
+      @include breakpoint(small only) { 
+        .translations-dropdown {
+          width: 101vw;
+          height: 101vh;
+          transform: translateX(-98%);
+          left: 100% !important;
+
+          li>a{
+            padding-left: 2rem !important
+          }
+        }
+      }
+
+      .dropdown.menu>li {
+        a {
+          font-size: 1rem;
+          background: color(ghost-gray);
+          
+        }
+        a.active {
+            font-weight: bold;
+            text-decoration: none;
+        }
+        &.is-active>a {
+          color: color(dark-ben-franklin);
+        }
+        
+        &.is-dropdown-submenu-parent>a::after {
+          content: none;
+        }
+      }
+
+      .translations-dropdown {
+
+        .translations-support>a{
+            font-weight: bold ;
+          }
+
+        li {
+          a {
+            background: color(ghost-gray);
+            text-align: left;
+            display: block; 
+
+            &:hover {
+              text-decoration: underline;
+            }
+
+            .fa {
+              margin: 4px;
+            }
+          }
+        }
+      }
+      #google_translate_element {
+          display: inherit;
+          padding: inherit;
+          &:hover {
+              color: white;
+              background-color:color(dark-ben-franklin);
+          }
+          .goog-te-gadget-simple {
+
+              display: block;
+
+              .fa-globe::before {
+                  display: none;
+              }
+              ::before{
+                  &:hover {
+                      color: white;
+                      background-color: color(dark-ben-franklin);
+                  }
+              }
+
+              ::after {
+                  display: none;
+              }
+
+              a {
+                  display: block;
+                  text-transform: capitalize;
+                  font-family: "Montserrat","Tahoma",sans-serif;
+                  padding-left: 1rem !important;
+
+                  @include breakpoint(small only) {
+                    padding-left: 2rem !important; 
+                  }
+
+
+                 &:before{
+                    margin-right: 4px;
+                    font: var(--fa-font-solid);
+                    content: "\2b";
+
+                  }
+
+                  &:hover {
+                      color: white;
+                      background-color:color(dark-ben-franklin);  
+                  }
+
+                  &:hover::before {
+                      color: white;
+                      background-color:color(dark-ben-franklin);  
+                  }
+              }
+          }
+      }
+
+      .dropdown-selector>span {
+        font-weight: bold;
+        padding-right: 4px;
+      }
+
+      .translations-dropdown li>a {
+
+        &:hover,
+        &:active {
+          background: color(dark-ben-franklin);
+          color: white;
+          text-decoration: underline;
+        }
       }
 
       .fa-caret-down {
@@ -148,8 +285,8 @@
       box-shadow: 0 3px 10px rgba(color(medium-gray), .5);
     }
 
-    .sticky-header-width {
-      max-width: 75rem;
+    .sticky-header-width{
+      max-width: 90rem;
       margin-left: auto;
       margin-right: auto;
     }
@@ -290,10 +427,12 @@
 
   }
 
-  @media screen and (min-width: 750px) and (max-width:950px) {
-  .top-bar-right .menu li a {
-      font-size: 1rem !important;
-      padding: 2rem .75rem;
+  .top-bar-right .menu>li {
+    >a:link {
+      @media screen and (min-width: 750px) and (max-width:950px) {
+        font-size: .75rem;
+        padding: 2rem .5rem;
+
       }
 
       .news-menu-link a{
@@ -307,7 +446,7 @@
       a.logo {
         width:120px;
       }
-    
+    }
   }
 
   @include breakpoint(medium) {
@@ -343,7 +482,6 @@
         a:active,
         a:hover {
           color: color(dark-ben-franklin);
-          background: color(light-blue);
         }
       }
     }
@@ -630,7 +768,6 @@
   }
 }
 
-
 header {
   .logo-container {
     @include breakpoint(small only) {
@@ -672,7 +809,7 @@ header {
         width: 100px;
         display: inline-block;
         vertical-align: middle;
-
+        
         .circle-icon {
           line-height: 1.5rem;
           align-items: center;

@@ -131,9 +131,6 @@ section ol {
 }
 
 @include breakpoint(small only) {
-  .global-nav .utility-nav {
-    min-height: 30px;
-  }
   .cell {
     margin-bottom: 0rem;
   }

@@ -1,9 +1,10 @@
-module.exports = $(function(){
-//  window.dataLayer = window.dataLayer || [];
+module.exports = $(function () {
+    //  window.dataLayer = window.dataLayer || [];
 
-  /*Globals */
-  var navHeight = $('.global-nav').height();
-  var windowWidth = $(window).width();
+    /*Globals */
+    var navHeight = $('.global-nav').height();
+    var windowWidth = $(window).width();
+    var windowPath = $(location).attr('pathname'); 
 
   //Generic class for links that should prevent clickthrough
   $('.no-link').click(function(e){
@@ -197,17 +198,35 @@ module.exports = $(function(){
       $(this).find('.equal').attr('data-equalizer-watch','');
     });
 
-    var equalHeight = new Foundation.Equalizer($ ('.equal-height'), equalizerOptions );
+    if ($('#mobile-nav-drilldown').length) {
 
+        var drilldownOptions = {
+            autoHeight: false,
+            scrollTop: true,
+            parentLink: true,
+            scrollTopElement: 'body'
+        };
+
+        var mobileMenu = new Foundation.Drilldown($('#mobile-nav-drilldown'), drilldownOptions);
+    } else {
+        console.warn('Standards JS: Add the #mobile-nav-drilldown markup.');
+    }
+
+    /* Drilldown menu */
+    $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function () {
+        extendMenuToggle();
+    });
+
+    //opened submenu
+    $(document).on('open.zf.drilldown', '[data-drilldown]', function () {
+        /* Ensure no events get through on titles */
+        $('.is-submenu-parent-item').each(function () {
+            $(this).click(function (e) {
+                return false;
+            });
+        });
+    });
   }
-
-  //foundation tooltips
-  if ($('.has-tip').length > 0) {
-
-    var tooltip = new Foundation.Tooltip( $('.has-tip') );
-
-  }
-  var mainContent = $('.guide-content').eq(0);
 
   $(document).ready(function() {
     $('#google_translate_element').bind('DOMNodeInserted', function() {
@@ -224,6 +243,7 @@ module.exports = $(function(){
         $('.site-search i').addClass('fa-search').removeClass('fa-times');
 
     });
+
 
     function checkBrowserHeight() {
         if ($('body').hasClass('logged-in')) {

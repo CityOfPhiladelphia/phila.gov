@@ -1,0 +1,7 @@
+{
+  "name": "CityOfPhiladelphia/google-calendar-events",
+  "type": "wordpress-plugin",
+  "require": {
+      "composer/installers": "~1.0"
+  }
+}
