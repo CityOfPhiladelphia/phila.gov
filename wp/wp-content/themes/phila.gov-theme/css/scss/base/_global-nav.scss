@@ -194,11 +194,9 @@
           }
         }
       }
-       
       #google_translate_element {
           display: inherit;
           padding: inherit;
-
           &:hover {
               color: white;
               background-color:color(dark-ben-franklin);
@@ -266,6 +264,10 @@
           color: white;
           text-decoration: underline;
         }
+      }
+
+      .fa-caret-down {
+        padding-left: .5rem;
       }
     }
   }
