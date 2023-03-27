@@ -87,6 +87,14 @@
           &.trusted-site-toggle {
             font-weight: bold;
             padding-left: 4px !important;
+
+            i.fa-caret-down::before {
+              padding-left: 4px;
+            }
+
+            &.open>i.fa-caret-down::before{
+              content:"\f0d8"
+            }
           }
 
           &:hover,
@@ -163,9 +171,6 @@
           font-size: 1rem;
           background: color(ghost-gray);
           
-          .fa-caret-down::before {
-            padding-left: 4px;
-          }
         }
         a.active {
             font-weight: bold;
