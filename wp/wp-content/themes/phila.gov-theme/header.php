@@ -69,7 +69,7 @@
               <li class="gov-site show-for-medium">
                   An official website of the City of Philadelphia government 
               </li>
-              <li class="gov-site show-for-medium"><a href="#" class="trusted-site-toggle">Here's how you know <i class="fas fa-solid fa-caret-down"></i></a></li>
+              <li class="gov-site show-for-medium"><a href="#" class="trusted-site-toggle">Here's how you know<i class="fas fa-solid fa-caret-down"></i></a></li>
               <li class="gov-site show-for-small-only">
                   <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
               </li>

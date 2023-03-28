@@ -213,6 +213,7 @@ module.exports = $(function () {
 
 
     //BEGIN Translation Bar
+
     $('#translations-menu').on({
         'show.zf.dropdownMenu': function () {
           $('html, body').css({
@@ -229,10 +230,17 @@ module.exports = $(function () {
         'click': function() {
             $(this).find('.menu').toggle();
             if ($(this).find('#lang-dropdown').css('display') === 'none') {
-                $(this).removeClass('display-block');
+                $(this).removeClass('menu-open');
               } else {
-                $(this).addClass('display-block');
+                $(this).addClass('menu-open');
               }
+        }
+    });
+
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('#translations-menu').length) {
+          $('#translations-menu .menu').hide();
+          $('#translations-menu').removeClass('menu-open');
         }
     });
 
