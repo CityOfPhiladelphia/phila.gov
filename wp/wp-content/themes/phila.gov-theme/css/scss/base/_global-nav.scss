@@ -56,7 +56,18 @@
 
     .grid-container {
       padding: 0px;
-      $topbar-unstack-breakpoint: 780px;
+
+      @media screen and (min-width: 0px) and (max-width: 779px) {
+          .show-for-medium {
+            display: none !important;
+          }
+        }
+
+      @media screen and (max-width: 779px) {
+        .show-for-small-only {
+          display: inline-block !important;
+          }
+        }
 
       .top-bar-left {
         margin-left: .5rem;
