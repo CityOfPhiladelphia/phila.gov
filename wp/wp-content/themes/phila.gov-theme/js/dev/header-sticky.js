@@ -24,5 +24,6 @@ $(function() {
     $(".trusted-site-toggle, #trusted-site-close").click(function(event){
       event.preventDefault();
       $("#trusted-site").toggle();
+      $(".trusted-site-toggle").toggleClass("open"); 
     });
 });
