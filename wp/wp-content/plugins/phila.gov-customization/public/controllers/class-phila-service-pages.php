@@ -8,6 +8,7 @@ class Phila_Services_Controller {
     $this->resource_name = 'directory';
     $this->category_resource = 'categories';
     $this->department_resource = 'departments';
+    $this->service_menu = 'menu';
   }
 
   // Register our routes.
@@ -49,6 +50,16 @@ class Phila_Services_Controller {
         'permission_callback' => '__return_true',
       ),
       'schema' => array( $this, 'get_item_schema' ),
+    ) );
+
+    //Register categories
+    register_rest_route( $this->namespace, '/' . $this->service_menu, array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_service_menu' ),
+        'permission_callback' => '__return_true',
+      ),
+      'schema' => array( $this, 'get_category_schema' ),
     ) );
   }
 
@@ -113,6 +124,20 @@ class Phila_Services_Controller {
 
     // Return all response data.
     return rest_ensure_response( $data );
+  }
+
+
+
+  /**
+   * Outputs an individual item's data
+   *
+   * @param WP_REST_Request $request Current request.
+   */
+  public function get_service_menu( $request ) {
+
+    $json_data = build_page_tree();
+
+    return $json_data;
   }
 
 
@@ -392,3 +417,57 @@ function phila_register_services_rest_routes() {
 }
 
 add_action( 'rest_api_init', 'phila_register_services_rest_routes' );
+
+
+
+function get_page_list($parent_id = 0, &$page_list = array()) {
+  $args = array (
+    'post_type' => 'service_page',
+    'orderby' => 'menu_order',
+    'order' => 'ASC',
+    'child_of' => $parent_id,
+  );
+  $pages = get_pages($args);
+
+  foreach ($pages as $page) {
+      if (!in_array($page->ID, $page_list)) {
+          $page_list[] = $page->ID;
+
+          get_page_list($page->ID, $page_list);
+      }
+  }
+
+  return $page_list;
+}
+
+function build_page_tree($parent_id = 0) {
+  $page_list = get_page_list($parent_id);
+
+  $page_tree = array();
+
+  foreach ($page_list as $page_id) {
+      $page = get_post($page_id);
+
+      $page_item = array(
+          'ID' => $page->ID,
+          'post_title' => $page->post_title,
+          'post_link' => get_permalink($page->ID),
+          'post_name' => $page->post_name,
+          'post_parent' => $page->post_parent,
+          'post_type' => $page->post_type
+      );
+
+      if ($page->post_parent == $parent_id) {
+          $children = build_page_tree($page->ID);
+
+          if (!empty($children)) {
+            $page_item['collapsed'] = 'true';
+            $page_item['children'] = $children;
+          }
+
+          $page_tree[] = $page_item;
+      }
+  }
+
+  return $page_tree;
+}

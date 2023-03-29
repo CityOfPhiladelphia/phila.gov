@@ -1,1 +1,3 @@
 @import url('../../phila.gov-theme/node_modules/@fortawesome/fontawesome-pro/css/all.css');
+// sharp solid not included in all.css as of 3/14/23 - DD
+@import url('../../phila.gov-theme/node_modules/@fortawesome/fontawesome-pro/css/sharp-solid.min.css');

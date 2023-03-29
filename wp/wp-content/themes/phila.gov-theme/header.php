@@ -78,10 +78,10 @@
           <!-- Translations Navigation -->
           <div class="top-bar-right translations-nav">
             <ul id="translations-menu" class="dropdown menu" data-dropdown-menu>
-              <li class="show-for-medium"><a href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
+              <li class="show-for-medium"><a id="translate-english" href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
 <?php if ( (is_front_page() === True) or (get_post_type($post->ID) != 'post') ): ?>
-              <li class="show-for-medium"><a href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
-              <li class="show-for-medium"><a href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
+              <li class="show-for-medium"><a id="translate-spanish" href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
+              <li class="show-for-medium"><a id="translate-chinese" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
 <?php endif; ?>
               <li>
                 <a href="#" class="dropdown-selector">
@@ -138,12 +138,15 @@
         <div class="row primary-menu" data-sticky-container data-swiftype-index="false">
           <div class="columns phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
             <div class="row sticky-header-width">
-              <div class="small-16 medium-4 columns valign small-push-4 medium-push-0">
-                <div class="valign-cell">
-                  <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia">
-                    <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//www.phila.gov/assets/images/city-of-philadelphia.png" alt="City of Philadelphia">
-                  </a>
-                </div>
+              <div class="small-4 columns menu-icon-container" data-responsive-toggle="mobile-nav" data-swiftype-index="false" data-hide-for="medium">
+                <button class="menu-icon" type="button" data-toggle>
+                  <i class="fass fa-bars" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="small-16 medium-4 columns valign medium-push-0 logo-container">
+                <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia">
+                  <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//www.phila.gov/assets/images/city-of-philadelphia.png" alt="City of Philadelphia">
+                </a>
               </div>
               <div class="medium-16 columns pan show-for-medium desktop-nav">
                 <div class="top-bar-right">
@@ -171,71 +174,18 @@
                 </nav>
               </div>
             </div>
-            <div class="small-5 medium-1 columns valign phn-m">
-              <div class="valign-cell">
-                <button id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
-                  <i class="fas fa-search fa-3x" aria-hidden="true"></i>
-                  <span class="search-text show-for-small-only">Search</span>
-                  <span class="accessible" for="site-search-button">Search</span>
-                </button>
-              </div>
-            </div>
-          </div> <!-- close row -->
-          <!--Begin mobile nav -->
-          <div class="top-bar">
-            <div class="title-bar small-5 columns" data-responsive-toggle="mobile-nav" data-swiftype-index="false" data-hide-for="medium">
-              <button class="menu-icon" type="button" data-toggle>
-                <i class="fas fa-bars fa-2x" aria-hidden="true"></i>
-                <span class="title-bar-title">Menu</span>
+            <div class="small-4 medium-1 columns phn-m prn site-search-container">
+              <button id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
+                <i class="fass fa-magnifying-glass" aria-hidden="true"></i>
               </button>
             </div>
-            <div class="primary-menu medium-15 medium-push-2 small-24 columns valign-mu" id="mobile-nav">
-              <div class="top-bar-right valign-mu show-for-small-only">
-              <nav data-swiftype-index="false" class="phila-mobile-nav-menu valign-mu" aria-label="mobile-nav">
-                <ul id="mobile-nav-drilldown" class="vertical menu pan valign-mu">
-                  <li><a href="/"><i class="fas fa-home fa-lg"></i> Home</a></li>
-                  <li class="is-drilldown-submenu-parent" tabindex="0">
-                    <a href="#service-directory" class="valign-cell"><i class="far fa-list show-for-small-only"></i> Services</a>
-                    <ul class="menu vertical menu-top-offset" tabindex="0">
-                      <li tabindex="0"><a href="/service-directory/"> Service directory</a></li>
-                      <?php
-                        $args = array(
-                          //TODO: only display pages with taxonomy applied
-                          'post_type' => 'service_page',
-                          'orderby' => 'menu_order',
-                          'order' => 'ASC',
-                          'title_li' => '',
-                          'link_before' => '<span>',
-                          'link_after'  => '</span>',
-                        );
-                        wp_list_pages($args);
-                      ?>
-                    </ul>
-                    </li>
-                    <li tabindex="0">
-                      <a href="<?php echo get_site_url() ?>/programs-initiatives/" class="valign-cell"><i class="fas fa-info-circle"></i> Programs</a>
-                    </li>
-                    <li class="bg-sidewalk" tabindex="0">
-                      <a href="<?php echo get_site_url() ?>/departments/" class="valign-cell"><i class="fas fa-sitemap"></i> Departments</a>
-                    </li>
-                    <li tabindex="0">
-                        <a href="<?php echo get_site_url() ?>/tools/" class="valign-cell"><i class="fas fa-hammer"></i> Tools</a>
-                      </li>
-                      <li tabindex="0">
-                      <a href="<?php echo get_site_url() ?>/publications-forms/" class="valign-cell"><i class="fas fa-file-alt"></i> Publications</a>
-                    </li>
-                      <li tabindex="0">
-                      <a href="<?php echo get_site_url() ?>/the-latest/" class="valign-cell"><i class="fas fa-newspaper"></i> News</a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div><!--End mobile nav -->
+          </div> <!-- close row -->
         </div><!-- close columns -->
       </div>
     </div>
   </div>
+  <?php include(locate_template('partials/global/translations-modal.php')); ?>
+  <div id="phila-mobile-menu"></div>
   <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
