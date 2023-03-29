@@ -15,6 +15,14 @@
 
   ul {
     font-size: 14px;
+
+    li.gov-site.show-for-medium {
+      font-size: .85rem;
+
+      a.trusted-site-toggle {
+        font-size: .85rem;
+      }
+    }
   }
 
   &.no-js {
@@ -45,6 +53,26 @@
 
   //utility nav
   .utility-nav {
+
+    .grid-container {
+      padding: 0px;
+
+      @media screen and (min-width: 0px) and (max-width: 779px) {
+          .show-for-medium {
+            display: none !important;
+          }
+        }
+
+      @media screen and (max-width: 779px) {
+        .show-for-small-only {
+          display: inline-block !important;
+          }
+        }
+
+      .top-bar-left {
+        margin-left: .5rem;
+      }
+    }
 
     background: color(ghost-gray);
     font-size: 1rem;
@@ -79,8 +107,13 @@
           &.trusted-site-toggle {
             font-weight: bold;
             padding-left: 4px !important;
-            @include breakpoint(small only) { 
-              padding-right: 0.75rem !important;
+
+            i.fa-caret-down::before {
+              padding-left: 4px;
+            }
+
+            &.open>i.fa-caret-down::before{
+              content:"\f0d8"
             }
           }
 
@@ -143,7 +176,7 @@
         .translations-dropdown {
           width: 101vw;
           height: 101vh;
-          transform: translateX(-98%);
+          transform: translateX(-100%);
           left: 100% !important;
 
           li>a{
@@ -152,11 +185,11 @@
         }
       }
 
+ 
       .dropdown.menu>li {
         a {
           font-size: 1rem;
           background: color(ghost-gray);
-          
         }
         a.active {
             font-weight: bold;
@@ -164,11 +197,16 @@
         }
         &.is-active>a {
           color: color(dark-ben-franklin);
+          text-decoration: none;
         }
         
         &.is-dropdown-submenu-parent>a::after {
           content: none;
         }
+      }
+      
+      #translations-menu.menu-open>li>a>i.fa-caret-down::before{
+          content: "\f0d8";
       }
 
       .translations-dropdown {
@@ -253,7 +291,10 @@
 
       .dropdown-selector>span {
         font-weight: bold;
-        padding-right: 4px;
+      }
+
+      .fa-caret-down {
+        padding-left: 4px;
       }
 
       .translations-dropdown li>a {
@@ -843,7 +884,7 @@ header {
         width: calc(100% - 105px);
         vertical-align: middle;
         line-height: 1.1;
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         color: #fff;
 
         strong {

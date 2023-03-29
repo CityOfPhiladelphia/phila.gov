@@ -69,7 +69,7 @@
               <li class="gov-site show-for-medium">
                   An official website of the City of Philadelphia government 
               </li>
-              <li class="gov-site show-for-medium"><a href="#" class="trusted-site-toggle">Here's how you know <i class="fas fa-solid fa-caret-down"></i></a></li>
+              <li class="gov-site show-for-medium"><a href="#" class="trusted-site-toggle">Here's how you know<i class="fas fa-solid fa-caret-down"></i></a></li>
               <li class="gov-site show-for-small-only">
                   <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
               </li>
@@ -87,14 +87,14 @@
                 <a href="#" class="dropdown-selector">
                     <i class="fa-solid fa-earth-americas"></i> <span class="show-for-small-only">Translate</span><i class="fas fa-solid fa-caret-down"></i>
                 </a>
-                <ul class="translations-dropdown menu" data-dropdown-content>
+                <ul class="translations-dropdown menu" id="lang-dropdown" data-options="data-close-on-click: true" data-dropdown-content>
                     <li class="show-for-small-only"><a href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
  <?php if ( (is_front_page() === True) or (get_post_type($post->ID) != 'post') ): ?>
                    <li class="show-for-small-only"><a href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
                     <li class="show-for-small-only"><a href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
  <?php endif; ?>
                    <li id="google_translate_element"></li>
-                    <li class="translations-support"><a href="#"><i class="fa fa-messages"></i>Feedback and support</a></li>
+                    <li class="translations-support"><a href="<?php echo get_site_url() ?>/programs/language-access-philly/translation-feedback-and-support/"><i class="fa fa-messages"></i>Feedback and support</a></li>
                 </ul>
               </li>
             </ul> 
