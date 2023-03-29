@@ -15,6 +15,14 @@
 
   ul {
     font-size: 14px;
+
+    li.gov-site.show-for-medium {
+      font-size: .85rem;
+
+      a.trusted-site-toggle {
+        font-size: .85rem;
+      }
+    }
   }
 
   &.no-js {
@@ -38,21 +46,46 @@
     font-weight: normal;
 
     @include breakpoint(medium up) {
-      font-size: .85rem;
+      font-size: 1rem;
     }
 
   }
 
   //utility nav
   .utility-nav {
-    font-size: .85rem;
-    min-height: 25px;
 
-    @include breakpoint(small only) {
-      height: 10px;
+    .grid-container {
+      padding: 0px;
+
+      @media screen and (min-width: 0px) and (max-width: 779px) {
+          .show-for-medium {
+            display: none !important;
+          }
+        }
+
+      @media screen and (max-width: 779px) {
+        .show-for-small-only {
+          display: inline-block !important;
+          }
+        }
+
+      .top-bar-left {
+        margin-left: .5rem;
+      }
+    }
+
+    background: color(ghost-gray);
+    font-size: 1rem;
+
+    @include top-bar-unstack;
+
+    @include breakpoint(small only) { 
+      min-height: 42px;
     }
 
     ul {
+
+      background: color(ghost-gray);
 
       li {
         &:last-of-type::after {
@@ -61,51 +94,58 @@
 
         &::after {
           display: inline;
-          content: '|';
-          background: color(ben-franklin-blue);
-          color: rgba(color(light-ben-franklin), .6);
-          padding: 0 10px;
+          background: color(ghost-gray);
+          content: none;
         }
 
         a {
-          display: inline-block;
-          padding: $spacing-small;
-          color: white;
+
+          padding: 1rem !important;
+          color: color(dark-ben-franklin);
           text-align: center;
 
           &.trusted-site-toggle {
             font-weight: bold;
-            @include breakpoint(small only) { 
-              padding-right: 0.75rem !important;
+            padding-left: 4px !important;
+
+            i.fa-caret-down::before {
+              padding-left: 4px;
+            }
+
+            &.open>i.fa-caret-down::before{
+              content:"\f0d8"
             }
           }
 
           &:hover,
           &:active {
-            background: color(light-blue);
             color: color(dark-ben-franklin);
+            background: color(ghost-gray);
+            text-decoration: underline;
           }
 
           &.js-is-current {
             background: color(dark-gray);
-            color: white;
-
+            color: color(dark-ben-franklin);
+            text-decoration: underline;
             &:hover,
             &:active {
               color: color(dark-ben-franklin);
-              background: color(light-blue);
             }
           }
         }
 
         &.gov-site {
+          li {
+            text-align: left;
+          }
+
           span {
-            font-size: 0.75rem;
-            color: white;
+            color: black;
+            padding: $spacing-small;
           }
 
           a {
-            font-size: .75rem;
             text-decoration: underline;
           }
 
@@ -116,14 +156,155 @@
       }
     }
 
-    #google_translate_element {
-      a {
-        padding: .2rem 2rem .3rem .5rem;
-        max-width: 45px;
+    .translations-nav {
+      background: color(ghost-gray);
+    
+      @include breakpoint(medium up) { 
+        .translations-dropdown {
+          border: #CFCFCF;
+          border-width: 0 1px 1px 1px;
+          border-style: solid;
+          min-width: 230px;
+          z-index: 1001;
+        }
+        .dropdown.menu>li>a {
+          padding: 1rem .5rem !important;
+        } 
       }
 
-      .goog-te-gadget-simple .goog-te-menu-value::after {
-        top: 6px;
+      @include breakpoint(small only) { 
+        .translations-dropdown {
+          width: 101vw;
+          height: 101vh;
+          transform: translateX(-100%);
+          left: 100% !important;
+
+          li>a{
+            padding-left: 2rem !important
+          }
+        }
+      }
+
+ 
+      .dropdown.menu>li {
+        a {
+          font-size: 1rem;
+          background: color(ghost-gray);
+        }
+        a.active {
+            font-weight: bold;
+            text-decoration: none;
+        }
+        &.is-active>a {
+          color: color(dark-ben-franklin);
+          text-decoration: none;
+        }
+        
+        &.is-dropdown-submenu-parent>a::after {
+          content: none;
+        }
+      }
+      
+      #translations-menu.menu-open>li>a>i.fa-caret-down::before{
+          content: "\f0d8";
+      }
+
+      .translations-dropdown {
+
+        .translations-support>a{
+            font-weight: bold ;
+            text-decoration: underline;
+          }
+
+        li {
+          a {
+            background: color(ghost-gray);
+            text-align: left;
+            display: block; 
+
+            &:hover {
+              text-decoration: underline;
+            }
+
+            .fa {
+              margin-right: 8px;
+            }
+          }
+        }
+      }
+      #google_translate_element {
+          display: inherit;
+          padding: inherit;
+          &:hover {
+              color: white;
+              background-color:color(dark-ben-franklin);
+          }
+          .goog-te-gadget-simple {
+
+              display: block;
+
+              .fa-globe::before {
+                  display: none;
+              }
+              ::before{
+                  &:hover {
+                      color: white;
+                      background-color: color(dark-ben-franklin);
+                  }
+              }
+
+              ::after {
+                  display: none;
+              }
+
+              a {
+                  display: block;
+                  text-transform: capitalize;
+                  font-family: "Montserrat","Tahoma",sans-serif;
+                  padding-left: 1rem !important;
+
+                  @include breakpoint(small only) {
+                    padding-left: 2rem !important; 
+                  }
+
+
+                 &:before{
+                    margin-right: 8px;
+                    font: var(--fa-font-solid);
+                    font-size: 1rem;
+                    font-weight: normal;
+                    content: "\2b";
+                  }
+
+                  &:hover {
+                      color: white;
+                      background-color:color(dark-ben-franklin);  
+                  }
+
+                  &:hover::before {
+                      color: white;
+                      background-color:color(dark-ben-franklin);  
+                  }
+              }
+          }
+      }
+
+      .dropdown-selector>span {
+        font-weight: bold;
+      }
+
+      .fa-caret-down {
+        padding-left: 4px;
+      }
+
+      .translations-dropdown li>a {
+
+        &:hover,
+        &:active {
+          background: color(dark-ben-franklin);
+          color: white;
+          text-decoration: underline;
+        }
       }
 
       .fa-caret-down {
@@ -148,7 +329,7 @@
       box-shadow: 0 3px 10px rgba(color(medium-gray), .5);
     }
 
-    .sticky-header-width {
+    .sticky-header-width{
       max-width: 75rem;
       margin-left: auto;
       margin-right: auto;
@@ -290,10 +471,12 @@
 
   }
 
-  @media screen and (min-width: 750px) and (max-width:950px) {
-  .top-bar-right .menu li a {
-      font-size: 1rem !important;
-      padding: 2rem .75rem;
+  .top-bar-right .menu>li {
+    >a:link {
+      @media screen and (min-width: 750px) and (max-width:950px) {
+        font-size: .75rem;
+        padding: 2rem .5rem;
+
       }
 
       .news-menu-link a{
@@ -307,7 +490,7 @@
       a.logo {
         width:120px;
       }
-    
+    }
   }
 
   @include breakpoint(medium) {
@@ -343,7 +526,6 @@
         a:active,
         a:hover {
           color: color(dark-ben-franklin);
-          background: color(light-blue);
         }
       }
     }
@@ -633,7 +815,6 @@
   }
 }
 
-
 header {
   .logo-container {
     @include breakpoint(small only) {
@@ -675,7 +856,7 @@ header {
         width: 100px;
         display: inline-block;
         vertical-align: middle;
-
+        
         .circle-icon {
           line-height: 1.5rem;
           align-items: center;
@@ -703,7 +884,7 @@ header {
         width: calc(100% - 105px);
         vertical-align: middle;
         line-height: 1.1;
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         color: #fff;
 
         strong {
