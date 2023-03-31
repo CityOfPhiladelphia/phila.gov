@@ -191,6 +191,7 @@ module.exports = $(function () {
 
     // "hard code" english translations label DD
     $("#translate-english").text("English");
+    $("#translate-english-dropdown").text("English");
 
     //foundation equalizer rows
     //doesn't work with nested Equalizers, because a unique ID is required.
