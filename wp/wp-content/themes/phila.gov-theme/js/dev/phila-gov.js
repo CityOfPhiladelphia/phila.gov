@@ -236,7 +236,7 @@ module.exports = $(function () {
           });
         },
         'click': function() {
-            $(this).find('.menu').toggle();
+            $(this).find('.menu').children(':not(.show-for-medium)').toggle();
             if ($(this).find('#lang-dropdown').css('display') === 'none') {
                 $(this).removeClass('menu-open');
               } else {
@@ -247,7 +247,6 @@ module.exports = $(function () {
 
     $(document).on('click', function(event) {
         if (!$(event.target).closest('#translations-menu').length) {
-          $('#translations-menu .menu').hide();
           $('#translations-menu').removeClass('menu-open');
         }
     });
