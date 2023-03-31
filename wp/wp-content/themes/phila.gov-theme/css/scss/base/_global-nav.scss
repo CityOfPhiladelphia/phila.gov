@@ -330,7 +330,7 @@
     }
 
     .sticky-header-width{
-      max-width: 90rem;
+      max-width: 75rem;
       margin-left: auto;
       margin-right: auto;
     }
@@ -511,21 +511,21 @@
         display: flex;
         list-style-type: none;
         position: relative;
-      }
-
-      .menu>li {
-        >a {
-          text-align: center;
-          height: inherit;
-          font-weight: 650;
-          font-size: 14px;
-          text-transform: none !important;
-          padding: 2rem 2rem;
-        }
-
-        a:active,
-        a:hover {
-          color: color(dark-ben-franklin);
+        li {
+          flex: 1;
+          >a {
+            text-align: center;
+            height: inherit;
+            font-weight: 650;
+            font-size: 14px;
+            text-transform: none !important;
+            padding: 2rem 1.7rem;
+          }
+  
+          a:active,
+          a:hover {
+            color: color(dark-ben-franklin);
+          }
         }
       }
     }
