@@ -41,11 +41,11 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
                     <div class="phs pvm cta-block clearfix" aria-hidden="true">
                       <div class="valign">
                         <div class="valign-cell">
-                          <i class="fas fa-virus fa-4x"></i>
+                          <i class="fas fa-virus fa-3x"></i>
                         </div>
                       </div>
                       <div>
-                        <p class="h6">COVID-19<span class="break-before-mu"> updates</span></p>
+                        <p class="h5">COVID-19<span class="break-before-mu"> updates</span></p>
                       </div>
                     </div>
                   </a>
@@ -62,11 +62,11 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
                     <div class="phs pvm cta-block clearfix" aria-hidden="true">
                       <div class="valign">
                         <div class="valign-cell">
-                          <i class="fas fa-trash-alt fa-4x"></i>
+                          <i class="fas fa-trash-alt fa-3x"></i>
                         </div>
                       </div>
                       <div>
-                        <p class="h6">Find<span class="break-before-mu"> trash day</span></p>
+                        <p class="h5">Find<span class="break-before-mu"> trash day</span></p>
                       </div>
                     </div>
                   </a>
@@ -84,11 +84,11 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
                     <div class="phs pvm cta-block clearfix"  aria-hidden="true">
                       <div class="valign">
                         <div class="valign-cell">
-                          <i class="fal fa-credit-card fa-4x"></i>
+                          <i class="fal fa-credit-card fa-3x"></i>
                         </div>
                       </div>
                       <div>
-                        <p class="h6">Pay<span class="break-before-mu"> a bill</span></p>
+                        <p class="h5">Pay<span class="break-before-mu"> a bill</span></p>
                       </div>
                     </div>
                   </a>
@@ -107,11 +107,11 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
                     <div class="phs pvm cta-block clearfix" aria-hidden="true">
                       <div class="valign ">
                         <div class="valign-cell">
-                          <i class="fas fa-briefcase fa-4x"></i>
+                          <i class="fas fa-briefcase fa-3x"></i>
                         </div>
                       </div>
                       <div>
-                        <p class="h6">Explore<span class="break-before-mu"> City jobs</span></p>
+                        <p class="h5">Explore<span class="break-before-mu"> City jobs</span></p>
                       </div>
                     </div>
                   </a>
@@ -129,11 +129,11 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
                     <div class="phs pvm cta-block clearfix" aria-hidden="true">
                       <div class="valign ">
                         <div class="valign-cell">
-                          <i class="fas fa-home fa-4x"></i>
+                          <i class="fas fa-home fa-3x"></i>
                         </div>
                       </div>
                       <div>
-                        <p class="h6">Search for a<span class="break-before-mu"> property</span></p>
+                        <p class="h5">Search for a<span class="break-before-mu"> property</span></p>
                       </div>
                     </div>
                   </a>

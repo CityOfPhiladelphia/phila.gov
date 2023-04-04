@@ -391,6 +391,8 @@ function phila_gov_scripts() {
 
   wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 
+  load_vue_mobile_menu();
+
   if  ( is_user_logged_in() ){
     wp_enqueue_script( 'logged-in-js', get_stylesheet_directory_uri() . '/admin/js/front-end.js', array( 'phila-scripts' ), '', true );
 
@@ -2184,6 +2186,7 @@ function phila_add_meta_document_fields($response, $attachment) {
   }
   $response['mediaCategory'] = $attachment_term;
   $response['label'] = $attachment->phila_label;
+  $response['credit'] = $attachment->phila_media_credit;
   $response['overrideDate'] = $attachment->phila_document_page_release_date;
 
   return $response;
@@ -2237,10 +2240,16 @@ function inject_translation_slug($language)
   }
   $new_path = implode('/', $new_path_segments);
   if($language !== $default_lang){
-    $new_url = "https://" . $_SERVER['HTTP_HOST'] . '/' . $language . $new_path;
+    $new_url = '/' . $language . $new_path;
   } else if ($language === $default_lang) {
-    $new_url = "https://" . $_SERVER['HTTP_HOST'] . $new_path;
+    $new_url = $new_path;
   }
 
   return $new_url;
+}
+
+function load_vue_mobile_menu() {
+  wp_enqueue_script('mobile-menu-chunk-js', 'https://www.phila.gov/embedded/mobile-menu/production/js/chunk-vendors.js?cachebreaker', array(), null, true );
+  wp_enqueue_script('mobile-menu-app-js', 'https://www.phila.gov/embedded/mobile-menu/production/js/app.js?cachebreaker', array(), null, true );
+  wp_enqueue_style('mobile-menu-app-css', 'https://www.phila.gov/embedded/mobile-menu/production/css/app.css?cachebreaker');
 }

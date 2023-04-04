@@ -1,0 +1,26 @@
+blockquote {
+    border-left: 0px;
+    padding: 0px;
+    margin: 0;
+    p {
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 24px;
+        color: #000;
+        margin-left: 3rem;
+        margin-bottom: 30px;
+        display: inline-block;
+        margin-top: -30px;
+        width: 100%;
+    }
+    &::before {
+        content: "“";
+        display: inline-block;
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 49px;
+        color: #000;
+    }
+}

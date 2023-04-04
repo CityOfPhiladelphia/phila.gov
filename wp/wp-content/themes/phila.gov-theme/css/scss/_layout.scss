@@ -9,7 +9,7 @@ h1 .fa{
 //set explicit height on logo for IE10, 11
 #global-sticky-nav{
   .logo img{
-    height:44px;
+    height:43px;
   }
 }
 
@@ -202,3 +202,13 @@ caption {
     }
   }
 }
+
+// for 1440px width DD
+// .grid-container, .row{
+//   max-width: 90rem;
+// }
+
+// a.card img {
+//   width: 820px;
+//   height: auto;
+// }

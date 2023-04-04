@@ -42,7 +42,7 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-pro": "^6.1.2",
+    "@fortawesome/fontawesome-pro": "^6.3.0",
     "babel-polyfill": "^6.26.0",
     "jquery": "^3.5.0",
     "js-cookie": "^3.0.1",

@@ -1,4 +1,7 @@
-.disclaimer-modal {
+.phila-modal {
+    @include breakpoint(medium up) { 
+        margin-top: 10vh;
+    }
     .content {
         margin-top: 20px;
         h3 {
@@ -10,9 +13,65 @@
         p {
             text-align: left;
         }
-        .button-text {
-            margin-top: 10px;
-            padding: 0.75rem 1.5rem;
+    }
+    .button-text {
+        cursor: pointer;
+        margin-top: 10px;
+        padding: 0.75rem 1.5rem;
+    }
+    &#translations-modal {
+        min-height: 270px;
+        border-top: 16px solid color(dark-ben-franklin);
+        .fa-times {
+            float: right;
+            font-weight: 900;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        h3 {
+            text-align: left;
+            font-family: 'Arial';
+            font-weight: 500;
+            font-size: 2.5rem;
+            i {
+                font-size: 1.8rem;
+            }
+        }
+        .content {
+            text-align: left;
+            margin-top: 0px;
+        }
+        .button-container {
+            @include breakpoint(medium up) { 
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+            }
+            .translate-close {
+                background: #fff;
+            }
+            .translate-button {
+                color: #fff;
+                background-color: color(dark-ben-franklin);
+            }
+            button {
+                font-family: 'Montserrat', 'Tahoma', sans-serif;
+                font-weight: 600;
+                border: 3px solid color(dark-ben-franklin);
+                padding: 1.2rem;
+                min-width: 140px;
+                &:hover,
+                &:focus {
+                    color: #fff;
+                    background-color: #444;
+                    border-color: #444;
+                }
+                @media (max-width: 400px) {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
         }
     }
 }

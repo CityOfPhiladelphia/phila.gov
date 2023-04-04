@@ -44,7 +44,7 @@ function publish_translated_post($new_status, $old_status, $post) {
   $post_type = phila_get_current_post_type();
   $categories = get_the_category($post->ID);
   $dept_billing_codes = "";
-  $send_to_translation = rwmb_meta('phila_send_to_translation', $post->ID);
+  $send_to_translation = $_POST['phila_send_to_translation'];
   $owner_amount = 0;
   $dept_code_count = 0;
 
@@ -84,13 +84,12 @@ function publish_translated_post($new_status, $old_status, $post) {
 
   //example payload: { "page_slug": "services/culture-recreation", "department_code":"1 - ABC" }
   $webhook = $endpoint;
-  if ('publish' === $new_status && $send_to_translation == true) {
+  if ('publish' === $new_status && $send_to_translation == true && $webhook != '') {
     if (isset($post->post_type)) {
       $post_type = $post->post_type;
     }
     $data = json_encode(
       array(
-        //'id' => $post->ID,
         'page_slug' => $post_path,
         'department_code'  => $dept_billing_codes,
       )
@@ -108,7 +107,6 @@ function publish_translated_post($new_status, $old_status, $post) {
   }
 }
 
-add_action('wp_update_post', 'publish_translated_post');
 // add_action( 'trashed_post', 'delete_translated_post', 10, 0 );
 add_action( 'transition_post_status', 'publish_translated_post', 10, 3 );
 ?>
