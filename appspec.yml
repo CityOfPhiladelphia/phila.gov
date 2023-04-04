@@ -34,8 +34,8 @@ hooks:
       runas: ubuntu
     - location: scripts/db-config.sh
       runas: ubuntu
-    - location: scripts/clean-machine.sh
-      runas: ubuntu
+    # - location: scripts/clean-machine.sh
+    #   runas: ubuntu
 branch_config:
   wip\/.*: null
   staging:
