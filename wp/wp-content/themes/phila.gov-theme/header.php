@@ -94,7 +94,7 @@
                     <li class="show-for-small-only"><a id="translate-chinese-dropdown" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
  <?php endif; ?>
                    <li id="google_translate_element"></li>
-                    <li class="translations-support"><a href="<?php echo get_site_url() ?>/programs/language-access-philly/translation-feedback-and-support/"><i class="fa fa-messages"></i>Feedback and support</a></li>
+                    <li><a href="<?php echo get_site_url() ?>/programs/language-access-philly/translation-feedback-and-support/" class="translations-support"><i class="fa fa-messages"></i>Feedback and support</a></li>
                 </ul>
               </li>
             </ul> 

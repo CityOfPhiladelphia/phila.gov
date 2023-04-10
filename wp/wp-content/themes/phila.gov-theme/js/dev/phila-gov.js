@@ -252,6 +252,12 @@ module.exports = $(function () {
         }
     });
 
+    $('.translations-support').on('click touchend touchstart', function(e) {
+      var el = $(this);
+      var link = el.attr('href');
+      window.location = link;
+    });
+
     function setActiveLanguage(urlLanguage) {
         $('#translations-menu> li').find('a').each(
             function() {
