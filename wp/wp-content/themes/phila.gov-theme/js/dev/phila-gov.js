@@ -237,7 +237,7 @@ module.exports = $(function () {
           });
         },
         'click': function() {
-            $(this).find('.menu').children(':not(.show-for-medium)').toggle();
+            $(this).find('.menu').toggle();
             if ($(this).find('#lang-dropdown').css('display') === 'none') {
                 $(this).removeClass('menu-open');
               } else {
