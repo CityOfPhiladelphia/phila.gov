@@ -185,10 +185,9 @@ module.exports = $(function () {
   $(document).ready(function() {
     $('#google_translate_element').bind('DOMNodeInserted', function() {
         $('.goog-te-gadget .goog-te-gadget-simple span:first').replaceWith(function() { 
-            return "<a role='menuitem'>More languages<i class='fas fa-solid fa-caret-down'></i></>"; 
+            return "<a id='gte' role='menuitem'>More languages<i class='fas fa-solid fa-caret-down'></i></>"; 
         });
     });
-
     // "hard code" english translations label DD
     $("#translate-english").text("English");
     $("#translate-english-dropdown").text("English");
@@ -223,33 +222,71 @@ module.exports = $(function () {
 
     //BEGIN Translation Bar
 
-    $('#translations-menu').on({
-        'show.zf.dropdownMenu': function () {
-          $('html, body').css({
-            overflow: 'hidden',
-            height: '100%'
-          });
-        },
-        'hide.zf.dropdownMenu': function () {
-          $('html, body').css({
-            overflow: 'auto',
-            height: 'auto'
-          });
-        },
-        'click': function() {
-            $(this).find('.menu').children(':not(.show-for-medium)').toggle();
-            if ($(this).find('#lang-dropdown').css('display') === 'none') {
-                $(this).removeClass('menu-open');
-              } else {
-                $(this).addClass('menu-open');
-              }
-        }
+    $("#translations-menu").on({
+      "show.zf.dropdownMenu": function () {
+        $("html, body").css({
+          overflow: "hidden",
+          height: "100%",
+        });
+      },
+      "hide.zf.dropdownMenu": function () {
+        $("html, body").css({
+          overflow: "auto",
+          height: "auto",
+        });
+      },
     });
 
-    $(document).on('click', function(event) {
-        if (!$(event.target).closest('#translations-menu').length) {
-          $('#translations-menu').removeClass('menu-open');
+
+    function toggleMenuOpen(isOpen) {
+      var $langDropdown = $("#lang-dropdown");
+      var $caretIcon = $("#translate-caret");
+      var $menuItems = $("#translations-menu").find(".menu li:not(.show-for-medium)").children();
+      var action = isOpen ? "addClass" : "removeClass";
+      $langDropdown.toggleClass("menu-open", isOpen);
+      $caretIcon[action]("rotated");
+      $menuItems.css("display", isOpen ? "block" : "none");
+    }
+
+    $("#translations-menu").find('li.is-dropdown-submenu-parent').on({
+      "click touchend": function(e) {
+        if (!$(e.target).is('#gte')) {
+          e.preventDefault()
+          toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
         }
+      },
+      "mouseleave": function(e) {
+        if (!$(e.target).is('#gte')) {
+          if($("#lang-dropdown").hasClass("menu-open") === true) {
+            toggleMenuOpen(false);
+          }
+        }
+      },
+    });
+    $("#translations-menu").find("a.dropdown-selector").hover(
+      function(e){ // Mouseenter handler
+        if (!$(e.target).is('#gte')) {
+          toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
+        }
+      },
+      function(e) { // Mouseleave handler
+        if (!$(e.target).is('#gte')) {
+          toggleMenuOpen(($("#lang-dropdown").hasClass("menu-open")) ? true : false);
+        }
+      }
+    )
+
+    $(document).on('click touchend touchstart', function(event) {
+      var $target = $(event.target);
+    
+      if ((!$target.closest('#translations-menu').length) && (!$(event.target).closest("#gte").length)) {
+        $('#lang-dropdown').removeClass('menu-open');
+      }
+    
+      if (event.type === 'touchend' && ($target.hasClass('translations-support') || $target.closest('#translations-menu .menu .show-for-small-only').length)) {
+        var link = $target.attr('href');
+        window.location = link;
+      }
     });
 
     function setActiveLanguage(urlLanguage) {
