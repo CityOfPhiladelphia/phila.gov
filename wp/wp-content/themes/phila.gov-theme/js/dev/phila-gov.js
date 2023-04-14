@@ -262,7 +262,7 @@ module.exports = $(function () {
       },
     });
 
-    $(document).on('click touchend', function(event) {
+    $(document).on('click touchend touchstart', function(event) {
       var $target = $(event.target);
     
       if ((!$target.closest('#translations-menu').length) && (!$(event.target).closest("#gte").length)) {
