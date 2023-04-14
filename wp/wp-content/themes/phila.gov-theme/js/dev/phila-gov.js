@@ -282,11 +282,13 @@ module.exports = $(function () {
       if ((!$target.closest('#translations-menu').length) && (!$(event.target).closest("#gte").length)) {
         $('#lang-dropdown').removeClass('menu-open');
       }
-    
-      if (event.type === 'touchend' && ($target.hasClass('translations-support') || $target.closest('#translations-menu .menu .show-for-small-only').length)) {
-        var link = $target.attr('href');
-        window.location = link;
-      }
+    });
+
+    $('.translations-support, #translations-menu .menu .show-for-small-only').on('touchend', function(event) {
+      event.preventDefault(); // Prevent default behavior (e.g., navigation)
+      var $el = $(this);
+      var link = $el.attr('href');
+      window.location = link;
     });
 
     function setActiveLanguage(urlLanguage) {
