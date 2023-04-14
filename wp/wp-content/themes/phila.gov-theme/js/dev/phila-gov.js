@@ -249,18 +249,34 @@ module.exports = $(function () {
     }
 
     $("#translations-menu").find('li.is-dropdown-submenu-parent').on({
-      "click, touchend": function(e) {
-        if(!$(e.target).is('#gte')){
+      "click touchend": function(e) {
+        if (!$(e.target).is('#gte')) {
+          e.preventDefault()
+          console.log("click, touchend")
           toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
         }
       },
-      "mouseenter": function(e) {
-        toggleMenuOpen(true);
-      },
       "mouseleave": function(e) {
-        toggleMenuOpen(false);
+        console.log("Mouseleave");
+        if (!$(e.target).is('#gte')) {
+          if($("#lang-dropdown").hasClass("menu-open") === true) {
+            toggleMenuOpen(false);
+          }
+        }
       },
     });
+    $("#translations-menu").find("a.dropdown-selector").hover(
+      function(e){ // Mouseenter handler
+        if (!$(e.target).is('#gte')) {
+          toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
+        }
+      },
+      function(e) { // Mouseleave handler
+        if (!$(e.target).is('#gte')) {
+          toggleMenuOpen(($("#lang-dropdown").hasClass("menu-open")) ? true : false);
+        }
+      }
+    )
 
     $(document).on('click touchend touchstart', function(event) {
       var $target = $(event.target);
