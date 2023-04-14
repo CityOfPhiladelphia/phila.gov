@@ -240,7 +240,7 @@ module.exports = $(function () {
 
     function toggleMenuOpen(isOpen) {
       var $langDropdown = $("#lang-dropdown");
-      var $caretIcon = $("i.translate-caret");
+      var $caretIcon = $("i#translate-caret");
       var $menuItems = $("#translations-menu").find(".menu li:not(.show-for-medium)").children();
       var action = isOpen ? "addClass" : "removeClass";
       $langDropdown.toggleClass("menu-open", isOpen);
