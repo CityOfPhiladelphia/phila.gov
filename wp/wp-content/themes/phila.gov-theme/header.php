@@ -85,7 +85,7 @@
 <?php endif; ?>
               <li>
                 <a href="#" class="dropdown-selector">
-                    <i class="fa-solid fa-earth-americas"></i> <span class="show-for-small-only">Translate</span><i class="fas fa-solid fa-caret-down"></i>
+                    <i class="fa-solid fa-earth-americas"></i> <span class="show-for-small-only">Translate</span><i class="fas fa-solid fa-caret-down translate-caret"></i>
                 </a>
                 <ul class="translations-dropdown menu" id="lang-dropdown" data-dropdown-content>
                     <li class="show-for-small-only"><a href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
