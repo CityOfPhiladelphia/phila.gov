@@ -247,9 +247,9 @@ module.exports = $(function () {
       $caretIcon[action]("rotated");
       $menuItems.css("display", isOpen ? "block" : "none");
     }
-    
+
     $("#translations-menu").find('li.is-dropdown-submenu-parent').on({
-      "click touchend": function(e) {
+      "click, touchend": function(e) {
         if(!$(e.target).is('#gte')){
           toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
         }
