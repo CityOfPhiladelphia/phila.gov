@@ -252,7 +252,6 @@ module.exports = $(function () {
       "click touchend": function(e) {
         if (!$(e.target).is('#gte')) {
           e.preventDefault()
-          console.log("click, touchend")
           toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
         }
       },
