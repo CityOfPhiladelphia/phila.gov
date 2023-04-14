@@ -235,7 +235,6 @@ module.exports = $(function () {
           height: "auto",
         });
       },
-
     });
 
 
@@ -250,15 +249,17 @@ module.exports = $(function () {
     }
     
     $("#translations-menu").find('li.is-dropdown-submenu-parent').on({
-      "click": function(event) {
-        toggleMenuOpen(!$("#lang-dropdown").hasClass("menu-open") ? true : false);
+      "click touchend": function(e) {
+        if(!$(e.target).is('#gte')){
+          toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
+        }
       },
       "mouseenter": function(e) {
         toggleMenuOpen(true);
       },
       "mouseleave": function(e) {
         toggleMenuOpen(false);
-      }
+      },
     });
 
     $(document).on('click touchend', function(event) {
