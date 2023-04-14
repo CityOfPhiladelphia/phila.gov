@@ -256,7 +256,6 @@ module.exports = $(function () {
         }
       },
       "mouseleave": function(e) {
-        console.log("Mouseleave");
         if (!$(e.target).is('#gte')) {
           if($("#lang-dropdown").hasClass("menu-open") === true) {
             toggleMenuOpen(false);
