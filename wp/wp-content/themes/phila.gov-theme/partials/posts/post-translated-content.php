@@ -48,8 +48,8 @@ wp_localize_script( 'phila-scripts', 'phila_language_list', $new_language_list )
 ?>
 
 <div class="grid-container translations-container">
-  <div class="grid-x medium-24 bg-ghost-gray translations <?php echo $post->post_type == 'programs' ? 'mts mbl' :  'mvl' ?>">
-    <span class="phm globe"><i class="fas fa-globe fa-2x"></i></span>
+  <div class="grid-x medium-24 translations <?php echo $post->post_type == 'programs' ? 'mts mbl' :  'mvl' ?>">
+    <span class="phm globe"><i class="fas fa-globe"></i></span>
     <ul id="main-translation-bar" class="inline-list no-bullet mbn pln"></ul>
     <div class="phm phs dropdown-container">
       <ul class="dropdown menu" data-dropdown-menu>
