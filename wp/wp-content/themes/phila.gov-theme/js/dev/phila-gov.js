@@ -249,7 +249,7 @@ module.exports = $(function () {
     }
 
     $("#translations-menu").find('li.is-dropdown-submenu-parent').on({
-      "touchend": function(e) {
+      "click touchend": function(e) {
         if (!$(e.target).is('#gte')) {
           toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
         }
@@ -300,7 +300,6 @@ module.exports = $(function () {
         view: window
       });
       e.target.dispatchEvent(clickEvent);
-    
     });
     
 
