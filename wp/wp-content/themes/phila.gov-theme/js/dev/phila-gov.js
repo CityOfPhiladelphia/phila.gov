@@ -249,9 +249,8 @@ module.exports = $(function () {
     }
 
     $("#translations-menu").find('li.is-dropdown-submenu-parent').on({
-      "click touchend": function(e) {
+      "touchend": function(e) {
         if (!$(e.target).is('#gte')) {
-          e.preventDefault()
           toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
         }
       },
@@ -262,6 +261,13 @@ module.exports = $(function () {
           }
         }
       },
+      // touchend: function(e) {
+      //   if (!$(e.target).is('#gte')) {
+      //     console.log(e.type)
+      //     e.preventDefault()
+      //     toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
+      //   }
+      // },
     });
     $("#translations-menu").find("a.dropdown-selector").hover(
       function(e){ // Mouseenter handler
@@ -284,12 +290,19 @@ module.exports = $(function () {
       }
     });
 
-    $('.translations-support, #translations-menu .menu .show-for-small-only').on('touchend', function(event) {
-      event.preventDefault(); // Prevent default behavior (e.g., navigation)
-      var $el = $(this);
-      var link = $el.attr('href');
-      window.location = link;
+    $('#translations-menu').on('touchstart touchend', function(e) {
+      e.preventDefault();
+    
+      // Trigger the click event on the target element
+      const clickEvent = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+      });
+      e.target.dispatchEvent(clickEvent);
+    
     });
+    
 
     function setActiveLanguage(urlLanguage) {
         $('#translations-menu> li').find('a').each(
