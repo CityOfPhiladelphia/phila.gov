@@ -249,7 +249,7 @@ module.exports = $(function () {
     }
 
     $("#translations-menu").find('li.is-dropdown-submenu-parent').on({
-      "click touchend": function(e) {
+      "click, touchend": function(e) {
         if (!$(e.target).is('#gte')) {
           toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
         }
@@ -261,13 +261,6 @@ module.exports = $(function () {
           }
         }
       },
-      // touchend: function(e) {
-      //   if (!$(e.target).is('#gte')) {
-      //     console.log(e.type)
-      //     e.preventDefault()
-      //     toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
-      //   }
-      // },
     });
     $("#translations-menu").find("a.dropdown-selector").hover(
       function(e){ // Mouseenter handler
@@ -285,8 +278,8 @@ module.exports = $(function () {
     $(document).on('click touchend touchstart', function(event) {
       var $target = $(event.target);
     
-      if ((!$target.closest('#translations-menu').length) && (!$(event.target).closest("#gte").length)) {
-        $('#lang-dropdown').removeClass('menu-open');
+      if ((!$target.closest('#translations-menu').length)) {
+        toggleMenuOpen(false);
       }
     });
 
