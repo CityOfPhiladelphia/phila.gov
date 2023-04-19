@@ -34,7 +34,6 @@ hooks:
       runas: ubuntu
     - location: scripts/db-config.sh
       runas: ubuntu
-  AfterAllowTraffic:
     - location: scripts/clean-machine.sh
       runas: ubuntu
 branch_config:
