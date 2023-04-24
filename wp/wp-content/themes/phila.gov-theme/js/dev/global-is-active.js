@@ -16,7 +16,7 @@ module.exports = jQuery(document).ready(function($) {
       $('.news-menu-link a').addClass('js-is-current');
     }else if( currentPath.indexOf('/tools/') === 0 ){
       $('.tools-menu-link a').addClass('js-is-current');
-    }else if( currentPath.indexOf('/docments/') === 0 ){
+    }else if( currentPath.indexOf('/documents/') === 0 ){
       $('.publications-menu-link a').addClass('js-is-current');
     }
   });
