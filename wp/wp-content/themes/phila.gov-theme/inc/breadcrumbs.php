@@ -37,7 +37,6 @@ function phila_breadcrumbs() {
       echo '</li>';
 
     } elseif ( is_singular('document') ) {
-
         echo '<li><a href="/documents/">Publications &amp; forms</a></li>';
         echo '<li>';
         the_title();
