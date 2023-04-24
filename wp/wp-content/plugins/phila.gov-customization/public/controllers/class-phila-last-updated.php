@@ -68,15 +68,15 @@ class Phila_Last_Updated_Controller {
         'updated_at' => ''
       ),
       array(
-        'link'  => '/publications-forms/',
+        'link'  => '/publications/',
         'updated_at' => ''
       ),
       array(
-        'link'  => '/programs-initiatives/',
+        'link'  => '/programs/',
         'updated_at' => ''
       ),
       array(
-        'link'  => '/service-directory/',
+        'link'  => '/services/',
         'updated_at' => ''
       ),
     );
