@@ -232,7 +232,7 @@ class Phila_Gov_Custom_Post_Types{
           'author'
         ),
         'public' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'show_in_rest' => true,
         'rest_base' => 'documents',
         'menu_icon' => 'dashicons-media-text',

@@ -153,10 +153,10 @@
                   <nav data-swiftype-index="false" class="global-nav" aria-label="main-nav">
                     <ul class="menu">
                       <li class="services-menu-link" data-toggle="services-mega-menu">
-                        <a href="" class="no-link " data-link="/service-directory/" onclick="noLink(event)">Services</a>
+                        <a href="" class="no-link " data-link="/services/" onclick="noLink(event)">Services</a>
                       </li>
                       <li class="programs-menu-link">
-                        <a href="<?php echo get_site_url() ?>/programs-initiatives/" class="">Programs</a>
+                        <a href="<?php echo get_site_url() ?>/programs/" class="">Programs</a>
                       </li>
                       <li class="departments-menu-link">
                         <a href="<?php echo get_site_url() ?>/departments/" class="">Departments</a>
@@ -165,7 +165,7 @@
                         <a href="<?php echo get_site_url() ?>/tools/" class="">Tools</a>
                       </li>
                       <li class="publications-menu-link">
-                        <a href="<?php echo get_site_url() ?>/publications-forms/" class=""> Publications</a>
+                        <a href="<?php echo get_site_url() ?>/documents" class=""> Publications</a>
                       </li>
                       <li class="news-menu-link">
                         <a href="<?php echo get_site_url() ?>/the-latest/" class=""><i class="fa-solid fa-newspaper"></i> News</a>
