@@ -45,7 +45,7 @@ class Phila_Gov_Service_Pages{
         'public' => true,
         'show_in_rest' => true,
         'rest_base' => 'services',
-        'has_archive' => true,
+        'has_archive' => false,
         'show_in_nav_menus' => true,
         'menu_icon' => 'dashicons-admin-generic',
         'hierarchical' => true,
