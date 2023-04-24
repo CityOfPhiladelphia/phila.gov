@@ -41,7 +41,7 @@ class Phila_Gov_Programs_Initiatives{
           'thumbnail'
         ),
         'public' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'show_in_rest' => true,
         'rest_base' => 'programs',
         'show_in_nav_menus' => true,
