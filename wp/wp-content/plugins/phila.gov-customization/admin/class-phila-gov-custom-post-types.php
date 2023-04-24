@@ -385,7 +385,7 @@ class Phila_Gov_Custom_Post_Types{
           'thumbnail'
         ),
         'public' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'show_in_rest' => true,
         'show_in_nav_menus' => true,
         'rest_base' => 'publications',
