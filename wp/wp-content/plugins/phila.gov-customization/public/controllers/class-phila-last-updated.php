@@ -68,7 +68,7 @@ class Phila_Last_Updated_Controller {
         'updated_at' => ''
       ),
       array(
-        'link'  => '/publications/',
+        'link'  => '/documents/',
         'updated_at' => ''
       ),
       array(
