@@ -8,7 +8,7 @@ module.exports = jQuery(document).ready(function($) {
       //special handling for services
     }else if( currentPath.indexOf('/services/') === 0 ){
       $('.services-menu-link a').addClass('js-is-current');
-    }else if( currentPath.indexOf('/programs-initiatives/') === 0 ){
+    }else if( currentPath.indexOf('/programs/') === 0 ){
       $('.programs-menu-link a').addClass('js-is-current');
     }else if( currentPath.indexOf('/departments/') === 0 ){
       $('.departments-menu-link a').addClass('js-is-current');
@@ -16,7 +16,7 @@ module.exports = jQuery(document).ready(function($) {
       $('.news-menu-link a').addClass('js-is-current');
     }else if( currentPath.indexOf('/tools/') === 0 ){
       $('.tools-menu-link a').addClass('js-is-current');
-    }else if( currentPath.indexOf('/publications-forms/') === 0 ){
+    }else if( currentPath.indexOf('/documents/') === 0 ){
       $('.publications-menu-link a').addClass('js-is-current');
     }
   });

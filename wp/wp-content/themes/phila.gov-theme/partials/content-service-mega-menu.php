@@ -53,7 +53,7 @@ $service_menu_args  = array(
         </div>
         <div class="medium-12 large-8 float-right white left-arrow-indent bg-dark-ben-franklin mega-menu-footer">
           <div class="valign">
-            <a href="/service-directory/" class="phl valign-cell service-directory"><span><i class="far fa-list fa-lg phm"></i>Service directory</span></a>
+            <a href="/services/" class="phl valign-cell service-directory"><span><i class="far fa-list fa-lg phm"></i>Service directory</span></a>
           </div>
         </div>  
       </div>
