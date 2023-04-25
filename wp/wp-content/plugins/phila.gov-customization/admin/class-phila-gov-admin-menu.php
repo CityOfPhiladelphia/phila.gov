@@ -49,6 +49,7 @@ class Phila_Gov_Admin_Menu {
         'edit.php?post_type=staff_directory',
         'edit.php?post_type=document',
         'edit.php?post_type=longform_content',
+        'edit.php?post_type=guides',
         'separator2',
         'edit.php?post_type=event_spotlight',
         'edit.php?post_type=calendar',
