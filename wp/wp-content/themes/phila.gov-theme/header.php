@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The header for our theme.
  *
@@ -7,22 +8,24 @@
  * @package phila-gov
  */
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
+
 <head>
-  <meta charset="<?php bloginfo( 'charset' ); ?>">
+  <meta charset="<?php bloginfo('charset'); ?>">
   <?php get_template_part('partials/global/analytics'); ?>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="description" content="<?php echo ( is_archive() || is_search() || is_home() ) ? get_bloginfo('description') : phila_get_item_meta_desc(); ?>">
+  <meta name="description" content="<?php echo (is_archive() || is_search() || is_home()) ? get_bloginfo('description') : phila_get_item_meta_desc(); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#2176d2">
   <meta name="facebook-domain-verification" content="a0t35pecrjiy8ly0weq7bzyb419o42">
 
   <!-- Swiftype -->
-  <meta class="swiftype" name="title" data-type="string" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title( $title ) ); ?>">
+  <meta class="swiftype" name="title" data-type="string" content="<?php echo str_replace(' | ' . get_bloginfo('name'), '', phila_filter_title($title)); ?>">
   <meta class="swiftype" name="tags" data-type="string" content="wordpress" />
   <meta class="swiftype" name="site-priority" data-type="integer" content="10" />
-  <meta class="swiftype" name="content_type" data-type="string" content="<?php echo get_post_type($post->ID)?>">
+  <meta class="swiftype" name="content_type" data-type="string" content="<?php echo get_post_type($post->ID) ?>">
   <meta class="swiftype" name="weighted_search" data-type="integer" content="<?php phila_weighted_search_results() ?>">
 
   <?php if (is_single()) : ?>
@@ -37,72 +40,72 @@
   <p class="browsehappy alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience. If you can't switch browsers, turn off  compatibility mode.</p>
   <![endif]-->
 
-  <?php if( ( !is_home() ) && ( is_single() ) ) : ?>
-      <?php if (function_exists('rwmb_meta')): ?>
-        <?php $append_to_head = rwmb_meta( 'phila_append_to_head', $args = array('type' => 'textarea'), $post->ID); ?>
-        <?php if ( !$append_to_head == '' ): ?>
-          <!-- Begin Custom Markup Metabox: Append to Head -->
-          <?php echo $append_to_head; ?>
-          <!-- End Custom Markup Metabox: Append to Head -->
-        <?php endif;?>
+  <?php if ((!is_home()) && (is_single())) : ?>
+    <?php if (function_exists('rwmb_meta')) : ?>
+      <?php $append_to_head = rwmb_meta('phila_append_to_head', $args = array('type' => 'textarea'), $post->ID); ?>
+      <?php if (!$append_to_head == '') : ?>
+        <!-- Begin Custom Markup Metabox: Append to Head -->
+        <?php echo $append_to_head; ?>
+        <!-- End Custom Markup Metabox: Append to Head -->
       <?php endif; ?>
+    <?php endif; ?>
   <?php endif; ?>
 
 </head>
 
 <body <?php body_class(); ?> lang="en" data-clarity-unmask="True">
-<?php if ( !is_user_logged_in() ): ?>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-<?php endif; ?>
-<a href="#page" aria-hidden="false" class="skip-to-content">Skip to main content</a>
+  <?php if (!is_user_logged_in()) : ?>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  <?php endif; ?>
+  <a href="#page" aria-hidden="false" class="skip-to-content">Skip to main content</a>
   <header class="global-nav no-js pbn-mu mbn-mu">
     <h1 class="accessible">City of Philadelphia</h1>
 
     <!-- Utility Navigation -->
     <div class="utility-nav">
-    <div class="grid-container bg-ghost-gray">
+      <div class="grid-container bg-ghost-gray">
         <div class="top-bar bg-ghost-gray" id="responsive-menu">
           <div class="top-bar-left valign-mu">
             <ul class="menu">
               <li class="gov-site show-for-medium">
-                  An official website of the City of Philadelphia government 
+                An official website of the City of Philadelphia government
               </li>
               <li class="gov-site show-for-medium"><a href="#" class="trusted-site-toggle">Here's how you know<i class="fas fa-solid fa-caret-down"></i></a></li>
               <li class="gov-site show-for-small-only">
-                  <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
+                <a href="" class="trusted-site-toggle">An official website <i class="fas fa-info-circle"></i></a>
               </li>
-            </ul> 
+            </ul>
           </div>
           <!-- Translations Navigation -->
           <div class="top-bar-right translations-nav">
-            <ul id="translations-menu" class="dropdown menu" data-dropdown-menu>
+            <ul class="translations-bar menu">
               <li class="show-for-medium"><a id="translate-english" href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
-<?php if ( (is_front_page() === True) or (get_post_type($post->ID) != 'post') ): ?>
-              <li class="show-for-medium"><a id="translate-spanish" href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
-              <li class="show-for-medium"><a id="translate-chinese" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
-<?php endif; ?>
-              <li>
-                <a href="#" class="dropdown-selector">
-                    <i class="fa-solid fa-earth-americas"></i> <span class="show-for-small-only">Translate</span><i class="fas fa-solid fa-caret-down" id="translate-caret"></i>
-                </a>
-                <ul class="translations-dropdown menu" id="lang-dropdown" data-dropdown-content>
-                    <li class="show-for-small-only"><a id="translate-english-dropdown" href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
- <?php if ( (is_front_page() === True) or (get_post_type($post->ID) != 'post') ): ?>
-                   <li class="show-for-small-only"><a id="translate-spanish-dropdown" href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
-                    <li class="show-for-small-only"><a id="translate-chinese-dropdown" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
- <?php endif; ?>
-                   <li id="google_translate_element"></li>
-                   <li id="translations-support"><a href="<?php echo get_site_url() . "/programs/language-access-philly/translation-feedback-and-support/" ?> "><i class="fa fa-messages"></i>Feedback and support</a></li>
-
-                </ul>
-              </li>
-            </ul> 
+              <?php if ((is_front_page() === True) or (get_post_type($post->ID) != 'post')) : ?>
+                <li class="show-for-medium"><a id="translate-spanish" href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
+                <li class="show-for-medium"><a id="translate-chinese" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
+              <?php endif; ?>
+            <!-- Dropdown button -->
+              <button class="translations-button show-for-medium" id="desktop-lang-button" data-toggle="lang-dropdown"><i class="fa fa-earth-americas"></i><i class="translate-caret fas fa-solid fa-caret-down"></i></button>
+              <button class="translations-button show-for-small-only" id="mobile-lang-button" data-toggle="lang-dropdown"><i class="fa fa-earth-americas"></i><a class="show-for-small-only" href="#">Translate</a><i class="translate-caret fas fa-solid fa-caret-down"></i></button>
+            </ul>
+            <!-- Dropdown menu -->
+            <div id="lang-dropdown" data-dropdown data-auto-focus="true" data-close-on-click="true" class="dropdown-pane" data-position="" data-alignment="bottom">
+              <ul id="translations-menu" class="vertical dropdown menu">
+                <li class="show-for-small-only"><a id="translate-english-dropdown" href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
+                <?php if ((is_front_page() === True) or (get_post_type($post->ID) != 'post')) : ?>
+                  <li class="show-for-small-only"><a id="translate-spanish-dropdown" href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
+                  <li class="show-for-small-only"><a id="translate-chinese-dropdown" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
+                <?php endif; ?>
+                <li id="google_translate_element"></li>
+                <li id="translations-support"><a href="<?php echo get_site_url() . "/programs/language-access-philly/translation-feedback-and-support/" ?> "><i class="fa fa-messages"></i>Feedback and support</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-  </div>
+    </div>
     <!-- Trusted Site -->
     <div class="row columns expanded" data-swiftype-index="false" id="trusted-site">
       <div class="row pvm">
@@ -172,39 +175,41 @@
                         <a href="<?php echo get_site_url() ?>/the-latest/" class=""><i class="fa-solid fa-newspaper"></i> News</a>
                       </li>
                     </ul>
-                </nav>
+                  </nav>
+                </div>
               </div>
-            </div>
-            <div class="small-4 medium-1 columns phn-m prn site-search-container">
-              <button id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
-                <i class="fass fa-magnifying-glass" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div> <!-- close row -->
-        </div><!-- close columns -->
+              <div class="small-4 medium-1 columns phn-m prn site-search-container">
+                <button id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
+                  <i class="fass fa-magnifying-glass" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div> <!-- close row -->
+          </div><!-- close columns -->
+        </div>
       </div>
     </div>
-  </div>
-  <?php include(locate_template('partials/global/translations-modal.php')); ?>
-  <div id="phila-mobile-menu"></div>
-  <?php
+    <?php include(locate_template('partials/global/translations-modal.php')); ?>
+    <div id="phila-mobile-menu"></div>
+    <?php
     //create alerts when appropriate
     call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
-</header>
-<div id="page">
+  </header>
+  <div id="page">
     <?php
     $parent = phila_util_get_furthest_ancestor($post);
     $post_type = get_post_type();
-    if ( !phila_util_is_new_template( $parent->ID ) &&
-        !is_front_page() &&
-        !is_404() &&
-        !is_page_template('templates/the-latest.php') &&
-        $post_type != 'programs' &&
-        $post_type != 'guides' &&
-        $post_type != 'event_spotlight') : ?>
-        <div class="mtl mbm">
-          <?php get_template_part( 'partials/breadcrumbs' ); ?>
-        </div>
+    if (
+      !phila_util_is_new_template($parent->ID) &&
+      !is_front_page() &&
+      !is_404() &&
+      !is_page_template('templates/the-latest.php') &&
+      $post_type != 'programs' &&
+      $post_type != 'guides' &&
+      $post_type != 'event_spotlight'
+    ) : ?>
+      <div class="mtl mbm">
+        <?php get_template_part('partials/breadcrumbs'); ?>
+      </div>
     <?php endif; ?>
 
-  <div id="content">
+    <div id="content">

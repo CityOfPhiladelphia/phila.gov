@@ -185,7 +185,7 @@ module.exports = $(function () {
   $(document).ready(function() {
     $('#google_translate_element').bind('DOMNodeInserted', function() {
         $('.goog-te-gadget .goog-te-gadget-simple span:first').replaceWith(function() { 
-            return "<a id='gte' role='menuitem'>More languages<i class='fas fa-solid fa-caret-down'></i></>"; 
+            return "<a id='gte' role='menuitem'>More languages</>"; 
         });
     });
     // "hard code" english translations label DD
@@ -222,80 +222,50 @@ module.exports = $(function () {
 
     //BEGIN Translation Bar
 
-    $("#translations-menu").on({
-      "show.zf.dropdownMenu": function () {
+    $("#lang-dropdown").on({
+      "show.zf.dropdown": function (e) {
         $("html, body").css({
           overflow: "hidden",
           height: "100%",
         });
+        toggleMenuOpen(true);
       },
-      "hide.zf.dropdownMenu": function () {
+      "hide.zf.dropdown": function (e) {
         $("html, body").css({
           overflow: "auto",
           height: "auto",
         });
+        toggleMenuOpen(false);
       },
     });
 
+    var hoverTimeout;
+
+    $('button#desktop-lang-button').hover(
+      function() {
+        clearTimeout(hoverTimeout);  
+        if(!$('#lang-dropdown').hasClass('is-open')){
+          $('#lang-dropdown').foundation('open');
+        }
+      },
+      function(e) {
+        if(e.relatedTarget.getAttribute('role') !== 'menuitem'){
+          hoverTimeout = setTimeout(function() {
+            $('#lang-dropdown').foundation('close');
+          }, 500);
+        } 
+      }
+    );
 
     function toggleMenuOpen(isOpen) {
       var $langDropdown = $("#lang-dropdown");
-      var $caretIcon = $("#translate-caret");
-      var $menuItems = $("#translations-menu").find(".menu li:not(.show-for-medium)").children();
+      var $caretIcon = $(".translations-nav i.translate-caret");
       var action = isOpen ? "addClass" : "removeClass";
-      $langDropdown.toggleClass("menu-open", isOpen);
+      $langDropdown.toggleClass("js-dropdown-active", isOpen);
+      $langDropdown.toggleClass("is-open", isOpen);
       $caretIcon[action]("rotated");
-      $menuItems.css("display", isOpen ? "block" : "none");
     }
-
-    $("#translations-menu").find('li.is-dropdown-submenu-parent').on({
-      "click, touchend": function(e) {
-        if (!$(e.target).is('#gte')) {
-          toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
-        }
-      },
-      "mouseleave": function(e) {
-        if (!$(e.target).is('#gte')) {
-          if($("#lang-dropdown").hasClass("menu-open") === true) {
-            toggleMenuOpen(false);
-          }
-        }
-      },
-    });
-    $("#translations-menu").find("a.dropdown-selector").hover(
-      function(e){ // Mouseenter handler
-        if (!$(e.target).is('#gte')) {
-          toggleMenuOpen((!$("#lang-dropdown").hasClass("menu-open")) ? true : false);
-        }
-      },
-      function(e) { // Mouseleave handler
-        if (!$(e.target).is('#gte')) {
-          toggleMenuOpen(($("#lang-dropdown").hasClass("menu-open")) ? true : false);
-        }
-      }
-    )
-
-    $(document).on('click touchend touchstart', function(event) {
-      var $target = $(event.target);
     
-      if ((!$target.closest('#translations-menu').length)) {
-        toggleMenuOpen(false);
-      }
-    });
-
-    $('#translations-menu').on('touchstart touchend', function(e) {
-      e.preventDefault();
-    
-      // Trigger the click event on the target element
-      const clickEvent = new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-        view: window
-      });
-      e.target.dispatchEvent(clickEvent);
-    });
-    
-
     function setActiveLanguage(urlLanguage) {
         $('#translations-menu> li').find('a').each(
             function() {
