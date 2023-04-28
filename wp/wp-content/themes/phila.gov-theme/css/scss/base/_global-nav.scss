@@ -57,17 +57,23 @@
     .grid-container {
       padding: 0px;
 
-      // @media screen and (min-width: 0px) and (max-width: 779px) {
-      //     .show-for-medium {
-      //       display: none;
-      //     }
-      //   }
+      @media screen and (min-width: 780px) {
+          .show-for-medium {
+            display: inline-block !important;
+          }
+          .show-for-small-only {
+            display: none !important;
+          }
+        }
 
-      // @media screen and (max-width: 779px) {
-      //   .show-for-small-only {
-      //     display: inline-block;
-      //     }
-      //   }
+      @media screen and (max-width: 779px) {
+        .show-for-small-only {
+          display: inline-block !important;
+          }
+        .show-for-medium {
+          display: none !important;
+        }
+        }
 
       .top-bar-left {
         margin-left: .5rem;
@@ -161,15 +167,24 @@
     .translations-nav {
       background: color(ghost-gray);
 
-      .translations-bar>.menu input,
-      .menu select,
-      .menu a,
-      .menu button.translations-button {
+      .translations-bar> button.translations-button {
+            a {
+              font-weight: bold;
+              text-decoration: underline;
+              text-transform: capitalize;
+            }
+        }
+
+      .translations-bar> input,
+       select,
+       a,
+       button.translations-button {
         margin-bottom: 0;
         display: inline-block;
         padding: .5rem;
         background: color(ghost-gray);
         color: color(dark-ben-franklin);
+
         :hover{
           color: color(dark-ben-franklin);
         }
@@ -178,6 +193,7 @@
       @include breakpoint(medium up) {
 
         #lang-dropdown {
+          position: absolute;
           border: #CFCFCF;
           border-width: 0 1px 1px 1px;
           border-style: solid;
@@ -185,7 +201,8 @@
           width: inherit !important;
           z-index: 1001;
           top: inherit !important;
-          left: inherit !important;
+          left: 75% !important;
+          transform: translateX(5%);
 
           li {
             :hover {
@@ -240,14 +257,16 @@
         }
       }
 
-      .translations-dropdown {
+      #translations-menu {
 
-        .translations-support>a {
+        #translations-support>a {
           font-weight: bold;
           text-decoration: underline;
         }
 
         li {
+          display: block !important; 
+
           a {
             background: color(ghost-gray);
             text-align: left;
@@ -255,6 +274,8 @@
 
             &:hover {
               text-decoration: underline;
+              color: white;
+              background-color: color(dark-ben-franklin);
             }
 
             .fa {
@@ -308,7 +329,7 @@
               margin-right: 8px;
               font: var(--fa-font-solid);
               font-size: 1rem;
-              font-weight: normal;
+              font-weight: bold;
               content: "\2b";
             }
 
@@ -339,12 +360,23 @@
         }
       }
 
-      .translate-caret {
-        &.rotated {
-          transform: rotate(180deg);
-        }
+      @include breakpoint(medium up) {
+        .translate-caret {
+          padding: 0 .5rem 0 .5rem;
 
-        padding: 0 .5rem 0 .5rem;
+          &.rotated {
+            transform: rotate(180deg);
+            padding: 0 .5rem 0 .5rem;
+          }
+        }
+      }
+
+      @include breakpoint(small only) {
+        .translate-caret {
+          &.rotated {
+            transform: rotate(180deg);
+          }
+        }
       }
     }
   }

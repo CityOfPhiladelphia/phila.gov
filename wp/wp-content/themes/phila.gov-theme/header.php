@@ -91,7 +91,7 @@
               <button class="translations-button show-for-small-only" id="mobile-lang-button" data-toggle="lang-dropdown"><i class="fa fa-earth-americas"></i><a class="show-for-small-only" href="#">Translate</a><i class="translate-caret fas fa-solid fa-caret-down"></i></button>
             </ul>
             <!-- Dropdown menu -->
-            <div id="lang-dropdown" data-dropdown data-auto-focus="true" data-close-on-click="true" class="dropdown-pane" data-position="" data-alignment="bottom">
+            <div id="lang-dropdown" class="dropdown-pane" data-close-on-click="true" data-position="bottom" data-alignment="right" data-dropdown data-auto-focus="true">
               <ul id="translations-menu" class="vertical dropdown menu">
                 <li class="show-for-small-only"><a id="translate-english-dropdown" href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
                 <?php if ((is_front_page() === True) or (get_post_type($post->ID) != 'post')) : ?>
