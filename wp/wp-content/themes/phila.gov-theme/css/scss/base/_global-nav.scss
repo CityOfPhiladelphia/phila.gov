@@ -184,13 +184,21 @@
         padding: .5rem;
         background: color(ghost-gray);
         color: color(dark-ben-franklin);
-
+        
+        .show-for-small-only {
+          display: inline-block !important;
+        }
+      
         :hover{
           color: color(dark-ben-franklin);
         }
       }
 
       @include breakpoint(medium up) {
+
+        .show-for-small-only {
+          display: none !important; 
+        }
 
         #lang-dropdown {
           position: absolute;
@@ -201,8 +209,8 @@
           width: inherit !important;
           z-index: 1001;
           top: inherit !important;
-          left: 75% !important;
-          transform: translateX(5%);
+          left: auto !important;
+          transform: translateX(15%);
 
           li {
             :hover {
@@ -220,6 +228,11 @@
       }
 
       @include breakpoint(small only) {
+
+        .show-for-small-only {
+          display: block !important;
+          cursor: pointer;
+        }
 
         #lang-dropdown {
           width: 101vw;
@@ -265,7 +278,7 @@
         }
 
         li {
-          display: block !important; 
+          display: block; 
 
           a {
             background: color(ghost-gray);
