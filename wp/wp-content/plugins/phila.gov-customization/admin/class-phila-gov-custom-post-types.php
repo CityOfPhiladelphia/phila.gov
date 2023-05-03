@@ -286,41 +286,6 @@ class Phila_Gov_Custom_Post_Types{
       )
     );
     
-    register_rest_field( 'post',
-      'archived',
-      array( 'get_callback'    => 'get_archive_status' ),
-    );
-
-    register_rest_field( 'post',
-      'categories',
-      array( 'get_callback'    => 'get_phila_categories' ),
-    );
-
-    register_rest_field( 'post',
-      'template',
-      array( 'get_callback'    => 'get_phila_template' ),
-    );
-
-    register_rest_field( 'post',
-    'tags',
-    array( 'get_callback'    => 'get_phila_tags' ),
-  );
-
-    function get_phila_template( $post ) {
-      return phila_get_selected_template($post['id'], true, true);
-    }
-
-    function get_archive_status( $post ) {
-      return phila_get_archive_status($post['id']);
-    }
-
-    function get_phila_categories ( $post ) {
-      return phila_get_the_category($post['id']);
-    }
-
-    function get_phila_tags ( $post ) {
-      return get_the_tags($post['id']);
-    }
   }
   function create_phila_press_release() {
     register_post_type( 'press_release',

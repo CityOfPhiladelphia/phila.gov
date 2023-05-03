@@ -549,5 +549,3 @@ function phila_register_archives_rest_routes() {
 }
 
 add_action( 'rest_api_init', 'phila_register_archives_rest_routes' );
-
-
