@@ -191,6 +191,7 @@
       
         :hover{
           color: color(dark-ben-franklin);
+          cursor: pointer;
         }
       }
 
@@ -211,7 +212,7 @@
           top: inherit !important;
           left: auto !important;
           transform: translateX(15%);
-
+          
           li {
             :hover {
               background-color: color(dark-ben-franklin);
