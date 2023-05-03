@@ -19,6 +19,19 @@ function phila_options_page( $settings_pages ) {
   return $settings_pages;
 }
 
+add_action( 'rwmb_enqueue_scripts', 'deploy_all_script' );
+// enqueue and localize js file with the $js_vars as a parameter, exposing the php values to javascript to use in the API call
+function deploy_all_script() {
+  $public_endpoint = rwmb_meta( 'translation_endpoint', array( 'object_type' => 'setting' ), 'phila_settings' );
+  $dept_billing_code = rwmb_meta( 'phila_translations_default_billing_code', array( 'object_type' => 'setting' ), 'phila_settings' );
+  $js_vars = array(
+    'deploy_all_webhook' => $public_endpoint,
+    'deploy_all_dept_billing_code' => $dept_billing_code,
+  );
+  wp_enqueue_script( 'deploy-script', plugins_url( '../js/deploy.js', __FILE__), array( 'jquery' ), '', true );
+  wp_localize_script('deploy-script', 'gridsome_js_vars', $js_vars );
+}
+
 add_filter( 'rwmb_meta_boxes', 'prefix_options_meta_boxes' );
 
 // General Settings
@@ -258,6 +271,20 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'required'  => true,
         'desc'  => 'Consult OIA team for code to use'
       ),
+      array(
+        'name' => 'Translation endpoint URL',
+        'id'   => 'translation_endpoint',
+        'type'  => 'text',
+      ), 
+      array(
+        'type'       => 'button',
+        'name'       => 'Translate homepage',
+        'std'        => 'Translate homepage',
+        'attributes' => array(
+          'data-section' => 'deploy-all',
+          'class'        => 'deploy-all',
+        ),
+      ), 
     ),
   );
 
