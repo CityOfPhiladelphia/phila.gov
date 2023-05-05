@@ -187,13 +187,13 @@ $result->post_count = count( $result->posts );
         <?php if ($count >= 3 ): ?>
         <div class="grid-container group">
             <?php $see_all = array(
-              'URL' => '/the-latest/archives/#/?templates=post&templates=featured',
+              'URL' => '/the-latest/archives/?templates=post&templates=featured',
               'content_type' => $label,
               'nice_name' => 'posts'
             ); ?>
             <?php if( !empty( $post_categories ) ) :?>
               <?php $see_all_URL = array(
-                'URL' => '/the-latest/archives/#/?templates=post&templates=featured&department=' . $slang_name,
+                'URL' => '/the-latest/archives/?templates=post&templates=featured&department=' . $slang_name,
               );
               $see_all = array_replace( $see_all, $see_all_URL );
               endif;?>
@@ -206,12 +206,12 @@ $result->post_count = count( $result->posts );
                     }
                     $term = implode(', ', $term);
                     $see_all_URL = array(
-                      'URL' => '/the-latest/archives/#/?tag=' . $term,
+                      'URL' => '/the-latest/archives/?tag=' . $term,
                     );
                   else: 
                     $term = get_term($tag, 'post_tag');
                     $see_all_URL = array(
-                      'URL' => '/the-latest/archives/#/?tag=' . $term->name,
+                      'URL' => '/the-latest/archives/?tag=' . $term->name,
                     );
                   endif; ?>
               <?php if (!empty($override_url)) : ?>
