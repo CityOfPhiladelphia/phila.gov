@@ -224,7 +224,7 @@
           z-index: 1001;
           top: inherit !important;
           left: auto !important;
-          transform: translateX(18%);
+          transform: translateX(20%);
 
           li {
             :hover {
@@ -256,7 +256,6 @@
           height: 101vh;
           transform: translateX(-100%);
           left: 100% !important;
-          // z-index: 1000;
           top: inherit !important;
           background-color: color(ghost-gray);
 

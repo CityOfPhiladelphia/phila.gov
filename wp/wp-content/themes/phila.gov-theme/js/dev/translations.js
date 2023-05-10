@@ -1,11 +1,8 @@
 module.exports = $(function () {
   //BEGIN Translation Bar
-  // $(document).on('focus', '*', function(event) {
-  //   console.log('Focused element:', event.target.id);
-  // });
+
   $(document).ready(function () {
     $("#google_translate_element").bind("DOMNodeInserted", function () {
-      
       if ($("#google_translate_element").length) {
         var $firstOption = $(".goog-te-combo option:first");
 
@@ -13,10 +10,9 @@ module.exports = $(function () {
           $firstOption.text("More Languages");
         }
 
-        
-        $('i.fa-plus').on('click', function(e) {
-          $('select.goog-te-combo').trigger('click');
-        })
+        $("i.fa-plus").on("click", function (e) {
+          $("select.goog-te-combo").trigger("click");
+        });
 
         $(".goog-te-gadget")
           .contents()
@@ -31,18 +27,15 @@ module.exports = $(function () {
           $(".goog-te-gadget span:first").remove();
         }
 
-        function prependIcon() {
-          var targetDiv = $('#\\:0\\.targetLanguage');
-          if (!targetDiv.has(".fa.fa-plus").length) {
-            var icon = $("<i>").addClass("fa fa-plus");
-            targetDiv.prepend(icon);
-          }
+        var targetDiv = $("#\\:0\\.targetLanguage");
+        if (!targetDiv.has(".fa.fa-plus").length) {
+          var icon = $("<i>").addClass("fa fa-plus");
+          targetDiv.prepend(icon);
         }
-        prependIcon();
 
-        var targetDiv = $('.goog-te-gadget');
-        var select = $('select.goog-te-combo');
-        select.on('focus', function() {
+        var targetDiv = $(".goog-te-gadget");
+        var select = $("select.goog-te-combo");
+        select.on("focus", function () {
           targetDiv.focus();
         });
       }
@@ -87,24 +80,17 @@ module.exports = $(function () {
         // setOverflowHidden();
         toggleMenuOpen(true);
         updateBodyState();
-        $('#mobile-lang-button').focus();
-        $('#desktop-lang-button').focus();
+        $("#mobile-lang-button").focus();
+        $("#desktop-lang-button").focus();
       },
       "hide.zf.dropdown": function (e) {
         setOverflowAuto();
         toggleMenuOpen(false);
         updateBodyState();
-        $('#mobile-lang-button').focus();
-        $('#desktop-lang-button').focus();
+        $("#mobile-lang-button").focus();
+        $("#desktop-lang-button").focus();
       },
     });
-
-    // $("#google_translate_element").on({
-    //   click: function(e) {
-    //     console.log(e.target);
-    //     console.log(e.type);
-    //   }
-    // });
 
     var hoverTimeout;
 
