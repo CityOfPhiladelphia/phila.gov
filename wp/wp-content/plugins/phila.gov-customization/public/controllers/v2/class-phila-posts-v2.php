@@ -31,8 +31,12 @@ function get_phila_tags ( $post ) {
 
 function get_phila_featured_media ( $post ) {
   $featured_image_id = get_post_thumbnail_id($post['id']);
-  $medium_featured_image_url = wp_get_attachment_image_src($featured_image_id, 'medium')[0];
-  return $medium_featured_image_url;
+  if ( $featured_image_id !== 0) {
+    $medium_featured_image_url = wp_get_attachment_image_src($featured_image_id, 'medium')[0];
+    return $medium_featured_image_url;
+  }
+  return null;
+
 }
 
 function filter_post_by_archived( $args, $request ) {
