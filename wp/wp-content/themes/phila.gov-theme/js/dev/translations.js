@@ -1,13 +1,51 @@
 module.exports = $(function () {
   //BEGIN Translation Bar
-
+  // $(document).on('focus', '*', function(event) {
+  //   console.log('Focused element:', event.target.id);
+  // });
   $(document).ready(function () {
     $("#google_translate_element").bind("DOMNodeInserted", function () {
-      $(".goog-te-gadget .goog-te-gadget-simple span:first").replaceWith(
-        function () {
-          return "<a id='gte' role='menuitem'>More languages</>";
+      
+      if ($("#google_translate_element").length) {
+        var $firstOption = $(".goog-te-combo option:first");
+
+        if ($firstOption.length && $firstOption.text() === "Select Language") {
+          $firstOption.text("More Languages");
         }
-      );
+
+        
+        $('i.fa-plus').on('click', function(e) {
+          $('select.goog-te-combo').trigger('click');
+        })
+
+        $(".goog-te-gadget")
+          .contents()
+          .filter(function () {
+            return (
+              this.nodeType === 3 && !$(this).parent().hasClass("goog-te-combo")
+            );
+          })
+          .remove();
+
+        if ($(".goog-te-gadget span:first").length) {
+          $(".goog-te-gadget span:first").remove();
+        }
+
+        function prependIcon() {
+          var targetDiv = $('#\\:0\\.targetLanguage');
+          if (!targetDiv.has(".fa.fa-plus").length) {
+            var icon = $("<i>").addClass("fa fa-plus");
+            targetDiv.prepend(icon);
+          }
+        }
+        prependIcon();
+
+        var targetDiv = $('.goog-te-gadget');
+        var select = $('select.goog-te-combo');
+        select.on('focus', function() {
+          targetDiv.focus();
+        });
+      }
     });
     // "hard code" english translations label DD
     $("#translate-english").text("English");
@@ -49,13 +87,24 @@ module.exports = $(function () {
         // setOverflowHidden();
         toggleMenuOpen(true);
         updateBodyState();
+        $('#mobile-lang-button').focus();
+        $('#desktop-lang-button').focus();
       },
       "hide.zf.dropdown": function (e) {
         setOverflowAuto();
         toggleMenuOpen(false);
         updateBodyState();
+        $('#mobile-lang-button').focus();
+        $('#desktop-lang-button').focus();
       },
     });
+
+    // $("#google_translate_element").on({
+    //   click: function(e) {
+    //     console.log(e.target);
+    //     console.log(e.type);
+    //   }
+    // });
 
     var hoverTimeout;
 

@@ -88,7 +88,7 @@
               <?php endif; ?>
             <!-- Dropdown button -->
               <button class="translations-button show-for-medium" id="desktop-lang-button" data-toggle="lang-dropdown"><i class="fa fa-earth-americas"></i><i class="translate-caret fas fa-solid fa-caret-down"></i></button>
-              <button class="translations-button show-for-small-only" id="mobile-lang-button" data-toggle="lang-dropdown"><i class="fa fa-earth-americas"></i><a class="show-for-small-only" href="#">Translate</a><i class="translate-caret fas fa-solid fa-caret-down"></i></button>
+              <button class="translations-button show-for-small-only" id="mobile-lang-button" data-toggle="lang-dropdown"><i class="fa fa-earth-americas"></i><a tabindex="-1" class="show-for-small-only" href="#">Translate</a><i class="translate-caret fas fa-solid fa-caret-down"></i></button>
             </ul>
             <!-- Dropdown menu -->
             <div id="lang-dropdown" class="dropdown-pane" data-close-on-click="true" data-position="bottom" data-alignment="right" data-dropdown data-auto-focus="true">
@@ -98,7 +98,7 @@
                   <li class="show-for-small-only"><a id="translate-spanish-dropdown" href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
                   <li class="show-for-small-only"><a id="translate-chinese-dropdown" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
                 <?php endif; ?>
-                <li tabindex="0" id="google_translate_element"></li>
+                <li id="google_translate_element"></li>
                 <li id="translations-support"><a href="<?php echo get_site_url() . "/programs/language-access-philly/translation-feedback-and-support/" ?> "><i class="fa fa-messages"></i>Feedback and support</a></li>
               </ul>
             </div>
