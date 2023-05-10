@@ -19,18 +19,20 @@ function phila_options_page( $settings_pages ) {
   return $settings_pages;
 }
 
-add_action( 'rwmb_enqueue_scripts', 'deploy_all_script' );
+add_action( 'rwmb_enqueue_scripts', 'update_translations_script' );
 // enqueue and localize js file with the $js_vars as a parameter, exposing the php values to javascript to use in the API call
-function deploy_all_script() {
-  $public_endpoint = rwmb_meta( 'translation_endpoint', array( 'object_type' => 'setting' ), 'phila_settings' );
+function update_translations_script() {
+  $translations_endpoint = rwmb_meta( 'translation_endpoint', array( 'object_type' => 'setting' ), 'phila_settings' );
   $dept_billing_code = rwmb_meta( 'phila_translations_default_billing_code', array( 'object_type' => 'setting' ), 'phila_settings' );
   $js_vars = array(
-    'deploy_all_webhook' => $public_endpoint,
-    'deploy_all_dept_billing_code' => $dept_billing_code,
+    'update_translations_webhook' => $translations_endpoint,
+    'update_translations_dept_billing_code' => $dept_billing_code,
   );
-  wp_enqueue_script( 'deploy-script', plugins_url( '../js/deploy.js', __FILE__), array( 'jquery' ), '', true );
-  wp_localize_script('deploy-script', 'gridsome_js_vars', $js_vars );
+  wp_enqueue_script( 'translate-homepage-script', plugins_url( '../js/translate-homepage.js', __FILE__), array( 'jquery' ), '', true );
+  wp_localize_script('translate-homepage-script', 'phila_homepage_js_vars', $js_vars );
 }
+
+//echo "<h2>Translations</h2>";
 
 add_filter( 'rwmb_meta_boxes', 'prefix_options_meta_boxes' );
 
