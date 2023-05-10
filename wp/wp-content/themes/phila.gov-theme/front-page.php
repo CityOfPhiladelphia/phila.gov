@@ -29,27 +29,6 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
         <div class="grid-x common-requests">
           <div class="small-24 medium-15 large-13 small-centered cell overlap">
             <div class="grid-x collapse call-to-action bg-white pvs pls equal-height">
-              <div class="small-24 medium-auto cell">
-                  <a href="https://www.phila.gov/programs/coronavirus-disease-2019-covid-19/" class="mrs mbs equal" onclick="dataLayer.push({
-                        'event': 'GAEvent',
-                        'eventCategory': 'Service Button',
-                        'eventAction': 'Covid information',
-                        'eventLabel': 'www.phila.gov'
-                      });
-                    ">
-                    <span class="accessible">Covid-19 updates</span>
-                    <div class="phs pvm cta-block clearfix" aria-hidden="true">
-                      <div class="valign">
-                        <div class="valign-cell">
-                          <i class="fas fa-virus fa-3x"></i>
-                        </div>
-                      </div>
-                      <div>
-                        <p class="h5">COVID-19<span class="break-before-mu"> updates</span></p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
                 <div class="small-12 medium-auto cell">
                   <a href="https://www.phila.gov/trashday" class="mrs mbs equal" onclick="dataLayer.push({
                         'event': 'GAEvent',
