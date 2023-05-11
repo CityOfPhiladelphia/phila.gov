@@ -20,7 +20,6 @@ function phila_options_page( $settings_pages ) {
 }
 
 add_action( 'rwmb_enqueue_scripts', 'update_translations_script' );
-// enqueue and localize js file with the $js_vars as a parameter, exposing the php values to javascript to use in the API call
 function update_translations_script() {
   $translations_endpoint = rwmb_meta( 'translation_endpoint', array( 'object_type' => 'setting' ), 'phila_settings' );
   $dept_billing_code = rwmb_meta( 'phila_translations_default_billing_code', array( 'object_type' => 'setting' ), 'phila_settings' );
