@@ -19,6 +19,20 @@ function phila_options_page( $settings_pages ) {
   return $settings_pages;
 }
 
+add_action( 'rwmb_enqueue_scripts', 'update_translations_script' );
+function update_translations_script() {
+  $translations_endpoint = rwmb_meta( 'phila_translations_deploy_url', array( 'object_type' => 'setting' ), 'phila_settings' );
+  $dept_billing_code = rwmb_meta( 'phila_translations_default_billing_code', array( 'object_type' => 'setting' ), 'phila_settings' );
+  $js_vars = array(
+    'update_translations_webhook' => $translations_endpoint,
+    'update_translations_dept_billing_code' => $dept_billing_code,
+  );
+  wp_enqueue_script( 'translate-homepage-script', plugins_url( '../js/translate-homepage.js', __FILE__), array( 'jquery' ), '', true );
+  wp_localize_script('translate-homepage-script', 'phila_homepage_js_vars', $js_vars );
+}
+
+
+
 add_filter( 'rwmb_meta_boxes', 'prefix_options_meta_boxes' );
 
 // General Settings
@@ -258,6 +272,15 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'required'  => true,
         'desc'  => 'Consult OIA team for code to use'
       ),
+      array(
+        'type'       => 'button',
+        'name'       => 'Translate homepage',
+        'std'        => 'Translate homepage',
+        'attributes' => array(
+          'data-section' => 'translate-homepage',
+          'class'        => 'translate-homepage',
+        ),
+      ), 
     ),
   );
 
