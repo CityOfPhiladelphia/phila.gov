@@ -283,7 +283,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'std'        => 'Translate homepage',
         'attributes' => array(
           'data-section' => 'translate-homepage',
-          'class'        => 'deploy-all',
+          'class'        => 'translate-homepage',
         ),
       ), 
     ),
