@@ -21,7 +21,7 @@ function phila_options_page( $settings_pages ) {
 
 add_action( 'rwmb_enqueue_scripts', 'update_translations_script' );
 function update_translations_script() {
-  $translations_endpoint = rwmb_meta( 'translation_endpoint', array( 'object_type' => 'setting' ), 'phila_settings' );
+  $translations_endpoint = rwmb_meta( 'phila_translations_deploy_url', array( 'object_type' => 'setting' ), 'phila_settings' );
   $dept_billing_code = rwmb_meta( 'phila_translations_default_billing_code', array( 'object_type' => 'setting' ), 'phila_settings' );
   $js_vars = array(
     'update_translations_webhook' => $translations_endpoint,
@@ -272,11 +272,6 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'required'  => true,
         'desc'  => 'Consult OIA team for code to use'
       ),
-      array(
-        'name' => 'Translation endpoint URL',
-        'id'   => 'translation_endpoint',
-        'type'  => 'text',
-      ), 
       array(
         'type'       => 'button',
         'name'       => 'Translate homepage',
