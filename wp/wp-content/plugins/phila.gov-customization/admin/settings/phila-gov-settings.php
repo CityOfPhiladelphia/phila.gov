@@ -31,7 +31,7 @@ function update_translations_script() {
   wp_localize_script('translate-homepage-script', 'phila_homepage_js_vars', $js_vars );
 }
 
-//echo "<h2>Translations</h2>";
+
 
 add_filter( 'rwmb_meta_boxes', 'prefix_options_meta_boxes' );
 
