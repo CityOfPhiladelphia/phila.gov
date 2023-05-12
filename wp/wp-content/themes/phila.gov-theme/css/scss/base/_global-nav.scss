@@ -224,7 +224,7 @@
           z-index: 1001;
           top: inherit !important;
           left: auto !important;
-          transform: translateX(22%);
+          transform: translateX(24%);
 
           li {
             :hover {
@@ -365,6 +365,7 @@
             &:hover {
               color: white;
               background-color: color(dark-ben-franklin);
+              cursor: pointer;
             }
 
             &:option {
