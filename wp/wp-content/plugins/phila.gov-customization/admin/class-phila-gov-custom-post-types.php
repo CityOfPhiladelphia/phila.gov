@@ -125,6 +125,7 @@ class Phila_Gov_Custom_Post_Types{
         ),
         'exclude_from_search' => true,
         'show_in_rest'  => true,
+        'rest_base' => 'announcements',
         'public' => false,
         'show_ui' => true,
         'has_archive' => false,

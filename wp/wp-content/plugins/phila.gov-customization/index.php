@@ -107,4 +107,5 @@ require $dir. '/public/modify-post-type-links.php';
 require $dir. '/public/removals.php';
 require $dir. '/public/rewrite-rules.php';
 
+require $dir. '/public/controllers/v2/class-phila-announcements-v2.php';
 require $dir. '/public/controllers/v2/class-phila-posts-v2.php';
