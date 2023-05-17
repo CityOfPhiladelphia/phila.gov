@@ -208,6 +208,14 @@
         }
       }
 
+      /* Styles for screens between 600px and 900px */
+      @media screen and (min-width: 780px) and (max-width: 950px) {
+      
+        #lang-dropdown {
+          transform: translateX(10%) !important;
+        }
+      }
+
       @media screen and (min-width: 780px) {
 
         .show-for-small-only {
@@ -223,7 +231,7 @@
           width: inherit !important;
           z-index: 1001;
           top: inherit !important;
-          left: auto !important;
+          left: revert !important;
           transform: translateX(24%);
 
           li {
@@ -887,7 +895,7 @@
   }
 
   #services-list {
-
+    
     // sass-lint:disable-line no-ids
     .inner-wrapper {
       width: 100%;
