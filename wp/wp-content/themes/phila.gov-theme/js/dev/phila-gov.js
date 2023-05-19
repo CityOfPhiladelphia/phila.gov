@@ -182,17 +182,6 @@ module.exports = $(function () {
     });
   });
 
-  $(document).ready(function() {
-    $('#google_translate_element').bind('DOMNodeInserted', function() {
-        $('.goog-te-gadget .goog-te-gadget-simple span:first').replaceWith(function() { 
-            return "<a role='menuitem'>More languages<i class='fas fa-solid fa-caret-down'></i></>"; 
-        });
-    });
-
-    // "hard code" english translations label DD
-    $("#translate-english").text("English");
-    $("#translate-english-dropdown").text("English");
-
     //foundation equalizer rows
     //doesn't work with nested Equalizers, because a unique ID is required.
     if ($('.equal').length > 0) {
@@ -220,66 +209,4 @@ module.exports = $(function () {
     }
     var mainContent = $('.guide-content').eq(0);
 
-
-    //BEGIN Translation Bar
-
-    $('#translations-menu').on({
-        'show.zf.dropdownMenu': function () {
-          $('html, body').css({
-            overflow: 'hidden',
-            height: '100%'
-          });
-        },
-        'hide.zf.dropdownMenu': function () {
-          $('html, body').css({
-            overflow: 'auto',
-            height: 'auto'
-          });
-        },
-        'click': function() {
-            $(this).find('.menu').children(':not(.show-for-medium)').toggle();
-            if ($(this).find('#lang-dropdown').css('display') === 'none') {
-                $(this).removeClass('menu-open');
-              } else {
-                $(this).addClass('menu-open');
-              }
-        }
-    });
-
-    $(document).on('click', function(event) {
-        if (!$(event.target).closest('#translations-menu').length) {
-          $('#translations-menu').removeClass('menu-open');
-        }
-    });
-
-    function setActiveLanguage(urlLanguage) {
-        $('#translations-menu> li').find('a').each(
-            function() {
-                if (urlLanguage === $.trim($(this).text())){
-                    $(this).addClass('active'); 
-                } else {
-                    $(this).removeClass('active');
-                }
-            });
-    }
-    function getUrlLanguage() {
-        var urlPath = windowPath.split('/');
-        var pathItem = urlPath[1];
-        var urlLanguage = "";
-        
-        switch(pathItem) {
-            case "zh":
-                urlLanguage = "中文";
-                break;
-            case "es":
-                urlLanguage = "Español";
-                break;
-            default:
-                urlLanguage = "English";
-        }
-        setActiveLanguage(urlLanguage);
-    }
-    getUrlLanguage();
-});
-//END Translation Bar
 });
