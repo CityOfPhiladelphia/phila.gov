@@ -40,9 +40,13 @@ module.exports = $(function () {
         });
       }
     });
-    // "hard code" english translations label DD
+    // "hard code" lang selector translations labels
     $("#translate-english").text("English");
     $("#translate-english-dropdown").text("English");
+    $("#translate-spanish").text("Español");
+    $("#translate-spanish-dropdown").text("Español");
+    $("#translate-chinese").text("中文");
+    $("#translate-chinese-dropdown").text("中文");
 
     function setOverflowHidden() {
       $("html, body").css({
