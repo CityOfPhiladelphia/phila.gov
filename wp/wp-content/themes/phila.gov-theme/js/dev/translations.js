@@ -105,7 +105,7 @@ module.exports = $(function () {
 
     function toggleMenuOpen(isOpen) {
       var $langDropdown = $("#lang-dropdown");
-      var $caretIcon = $("#translations-nav i.translate-caret");
+      var $caretIcon = $(".translations-nav i.translate-caret");
       var action = isOpen ? "addClass" : "removeClass";
       $langDropdown.toggleClass("js-dropdown-active", isOpen);
       $langDropdown.toggleClass("is-open", isOpen);
@@ -113,7 +113,7 @@ module.exports = $(function () {
     }
 
     function setActiveLanguage(urlLanguage) {
-      $("#translations-nav li")
+      $(".translations-nav li")
         .find("a")
         .each(function () {
           if (urlLanguage === $.trim($(this).text())) {
