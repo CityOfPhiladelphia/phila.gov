@@ -79,7 +79,7 @@
             </ul>
           </div>
           <!-- Translations Navigation -->
-          <div id="translations-nav" class="top-bar-right">
+          <div class="top-bar-right translations-nav">
             <ul class="translations-bar menu">
               <li class="show-for-medium"><a id="translate-english" href="<?php echo inject_translation_slug('en'); ?>">English</a></li>
               <?php if ((is_front_page() === True) or (get_post_type($post->ID) != 'post')) : ?>
