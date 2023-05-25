@@ -124,6 +124,7 @@ module.exports = $(function () {
         });
     }
     function getUrlLanguage() {
+      var windowPath = $(location).attr('pathname'); 
       var urlPath = windowPath.split("/");
       var pathItem = urlPath[1];
       var urlLanguage = "";
