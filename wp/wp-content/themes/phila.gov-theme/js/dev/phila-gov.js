@@ -4,7 +4,6 @@ module.exports = $(function () {
     /*Globals */
     var navHeight = $('.global-nav').height();
     var windowWidth = $(window).width();
-    var windowPath = $(location).attr('pathname'); 
 
   //Generic class for links that should prevent clickthrough
   $('.no-link').click(function(e){
