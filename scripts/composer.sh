@@ -51,14 +51,14 @@ echo '
     "meta-box/meta-box-include-exclude":"dev-master",
     "meta-box/meta-box-tabs":"dev-master",
     "meta-box/meta-box-tooltip":"dev-master",
-    "wpackagist-plugin/better-search-replace":"1.4.1",
+    "wpackagist-plugin/better-search-replace":"1.4.2",
     "wpackagist-plugin/disable-gutenberg":"2.8.1",
     "wpackagist-plugin/jwt-auth":"2.1.3",
     "wpackagist-plugin/gathercontent-import":"3.2.12",
     "wpackagist-plugin/easy-wp-smtp":"^1.5.2",
     "wpackagist-plugin/admin-email-as-from-address":"^1.2",
     "wpackagist-plugin/jwt-authentication-for-wp-rest-api":"1.3.2",
-    "wpackagist-plugin/meta-box":"^5.6.5",
+    "wpackagist-plugin/meta-box":"^5.7.2",
     "wpackagist-plugin/mb-rest-api":"^1.4.1",
     "wpackagist-plugin/mb-relationships":"^1.10.11",
     "wpackagist-plugin/meta-box-text-limiter":"^1.1.3",
@@ -66,7 +66,7 @@ echo '
     "wpackagist-plugin/reusable-text-blocks":"^1.5.3",
     "wpackagist-plugin/amazon-s3-and-cloudfront":"^2.6.2",
     "wpackagist-plugin/classic-editor":"^1.6.2",
-    "wpackagist-plugin/wp-rest-api-v2-menus":"^0.10",
+    "wpackagist-plugin/wp-rest-api-v2-menus":"^0.12.1",
     "wpackagist-plugin/wordpress-importer":"^0.8",
     "wpackagist-plugin/tinymce-advanced":"^5.6.0",
     "nesbot/carbon": "^2.64",
@@ -79,4 +79,4 @@ echo '
   }
 }
 ' > ~/app/wp/composer.json
-composer update -d ~/app/wp
+rm -rf ~/app/wp/vendor && composer clear-cache && composer install -d ~/app/wp
