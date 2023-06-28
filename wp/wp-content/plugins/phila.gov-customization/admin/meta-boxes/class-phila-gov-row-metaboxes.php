@@ -430,6 +430,12 @@ class Phila_Gov_Row_Metaboxes {
           ),
         )
       ),
+      array(
+        'id'   => 'phila_modal',
+        'type' => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_modal'),
+        'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_modal(),
+      ),
     ),
   );
 }
