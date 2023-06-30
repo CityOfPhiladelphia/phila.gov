@@ -47,6 +47,8 @@ module.exports = $(function () {
     $("#translate-spanish-dropdown").text("Español");
     $("#translate-chinese").text("中文");
     $("#translate-chinese-dropdown").text("中文");
+    $("#translate-arabic-dropdown").text("عربي");
+
 
     function setOverflowHidden() {
       $("html, body").css({
@@ -134,6 +136,9 @@ module.exports = $(function () {
       var urlLanguage = "";
 
       switch (pathItem) {
+        case "ar":
+          urlLanguage = "عربي";
+          break;
         case "zh":
           urlLanguage = "中文";
           break;

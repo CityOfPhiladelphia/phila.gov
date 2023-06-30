@@ -97,6 +97,7 @@
                 <?php if ((is_front_page() === True) or (get_post_type($post->ID) != 'post')) : ?>
                   <li class="show-for-small-only"><a id="translate-spanish-dropdown" href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
                   <li class="show-for-small-only"><a id="translate-chinese-dropdown" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
+                  <li><a id="translate-arabic-dropdown" href="<?php echo inject_translation_slug('ar'); ?>">عربي</a></li>
                 <?php endif; ?>
                 <li id="google_translate_element"></li>
                 <li id="translations-support"><a href="<?php echo get_site_url() . "/programs/language-access-philly/translation-feedback-and-support/" ?> "><i class="fa fa-messages"></i>Feedback and support</a></li>
