@@ -47,7 +47,6 @@ module.exports = $(function () {
     $("#translate-spanish-dropdown").text("Español");
     $("#translate-chinese").text("中文");
     $("#translate-chinese-dropdown").text("中文");
-    $("#translate-arabic").text("عربي");
     $("#translate-arabic-dropdown").text("عربي");
 
 
