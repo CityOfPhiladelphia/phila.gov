@@ -15,6 +15,7 @@ if ( !is_user_logged_in() ):
       window.dataLayer = window.dataLayer || [];
       dataLayer.push({
         "event": "page_loaded",
+        "post_type": "<?php echo get_post_type() ?>",
         "contentModifiedDepartment": "<?php echo $departments ?>",
         "lastUpdated": "<?php the_modified_time('Y-m-d H:i:s'); ?>",
         "templateType": "<?php echo phila_get_selected_template() ?>",
@@ -32,7 +33,7 @@ if ( !is_user_logged_in() ):
         "publish": "<?php echo get_the_date() ?>",
         "articleCategory": "<?php echo phila_get_selected_template() ?>",
         "articleLanguage": "<?php echo $lang; ?>",
-        "articleTag": "<?php echo implode (', ', $tags); ?>"
+        "articleTag": "<?php echo implode (', ', $tags); ?>",
         <?php endif; ?>
         <?php if ( get_post_type() === 'programs' && phila_get_selected_template() === 'prog_landing_page'): 
         $category = get_the_terms( $post->ID, 'service_type' );
