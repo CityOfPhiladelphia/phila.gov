@@ -65,12 +65,8 @@ class Phila_Gov_Site_Wide_Alert {
             'dateFormat'=>'mm-dd-yy',
             'stepMinute' => 15,
             'showHour' => 'true',
-            //'altField' => '#phila_start_hidden',
-            //'altFormat'=> "@",
-            //'altFieldTimeOnly' => false,
             'controlType'=> 'select',
             'oneLine'=> true,
-            //'altTimeFormat' => 'c',
             'timeInput' => true,
           ),
           'timestamp' => true
@@ -89,12 +85,8 @@ class Phila_Gov_Site_Wide_Alert {
             'dateFormat' => 'mm-dd-yy',
             'stepMinute' => 15,
             'showHour' => 'true',
-            //'altField' => '#phila_end_hidden',
-            //'altFormat'=> "@",
-            //'altFieldTimeOnly' => false,
             'controlType'=> 'select',
             'oneLine'=> true,
-            //'altTimeFormat' => 'c',
             'timeInput' => true
           ),
           'timestamp' => true
