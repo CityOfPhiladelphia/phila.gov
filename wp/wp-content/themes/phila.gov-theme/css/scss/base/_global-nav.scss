@@ -212,7 +212,7 @@
       @media screen and (min-width: 780px) and (max-width: 950px) {
       
         #lang-dropdown {
-          transform: translateX(10%) !important;
+          transform: translateX(-7%) !important;
         }
       }
 
@@ -232,7 +232,7 @@
           z-index: 1001;
           top: inherit !important;
           left: revert !important;
-          transform: translateX(24%);
+          transform: translateX(9%);
 
           li {
             :hover {
