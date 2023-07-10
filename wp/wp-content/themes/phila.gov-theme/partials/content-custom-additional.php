@@ -42,7 +42,7 @@
         <?php if (!empty( $content['forms']) ) : ?>
           <div class="pvs">
             <?php foreach ( $content['forms'] as $form ): ?>
-              <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
+              <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a><br>
             <?php endforeach; ?>
             </div>
           <?php endif; ?>
