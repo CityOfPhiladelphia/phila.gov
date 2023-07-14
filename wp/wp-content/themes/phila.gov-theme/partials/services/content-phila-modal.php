@@ -10,5 +10,5 @@
         </button>
         <div class="mtl"><?php echo apply_filters( 'the_content', $phila_modal_content); ?></div>
     </div>
-        <div class="phm-mu"><button class="link" data-open="<?php echo sanitize_title_with_dashes($phila_modal_link_text)?>"><i class="fas fa-info-circle"></i> <?php echo $phila_modal_link_text ?></button></div>
-    <?php endif ?>
+    <div class="phm-mu"><button class="link" data-open="<?php echo sanitize_title_with_dashes($phila_modal_link_text)?>"><i class="fas fa-info-circle"></i> <?php echo $phila_modal_link_text ?></button></div>
+<?php endif ?>
