@@ -106,3 +106,5 @@ require $dir. '/public/hostname-redirect.php';
 require $dir. '/public/modify-post-type-links.php';
 require $dir. '/public/removals.php';
 require $dir. '/public/rewrite-rules.php';
+
+require $dir. '/public/controllers/v2/class-phila-site-wide-alerts-v2.php';

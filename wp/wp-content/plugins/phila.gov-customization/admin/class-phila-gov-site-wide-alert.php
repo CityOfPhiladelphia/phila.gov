@@ -59,17 +59,17 @@ class Phila_Gov_Site_Wide_Alert {
           'class' =>  'start-time',
           'type'  => 'datetime',
           'size'  =>  25,
-          'hidden'  => array( 'active', '=', 1),
-          'js_options' =>  array(
-            'timeFormat' =>  'hh:mm tt',
-            'dateFormat'=>'mm-dd-yy',
-            'stepMinute' => 15,
-            'showHour' => 'true',
-            'controlType'=> 'select',
-            'oneLine'=> true,
-            'timeInput' => true,
-          ),
-          'timestamp' => true
+          // 'hidden'  => array( 'active', '=', 1),
+          // 'js_options' =>  array(
+          //   'timeFormat' =>  'hh:mm tt',
+          //   'dateFormat'=>'mm-dd-yy',
+          //   'stepMinute' => 15,
+          //   'showHour' => 'true',
+          //   'controlType'=> 'select',
+          //   'oneLine'=> true,
+          //   'timeInput' => true,
+          // ),
+          // 'timestamp' => true
 
         ),
         array(

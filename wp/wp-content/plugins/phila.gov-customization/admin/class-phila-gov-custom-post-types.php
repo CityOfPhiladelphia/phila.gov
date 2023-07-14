@@ -193,7 +193,6 @@ class Phila_Gov_Custom_Post_Types{
           'not_found'   => __( 'Site-wide Alert not found' ),
           'not_found_in_trash'   => __( 'Site-wide Alert not found in trash' ),
         ),
-        'taxonomies' => array('category'),
         'exclude_from_search' => true,
         'show_in_rest' => true,
         'rest_base' => 'alerts',
