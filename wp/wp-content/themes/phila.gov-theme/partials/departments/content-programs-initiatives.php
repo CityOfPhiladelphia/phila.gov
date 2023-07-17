@@ -330,6 +330,14 @@
               <?php include(locate_template('partials/content-custom-additional.php')); ?>
               <!-- /Additional Content -->
             <?php endif;?>
+          <?php elseif ( $current_row_option == 'phila_modal'): 
+            $phila_modal = isset( $current_row['phila_full_options']['phila_modal'] ) ? $current_row['phila_full_options']['phila_modal'] : '';
+
+            if ( !empty( $phila_modal ) ) :  ?>
+            <!-- Phila Modal -->
+            <?php include(locate_template('partials/services/content-phila-modal.php')); ?>
+            <!-- /Phila Modal -->
+            <?php endif;?>
 
         <?php endif;  /*end full row */?>
 
