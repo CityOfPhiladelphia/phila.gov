@@ -190,9 +190,8 @@
     </div>
     <?php include(locate_template('partials/global/translations-modal.php')); ?>
     <div id="phila-mobile-menu"></div>
-    <?php
-    //create alerts when appropriate
-    call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
+    <div id="phila-site-wide-alerts"></div>
+    <?php include( locate_template( 'partials/global/site-wide-banner.php' ) ); ?>
   </header>
   <div id="page">
     <?php
