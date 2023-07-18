@@ -101,7 +101,6 @@ require $dir. '/public/controllers/class-phila-service-pages.php';
 require $dir. '/public/controllers/class-phila-staff-members.php';
 
 require $dir. '/public/add-headers.php';
-require $dir. '/public/class-phila-gov-site-wide-alert-rendering.php';
 require $dir. '/public/hostname-redirect.php';
 require $dir. '/public/modify-post-type-links.php';
 require $dir. '/public/removals.php';
