@@ -55,8 +55,8 @@
     <?php endforeach; ?>
     </div>
   <?php endif; ?>
-  <div class="not-found h3" style="display:none">No results found for that search.</div>
 <?php if ( !empty( $faq_search ) ): ?>
+  <div class="not-found h3" style="display:none">No results found for that search.</div>
   </div>
 <?php endif; ?>
 
