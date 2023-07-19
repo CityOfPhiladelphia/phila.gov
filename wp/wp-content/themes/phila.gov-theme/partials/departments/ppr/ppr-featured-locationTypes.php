@@ -15,6 +15,12 @@
             include(locate_template('partials/departments/ppr/ppr-feat-locationType-card.php'));
             include(locate_template('partials/departments/ppr/ppr-feat-locationType-card.php'));
             include(locate_template('partials/departments/ppr/ppr-feat-locationType-card.php'));
+            include(locate_template('partials/departments/ppr/ppr-feat-locationType-card.php'));
+            include(locate_template('partials/departments/ppr/ppr-feat-locationType-card.php'));
+            include(locate_template('partials/departments/ppr/ppr-feat-locationType-card.php'));
+            include(locate_template('partials/departments/ppr/ppr-feat-locationType-card.php'));
+            include(locate_template('partials/departments/ppr/ppr-feat-locationType-card.php'));
+            include(locate_template('partials/departments/ppr/ppr-feat-locationType-card.php'));
           ?>
         </div>
         </div>
