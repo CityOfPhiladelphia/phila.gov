@@ -96,7 +96,7 @@ jQuery(document).ready(function($) {
             var locationTypes = data.rows
             // 2. get Flickr image sizes for each location type
             var photos = locationTypes.map(function(lType){
-                return getFlickrPhoto(lType.location_type_photo)
+                return getFlickrPhoto(lType.photo_id)
             })
 
             Promise.all(photos).then(locationPhotos =>{
