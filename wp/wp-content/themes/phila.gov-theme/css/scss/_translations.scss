@@ -29,9 +29,8 @@
     }
   }
 }
-// arabic style
-html[lang="ar"] {
+html[dir="rtl"] {
   .accessible {
-    right: -99999px;
+    right: -99999px; // handles overflow of header h1
   }
 }
