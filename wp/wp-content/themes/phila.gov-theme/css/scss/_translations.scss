@@ -29,3 +29,9 @@
     }
   }
 }
+// arabic style
+html[lang="ar"] {
+  .accessible {
+    right: -99999px;
+  }
+}
