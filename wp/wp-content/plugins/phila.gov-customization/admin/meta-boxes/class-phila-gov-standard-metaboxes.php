@@ -1364,6 +1364,21 @@ public static function phila_meta_var_connect(){
       )
     );
   }
+  public static function phila_meta_var_modal (){
+    return array(
+      array(
+        'id'  => 'phila_modal_link_text',
+        'name'  => 'Clickable link text',
+        'type'  => 'text',
+      ),
+      array(
+        'id' => 'phila_modal_wysiwyg',
+        'type'  => 'wysiwyg',
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+        'sanitize_callback' => 'none'
+      ),
+    );
+  }
   //v1 service page default
   public static function phila_meta_var_addtional_content() {
     return array(
