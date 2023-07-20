@@ -11,6 +11,7 @@ register_rest_field( 'post', 'featured_media',  array( 'get_callback' => 'get_ph
 add_filter( 'rest_post_query', 'filter_post_by_archived', 10, 2 );
 add_filter( 'rest_post_query', 'filter_post_by_featured', 10, 2 );
 add_filter( 'rest_post_query', 'filter_post_by_language', 10, 2 );
+add_filter( 'rest_post_query', 'filter_post_by_template', 10, 2 );
 
 
 function get_phila_template( $post ) {
@@ -98,6 +99,25 @@ function filter_post_by_language( $args, $request ) {
       array(
           'key'     => 'phila_select_language',
           'value'   => $lang,
+          'compare' => '=',
+      ),
+  );
+
+  return $args;
+}
+
+//add filter for template
+function filter_post_by_template($args, $request) {
+  $template = $request->get_param( 'template' );
+
+  if ( empty( $template )) {
+      return $args;
+  }
+
+  $args['meta_query'] = array(
+      array(
+          'key'     => 'phila_template_select',
+          'value'   => $template,
           'compare' => '=',
       ),
   );
