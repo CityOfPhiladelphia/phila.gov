@@ -93,25 +93,6 @@ class Phila_Gov_Site_Wide_Alert {
           'timestamp' => true
 
         ),
-        array(
-          'id'  => 'phila_alert_button_active',
-          'name'  => 'Adds a call to action button to alert',
-          'type'  => 'switch',
-          'on_label'  => 'Yes',
-          'off_label' => 'No',
-        ),
-        array(
-          'name'  => 'Alert button text',
-          'id'    => 'phila_alert_button_text',
-          'type'  => 'text',
-          'hidden'  => array( 'phila_alert_button_active', '=', 0),
-        ),
-        array(
-          'name'  => 'Alert button URL',
-          'type'  => 'url',
-          'id'    => 'phila_alert_button_url',
-          'hidden'  => array( 'phila_alert_button_active', '=', 0),
-        ),
       ),
     );//site wide alert boxes
     return $meta_boxes;
