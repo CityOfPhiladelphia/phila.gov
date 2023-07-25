@@ -49,4 +49,10 @@ html[dir="rtl"] {
       margin-right: -1rem;
     }
   }
+
+  //search bar
+  .search input[type=text] {
+    padding-right: 60px;
+  }
+
 }
