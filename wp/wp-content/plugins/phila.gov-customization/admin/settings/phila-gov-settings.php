@@ -9,11 +9,10 @@ function phila_options_page( $settings_pages ) {
     'menu_title'  => 'Phila.gov settings',
     'menu_title'  => 'phila.gov settings',
     'tabs'        => array(
-      'general' => 'General Settings',
-      'jobs'  => 'Featured jobs',
-      'closures'  => 'Closures',
-      'sitewide_settings'  => 'Site-wide settings',
-      'translations'      => 'Translations'
+      'general'       => 'General Settings',
+      'jobs'          => 'Featured jobs',
+      'closures'      => 'Closures',
+      'translations'  => 'Translations'
     ),
   );
   return $settings_pages;
@@ -191,64 +190,6 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     ),
   );
 
-
-  $meta_boxes[] = array(
-    'id'             => 'sitewide_settings',
-    'title'          => 'Sitewide settings',
-    'settings_pages' => 'phila_gov',
-    'tab'            => 'sitewide_settings',
-    'include' => array(
-      'user_role'  => array( 'administrator', 'editor' ),
-    ),
-    'fields'  => array(
-      array(
-        'name'  => 'Display site-wide banner',
-        'desc'  => 'When active, the site-wide banner will be displayed on all pages',
-        'id'    => 'display_site_wide_banner',
-        'type'  => 'radio',
-        'inline' => false,
-        'std' => '0',
-        'options' =>  array(
-            '0' => 'Hide',
-            '1' => 'Display',
-        )
-      ),
-      array(
-        'type' => 'heading',
-        'name' => 'Site-wide banner settings',
-      ),
-      array(
-        'id'  => 'heading_text',
-        'name'  => 'Heading text',
-        'type'  => 'text',
-        'required'  => true
-      ),
-      array(
-        'id'  => 'banner_subtext',
-        'name'  => 'Banner subtext',
-        'type'  => 'text',
-        'required'  => true
-      ),
-      array(
-        'id'  => 'button_text',
-        'name'  => 'Button text',
-        'type'  => 'text',
-        'required'  => true
-      ),
-      array(
-        'id'  => 'button_url',
-        'name'  => 'Button URL',
-        'type'  => 'url',
-        'required'  => true
-      ),
-      array(
-        'id'  => 'icon',
-        'name' => 'Icon',
-        'type'  => 'text',
-        'desc' => 'Example: fas fa-icon-name. You can find icons on <a href="http://fontawesome.io/icons/" target="_blank">Fontawesome.io</a>.',
-      ),
-    ),
-  );
   $meta_boxes[] = array(
     'id'             => 'phila_translations_settings',
     'title'          => 'Translations deployment settings',
