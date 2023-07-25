@@ -7,17 +7,10 @@ register_rest_field( 'post', 'template',        array( 'get_callback' => 'get_ph
 register_rest_field( 'post', 'tags',            array( 'get_callback' => 'get_phila_tags' ));
 register_rest_field( 'post', 'featured_media',  array( 'get_callback' => 'get_phila_featured_media' ));
 
-function custom_post_type_rest_query_filter($args, $request) {
-  $args = filter_post_by_template($args, $request);
-  $args = filter_post_by_language($args, $request);
-  $args = filter_post_by_archived($args, $request);
-  $args = filter_post_by_featured($args, $request);
-
-  return $args;
-}
-
-add_filter('rest_post_query', 'custom_post_type_rest_query_filter', 10, 2);
-
+add_filter( 'rest_post_query', 'filter_post_by_archived', 10, 2 );
+add_filter( 'rest_post_query', 'filter_post_by_featured', 10, 2 );
+add_filter( 'rest_post_query', 'filter_post_by_language', 10, 2 );
+add_filter( 'rest_post_query', 'filter_post_by_template', 10, 2 );
 
 function get_phila_template( $post ) {
   return phila_get_selected_template($post['id'], true, true);
@@ -59,11 +52,9 @@ function filter_post_by_archived( $args, $request ) {
   }
 
   $args['meta_query'][] = array(
-      array(
-          'key'     => 'phila_archive_post',
-          'value'   => $archived,
-          'compare' => '=',
-      ),
+    'key'     => 'phila_archive_post',
+    'value'   => $archived,
+    'compare' => '=',
   );
 
   return $args;
@@ -83,11 +74,9 @@ function filter_post_by_featured( $args, $request ) {
   }
 
   $args['meta_query'][] = array(
-      array(
-          'key'     => 'phila_is_feature',
-          'value'   => $featured,
-          'compare' => '=',
-      ),
+    'key'     => 'phila_is_feature',
+    'value'   => $featured,
+    'compare' => '=',
   );
 
   return $args;
@@ -101,11 +90,9 @@ function filter_post_by_language( $args, $request ) {
   }
 
   $args['meta_query'][] = array(
-      array(
-          'key'     => 'phila_select_language',
-          'value'   => $lang,
-          'compare' => '=',
-      ),
+    'key'     => 'phila_select_language',
+    'value'   => $lang,
+    'compare' => '=',
   );
 
   return $args;
@@ -120,11 +107,9 @@ function filter_post_by_template($args, $request) {
   }
 
   $args['meta_query'][] = array(
-      array(
-          'key'     => 'phila_template_select',
-          'value'   => $template,
-          'compare' => '=',
-      ),
+    'key'     => 'phila_template_select',
+    'value'   => $template,
+    'compare' => '=',
   );
 
   return $args;
