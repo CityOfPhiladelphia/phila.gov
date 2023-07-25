@@ -192,7 +192,6 @@
     <?php include(locate_template('partials/global/translations-modal.php')); ?>
     <div id="phila-mobile-menu"></div>
     <div id="phila-site-wide-alerts"></div>
-    <?php include( locate_template( 'partials/global/site-wide-banner.php' ) ); ?>
   </header>
   <div id="page">
     <?php
