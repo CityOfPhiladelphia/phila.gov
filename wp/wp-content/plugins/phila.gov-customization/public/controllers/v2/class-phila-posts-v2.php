@@ -58,7 +58,7 @@ function filter_post_by_archived( $args, $request ) {
     $archived = 'default';
   }
 
-  $args['meta_query'] = array(
+  $args['meta_query'][] = array(
       array(
           'key'     => 'phila_archive_post',
           'value'   => $archived,
@@ -82,7 +82,7 @@ function filter_post_by_featured( $args, $request ) {
     $featured = 0;
   }
 
-  $args['meta_query'] = array(
+  $args['meta_query'][] = array(
       array(
           'key'     => 'phila_is_feature',
           'value'   => $featured,
@@ -100,7 +100,7 @@ function filter_post_by_language( $args, $request ) {
       return $args;
   }
 
-  $args['meta_query'] = array(
+  $args['meta_query'][] = array(
       array(
           'key'     => 'phila_select_language',
           'value'   => $lang,
@@ -119,7 +119,7 @@ function filter_post_by_template($args, $request) {
       return $args;
   }
 
-  $args['meta_query'] = array(
+  $args['meta_query'][] = array(
       array(
           'key'     => 'phila_template_select',
           'value'   => $template,
