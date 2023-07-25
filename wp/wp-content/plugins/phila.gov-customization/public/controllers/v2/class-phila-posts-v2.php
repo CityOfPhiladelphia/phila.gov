@@ -7,11 +7,16 @@ register_rest_field( 'post', 'template',        array( 'get_callback' => 'get_ph
 register_rest_field( 'post', 'tags',            array( 'get_callback' => 'get_phila_tags' ));
 register_rest_field( 'post', 'featured_media',  array( 'get_callback' => 'get_phila_featured_media' ));
 
-// add filter functionality
-add_filter( 'rest_post_query', 'filter_post_by_archived', 10, 2 );
-add_filter( 'rest_post_query', 'filter_post_by_featured', 10, 2 );
-add_filter( 'rest_post_query', 'filter_post_by_language', 10, 2 );
-add_filter( 'rest_post_query', 'filter_post_by_template', 10, 2 );
+function custom_post_type_rest_query_filter($args, $request) {
+  $args = filter_post_by_template($args, $request);
+  $args = filter_post_by_language($args, $request);
+  $args = filter_post_by_archived($args, $request);
+  $args = filter_post_by_featured($args, $request);
+
+  return $args;
+}
+
+add_filter('rest_post_query', 'custom_post_type_rest_query_filter', 10, 2);
 
 
 function get_phila_template( $post ) {
