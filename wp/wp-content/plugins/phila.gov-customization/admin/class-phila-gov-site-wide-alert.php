@@ -38,6 +38,7 @@ class Phila_Gov_Site_Wide_Alert {
             'blue'       => 'Blue',
             'orange' => 'Orange',
             'red' => 'Red',
+            'gray' => 'Gray',
           ),
         ),
         array(
@@ -59,7 +60,7 @@ class Phila_Gov_Site_Wide_Alert {
           'class' =>  'start-time',
           'type'  => 'datetime',
           'size'  =>  25,
-          'hidden'  => array( 'active', '=', 1),
+          'hidden'  => array( 'phila_alert_active', '=', 1),
           'js_options' =>  array(
             'timeFormat' =>  'hh:mm tt',
             'dateFormat'=>'mm-dd-yy',
@@ -78,7 +79,7 @@ class Phila_Gov_Site_Wide_Alert {
           'type'  => 'datetime',
           'class' =>  'end-time',
           'size'  =>  25,
-          'hidden'  => array( 'active', '=', 1),
+          'hidden'  => array( 'phila_alert_active', '=', 1),
           'desc'  => 'Note: The start and end times communicate an alert’s length in the alert bar. Use the active alert feature to turn alerts on and ignore this setting.',
           'js_options' =>  array(
             'timeFormat' => 'hh:mm tt',
@@ -91,6 +92,25 @@ class Phila_Gov_Site_Wide_Alert {
           ),
           'timestamp' => true
 
+        ),
+        array(
+          'id'  => 'phila_alert_button_active',
+          'name'  => 'Adds a call to action button to alert',
+          'type'  => 'switch',
+          'on_label'  => 'Yes',
+          'off_label' => 'No',
+        ),
+        array(
+          'name'  => 'Alert button text',
+          'id'    => 'phila_alert_button_text',
+          'type'  => 'text',
+          'hidden'  => array( 'phila_alert_button_active', '=', 0),
+        ),
+        array(
+          'name'  => 'Alert button URL',
+          'type'  => 'url',
+          'id'    => 'phila_alert_button_url',
+          'hidden'  => array( 'phila_alert_button_active', '=', 0),
         ),
       ),
     );//site wide alert boxes
