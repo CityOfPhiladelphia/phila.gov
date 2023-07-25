@@ -55,7 +55,7 @@
       </th>
       <td class="<?php echo (!$archive) ? 'pvl': 'percent-90' ?>">
         <?php echo !empty( $connect_vars['email_exp'] ) ? $connect_vars['email_exp'] . '<br />'  : ''; ?>
-        <a href="mailto:<?php echo $connect_vars['email']; ?>" class="u-email"><?php echo phila_util_return_parsed_email($connect_vars['email']); ?></a>
+        <a translate="no" href="mailto:<?php echo $connect_vars['email']; ?>" class="u-email"><?php echo phila_util_return_parsed_email($connect_vars['email']); ?></a>
       </td>
     </tr>
   <?php endif; ?>

@@ -77,7 +77,7 @@
          <div class="email pbxs">
            <span class="vcard-label">Email: </span>
            <?php echo $connect_vars['email_exp']; ?><br />
-           <a href="mailto:<?php echo $connect_vars['email']; ?>"><?php echo $connect_vars['email']; ?></a>
+           <a translate="no" href="mailto:<?php echo $connect_vars['email']; ?>"><?php echo $connect_vars['email']; ?></a>
          </div>
         <?php endif; ?>
       </div>
