@@ -66,7 +66,7 @@ $flickr = isset( $contact_content['phila_connect_general']['phila_connect_social
     </div>
   <?php endif; // address_1 || phone ?>
 <?php if ( !empty( $email ) ) : ?>
-<div class="pbm"><a href="mailto:<?php echo $email?>"><?php echo $email ?></a> <?php echo ( $email_desc ) ? $email_desc : '' ?></div>
+<div class="pbm"><a translate="no" href="mailto:<?php echo $email?>"><?php echo $email ?></a> <?php echo ( $email_desc ) ? $email_desc : '' ?></div>
 <?php endif;?>
 <div class="ptxs">
   <?php if ( !empty( $facebook ) ) : ?>
