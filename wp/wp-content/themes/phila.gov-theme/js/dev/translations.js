@@ -123,6 +123,7 @@ module.exports = $(function () {
         .find("a")
         .each(function () {
           if (urlLanguage === $.trim($(this).text())) {
+            console.log('urlLanguage ACTIVE ' + urlLanguage)
             $(this).addClass("active");
           } else {
             $(this).removeClass("active");
@@ -130,25 +131,29 @@ module.exports = $(function () {
         });
     }
     function getUrlLanguage() {
-      var windowPath = $(location).attr('pathname'); 
-      var urlPath = windowPath.split("/");
-      var pathItem = urlPath[1];
-      var urlLanguage = "";
+      var windowPath = $(location)[0]; 
+      console.log('windowPath ' + windowPath)
+      if (windowPath) {
+        var langPath = windowPath.pathname.split("/")[1];
+        console.log('langPath ' + langPath)
+        var urlLanguage = "";
 
-      switch (pathItem) {
-        case "ar":
-          urlLanguage = "عربي";
-          break;
-        case "zh":
-          urlLanguage = "中文";
-          break;
-        case "es":
-          urlLanguage = "Español";
-          break;
-        default:
-          urlLanguage = "English";
+        switch (langPath) {
+          case "ar":
+            urlLanguage = "عربي";
+            break;
+          case "zh":
+            urlLanguage = "中文";
+            break;
+          case "es":
+            urlLanguage = "Español";
+            break;
+          default:
+            urlLanguage = "English";
+        }
+        console.log('urlLanguage ' + urlLanguage)
+        setActiveLanguage(urlLanguage);
       }
-      setActiveLanguage(urlLanguage);
     }
     getUrlLanguage();
   });
