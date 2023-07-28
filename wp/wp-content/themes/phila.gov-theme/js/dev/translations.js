@@ -123,7 +123,6 @@ module.exports = $(function () {
         .find("a")
         .each(function () {
           if (urlLanguage === $.trim($(this).text())) {
-            console.log('urlLanguage ACTIVE ' + urlLanguage)
             $(this).addClass("active");
           } else {
             $(this).removeClass("active");
@@ -132,10 +131,8 @@ module.exports = $(function () {
     }
     function getUrlLanguage() {
       var windowPath = $(location)[0]; 
-      console.log('windowPath ' + windowPath)
       if (windowPath) {
         var langPath = windowPath.pathname.split("/")[1];
-        console.log('langPath ' + langPath)
         var urlLanguage = "";
 
         switch (langPath) {
@@ -151,7 +148,6 @@ module.exports = $(function () {
           default:
             urlLanguage = "English";
         }
-        console.log('urlLanguage ' + urlLanguage)
         setActiveLanguage(urlLanguage);
       }
     }
