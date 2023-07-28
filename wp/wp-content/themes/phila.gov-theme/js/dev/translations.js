@@ -160,3 +160,4 @@ module.exports = $(function () {
 
   //END Translation Bar
 });
+
