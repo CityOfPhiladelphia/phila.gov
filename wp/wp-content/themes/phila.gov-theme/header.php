@@ -87,8 +87,15 @@
                 <li class="show-for-medium"><a id="translate-chinese" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
               <?php endif; ?>
             <!-- Dropdown button -->
-              <button class="translations-button show-for-medium" id="desktop-lang-button" data-toggle="lang-dropdown"><i class="fa fa-earth-americas"></i><i class="translate-caret fas fa-solid fa-caret-down"></i></button>
-              <button class="translations-button show-for-small-only" id="mobile-lang-button" data-toggle="lang-dropdown"><i class="fa fa-earth-americas"></i><a tabindex="-1" class="show-for-small-only" href="#">Translate</a><i class="translate-caret fas fa-solid fa-caret-down"></i></button>
+              <button translate="no" class="translations-button show-for-medium" id="desktop-lang-button" data-toggle="lang-dropdown">
+                <i class="fa fa-earth-americas"></i>
+                <i class="translate-caret fas fa-solid fa-caret-down"></i>
+              </button>
+              <button class="translations-button show-for-small-only" id="mobile-lang-button" data-toggle="lang-dropdown">
+                <i class="fa fa-earth-americas"></i>
+                  <a tabindex="-1" class="show-for-small-only" href="#">Translate</a>
+                <i class="translate-caret fas fa-solid fa-caret-down"></i>
+              </button>
             </ul>
             <!-- Dropdown menu -->
             <div id="lang-dropdown" class="dropdown-pane" data-close-on-click="true" data-position="bottom" data-alignment="right" data-dropdown data-auto-focus="true">
