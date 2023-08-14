@@ -295,6 +295,30 @@
       }
 
       #translations-menu {
+        //hidden languages in dropdown menu
+        #translate-haitian-creole-dropdown {
+          display: none;
+        }
+        
+        #translate-french-dropdown {
+          display: none;
+        }
+        
+        #translate-swahili-dropdown {
+          display: none;
+        }
+        
+        #translate-portuguese-dropdown {
+          display: none;
+        }
+        
+        #translate-russian-dropdown {
+          display: none;
+        }
+        
+        #translate-vietnamese-dropdown {
+          display: none;
+        }
 
         #translations-support>a {
           font-weight: bold;
@@ -313,7 +337,7 @@
               color: white;
               background-color: color(dark-ben-franklin);
             }
-
+            
             .fa {
               margin-right: 8px;
             }
@@ -1129,3 +1153,4 @@ header {
   border: 1px solid black;
   z-index: 10001;
 }
+
