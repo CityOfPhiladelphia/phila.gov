@@ -105,6 +105,12 @@
                   <li class="show-for-small-only"><a id="translate-spanish-dropdown" href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
                   <li class="show-for-small-only"><a id="translate-chinese-dropdown" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
                   <li><a id="translate-arabic-dropdown" href="<?php echo inject_translation_slug('ar'); ?>">عربي</a></li>
+                  <li><a id="translate-haitian-creole-dropdown" href="<?php echo inject_translation_slug('ht'); ?>">Ayisyen</a></li>
+                  <li><a id="translate-french-dropdown" href="<?php echo inject_translation_slug('fr'); ?>">Français</a></li>
+                  <li><a id="translate-swahili-dropdown" href="<?php echo inject_translation_slug('sw'); ?>">Kiswahili</a></li>
+                  <li><a id="translate-portuguese-dropdown" href="<?php echo inject_translation_slug('pt'); ?>">Português</a></li>
+                  <li><a id="translate-russian-dropdown" href="<?php echo inject_translation_slug('ru'); ?>">Pyccкий</a></li>
+                  <li><a id="translate-vietnamese-dropdown" href="<?php echo inject_translation_slug('vi'); ?>">Tiếng Việt</a></li>
                 <?php endif; ?>
                 <li id="google_translate_element"></li>
                 <li id="translations-support"><a href="<?php echo get_site_url() . "/programs/language-access-philly/translation-feedback-and-support/" ?> "><i class="fa fa-messages"></i>Feedback and support</a></li>
