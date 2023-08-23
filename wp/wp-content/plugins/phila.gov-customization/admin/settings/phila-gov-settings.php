@@ -135,7 +135,10 @@ function prefix_options_meta_boxes( $meta_boxes ) {
           array(
             'id'  => 'phila_flexible_collection_status',
             'name'  => 'Status',
+            'limit' => 170,
             'type'  => 'wysiwyg',
+            'desc'  => 'Enter a short description of the current status. 170 character maximum.',
+            'required'  => true,
             'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
           ),
           array(
