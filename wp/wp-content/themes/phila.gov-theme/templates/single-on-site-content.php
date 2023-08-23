@@ -56,14 +56,7 @@ $user_selected_template    = phila_get_selected_template();
     <?php endif; ?>
 
   <?php
-
-
-/**
- * Adds markup around a call to get_template_part()
- * @param  string $_template HTML, ideally returned from a call to get_template_part()
- * @return HTML            template markup to be included in page
- */
-
+  
   switch ($user_selected_template) {
 
     case 'all_services_v2':
