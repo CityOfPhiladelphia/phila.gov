@@ -1278,7 +1278,7 @@ public static function phila_meta_var_connect(){
     );
   }
 
-  public static function phila_meta_var_member_list($id = 'phila_commission_members'){
+  public static function phila_meta_var_member_list ($id = 'phila_commission_members'){
     return array(
       'id' => $id,
       'type'  => 'group',

@@ -84,7 +84,7 @@ class Phila_Gov_Collection_Page {
               )
             ),
             array(
-              'id'  => 'commission_members',
+              'id'  => 'member_list',
               'type'  => 'group',
               'clone' => false,
               'visible' => array('phila_collection_options', '=', 'member_list'),
@@ -101,7 +101,7 @@ class Phila_Gov_Collection_Page {
                   'type'  => 'text',
                   'desc'  => 'The staff table column label defaults to "title". Use this to change it.'
                 ),
-                Phila_Gov_Standard_Metaboxes::phila_meta_var_member_list()
+                Phila_Gov_Standard_Metaboxes::phila_meta_var_member_list('members')
               ),
             ),
             array(
