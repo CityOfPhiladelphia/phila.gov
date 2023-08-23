@@ -97,7 +97,7 @@ HTML;
 
     case 'document_finder_v2':
       get_template_part( 'partials/departments/v2/document-finder' );
-      include(locate_template( 'partials/departments/content-programs-initiatives.php' ) );
+      include(locate_template( 'partials/departments/content-phila-rows.php' ) );
       break;
 
     case 'forms_and_documents_v2':
@@ -136,7 +136,7 @@ HTML;
 
     case 'homepage_v3':
       include(locate_template('partials/departments/v2/our-services.php'));
-      get_template_part( 'partials/departments/content', 'programs-initiatives' );
+      include( locate_template( 'partials/departments/content-phila-row.php' ) ); 
       break;
 
     case 'off_site_department':
@@ -151,11 +151,11 @@ HTML;
       break;
   
     case 'prog_association':
-      apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
+      apply_template_section(include( locate_template( 'partials/departments/content-phila-row.php' ) ) );
     break;
 
     case 'repeating_rows':
-      apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
+      apply_template_section(include( locate_template( 'partials/departments/content-phila-row.php' ) ));
     break;
 
     case 'resource_list_v2':
