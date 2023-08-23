@@ -95,12 +95,6 @@ class Phila_Gov_Collection_Page {
                   'type'  => 'text',
                   'desc'  => 'Use this section to create an accordion-style list of people who don\'t formally work for the City of Philadelphia. List will appear in the order below.',
                 ),
-                array(
-                  'id'  => 'table_head_title',
-                  'name'  => 'Rename table title cell',
-                  'type'  => 'text',
-                  'desc'  => 'The staff table column label defaults to "title". Use this to change it.'
-                ),
                 Phila_Gov_Standard_Metaboxes::phila_meta_var_member_list('members')
               ),
             ),
