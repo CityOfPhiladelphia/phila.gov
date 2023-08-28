@@ -84,7 +84,7 @@ $user_selected_template    = phila_get_selected_template();
 
     case 'document_finder_v2':
       get_template_part( 'partials/departments/v2/document-finder' );
-      include(locate_template( 'partials/departments/content-phila-rows.php' ) );
+      include(locate_template( 'partials/content-phila-rows.php' ) );
       break;
 
     case 'forms_and_documents_v2':
@@ -123,7 +123,7 @@ $user_selected_template    = phila_get_selected_template();
 
     case 'homepage_v3':
       include(locate_template('partials/departments/v2/our-services.php'));
-      include( locate_template( 'partials/departments/content-phila-row.php' ) ); 
+      include( locate_template( 'partials/content-phila-row.php' ) ); 
       break;
 
     case 'off_site_department':
@@ -138,11 +138,11 @@ $user_selected_template    = phila_get_selected_template();
       break;
   
     case 'prog_association':
-      include( locate_template( 'partials/departments/content-phila-row.php' ) ) ;
+      include( locate_template( 'partials/content-phila-row.php' ) ) ;
     break;
 
     case 'repeating_rows':
-      include( locate_template( 'partials/departments/content-phila-row.php' ) ) ;
+      include( locate_template( 'partials/content-phila-row.php' ) ) ;
     break;
 
     case 'resource_list_v2':

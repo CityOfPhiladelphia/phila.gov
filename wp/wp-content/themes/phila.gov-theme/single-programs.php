@@ -90,7 +90,7 @@ get_header();
           get_template_part( 'partials/departments/v2/child', 'index' );
           break;
       } ?>
-      <?php include( locate_template( 'partials/departments/content-phila-row.php' ) );  ?>
+      <?php include( locate_template( 'partials/content-phila-row.php' ) );  ?>
 
       <?php get_template_part( 'partials/content', 'additional' ); ?>
 
