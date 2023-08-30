@@ -46,6 +46,7 @@ class Phila_Gov_Collection_Page {
                 'phila_callout_v2' => 'Callout',
                 'document' => 'Document pages [DEPRECATED]',
                 'free_text' => 'Free text area',
+                'member_list' => 'Member list',
                 'paragraph_text_with_photo' => 'Paragraph text with photo',
                 'post' => 'Posts',
                 'press_releases' => 'Press releases',
@@ -81,6 +82,21 @@ class Phila_Gov_Collection_Page {
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('1/4 Heading', 'phila_custom_text_title'),
                 Phila_Gov_Standard_Metaboxes::phila_v2_service_page_selector( $multiple = true ),
               )
+            ),
+            array(
+              'id'  => 'member_list',
+              'type'  => 'group',
+              'clone' => false,
+              'visible' => array('phila_collection_options', '=', 'member_list'),
+              'fields'  => array(
+                array(
+                  'id'  => 'section_title',
+                  'name'  => 'Section title',
+                  'type'  => 'text',
+                  'desc'  => 'Use this section to create an accordion-style list of people who don\'t formally work for the City of Philadelphia. List will appear in the order below.',
+                ),
+                Phila_Gov_Standard_Metaboxes::phila_meta_var_member_list('members')
+              ),
             ),
             array(
               'id'    => 'posts',
@@ -244,7 +260,7 @@ class Phila_Gov_Collection_Page {
           ),
         ),
       )
-    );
+    ); 
 
     return $meta_boxes;
   }

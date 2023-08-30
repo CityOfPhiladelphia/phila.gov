@@ -258,7 +258,7 @@
               $members = $current_row['phila_full_options']['commission_members']['phila_commission_members'];
               ?>
               <!-- Boards/Commission Members -->
-              <?php include(locate_template('partials/departments/v2/board_commission_member_list.php')); ?>
+              <?php include(locate_template('partials/departments/v2/member_list.php')); ?>
               <!-- /Boards/Commission Members -->
             <?php endif;?>
             <?php elseif ( $current_row_option == 'phila_staff_table'):?>
