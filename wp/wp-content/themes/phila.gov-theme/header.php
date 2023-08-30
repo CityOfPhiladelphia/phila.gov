@@ -87,8 +87,15 @@
                 <li class="show-for-medium"><a id="translate-chinese" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
               <?php endif; ?>
             <!-- Dropdown button -->
-              <button class="translations-button show-for-medium" id="desktop-lang-button" data-toggle="lang-dropdown"><i class="fa fa-earth-americas"></i><i class="translate-caret fas fa-solid fa-caret-down"></i></button>
-              <button class="translations-button show-for-small-only" id="mobile-lang-button" data-toggle="lang-dropdown"><i class="fa fa-earth-americas"></i><a tabindex="-1" class="show-for-small-only" href="#">Translate</a><i class="translate-caret fas fa-solid fa-caret-down"></i></button>
+              <button translate="no" class="translations-button show-for-medium" id="desktop-lang-button" data-toggle="lang-dropdown">
+                <i class="fa fa-earth-americas"></i>
+                <i class="translate-caret fas fa-solid fa-caret-down"></i>
+              </button>
+              <button class="translations-button show-for-small-only" id="mobile-lang-button" data-toggle="lang-dropdown">
+                <i class="fa fa-earth-americas"></i>
+                  <a tabindex="-1" class="show-for-small-only" href="#">Translate</a>
+                <i class="translate-caret fas fa-solid fa-caret-down"></i>
+              </button>
             </ul>
             <!-- Dropdown menu -->
             <div id="lang-dropdown" class="dropdown-pane" data-close-on-click="true" data-position="bottom" data-alignment="right" data-dropdown data-auto-focus="true">
@@ -97,6 +104,13 @@
                 <?php if ((is_front_page() === True) or (get_post_type($post->ID) != 'post')) : ?>
                   <li class="show-for-small-only"><a id="translate-spanish-dropdown" href="<?php echo inject_translation_slug('es'); ?>">Español</a></li>
                   <li class="show-for-small-only"><a id="translate-chinese-dropdown" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
+                  <li><a id="translate-arabic-dropdown" href="<?php echo inject_translation_slug('ar'); ?>">عربي</a></li>
+                  <li><a id="translate-haitian-creole-dropdown" href="<?php echo inject_translation_slug('ht'); ?>">Ayisyen</a></li>
+                  <li><a id="translate-french-dropdown" href="<?php echo inject_translation_slug('fr'); ?>">Français</a></li>
+                  <li><a id="translate-swahili-dropdown" href="<?php echo inject_translation_slug('sw'); ?>">Kiswahili</a></li>
+                  <li><a id="translate-portuguese-dropdown" href="<?php echo inject_translation_slug('pt'); ?>">Português</a></li>
+                  <li><a id="translate-russian-dropdown" href="<?php echo inject_translation_slug('ru'); ?>">Pyccкий</a></li>
+                  <li><a id="translate-vietnamese-dropdown" href="<?php echo inject_translation_slug('vi'); ?>">Tiếng Việt</a></li>
                 <?php endif; ?>
                 <li id="google_translate_element"></li>
                 <li id="translations-support"><a href="<?php echo get_site_url() . "/programs/language-access-philly/translation-feedback-and-support/" ?> "><i class="fa fa-messages"></i>Feedback and support</a></li>
@@ -190,9 +204,7 @@
     </div>
     <?php include(locate_template('partials/global/translations-modal.php')); ?>
     <div id="phila-mobile-menu"></div>
-    <?php
-    //create alerts when appropriate
-    call_user_func(array('Phila_Gov_Site_Wide_Alert_Rendering', 'create_site_wide_alerts')); ?>
+    <div id="phila-site-wide-alerts"></div>
   </header>
   <div id="page">
     <?php

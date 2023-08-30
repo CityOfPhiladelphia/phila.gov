@@ -38,6 +38,7 @@ class Phila_Gov_Site_Wide_Alert {
             'blue'       => 'Blue',
             'orange' => 'Orange',
             'red' => 'Red',
+            'gray' => 'Gray',
           ),
         ),
         array(
@@ -59,18 +60,14 @@ class Phila_Gov_Site_Wide_Alert {
           'class' =>  'start-time',
           'type'  => 'datetime',
           'size'  =>  25,
-          'hidden'  => array( 'active', '=', 1),
+          'hidden'  => array( 'phila_alert_active', '=', 1),
           'js_options' =>  array(
             'timeFormat' =>  'hh:mm tt',
             'dateFormat'=>'mm-dd-yy',
             'stepMinute' => 15,
             'showHour' => 'true',
-            //'altField' => '#phila_start_hidden',
-            //'altFormat'=> "@",
-            //'altFieldTimeOnly' => false,
             'controlType'=> 'select',
             'oneLine'=> true,
-            //'altTimeFormat' => 'c',
             'timeInput' => true,
           ),
           'timestamp' => true
@@ -82,19 +79,15 @@ class Phila_Gov_Site_Wide_Alert {
           'type'  => 'datetime',
           'class' =>  'end-time',
           'size'  =>  25,
-          'hidden'  => array( 'active', '=', 1),
+          'hidden'  => array( 'phila_alert_active', '=', 1),
           'desc'  => 'Note: The start and end times communicate an alert’s length in the alert bar. Use the active alert feature to turn alerts on and ignore this setting.',
           'js_options' =>  array(
             'timeFormat' => 'hh:mm tt',
             'dateFormat' => 'mm-dd-yy',
             'stepMinute' => 15,
             'showHour' => 'true',
-            //'altField' => '#phila_end_hidden',
-            //'altFormat'=> "@",
-            //'altFieldTimeOnly' => false,
             'controlType'=> 'select',
             'oneLine'=> true,
-            //'altTimeFormat' => 'c',
             'timeInput' => true
           ),
           'timestamp' => true

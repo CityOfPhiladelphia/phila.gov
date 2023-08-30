@@ -29,7 +29,6 @@ $contact_us = phila_loop_clonable_metabox($contact_us_vars);
           <?php $address_state = isset( $column['address_group']['phila_std_address_state']) ? $column['address_group']['phila_std_address_state'] : '';?>
           <?php $address_zip = isset( $column['address_group']['phila_std_address_zip']) ? $column['address_group']['phila_std_address_zip'] : '';?>
           <?php $email = isset( $column['phila_v2_email']) ? $column['phila_v2_email'] : '';?>
-          <?php $email = isset( $column['phila_v2_email']) ? $column['phila_v2_email'] : '';?>
           <?php $phone_area = isset( $column['phila_v2_phone']['area']) ? $column['phila_v2_phone']['area'] : '';?>
           <?php $phone_co = isset( $column['phila_v2_phone']['phone-co-code']) ? $column['phila_v2_phone']['phone-co-code'] : '';?>
           <?php $phone_subscriber = isset( $column['phila_v2_phone']['phone-subscriber-number']) ? $column['phila_v2_phone']['phone-subscriber-number'] : '';?>
@@ -66,7 +65,7 @@ $contact_us = phila_loop_clonable_metabox($contact_us_vars);
 
               <?php if( !$email == '' ): ?>
                 <div class="email">
-                  <span class="type">Email: </span><a href="mailto:<?php echo $email ?>" class="value"><?php echo $email ?></a>
+                  <span class="type">Email: </span><a translate="no" href="mailto:<?php echo $email ?>" class="value"><?php echo $email ?></a>
                 </div>
               <?php endif; ?>
 

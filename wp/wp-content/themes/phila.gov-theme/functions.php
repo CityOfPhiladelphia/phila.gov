@@ -392,6 +392,7 @@ function phila_gov_scripts() {
   wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 
   load_vue_mobile_menu();
+  load_vue_site_wide_alerts();
 
   if  ( is_user_logged_in() ){
     wp_enqueue_script( 'logged-in-js', get_stylesheet_directory_uri() . '/admin/js/front-end.js', array( 'phila-scripts' ), '', true );
@@ -1253,7 +1254,7 @@ function phila_get_item_meta_desc( $bloginfo = true ){
  *
  **/
 
-function phila_get_selected_template( $post_id = null, $modify_response = true ){
+function phila_get_selected_template( $post_id = null, $modify_response = true, $deprecate_featured_template = false ){
 
   $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $post_id );
 
@@ -1262,11 +1263,13 @@ function phila_get_selected_template( $post_id = null, $modify_response = true )
   }
   if ($modify_response == true ){
     //used to force "featured" template type. The user doesn't select this value from the normal template dropdpown and this can be applied to any post, press release or other item.
-    $old_feature = get_post_meta( $post_id, 'phila_show_on_home', true);
-    $new_feature = get_post_meta( $post_id, 'phila_is_feature', true );
+    if (!$deprecate_featured_template) {
+      $old_feature = get_post_meta( $post_id, 'phila_show_on_home', true);
+      $new_feature = get_post_meta( $post_id, 'phila_is_feature', true );
 
-    if ( $old_feature != 0 || $new_feature != 0  ){
-      $user_selected_template = 'featured';
+      if ( $old_feature != 0 || $new_feature != 0  ){
+        $user_selected_template = 'featured';
+      }
     }
     //clean up the data by assigning "phila_post" to "post"
     if(get_post_type($post_id) == 'phila_post') {
@@ -1275,6 +1278,34 @@ function phila_get_selected_template( $post_id = null, $modify_response = true )
   }
 
   return $user_selected_template;
+}
+
+
+function phila_get_archive_status( $post_id ) {
+  $archived = rwmb_meta('phila_archive_post', '', $post_id);
+  $phila_template = rwmb_meta('phila_template_select', '', $post_id);
+  $post_is_old = false;
+  if (date('Y-m-d', strtotime('-2 years')) > get_the_date('Y-m-d', $post_id)) { // if posts are 2 years old
+    $post_is_old = true;
+  }
+  if ((((empty( $archived ) || !isset($archived) || $archived == 'default') && $post_is_old) || $archived == 'archive_now') && ($phila_template == 'post' || $phila_template == '')) {
+    $archived = true;
+  } else {
+    $archived = false;
+  }
+  return (bool) $archived;
+}
+
+function phila_get_the_category( $post_id ) {
+  $categories = get_the_category($post_id);
+
+  foreach ($categories as $category){
+      $trimmed_name = phila_get_owner_typography( $category );
+
+      $category->slang_name = html_entity_decode(trim($trimmed_name));
+  }
+
+  return (array) $categories;
 }
 
 /**
@@ -2252,4 +2283,11 @@ function load_vue_mobile_menu() {
   wp_enqueue_script('mobile-menu-chunk-js', 'https://www.phila.gov/embedded/mobile-menu/production/js/chunk-vendors.js?cachebreaker', array(), null, true );
   wp_enqueue_script('mobile-menu-app-js', 'https://www.phila.gov/embedded/mobile-menu/production/js/app.js?cachebreaker', array(), null, true );
   wp_enqueue_style('mobile-menu-app-css', 'https://www.phila.gov/embedded/mobile-menu/production/css/app.css?cachebreaker');
+}
+
+function load_vue_site_wide_alerts() {
+  global $phila_environment;
+  wp_enqueue_script('site-wide-alerts-chunk-js', 'https://www.phila.gov/embedded/site-wide-alerts/'.$phila_environment.'/js/chunk-vendors.js?cachebreaker', array(), null, true );
+  wp_enqueue_script('site-wide-alerts-app-js', 'https://www.phila.gov/embedded/site-wide-alerts/'.$phila_environment.'/js/app.js?cachebreaker', array(), null, true );
+  wp_enqueue_style('site-wide-alerts-app-css', 'https://www.phila.gov/embedded/site-wide-alerts/'.$phila_environment.'/css/app.css?cachebreaker');
 }

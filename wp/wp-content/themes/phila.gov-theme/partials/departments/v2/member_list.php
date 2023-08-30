@@ -38,7 +38,7 @@
         <tr>
           <td><?php echo isset( $member['full_name'] ) ? $member['full_name'] : ''; ?></td>
           <td><?php echo isset($member['title'] ) ?  $member['title']: '';?></td>
-          <td><?php echo isset( $member['email'] ) ? '<a href="mailto:' . $member['email'] .'"> ' .  $member['email']. '</a>' : ''; ?></td>
+          <td><?php echo isset( $member['email'] ) ? '<a translate="no" href="mailto:' . $member['email'] .'"> ' .  $member['email']. '</a>' : ''; ?></td>
           <td><?php echo isset( $member['phone'] ) ?
             '<a href="tel:' . $member['phone']['area'] . $member['phone']['phone-co-code'] . $member['phone']['phone-subscriber-number']  . '">(' . $member['phone']['area'] . ') ' . $member['phone']['phone-co-code'] .'-' . $member['phone']['phone-subscriber-number'] . '</a>' : '' ?></td>
         </tr>
@@ -67,7 +67,7 @@
                 echo isset( $member['headshot'] ) ? '<img src="' . $image[0] . '" alt="' . $member['full_name'] .'" class="float-left" width="200" height="200">'  : ''; ?>
               <?php endif; ?>
               <?php echo isset( $member['bio'] ) ? apply_filters( 'the_content', $member['bio'] ) : ''?>
-              <?php echo isset( $member['email'] ) ? '<a href="mailto:' . $member['email'] .'"> ' .  $member['email']. '</a>' : ''
+              <?php echo isset( $member['email'] ) ? '<a translate="no" href="mailto:' . $member['email'] .'"> ' .  $member['email']. '</a>' : ''
               ?>
               <?php if ( isset($member['email'] ) == true && isset( $member['phone'] ) == true ) echo ' | ' ?>
               <?php echo isset( $member['phone'] ) ?

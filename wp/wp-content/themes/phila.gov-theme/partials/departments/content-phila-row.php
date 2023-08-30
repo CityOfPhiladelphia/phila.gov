@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying Program and Initiative pages
+ * The template used for displaying the full width row content 
  *
  * @package phila-gov
  */

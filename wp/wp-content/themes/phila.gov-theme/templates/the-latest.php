@@ -85,7 +85,7 @@
         <header class="row columns mtl">
           <div class="translated-headings">
             <h1>Posts</h1>
-            <ul class="translated-list">
+            <ul class="translated-list" translate="no">
               <li><a href="/the-latest/archives/?template=posts&language=english">English</a></li>
               <li><a href="/the-latest/archives/?template=posts&language=spanish">Español</a></li>
               <li><a href="/the-latest/archives/?template=posts&language=chinese">中文</a></li>
@@ -140,7 +140,7 @@
         <header class="row columns mtl">
           <div class="translated-headings">
             <h1>Press Releases</h1>
-            <ul class="translated-list">
+            <ul class="translated-list" translate="no">
               <li><a href="/the-latest/archives/?template=press_release&language=english">English</a></li>
               <li><a href="/the-latest/archives/?template=press_release&language=spanish">Español</a></li>
               <li><a href="/the-latest/archives/?template=press_release&language=chinese">中文</a></li>

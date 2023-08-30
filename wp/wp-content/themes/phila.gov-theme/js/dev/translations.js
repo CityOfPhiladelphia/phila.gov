@@ -47,6 +47,8 @@ module.exports = $(function () {
     $("#translate-spanish-dropdown").text("Español");
     $("#translate-chinese").text("中文");
     $("#translate-chinese-dropdown").text("中文");
+    $("#translate-arabic-dropdown").text("عربي");
+
 
     function setOverflowHidden() {
       $("html, body").css({
@@ -128,25 +130,30 @@ module.exports = $(function () {
         });
     }
     function getUrlLanguage() {
-      var windowPath = $(location).attr('pathname'); 
-      var urlPath = windowPath.split("/");
-      var pathItem = urlPath[1];
-      var urlLanguage = "";
+      var windowPath = $(location)[0]; 
+      if (windowPath) {
+        var langPath = windowPath.pathname.split("/")[1];
+        var urlLanguage = "";
 
-      switch (pathItem) {
-        case "zh":
-          urlLanguage = "中文";
-          break;
-        case "es":
-          urlLanguage = "Español";
-          break;
-        default:
-          urlLanguage = "English";
+        switch (langPath) {
+          case "ar":
+            urlLanguage = "عربي";
+            break;
+          case "zh":
+            urlLanguage = "中文";
+            break;
+          case "es":
+            urlLanguage = "Español";
+            break;
+          default:
+            urlLanguage = "English";
+        }
+        setActiveLanguage(urlLanguage);
       }
-      setActiveLanguage(urlLanguage);
     }
     getUrlLanguage();
   });
 
   //END Translation Bar
 });
+
