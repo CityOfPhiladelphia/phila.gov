@@ -1374,6 +1374,7 @@ public static function phila_meta_var_connect(){
       array(
         'id' => 'phila_modal_wysiwyg',
         'type'  => 'wysiwyg',
+        'desc'  => 'Modal content',
         'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
         'sanitize_callback' => 'none'
       ),
