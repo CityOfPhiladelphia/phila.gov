@@ -1278,16 +1278,16 @@ public static function phila_meta_var_connect(){
     );
   }
 
-  public static function phila_meta_var_commission_members(){
+  public static function phila_meta_var_member_list ($id = 'phila_commission_members'){
     return array(
-      'id' => 'phila_commission_members',
+      'id' => $id,
       'type'  => 'group',
       'clone' => true,
       'sort_clone' => true,
       'add_button' => '+ Add member',
       'fields'  => array(
         array(
-          'id'  => 'full_name',
+          'id'  => 'full_name', 
           'name'  => 'Full name',
           'type'  => 'text',
           'desc'  => 'Enter the full name, with honorific e.g.: Dr. Herbert West, PhD'
@@ -1374,6 +1374,7 @@ public static function phila_meta_var_connect(){
       array(
         'id' => 'phila_modal_wysiwyg',
         'type'  => 'wysiwyg',
+        'desc'  => 'Modal content',
         'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
         'sanitize_callback' => 'none'
       ),

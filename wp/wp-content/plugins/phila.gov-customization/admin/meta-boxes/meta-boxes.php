@@ -538,7 +538,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'type'  => 'text',
         'desc'  => 'The staff table column label defaults to "title". Use this to change it.'
       ),
-      Phila_Gov_Standard_Metaboxes::phila_meta_var_commission_members()
+      Phila_Gov_Standard_Metaboxes::phila_meta_var_member_list()
     ),
 
   );
