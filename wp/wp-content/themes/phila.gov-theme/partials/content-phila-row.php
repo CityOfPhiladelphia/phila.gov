@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying Program and Initiative pages
+ * The template used for displaying the full width row content 
  *
  * @package phila-gov
  */
@@ -51,7 +51,7 @@
 
             <?php $calendar_see_all = isset( $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] : ''; ?>
             <?php $owner = get_the_terms( get_the_id(), 'category' )[0]; ?>
-            <?php $cal_category = !empty($owner) ? $owner->name : ''; ?>
+            <?php $cal_category = get_the_category_by_ID($cal_owner_id); ?>
             <!-- Calendar -->
             <?php include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
             <!-- /Calendar -->
@@ -258,7 +258,7 @@
               $members = $current_row['phila_full_options']['commission_members']['phila_commission_members'];
               ?>
               <!-- Boards/Commission Members -->
-              <?php include(locate_template('partials/departments/v2/board_commission_member_list.php')); ?>
+              <?php include(locate_template('partials/departments/v2/member_list.php')); ?>
               <!-- /Boards/Commission Members -->
             <?php endif;?>
             <?php elseif ( $current_row_option == 'phila_staff_table'):?>

@@ -5,7 +5,7 @@
     $section_title = rwmb_meta('section_title');
   endif;
   if ( !isset( $members ) ) :
-    $members = rwmb_meta('phila_commission_members');
+    $members = rwmb_meta('phila_members_list');  
   endif;
   if ( !isset( $table_cell_title ) ) :
     $table_cell_title = rwmb_meta('table_head_title');

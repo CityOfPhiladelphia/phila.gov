@@ -162,6 +162,11 @@ $row_content = rwmb_meta('collection_row');?>
       <?php if ($current_row_option === 'phila_callout_v2') :  ?>
         <?php include(locate_template('partials/departments/v2/collection-callout.php')); ?>
       <?php endif; ?>
+      <?php if ($current_row_option === 'member_list') :  ?>
+        <?php $members = $current_row['member_list']['members']; ?>
+        <?php $section_title = $current_row['member_list']['section_title']; ?>
+        <?php include(locate_template('partials/departments/v2/member_list.php')); ?>
+      <?php endif; ?>
       <?php if ($last_key != $key) : ?>
         <hr class="margin-auto"/>
       <?php endif; ?>
