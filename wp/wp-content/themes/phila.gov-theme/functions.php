@@ -896,7 +896,8 @@ function phila_is_department_homepage( $post ) {
 
 function phila_get_current_department_name( $category, $byline = false, $break_tags = false, $name_list = false ){
 
-  if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
+
+  if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {    
 
     $cat_name = array();
     $cat_ids = array();
@@ -909,10 +910,8 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
     foreach( $category as $cat ){
       array_push( $cat_name, $cat->name );
-    }
-    foreach( $category as $cat ){
       array_push( $cat_ids, $cat->cat_ID );
-    }
+    }    
 
     $cat_id_string = implode( ', ', $cat_ids );
 
@@ -938,13 +937,9 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
         $is_in_govt_dir = rwmb_meta('phila_department_home_page');
 
-        if ( !$is_parent ) {
+        if ( !$is_parent || $is_in_govt_dir) {
 
-          $all_available_pages[$permalink] = $the_title;
-
-        }else if($is_in_govt_dir){
-
-          $all_available_pages[$permalink] = $the_title;
+          $all_available_pages[$permalink] = $the_title;          
 
         }
       }
@@ -954,7 +949,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
     if ( $byline == true ) {
       echo ' by ';
-    }
+    }    
 
     foreach ( $all_available_pages as $k => $v ){
 
