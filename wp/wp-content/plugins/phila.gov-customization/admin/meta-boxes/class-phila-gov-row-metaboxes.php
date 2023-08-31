@@ -107,7 +107,7 @@ class Phila_Gov_Row_Metaboxes {
         'id'  => 'phila_announcements_group',
         'type' => 'group',
         'fields' => array(
-          // Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_ann_category', 'Display announcements from these owners.' ),
+          Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_ann_category', 'Display announcements from these owners.' ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_tag_picker('Filter by a tag', 'phila_ann_tag', 'Display announcements using this tag.' ),
         ),
       ),
