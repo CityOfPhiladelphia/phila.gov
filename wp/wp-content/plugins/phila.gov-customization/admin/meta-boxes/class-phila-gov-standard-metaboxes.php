@@ -863,6 +863,19 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
+  public static function phila_metabox_tag_picker( $name, $id, $desc = ''){
+    return array(
+      'name'  => $name,
+      'id'  => $id,
+      'desc'  => $desc,
+      'type'  => 'taxonomy_advanced',
+      'taxonomy'  => 'post_tag',
+      'field_type'  => 'select_advanced',
+      'multiple'  => false,
+      'allowClear' => true
+    );
+  }
+
   public static function phila_call_to_action_group_content( $datalist = null ){
     return array(
       array(

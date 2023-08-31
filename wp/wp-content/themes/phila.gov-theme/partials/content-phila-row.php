@@ -38,8 +38,8 @@
 
           <?php elseif ( $current_row_option === 'phila_announcements' ): ?>
           <!-- Announcement Content -->
-            <?php $ann_cat_override = isset( $current_row['phila_full_options']['phila_announcements_group']['phila_ann_category']) ? $current_row['phila_full_options']['phila_announcements_group']['phila_ann_category'] : ''; ?>
-            <?php $blog_tag_override = isset( $current_row['phila_full_options']['phila_announcements_group']['ann_tag']) ? $current_row['phila_full_options']['phila_announcements_group']['ann_tag'] : ''; ?>
+          <?php $ann_cat_override = isset( $current_row['phila_full_options']['phila_announcements_group']['phila_ann_category']) ? $current_row['phila_full_options']['phila_announcements_group']['phila_ann_category'] : ''; ?>
+            <?php $ann_tag_override = isset( $current_row['phila_full_options']['phila_announcements_group']['phila_ann_tag']) ? $current_row['phila_full_options']['phila_announcements_group']['phila_ann_tag'] : ''; ?>
             <?php include( locate_template( 'partials/global/phila_full_row_announcements.php' ) ); ?>
           <!-- /Announcement Content -->
           <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
