@@ -115,9 +115,7 @@ class Phila_Gov_Admin_Menu {
 
 
 function change_admin_post_label(){
-    function owner_callback() {
-      wp_redirect('edit-tags.php?taxonomy=category');
-    }
+  
     global $menu, $submenu;       
     $submenu['upload.php'][5][0] = 'All Media';
     $submenu['upload.php'][10][0] = 'Add New Media';
