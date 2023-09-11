@@ -62,7 +62,7 @@
                                                 'type'=>'v1',
                                                 'shown'=>true
                                             ),
-        'board_commission_member_list'   => array(
+        'member_list'   => array(
                                         'type'=>'v2',
                                         'shown'=> true,
                                         ),

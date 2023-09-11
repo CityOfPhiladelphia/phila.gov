@@ -72,7 +72,7 @@
               
               elseif ($user_selected_template == 'custom_content') :
                 include( locate_template( 'partials/content-basic.php' ) ); 
-                include( locate_template( 'partials/departments/content-programs-initiatives.php' ) ); 
+                include( locate_template( 'partials/content-phila-row.php' ) ); 
             
             ?> <!-- Service Stub  --> <?php
               elseif ($user_selected_template == 'service_stub') : 

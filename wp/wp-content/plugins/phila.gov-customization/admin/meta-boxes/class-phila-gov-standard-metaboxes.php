@@ -863,6 +863,19 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
+  public static function phila_metabox_tag_picker( $name, $id, $desc = ''){
+    return array(
+      'name'  => $name,
+      'id'  => $id,
+      'desc'  => $desc,
+      'type'  => 'taxonomy_advanced',
+      'taxonomy'  => 'post_tag',
+      'field_type'  => 'select_advanced',
+      'multiple'  => false,
+      'allowClear' => true
+    );
+  }
+
   public static function phila_call_to_action_group_content( $datalist = null ){
     return array(
       array(
@@ -1278,16 +1291,16 @@ public static function phila_meta_var_connect(){
     );
   }
 
-  public static function phila_meta_var_commission_members(){
+  public static function phila_meta_var_member_list ($id = 'phila_commission_members'){
     return array(
-      'id' => 'phila_commission_members',
+      'id' => $id,
       'type'  => 'group',
       'clone' => true,
       'sort_clone' => true,
       'add_button' => '+ Add member',
       'fields'  => array(
         array(
-          'id'  => 'full_name',
+          'id'  => 'full_name', 
           'name'  => 'Full name',
           'type'  => 'text',
           'desc'  => 'Enter the full name, with honorific e.g.: Dr. Herbert West, PhD'
@@ -1374,6 +1387,7 @@ public static function phila_meta_var_connect(){
       array(
         'id' => 'phila_modal_wysiwyg',
         'type'  => 'wysiwyg',
+        'desc'  => 'Modal content',
         'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
         'sanitize_callback' => 'none'
       ),

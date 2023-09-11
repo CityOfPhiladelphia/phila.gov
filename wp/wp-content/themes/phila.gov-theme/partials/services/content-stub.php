@@ -15,7 +15,7 @@ if ( null !== rwmb_meta( 'phila_stub_source' ) ) :
       $source_template =  rwmb_meta( 'phila_template_select'); 
       if ($source_template == 'custom_content') :
         get_template_part('partials/content', 'basic'); 
-        get_template_part('partials/departments/content', 'programs-initiatives'); 
+        include( locate_template( 'partials/content-phila-row.php' ) ); 
       elseif ($source_template == 'default_v2') :
         get_template_part('partials/services/content', 'default-v2'); 
 

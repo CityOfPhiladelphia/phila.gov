@@ -90,7 +90,7 @@ get_header();
           get_template_part( 'partials/departments/v2/child', 'index' );
           break;
       } ?>
-      <?php get_template_part( 'partials/departments/content', 'programs-initiatives' ); ?>
+      <?php include( locate_template( 'partials/content-phila-row.php' ) );  ?>
 
       <?php get_template_part( 'partials/content', 'additional' ); ?>
 
