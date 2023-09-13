@@ -814,6 +814,16 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
+  public static function phila_list_paragraph_textarea(){
+    return array(
+      'id'  => 'phila_paragraph',
+      'type'  => 'textarea',
+      'name'  => 'Paragraph',
+      'class' => 'percent-100',
+      'required' => true
+    );
+  }
+
   public static function phila_metabox_url( $name, $id, $desc = null, $columns = '12', $type = 'text' ){
     return array(
       'name'  => $name,
@@ -1655,6 +1665,105 @@ public static function phila_timeline_page_selector( ){
     )
   );
 }
+
+  public static function phila_list_builder()
+  {
+    return array(
+      'id'  => 'phila_list_builder',
+      'type' => 'group',
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Title', 'phila_list_builder_title', true, 'Enter a title for this list'),
+        array(
+          'id' => 'phila_list_title_style',
+          'type' => 'radio',
+          'name' => 'Title Style',
+          'required' => true,
+          'options' => array(
+            'h2' => 'H2',
+            'h3' => 'H3',
+            'h4' => 'H4',
+          ),
+        ),
+        array(
+          'id'    => 'phila_list_type',
+          'type'  => 'radio',
+          'name'  => 'List Type',
+          'required' => true,
+          'options' => array(
+            'ordered' => 'Ordered List',
+            'unordered' => 'Unordered List',
+            'ordered_with_paragraph' => 'Ordered List with Paragraph',
+            'unordered_with_paragraph' => 'Unordered List with Paragraph',
+            'check_list' => 'Check List'
+          )
+        ),
+        array(
+          'id'  => 'phila_ordered_list_fields',
+          'type' => 'group',
+          'name' => 'Ordered List',
+          'clone' => true,
+          'visible' => array('phila_list_type', '=', 'ordered'),
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_ordered_list_item', true, ''),
+          ),
+        ),
+        array(
+          'id'  => 'phila_unordered_list_fields',
+          'type' => 'group',
+          'name' => 'Unordered List',
+          'clone' => true,
+          'visible' => array('phila_list_type', '=', 'unordered'),
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_unordered_list_item', true, ''),
+          )
+        ),
+        array(
+          'id'  => 'phila_ordered_with_paragraph_fields',
+          'type' => 'group',
+          'name' => 'Ordered List with Paragraph',
+          'clone' => true,
+          'visible' => array('phila_list_type', '=', 'ordered_with_paragraph'),
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_ordered_list_item', true, ''),
+            Phila_Gov_Standard_Metaboxes::phila_list_paragraph_textarea(),
+          ),
+        ),
+        array(
+          'id'  => 'phila_unordered_with_paragraph_fields',
+          'type' => 'group',
+          'clone' => true,
+          'name' => 'Unordered List with Paragraph',
+          'visible' => array('phila_list_type', '=', 'unordered_with_paragraph'),
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_unordered_list_item', true, ''),
+            Phila_Gov_Standard_Metaboxes::phila_list_paragraph_textarea(),
+          ),
+        ),
+        array(
+          'id'  => 'phila_icon_fields',
+          'type' => 'group',
+          'visible' => array('phila_list_type', '=', 'check_list'),
+          'fields' => array(
+            array(
+              'name' => 'Icon selection',
+              'type'  => 'heading'
+            ),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('', 'phila_check_list_icon', false, 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon. E.g.: fas fa-bell.'),
+          )
+        ),
+        array(
+          'id'  => 'phila_check_list_fields',
+          'type' => 'group',
+          'name' => 'Check List',
+          'clone' => true,
+          'visible' => array('phila_list_type', '=', 'check_list'),
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_check_list_item', true, ''),
+          ),
+        )
+      )
+    );
+  }
 
 public static function phila_language_selector( $id = 'phila_select_language', $class = '' ){
   return array(
