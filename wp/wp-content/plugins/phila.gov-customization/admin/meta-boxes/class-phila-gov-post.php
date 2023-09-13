@@ -386,6 +386,7 @@ class Phila_Gov_Post {
           'sort_clone' => true,
           'add_button'  => '+ Add tab',
           'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_list_builder()
           ),
         )
       )

@@ -153,7 +153,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
           <a href="<?php echo $link ?>"><?php echo $lang[0] ?></a>
       <?php endforeach; ?>
     <?php endif; ?>
-    <div class="medium-18 medium-centered mtm">
+    <div>
       <?php the_content(); ?>
       <?php if ( $template_type == 'advanced_post' ) { ?>
         <?php include(locate_template ('partials/posts/advanced-post-content.php') ); ?> 
