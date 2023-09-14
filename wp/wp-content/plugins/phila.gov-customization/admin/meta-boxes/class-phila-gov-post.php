@@ -368,8 +368,9 @@ class Phila_Gov_Post {
     );
 
     $meta_boxes[] = array(
+      'id' => 'phila_adv_posts',
       'title'    => 'Page content',
-      'pages'    => array( 'post' ),
+      'pages'    => array('post'),
       'priority' => 'high',
       'revision' => true,
       'visible' => array(
@@ -378,20 +379,9 @@ class Phila_Gov_Post {
         ),
       ),
       'fields' => array(
-        array(
-          'id' => 'phila_tabbed_content',
-          'type' => 'group',
-          'clone'  => true,
-          'sort_clone' => true,
-          'add_button'  => '+ Add tab',
-          'fields' => array(
-            Phila_Gov_Standard_Metaboxes::phila_list_builder()
-          ),
-        )
+        Phila_Gov_Standard_Metaboxes::phila_metabox_row()
       )
     );
-
     return $meta_boxes;
   }
-
 }
