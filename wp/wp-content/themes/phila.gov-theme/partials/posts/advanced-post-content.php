@@ -66,5 +66,8 @@ foreach ($page_rows as $page_row) {
 <?php
       }
     }
+  } elseif($page_row['phila_adv_posts_options']['phila_adv_posts_select_options'] == 'phila_timeline'){
+    $timeline_page = $page_row['phila_adv_posts_options']['phila_adv_timeline'];
+    include(locate_template('partials/timeline_stub.php')); 
   }
 } ?>

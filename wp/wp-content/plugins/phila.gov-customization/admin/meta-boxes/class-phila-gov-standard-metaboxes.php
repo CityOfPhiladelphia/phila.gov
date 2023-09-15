@@ -1699,6 +1699,7 @@ public static function phila_timeline_page_selector( ){
           'options' => array(
             'phila_lists' => 'Lists',
             'phila_qna' => 'Q&A',
+            'phila_timeline' => 'Timeline',
           )
         ),
         array(
@@ -1880,6 +1881,20 @@ public static function phila_timeline_page_selector( ){
                 ),
               )
             )
+          )
+        ),
+        array(
+          'visible' => array('phila_adv_posts_select_options', '=', 'phila_timeline'),
+          'id' => 'phila_adv_timeline',
+          'type' => 'group',
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
+            array(
+              'name' => 'Timeline item count',
+              'id'   => 'homepage_timeline_item_count',
+              'desc'  => 'Select the number of items from the timeline to display',
+              'type' => 'number'
+            ),
           )
         )
       )
