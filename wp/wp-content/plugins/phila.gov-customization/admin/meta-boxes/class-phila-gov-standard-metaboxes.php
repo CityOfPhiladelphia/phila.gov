@@ -1700,6 +1700,7 @@ public static function phila_timeline_page_selector( ){
             'phila_lists' => 'Lists',
             'phila_qna' => 'Q&A',
             'phila_timeline' => 'Timeline',
+            'phila_adv_stepped_process' => 'Stepped Procress'
           )
         ),
         array(
@@ -1896,7 +1897,13 @@ public static function phila_timeline_page_selector( ){
               'type' => 'number'
             ),
           )
-        )
+          ),
+          array(
+          'visible' => array('phila_adv_posts_select_options', '=', 'phila_adv_stepped_process'),
+          'id' => 'phila_adv_posts_stepped_process',
+          'type'  => 'group',
+          'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_stepped_content()
+          )
       )
     );
   }
