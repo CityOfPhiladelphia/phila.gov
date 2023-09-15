@@ -66,8 +66,12 @@ foreach ($page_rows as $page_row) {
 <?php
       }
     }
-  } elseif($page_row['phila_adv_posts_options']['phila_adv_posts_select_options'] == 'phila_timeline'){
+  } elseif ($page_row['phila_adv_posts_options']['phila_adv_posts_select_options'] == 'phila_timeline') {
     $timeline_page = $page_row['phila_adv_posts_options']['phila_adv_timeline'];
-    include(locate_template('partials/timeline_stub.php')); 
+    include(locate_template('partials/timeline_stub.php'));
+  } elseif ($page_row['phila_adv_posts_options']['phila_adv_posts_select_options'] == 'phila_adv_stepped_process') {
+    $current_row = $page_row['phila_adv_posts_options'];
+    $current_row_option = 'phila_adv_posts_stepped_process';
+    include(locate_template('partials/posts/action_guide_v2/components/stepped-content-wrapper.php'));
   }
 } ?>
