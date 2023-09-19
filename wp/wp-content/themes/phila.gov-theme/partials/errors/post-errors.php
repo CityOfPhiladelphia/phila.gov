@@ -29,10 +29,10 @@ if ( is_user_logged_in() && (phila_get_selected_template() == 'post' || phila_ge
   if (has_post_thumbnail()){
     $id = get_post_thumbnail_id();
       $image = wp_get_attachment_image_src($id, "news-thumb");
-      $img_width = $image[1]; 
-      $img_height = $image[2];
+      $img_height = $image[1]; 
+      $img_width = $image[2];
 
-    if($img_height != 1000 || $img_width != 700){
+    if($img_height < 1000 || $img_width < 700){
       $error_messages[] = array(
         'title' => "Warning: The featured image doesn't meet the size requirements",
         'link' => '',
