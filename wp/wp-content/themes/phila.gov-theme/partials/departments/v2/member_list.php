@@ -1,6 +1,8 @@
 <?php
   /* Partial for board or commission member accordion-style rendering. */
-
+  echo rwmb_meta('phila_commission_members');
+  if (phila_get_selected_template() === 'homepage_v2') {
+    $members = rwmb_meta('phila_commission_members'); }
   if ( !isset( $section_title ) ) :
     $section_title = rwmb_meta('section_title');
   endif;
