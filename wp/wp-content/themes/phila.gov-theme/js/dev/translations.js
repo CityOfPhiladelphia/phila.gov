@@ -166,7 +166,7 @@ module.exports = $(function () {
           case "ru":
             urlLanguage = "русский";
             break;
-            case "vi":
+          case "vi":
             urlLanguage = "Tiếng Việt";
             break;
           default:
