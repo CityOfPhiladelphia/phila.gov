@@ -48,6 +48,12 @@ module.exports = $(function () {
     $("#translate-chinese").text("中文");
     $("#translate-chinese-dropdown").text("中文");
     $("#translate-arabic-dropdown").text("عربي");
+    $("#translate-haitian-creole-dropdown").text("Ayisyen");
+    $("#translate-french-dropdown").text("Français");
+    $("#translate-swahili-dropdown").text("Kiswahili");
+    $("#translate-portuguese-dropdown").text("Português");
+    $("#translate-russian-dropdown").text("русский");
+    $("#translate-vietnamese-dropdown").text("Tiếng Việt");
 
 
     function setOverflowHidden() {
@@ -144,6 +150,24 @@ module.exports = $(function () {
             break;
           case "es":
             urlLanguage = "Español";
+            break;
+          case "ht":
+            urlLanguage = "Ayisyen";
+            break;
+          case "fr":
+            urlLanguage = "Français";
+            break;
+          case "sw":
+            urlLanguage = "Kiswahili";
+            break;
+          case "pt":
+            urlLanguage = "Português";
+            break;
+          case "ru":
+            urlLanguage = "русский";
+            break;
+          case "vi":
+            urlLanguage = "Tiếng Việt";
             break;
           default:
             urlLanguage = "English";
