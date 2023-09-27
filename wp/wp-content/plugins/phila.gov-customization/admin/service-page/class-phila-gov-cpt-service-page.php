@@ -21,7 +21,7 @@ class Phila_Gov_Service_Pages{
       array(
         'labels' => array(
           'name' => __( 'Services' ),
-          'menu_name' => __('Service Page'),
+          'menu_name' => __('Services'),
           'singular_name' => __( 'Service Page' ),
           'add_new'   => __( 'Add a Service Page' ),
           'all_items'   => __( 'All Service Pages' ),
