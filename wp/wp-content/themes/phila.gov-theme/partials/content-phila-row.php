@@ -380,7 +380,6 @@
         </section>
       <?php endif; ?>
     <?php endforeach; ?>
-  </div>
 </section>
 <!-- /Page content -->
 <?php endif; ?>

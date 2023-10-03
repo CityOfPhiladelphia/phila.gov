@@ -42,6 +42,5 @@ $custom_text_group = $custom_text['phila_custom_text_group'];
       <?php endforeach; ?>
     </div>
     <?php endif; ?>
-    </div>
   </section>
 <?php endif; ?>

@@ -103,5 +103,10 @@ if (phila_get_selected_template() === 'homepage_v2') {
           </div>
 
       <?php endif; ?>
-</section>
+                            </div>
+                            </div>
+
+    </section>
+
+
 <?php endif; ?>
