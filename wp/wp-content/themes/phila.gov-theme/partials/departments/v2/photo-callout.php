@@ -36,8 +36,8 @@ if (phila_get_selected_template() === 'homepage_v2') {
 <?php if (!empty($header)): ?>
 
 <section class="row">
-  <div class="grid-container columns">
-    <div class="mvl grid-x large-padding-collapse medium-padding-collapse small-padding-collapse small-margin-collapse align-center photo-callout-block ">
+    <div class="grid-container columns">
+        <div class="mvl grid-x large-padding-collapse medium-padding-collapse small-padding-collapse small-margin-collapse align-center photo-callout-block ">
         <?php if (phila_get_selected_template() === 'collection_page_v2') : ?>
             <div class="photo-callout-block__txt medium-24 cell">
                 <div class="grid align-center-middle grid-x">
@@ -101,7 +101,10 @@ if (phila_get_selected_template() === 'homepage_v2') {
                 </div>
             </div>
           </div>
-
-      <?php endif; ?>
+        <?php endif; ?>
+        </div>
+    </div>
 </section>
+
+
 <?php endif; ?>
