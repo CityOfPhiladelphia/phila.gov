@@ -2200,7 +2200,7 @@ add_filter('wp_insert_post_data', 'force_type_private', 10, 2);
 
 function set_environment() {
   global $phila_environment;
-    if (isset($_SERVER['HTTP_HOST'])) {
+  if (isset($_SERVER['HTTP_HOST'])) {
 
     if(strpos($_SERVER['HTTP_HOST'],'staging') !== false) {
       $phila_environment = 'staging';
