@@ -29,6 +29,9 @@ class Phila_Gov_Admin_Menu {
     add_action('admin_menu', array( $this, 'phila_hide_create_in_menu' ) );
 
     add_action( 'pre_get_posts', array( $this, 'phila_filter_menu_search_results'), 10, 2 );
+    
+    add_action('admin_menu', array($this, 'add_custom_menu_separator') );
+
 
 
  }
@@ -40,6 +43,8 @@ class Phila_Gov_Admin_Menu {
     }
     return array(
         'index.php',
+        'resource-hub',
+        'separator-1',
         'edit.php',
         'edit.php?post_type=page',
         'separator1',
@@ -48,13 +53,32 @@ class Phila_Gov_Admin_Menu {
         'edit.php?post_type=programs',
         'edit.php?post_type=staff_directory',
         'edit.php?post_type=document',
-        'edit.php?post_type=longform_content',
-        'separator2',
+        'separator-2',
         'edit.php?post_type=event_spotlight',
-        'edit.php?post_type=calendar',
-        'edit.php?post_type=site_wide_alert',
+        'edit.php?post_type=guides',
+        'edit.php?post_type=longform_content',
+        'edit.php?post_type=page',
+        'separator-3',
+        'edit.php?post_type=staff_directory',
         'upload.php',
-        'separator-last',
+        'edit.php?post_type=calendar',
+        'edit.php?post_type=text-blocks',
+        'edit.php?post_type=service_updates',
+        'edit.php?post_type=site_wide_alert', 
+        'separator-4',       
+        'users.php',
+        'wpfront-user-role-editor-all-roles',
+        'edit-tags.php?taxonomy=category',
+        'edit-tags.php?taxonomy=audience',
+        'edit-tags.php?taxonomy=service_type&post_type=service_page',
+        'edit-tags.php?taxonomy=post_tag',
+        'separator-5',
+        'themes.php',
+        'phila_gov',
+        'options-general.php',
+        'separator-6',
+        'tools.php',
+        'plugins.php',
     );
   }
 
@@ -94,15 +118,55 @@ class Phila_Gov_Admin_Menu {
     $labels->name_admin_bar = 'Top-Level Pages';
 }
 
+  function add_custom_menu_separator()
+  {
+    global $menu;
+    $separator_index = array(4, 59, 99);
+
+    foreach($separator_index as $sp) {
+
+      if (isset($menu[$sp])) {
+          unset($menu[$sp]);
+      }
+    }
+
+    $user = wp_get_current_user();
+    $allowed_roles1 = array('primary_department_editor');
+    $allowed_roles2 = array('secondary_philagov_settings_editor', 'secondary_philagov_closure_settings_editor', 'secondary_tag_editor');
+    $allowed_roles3 = array('secondary_department_blog_editor', 'secondary_blog_contributor', 'secondary_service_page_editor', 'secondary_department_page_contributror', 'secondary_department_page_editor', 'secondary_document_page_contributor', 'secondary_document_editor', 'secondary_press_release_contributor', 'secondary_press_release_editor', 'secondary_programs__initiatives_contributor', 'secondary_programs__initiatives_editor', 'secondary_service_page_editor', 'secondary_service_status_contributor', 'secondary_staff_member_editor');
+    $allowed_roles4 = array('primary_department_contributor');
+    if (array_intersect($user->roles, $allowed_roles1) && array_intersect($user->roles, $allowed_roles2)) {
+      $menu[997] = ['', 'read', 'separator-1', '', 'wp-menu-separator'];
+      $menu[998] = ['', 'read', 'separator-4', '', 'wp-menu-separator'];
+      $menu[999] = ['', 'read', 'separator-6', '', 'wp-menu-separator'];
+    } elseif (array_intersect($user->roles, $allowed_roles1) && array_intersect($user->roles, $allowed_roles3)) {
+      $menu[997] = ['', 'read', 'separator-1', '', 'wp-menu-separator'];
+      $menu[998] = ['', 'read', 'separator-2', '', 'wp-menu-separator'];
+      $menu[999] = ['', 'read', 'separator-4', '', 'wp-menu-separator'];      
+    } elseif(array_intersect($user->roles, $allowed_roles4) && array_intersect($user->roles, $allowed_roles3)) {
+      $menu[996] = ['', 'read', 'separator-1', '', 'wp-menu-separator'];
+      $menu[997] = ['', 'read', 'separator-2', '', 'wp-menu-separator'];
+
+    } elseif(array_intersect($user->roles, $allowed_roles1)){
+      $menu[996] = ['', 'read', 'separator-1', '', 'wp-menu-separator'];
+      $menu[997] = ['', 'read', 'separator-2', '', 'wp-menu-separator'];
+      $menu[998] = ['', 'read', 'separator-3', '', 'wp-menu-separator'];
+      $menu[999] = ['', 'read', 'separator-4', '', 'wp-menu-separator'];
+    } else {
+      $menu[994] = ['', 'read', 'separator-1', '', 'wp-menu-separator'];
+      $menu[995] = ['', 'read', 'separator-2', '', 'wp-menu-separator'];
+      $menu[996] = ['', 'read', 'separator-3', '', 'wp-menu-separator'];
+      $menu[997] = ['', 'read', 'separator-4', '', 'wp-menu-separator'];
+      $menu[998] = ['', 'read', 'separator-5', '', 'wp-menu-separator'];
+      $menu[999] = ['', 'read', 'separator-6', '', 'wp-menu-separator'];
+    }
+  }
 
 function change_admin_post_label(){
   
-    global $menu, $submenu;       
+    global $submenu;       
     $submenu['upload.php'][5][0] = 'All Media';
     $submenu['upload.php'][10][0] = 'Add New Media';
-    $menu[997] = ['', 'read', 'separator3', '', 'wp-menu-separator'];
-    $menu[998] = ['', 'read', 'separator4', '', 'wp-menu-separator'];
-    $menu[999] = ['', 'read', 'separator5', '', 'wp-menu-separator'];    
 
     // Add Menus as a Department Site submenu and program pages
     add_submenu_page( 'edit.php?post_type=department_page', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php');
