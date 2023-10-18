@@ -140,8 +140,15 @@ function phila_content_image_sizes_attr( $sizes, $size ) {
   return $sizes;
 }
 
+add_action('admin_head', 'bg_separator');
 
-
+function bg_separator() {
+  echo '<style>
+   #adminmenu div.separator{
+    background-color: rgba(240,246,252,.6);
+   }
+  </style>';
+}
 
 add_filter('pre_get_document_title', 'phila_filter_title');
 

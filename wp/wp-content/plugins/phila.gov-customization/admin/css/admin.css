@@ -189,6 +189,11 @@ ul#department_page-search-checklist li{
   width: 75%;
 }
 
+.resource-hub{
+  list-style: disc;
+  margin-left: 2em;
+}
+
 #newpost_tag_parent,
 #addtag .form-field.term-parent-wrap {
   display: none;
