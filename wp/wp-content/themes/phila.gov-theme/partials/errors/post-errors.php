@@ -1,14 +1,17 @@
 <?php 
-if ( is_user_logged_in() ) {
-  if ( !has_post_thumbnail() && (phila_get_selected_template() == 'post' || phila_get_selected_template() == 'translated_post' || phila_get_selected_template() == 'advanced_post' ) ) {
-    $error_message_title = "Warning: This blog post doesn't have a featured image.";
-    $error_messages = [];
-    $item1['link'] = '';
-    $item1['text'] = '<p>All blog posts must have a featured image according to the <a href="https://standards.phila.gov/docs/content/how-to-write-a-blog.html">phila.gov digital standards</a>.</p>';
-    $item2['link'] = '';
-    $item2['text'] = "<p>If you don't have an image, you can use one of these <a href='https://drive.google.com/drive/folders/1w7RAaf5LYVH-mozpRbD5hERSt-S3w6Wa'>general use images</a>.</p>";
-    array_push($error_messages, $item1);
-    array_push($error_messages, $item2);
+if ( is_user_logged_in() && (phila_get_selected_template() == 'post' || phila_get_selected_template() == 'translated_post' || phila_get_selected_template() == 'advanced_post') ) {
+  
+  $error_messages = [];
+
+  if ( !has_post_thumbnail()) {
+    $error_messages[] = array(
+      'title' => "Warning: This blog post doesn't have a featured image.",
+      'link' => '',
+      'messages' => array(
+        '<p>All blog posts must have a featured image according to the <a href="https://standards.phila.gov/docs/content/how-to-write-a-blog.html">phila.gov digital standards</a>.</p>',
+        "<p>If you don't have an image, you can use one of these <a href='https://drive.google.com/drive/folders/1w7RAaf5LYVH-mozpRbD5hERSt-S3w6Wa'>general use images</a>.</p>"
+      )
+    );
   }
 
   $posted_on_values = phila_get_posted_on();
@@ -39,4 +42,20 @@ if ( is_user_logged_in() ) {
       );
     }
   }
+
+  $page_rows = rwmb_meta('phila_row');
+  foreach ($page_rows as $page_row) {
+    if ($page_row['phila_adv_posts_options']['phila_adv_posts_select_options'] == 'phila_image_gallery') {
+      if(count($page_row['phila_adv_posts_options']['phila_adv_posts_image_gallery']) < 3){
+        $error_messages[] = array(
+          'title' => "Warning: The number of images in image gallery doesn't meet the requirements",
+          'link' => '',
+          'messages' => array(
+            '<p>The image gallery of a blog post must have a minimum of 3 images</p>'
+          )
+        );
+      }     
+    }
+  }
+
 }
