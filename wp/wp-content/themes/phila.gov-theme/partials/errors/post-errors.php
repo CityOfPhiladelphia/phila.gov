@@ -1,5 +1,5 @@
 <?php 
-if ( is_user_logged_in() && (phila_get_selected_template() == 'post' || phila_get_selected_template() == 'translated_post') ) {
+if ( is_user_logged_in() && (phila_get_selected_template() == 'post' || phila_get_selected_template() == 'translated_post' || phila_get_selected_template() == 'advanced_post') ) {
   
   $error_messages = [];
 
@@ -42,4 +42,20 @@ if ( is_user_logged_in() && (phila_get_selected_template() == 'post' || phila_ge
       );
     }
   }
+
+  $page_rows = rwmb_meta('phila_row');
+  foreach ($page_rows as $page_row) {
+    if ($page_row['phila_adv_posts_options']['phila_adv_posts_select_options'] == 'phila_image_gallery') {
+      if(count($page_row['phila_adv_posts_options']['phila_adv_posts_image_gallery']) < 3){
+        $error_messages[] = array(
+          'title' => "Warning: The number of images in image gallery doesn't meet the requirements",
+          'link' => '',
+          'messages' => array(
+            '<p>The image gallery of a blog post must have a minimum of 3 images</p>'
+          )
+        );
+      }     
+    }
+  }
+
 }
