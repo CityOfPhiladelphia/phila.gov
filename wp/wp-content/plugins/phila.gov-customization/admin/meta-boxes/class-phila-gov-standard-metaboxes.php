@@ -620,7 +620,18 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_post_selector( $multiple = false ){
+  public static function phila_post_selector( $multiple = false, $post_types = []){
+    $meta_query = array(
+      'relation' => 'OR',
+  );
+
+  foreach ($post_types as $post_type) {
+      $meta_query[] = array(
+          'key'     => 'phila_template_select',
+          'value'   => $post_type,
+          'compare' => '=',
+      );
+  }
     return array(
       'id'  => 'phila_post_picker',
       'name' => 'Select posts (3 total)',
@@ -631,6 +642,7 @@ class Phila_Gov_Standard_Metaboxes {
         'post_status' => 'any',
         'orderby' => 'title',
         'order' => 'ASC',
+        'meta_query' => $meta_query
         ),
       'multiple'  => $multiple,
       'placeholder' => ' ',
