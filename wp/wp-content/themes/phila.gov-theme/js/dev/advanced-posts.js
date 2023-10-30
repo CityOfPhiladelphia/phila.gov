@@ -1,5 +1,5 @@
 module.exports = $(function () {
-  function showSlides2() {
+  function showSlides() {
     var containers = $(".slideshow-container");
 
     containers.each(function () {
@@ -40,7 +40,34 @@ module.exports = $(function () {
     });
   }
 
+  $('.lightbox-link').click(function() {
+    var imageId = $(this).data('open');
+    var closeButton = "<button class=\"close-button\" data-close aria-label=\"Close modal\" type=\"button\"><span aria-hidden=\"true\">&times;</span></button>";
+    $("#"+imageId).on("open.zf.reveal", function (e) {
+            var $modal = $(this);
+            $modal.html("Loading...");
+            var imageUrl = $modal.data("image-url");
+            var imageCaption = $modal.data("media-caption");
+            var imageCredit = $modal.data("media-credit");
+    
+            $modal.html('<div class="lightbox-content"><img src="' + imageUrl + '" alt=""></div>');
+    
+            if (imageCredit) {
+              var featuredCredit = document.createElement("p");
+              featuredCredit.innerHTML =
+                "<strong>Photo by: " + imageCredit + "</strong>";
+              $modal.append(featuredCredit);
+            }
+            if (imageCaption) {
+              var featuredCaption = document.createElement("p");
+              featuredCaption.innerHTML = imageCaption;
+              $modal.append(featuredCaption);
+            }
+            $modal.append(closeButton);
+          });
+  });
+
   $(document).ready(function () {
-    showSlides2();
+    showSlides();
   });
 });

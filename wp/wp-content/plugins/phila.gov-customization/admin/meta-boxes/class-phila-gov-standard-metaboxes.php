@@ -1930,6 +1930,7 @@ public static function phila_timeline_page_selector( ){
                 array(
                   'name' => 'Description',
                   'id'   => 'phila_image_gallery_description',
+                  'desc' => 'Enter a description for this image gallery',
                   'type' => 'wysiwyg',
                   'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
                 )
@@ -1942,6 +1943,7 @@ public static function phila_timeline_page_selector( ){
               'max_clone' => 10,
               'clone' => true,
               'sort_clone' => true,
+              'add_button' => '+ Add an image',
               'fields' => array(
                 array(
                   'id' => 'phila_images',

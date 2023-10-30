@@ -46,7 +46,7 @@ if ( is_user_logged_in() && (phila_get_selected_template() == 'post' || phila_ge
   $page_rows = rwmb_meta('phila_row');
   foreach ($page_rows as $page_row) {
     if ($page_row['phila_adv_posts_options']['phila_adv_posts_select_options'] == 'phila_image_gallery') {
-      if(count($page_row['phila_adv_posts_options']['phila_adv_posts_image_gallery']) < 3){
+      if(count($page_row['phila_adv_posts_options']['phila_adv_posts_image_gallery']['phila_image_gallery']) < 3){
         $error_messages[] = array(
           'title' => "Warning: The number of images in image gallery doesn't meet the requirements",
           'link' => '',
