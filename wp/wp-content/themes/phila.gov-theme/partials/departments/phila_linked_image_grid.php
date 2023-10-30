@@ -22,7 +22,7 @@
 
                     <div class="cell phila-linked-image-grid__item large-7 medium-7 small-auto">
                         <a class="phila-linked-image-grid__item-photo hover-fade" href="<?php echo $linkURL ?>">
-                            <?php if($imageUrl): ?> <img src="<?php echo $imageUrl ?>" alt=""><?php endif; ?>
+                            <?php if($imageUrl): ?> <img src="<?php echo $imageUrl ?>" alt="" /><?php endif; ?>
                             <div href="<?php echo $linkURL ?>" class=" phila-linked-image-grid__item-title <?php echo $linkIsExternal ? 'external' : ''  ?>"><?php echo $linkTitle ?></div>
                         </a>
                     </div>

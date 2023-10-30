@@ -99,7 +99,7 @@
               <?php if ( !empty( $owner ) ) : ?>
                 <div class="owner-logo">
                   <div class="sep"></div>
-                  <img src="<?php echo $owner['full_url']?>" alt="<?php echo $owner['alt']?>">
+                  <img src="<?php echo $owner['full_url']?>" alt="<?php echo $owner['alt']?>" />
                 </div>
               <?php endif;?>
             </div>
