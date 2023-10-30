@@ -3,19 +3,20 @@
 Partial for Advanced Blog Posts Image Gallery Component
 */
 ?>
+<div class = "mvl">
 <h2> <?php echo $title ?></h2>
 <p><?php echo $description ?></p>
 <div class="slideshow-container">
-    <?php
-    foreach ($images as $key => $image) {
+<?php foreach ($images as $key => $image) {
         $media_credit = get_post_meta($image['phila_images'][0])['phila_media_credit'][0];
         $media_caption = get_post($image['phila_images'][0])->post_excerpt;
-    ?>
-
+        $image_url =  wp_get_attachment_url($image['phila_images'][0]);
+        $image_key = $image['phila_images'][0] + $key; ?>
         <div class="mySlides<?php if($key == 0) { echo " active"; } ?>">
-            <img src="<?php echo wp_get_attachment_url($image['phila_images'][0]) ?>" class = "lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
-            <a class="prev"><i class="image-gallery-arrows fa-solid fa-arrow-left"></i></a>
-            <a class="next"><i class="image-gallery-arrows fa-solid fa-arrow-right"></i></a>
+        <img src="<?php echo $image_url ?>" class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-ig-<?php echo $image_key; ?>">
+        <div id="phila-lightbox-ig-<?php echo $image_key; ?>" data-reveal class="lb-ig reveal reveal--auto center" data-image-url="<?php echo $image_url ?>" data-media-credit="<?php echo $media_credit ?>" data-media-caption="<?php echo $media_caption ?>" data-key = "<?php echo $image_key ?>"></div>
+            <button class="prev"><i class="image-gallery-arrows fa-solid fa-arrow-left"></i></button>
+            <button class="next"><i class="image-gallery-arrows fa-solid fa-arrow-right"></i></button>
             <?php if ($media_credit != null || $media_caption != null) { ?>
                 <div class="text">
                     <?php if ($media_credit != null) { ?>
@@ -34,9 +35,9 @@ Partial for Advanced Blog Posts Image Gallery Component
     for ($i = 0; $i < count($images); $i++) {
         $isActive = ($i === 0) ? 'active' : '';
     ?>
-        <span class="dot <?php echo $isActive; ?>" data-slide="<?php echo $i + 1; ?>"></span>
+        <span class="dot <?php echo $isActive; ?>"><button data-slide="<?php echo $i + 1; ?>"></button></span>
     <?php
     }
     ?>
 </div>
-</div>
+</div></div>
