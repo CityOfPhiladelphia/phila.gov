@@ -163,7 +163,7 @@
               </div>
               <div class="small-16 medium-4 columns valign medium-push-0 logo-container">
                 <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia">
-                  <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//www.phila.gov/assets/images/city-of-philadelphia.png" alt="City of Philadelphia">
+                  <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//www.phila.gov/assets/images/city-of-philadelphia.png" alt="City of Philadelphia" />
                 </a>
               </div>
               <div class="medium-16 columns pan show-for-medium desktop-nav">

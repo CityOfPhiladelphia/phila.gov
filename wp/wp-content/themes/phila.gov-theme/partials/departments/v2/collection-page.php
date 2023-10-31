@@ -93,7 +93,7 @@ $row_content = rwmb_meta('collection_row');?>
                     <?php
                     $img = rwmb_meta( 'prog_header_img', $args = array( 'size' => 'medium', 'limit' => 1 ), $program_page );
                     $img = reset( $img );?>
-                    <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt']?>">
+                    <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt']?>" />
                     <div class="content-block">
                         <h4 class="h3 <?php echo !empty($off_site) ? 'external' : ''; ?>"><?php echo get_the_title($program_page); ?></h4>
                       <?php echo rwmb_meta( 'phila_meta_desc', $args = '', $program_page ); ?></h4>
