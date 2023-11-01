@@ -26,6 +26,7 @@
         border-radius: 100%;
         margin-left: 16px;
         margin-right: 16px;
+        cursor: pointer;
     }
     
     .next {
@@ -79,6 +80,8 @@
 
     button{
         background: none;
+        padding: 0;
+        border-radius: 50%;
     }
 
     .dot {

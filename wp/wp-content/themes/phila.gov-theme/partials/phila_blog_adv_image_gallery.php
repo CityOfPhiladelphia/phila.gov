@@ -37,7 +37,7 @@ Partial for Advanced Blog Posts Image Gallery Component
             for ($i = 0; $i < count($images); $i++) {
                 $isActive = ($i === 0) ? 'active' : '';
             ?>
-                <span class="dot <?php echo $isActive; ?>"><button data-slide="<?php echo $i + 1; ?>"></button></span>
+                <button data-slide="<?php echo $i + 1; ?>"><span class="dot <?php echo $isActive; ?>"></span></button>
             <?php
             }
             ?>
