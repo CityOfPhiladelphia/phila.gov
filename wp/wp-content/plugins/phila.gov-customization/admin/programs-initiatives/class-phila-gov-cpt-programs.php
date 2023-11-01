@@ -20,11 +20,11 @@ class Phila_Gov_Programs_Initiatives{
     register_post_type( 'programs',
       array(
         'labels' => array(
-          'name' => __( 'Programs + Initiatives' ),
-          'menu_name' => __('Programs + Initiatives'),
+          'name' => __( 'Programs' ),
+          'menu_name' => __('Programs'),
           'singular_name' => __( 'Program + Initiative' ),
           'add_new'   => __( 'Add a Program or Initiative' ),
-          'all_items'   => __( 'All Programs + Initiatives' ),
+          'all_items'   => __( 'All Programs' ),
           'add_new_item' => __( 'Add a Page' ),
           'edit_item'   => __( 'Edit a Page' ),
           'view_item'   => __( 'View a Page' ),

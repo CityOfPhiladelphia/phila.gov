@@ -21,10 +21,10 @@ class Phila_Gov_Departments{
       array(
         'labels' => array(
           'name' => __( 'Department page' ),
-          'menu_name' => __('Department Site'),
+          'menu_name' => __('Department Pages'),
           'singular_name' => __( 'Department page' ),
           'add_new'   => __( 'Add a Page' ),
-          'all_items'   => __( 'All Pages' ),
+          'all_items'   => __( 'All Department Pages' ),
           'add_new_item' => __( 'Add a Department Page' ),
           'edit_item'   => __( 'Edit Department Page' ),
           'view_item'   => __( 'View Department Page' ),

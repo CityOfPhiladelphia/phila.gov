@@ -15,7 +15,6 @@
         <?php echo apply_filters('the_content', $wysiwyg_content); ?>
       <?php endif ?>
     </div>
-    </section>
   </div>
 </div>
 <hr class="margin-auto">
