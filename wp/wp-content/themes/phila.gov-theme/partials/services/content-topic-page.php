@@ -8,7 +8,7 @@
 <?php if (!empty(phila_get_item_meta_desc( $bloginfo = false ) ) ) : ?>
   <section class="row mbl">
     <div class="medium-24 columns">
-      <?php //echo phila_get_item_meta_desc( $bloginfo = false ); ?>
+      <?php echo rwmb_meta( 'phila_wysiwyg_content' ); ?>
     </div>
   </section>
 <?php endif; ?>
