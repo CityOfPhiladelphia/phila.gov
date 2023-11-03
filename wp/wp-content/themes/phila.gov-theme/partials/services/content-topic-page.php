@@ -8,7 +8,7 @@
 <?php if (!empty(phila_get_item_meta_desc( $bloginfo = false ) ) ) : ?>
   <section class="row mbl">
     <div class="medium-24 columns">
-      <?php echo phila_get_item_meta_desc( $bloginfo = false ); ?>
+      <?php //echo phila_get_item_meta_desc( $bloginfo = false ); ?>
     </div>
   </section>
 <?php endif; ?>
@@ -33,7 +33,7 @@
         <a href="<?php the_permalink(); ?>" class="card sub-topic">
           <div class="content-block">
             <h3><?php the_title(); ?></h3>
-            <?php echo phila_get_item_meta_desc( $bloginfo = false ); ?>
+            <?php echo phila_get_item_meta_desc( $bloginfo = false ); ?> 
           </div>
         </a>
       </div>
