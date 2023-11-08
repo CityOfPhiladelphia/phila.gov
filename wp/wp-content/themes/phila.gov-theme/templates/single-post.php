@@ -158,6 +158,9 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
       <?php if ( $template_type == 'advanced_post' ) { ?>
         <?php include(locate_template ('partials/posts/advanced-post-content.php') ); ?> 
       <?php } ?>
+      <?php if ( $template_type == 'series' ) { ?>
+        <?php include(locate_template ('partials/posts/phila-series.php') ); ?> 
+      <?php } ?>
       <?php include(locate_template ('partials/posts/post-end-cta.php') ); ?>
     </div>
     <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ) : ?>

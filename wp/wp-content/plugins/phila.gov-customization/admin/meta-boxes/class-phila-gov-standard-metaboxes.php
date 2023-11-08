@@ -1694,6 +1694,23 @@ public static function phila_timeline_page_selector( ){
     );
   }
 
+  public static function phila_series_row()
+  {
+    return array(
+      'id' => 'phila_adv_series_content',
+      'type'  => 'group',
+      'fields' => array(
+        array(
+          'id' => 'series_linking_text',
+          'name' => 'Series linking text',
+          'type' => 'text',
+        ),
+        Phila_Gov_Standard_Metaboxes::phila_post_selector($multiple = true, $post_types = ['post', 'advanced_post']),
+      ),
+    );
+  }
+
+
   public static function phila_adv_posts_options()
   {
     return array(
@@ -1713,7 +1730,8 @@ public static function phila_timeline_page_selector( ){
             'phila_qna' => 'Q&A',
             'phila_timeline' => 'Timeline',
             'phila_adv_stepped_process' => 'Stepped Procress',
-            'phila_image_gallery' => 'Image Gallery'
+            'phila_image_gallery' => 'Image Gallery',
+            'phila_series' => 'Series'
           )
         ),
         array(
@@ -1954,6 +1972,14 @@ public static function phila_timeline_page_selector( ){
               )
             )
           )
+        ),
+        array(
+          'visible' => array('phila_adv_posts_select_options', '=', 'phila_series'),
+          'id' => 'phila_adv_series',
+          'type' => 'group',
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_post_selector($multiple = false, $post_types = ['series']),
+          ),
         )
       )
     );
