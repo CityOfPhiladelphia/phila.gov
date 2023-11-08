@@ -148,6 +148,7 @@ class Phila_Gov_Admin_Templates {
             'post'   => 'Post',
             'press_release'   => 'Press Release',
             'advanced_post'   => 'Advanced Post',
+            'series'          => 'Series',
             'action_guide'    => 'Action Guide',
             'action_guide_2'  => 'Action Guide V2'
           ),

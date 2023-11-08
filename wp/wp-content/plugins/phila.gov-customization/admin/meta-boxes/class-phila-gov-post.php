@@ -383,6 +383,23 @@ class Phila_Gov_Post {
         Phila_Gov_Standard_Metaboxes::phila_metabox_row()
       )
     );
+
+    $meta_boxes[] = array(
+      'id' => 'phila_adv_series',
+      'title'    => 'Series content',
+      'priority' => 'high',
+      'pages'    => array('post'),
+      'revision' => true,
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'series'),
+        ),
+      ),
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_series_row()
+      )
+    );
+
     return $meta_boxes;
   }
 }
