@@ -20,7 +20,7 @@
 <?php  $logo = phila_get_department_logo_v2( $id ); ?>
   <div class="row mtxl">
     <div class="columns center">
-      <img src="<?php echo $logo['full_url'] ?>" class="department-logo" alt="<?php echo $logo['alt']; ?>">
+      <img src="<?php echo $logo['full_url'] ?>" class="department-logo" alt="<?php echo $logo['alt']; ?>" />
     </div>
   </div>
 <?php endif;?>
@@ -36,7 +36,7 @@
         <?php foreach ($ids as $id => $slug) :?>
           <?php $img = rwmb_meta( 'phila_v2_department_logo', $args = array( 'size' => 'full', 'limit' => 1 ), $id ); ?>
           <div class="cell center medium-6">
-            <img src="<?php echo $img[0]['full_url'] ?>" class="department-logo" alt="<?php echo $img[0]['alt'] ?>">
+            <img src="<?php echo $img[0]['full_url'] ?>" class="department-logo" alt="<?php echo $img[0]['alt'] ?>" />
           </div>
         <?php endforeach; ?>
         </div>

@@ -79,7 +79,7 @@ if (phila_get_selected_template() === 'homepage_v2') {
 
         <?php elseif (!empty($toggle)  || !empty($photo) ) : ?>
           <div class="photo-callout-block__img large-14 medium-12 small-20 cell">
-              <img src="<?php echo $photo ?>" alt="" class="float-center">
+              <img src="<?php echo $photo ?>" alt="" class="float-center" />
           </div>
 
           <div class="photo-callout-block__txt large-10 medium-12 small-20 cell">
