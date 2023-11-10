@@ -155,7 +155,7 @@ module.exports = $(function () {
 
 
   /* prevent search dropdown from becoming dissconnected from header when keyboard is closed on iOS devices */
-  $('.search-field').focusout(function() {
+  $('#search-field').focusout(function() {
     if ( Foundation.MediaQuery.current === 'small' ) {
       window.scrollTo(0, 0);
     }
