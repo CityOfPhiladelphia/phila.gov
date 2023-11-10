@@ -5,7 +5,7 @@
  *
  */
  ?>
-<?php if (!empty('phila_wysiwyg_content') ) : ?>
+<?php if (!empty(rwmb_meta( 'phila_wysiwyg_content' ) ) ) :?>
   <section class="row mbl">
     <div class="medium-24 columns">
       <?php echo rwmb_meta( 'phila_wysiwyg_content' ); ?>
