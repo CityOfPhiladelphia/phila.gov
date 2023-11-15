@@ -891,6 +891,7 @@ $meta_boxes[] = array(
   'visible' => array('phila_template_select', 'topic_page'),
 
   'fields'  => array(
+      Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg('Topic Page Content'),
     array(
       'name' => 'Hide child pages',
       'type'  => 'heading'
