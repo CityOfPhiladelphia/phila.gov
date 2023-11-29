@@ -2284,3 +2284,58 @@ function load_vue_site_wide_alerts() {
   wp_enqueue_script('site-wide-alerts-app-js', 'https://www.phila.gov/embedded/site-wide-alerts/'.$phila_environment.'/js/app.js?cachebreaker', array(), null, true );
   wp_enqueue_style('site-wide-alerts-app-css', 'https://www.phila.gov/embedded/site-wide-alerts/'.$phila_environment.'/css/app.css?cachebreaker');
 }
+
+
+function phila_return_language_code($language){
+  switch ($language) {
+    case 'english';
+      $language = 'en';
+      break;
+    case 'french';
+      $language = 'fr';
+      break;
+    case 'spanish';
+      $language = 'es';
+      break;
+    case 'chinese';
+      $language = 'zh';
+    break;
+    case 'vietnamese';
+      $language = 'vt';
+      break;
+    case 'russian';
+      $language = 'ru';
+      break;
+    case 'arabic';
+      $language = 'ar';
+      break;
+    case 'haitian';
+      $language = 'ht';
+      break;
+    case 'portuguese';
+      $language = 'pr';
+      break;
+    case 'swahili';
+      $language = 'sw';
+      break;
+    default;
+      $language = 'en';
+      break;
+  }
+  return $language;
+}
+
+add_filter('language_attributes', 'add_html_lang_attribute');
+
+function add_html_lang_attribute($output) {
+  if ( function_exists( 'is_rtl' ) && is_rtl() ) {
+		$attributes[] = 'dir="rtl"';
+	}
+
+  $lang = empty(rwmb_meta('phila_select_language')) ? 'en' : rwmb_meta('phila_select_language');
+  $language_code = phila_return_language_code($lang);
+  $attributes[] = 'lang="' . $language_code . '"';
+  
+  $output = implode(' ', $attributes);
+  return $output;
+}
