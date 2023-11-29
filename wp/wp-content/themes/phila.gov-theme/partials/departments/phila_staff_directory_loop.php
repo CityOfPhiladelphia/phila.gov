@@ -87,7 +87,7 @@ if ( $staff_member_loop->have_posts() ):
       // Leadership Contact Info
       $staff_leadership_output .= '<div class="small-24 medium-6 columns staff-contact">';
 
-      $staff_leadership_output .= '<div class="name">';
+      $staff_leadership_output .= '<div translate="no" class="name">';
       $staff_leadership_output .= $staff_member_name_output;
       $staff_leadership_output .= '</div>';
 
