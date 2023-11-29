@@ -2258,7 +2258,6 @@ function load_vue_site_wide_alerts() {
   wp_enqueue_style('site-wide-alerts-app-css', 'https://www.phila.gov/embedded/site-wide-alerts/'.$phila_environment.'/css/app.css?cachebreaker');
 }
 
-
 function phila_return_language_code($language){
   switch ($language) {
     case 'english';
@@ -2286,10 +2285,31 @@ function phila_return_language_code($language){
       $language = 'ht';
       break;
     case 'portuguese';
-      $language = 'pr';
+      $language = 'pt';
       break;
     case 'swahili';
       $language = 'sw';
+      break;
+    case 'bengali';
+      $language = 'bn';
+      break;
+    case 'burmese';
+      $language = 'my';
+      break;
+    case 'hindo';
+      $language = 'hi';
+      break;
+    case 'indonesian';
+      $language = 'id';
+      break;
+    case 'urdu';
+      $language = 'ur';
+      break;
+    case 'korean';
+      $language = 'ko';
+      break;
+    case 'khmer';
+      $language = 'km';
       break;
     default;
       $language = 'en';
