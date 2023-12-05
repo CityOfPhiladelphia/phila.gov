@@ -135,9 +135,62 @@ class Phila_Services_Controller {
    */
   public function get_service_menu( $request ) {
 
-    $json_data = build_page_tree();
+    $service_list = build_page_tree();
 
-    return $json_data;
+    $full_mobile_menu = [
+      [
+        "ID" => 7,
+        "post_title" => "Services",
+        "post_name" => "services",
+        "post_link" => "https://www.phila.gov/services/",
+        "post_parent" => 0,
+        "post_type" => "page",
+        "collapsed" => true,
+        "children" => $service_list
+      ],
+      [
+        "ID" => 2,
+        "post_title" => "Programs",
+        "post_name" => "programs",
+        "post_link" => "https://www.phila.gov/programs/",
+        "post_parent" => 0,
+        "post_type" => "page"
+      ],
+      [
+        "ID" => 3,
+        "post_title" => "Departments",
+        "post_name" => "departments",
+        "post_link" => "https://www.phila.gov/departments/",
+        "post_parent" => 0,
+        "post_type" => "page"
+      ],
+      [
+        "ID" => 4,
+        "post_title" => "Tools",
+        "post_name" => "tools",
+        "post_link" => "https://www.phila.gov/tools/",
+        "post_parent" => 0,
+        "post_type" => "page"
+      ],
+      [
+        "ID" => 5,
+        "post_title" => "Publications",
+        "post_name" => "publications",
+        "post_link" => "https://www.phila.gov/documents/",
+        "post_parent" => 0,
+        "post_type" => "page"
+      ],
+      [
+        "ID" => 6,
+        "post_title" => "News",
+        "post_name" => "news",
+        "post_link" => "https://www.phila.gov/the-latest/",
+        "post_parent" => 0,
+        "post_type" => "page"
+      ]
+    ];
+
+    return $full_mobile_menu;
   }
 
 
