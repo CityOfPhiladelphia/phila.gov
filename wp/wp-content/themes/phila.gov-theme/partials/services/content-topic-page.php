@@ -5,12 +5,18 @@
  *
  */
  ?>
-<?php if (!empty(phila_get_item_meta_desc( $bloginfo = false ) ) ) : ?>
+<?php if (!empty(rwmb_meta( 'phila_wysiwyg_content' ) ) ) :?>
   <section class="row mbl">
     <div class="medium-24 columns">
-      <?php echo phila_get_item_meta_desc( $bloginfo = false ); ?>
+      <?php echo rwmb_meta( 'phila_wysiwyg_content' ); ?>
     </div>
   </section>
+  <?php elseif (!empty(phila_get_item_meta_desc( $bloginfo = false ))) : ?>
+  <section class="row mbl">
+    <div class="medium-24 columns">
+      <?php echo phila_get_item_meta_desc( $bloginfo = false ) ?>
+    </div>
+  </section>  
 <?php endif; ?>
 <?php $topic_args = array(
   'post_type'      => 'service_page',
@@ -33,7 +39,7 @@
         <a href="<?php the_permalink(); ?>" class="card sub-topic">
           <div class="content-block">
             <h3><?php the_title(); ?></h3>
-            <?php echo phila_get_item_meta_desc( $bloginfo = false ); ?>
+            <?php echo phila_get_item_meta_desc( $bloginfo = false ); ?> 
           </div>
         </a>
       </div>
