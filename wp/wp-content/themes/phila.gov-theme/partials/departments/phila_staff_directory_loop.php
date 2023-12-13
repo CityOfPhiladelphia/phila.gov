@@ -77,7 +77,7 @@ if ( $staff_member_loop->have_posts() ):
 
       $staff_summary = isset($staff_options['phila_summary']) ? wpautop($staff_options['phila_summary']) : '';
 
-      $staff_leadership_output .= '<div class="row staff-highlight '.$staff_first_name.'-'.$staff_last_name.'-card">';
+      $staff_leadership_output .= '<div translate="no" class="row staff-highlight '.$staff_first_name.'-'.$staff_last_name.'-card">';
       // Leadership Thumbnail
       if ( has_post_thumbnail() ):
         $staff_photo = get_the_post_thumbnail( $post->ID, 'staff-thumb', 'class= staff-thumbnail' );
