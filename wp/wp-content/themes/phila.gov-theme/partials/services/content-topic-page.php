@@ -11,6 +11,12 @@
       <?php echo rwmb_meta( 'phila_wysiwyg_content' ); ?>
     </div>
   </section>
+  <?php elseif (!empty(phila_get_item_meta_desc( $bloginfo = false ))) : ?>
+  <section class="row mbl">
+    <div class="medium-24 columns">
+      <?php echo phila_get_item_meta_desc( $bloginfo = false ) ?>
+    </div>
+  </section>  
 <?php endif; ?>
 <?php $topic_args = array(
   'post_type'      => 'service_page',
