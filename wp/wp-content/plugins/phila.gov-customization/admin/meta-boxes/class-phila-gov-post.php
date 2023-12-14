@@ -138,6 +138,7 @@ class Phila_Gov_Post {
           'name'  => 'Date for last updated',
           'id'    => 'last_updated_date',
           'type'  => 'date',
+          'required' => true,
           'js_options'=> array(
             'dateFormat'  => 'mm/dd/yy',
             'maxDate'     => 0

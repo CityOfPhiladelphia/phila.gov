@@ -11,7 +11,7 @@
 .global-nav {
   @include secondary-font(400);
   position: relative;
-  z-index: 1000;
+  z-index: 998;
 
   ul {
     font-size: 14px;
