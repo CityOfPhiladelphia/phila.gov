@@ -83,8 +83,8 @@ class Phila_Gov_Admin_Menu {
   function phila_change_post_label() {
       global $wp_post_types;
       $labels = &$wp_post_types['post']->labels;
-      $labels->name = 'The latest news + events';
-      $labels->singular_name = 'Latest item';
+      $labels->name = 'News';
+      $labels->singular_name = 'News';
       $labels->add_new = 'Add news item';
       $labels->add_new_item = 'Add news item';
       $labels->edit_item = 'Edit item';
@@ -101,8 +101,8 @@ class Phila_Gov_Admin_Menu {
   function phila_change_page_label() {
     global $wp_post_types;
     $labels = &$wp_post_types['page']->labels;
-    $labels->name = 'Top-Level Pages';
-    $labels->singular_name = 'Top-Level Page';
+    $labels->name = 'Top-level pages';
+    $labels->singular_name = 'Top-level page';
     $labels->add_new = 'Add top-level page';
     $labels->add_new_item = 'Add top-level page';
     $labels->edit_item = 'Edit top-level page';
@@ -112,7 +112,7 @@ class Phila_Gov_Admin_Menu {
     $labels->not_found = 'Nothing found';
     $labels->not_found_in_trash = 'Nothing found in trash';
     $labels->all_items = 'All top-level pages';
-    $labels->menu_name = 'Top-Level Pages';
+    $labels->menu_name = 'Top-level pages';
     $labels->name_admin_bar = 'Top-Level Pages';
 }
 
@@ -161,10 +161,15 @@ class Phila_Gov_Admin_Menu {
   }
 
 function change_admin_post_label(){
-  
-    global $submenu;       
-    $submenu['upload.php'][5][0] = 'All Media';
-    $submenu['upload.php'][10][0] = 'Add New Media';
+    global $menu, $submenu;       
+    $submenu['users.php'][5] = array( __( 'All users' ), 'list_users', 'users.php' );
+    if ( current_user_can( 'create_users' ) ) {
+      $submenu['users.php'][10] = array( _x( 'Add new user', 'user' ), 'create_users', 'user-new.php' );
+    } elseif ( is_multisite() ) {
+      $submenu['users.php'][10] = array( _x( 'Add new user', 'user' ), 'promote_users', 'user-new.php' );
+    }
+    $submenu['upload.php'][5][0] = 'All media';
+    $submenu['upload.php'][10][0] = 'Add new media';
 
     // Add Menus as a Department Site submenu and program pages
     add_menu_page('Owners', 'Owners', 'manage_categories', 'edit-tags.php?taxonomy=category', '', 'dashicons-admin-users');
@@ -173,11 +178,11 @@ function change_admin_post_label(){
     add_menu_page('Tags', 'Tags', 'manage_categories', 'edit-tags.php?taxonomy=post_tag', '', 'dashicons-tag');
     
     add_submenu_page('edit.php', 'Announcements', 'Announcements', 'edit_posts', 'edit.php?post_type=announcement');
-    add_submenu_page('edit.php?post_type=service_page', 'Add Service Page', 'Add Service Page', 'manage_categories', 'post-new.php?post_type=service_page');
-    add_submenu_page('edit.php?post_type=programs', 'Add Program Page', 'Add Program Page', 'manage_categories', 'post-new.php?post_type=programs');
-    add_submenu_page('edit.php?post_type=programs', 'Nav Menu', 'Navigation Menu', 'edit_posts', 'nav-menus.php');
-    add_submenu_page('edit.php?post_type=department_page', 'Add Department Page', 'Add Department Page', 'manage_categories', 'post-new.php?post_type=department_page');
-    add_submenu_page('edit.php?post_type=department_page', 'Nav Menu', 'Navigation Menu', 'edit_posts', 'nav-menus.php');
+    add_submenu_page('edit.php?post_type=service_page', 'Add Service Page', 'Add service page', 'manage_categories', 'post-new.php?post_type=service_page');
+    add_submenu_page('edit.php?post_type=programs', 'Add Program Page', 'Add program page', 'manage_categories', 'post-new.php?post_type=programs');
+    add_submenu_page('edit.php?post_type=programs', 'Nav Menu', 'Navigation menus', 'edit_posts', 'nav-menus.php');
+    add_submenu_page('edit.php?post_type=department_page', 'Add Department Page', 'Add department page', 'manage_categories', 'post-new.php?post_type=department_page');
+    add_submenu_page('edit.php?post_type=department_page', 'Nav Menu', 'Navigation menus', 'edit_posts', 'nav-menus.php');
 
     remove_menu_page( 'edit.php?post_type=announcement' );
 
