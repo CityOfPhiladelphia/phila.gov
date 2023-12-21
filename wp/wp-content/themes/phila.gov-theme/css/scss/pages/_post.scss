@@ -287,6 +287,30 @@
 
 
   footer {
+    a {
+        text-decoration: underline !important;
+      }
+    
+      .small-24.medium-8.columns.prxl.pvm.ptn-mu.pbl-mu.pbl-mu.sidewalk.bdr-right-mu.interact-311.clearfix.equal {
+        a {
+          text-decoration: none !important;
+        }
+      }
+    
+      h2 {
+        font-weight: 600 !important;
+        font-size: 2rem !important;
+      }
+    
+      h3 {
+        font-weight: 600 !important;
+        font-size: 1.429rem !important;
+      }
+  
+      .medium-8.columns.phm {
+        margin: 0;
+      }
+      
     .fat {
       .columns {
         &.medium-8 {
