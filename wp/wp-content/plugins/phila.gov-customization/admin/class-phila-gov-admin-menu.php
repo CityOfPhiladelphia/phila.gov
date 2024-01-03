@@ -26,11 +26,10 @@ class Phila_Gov_Admin_Menu {
 
     add_action( 'init', array($this, 'phila_change_post_label') );
 
-    add_action( 'init', array($this, 'phila_change_page_label') );
-
     add_action('admin_menu', array( $this, 'phila_hide_create_in_menu' ) );
 
     add_action( 'pre_get_posts', array( $this, 'phila_filter_menu_search_results'), 10, 2 );
+
 
  }
 
@@ -41,39 +40,21 @@ class Phila_Gov_Admin_Menu {
     }
     return array(
         'index.php',
-        'resource-hub',
-        'separator1',
         'edit.php',
+        'edit.php?post_type=page',
+        'separator1',
         'edit.php?post_type=service_page',
-        'edit.php?post_type=programs',
         'edit.php?post_type=department_page',
+        'edit.php?post_type=programs',
+        'edit.php?post_type=staff_directory',
         'edit.php?post_type=document',
+        'edit.php?post_type=longform_content',
         'separator2',
         'edit.php?post_type=event_spotlight',
-        'edit.php?post_type=guides',
-        'edit.php?post_type=longform_content',
-        'nestedpages',
-        'separator3',
-        'edit.php?post_type=staff_directory',
-        'upload.php',
         'edit.php?post_type=calendar',
-        'edit.php?post_type=text-blocks',
-        'edit.php?post_type=service_updates',
-        'edit.php?post_type=site_wide_alert', 
-        'separator4',       
-        'users.php',
-        'wpfront-user-role-editor-all-roles',
-        'edit-tags.php?taxonomy=category',
-        'edit-tags.php?taxonomy=audience',
-        'edit-tags.php?taxonomy=service_type&post_type=service_page',
-        'edit-tags.php?taxonomy=post_tag',
-        'separator5',
-        'themes.php',
-        'phila_gov',
-        'options-general.php',
+        'edit.php?post_type=site_wide_alert',
+        'upload.php',
         'separator-last',
-        'tools.php',
-        'plugins.php',
     );
   }
 
@@ -82,17 +63,17 @@ class Phila_Gov_Admin_Menu {
       $labels = &$wp_post_types['post']->labels;
       $labels->name = 'The latest news + events';
       $labels->singular_name = 'Latest item';
-      $labels->add_new = 'Add news item';
-      $labels->add_new_item = 'Add news item';
+      $labels->add_new = 'Add new item to the latest';
+      $labels->add_new_item = 'Add new item';
       $labels->edit_item = 'Edit item';
       $labels->new_item = 'New item in the latest';
       $labels->view_item = 'View item';
       $labels->search_items = 'Search the latest';
       $labels->not_found = 'Nothing found';
       $labels->not_found_in_trash = 'Nothing found in trash';
-      $labels->all_items = 'All news';
-      $labels->menu_name = 'News';
-      $labels->name_admin_bar = 'News';
+      $labels->all_items = 'All items';
+      $labels->menu_name = 'The latest';
+      $labels->name_admin_bar = 'The latest';
   }
 
   function phila_change_page_label() {
@@ -124,39 +105,15 @@ function change_admin_post_label(){
     $menu[999] = ['', 'read', 'separator5', '', 'wp-menu-separator'];    
 
     // Add Menus as a Department Site submenu and program pages
-    add_menu_page('Owners', 'Owners', 'manage_categories', 'edit-tags.php?taxonomy=category', '', 'dashicons-admin-users');
-    add_menu_page('Audiences', 'Audiences', 'manage_categories','edit-tags.php?taxonomy=audience', '', 'dashicons-groups');
-    add_menu_page('Categories', 'Categories', 'manage_categories', 'edit-tags.php?taxonomy=service_type&post_type=service_page',);
-    add_menu_page('Tags', 'Tags', 'manage_categories', 'edit-tags.php?taxonomy=post_tag', '', 'dashicons-tag');
-    
-    add_submenu_page('edit.php', 'Announcements', 'Announcements', 'edit_posts', 'edit.php?post_type=announcement');
-    add_submenu_page('edit.php?post_type=service_page', 'Add Service Page', 'Add Service Page', 'manage_categories', 'post-new.php?post_type=service_page');
-    add_submenu_page('edit.php?post_type=programs', 'Add Program Page', 'Add Program Page', 'manage_categories', 'post-new.php?post_type=programs');
-    add_submenu_page('edit.php?post_type=programs', 'Nav Menu', 'Navigation Menu', 'edit_posts', 'nav-menus.php');
-    add_submenu_page('edit.php?post_type=department_page', 'Add Department Page', 'Add Department Page', 'manage_categories', 'post-new.php?post_type=department_page');
-    add_submenu_page('edit.php?post_type=department_page', 'Nav Menu', 'Navigation Menu', 'edit_posts', 'nav-menus.php');
+    add_submenu_page( 'edit.php?post_type=department_page', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php');
+
+    add_submenu_page( 'edit.php?post_type=programs', 'Nav Menu', 'Nav Menu', 'edit_posts', 'nav-menus.php');
 
     remove_menu_page( 'edit.php?post_type=announcement' );
 
-    remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=category');
-    remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag');
-    remove_submenu_page('edit.php?post_type=service_page', 'edit-tags.php?taxonomy=category&amp;post_type=service_page');
-    remove_submenu_page('edit.php?post_type=service_page', 'edit-tags.php?taxonomy=audience&amp;post_type=service_page');
-    remove_submenu_page('edit.php?post_type=service_page', 'edit-tags.php?taxonomy=service_type&amp;post_type=service_page');
-    remove_submenu_page('edit.php?post_type=programs', 'edit-tags.php?taxonomy=category&amp;post_type=programs');    
-    remove_submenu_page('edit.php?post_type=programs', 'edit-tags.php?taxonomy=audience&amp;post_type=programs');
-    remove_submenu_page('edit.php?post_type=programs', 'edit-tags.php?taxonomy=service_type&amp;post_type=programs');
-    remove_submenu_page('edit.php?post_type=department_page', 'edit-tags.php?taxonomy=category&amp;post_type=department_page');
-    remove_submenu_page('edit.php?post_type=document', 'edit-tags.php?taxonomy=category&amp;post_type=document');
-    remove_submenu_page('edit.php?post_type=event_spotlight', 'edit-tags.php?taxonomy=category&amp;post_type=event_spotlight');
-    remove_submenu_page('edit.php?post_type=guides', 'edit-tags.php?taxonomy=category&amp;post_type=guides');
-    remove_submenu_page('edit.php?post_type=longform_content', 'edit-tags.php?taxonomy=category&amp;post_type=longform_content');
-    remove_submenu_page('edit.php?post_type=staff_directory', 'edit-tags.php?taxonomy=category&amp;post_type=staff_directory');
-    remove_submenu_page('edit.php?post_type=calendar', 'edit-tags.php?taxonomy=category&amp;post_type=calendar');
-    remove_submenu_page('edit.php?post_type=service_updates', 'edit-tags.php?taxonomy=category&amp;post_type=service_updates');
+    add_submenu_page( 'edit.php', 'Announcements', 'Announcements', 'edit_posts', 'edit.php?post_type=announcement');
 
   }
-
 
   function phila_register_categories_for_pages(){
 
