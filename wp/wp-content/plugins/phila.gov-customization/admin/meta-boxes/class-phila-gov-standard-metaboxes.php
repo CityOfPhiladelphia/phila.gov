@@ -1694,22 +1694,13 @@ public static function phila_timeline_page_selector( ){
     );
   }
 
-  public static function phila_series_row()
-  {
+  public static function phila_series_row() {
     return array(
-      'id' => 'phila_adv_series_content',
-      'type'  => 'group',
-      'fields' => array(
-        array(
-          'id' => 'series_linking_text',
-          'name' => 'Series linking text',
-          'type' => 'text',
-        ),
-        Phila_Gov_Standard_Metaboxes::phila_post_selector($multiple = true, $post_types = ['post', 'advanced_post']),
-      ),
+      'id' => 'phila_series_linking_text',      
+      'name' => 'Linking text',
+      'type' => 'text',
     );
   }
-
 
   public static function phila_adv_posts_options()
   {
@@ -1730,8 +1721,7 @@ public static function phila_timeline_page_selector( ){
             'phila_qna' => 'Q&A',
             'phila_timeline' => 'Timeline',
             'phila_adv_stepped_process' => 'Stepped Procress',
-            'phila_image_gallery' => 'Image Gallery',
-            'phila_series' => 'Series'
+            'phila_image_gallery' => 'Image Gallery'
           )
         ),
         array(

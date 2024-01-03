@@ -386,7 +386,7 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array(
       'id' => 'phila_adv_series',
-      'title'    => 'Series content',
+      'title'    => 'Series linking text',
       'priority' => 'high',
       'pages'    => array('post'),
       'revision' => true,

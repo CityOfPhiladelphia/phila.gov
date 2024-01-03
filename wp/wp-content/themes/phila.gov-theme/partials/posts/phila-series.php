@@ -1,9 +1,14 @@
-<?php $rows = rwmb_meta('phila_adv_series_content');
+<?php
+
+$rows = MB_Relationships_API::get_connected( [
+    'id'   => 'series_to_post_relationship',
+    'from' => get_the_ID(),
+] );
 
 ?>
 <div class="grid-x grid-margin-x">
     <?php
-    foreach ($rows['phila_post_picker'] as $row) {
+    foreach ($rows as $row) {
         $post = get_post($row);
         $post_type = $post->post_type;
     ?>
@@ -31,5 +36,6 @@
         </div>
     <?php
     }
+    wp_reset_postdata();
     ?>
     </div>
