@@ -29,7 +29,13 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
 } else if ($archived == 'archive_now') {
   $archived_state = 2; //archived manually
 }
-
+$connected = new WP_Query( [
+    'relationship' => [
+        'id'   => 'series_to_post_relationship',
+        'from' => get_the_ID(), 
+    ],
+    'nopaging'     => true,
+] );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
@@ -142,6 +148,14 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
     </div>
   <?php endif ?>
   <div class="grid-container post-content <?php echo $language == 'arabic' ? $language : '' ?>">
+  <?php if ($template_type != 'series') {
+      while ( $connected->have_posts() ) : $connected->the_post(); 
+        $content = get_post_field('phila_series_linking_text', $connected->the_ID(), $context = 'display'); ?>
+  <div class="series-blockquote"><blockquote><span><?php echo $content ?> <i><a href="<?php echo the_permalink();?>">link to series</a></i></span></blockquote></div>
+  <?php endwhile;
+  } 
+    wp_reset_postdata();
+  ?>
     <?php
       if ( !empty( $translations ) ) :
         foreach ( $translations as $translation ) : ?>

@@ -39,6 +39,7 @@ class Phila_Gov_Custom_Post_Types{
     add_action( 'init', array( $this, 'create_phila_news_post' ) );
     add_action( 'init', array( $this, 'create_phila_press_release' ) );
     add_action( 'init', array( $this, 'create_phila_advanced_post' ) );
+    add_action( 'init', array( $this, 'create_phila_series' ) );
 
   }
 
