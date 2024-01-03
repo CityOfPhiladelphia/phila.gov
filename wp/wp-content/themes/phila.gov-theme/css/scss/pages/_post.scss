@@ -296,19 +296,25 @@
           text-decoration: none !important;
         }
       }
-    
-      h2 {
-        font-weight: 600 !important;
-        font-size: 2rem !important;
-      }
-    
+  
       h3 {
         font-weight: 600 !important;
         font-size: 1.429rem !important;
       }
-  
+
+      .columns.intro{
+        h2{
+          font-weight: 600 !important;
+          font-size: 2rem !important;
+        }
+      }
+      
       .medium-8.columns.phm {
         margin: 0;
+        h2{
+          font-weight: 600 !important;
+          font-size: 1.2rem !important;
+        }
       }
       
     .fat {
