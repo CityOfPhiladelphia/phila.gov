@@ -7,7 +7,7 @@
 <div class="row">
   <div class="small-24 columns">
     <?php if( is_404() ) : ?>
-      <img src="<?php echo get_stylesheet_directory_uri() . '/img/city-skyline.svg' ?>">
+      <img src="<?php echo get_stylesheet_directory_uri() . '/img/city-skyline.svg' ?>" />
     <?php endif; ?>
     <div class="feedback-updated phm phn-mu <?php echo ( !is_404() ) ? 'mvs mtm-mu ' : '' ?>mbxl-mu">
       <div class="row" data-toggle="feedback">

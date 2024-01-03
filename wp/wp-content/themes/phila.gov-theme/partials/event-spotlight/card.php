@@ -65,7 +65,7 @@ if ( is_singular('department_page') || is_singular('programs')  ) {
     <header id="spotlight-header" class="spotlight">
       <a class="bg-ghost-gray card card--calendar" href="<?php echo get_the_permalink() ?>">
       <div class="grid-x">
-        <img src="<?php echo $hero['full_url']  ?>" class="spotlight-image" alt="<?php echo $hero['alt'] ?>">
+        <img src="<?php echo $hero['full_url']  ?>" class="spotlight-image" alt="<?php echo $hero['alt'] ?>" />
         <?php if ( !empty($credit) ): ?>
           <div class="photo-credit small-text">
             <span><i class="fas fa-camera" aria-hidden="true"></i> Photo by <?php echo !empty($credit) ? '<div class="photo-credit">' . $credit . '</div>' : '' ?></span>

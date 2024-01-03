@@ -109,10 +109,10 @@
           <ul>
             <li class="pvxs"><a href="https://codelibrary.amlegal.com/codes/philadelphia/latest/overview" class="external">Philadelphia Code &amp; Charter</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/departments/department-of-records/">City records</a></li>
-            <li class="pvxs"><a href="http://regulations.phila-records.com/">City agency regulations</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/departments/department-of-records/proposed-regulations/#/">City agency regulations</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/departments/mayor/executive-orders/">Executive orders</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/programs/integrity-works/">Honesty in government</a></li>
-            <li class="pvxs"><a href="https://www.philadelphiavotes.com/" class="external">Voting & elections</a></li>
+            <li class="pvxs"><a href="https://vote.phila.gov/">Voting & elections</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/programs/open-data-program/">Open data</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/documents/city-of-philadelphia-organization-chart/">City organization chart</a></li>
           </ul>

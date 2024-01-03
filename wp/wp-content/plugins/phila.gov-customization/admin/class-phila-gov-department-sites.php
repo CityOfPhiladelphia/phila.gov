@@ -112,7 +112,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           $block_image = isset( $array_value['phila_block_image'] ) ? $array_value['phila_block_image'] : '';
 
           if ( !$block_image == '' ) {
-            $output .= '<img src="' . $block_image . '" alt="">';
+            $output .= '<img src="' . $block_image . '" alt="" />';
           }
 
           $block_title = isset( $array_value['phila_block_content_title'] ) ? $array_value['phila_block_content_title'] : '';
@@ -128,7 +128,7 @@ if ( class_exists("Phila_Gov_Department_Sites" ) ){
           $block_image = isset( $array_value['phila_block_image'] ) ? $array_value['phila_block_image'] : '';
 
           if ( !$block_image == '' ) {
-            $output .= '<img src="' . $block_image . '" alt="">';
+            $output .= '<img src="' . $block_image . '" alt="" />';
           }
 
           $output .= '<div class="content-block">';

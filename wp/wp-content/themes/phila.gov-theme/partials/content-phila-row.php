@@ -340,8 +340,6 @@
             <?php endif;?>
 
         <?php endif;  /*end full row */?>
-
-      </section>
       <?php elseif ( (isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_thirds' ) && ( isset($current_row['phila_two_thirds_options']['phila_two_thirds_col'] ) && isset( $current_row['phila_two_thirds_options']['phila_one_third_col'] ) ) ):
 
         // Begin 2/3 x 1/3 row
@@ -382,6 +380,6 @@
         </section>
       <?php endif; ?>
     <?php endforeach; ?>
-  </div>
+</section>
 <!-- /Page content -->
 <?php endif; ?>

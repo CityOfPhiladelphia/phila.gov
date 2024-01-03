@@ -11,7 +11,7 @@
 .global-nav {
   @include secondary-font(400);
   position: relative;
-  z-index: 1000;
+  z-index: 998;
 
   ul {
     font-size: 14px;
@@ -295,31 +295,6 @@
       }
 
       #translations-menu {
-        //hidden languages in dropdown menu
-        #translate-haitian-creole-dropdown {
-          display: none;
-        }
-        
-        #translate-french-dropdown {
-          display: none;
-        }
-        
-        #translate-swahili-dropdown {
-          display: none;
-        }
-        
-        #translate-portuguese-dropdown {
-          display: none;
-        }
-        
-        #translate-russian-dropdown {
-          display: none;
-        }
-        
-        #translate-vietnamese-dropdown {
-          display: none;
-        }
-
         #translations-support>a {
           font-weight: bold;
           text-decoration: underline;
@@ -647,7 +622,7 @@
 
   .top-bar-right .menu>li {
     >a:link {
-      @media screen and (min-width: 800px) and (max-width:950px) {
+      @media screen and (min-width: 800px) and (max-width:1024px) {
         padding: 2rem .5rem;
       }
 
