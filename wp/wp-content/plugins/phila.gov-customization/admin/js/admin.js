@@ -56,8 +56,11 @@ if (currentURL.indexOf('edit-tags.php') > -1) {
 $('#menu-posts-calendar a:contains("All Calendars")').text('All calendars');
 $('#menu-posts-calendar a:contains("Add New")').text('Add calendar');
 
+$('#menu-posts-text-blocks div:contains("Text Blocks")').text('Text blocks');
 $('#menu-posts-text-blocks a:contains("All Text Blocks")').text('All text blocks');
 $('#menu-posts-text-blocks a:contains("Add New")').text('Add text block');
+
+$('#adminmenu a:contains("Nested View")').text('Nested view');
 
   // Set error placement, and highlights for category selection
   jQuery.validator.setDefaults({

@@ -372,7 +372,7 @@ class Phila_Gov_Custom_Post_Types{
     register_post_type( 'longform_content',
       array(
         'labels' => array(
-          'name' => __( 'Long-form page' ),
+          'name' => __( 'Long-form pages' ),
           'singular_name' => __( 'Long-form page' ),
           'add_new'   => __( 'Add long-form page' ),
           'all_items'   => __( 'All long-form pages' ),
