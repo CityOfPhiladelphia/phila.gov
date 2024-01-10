@@ -194,18 +194,20 @@ class Phila_Gov_Custom_Post_Types{
           'not_found'   => __( 'Site-wide Alert not found' ),
           'not_found_in_trash'   => __( 'Site-wide Alert not found in trash' ),
         ),
-      'taxonomies' => array('category'),
-      'exclude_from_search' => true,
-      'public' => false,
-      'show_ui' => true,
-      'has_archive' => false,
-      'menu_icon' => 'dashicons-megaphone',
-      'hierarchical' => false,
-      'rewrite' => array(
-        'slug' => 'alerts',
-        'with_front' => false,
-        ),
-      )
+        'exclude_from_search' => true,
+        'show_in_rest' => true,
+        'rest_base' => 'alerts',
+        'public' => false,
+        'show_ui' => true,
+        'has_archive' => false,
+        'menu_icon' => 'dashicons-megaphone',
+        'hierarchical' => true,
+        'query_var' => true,
+        'rewrite' => array(
+          'slug' => 'alerts',
+          'with_front' => false,
+          ),
+        )
     );
   }
 
@@ -233,7 +235,7 @@ class Phila_Gov_Custom_Post_Types{
           'author'
         ),
         'public' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'show_in_rest' => true,
         'rest_base' => 'documents',
         'menu_icon' => 'dashicons-media-text',
@@ -387,7 +389,7 @@ class Phila_Gov_Custom_Post_Types{
           'thumbnail'
         ),
         'public' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'show_in_rest' => true,
         'show_in_nav_menus' => true,
         'rest_base' => 'publications',

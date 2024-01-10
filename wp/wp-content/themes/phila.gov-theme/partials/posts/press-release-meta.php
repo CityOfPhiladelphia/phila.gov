@@ -38,7 +38,7 @@
         $press_email = isset( $contact['phila_press_release_contact_email'] ) ? trim($contact['phila_press_release_contact_email']) : '';
       ?>
       <?php echo (!empty($press_name) ) ? ($press_name) : ''; ?>
-      <?php echo (!empty($press_email) ) ? ('<a href="mailto:' . $press_email . '">' . $press_email . '</a>') : ''; ?>
+      <?php echo (!empty($press_email) ) ? ('<a translate="no" href="mailto:' . $press_email . '">' . $press_email . '</a>') : ''; ?>
       <?php if (!empty($old_phone) || !empty($full_phone) ) : ?>
         <span class="tel">
           <?php echo (!empty($old_phone) ) ? ($old_phone) : ''; ?>

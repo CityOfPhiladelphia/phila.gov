@@ -56,20 +56,7 @@ $user_selected_template    = phila_get_selected_template();
     <?php endif; ?>
 
   <?php
-
-
-/**
- * Adds markup around a call to get_template_part()
- * @param  string $_template HTML, ideally returned from a call to get_template_part()
- * @return HTML            template markup to be included in page
- */
-function apply_template_section( $_template = '' ){
-$apply_template_markup = <<<HTML
-  <section class="apply-template">$_template</section>
-HTML;
-  return $apply_template_markup;
-}
-
+  
   switch ($user_selected_template) {
 
     case 'all_services_v2':
@@ -97,7 +84,7 @@ HTML;
 
     case 'document_finder_v2':
       get_template_part( 'partials/departments/v2/document-finder' );
-      include(locate_template( 'partials/departments/content-programs-initiatives.php' ) );
+      include(locate_template( 'partials/content-phila-row.php' ) );
       break;
 
     case 'forms_and_documents_v2':
@@ -136,7 +123,7 @@ HTML;
 
     case 'homepage_v3':
       include(locate_template('partials/departments/v2/our-services.php'));
-      get_template_part( 'partials/departments/content', 'programs-initiatives' );
+      include( locate_template( 'partials/content-phila-row.php' ) ); 
       break;
 
     case 'off_site_department':
@@ -151,15 +138,15 @@ HTML;
       break;
   
     case 'prog_association':
-      apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
+      include( locate_template( 'partials/content-phila-row.php' ) ) ;
     break;
 
     case 'repeating_rows':
-      apply_template_section(get_template_part( 'partials/departments/content', 'programs-initiatives' ));
+      include( locate_template( 'partials/content-phila-row.php' ) ) ;
     break;
 
     case 'resource_list_v2':
-      apply_template_section(get_template_part( 'partials/resource', 'list' ));
+      include( locate_template( 'partials/resource-list.php' ) );
       break;
 
     case 'staff_directory_v2':

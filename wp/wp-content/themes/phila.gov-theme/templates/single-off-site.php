@@ -25,7 +25,7 @@
       <?php
       $img = rwmb_meta( 'prog_header_img', $args = array( 'size' => 'large', 'limit' => 1 ), $post->ID );
       $img = reset( $img );?>
-      <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt']?>" class="columns medium-7 pan show-for-medium">
+      <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['alt']?>" class="columns medium-7 pan show-for-medium" />
       <div class="content-block columns medium-16">
         <div class="medium-text mvl">You can find more information on <?php the_title(); ?> on their website.</div>
         <div class="button icon clearfix mbm">

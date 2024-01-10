@@ -14,7 +14,7 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
 <div class="site-main home">
   <main>
     <div class="hero-content" style="background-image: url('<?php echo $desktop_homepage_image; ?>');">
-      <img class="show-for-small-only" src="<?php echo $mobile_homepage_image; ?>" alt="">
+      <img class="show-for-small-only" src="<?php echo $mobile_homepage_image; ?>" alt="" />
       <div class="hero-wrap">
         <div class="photo-credit small-text">
         </div>
@@ -29,27 +29,6 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
         <div class="grid-x common-requests">
           <div class="small-24 medium-15 large-13 small-centered cell overlap">
             <div class="grid-x collapse call-to-action bg-white pvs pls equal-height">
-              <div class="small-24 medium-auto cell">
-                  <a href="https://www.phila.gov/programs/coronavirus-disease-2019-covid-19/" class="mrs mbs equal" onclick="dataLayer.push({
-                        'event': 'GAEvent',
-                        'eventCategory': 'Service Button',
-                        'eventAction': 'Covid information',
-                        'eventLabel': 'www.phila.gov'
-                      });
-                    ">
-                    <span class="accessible">Covid-19 updates</span>
-                    <div class="phs pvm cta-block clearfix" aria-hidden="true">
-                      <div class="valign">
-                        <div class="valign-cell">
-                          <i class="fas fa-virus fa-3x"></i>
-                        </div>
-                      </div>
-                      <div>
-                        <p class="h5">COVID-19<span class="break-before-mu"> updates</span></p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
                 <div class="small-12 medium-auto cell">
                   <a href="https://www.phila.gov/trashday" class="mrs mbs equal" onclick="dataLayer.push({
                         'event': 'GAEvent',
@@ -183,7 +162,7 @@ $desktop_homepage_image = rwmb_meta( 'homepage_desktop', array( 'object_type' =>
               <div class="card hover-fade">
                 <a href="/parks-rec-finder/" class="hover-fade">
                   <?php $image = rwmb_meta('phila_v2_photo_callout_block__photo', array('size' => 'medium', 'limit' => 1), $post = '27984')[0]['url']; ?>
-                  <img src="<?php echo $image ?>" alt="">
+                  <img src="<?php echo $image ?>" alt="" />
                   <?php wp_reset_query(); ?>
                   <div class="card-description bg-ghost-gray phl pvm">
                     <h3>Parks & Recreation Finder</h3>

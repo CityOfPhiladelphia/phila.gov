@@ -14,6 +14,8 @@ if ( !is_user_logged_in() ):
     <script>
       window.dataLayer = window.dataLayer || [];
       dataLayer.push({
+        "event": "page_loaded",
+        "post_type": "<?php echo get_post_type() ?>",
         "contentModifiedDepartment": "<?php echo $departments ?>",
         "lastUpdated": "<?php the_modified_time('Y-m-d H:i:s'); ?>",
         "templateType": "<?php echo phila_get_selected_template() ?>",

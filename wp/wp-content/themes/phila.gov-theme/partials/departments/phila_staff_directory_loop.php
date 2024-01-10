@@ -100,7 +100,7 @@ if ( $staff_member_loop->have_posts() ):
       endif;
 
       if ( isset( $staff_email ) && !$staff_email == ''):
-        $staff_leadership_output .= '<div class="email"><a href="mailto:' . $staff_email . '">' . phila_util_return_parsed_email($staff_email) . '</a></div>';
+        $staff_leadership_output .= '<div translate="no" class="email"><a href="mailto:' . $staff_email . '">' . phila_util_return_parsed_email($staff_email) . '</a></div>';
       endif;
 
       if ( isset( $staff_social_output ) && !$staff_social_output == ''):
@@ -127,13 +127,13 @@ if ( $staff_member_loop->have_posts() ):
       $staff_leadership_array[$staff_display_order] = $staff_leadership_output;
 
     else:
-      $staff_table_output .= '<tr class="'.$staff_first_name.'-'.$staff_last_name.'-row">
-        <td class="name"><span class="list-name">' . $staff_member_name_output . '</span></td>
+      $staff_table_output .= '<tr translate="no" class="'.$staff_first_name.'-'.$staff_last_name.'-row">
+        <td translate="no" class="name"><span class="list-name">' . $staff_member_name_output . '</span></td>
         <td class="title">' . $staff_title . '<br><span class="staff-unit">' . urldecode( $staff_unit ). '</span></td>';
         if (!empty($staff_email)) :
-        $staff_table_output .= '<td class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>';
+        $staff_table_output .= '<td translate="no" class="email"><a href="mailto:' . $staff_email . '">' . $staff_email . '</a></td>';
         else:
-          $staff_table_output .= '<td class="email"></td>';
+          $staff_table_output .= '<td translate="no" class="email"></td>';
         endif;
 
         if ( !empty( $staff_phone_unformatted ) && !empty( $staff_phone_formatted ) ):

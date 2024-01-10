@@ -42,7 +42,7 @@
         <?php if (!empty( $content['forms']) ) : ?>
           <div class="pvs">
             <?php foreach ( $content['forms'] as $form ): ?>
-              <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a>
+              <a href="<?php echo get_the_permalink($form);?>"><i class="far fa-file-alt" aria-hidden="true"></i> <?php echo get_the_title($form); ?></a><br>
             <?php endforeach; ?>
             </div>
           <?php endif; ?>
@@ -84,7 +84,8 @@
           </aside>
         </div>
     </div>
-  <?php endif; ?>
+    <?php endif; ?>
+  </div>
   <?php if ( !empty( $content['aside']['questions'] ) ) : ?>
   <div class="medium-<?php echo (!empty( $content['aside']['did_you_know'] ) ) ? '12' : '24'; ?> columns">
       <div class="panel info equal">
@@ -105,6 +106,5 @@
       </div>
     </div>
   <?php endif; ?>
-  </div>
 </section>
 <?php endif; ?>

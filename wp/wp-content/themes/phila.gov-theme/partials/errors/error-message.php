@@ -1,4 +1,4 @@
-<?php if ( isset($error_message_title) && isset($error_messages) && !empty($error_messages) && is_user_logged_in() )  { ?>
+<?php if (isset($error_messages) && !empty($error_messages) && is_user_logged_in()) { ?>
   <div class="phila-error-background pvm">
     <div class="grid-container">
       <div class="phila-error-card grid-x pas">
@@ -6,20 +6,26 @@
           <i class="fas fa-exclamation-circle"></i>
         </div>
         <div class="cell medium-23 phila-error">
-          <div class="phila-error-title"><?php echo $error_message_title; ?></div>
           <ul class="phila-error-list">
-            <?php foreach ($error_messages as $message) { ?>
-              <li class="phila-error-item">
-                <?php if($message['link']) { ?>
-                  <a href="<?php echo $message['link'] ?>" target="_blank">
-                    <?php echo $message['text'] ?>
+            <?php foreach ($error_messages as $error) {
+              $title = $error['title'];
+              $messages = $error['messages'];
+              $link = $error['link'];
+            ?>
+              <div class="phila-error-title"><?php echo $title; ?></div>
+              <?php foreach ($messages as $message) { ?>
+                <?php if ($link != "") { ?>
+                  <a href="<?php echo $link ?>" target="_blank">
+                    <?php echo $message ?>
                   </a>
                 <?php } else { ?>
-                  <?php echo $message['text'] ?>
+
+                  <li class="phila-error-item">
+                  <?php echo $message;
+                } ?>
+                  </li>
                 <?php } ?>
-                
-              </li>
-            <?php } ?>
+              <?php } ?>
           </ul>
         </div>
       </div>

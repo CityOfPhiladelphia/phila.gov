@@ -40,7 +40,7 @@
             include(locate_template( 'partials/departments/v2/content-one-quarter.php' ) );
             break; 
           case 'prog_association':
-            include(locate_template( 'partials/departments/content-programs-initiatives.php' ) );
+            include(locate_template( 'partials/content-phila-row.php' ) );
             break;
           case 'resource_list_v2':
             include(locate_template( 'partials/resource-list.php'));

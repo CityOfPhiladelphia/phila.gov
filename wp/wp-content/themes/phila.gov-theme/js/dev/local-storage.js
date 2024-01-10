@@ -127,7 +127,7 @@ module.exports = $(function(){
     }
 
     function setLangWithExpiry() {
-        $("#translations-menu a").click(function(){
+        $(".translations-nav a").click(function(){
             let urlPath = $(this)[0].href.split('/');
             let pathItem = urlPath[3];
             let lang = philaLocaleCodeToEnglish(pathItem);
