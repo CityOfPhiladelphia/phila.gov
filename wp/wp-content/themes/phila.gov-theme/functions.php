@@ -2023,6 +2023,30 @@ add_action( 'mb_relationships_init', function() {
 
 } );
 
+add_action( 'mb_relationships_init', function() {
+  MB_Relationships_API::register( array(
+      'id'   => 'series_to_post_relationship',
+      'from' => array(
+        'object_type'  => 'post',
+        'post_type'   => 'blog_post',        
+        'meta_box' => array(
+          'visible' => array(
+            'when' => array(
+              array('phila_template_select', '=', 'series'),
+            ),
+          ),
+          'context' => 'normal',
+          'title' => 'Series content'
+        )
+      ),
+      'to'   => array(
+        'object_type'  => 'post',
+        'post_type'   => 'blog_post',
+      ),
+      'reciprocal' => true,
+  ) );
+} );
+
 function phila_language_output($language){
   switch ($language) {
     case 'english';

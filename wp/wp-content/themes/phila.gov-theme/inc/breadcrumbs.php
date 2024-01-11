@@ -19,7 +19,7 @@ function phila_breadcrumbs() {
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
       if( phila_get_selected_template( $post->ID ) == 'press_release' ) {
         echo '<li><a href="/the-latest/archives/?templates=press_release">Press releases</a></li>';
-      }elseif (phila_get_selected_template( $post->ID ) == 'post'){
+      }elseif (phila_get_selected_template( $post->ID ) == 'post' || phila_get_selected_template( $post->ID ) == 'advanced_post'){
         echo '<li><a href="/the-latest/archives/?templates=post">Posts</a></li>';
       }elseif ( phila_get_selected_template( $post->ID ) == 'action_guide' ) {
         echo '<li><a href="/the-latest/archives/?templates=action_guide">Action guides</a></li>';

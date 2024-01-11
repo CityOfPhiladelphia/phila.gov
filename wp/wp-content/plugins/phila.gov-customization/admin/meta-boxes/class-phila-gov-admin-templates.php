@@ -136,7 +136,7 @@ class Phila_Gov_Admin_Templates {
 
     $meta_boxes[] = array(
       'title'    => 'Select Template',
-      'post_types'    => array( 'post' ),
+      'post_types'    => array( 'post'),
       'context'  => 'after_title',
       'fields' => array(
         array(
@@ -146,9 +146,34 @@ class Phila_Gov_Admin_Templates {
           'required'  => true,
           'options' => array(
             'post'   => 'Post',
-            'press_release' => 'Press Release',
-            'action_guide'  => 'Action Guide',
+            'press_release'   => 'Press Release',
+            'action_guide'    => 'Action Guide',
             'action_guide_2'  => 'Action Guide V2'
+          ),
+          'admin_columns' => array(
+            'position' => 'after date',
+            'title'    => __( 'Template' ),
+            'sort'     => true,
+          ),
+        ),
+      ),
+    );
+
+    $meta_boxes[] = array(
+      'title'    => 'Select Template',
+      'post_types'    => array( 'blog_post'),
+      'context'  => 'after_title',
+      'fields' => array(
+        array(
+          'placeholder'  => 'Select a template',
+          'id'  => 'phila_template_select',
+          'type'  => 'select',
+          'required'  => true,
+          'options' => array(
+            'post'   => 'Post',
+            'press_release'   => 'Press Release',
+            'advanced_post'   => 'Advanced Post',
+            'series'          => 'Series'
           ),
           'admin_columns' => array(
             'position' => 'after date',
