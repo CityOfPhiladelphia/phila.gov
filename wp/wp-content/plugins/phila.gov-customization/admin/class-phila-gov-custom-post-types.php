@@ -38,8 +38,6 @@ class Phila_Gov_Custom_Post_Types{
     add_action( 'init', array( $this, 'create_phila_posts' ) );
     add_action( 'init', array( $this, 'create_phila_news_post' ) );
     add_action( 'init', array( $this, 'create_phila_press_release' ) );
-    add_action( 'init', array( $this, 'create_phila_advanced_post' ) );
-    add_action( 'init', array( $this, 'create_phila_series' ) );
 
   }
 
@@ -331,80 +329,7 @@ class Phila_Gov_Custom_Post_Types{
       )
     );
   }
-  function create_phila_advanced_post() {
-    register_post_type( 'advanced_post',
-      array(
-        'labels' => array(
-          'name' => __( 'Advanced Posts' ),
-          'menu_name' => __( 'Advanced Posts' ),
-          'singular_name' => __( 'Advanced Post' ),
-          'add_new'   => __( 'Add Advanced Post' ),
-          'all_items'   => __( 'All Advanced Posts' ),
-          'add_new_item' => __( 'Add New Advanced Post' ),
-          'edit_item'   => __( 'Edit Advanced Post' ),
-          'view_item'   => __( 'View Advanced Posts' ),
-          'search_items'   => __( 'Search Advanced Posts' ),
-          'not_found'   => __( 'Advanced Post Not Found' ),
-          'not_found_in_trash'   => __( 'Advanced Post not found in trash' ),
-        ),
-        'taxonomies' => array( 'category' ),
-        'supports' => array(
-          'editor',
-          'title',
-          'revisions',
-          'author'
-        ),
-        'public' => true,
-        'has_archive' => true,
-        'show_in_menu'  => false,
-        'show_in_rest' => true,
-        'rest_base' => 'advanced-posts',
-        'menu_icon' => 'dashicons-editor-justify',
-        'hierarchical' => false,
-        'rewrite' => array(
-            'slug' => 'advanced-posts',
-            'with_front' => false,
-        ),
-      )
-    );
-  }
-  function create_phila_series() {
-    register_post_type( 'series',
-      array(
-        'labels' => array(
-          'name' => __( 'Series' ),
-          'menu_name' => __( 'Series' ),
-          'singular_name' => __( 'Series' ),
-          'add_new'   => __( 'Add Series' ),
-          'all_items'   => __( 'All Series' ),
-          'add_new_item' => __( 'Add New Series' ),
-          'edit_item'   => __( 'Edit Series' ),
-          'view_item'   => __( 'View Series' ),
-          'search_items'   => __( 'Search Series' ),
-          'not_found'   => __( 'Series Not Found' ),
-          'not_found_in_trash'   => __( 'Series not found in trash' ),
-        ),
-        'taxonomies' => array( 'category' ),
-        'supports' => array(
-          'editor',
-          'title',
-          'revisions',
-          'author'
-        ),
-        'public' => true,
-        'has_archive' => true,
-        'show_in_menu'  => false,
-        'show_in_rest' => true,
-        'rest_base' => 'series',
-        'menu_icon' => 'dashicons-editor-justify',
-        'hierarchical' => false,
-        'rewrite' => array(
-            'slug' => 'series',
-            'with_front' => false,
-        ),
-      )
-    );
-  }
+
   function create_phila_staff_directory() {
     register_post_type( 'staff_directory',
       array(

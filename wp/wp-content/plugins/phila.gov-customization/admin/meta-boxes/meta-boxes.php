@@ -183,7 +183,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'press-release-date',
     'title'    => 'Release Date',
-    'pages'    => array( 'post' ),
+    'pages'    => array( 'post', 'blog_post'),
     'context'  => 'after_title',
     'priority' => 'low',
     'visible' => array(
@@ -195,7 +195,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'fields' => array(
       array(
         'name'  => 'Release Date',
-        'id'    => 'phila_press_release_date',
+        'id'    => 'phila_press_release_date',  
         'type'  => 'date',
         'class' =>  'press-release-date',
         'size'  =>  30,
@@ -210,7 +210,7 @@ function phila_register_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
     'title'    => 'Contact Information',
-    'pages'    => array( 'post' ),
+    'pages'    => array( 'post', 'blog_post' ),
     'context'  => 'after_title',
     'priority' => 'low',
     'visible' => array(

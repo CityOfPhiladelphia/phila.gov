@@ -16,7 +16,7 @@ class Phila_Gov_Post {
   function register_meta_boxes_posts($meta_boxes){
     $meta_boxes[] = array(
       'title'    => 'Additional authors',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'blog_post'),
       'context'  => 'after_title',
       'visible' => array(
         'when' => array(
@@ -62,7 +62,7 @@ class Phila_Gov_Post {
 
   $meta_boxes[] = array(
       'title'    => 'Social media share pre-filled text',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'blog_post' ),
       'context'  => 'after_title',
       'fields'  => array(
         array(
@@ -103,7 +103,7 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array (
       'title'    => 'Language options',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'blog_post' ),
       'context'  => 'side',
       'priority' => 'high',
       'visible' => array(
@@ -118,7 +118,7 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array (
       'title'    => 'Updates and archiving',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'blog_post'),
       'context'  => 'side',
       'priority' => 'high',
       'visible' => array(
@@ -189,7 +189,7 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array(
       'title'    => 'End of post call to action. Where should users go now?',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'blog_post'),
       'context'  => 'normal',
       'priority' => 'high',
       'visible' => array(
@@ -371,7 +371,7 @@ class Phila_Gov_Post {
     $meta_boxes[] = array(
       'id' => 'phila_adv_posts',
       'title'    => 'Page content',
-      'pages'    => array('post'),
+      'pages'    => array('post', 'blog_post'),
       'priority' => 'high',
       'revision' => true,
       'visible' => array(
@@ -388,7 +388,7 @@ class Phila_Gov_Post {
       'id' => 'phila_adv_series',
       'title'    => 'Series linking text',
       'priority' => 'high',
-      'pages'    => array('post'),
+      'pages'    => array('post', 'blog_post'),
       'revision' => true,
       'visible' => array(
         'when' => array(
