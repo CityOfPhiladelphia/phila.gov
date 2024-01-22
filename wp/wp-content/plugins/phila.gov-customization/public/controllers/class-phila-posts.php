@@ -112,7 +112,7 @@ class Phila_Archives_Controller {
    * @param WP_REST_Request $request Current request.
   */
   public function get_items( $request ) {
-    $post_type = isset( $request['post_type'] ) ? array( $request['post_type']) : array('post', 'phila_post', 'press_release', 'news_post');
+    $post_type = isset( $request['post_type'] ) ? array( $request['post_type']) : array('post', 'phila_post', 'press_release', 'news_post', 'advanced_post', 'blog_post');
 
     $count = isset( $request['count'] ) ? $request['count'] : '40';
 
@@ -121,7 +121,7 @@ class Phila_Archives_Controller {
       switch($template) {
         case 'featured':
           $posts_args = array(
-            'post_type' => array('post', 'news_post'),
+            'post_type' => array('post', 'news_post', 'blog_post'),
             'meta_query'  => array(
               'relation'  => 'OR',
               array(
@@ -150,10 +150,16 @@ class Phila_Archives_Controller {
           $new_args = array(
             'post_type' => array('post'),
             'meta_query'  => array(
-                array(
-                  'key' => 'phila_template_select',
-                  'value' => 'post',
-                  'compare' => '=',
+              'relation'  => 'OR',
+              array(
+                'key' => 'phila_template_select',
+                'value' => 'post',
+                'compare' => '=',
+              ),
+              array(
+                'key' => 'phila_template_select',
+                'value' => 'advanced_post',
+                'compare' => '=',
               ),
             ),
           );
@@ -355,30 +361,11 @@ class Phila_Archives_Controller {
     }
 
     if (isset( $schema['properties']['categories'] )) {
-      $categories = get_the_category($post->ID);
-
-      foreach ($categories as $category){
-          $trimmed_name = phila_get_owner_typography( $category );
-
-          $category->slang_name = html_entity_decode(trim($trimmed_name));
-      }
-
-      $post_data['categories']  = (array) $categories;
+      $post_data['categories']  = phila_get_the_category($post->ID);
     }
 
     if (isset( $schema['properties']['archived'] )) {
-      $archived = rwmb_meta('phila_archive_post', '', $post->ID);
-      $phila_template = rwmb_meta('phila_template_select', '', $post->ID);
-      $post_is_old = false;
-      if (date('Y-m-d', strtotime('-2 years')) > $post->post_date) { // if posts are 2 years old
-        $post_is_old = true;
-      }
-      if ((((empty( $archived ) || !isset($archived) || $archived == 'default') && $post_is_old) || $archived == 'archive_now') && ($phila_template == 'post' || $phila_template == '')) {
-        $archived = true;
-      } else {
-        $archived = false;
-      }
-      $post_data['archived']  = (bool) $archived;
+      $post_data['archived']  = phila_get_archive_status($post->ID);
     }
 
     if (isset( $schema['properties']['updated_at'] )) {

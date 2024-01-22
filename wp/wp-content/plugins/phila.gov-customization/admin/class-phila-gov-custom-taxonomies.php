@@ -194,7 +194,8 @@ class Phila_Gov_Custom_Taxonomies {
     register_taxonomy( 'post_tag',
       array(
         'post',
-        'announcement'
+        'announcement',
+        'blog_post'
       ), 
       array(
       'hierarchical'              => true,
@@ -203,7 +204,9 @@ class Phila_Gov_Custom_Taxonomies {
       'public'                    => true,
       'show_ui'                   => true,
       'show_admin_column'         => true,
+      'show_in_rest'              => true,
       '_builtin'                  => true,
+      'rest_base'                 => 'tags',
     ) );
   }
 }

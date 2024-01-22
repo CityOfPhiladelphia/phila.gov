@@ -45,14 +45,10 @@ $connected = new WP_Query( [
     </div>
     <div class="grid-x grid-padding-x align-bottom">
       <div class="cell medium-24 post-title">
-        <?php if ( $template_type == 'action_guide' || $template_type == 'action_guide_2' ) { ?>
-          <?php include( locate_template( 'partials/posts/action-guide-title.php' ) ); ?>
-        <?php } else {  ?>
-          <?php if ( $archived_state !== 0 ) : ?>
+        <?php if ( $archived_state !== 0 ) : ?>
             <div class="archived-tag">Archived</div>
           <?php endif; ?>
           <?php the_title( '<h1 style="display:inline">', '</h1>' ); ?>
-        <?php } ?>
       </div>
       <div class="border-bottom-fat"></div>
     </div>
@@ -106,7 +102,7 @@ $connected = new WP_Query( [
   <?php endif; ?>
 
 
-  <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') && ($template_type != 'press_release') ): ?>
+  <?php if ( has_post_thumbnail() && ($template_type != 'press_release') ): ?>
     <div class="grid-container featured-image <?php echo $language == 'arabic' ? $language : '' ?>">
       <div class="grid-x medium-16 medium-centered align-middle">
         <?php if( strpos(phila_get_thumbnails(), 'phila-thumb') || strpos(phila_get_thumbnails(), 'phila-news')  ) : ?>
@@ -180,11 +176,6 @@ $connected = new WP_Query( [
     <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ) : ?>
       <div class="mvm center">###</div>
     <?php endif; ?>
-    <?php if ( $template_type == 'action_guide' ) { ?>
-      <?php include(locate_template ('partials/posts/action-guide-content.php') ); ?>
-    <?php } else if ( $template_type == 'action_guide_2' ) { ?>
-      <?php include(locate_template ('partials/posts/action_guide_v2/action-guide-content-v2.php') ); ?>
-    <?php } ?>
   </div>
   <hr class="margin-auto"/>
 </article>
@@ -245,8 +236,6 @@ $connected = new WP_Query( [
     $category = array($cat_id_string);
 
     $template = 'partials/posts/press-release-grid.php';
-  }elseif($template_type == 'action_guide' || $template_type == 'action_guide_2'){
-    $template = 'partials/posts/action-guide-grid.php';
   }else{
     $template = 'partials/posts/content-related.php';
   }

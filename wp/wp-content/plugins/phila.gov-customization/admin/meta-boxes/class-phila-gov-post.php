@@ -16,12 +16,14 @@ class Phila_Gov_Post {
   function register_meta_boxes_posts($meta_boxes){
     $meta_boxes[] = array(
       'title'    => 'Additional authors',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'blog_post'),
       'context'  => 'after_title',
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'post'),
+          array('phila_template_select', '=', 'advanced_post'),
+          array('phila_template_select', '=', 'post')
         ),
+        'relation' => 'or'
       ),
       'fields'  => array(
         array(
@@ -60,7 +62,7 @@ class Phila_Gov_Post {
 
   $meta_boxes[] = array(
       'title'    => 'Social media share pre-filled text',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'blog_post' ),
       'context'  => 'after_title',
       'fields'  => array(
         array(
@@ -101,7 +103,7 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array (
       'title'    => 'Language options',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'blog_post' ),
       'context'  => 'side',
       'priority' => 'high',
       'visible' => array(
@@ -116,7 +118,7 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array (
       'title'    => 'Updates and archiving',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'blog_post'),
       'context'  => 'side',
       'priority' => 'high',
       'visible' => array(
@@ -187,13 +189,15 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array(
       'title'    => 'End of post call to action. Where should users go now?',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'blog_post'),
       'context'  => 'normal',
       'priority' => 'high',
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'post'),
+          array('phila_template_select', '=', 'advanced_post'),
+          array('phila_template_select', '=', 'post')
         ),
+        'relation' => 'or'
       ),
       'fields' => array(
         array(
@@ -364,7 +368,38 @@ class Phila_Gov_Post {
       ),
     );
 
+    $meta_boxes[] = array(
+      'id' => 'phila_adv_posts',
+      'title'    => 'Page content',
+      'pages'    => array('post', 'blog_post'),
+      'priority' => 'high',
+      'revision' => true,
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'advanced_post'),
+        ),
+      ),
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_metabox_row()
+      )
+    );
+
+    $meta_boxes[] = array(
+      'id' => 'phila_adv_series',
+      'title'    => 'Series linking text',
+      'priority' => 'high',
+      'pages'    => array('post', 'blog_post'),
+      'revision' => true,
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'series'),
+        ),
+      ),
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_series_row()
+      )
+    );
+
     return $meta_boxes;
   }
-
 }
