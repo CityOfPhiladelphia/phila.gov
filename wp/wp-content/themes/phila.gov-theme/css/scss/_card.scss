@@ -17,10 +17,12 @@ a.card,
       font-size: 1.4rem;
       margin-top: .5rem;
     }
+  @media screen and (min-width:800px) { 
     .content-block{
       max-width: 700px;
       min-height: 165px;
     }
+  } 
     &.vertical {
       &.small{
         h3, .h3{
