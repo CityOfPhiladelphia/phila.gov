@@ -34,8 +34,8 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
 ?>
 
 <!-- Timeline Section -->
-<section>
-  <div class="grid-container <?php echo ( $timeline_page != null ) ? 'mtl' : ''; ?>">
+<section style="margin-left: 0px;">
+  <div class="<?php echo ( $timeline_page != null ) ? 'mtl' : ''; ?>">
     <div class="grid-x">
       <div class="cell">
         <?php if (isset($timeline_title)) { ?>

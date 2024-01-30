@@ -20,8 +20,10 @@ class Phila_Gov_Post {
       'context'  => 'after_title',
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'post'),
+          array('phila_template_select', '=', 'advanced_post'),
+          array('phila_template_select', '=', 'post')
         ),
+        'relation' => 'or'
       ),
       'fields'  => array(
         array(
@@ -192,8 +194,10 @@ class Phila_Gov_Post {
       'priority' => 'high',
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'post'),
+          array('phila_template_select', '=', 'advanced_post'),
+          array('phila_template_select', '=', 'post')
         ),
+        'relation' => 'or'
       ),
       'fields' => array(
         array(
@@ -364,7 +368,38 @@ class Phila_Gov_Post {
       ),
     );
 
+    $meta_boxes[] = array(
+      'id' => 'phila_adv_posts',
+      'title'    => 'Page content',
+      'pages'    => array('post'),
+      'priority' => 'high',
+      'revision' => true,
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'advanced_post'),
+        ),
+      ),
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_metabox_row()
+      )
+    );
+
+    $meta_boxes[] = array(
+      'id' => 'phila_adv_series',
+      'title'    => 'Series linking text',
+      'priority' => 'high',
+      'pages'    => array('post'),
+      'revision' => true,
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'series'),
+        ),
+      ),
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_series_row()
+      )
+    );
+
     return $meta_boxes;
   }
-
 }

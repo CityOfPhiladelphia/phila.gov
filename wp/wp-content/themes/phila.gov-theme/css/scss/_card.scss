@@ -75,6 +75,12 @@ a.card,
       border-bottom:5px solid map-get($post_content_types, action_guide);
     }
   }
+  &.card--series{
+    min-height:24rem;
+    &:not(.card--last){
+      border-bottom:5px solid #9400c6;
+    }
+  }
   &.card--press_release{
     h1{
       font-size: rem-calc(16);
