@@ -128,7 +128,7 @@
                 <?php if (isset($resource_list_title)) { ?>
                   <div class="small-24 medium-24">
                     <header>
-                    <h2 id="<?php echo $resource_list_slug ?>" class="h4"><?php echo $resource_list_title ?></h2>
+                      <h2 id="<?php echo $resource_list_slug ?>" class="<?php if (!empty($featured_resources) || $user_selected_template == 'collection_page_v2') { echo 'h4'; } else { echo 'h3'; } ?>"><?php echo $resource_list_title ?></h2>
                     </header>
                   </div>
                 <?php } ?>
