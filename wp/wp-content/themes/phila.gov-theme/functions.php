@@ -2333,25 +2333,26 @@ function add_html_lang_attribute($output) {
   return $output;
 }
 
-function wpse_restrict_mimes($mime_types){
-  $mime_types = array(
-      'jpg|jpeg' => 'image/jpeg',
-      'png' => 'image/png',
-      'gif' => 'image/gif',
-      'svg' => 'image/svg+xml',
-      'pdf' => 'application/pdf',
-      'doc' => 'application/msword',
-      'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-      'xls' => 'application/vnd.ms-excel',
-      'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-      'docx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-      'ppt' => 'application/vnd.ms-powerpoint',
-      'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 
-      'pages' => 'application/vnd.apple.pages',
-      'numbers' => 'application/vnd.apple.numbers',
-      'csv' => 'text/csv',
-  );
-  return $mime_types;
-}
+// Commented out but will be returned in 60 days
+// function wpse_restrict_mimes($mime_types){
+//   $mime_types = array(
+//       'jpg|jpeg' => 'image/jpeg',
+//       'png' => 'image/png',
+//       'gif' => 'image/gif',
+//       'svg' => 'image/svg+xml',
+//       'pdf' => 'application/pdf',
+//       'doc' => 'application/msword',
+//       'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+//       'xls' => 'application/vnd.ms-excel',
+//       'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+//       'docx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+//       'ppt' => 'application/vnd.ms-powerpoint',
+//       'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 
+//       'pages' => 'application/vnd.apple.pages',
+//       'numbers' => 'application/vnd.apple.numbers',
+//       'csv' => 'text/csv',
+//   );
+//   return $mime_types;
+// }
 
-add_filter('upload_mimes', 'wpse_restrict_mimes');
+// add_filter('upload_mimes', 'wpse_restrict_mimes');
