@@ -1,11 +1,17 @@
 function anchorOffset() {
-  /* Account for sticky header when anchor links are present */
   var $anchor = $(':target');
-  var fixedElementHeight = $('.sticky').outerHeight();
+  var fixedElementHeight = $('.sticky-container').outerHeight() ? $('.sticky-container').outerHeight() : 0;
+  
   if ($anchor.length > 0)
     window.scrollTo(0, $anchor.offset().top - fixedElementHeight);
 }
-$(window).on('hashchange load', anchorOffset);
+
+  $(window).on('hashchange load', function() {
+    setTimeout(function() {
+      anchorOffset();
+    }, 300);
+  });
+
 $('body').on('click', "a[href^='#']", function (ev) {
   if (window.location.hash === $(this).attr('href')) {
     ev.preventDefault();
