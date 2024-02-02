@@ -59,6 +59,7 @@ class Phila_Gov_Site_Wide_Alert {
           'id'    => 'phila_alert_start',
           'class' =>  'start-time',
           'type'  => 'datetime',
+          'required' => true,
           'size'  =>  25,
           'hidden'  => array( 'phila_alert_active', '=', 1),
           'js_options' =>  array(
@@ -78,6 +79,7 @@ class Phila_Gov_Site_Wide_Alert {
           'id'    => 'phila_alert_end',
           'type'  => 'datetime',
           'class' =>  'end-time',
+          'required' => true,
           'size'  =>  25,
           'hidden'  => array( 'phila_alert_active', '=', 1),
           'desc'  => 'Note: The start and end times communicate an alert’s length in the alert bar. Use the active alert feature to turn alerts on and ignore this setting.',
