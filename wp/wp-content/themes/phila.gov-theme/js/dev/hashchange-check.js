@@ -10,7 +10,7 @@ function anchorOffset() {
   $(window).on('hashchange load', function() {
     setTimeout(function() {
       anchorOffset();
-    }, 400);
+    }, 500);
   });
 
 $('body').on('click', "a[href^='#']", function (ev) {
