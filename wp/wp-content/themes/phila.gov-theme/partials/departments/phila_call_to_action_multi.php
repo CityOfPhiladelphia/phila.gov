@@ -45,7 +45,7 @@
     <div class="large-<?php echo $columns ?> columns pbm">
       <?php if (!$action_panel_link == ''): ?>
       <a href="<?php echo $action_panel_link; ?>"  class="card action-panel">
-        <div class="panel <?php if( $item_count > 1 ) echo 'equal';?>">
+        <div class="panel <?php if( $item_count > 1 ): echo 'equal'; endif;?>">
         <header class="<?php echo $columns == '24' ? 'desktop-text-align-left' : ''; ?>">
         <?php if ($action_panel_fa): ?>
           <div class="<?php echo $columns == '24' ? 'desktop-float-left' : ''; ?>">
@@ -59,7 +59,7 @@
           <span class="<?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></span>
         <?php endif; ?>
         </header>
-        <?php echo $columns == '24' ? '<hr class="mll mrl show-for-small-only"' : '<hr class="mll mrl">'; ?>
+        <?php echo $columns == '24' ? '<hr class="mll mrl show-for-small-only">' : '<hr class="mll mrl">'; ?>
           <span class="details"><?php echo $action_panel_summary; ?></span>
         </div>
       </a>
