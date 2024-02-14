@@ -124,6 +124,53 @@ class Phila_Gov_Row_Metaboxes {
         'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_callout(),
       ),
       array(
+        'id' => 'phila_cost_component',
+        'type' => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_cost_callout'),
+        'fields' => array(
+          array(
+            'id' => 'phila_heading',
+            'type' => 'text',
+            'name' => 'Heading',
+          ),
+          array(
+            'id' => 'service_cost_callout',
+            'type' => 'group',
+            'fields'  => array(
+              array(
+                'id'  => 'cost_callout',
+                'type'  => 'group',
+                'clone' => true,
+                'max_clone' => 3,
+                'fields'  => array(
+                  Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Cost type', 'heading', false, 'E.g. License cost'),
+                  array(
+                    'type' => 'number',
+                    'id' => 'amount',
+                    'name' => 'Cost amount, in dollars',
+                    'desc'  => 'E.g. 20.00'
+                  ),
+                  array(
+                    'id' => 'description',
+                    'name' => 'Description',
+                    'desc' => 'Optional: Provide more details about the cost to appear in the cost callout. For example, if additional fees will apply or when the fee is due.',
+                    'type'  => 'wysiwyg',
+                    'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+                    'sanitize_callback' => 'none'
+                  ),
+                )
+              )
+            )
+          ),
+          array(
+            'id' => 'phila_additional_wysiwyg',
+            'type'  => 'wysiwyg',
+            'desc' => "Optional: Provide more details about the cost to appear below all cost callouts. For example, payment options or instructions.",
+            'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
+          )
+        )
+      ),
+      array(
         'id'   => 'phila_custom_text',
         'type' => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_custom_text'),
