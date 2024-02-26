@@ -178,14 +178,14 @@ function change_admin_post_label(){
     add_menu_page('Tags', 'Tags', 'manage_categories', 'edit-tags.php?taxonomy=post_tag', '', 'dashicons-tag');
 
     add_menu_page('edit.php?post_type=department_page', 'Add Department Page', 'Add department page', 'edit_department_pages', 'post-new.php?post_type=department_page');
-
+    // add_menu_page('edit.php?post_type=department_page', 'Add Department Page', 'Add department page', 'edit_department_pages', 'post-new.php?post_type=department_page');
     
     add_submenu_page('edit.php', 'Announcements', 'Announcements', 'edit_posts', 'edit.php?post_type=announcement');
     add_submenu_page('edit.php?post_type=service_page', 'Add Service Page', 'Add service page', 'publish_service_pages', 'post-new.php?post_type=service_page');
     add_submenu_page('edit.php?post_type=programs', 'Add Program Page', 'Add program page', 'publish_programss', 'post-new.php?post_type=programs');
-    add_submenu_page('edit.php?post_type=programs', 'Nav Menu', 'Navigation menus', 'edit_posts', 'nav-menus.php');
+    add_submenu_page('edit.php?post_type=programs', 'Nav Menu', 'Navigation menus', 'publish_programss', 'nav-menus.php');
     add_submenu_page('edit.php?post_type=department_page', 'Add Department Page', 'Add department page', 'publish_department_pages', 'post-new.php?post_type=department_page');
-    add_submenu_page('edit.php?post_type=department_page', 'Nav Menu', 'Navigation menus', 'edit_posts', 'nav-menus.php');
+    add_submenu_page('edit.php?post_type=department_page', 'Nav Menu', 'Navigation menus', 'publish_department_pages', 'nav-menus.php');
 
     remove_menu_page( 'edit.php?post_type=announcement' );
 
