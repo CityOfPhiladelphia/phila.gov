@@ -130,7 +130,7 @@
             </li>
             <li class="pbm">
               <a href="https://twitter.com/PhiladelphiaGov" class="prl"  data-analytics="social">
-                <i class="fab fa-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
+                <i class="fa-brands fa-x-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </li>

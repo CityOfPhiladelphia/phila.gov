@@ -55,7 +55,7 @@ if ( $staff_member_loop->have_posts() ):
         endif;
 
         if ( isset( $staff_social['phila_staff_twitter'] ) ):
-          $staff_social_output .= '<a href="' . $staff_social['phila_staff_twitter'] . '" class="social-link"  data-analytics="social"><i class="fab fa-twitter fa-lg" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a>';
+          $staff_social_output .= '<a href="' . $staff_social['phila_staff_twitter'] . '" class="social-link"  data-analytics="social"><i class="fa-brands fa-x-twitter fa-lg" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a>';
         endif;
 
         if ( isset( $staff_social['phila_staff_instagram'] ) ):
