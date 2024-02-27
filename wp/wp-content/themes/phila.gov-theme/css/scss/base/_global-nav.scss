@@ -189,6 +189,15 @@
           }
         }
       }
+
+      #lang-dropdown {
+        a.active {
+          text-decoration: none;
+          cursor: default;
+          color: color(dark-ben-franklin);
+          pointer-events: none;
+        }
+      }
         
       .goog-te-combo {
         font-size: 1rem;
