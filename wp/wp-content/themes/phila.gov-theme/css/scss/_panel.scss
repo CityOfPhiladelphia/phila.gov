@@ -16,6 +16,12 @@
     margin-bottom:2rem;
   }
 }
+@media screen and (max-width:750px) {
+  .panel.info{
+    margin: 0 0 2rem 0;
+  }
+}
+
 
 .panel.info .title{
   text-transform: none;

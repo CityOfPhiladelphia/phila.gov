@@ -42,8 +42,8 @@ jQuery(document).ready(function($){
   }
 
   //Hide all category and tag menu items, department authors shouldn't see those.
-  $('a[href*="edit-tags.php"]').parent().css('display', 'none');
-
+$('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("display", "none");
+  
   var menuIdString = $('#menu-id').text().trim();
   var allMenuIDs = menuIdString.split(' ');
   var match = document.getElementById( allMenuIDs );

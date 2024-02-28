@@ -17,6 +17,51 @@ function phila_user_read_only(){
 /* For all admins */
 jQuery(document).ready(function($) {
 
+  var currentURL = window.location.href;
+
+if (currentURL.indexOf('edit-tags.php') > -1) {
+    //remove news highlighting
+    $('.menu-icon-post').removeClass('wp-has-current-submenu wp-menu-open');
+    $('.menu-icon-post').addClass('wp-not-current-submenu');
+    //remove service page highlighting
+    $('.menu-icon-service_page').removeClass('wp-has-current-submenu wp-menu-open');
+    $('.menu-icon-service_page').addClass('wp-not-current-submenu');
+
+    if(currentURL.indexOf('edit-tags.php?taxonomy=post_tag') > -1){
+      //add tags highlighting
+      $('.toplevel_page_edit-tags\\?taxonomy\\=post_tag').removeClass('wp-not-current-submenu');
+      $('.toplevel_page_edit-tags\\?taxonomy\\=post_tag').addClass('wp-has-current-submenu wp-menu-open');
+    }
+
+    if (currentURL.indexOf('edit-tags.php?taxonomy=service_type&post_type=service_page') > -1) {
+      //add categories highlighting
+      $('.toplevel_page_edit-tags\\?taxonomy\\=service_type\\&post_type\\=service_page').removeClass('wp-not-current-submenu');
+      $('.toplevel_page_edit-tags\\?taxonomy\\=service_type\\&post_type\\=service_page').addClass('wp-has-current-submenu wp-menu-open');
+    }
+
+    if(currentURL.indexOf('edit-tags.php?taxonomy=audience') > -1){
+      //add audience highlighting
+      $('.toplevel_page_edit-tags\\?taxonomy\\=audience').removeClass('wp-not-current-submenu');
+      $('.toplevel_page_edit-tags\\?taxonomy\\=audience').addClass('wp-has-current-submenu wp-menu-open');
+    }
+
+    if(currentURL.indexOf('edit-tags.php?taxonomy=category') > -1){
+      //add categories highlighting
+      $('.toplevel_page_edit-tags\\?taxonomy\\=category').removeClass('wp-not-current-submenu');
+      $('.toplevel_page_edit-tags\\?taxonomy\\=category').addClass('wp-has-current-submenu wp-menu-open');
+    }
+
+}
+
+$('#menu-posts-calendar a:contains("All Calendars")').text('All calendars');
+$('#menu-posts-calendar a:contains("Add New")').text('Add calendar');
+
+$('#menu-posts-text-blocks div:contains("Text Blocks")').text('Text blocks');
+$('#menu-posts-text-blocks a:contains("All Text Blocks")').text('All text blocks');
+$('#menu-posts-text-blocks a:contains("Add New")').text('Add text block');
+
+$('#adminmenu a:contains("Nested View")').text('Nested view');
+
   // Set error placement, and highlights for category selection
   jQuery.validator.setDefaults({
     errorPlacement: function( error, element ) {
