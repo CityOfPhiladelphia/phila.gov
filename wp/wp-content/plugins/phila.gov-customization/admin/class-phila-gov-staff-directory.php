@@ -94,7 +94,7 @@ class Phila_Gov_Staff_Directory {
           'type'  => 'text',
         ),
         array(
-          'name'  => 'Job title',
+          'name'  => 'Job title<br/><small>(Required)</small>',
           'id'    => $prefix . 'job_title',
           'type'  => 'text',
           'class' => 'job-title',
