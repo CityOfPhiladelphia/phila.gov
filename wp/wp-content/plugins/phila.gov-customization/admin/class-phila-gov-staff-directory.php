@@ -68,7 +68,7 @@ class Phila_Gov_Staff_Directory {
           'class' => 'last-name',
         ),
         array(
-          'name'  => 'Name Suffix<br><small>(Optional)</small>',
+          'name'  => 'Suffix<br><small>(Optional)</small>',
           'id'    => $prefix . 'name_suffix',
           'type'  => 'select',
           'class' => 'name-suffix',
