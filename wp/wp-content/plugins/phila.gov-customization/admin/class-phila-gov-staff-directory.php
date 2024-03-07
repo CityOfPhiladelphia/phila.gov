@@ -68,7 +68,7 @@ class Phila_Gov_Staff_Directory {
           'class' => 'last-name',
         ),
         array(
-          'name'  => 'Suffix<br><small>(Optional)</small>',
+          'name'  => 'Suffix',
           'id'    => $prefix . 'name_suffix',
           'type'  => 'select',
           'class' => 'name-suffix',
@@ -89,7 +89,7 @@ class Phila_Gov_Staff_Directory {
           ),
         ),
         array(
-          'name'  => 'Professional certification<br/><small>(Optional)</small>',
+          'name'  => 'Professional certification',
           'id'    => $prefix . 'prof_cert',
           'type'  => 'text',
         ),
