@@ -1962,14 +1962,6 @@ public static function phila_timeline_page_selector( ){
               )
             )
           )
-        ),
-        array(
-          'visible' => array('phila_adv_posts_select_options', '=', 'phila_series'),
-          'id' => 'phila_adv_series',
-          'type' => 'group',
-          'fields' => array(
-            Phila_Gov_Standard_Metaboxes::phila_post_selector($multiple = false, $post_types = ['series']),
-          ),
         )
       )
     );

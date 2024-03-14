@@ -21,7 +21,8 @@ class Phila_Gov_Post {
       'visible' => array(
         'when' => array(
           array('phila_template_select', '=', 'advanced_post'),
-          array('phila_template_select', '=', 'post')
+          array('phila_template_select', '=', 'post'),
+          array('phila_template_select', '=', 'series'),
         ),
         'relation' => 'or'
       ),
@@ -103,7 +104,7 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array (
       'title'    => 'Language options',
-      'pages'    => array( 'post', 'blog_post' ),
+      'pages'    => array( 'post' ),
       'context'  => 'side',
       'priority' => 'high',
       'visible' => array(
