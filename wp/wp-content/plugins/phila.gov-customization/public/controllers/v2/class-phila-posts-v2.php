@@ -56,25 +56,32 @@ function filter_post_by_archived($args, $request) {
     $args['meta_query'][] = array();
   } else if ($archived === 0) {
     //archived is false -- show everything that is not archived
-    $args['meta_query'][] = array(
-      'relation' => 'OR',
-      array(
-          'key'     => 'phila_archive_post',
-          'value'   => 'do_not_archive',
-          'compare' => '=',
+    $args['meta_query'] = array(
+      'relation' => 'AND',
+      'orderby'   => array(
+        'date' =>'DESC',
       ),
       array(
-        'relation' => 'AND',
+        'relation' => 'OR',
         array(
             'key'     => 'phila_archive_post',
-            'value'   => 'default',
+            'value'   => 'do_not_archive',
             'compare' => '=',
-        ),
-        array(
-          'after' => $two_years_ago,
-          'inclusive' => true,
+          ),
+          array(
+              'key'     => 'phila_archive_post',
+              'value'   => 'default',
+              'compare' => '=',
+          ),
+          array(
+            'key'     => 'phila_archive_post',
+            'value'   => '',
+            'compare' => '!=',
         ),
       ),
+    );
+    $args['date_query'] = array(
+      'after' => $two_years_ago,
     );
   }
 
