@@ -53,7 +53,7 @@ function filter_post_by_archived($args, $request) {
 
   if ($archived === 1) {
     // show everything
-    $args['meta_query'][] = array();
+    $args['meta_query'] = array();
   } else if ($archived === 0) {
     //archived is false -- show everything that is not archived
     $args['meta_query'] = array(
@@ -75,13 +75,10 @@ function filter_post_by_archived($args, $request) {
           ),
           array(
             'key'     => 'phila_archive_post',
-            'value'   => '',
+            'value'   => 'archive_now',
             'compare' => '!=',
         ),
       ),
-    );
-    $args['date_query'] = array(
-      'after' => $two_years_ago,
     );
   }
 
