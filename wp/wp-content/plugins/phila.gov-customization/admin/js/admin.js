@@ -144,10 +144,6 @@ jQuery(document).ready(function($) {
       $('#phila_template_select').click();
     }
 
-    if ( templateSelect.val() == 'forms_and_documents_v2' ){
-      $( '[id^=phila_action_panel_]' ).prop('required', true);
-    }
-
     templateSelect.change(function() {
       //set fields based on template selection
       if( templateSelect.val() == 'off_site_department'){
