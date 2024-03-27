@@ -196,7 +196,6 @@ class Phila_Gov_Register_Program_Templates {
           array( 'phila_template_select', '=', 'contact_us_v2' ),
           array( 'phila_template_select', '=', 'covid_guidance' ),
           array( 'phila_template_select', '=', 'department_stub' ),
-          array( 'phila_template_select', '=', 'forms_and_documents_v2' ),
           array( 'phila_template_select', '=', 'homepage_v2' ),
           array( 'phila_template_select', '=', 'off_site_department' ),
           array( 'phila_template_select', '=', 'one_quarter_headings_v2' ),
