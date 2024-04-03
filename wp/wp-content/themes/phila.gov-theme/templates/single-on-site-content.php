@@ -87,10 +87,6 @@ $user_selected_template    = phila_get_selected_template();
       include(locate_template( 'partials/content-phila-row.php' ) );
       break;
 
-    case 'forms_and_documents_v2':
-      get_template_part( 'partials/departments/v2/content', 'forms-documents' );
-      break;
-
     case 'homepage_v2':
 
       $_categories         = get_the_category();
