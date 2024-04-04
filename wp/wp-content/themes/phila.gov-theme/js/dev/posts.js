@@ -97,15 +97,15 @@ if (typeof phila_language_list !== 'undefined') {
       $('#'+activeLang+'-form').show();
     }
 
-    if (window.matchMedia('(max-width: 660px)').matches && i >= 2 && phila_language_list_count >= 3) {
+    if (window.matchMedia('(max-width: 660px)').matches && i >= 3 && phila_language_list_count >= 2) {
       document.getElementById("dropdown-translation-bar").appendChild(li);
       show_dropdown = true;
     }
-    else if (window.matchMedia('(max-width: 980px)').matches && i >= 4 && phila_language_list_count >= 5) {
+    else if (window.matchMedia('(max-width: 980px)').matches && i >= 7 && phila_language_list_count >= 8) {
       document.getElementById("dropdown-translation-bar").appendChild(li);
       show_dropdown = true;
     }
-    else if (i >= 6 && phila_language_list_count >= 7){
+    else if (i >= 7 && phila_language_list_count >= 8){
       document.getElementById("dropdown-translation-bar").appendChild(li);
       show_dropdown = true;
     }
