@@ -43,6 +43,7 @@ class Phila_Gov_Role_Administration {
 
     // Get selected categories for Users
     $settings_user = get_option( 'RestrictCats_user_options' );
+    $cat_list = [];
 
     // For users, strip out the placeholder category, which is only used to make sure the checkboxes work
     if ( is_array( $settings_user ) && array_key_exists( $user_login . '_user_cats', $settings_user ) ) {
