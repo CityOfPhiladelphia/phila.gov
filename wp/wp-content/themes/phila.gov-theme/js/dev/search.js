@@ -48,7 +48,7 @@ module.exports = jQuery(document).ready(function($) {
 
     var view = {
       url: encodeURI(item.url),
-      title: item.title,
+      title:item.title.replace(/<[^>]*>?/gm, ''),
       summary: item.highlight.body || (item.body.length > 250 ? item.body.substring(0, 250) + '...' : item.body),
       content_type: item.content_type,
       icon: ''
