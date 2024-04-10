@@ -143,17 +143,17 @@ class Phila_Gov_Row_Metaboxes {
                 'clone' => true,
                 'max_clone' => 3,
                 'fields'  => array(
-                  Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Cost type', 'heading', false, 'E.g. License cost'),
+                  Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Cost type', 'heading', false, 'E.g. License cost. Recommended: 40 characters, max.'),
                   array(
                     'type' => 'number',
                     'id' => 'amount',
                     'name' => 'Cost amount, in dollars',
-                    'desc'  => 'E.g. 20.00'
+                    'desc'  => 'Whole numbers only. E.g. 20'
                   ),
                   array(
                     'id' => 'description',
                     'name' => 'Description',
-                    'desc' => 'Optional: Provide more details about the cost to appear in the cost callout. For example, if additional fees will apply or when the fee is due.',
+                    'desc' => 'Optional: Provide more details about the cost to appear in the cost callout. For example, if additional fees will apply or when the fee is due. Recommended: 140 characters, max.',
                     'type'  => 'wysiwyg',
                     'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic_heading(),
                     'sanitize_callback' => 'none'
