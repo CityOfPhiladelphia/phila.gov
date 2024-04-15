@@ -40,7 +40,7 @@ if (typeof phila_language_list !== 'undefined') {
   let i = 0;
 
   for (let item in phila_language_list) {
-    let li = document.createElement("li");
+    let li = document.createElement("option");
     if ($('.single-post').length ) { 
       let a_tag = document.createElement("a");
       a_tag.className += " phm";

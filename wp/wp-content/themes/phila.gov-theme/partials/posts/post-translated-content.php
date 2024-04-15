@@ -55,9 +55,11 @@ wp_localize_script( 'phila-scripts', 'phila_language_list', $new_language_list )
       <ul class="dropdown menu" data-dropdown-menu>
         <li>
           <a href="#" class="dropdown-selector"></a>
-          <ul id="dropdown-translation-bar" class="menu">More</ul>
+          
         </li>
+        
       </ul>
+      <select id="dropdown-translation-bar" class="menu"/>
     </div>
   </div>
 </div>
