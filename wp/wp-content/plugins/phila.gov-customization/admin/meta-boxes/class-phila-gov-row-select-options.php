@@ -41,6 +41,7 @@ class Phila_Gov_Row_Select_Options {
         'phila_full_cta'  => 'Call to action (single, full)',
         'phila_resource_list' => 'Call to action (multiple)',
         'phila_callout' => 'Callout',
+        'phila_cost_callout' => 'Cost Callout',
         'phila_custom_text' => 'Custom text',
         'phila_custom_text_multi' => 'Custom text (multiple)',
         'phila_faq' => 'FAQ',

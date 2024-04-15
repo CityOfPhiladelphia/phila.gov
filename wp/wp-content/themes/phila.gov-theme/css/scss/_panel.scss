@@ -34,6 +34,15 @@
   padding-right: 1rem;
 }
 
+.cost {
+  .title {
+    display: grid;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
 @include breakpoint (medium up) {
   a.card.action-panel{
     .desktop-float-left {
