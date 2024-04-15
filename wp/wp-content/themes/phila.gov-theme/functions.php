@@ -140,9 +140,6 @@ function phila_content_image_sizes_attr( $sizes, $size ) {
   return $sizes;
 }
 
-
-
-
 add_filter('pre_get_document_title', 'phila_filter_title');
 
 function phila_filter_title( $title ){
@@ -392,6 +389,7 @@ function phila_gov_scripts() {
   wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 
   load_vue_mobile_menu();
+  load_vue_site_wide_alerts();
 
   if  ( is_user_logged_in() ){
     wp_enqueue_script( 'logged-in-js', get_stylesheet_directory_uri() . '/admin/js/front-end.js', array( 'phila-scripts' ), '', true );
@@ -895,7 +893,8 @@ function phila_is_department_homepage( $post ) {
 
 function phila_get_current_department_name( $category, $byline = false, $break_tags = false, $name_list = false ){
 
-  if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
+
+  if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {    
 
     $cat_name = array();
     $cat_ids = array();
@@ -908,10 +907,8 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
     foreach( $category as $cat ){
       array_push( $cat_name, $cat->name );
-    }
-    foreach( $category as $cat ){
       array_push( $cat_ids, $cat->cat_ID );
-    }
+    }    
 
     $cat_id_string = implode( ', ', $cat_ids );
 
@@ -937,13 +934,9 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
         $is_in_govt_dir = rwmb_meta('phila_department_home_page');
 
-        if ( !$is_parent ) {
+        if ( !$is_parent || $is_in_govt_dir) {
 
-          $all_available_pages[$permalink] = $the_title;
-
-        }else if($is_in_govt_dir){
-
-          $all_available_pages[$permalink] = $the_title;
+          $all_available_pages[$permalink] = $the_title;          
 
         }
       }
@@ -953,7 +946,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
     if ( $byline == true ) {
       echo ' by ';
-    }
+    }    
 
     foreach ( $all_available_pages as $k => $v ){
 
@@ -1253,7 +1246,7 @@ function phila_get_item_meta_desc( $bloginfo = true ){
  *
  **/
 
-function phila_get_selected_template( $post_id = null, $modify_response = true ){
+function phila_get_selected_template( $post_id = null, $modify_response = true, $deprecate_featured_template = false ){
 
   $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $post_id );
 
@@ -1262,11 +1255,13 @@ function phila_get_selected_template( $post_id = null, $modify_response = true )
   }
   if ($modify_response == true ){
     //used to force "featured" template type. The user doesn't select this value from the normal template dropdpown and this can be applied to any post, press release or other item.
-    $old_feature = get_post_meta( $post_id, 'phila_show_on_home', true);
-    $new_feature = get_post_meta( $post_id, 'phila_is_feature', true );
+    if (!$deprecate_featured_template) {
+      $old_feature = get_post_meta( $post_id, 'phila_show_on_home', true);
+      $new_feature = get_post_meta( $post_id, 'phila_is_feature', true );
 
-    if ( $old_feature != 0 || $new_feature != 0  ){
-      $user_selected_template = 'featured';
+      if ( $old_feature != 0 || $new_feature != 0  ){
+        $user_selected_template = 'featured';
+      }
     }
     //clean up the data by assigning "phila_post" to "post"
     if(get_post_type($post_id) == 'phila_post') {
@@ -1275,6 +1270,34 @@ function phila_get_selected_template( $post_id = null, $modify_response = true )
   }
 
   return $user_selected_template;
+}
+
+
+function phila_get_archive_status( $post_id ) {
+  $archived = rwmb_meta('phila_archive_post', '', $post_id);
+  $phila_template = rwmb_meta('phila_template_select', '', $post_id);
+  $post_is_old = false;
+  if (date('Y-m-d', strtotime('-2 years')) > get_the_date('Y-m-d', $post_id)) { // if posts are 2 years old
+    $post_is_old = true;
+  }
+  if ((((empty( $archived ) || !isset($archived) || $archived == 'default') && $post_is_old) || $archived == 'archive_now') && ($phila_template == 'post' || $phila_template == '')) {
+    $archived = true;
+  } else {
+    $archived = false;
+  }
+  return (bool) $archived;
+}
+
+function phila_get_the_category( $post_id ) {
+  $categories = get_the_category($post_id);
+
+  foreach ($categories as $category){
+      $trimmed_name = phila_get_owner_typography( $category );
+
+      $category->slang_name = html_entity_decode(trim($trimmed_name));
+  }
+
+  return (array) $categories;
 }
 
 /**
@@ -2204,7 +2227,7 @@ add_filter('wp_insert_post_data', 'force_type_private', 10, 2);
 
 function set_environment() {
   global $phila_environment;
-    if (isset($_SERVER['HTTP_HOST'])) {
+  if (isset($_SERVER['HTTP_HOST'])) {
 
     if(strpos($_SERVER['HTTP_HOST'],'staging') !== false) {
       $phila_environment = 'staging';
@@ -2249,7 +2272,114 @@ function inject_translation_slug($language)
 }
 
 function load_vue_mobile_menu() {
-  wp_enqueue_script('mobile-menu-chunk-js', 'https://www.phila.gov/embedded/mobile-menu/production/js/chunk-vendors.js?cachebreaker', array(), null, true );
-  wp_enqueue_script('mobile-menu-app-js', 'https://www.phila.gov/embedded/mobile-menu/production/js/app.js?cachebreaker', array(), null, true );
-  wp_enqueue_style('mobile-menu-app-css', 'https://www.phila.gov/embedded/mobile-menu/production/css/app.css?cachebreaker');
+  global $phila_environment;
+  wp_enqueue_script('mobile-menu-chunk-js', 'https://www.phila.gov/embedded/mobile-menu/'.$phila_environment.'/js/chunk-vendors.js?cachebreaker', array(), null, true );
+  wp_enqueue_script('mobile-menu-app-js', 'https://www.phila.gov/embedded/mobile-menu/'.$phila_environment.'/js/app.js?cachebreaker', array(), null, true );
+  wp_enqueue_style('mobile-menu-app-css', 'https://www.phila.gov/embedded/mobile-menu/'.$phila_environment.'/css/app.css?cachebreaker');
 }
+
+function load_vue_site_wide_alerts() {
+  global $phila_environment;
+  wp_enqueue_script('site-wide-alerts-chunk-js', 'https://www.phila.gov/embedded/site-wide-alerts/'.$phila_environment.'/js/chunk-vendors.js?cachebreaker', array(), null, true );
+  wp_enqueue_script('site-wide-alerts-app-js', 'https://www.phila.gov/embedded/site-wide-alerts/'.$phila_environment.'/js/app.js?cachebreaker', array(), null, true );
+  wp_enqueue_style('site-wide-alerts-app-css', 'https://www.phila.gov/embedded/site-wide-alerts/'.$phila_environment.'/css/app.css?cachebreaker');
+}
+
+function phila_return_language_code($language){
+  switch ($language) {
+    case 'english';
+      $language = 'en';
+      break;
+    case 'french';
+      $language = 'fr';
+      break;
+    case 'spanish';
+      $language = 'es';
+      break;
+    case 'chinese';
+      $language = 'zh';
+    break;
+    case 'vietnamese';
+      $language = 'vt';
+      break;
+    case 'russian';
+      $language = 'ru';
+      break;
+    case 'arabic';
+      $language = 'ar';
+      break;
+    case 'haitian';
+      $language = 'ht';
+      break;
+    case 'portuguese';
+      $language = 'pt';
+      break;
+    case 'swahili';
+      $language = 'sw';
+      break;
+    case 'bengali';
+      $language = 'bn';
+      break;
+    case 'burmese';
+      $language = 'my';
+      break;
+    case 'hindo';
+      $language = 'hi';
+      break;
+    case 'indonesian';
+      $language = 'id';
+      break;
+    case 'urdu';
+      $language = 'ur';
+      break;
+    case 'korean';
+      $language = 'ko';
+      break;
+    case 'khmer';
+      $language = 'km';
+      break;
+    default;
+      $language = 'en';
+      break;
+  }
+  return $language;
+}
+
+add_filter('language_attributes', 'add_html_lang_attribute');
+
+function add_html_lang_attribute($output) {
+  if ( function_exists( 'is_rtl' ) && is_rtl() ) {
+		$attributes[] = 'dir="rtl"';
+	}
+
+  $lang = empty(rwmb_meta('phila_select_language')) ? 'en' : rwmb_meta('phila_select_language');
+  $language_code = phila_return_language_code($lang);
+  $attributes[] = 'lang="' . $language_code . '"';
+  
+  $output = implode(' ', $attributes);
+  return $output;
+}
+
+// Commented out but will be returned in 60 days
+// function wpse_restrict_mimes($mime_types){
+//   $mime_types = array(
+//       'jpg|jpeg' => 'image/jpeg',
+//       'png' => 'image/png',
+//       'gif' => 'image/gif',
+//       'svg' => 'image/svg+xml',
+//       'pdf' => 'application/pdf',
+//       'doc' => 'application/msword',
+//       'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+//       'xls' => 'application/vnd.ms-excel',
+//       'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+//       'docx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+//       'ppt' => 'application/vnd.ms-powerpoint',
+//       'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 
+//       'pages' => 'application/vnd.apple.pages',
+//       'numbers' => 'application/vnd.apple.numbers',
+//       'csv' => 'text/csv',
+//   );
+//   return $mime_types;
+// }
+
+// add_filter('upload_mimes', 'wpse_restrict_mimes');

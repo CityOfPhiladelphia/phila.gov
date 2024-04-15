@@ -18,13 +18,13 @@ function phila_breadcrumbs() {
     if ( is_singular('post') ){
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
       if( phila_get_selected_template( $post->ID ) == 'press_release' ) {
-        echo '<li><a href="/the-latest/archives/#/?templates=press_release">Press releases</a></li>';
+        echo '<li><a href="/the-latest/archives/?templates=press_release">Press releases</a></li>';
       }elseif (phila_get_selected_template( $post->ID ) == 'post'){
-        echo '<li><a href="/the-latest/archives/#/?templates=post">Posts</a></li>';
+        echo '<li><a href="/the-latest/archives/?templates=post">Posts</a></li>';
       }elseif ( phila_get_selected_template( $post->ID ) == 'action_guide' ) {
-        echo '<li><a href="/the-latest/archives/#/?templates=action_guide">Action guides</a></li>';
+        echo '<li><a href="/the-latest/archives/?templates=action_guide">Action guides</a></li>';
       }else {
-        echo '<li><a href="/the-latest/archives/#/?templates=featured">Featured</a></li>';
+        echo '<li><a href="/the-latest/archives/?templates=featured">Featured</a></li>';
       }
       echo '<li>';
       the_title();
@@ -37,8 +37,7 @@ function phila_breadcrumbs() {
       echo '</li>';
 
     } elseif ( is_singular('document') ) {
-
-        echo '<li><a href="/publications-forms">Publications &amp; forms</a></li>';
+        echo '<li><a href="/documents/">Publications &amp; forms</a></li>';
         echo '<li>';
         the_title();
         echo '</li>';
@@ -95,7 +94,7 @@ function phila_breadcrumbs() {
         $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
       }
 
-      echo '<li><a href="/programs-initiatives/">Programs and initiatives</a></li>' . $output;
+      echo '<li><a href="/programs/">Programs and initiatives</a></li>' . $output;
       echo '<li> '.$title.'</li>';
     } elseif ( is_singular('guides') ) {
 
@@ -112,7 +111,7 @@ function phila_breadcrumbs() {
     } elseif ( is_page() || get_post_type() == 'service_page') {
 
       if ( get_post_type() == 'service_page') {
-        echo '<li><a href="/service-directory/">' . __( 'Services', 'phila.gov' ) . '</a></li>';
+        echo '<li><a href="/services/">' . __( 'Services', 'phila.gov' ) . '</a></li>';
       }
 
       if( $post->post_parent ){

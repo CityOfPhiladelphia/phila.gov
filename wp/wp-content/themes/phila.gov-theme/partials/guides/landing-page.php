@@ -160,6 +160,6 @@ switch ($user_selected_template) {
     include(locate_template('partials/departments/v2/document-finder.php'));
     break;
 } ?>
-  <?php get_template_part('partials/departments/content', 'programs-initiatives'); ?>
+  <?php include( locate_template( 'partials/content-phila-row.php' ) );  ?>
 
   <?php get_template_part('partials/content', 'additional'); ?>

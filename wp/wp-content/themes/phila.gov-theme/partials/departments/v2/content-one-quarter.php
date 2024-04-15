@@ -55,8 +55,8 @@
     <?php endforeach; ?>
     </div>
   <?php endif; ?>
-  <div class="not-found h3" style="display:none">No results found for that search.</div>
 <?php if ( !empty( $faq_search ) ): ?>
+  <div class="not-found h3" style="display:none">No results found for that search.</div>
   </div>
 <?php endif; ?>
 
@@ -151,7 +151,7 @@
                 </div>
                 <?php endif;?>
                   <?php if ( !empty( $email ) ) : ?>
-                    <div class="pbm"><a href="mailto:<?php echo $email?>"><?php echo $email ?></a> <?php echo ( $email_desc ) ? $email_desc : '' ?></div>
+                    <div class="pbm"><a translate="no" href="mailto:<?php echo $email?>"><?php echo $email ?></a> <?php echo ( $email_desc ) ? $email_desc : '' ?></div>
                   <?php endif;?>
                   <div class="ptxs">
                     <?php if ( !empty( $facebook ) ) : ?>
@@ -165,7 +165,7 @@
                     <?php if ( !empty( $twitter) ) : ?>
                       <span class="pvxs">
                         <a href="<?php echo $twitter; ?>" class="phs" data-analytics="social">
-                          <i class="fab fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
+                          <i class="fa-brands fa-x-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
                           <span class="show-for-sr">Twitter</span>
                         </a>
                       </span>

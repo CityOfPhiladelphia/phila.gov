@@ -57,6 +57,49 @@ module.exports = $(function(){
                     english:'Chinese',
                     native:'中文'
                 }
+            case 'ar':
+            case 'ara':
+                return {
+                    english:'Arabic',
+                    native:'عربي'
+                }
+            case 'ht':
+            case 'hat':
+                return {
+                    english:'Haitian Creole',
+                    native:'Ayisyen'
+                }
+            case 'fr':
+            case 'fre':
+            case 'fra':
+                return {
+                    english:'French',
+                    native:'Français'
+                }
+            case 'sw':
+            case 'swa':
+                return {
+                    english:'Swahili',
+                    native:'Kiswahili'
+                }
+            case 'pt':
+            case 'por':
+                return {
+                    english:'Portuguese',
+                    native:'Português'
+                }
+            case 'ru':
+            case 'rus':
+                return {
+                    english:'Russian',
+                    native:'русский'
+                }
+            case 'vi':
+            case 'vie':
+                return {
+                    english:'Vietnamese',
+                    native:'Tiếng Việt'
+                }
             default:
                 return {
                     english:'English',
@@ -127,7 +170,7 @@ module.exports = $(function(){
     }
 
     function setLangWithExpiry() {
-        $("#translations-menu a").click(function(){
+        $(".translations-nav a").click(function(){
             let urlPath = $(this)[0].href.split('/');
             let pathItem = urlPath[3];
             let lang = philaLocaleCodeToEnglish(pathItem);

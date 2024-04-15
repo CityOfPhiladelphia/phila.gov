@@ -3,7 +3,6 @@ require('jquery')
 require('phila-standards')
 
 require('./phila-gov')
-//require('./site-wide-alerts')
 require('./action-guide-v2');
 require('./chevrons');
 require('./city-directory-list')
@@ -22,3 +21,4 @@ require('./header-sticky')
 require('./parks-and-recreation')
 require('./gtm')
 require('./guides')
+require('./translations')

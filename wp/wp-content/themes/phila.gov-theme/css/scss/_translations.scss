@@ -29,3 +29,34 @@
     }
   }
 }
+html[dir="rtl"] {
+  .accessible {
+    right: -99999px; // handles overflow of header h1
+  }
+
+  // stepped content
+  .step-group {
+    margin-right: 1rem;
+    margin-left: 0rem;
+    .step {
+      border-right: 1px solid black;
+      border-left: 0px;
+      padding-left: 0px;
+      padding-right: 2rem;
+    }
+    .step-label {
+      margin-left: 0px;
+      margin-right: -1rem;
+    }
+  }
+
+  //search bar
+  .search input[type=text] {
+    padding-right: 60px;
+  }
+
+  .breadcrumbs li {
+    float: right;
+  }
+
+}

@@ -13,6 +13,7 @@ blockquote {
         display: inline-block;
         margin-top: -30px;
         width: 100%;
+        line-height: 32px !important;
     }
     &::before {
         content: "“";

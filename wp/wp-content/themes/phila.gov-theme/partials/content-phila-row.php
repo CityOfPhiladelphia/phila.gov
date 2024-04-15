@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying Program and Initiative pages
+ * The template used for displaying the full width row content 
  *
  * @package phila-gov
  */
@@ -38,8 +38,8 @@
 
           <?php elseif ( $current_row_option === 'phila_announcements' ): ?>
           <!-- Announcement Content -->
-            <?php $ann_cat_override = isset( $current_row['phila_full_options']['phila_announcements_group']['phila_ann_category']) ? $current_row['phila_full_options']['phila_announcements_group']['phila_ann_category'] : ''; ?>
-            <?php $blog_tag_override = isset( $current_row['phila_full_options']['phila_announcements_group']['ann_tag']) ? $current_row['phila_full_options']['phila_announcements_group']['ann_tag'] : ''; ?>
+          <?php $ann_cat_override = isset( $current_row['phila_full_options']['phila_announcements_group']['phila_ann_category']) ? $current_row['phila_full_options']['phila_announcements_group']['phila_ann_category'] : ''; ?>
+            <?php $ann_tag_override = isset( $current_row['phila_full_options']['phila_announcements_group']['phila_ann_tag']) ? $current_row['phila_full_options']['phila_announcements_group']['phila_ann_tag'] : ''; ?>
             <?php include( locate_template( 'partials/global/phila_full_row_announcements.php' ) ); ?>
           <!-- /Announcement Content -->
           <?php elseif ( $current_row_option == 'phila_full_width_calendar'):
@@ -51,7 +51,7 @@
 
             <?php $calendar_see_all = isset( $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] : ''; ?>
             <?php $owner = get_the_terms( get_the_id(), 'category' )[0]; ?>
-            <?php $cal_category = !empty($owner) ? $owner->name : ''; ?>
+            <?php $cal_category = get_the_category_by_ID($cal_owner_id); ?>
             <!-- Calendar -->
             <?php include( locate_template( 'partials/departments/v2/calendar.php' ) ); ?>
             <!-- /Calendar -->
@@ -68,6 +68,44 @@
               </section>
               <!-- /Callout -->
             <?php endif;?>
+
+          <?php elseif ($current_row_option == 'phila_cost_callout'): 
+            $cost_callout = $current_row['phila_full_options']['phila_cost_component'];
+          ?>
+          <div class="cost">
+          <section>
+            <h3 id="cost" class="black bg-ghost-gray phm-mu mtl mbm"><?php echo $cost_callout['phila_heading'] ?></h3>
+              <div class="grid-x grid-margin-x">
+                <?php $count = count($cost_callout['service_cost_callout']['cost_callout']) ?>
+                <?php foreach ( $cost_callout['service_cost_callout']['cost_callout'] as $callout ): ?>
+                  <div class="medium-<?php echo phila_grid_column_counter($count)?> cell align-self-stretch panel info">
+                    <div class="center heading">
+                      <div class="title pvxs"> <?php echo $callout['heading'] ?></div>
+                      <span class="symbol">
+                        $<span class="large-text"><?php echo $callout['amount']; ?></span>
+                      </span>
+                        <?php if ( isset($callout['description'] ) ) : ?>
+                          <div class="pam">
+                            <?php echo apply_filters( 'the_content', $callout['description']) ?>
+                          </div>
+                        <?php endif; ?>
+                    </div>
+                  </div>
+                <?php endforeach; ?>
+                <div class="phm-mu"><?php echo $cost_callout['phila_additional_wysiwyg'] ?></div>
+                </div>
+            <div class="phm-mu"><?php echo apply_filters( 'the_content', $cost) ?></div>
+            <?php if ( !empty($is_modal) && !empty( $modal_link_text ) ) : ?>
+              <div class="reveal reveal--announcement" id="<?php echo sanitize_title_with_dashes($modal_link_text)?>" data-reveal aria-labelledby="<?php echo sanitize_title_with_dashes($modal_link_text)?>">
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="mtl"><?php echo do_shortcode($modal_content) ?></div>
+              </div>
+              <div class="phm-mu"><button class="link" data-open="<?php echo sanitize_title_with_dashes($modal_link_text)?>"><i class="fas fa-info-circle"></i> <?php echo $modal_link_text ?></button></div>
+            <?php endif ?>
+          </section>
+        </div>
 
           <?php elseif ($current_row_option == 'phila_get_involved'): ?>
             <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ): ?>
@@ -258,7 +296,7 @@
               $members = $current_row['phila_full_options']['commission_members']['phila_commission_members'];
               ?>
               <!-- Boards/Commission Members -->
-              <?php include(locate_template('partials/departments/v2/board_commission_member_list.php')); ?>
+              <?php include(locate_template('partials/departments/v2/member_list.php')); ?>
               <!-- /Boards/Commission Members -->
             <?php endif;?>
             <?php elseif ( $current_row_option == 'phila_staff_table'):?>
@@ -330,10 +368,16 @@
               <?php include(locate_template('partials/content-custom-additional.php')); ?>
               <!-- /Additional Content -->
             <?php endif;?>
+          <?php elseif ( $current_row_option == 'phila_modal'): 
+            $phila_modal = isset( $current_row['phila_full_options']['phila_modal'] ) ? $current_row['phila_full_options']['phila_modal'] : '';
+
+            if ( !empty( $phila_modal ) ) :  ?>
+            <!-- Phila Modal -->
+            <?php include(locate_template('partials/services/content-phila-modal.php')); ?>
+            <!-- /Phila Modal -->
+            <?php endif;?>
 
         <?php endif;  /*end full row */?>
-
-      </section>
       <?php elseif ( (isset( $current_row['phila_grid_options'] ) && $current_row['phila_grid_options'] == 'phila_grid_options_thirds' ) && ( isset($current_row['phila_two_thirds_options']['phila_two_thirds_col'] ) && isset( $current_row['phila_two_thirds_options']['phila_one_third_col'] ) ) ):
 
         // Begin 2/3 x 1/3 row
@@ -374,6 +418,6 @@
         </section>
       <?php endif; ?>
     <?php endforeach; ?>
-  </div>
+</section>
 <!-- /Page content -->
 <?php endif; ?>

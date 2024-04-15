@@ -12,7 +12,8 @@ echo 'Running wp-config.sh'
 
 echo 'Running build tasks'
 cd /home/ubuntu/app/wp/wp-content/themes/phila.gov-theme
-npm install
+# npm ci checks the cache and installs dependencies that have changed
+npm ci --prefer-offline --cache /home/ubuntu/.npm
 if [ "$PHILA_TEST" ]; then
   echo 'Running test machine tasks'
   npm run dev:build

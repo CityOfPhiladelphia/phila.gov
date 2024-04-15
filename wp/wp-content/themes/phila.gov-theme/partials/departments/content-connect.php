@@ -26,7 +26,7 @@
           <?php if ( isset( $connect_vars['social']['twitter'] ) && !$connect_vars['social']['twitter'] == '') : ?>
             <div class="small-<?php echo $columns;?> columns center pvxs">
               <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs" data-analytics="social">
-                <i class="fab fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
+                <i class="fa-brands fa-x-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </div>
@@ -77,7 +77,7 @@
          <div class="email pbxs">
            <span class="vcard-label">Email: </span>
            <?php echo $connect_vars['email_exp']; ?><br />
-           <a href="mailto:<?php echo $connect_vars['email']; ?>"><?php echo $connect_vars['email']; ?></a>
+           <a translate="no" href="mailto:<?php echo $connect_vars['email']; ?>"><?php echo $connect_vars['email']; ?></a>
          </div>
         <?php endif; ?>
       </div>

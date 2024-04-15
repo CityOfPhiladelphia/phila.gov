@@ -109,10 +109,10 @@
           <ul>
             <li class="pvxs"><a href="https://codelibrary.amlegal.com/codes/philadelphia/latest/overview" class="external">Philadelphia Code &amp; Charter</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/departments/department-of-records/">City records</a></li>
-            <li class="pvxs"><a href="http://regulations.phila-records.com/">City agency regulations</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/departments/department-of-records/proposed-regulations/#/">City agency regulations</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/departments/mayor/executive-orders/">Executive orders</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/programs/integrity-works/">Honesty in government</a></li>
-            <li class="pvxs"><a href="https://www.philadelphiavotes.com/" class="external">Voting & elections</a></li>
+            <li class="pvxs"><a href="https://vote.phila.gov/">Voting & elections</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/programs/open-data-program/">Open data</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/documents/city-of-philadelphia-organization-chart/">City organization chart</a></li>
           </ul>
@@ -130,7 +130,7 @@
             </li>
             <li class="pbm">
               <a href="https://twitter.com/PhiladelphiaGov" class="prl"  data-analytics="social">
-                <i class="fab fa-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
+                <i class="fa-brands fa-x-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </li>
@@ -179,9 +179,9 @@
         <nav>
           <ul>
             <li class="pvxs"><a href="https://www.phila.gov/departments/">Departments and other agencies</a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/service-directory/">Service directory</a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/programs-initiatives/#/">Programs & initiatives </a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/publications-forms/">Publications & forms </a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/services/">Service directory</a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/programs/">Programs & initiatives </a></li>
+            <li class="pvxs"><a href="https://www.phila.gov/documents/">Publications & forms </a></li>
           </ul>
         </nav>
       </section>
@@ -204,7 +204,7 @@
 <?php wp_footer(); ?>
   <script type="text/javascript">
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+      new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
