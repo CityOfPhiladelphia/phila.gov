@@ -11,7 +11,7 @@ jQuery(document).ready(function($){
   }
 
   //Force top category to be checked all the time, unless the user has access to mutiple categories
-  if( !phila_WP_User.includes('multi_department_access') && !phila_WP_User.includes('secondary_all_departments')) {
+  if( !phila_WP_User.includes('multi_department_access') || !phila_WP_User.includes('secondary_all_departments')) {
     var required_cat = $('#categorychecklist > li:first-child input');
     if( !required_cat.attr('checked')  ) {
       required_cat.attr('checked','checked');
@@ -42,8 +42,8 @@ jQuery(document).ready(function($){
   }
 
   //Hide all category and tag menu items, department authors shouldn't see those.
-  $('a[href*="edit-tags.php"]').parent().css('display', 'none');
-
+$('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("display", "none");
+  
   var menuIdString = $('#menu-id').text().trim();
   var allMenuIDs = menuIdString.split(' ');
   var match = document.getElementById( allMenuIDs );
@@ -126,10 +126,10 @@ jQuery(document).ready(function($){
     $('#phila_template_select option').each( function () {
       if( $(this).val() !== '' && $(this).val() !== 'post' ){
         $(this).css('display', 'none');
-      } 
+      }
     });
       //ensure users who only have access to posts get the option preselcted for them
-    if (!phila_WP_User.includes('secondary_press_release_editor') && 
+    if (!phila_WP_User.includes('secondary_press_release_editor') &&
       !phila_WP_User.includes('secondary_press_release_contributor') &&
       !phila_WP_User.includes( 'secondary_action_guide_editor' )){
       $("#phila_template_select").val('post');
@@ -142,7 +142,7 @@ jQuery(document).ready(function($){
         }
       });
     }
-    
+
     if( phila_WP_User.includes( 'secondary_action_guide_editor' ) ) {
       $('#phila_template_select option').each( function () {
         if( $(this).val() === 'action_guide' ){
