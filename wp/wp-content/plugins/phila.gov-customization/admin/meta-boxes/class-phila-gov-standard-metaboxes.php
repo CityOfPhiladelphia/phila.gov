@@ -1805,7 +1805,7 @@ public static function phila_timeline_page_selector( ){
                   'name' => 'Icon selection',
                   'type'  => 'heading'
                 ),
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('', 'phila_check_list_icon', false, 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon. E.g.: fas fa-bell.'),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('', 'phila_check_list_icon', false, 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon. E.g.: fas fa-bell. The default icon is fas fas-check.'),
               )
             ),
             array(
@@ -1825,7 +1825,7 @@ public static function phila_timeline_page_selector( ){
           'id' => 'phila_adv_qna',
           'type' => 'group',
           'fields' => array(
-            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Title', 'phila_qna_title', false, 'Enter a title'),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Title', 'phila_qna_title', true, 'Enter a title'),
             array(
               'id' => 'phila_qna_style',
               'type' => 'radio',
@@ -1856,7 +1856,7 @@ public static function phila_timeline_page_selector( ){
                 array(
                   'name' => 'Question',
                   'id'   => 'phila_qna_question',
-                  'type' => 'text',
+                  'type' => 'textarea',
                   'required' => true,
                   'desc' => 'Enter a question'
                 ),
@@ -1870,7 +1870,7 @@ public static function phila_timeline_page_selector( ){
                 array(
                   'name' => 'Answer',
                   'id'   => 'phila_qna_answer',
-                  'type' => 'text',
+                  'type' => 'textarea',
                   'required' => true,
                   'desc' => 'Enter an answer',
                 ),
@@ -1890,14 +1890,14 @@ public static function phila_timeline_page_selector( ){
                 array(
                   'name' => 'Question',
                   'id'   => 'phila_qna_question',
-                  'type' => 'text',
+                  'type' => 'textarea',
                   'required' => true,
                   'desc' => 'Enter a question'
                 ),
                 array(
                   'name' => 'Answer',
                   'id'   => 'phila_qna_answer',
-                  'type' => 'text',
+                  'type' => 'textarea',
                   'required' => true,
                   'desc' => 'Enter an answer',
                 ),
@@ -1957,6 +1957,7 @@ public static function phila_timeline_page_selector( ){
                   'id' => 'phila_images',
                   'name' => 'Select image',
                   'type' => 'image_advanced',
+                  'required' => true,
                   'max_file_uploads' => 1,
                 )
               )
