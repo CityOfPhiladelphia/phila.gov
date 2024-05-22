@@ -194,7 +194,8 @@ class Phila_Gov_Custom_Taxonomies {
     register_taxonomy( 'post_tag',
       array(
         'post',
-        'announcement'
+        'announcement',
+        'blog_post'
       ), 
       array(
       'hierarchical'              => true,
