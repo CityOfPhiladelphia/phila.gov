@@ -16,6 +16,12 @@
     margin-bottom:2rem;
   }
 }
+@media screen and (max-width:750px) {
+  .panel.info{
+    margin: 0 0 2rem 0;
+  }
+}
+
 
 .panel.info .title{
   text-transform: none;
@@ -26,6 +32,15 @@
 }
 .panel.survey p:last-of-type{
   padding-right: 1rem;
+}
+
+.cost {
+  .title {
+    display: grid;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 }
 
 @include breakpoint (medium up) {

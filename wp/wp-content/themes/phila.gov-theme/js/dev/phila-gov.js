@@ -209,3 +209,19 @@ module.exports = $(function () {
     var mainContent = $('.guide-content').eq(0);
 
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  var titles = document.querySelectorAll(".cost .title");
+  var maxHeight = 0;
+  
+  titles.forEach(function(title) {
+    var titleHeight = title.offsetHeight;
+    if (titleHeight > maxHeight) {
+      maxHeight = titleHeight;
+    }
+  });
+  
+  titles.forEach(function(title) {
+    title.style.height = maxHeight + "px";
+  });
+});

@@ -87,11 +87,11 @@
                 <li class="show-for-medium"><a id="translate-chinese" href="<?php echo inject_translation_slug('zh'); ?>">中文</a></li>
               <?php endif; ?>
             <!-- Dropdown button -->
-              <button translate="no" class="translations-button show-for-medium" id="desktop-lang-button" data-toggle="lang-dropdown">
+              <button aria-label="Language dropdown" translate="no" class="translations-button show-for-medium" id="desktop-lang-button" data-toggle="lang-dropdown">
                 <i class="fa fa-earth-americas"></i>
                 <i class="translate-caret fas fa-solid fa-caret-down"></i>
               </button>
-              <button class="translations-button show-for-small-only" id="mobile-lang-button" data-toggle="lang-dropdown">
+              <button aria-label="Mobile language dropdown"  class="translations-button show-for-small-only" id="mobile-lang-button" data-toggle="lang-dropdown">
                 <i class="fa fa-earth-americas"></i>
                   <a tabindex="-1" class="show-for-small-only" href="#">Translate</a>
                 <i class="translate-caret fas fa-solid fa-caret-down"></i>
@@ -157,7 +157,7 @@
           <div class="columns phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
             <div class="row sticky-header-width">
               <div class="small-4 columns menu-icon-container" data-responsive-toggle="mobile-nav" data-swiftype-index="false" data-hide-for="medium">
-                <button class="menu-icon" type="button" data-toggle>
+                <button aria-label="Mobile navigation menu" class="menu-icon" type="button" data-toggle>
                   <i class="fass fa-bars" aria-hidden="true"></i>
                 </button>
               </div>
@@ -168,7 +168,7 @@
               </div>
               <div class="medium-16 columns pan show-for-medium desktop-nav">
                 <div class="top-bar-right">
-                  <nav data-swiftype-index="false" class="global-nav" aria-label="main-nav">
+                  <nav data-swiftype-index="false" class="global-nav" aria-label="Main navigation menu">
                     <ul class="menu">
                       <li class="services-menu-link" data-toggle="services-mega-menu">
                         <a href="" class="no-link " data-link="/services/" onclick="noLink(event)">Services</a>
@@ -193,7 +193,7 @@
                 </div>
               </div>
               <div class="small-4 medium-1 columns phn-m prn site-search-container">
-                <button id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
+                <button aria-label="Site search" id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
                   <i class="fass fa-magnifying-glass" aria-hidden="true"></i>
                 </button>
               </div>

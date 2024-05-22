@@ -51,7 +51,7 @@
     <tr>
       <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
         <span class="accessible">Email</span>
-          <i class="far fa-envelope fa-2x" aria-hidden="true"></i>
+          <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
       </th>
       <td class="<?php echo (!$archive) ? 'pvl': 'percent-90' ?>">
         <?php echo !empty( $connect_vars['email_exp'] ) ? $connect_vars['email_exp'] . '<br />'  : ''; ?>
@@ -128,7 +128,7 @@
     <?php if ( ! empty( $connect_vars['social'] ) ) :?>
       <tr>
         <th scope="row">
-          <i class="fal fa-at fa-2x" aria-hidden="true"></i>
+          <i class="fas fa-at fa-2x" aria-hidden="true"></i>
           <span class="accessible">Social</span>
         </th>
         <td >
@@ -145,7 +145,7 @@
           <?php if ( isset( $connect_vars['social']['twitter'] ) && !$connect_vars['social']['twitter'] == '') : ?>
             <div class="shrink small-5 cell">
               <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs" data-analytics="social">
-                <i class="fab fa-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
+                <i class="fa-brands fa-x-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </div>
