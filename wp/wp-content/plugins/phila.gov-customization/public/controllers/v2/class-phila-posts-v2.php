@@ -139,22 +139,3 @@ function filter_post_by_template($args, $request) {
 
   return $args;
 }
-
-// function filter_post_by_archived($args, $request){
-//   $archived = $request->get_param('archived');
-
-//   if ( empty( $archived )) {
-//     return $args;
-// }
-
-// $archived = filter_var($archived, FILTER_VALIDATE_BOOLEAN);
-
-// $args['meta_query'][] = array(
-//   'key'     => 'is_archived',
-//   'value'   => $archived,
-//   'compare' => '=',
-//   'type'    => 'BOOLEAN',
-// );
-
-// return $args;
-// }
