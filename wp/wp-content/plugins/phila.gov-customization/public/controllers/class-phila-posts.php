@@ -7,6 +7,7 @@ class Phila_Archives_Controller {
     $this->namespace     = 'the-latest/v1';
     $this->resource_name = 'archives';
     $this->category_resource = 'categories';
+    $this->tag_resource = 'tags';
   }
 
   // Register our routes.
@@ -39,6 +40,15 @@ class Phila_Archives_Controller {
         'permission_callback' => '__return_true',
       ),
       'schema' => array( $this, 'get_category_schema' ),
+    ) );
+
+    register_rest_route( $this->namespace, '/' . $this->tag_resource, array(
+      array(
+        'methods'   => WP_REST_Server::READABLE,
+        'callback'  => array( $this, 'get_tags' ),
+        'permission_callback' => '__return_true',
+      ),
+      'schema' => array( $this, 'get_tags_schema' ),
     ) );
   }
 
@@ -246,11 +256,33 @@ class Phila_Archives_Controller {
   }
 
   /**
-   * Outputs category data
+   * Outputs tags data
    *
    * @param WP_REST_Request $request Current request.
    */
-  public function get_categories( $request ){
+  public function get_tags( $request ){
+
+    $tags = get_tags(array(
+      'hide_empty' => false
+    ));
+
+    $data = array();
+
+    if ( empty( $tags ) ) {
+      return rest_ensure_response( $array() );
+    }
+
+    foreach ( $tags as $tag ) {
+      $response = $this->prepare_tag_for_response( $tag, $request );
+
+      $data[] = $this ->prepare_response_for_collection( $response );
+    }
+
+    return rest_ensure_response( $data );
+
+   }
+
+   public function get_categories( $request ){
 
     $categories = get_categories( array( 'parent' => 0 ) );
 
@@ -503,6 +535,27 @@ class Phila_Archives_Controller {
 
   }
 
+  public function prepare_tag_for_response ( $tag, $request ) {
+
+    $post_data = array();
+
+    $schema = $this-> get_tags_schema( $request );
+
+    if ( isset( $schema['properties']['id'] ) ) {
+      $post_data['id'] = (int) $tag->term_id;
+    }
+
+    if (isset( $schema['properties']['name'] )) {
+      $post_data['name']  =  (string) html_entity_decode($tag->name);
+    }
+
+    if (isset( $schema['properties']['slug'] )) {
+      $post_data['slug']  =  (string) $tag->slug;
+    }
+
+    return rest_ensure_response( $post_data );
+  }
+
   /**
    * Get sample schema for a category.
    *
@@ -536,6 +589,39 @@ class Phila_Archives_Controller {
         ),
         'slang_name'=> array(
           'description'  => esc_html__( 'Slang name of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+      ),
+    );
+
+    return $schema;
+
+  }
+
+  public function get_tags_schema( $request ) {
+
+    $schema = array(
+      // This tells the spec of JSON Schema we are using which is draft 4.
+      '$schema'              => 'http://json-schema.org/draft-04/schema#',
+      // The title property marks the identity of the resource.
+      'title'                => 'post',
+      'type'                 => 'object',
+      // Specify object properties in the properties attribute.
+      'properties'           => array(
+        'id' => array(
+          'description'  => esc_html__( 'Unique identifier for the object.', 'phila-gov' ),
+          'type'         => 'integer',
+          'context'      => array( 'view', 'edit', 'embed' ),
+          'readonly'     => true,
+        ),
+        'name'=> array(
+          'description'  => esc_html__( 'Name of the object.', 'phila-gov' ),
+          'type'         => 'string',
+          'readonly'     => true,
+        ),
+        'slug'=> array(
+          'description'  => esc_html__( 'Slug of the object.', 'phila-gov' ),
           'type'         => 'string',
           'readonly'     => true,
         ),
