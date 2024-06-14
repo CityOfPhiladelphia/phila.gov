@@ -14,7 +14,7 @@ module.exports = $(function () {
 
     var drilldownOptions = {
       autoHeight: false,
-      scrollTop: false,
+      scrollTop: true,
       parentLink: true,
       scrollTopElement: 'body'
     };
