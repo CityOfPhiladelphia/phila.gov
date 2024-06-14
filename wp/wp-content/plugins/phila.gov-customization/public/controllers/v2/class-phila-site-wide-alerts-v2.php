@@ -21,10 +21,17 @@ function filter_site_wide_alert_by_active( $args, $request ) {
   $args['meta_query'] = array(
     'relation' => 'OR',
     array(
-      'key' => 'phila_alert_start',
-      'value' => $now,
-      'compare' => '<=',
-      'type' => 'integer',
+      'relation' => 'AND',
+      array(
+        'key' => 'phila_alert_start',
+        'value' => $now,
+        'compare' => '<=',
+        'type' => 'integer',
+      ),
+      array(
+        'key' => 'phila_alert_end',
+        'value' => 0,
+      ),
     ),
     array(
         'relation' => 'AND',

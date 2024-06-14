@@ -189,6 +189,11 @@ ul#department_page-search-checklist li{
   width: 75%;
 }
 
+.resource-hub{
+  list-style: disc;
+  margin-left: 2em;
+}
+
 #newpost_tag_parent,
 #addtag .form-field.term-parent-wrap {
   display: none;
@@ -212,3 +217,7 @@ ul#department_page-search-checklist li{
 .rwmb-column .rwmb-input input:not([type="checkbox"]):not([type="radio"]), .rwmb-column .rwmb-input-group, .rwmb-column .rwmb-input select, .rwmb-column .rwmb-input .select2-container {
   width: auto !important;
 }
+
+#adminmenu div.separator{
+  background-color: rgba(240,246,252,.6);
+ }
