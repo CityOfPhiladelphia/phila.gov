@@ -151,7 +151,7 @@ $connected = new WP_Query( [
   <?php if ($template_type != 'series') {
       while ( $connected->have_posts() ) : $connected->the_post(); 
         $content = get_post_field('phila_series_linking_text', $connected->the_ID(), $context = 'display'); ?>
-  <div class="series-blockquote"><blockquote><span><?php echo $content ?> <i><a href="<?php echo the_permalink();?>">link to series</a></i></span></blockquote></div>
+  <div class="series-blockquote mbm"><blockquote><span><?php echo $content ?> <i><a href="<?php echo the_permalink();?>">link to series</a></i></span></blockquote></div>
   <?php endwhile;
   } 
     wp_reset_postdata();

@@ -140,9 +140,6 @@ function phila_content_image_sizes_attr( $sizes, $size ) {
   return $sizes;
 }
 
-
-
-
 add_filter('pre_get_document_title', 'phila_filter_title');
 
 function phila_filter_title( $title ){
@@ -2255,7 +2252,7 @@ add_filter('wp_insert_post_data', 'force_type_private', 10, 2);
 
 function set_environment() {
   global $phila_environment;
-    if (isset($_SERVER['HTTP_HOST'])) {
+  if (isset($_SERVER['HTTP_HOST'])) {
 
     if(strpos($_SERVER['HTTP_HOST'],'staging') !== false) {
       $phila_environment = 'staging';
@@ -2387,26 +2384,3 @@ function add_html_lang_attribute($output) {
   $output = implode(' ', $attributes);
   return $output;
 }
-
-function wpse_restrict_mimes($mime_types){
-  $mime_types = array(
-      'jpg|jpeg' => 'image/jpeg',
-      'png' => 'image/png',
-      'gif' => 'image/gif',
-      'svg' => 'image/svg+xml',
-      'pdf' => 'application/pdf',
-      'doc' => 'application/msword',
-      'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-      'xls' => 'application/vnd.ms-excel',
-      'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-      'docx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-      'ppt' => 'application/vnd.ms-powerpoint',
-      'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 
-      'pages' => 'application/vnd.apple.pages',
-      'numbers' => 'application/vnd.apple.numbers',
-      'csv' => 'text/csv',
-  );
-  return $mime_types;
-}
-
-add_filter('upload_mimes', 'wpse_restrict_mimes');

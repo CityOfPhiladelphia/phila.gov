@@ -69,6 +69,44 @@
               <!-- /Callout -->
             <?php endif;?>
 
+          <?php elseif ($current_row_option == 'phila_cost_callout'): 
+            $cost_callout = $current_row['phila_full_options']['phila_cost_component'];
+          ?>
+          <div class="cost">
+          <section>
+            <h3 id="cost" class="black bg-ghost-gray phm-mu mtl mbm"><?php echo $cost_callout['phila_heading'] ?></h3>
+              <div class="grid-x grid-margin-x">
+                <?php $count = count($cost_callout['service_cost_callout']['cost_callout']) ?>
+                <?php foreach ( $cost_callout['service_cost_callout']['cost_callout'] as $callout ): ?>
+                  <div class="medium-<?php echo phila_grid_column_counter($count)?> cell align-self-stretch panel info">
+                    <div class="center heading">
+                      <div class="title pvxs"> <?php echo $callout['heading'] ?></div>
+                      <span class="symbol">
+                        $<span class="large-text"><?php echo $callout['amount']; ?></span>
+                      </span>
+                        <?php if ( isset($callout['description'] ) ) : ?>
+                          <div class="pam">
+                            <?php echo apply_filters( 'the_content', $callout['description']) ?>
+                          </div>
+                        <?php endif; ?>
+                    </div>
+                  </div>
+                <?php endforeach; ?>
+                <div class="phm-mu"><?php echo $cost_callout['phila_additional_wysiwyg'] ?></div>
+                </div>
+            <div class="phm-mu"><?php echo apply_filters( 'the_content', $cost) ?></div>
+            <?php if ( !empty($is_modal) && !empty( $modal_link_text ) ) : ?>
+              <div class="reveal reveal--announcement" id="<?php echo sanitize_title_with_dashes($modal_link_text)?>" data-reveal aria-labelledby="<?php echo sanitize_title_with_dashes($modal_link_text)?>">
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="mtl"><?php echo do_shortcode($modal_content) ?></div>
+              </div>
+              <div class="phm-mu"><button class="link" data-open="<?php echo sanitize_title_with_dashes($modal_link_text)?>"><i class="fas fa-info-circle"></i> <?php echo $modal_link_text ?></button></div>
+            <?php endif ?>
+          </section>
+        </div>
+
           <?php elseif ($current_row_option == 'phila_get_involved'): ?>
             <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ): ?>
               <!-- Get involved -->

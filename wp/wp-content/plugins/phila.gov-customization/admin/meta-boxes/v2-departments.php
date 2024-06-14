@@ -119,42 +119,6 @@ function phila_register_department_meta_boxes( $meta_boxes ){
     ),
   );
 
-  $meta_boxes[] = array(
-    'title' => 'Forms and Documents',
-    'pages'    => array( 'department_page' ),
-    'visible' => array( 'phila_template_select', 'forms_and_documents_v2' ),
-
-    'fields' => array(
-      array(
-        'id'  => 'phila_forms_documents_cta',
-        'type' => 'group',
-        'clone'  => true,
-        'max_clone' => 4,
-        'sort_clone' => true,
-
-        'fields' => array(
-          Phila_Gov_Standard_Metaboxes::phila_metabox_title('Call to Action Title', 'phila_action_panel_cta_text_multi' ),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_textarea('Summary', 'phila_action_panel_summary_multi'),
-          Phila_Gov_Standard_Metaboxes::phila_metabox_url('Link to Content','phila_action_panel_link_multi'),
-          array(
-            'name' => 'Featured Documents (optional)',
-            'type'  => 'heading'
-          ),
-          array(
-            'id'   => 'phila_featured_documents',
-            'type' => 'group',
-            //TODO: Nested clones with max_clone does not work properly with post picker... Find a better solution?
-            'fields' => array(
-              Phila_Gov_Standard_Metaboxes::phila_metabox_post_picker('Select Document 1', 'phila_featured_document_item_0', 'document' ),
-              Phila_Gov_Standard_Metaboxes::phila_metabox_post_picker('Select Document 2', 'phila_featured_document_item_1', 'document' ),
-              Phila_Gov_Standard_Metaboxes::phila_metabox_post_picker('Select Document 3', 'phila_featured_document_item_2', 'document' ),
-            ),
-          ),
-        ),
-      ),
-    ),
-  );
-
 
   $meta_boxes[] = array(
     'title' => 'Override page category selection',

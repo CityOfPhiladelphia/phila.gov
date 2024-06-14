@@ -297,6 +297,36 @@
 
 
   footer {
+    a {
+        text-decoration: underline !important;
+      }
+    
+      .interact-311 {
+        a {
+          text-decoration: none !important;
+        }
+      }
+  
+      h3 {
+        font-weight: 600 !important;
+        font-size: 1.429rem !important;
+      }
+
+      .columns.intro{
+        h2{
+          font-weight: 600 !important;
+          font-size: 2rem !important;
+        }
+      }
+      
+      .medium-8.columns.phm {
+        margin: 0;
+        h2{
+          font-weight: 600 !important;
+          font-size: 1.2rem !important;
+        }
+      }
+      
     .fat {
       .columns {
         &.medium-8 {
@@ -334,9 +364,6 @@
         padding: 0px 10px;
         margin: 0px;
       }
-    }
-    .trending-requests {
-      float: left;
     }
   }
 

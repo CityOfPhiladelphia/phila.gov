@@ -15,7 +15,7 @@ function phila_breadcrumbs() {
     echo '<i class="fas fa-home" aria-hidden="true"></i><span class="accessible">Home</span>';
     echo '</a></li>';
     //TODO: loop through template and apply $label_arr
-    if ( is_singular('post') ){
+    if ( is_singular('post') || is_singular(('blog_post')) ){
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
       if( phila_get_selected_template( $post->ID ) == 'press_release' ) {
         echo '<li><a href="/the-latest/archives/?templates=press_release">Press releases</a></li>';
@@ -23,7 +23,13 @@ function phila_breadcrumbs() {
         echo '<li><a href="/the-latest/archives/?templates=post">Posts</a></li>';
       }elseif ( phila_get_selected_template( $post->ID ) == 'action_guide' ) {
         echo '<li><a href="/the-latest/archives/?templates=action_guide">Action guides</a></li>';
-      }else {
+      }elseif ( phila_get_selected_template( $post->ID ) == 'advanced_post' ) {
+        echo '<li><a href="/the-latest/archives/?templates=advanced_post">Advanced Post</a></li>';
+      }elseif ( phila_get_selected_template( $post->ID ) == 'series' ) {
+        echo '<li><a href="/the-latest/archives/?templates=series">Series</a></li>';
+      }
+      
+      else {
         echo '<li><a href="/the-latest/archives/?templates=featured">Featured</a></li>';
       }
       echo '<li>';

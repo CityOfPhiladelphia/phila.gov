@@ -40,7 +40,7 @@ class Phila_Gov_Blog_Posts{
           'has_archive' => true,
           'show_in_rest' => true,
           'show_in_menu'  => true,
-          'rest_base' => 'blog-posts',
+          'rest_base' => 'news',
           'menu_icon' => 'dashicons-media-document',
           'hierarchical' => false,
           'supports'  => array(
