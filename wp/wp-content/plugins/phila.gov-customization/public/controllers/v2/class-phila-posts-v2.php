@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // register custom fields
 register_rest_field( 'post', 'archived',        array( 'get_callback' => 'get_archive_status' ));
@@ -38,24 +38,49 @@ function get_phila_featured_media ( $post ) {
 
 }
 
-function filter_post_by_archived( $args, $request ) {
-  $archived = $request->get_param( 'archived' );
 
-  if ( empty( $archived )) {
-      return $args;
+function filter_post_by_archived($args, $request) {
+
+  $archived = $request->get_param('archived');
+
+  $two_years_ago = date('Y-m-d\TH:i:s', strtotime('-2 years'));
+
+  if ( $archived == 'true') {
+    $archived = 1;
+  } else if ( $archived == 'false' ){
+    $archived = 0;
   }
 
-  if ( $archived === 'true' ) {
-    $archived = 'archive_now';
-  } else if ( $archived === 'false' ){
-    $archived = 'default';
+  if ($archived === 1) {
+    // show everything
+    $args['meta_query'] = array();
+  } else if ($archived === 0) {
+    //archived is false -- show everything that is not archived
+    $args['meta_query'] = array(
+      'relation' => 'AND',
+      'orderby'   => array(
+        'date' =>'DESC',
+      ),
+      array(
+        'relation' => 'OR',
+        array(
+            'key'     => 'phila_archive_post',
+            'value'   => 'do_not_archive',
+            'compare' => '=',
+          ),
+          array(
+              'key'     => 'phila_archive_post',
+              'value'   => 'default',
+              'compare' => '=',
+          ),
+          array(
+            'key'     => 'phila_archive_post',
+            'value'   => 'archive_now',
+            'compare' => '!=',
+        ),
+      ),
+    );
   }
-
-  $args['meta_query'][] = array(
-    'key'     => 'phila_archive_post',
-    'value'   => $archived,
-    'compare' => '=',
-  );
 
   return $args;
 }
