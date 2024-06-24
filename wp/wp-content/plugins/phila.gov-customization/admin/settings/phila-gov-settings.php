@@ -8,6 +8,9 @@ function phila_options_page( $settings_pages ) {
     'option_name' => 'phila_settings',
     'menu_title'  => 'Phila.gov settings',
     'menu_title'  => 'phila.gov settings',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor', 'job_board_editor', 'secondary_philagov_closure_settings_editor' ),
+    ),
     'tabs'        => array(
       'general'       => 'General Settings',
       'jobs'          => 'Featured jobs',
@@ -42,7 +45,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'settings_pages' => 'phila_gov',
     'tab'            => 'general',
     'include' => array(
-      'user_role'  => array( 'administrator', 'editor' ),
+      'user_role'  => array( 'administrator', 'editor',  ),
     ),
     'fields'         => array(
       array(
@@ -106,7 +109,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'settings_pages' => 'phila_gov',
     'tab'            => 'closures',
     'include' => array(
-      'user_role'  => array( 'administrator', 'editor', 'job_board_editor', 'secondary_philagov_closure_settings_editor' ),
+      'user_role'  => array( 'administrator', 'editor', 'secondary_philagov_closure_settings_editor' ),
     ),
     'fields'  => array(
       array(

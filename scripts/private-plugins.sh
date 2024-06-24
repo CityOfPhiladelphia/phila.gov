@@ -6,7 +6,7 @@ source /home/ubuntu/.ssh/environment
 # wps-hide-login.1.5.7.zip <- hide login plugin
 
 _dir="$(dirname "$0")"
-plugins="wpfront-user-role-editor-personal-pro-2.14.5.zip"
+plugins="wpfront-user-role-editor-personal-pro-4.1.0.zip"
 
 cd /home/ubuntu/app
 for plugin in $plugins; do
