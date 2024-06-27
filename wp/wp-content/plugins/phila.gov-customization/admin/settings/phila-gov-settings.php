@@ -31,6 +31,8 @@ function update_translations_script() {
   );
   wp_enqueue_script( 'translate-homepage-script', plugins_url( '../js/translate-homepage.js', __FILE__), array( 'jquery' ), '', true );
   wp_localize_script('translate-homepage-script', 'phila_homepage_js_vars', $js_vars );
+  wp_enqueue_script( 'translate-sitewide-alert-script', plugins_url( '../js/translate-sitewide-alert.js', __FILE__), array( 'jquery' ), '', true );
+  wp_localize_script('translate-sitewide-alert-script', 'phila_sitewide_alert_js_vars', $js_vars );
 }
 
 
@@ -225,6 +227,15 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'attributes' => array(
           'data-section' => 'translate-homepage',
           'class'        => 'translate-homepage',
+        ),
+      ), 
+      array(
+        'type'       => 'button',
+        'name'       => 'Translate site-wide alert',
+        'std'        => 'Translate site-wide alert',
+        'attributes' => array(
+          'data-section' => 'translate-sitewide-alert',
+          'class'        => 'translate-sitewide-alert',
         ),
       ), 
     ),
