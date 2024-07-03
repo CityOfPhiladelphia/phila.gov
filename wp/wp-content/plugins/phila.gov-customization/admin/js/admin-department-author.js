@@ -42,8 +42,8 @@ jQuery(document).ready(function($){
   }
 
   //Hide all category and tag menu items, department authors shouldn't see those.
-  $('a[href*="edit-tags.php"]').parent().css('display', 'none');
-
+$('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("display", "none");
+  
   var menuIdString = $('#menu-id').text().trim();
   var allMenuIDs = menuIdString.split(' ');
   var match = document.getElementById( allMenuIDs );
@@ -131,6 +131,8 @@ jQuery(document).ready(function($){
       //ensure users who only have access to posts get the option preselcted for them
     if (!phila_WP_User.includes('secondary_press_release_editor') &&
       !phila_WP_User.includes('secondary_press_release_contributor') &&
+      !phila_WP_User.includes('secondary_advanced_post_editor') &&
+      !phila_WP_User.includes('secondary_advanced_post_contributor') &&
       !phila_WP_User.includes( 'secondary_action_guide_editor' )){
       $("#phila_template_select").val('post');
     }
@@ -141,8 +143,15 @@ jQuery(document).ready(function($){
           $(this).css('display', 'inline-block');
         }
       });
+    }   
+    if( phila_WP_User.includes('secondary_advanced_post_editor') || phila_WP_User.includes('secondary_advanced_post_contributor') ) {
+      $('#phila_template_select option').each( function () {
+        if( $(this).val() === 'advanced_post' ){
+          $(this).css('display', 'inline-block');
+        }
+      });
     }
-
+    
     if( phila_WP_User.includes( 'secondary_action_guide_editor' ) ) {
       $('#phila_template_select option').each( function () {
         if( $(this).val() === 'action_guide' ){
