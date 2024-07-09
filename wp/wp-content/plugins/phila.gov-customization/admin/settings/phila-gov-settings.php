@@ -8,6 +8,9 @@ function phila_options_page( $settings_pages ) {
     'option_name' => 'phila_settings',
     'menu_title'  => 'Phila.gov settings',
     'menu_title'  => 'phila.gov settings',
+    'include' => array(
+      'user_role'  => array( 'administrator', 'editor', 'job_board_editor', 'secondary_philagov_closure_settings_editor' ),
+    ),
     'tabs'        => array(
       'general'       => 'General Settings',
       'jobs'          => 'Featured jobs',
@@ -28,6 +31,8 @@ function update_translations_script() {
   );
   wp_enqueue_script( 'translate-homepage-script', plugins_url( '../js/translate-homepage.js', __FILE__), array( 'jquery' ), '', true );
   wp_localize_script('translate-homepage-script', 'phila_homepage_js_vars', $js_vars );
+  wp_enqueue_script( 'translate-sitewide-alert-script', plugins_url( '../js/translate-sitewide-alert.js', __FILE__), array( 'jquery' ), '', true );
+  wp_localize_script('translate-sitewide-alert-script', 'phila_sitewide_alert_js_vars', $js_vars );
 }
 
 
@@ -42,7 +47,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'settings_pages' => 'phila_gov',
     'tab'            => 'general',
     'include' => array(
-      'user_role'  => array( 'administrator', 'editor' ),
+      'user_role'  => array( 'administrator', 'editor',  ),
     ),
     'fields'         => array(
       array(
@@ -106,7 +111,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'settings_pages' => 'phila_gov',
     'tab'            => 'closures',
     'include' => array(
-      'user_role'  => array( 'administrator', 'editor', 'job_board_editor', 'secondary_philagov_closure_settings_editor' ),
+      'user_role'  => array( 'administrator', 'editor', 'secondary_philagov_closure_settings_editor' ),
     ),
     'fields'  => array(
       array(
@@ -222,6 +227,15 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'attributes' => array(
           'data-section' => 'translate-homepage',
           'class'        => 'translate-homepage',
+        ),
+      ), 
+      array(
+        'type'       => 'button',
+        'name'       => 'Translate site-wide alert',
+        'std'        => 'Translate site-wide alert',
+        'attributes' => array(
+          'data-section' => 'translate-sitewide-alert',
+          'class'        => 'translate-sitewide-alert',
         ),
       ), 
     ),

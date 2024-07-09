@@ -8,7 +8,7 @@
 
 <?php $main_feature_args  = array(
   'posts_per_page' => 1,
-  'post_type' => array('post', 'news_post'),
+  'post_type' => array('post', 'news_post', 'blog_post'),
   'order' => 'desc',
   'orderby' => 'date',
   'meta_query'  => array(
@@ -60,7 +60,7 @@
 
       <?php $feature_args  = array(
         'posts_per_page' => 3,
-        'post_type' => array('post', 'news_post'),
+        'post_type' => array('post', 'news_post', 'blog_post'),
         'order' => 'desc',
         'orderby' => 'date',
         'post__not_in' => array( $main_feature_id ),
