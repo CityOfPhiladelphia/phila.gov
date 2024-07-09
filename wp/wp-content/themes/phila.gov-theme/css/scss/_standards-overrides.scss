@@ -38,6 +38,10 @@ footer.site-footer .contact {
   }
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 .row{
   max-width: 90rem;
 }
