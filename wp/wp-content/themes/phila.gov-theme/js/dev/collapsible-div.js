@@ -41,7 +41,7 @@ module.exports = $(function(){
           $(this).addClass('visible');
         }
       });
-      $('.icon-expand-link').each(function () {
+      $('[data-toggle="icon-expand"]').each(function () {
         if($(this).html() === ' More + '){
           $(this).html(' Less - ');
           $(this).prev().attr('aria-expanded', 'true');
@@ -55,7 +55,7 @@ module.exports = $(function(){
           $(this).removeClass('visible');
         }
       });
-      $('.icon-expand-link').each(function () {
+      $('[data-toggle="icon-expand"]').each(function () {
         if($(this).html() === ' Less - '){
           $(this).html(' More + ');
           $(this).prev().attr('aria-expanded', 'false');
