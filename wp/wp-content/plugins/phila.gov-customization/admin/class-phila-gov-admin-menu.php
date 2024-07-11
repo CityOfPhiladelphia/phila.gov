@@ -34,7 +34,6 @@ class Phila_Gov_Admin_Menu {
     
     add_action('admin_menu', array($this, 'add_custom_menu_separator') );
 
-
  }
 
   function admin_menu_order( $menu_ord ) {
@@ -120,9 +119,7 @@ class Phila_Gov_Admin_Menu {
   {
     global $menu;
     $separator_index = array(4, 59, 99);
-
     foreach($separator_index as $sp) {
-
       if (isset($menu[$sp])) {
           unset($menu[$sp]);
       }

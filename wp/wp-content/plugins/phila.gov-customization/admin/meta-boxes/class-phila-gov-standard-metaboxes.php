@@ -1659,7 +1659,7 @@ public static function phila_timeline_page_selector( ){
     'field_type'  => 'select_advanced',
     'placeholder' => '',
     'desc'     =>  'Add a timeline page. You can narrow your search options by typing in the field above',
-    'multiple'  => 'false',
+    'multiple'  => false,
 
     'query_args'  => array(
       'post_status'    => 'any',
