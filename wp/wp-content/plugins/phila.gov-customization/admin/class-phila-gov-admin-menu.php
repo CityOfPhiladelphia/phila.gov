@@ -26,13 +26,13 @@ class Phila_Gov_Admin_Menu {
 
     add_action( 'init', array($this, 'phila_change_post_label') );
 
+    add_action( 'init', array($this, 'phila_change_page_label') );
+
     add_action('admin_menu', array( $this, 'phila_hide_create_in_menu' ) );
 
     add_action( 'pre_get_posts', array( $this, 'phila_filter_menu_search_results'), 10, 2 );
     
     add_action('admin_menu', array($this, 'add_custom_menu_separator') );
-
-
 
  }
 
@@ -46,12 +46,9 @@ class Phila_Gov_Admin_Menu {
         'resource-hub',
         'separator-1',
         'edit.php',
-        'edit.php?post_type=page',
-        'separator1',
         'edit.php?post_type=service_page',
-        'edit.php?post_type=department_page',
         'edit.php?post_type=programs',
-        'edit.php?post_type=staff_directory',
+        'edit.php?post_type=department_page',
         'edit.php?post_type=document',
         'separator-2',
         'edit.php?post_type=event_spotlight',
@@ -95,9 +92,9 @@ class Phila_Gov_Admin_Menu {
       $labels->search_items = 'Search the latest';
       $labels->not_found = 'Nothing found';
       $labels->not_found_in_trash = 'Nothing found in trash';
-      $labels->all_items = 'All items';
-      $labels->menu_name = 'The latest';
-      $labels->name_admin_bar = 'The latest';
+      $labels->all_items = 'All news';
+      $labels->menu_name = 'News';
+      $labels->name_admin_bar = 'News';
   }
 
   function phila_change_page_label() {
@@ -122,9 +119,7 @@ class Phila_Gov_Admin_Menu {
   {
     global $menu;
     $separator_index = array(4, 59, 99);
-
     foreach($separator_index as $sp) {
-
       if (isset($menu[$sp])) {
           unset($menu[$sp]);
       }
@@ -191,9 +186,25 @@ function change_admin_post_label(){
 
     remove_menu_page( 'edit.php?post_type=announcement' );
 
-    add_submenu_page( 'edit.php', 'Announcements', 'Announcements', 'edit_posts', 'edit.php?post_type=announcement');
+    remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=category');
+    remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag');
+    remove_submenu_page('edit.php?post_type=service_page', 'edit-tags.php?taxonomy=category&amp;post_type=service_page');
+    remove_submenu_page('edit.php?post_type=service_page', 'edit-tags.php?taxonomy=audience&amp;post_type=service_page');
+    remove_submenu_page('edit.php?post_type=service_page', 'edit-tags.php?taxonomy=service_type&amp;post_type=service_page');
+    remove_submenu_page('edit.php?post_type=programs', 'edit-tags.php?taxonomy=category&amp;post_type=programs');    
+    remove_submenu_page('edit.php?post_type=programs', 'edit-tags.php?taxonomy=audience&amp;post_type=programs');
+    remove_submenu_page('edit.php?post_type=programs', 'edit-tags.php?taxonomy=service_type&amp;post_type=programs');
+    remove_submenu_page('edit.php?post_type=department_page', 'edit-tags.php?taxonomy=category&amp;post_type=department_page');
+    remove_submenu_page('edit.php?post_type=document', 'edit-tags.php?taxonomy=category&amp;post_type=document');
+    remove_submenu_page('edit.php?post_type=event_spotlight', 'edit-tags.php?taxonomy=category&amp;post_type=event_spotlight');
+    remove_submenu_page('edit.php?post_type=guides', 'edit-tags.php?taxonomy=category&amp;post_type=guides');
+    remove_submenu_page('edit.php?post_type=longform_content', 'edit-tags.php?taxonomy=category&amp;post_type=longform_content');
+    remove_submenu_page('edit.php?post_type=staff_directory', 'edit-tags.php?taxonomy=category&amp;post_type=staff_directory');
+    remove_submenu_page('edit.php?post_type=calendar', 'edit-tags.php?taxonomy=category&amp;post_type=calendar');
+    remove_submenu_page('edit.php?post_type=service_updates', 'edit-tags.php?taxonomy=category&amp;post_type=service_updates');
 
   }
+
 
   function phila_register_categories_for_pages(){
 

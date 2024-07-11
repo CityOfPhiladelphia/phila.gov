@@ -2384,7 +2384,6 @@ function add_html_lang_attribute($output) {
   $output = implode(' ', $attributes);
   return $output;
 }
-
 // Commented out but will be returned in 60 days
 // function wpse_restrict_mimes($mime_types){
 //   $mime_types = array(
