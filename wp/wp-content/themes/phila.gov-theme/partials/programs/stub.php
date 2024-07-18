@@ -46,7 +46,7 @@
             include(locate_template( 'partials/resource-list.php'));
             break;
           case 'timeline':
-            get_template_part( 'partials/timeline_stub.php' );
+            get_template_part( 'partials/timeline_stub' );
             break;
         }
         include(locate_template( 'partials/content-additional.php' ) ); 
