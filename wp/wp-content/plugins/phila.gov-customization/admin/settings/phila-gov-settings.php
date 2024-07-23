@@ -9,7 +9,7 @@ function phila_options_page( $settings_pages ) {
     'menu_title'  => 'Phila.gov settings',
     'menu_title'  => 'phila.gov settings',
     'include' => array(
-      'user_role'  => array( 'administrator', 'editor', 'job_board_editor', 'secondary_philagov_closure_settings_editor' ),
+      'user_role'  => array( 'administrator', 'editor', 'secondary_philagov_settings_editor' ),
     ),
     'tabs'        => array(
       'general'       => 'General Settings',
@@ -228,7 +228,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
           'data-section' => 'translate-homepage',
           'class'        => 'translate-homepage',
         ),
-      ), 
+      ),
       array(
         'type'       => 'button',
         'name'       => 'Translate site-wide alert',
@@ -237,7 +237,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
           'data-section' => 'translate-sitewide-alert',
           'class'        => 'translate-sitewide-alert',
         ),
-      ), 
+      ),
     ),
   );
 
