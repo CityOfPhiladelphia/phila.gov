@@ -154,7 +154,7 @@ if ( $staff_member_loop->have_posts() ):
   echo '<section class="staff-directory">'; ?>
   
   <?php if ( isset( $unit ) ): ?>
-  <?php $unit_count++; echo $unit_count; ?>
+  <?php $unit_count++; ?>
     <div class="row">
       <div class="columns">
       <h3 id="<?php echo $unit; ?>"><?php echo urldecode($unit) ?></h3>
