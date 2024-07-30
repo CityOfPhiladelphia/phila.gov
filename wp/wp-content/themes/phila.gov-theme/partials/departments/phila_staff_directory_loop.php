@@ -228,11 +228,11 @@ if ( $staff_member_loop->have_posts() ):
           <?php if ( $all_staff == 1 || $unit_count >= 0 ) : ?>
             <ul class="pagination-wrapper no-js">
               <li class="prev">
-                <a class="prev-<?php echo ( $all_staff == 1 ? "1" : $unit_count )?>" href="#">Previous</a>
+                <a class="prev-<?php echo ( $all_staff == 1 ? $unit_count == -1 ? "0" : $unit_count : $unit_count )?>" href="#">Previous</a>
               </li>
             <ul class="pagination"></ul>
             <li class="next">
-              <a class="next-<?php echo ( $all_staff == 1 ? "1" : $unit_count )?>" href="#">Next</a>
+              <a class="next-<?php echo ( $all_staff == 1 ? $unit_count == -1 ? "0" : $unit_count : $unit_count )?>" href="#">Next</a>
             </li>
           </ul>
         <?php endif ?>
