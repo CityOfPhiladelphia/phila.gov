@@ -620,7 +620,18 @@ class Phila_Gov_Standard_Metaboxes {
     );
   }
 
-  public static function phila_post_selector( $multiple = false ){
+  public static function phila_post_selector( $multiple = false, $post_types = []){
+    $meta_query = array(
+      'relation' => 'OR',
+  );
+
+  foreach ($post_types as $post_type) {
+      $meta_query[] = array(
+          'key'     => 'phila_template_select',
+          'value'   => $post_type,
+          'compare' => '=',
+      );
+  }
     return array(
       'id'  => 'phila_post_picker',
       'name' => 'Select posts (3 total)',
@@ -631,6 +642,7 @@ class Phila_Gov_Standard_Metaboxes {
         'post_status' => 'any',
         'orderby' => 'title',
         'order' => 'ASC',
+        'meta_query' => $meta_query
         ),
       'multiple'  => $multiple,
       'placeholder' => ' ',
@@ -811,6 +823,17 @@ class Phila_Gov_Standard_Metaboxes {
       'class' => 'metabox-summary',
       'desc'  => $desc,
       'columns' => $columns
+    );
+  }
+
+  public static function phila_paragraph_textarea($name, $desc){
+    return array(
+      'id'  => 'phila_paragraph',
+      'type'  => 'textarea',
+      'name'  => $name,
+      'class' => 'percent-100',
+      'required' => true,
+      'desc'  => $desc,
     );
   }
 
@@ -1636,7 +1659,7 @@ public static function phila_timeline_page_selector( ){
     'field_type'  => 'select_advanced',
     'placeholder' => '',
     'desc'     =>  'Add a timeline page. You can narrow your search options by typing in the field above',
-    'multiple'  => 'false',
+    'multiple'  => false,
 
     'query_args'  => array(
       'post_status'    => 'any',
@@ -1655,6 +1678,295 @@ public static function phila_timeline_page_selector( ){
     )
   );
 }
+
+  public static function phila_metabox_row()
+  {
+    return array(
+      'id'    => 'phila_row',
+      'class' => 'phila_row',
+      'type'  => 'group',
+      'clone' => true,
+      'sort_clone' => true,
+      'add_button'  => '+ Add row',
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_adv_posts_options(),
+      ),
+    );
+  }
+
+  public static function phila_series_row() {
+    return array(
+      'id' => 'phila_series_linking_text',      
+      'name' => 'Linking text',
+      'type' => 'text',
+    );
+  }
+
+  public static function phila_adv_posts_options()
+  {
+    return array(
+      'name' => '',
+      'id' => 'phila_adv_posts_options',
+      'type'  => 'group',
+      'fields' =>
+      array(
+        array(
+          'id'  => 'phila_adv_posts_select_options',
+          'type'  => 'select',
+          'desc'  => 'Choose page content.',
+          'class' => 'percent-100',
+          'placeholder' => 'Select page content...',
+          'options' => array(
+            'phila_lists' => 'Lists',
+            'phila_qna' => 'Q&A',
+            'phila_timeline' => 'Timeline',
+            'phila_adv_stepped_process' => 'Stepped Procress',
+            'phila_image_gallery' => 'Image Gallery'
+          )
+        ),
+        array(
+          'visible' => array('phila_adv_posts_select_options', '=', 'phila_lists'),
+          'id' => 'phila_adv_lists',
+          'type' => 'group',
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Title', 'phila_list_builder_title', true, 'Enter a title for this list'),
+            array(
+              'id' => 'phila_list_title_style',
+              'type' => 'radio',
+              'name' => 'Title Style',
+              'required' => true,
+              'options' => array(
+                'h2' => 'H2',
+                'h3' => 'H3',
+                'h4' => 'H4',
+              ),
+            ),
+            array(
+              'id'    => 'phila_list_type',
+              'type'  => 'radio',
+              'name'  => 'List Type',
+              'required' => true,
+              'options' => array(
+                'ordered' => 'Ordered List',
+                'unordered' => 'Unordered List',
+                'ordered_with_paragraph' => 'Ordered List with Paragraph',
+                'unordered_with_paragraph' => 'Unordered List with Paragraph',
+                'check_list' => 'Check List'
+              )
+            ),
+            array(
+              'id'  => 'phila_ordered_list_fields',
+              'type' => 'group',
+              'name' => 'Ordered List',
+              'clone' => true,
+              'visible' => array('phila_list_type', '=', 'ordered'),
+              'fields' => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_ordered_list_item', true, ''),
+              ),
+            ),
+            array(
+              'id'  => 'phila_unordered_list_fields',
+              'type' => 'group',
+              'name' => 'Unordered List',
+              'clone' => true,
+              'visible' => array('phila_list_type', '=', 'unordered'),
+              'fields' => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_unordered_list_item', true, ''),
+              )
+            ),
+            array(
+              'id'  => 'phila_ordered_with_paragraph_fields',
+              'type' => 'group',
+              'name' => 'Ordered List with Paragraph',
+              'clone' => true,
+              'visible' => array('phila_list_type', '=', 'ordered_with_paragraph'),
+              'fields' => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_ordered_list_item', true, ''),
+                Phila_Gov_Standard_Metaboxes::phila_paragraph_textarea($name = 'Paragraph', $desc = ''),
+              ),
+            ),
+            array(
+              'id'  => 'phila_unordered_with_paragraph_fields',
+              'type' => 'group',
+              'clone' => true,
+              'name' => 'Unordered List with Paragraph',
+              'visible' => array('phila_list_type', '=', 'unordered_with_paragraph'),
+              'fields' => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_unordered_list_item', true, ''),
+                Phila_Gov_Standard_Metaboxes::phila_paragraph_textarea($name = 'Paragraph', $desc = ''),
+              ),
+            ),
+            array(
+              'id'  => 'phila_icon_fields',
+              'type' => 'group',
+              'visible' => array('phila_list_type', '=', 'check_list'),
+              'fields' => array(
+                array(
+                  'name' => 'Icon selection',
+                  'type'  => 'heading'
+                ),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('', 'phila_check_list_icon', false, 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon. E.g.: fas fa-bell. The default icon is fas fas-check.'),
+              )
+            ),
+            array(
+              'id'  => 'phila_check_list_fields',
+              'type' => 'group',
+              'name' => 'Check List',
+              'clone' => true,
+              'visible' => array('phila_list_type', '=', 'check_list'),
+              'fields' => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_check_list_item', true, ''),
+              ),
+            )
+          )
+        ),
+        array(
+          'visible' => array('phila_adv_posts_select_options', '=', 'phila_qna'),
+          'id' => 'phila_adv_qna',
+          'type' => 'group',
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Title', 'phila_qna_title', true, 'Enter a title'),
+            array(
+              'id' => 'phila_qna_style',
+              'type' => 'radio',
+              'name' => 'Q&A Style',
+              'required' => true,
+              'options' => array(
+                'name' => 'Enter person\'s name',
+                'qa' => 'Enter Q&A',
+              ),
+            ),
+            array(
+              'id' => 'phila_qna_person_repeater',
+              'type' => 'group',
+              'clone' => true,
+              'sort_clone' => true,
+              'visible' => array(
+                array('phila_qna_style', '=', 'name'),
+              ),
+
+              'fields' => array(
+                array(
+                  'name' => 'Person\'s Name',
+                  'id'   => 'phila_qna_question_person',
+                  'type' => 'text',
+                  'required' => true,
+                  'desc' => 'Enter a name'
+                ),
+                array(
+                  'name' => 'Question',
+                  'id'   => 'phila_qna_question',
+                  'type' => 'textarea',
+                  'required' => true,
+                  'desc' => 'Enter a question'
+                ),
+                array(
+                  'name' => 'Person\'s Name',
+                  'id'   => 'phila_qna_answer_person',
+                  'type' => 'text',
+                  'required' => true,
+                  'desc' => 'Enter a name'
+                ),
+                array(
+                  'name' => 'Answer',
+                  'id'   => 'phila_qna_answer',
+                  'type' => 'textarea',
+                  'required' => true,
+                  'desc' => 'Enter an answer',
+                ),
+              )
+            ),
+
+            array(
+              'id' => 'phila_qna_repeater',
+              'type' => 'group',
+              'clone' => true,
+              'sort_clone' => true,
+              'visible' =>
+              array(
+                array('phila_qna_style', '=', 'qa'),
+              ),
+              'fields' => array(
+                array(
+                  'name' => 'Question',
+                  'id'   => 'phila_qna_question',
+                  'type' => 'textarea',
+                  'required' => true,
+                  'desc' => 'Enter a question'
+                ),
+                array(
+                  'name' => 'Answer',
+                  'id'   => 'phila_qna_answer',
+                  'type' => 'textarea',
+                  'required' => true,
+                  'desc' => 'Enter an answer',
+                ),
+              )
+            )
+          )
+        ),
+        array(
+          'visible' => array('phila_adv_posts_select_options', '=', 'phila_timeline'),
+          'id' => 'phila_adv_timeline',
+          'type' => 'group',
+          'fields' => array(
+            Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
+            array(
+              'name' => 'Timeline item count',
+              'id'   => 'homepage_timeline_item_count',
+              'desc'  => 'Select the number of items from the timeline to display',
+              'type' => 'number'
+            ),
+          )
+          ),
+        array(
+          'visible' => array('phila_adv_posts_select_options', '=', 'phila_adv_stepped_process'),
+          'id' => 'phila_adv_posts_stepped_process',
+          'type'  => 'group',
+          'fields' => Phila_Gov_Row_Select_Options::phila_metabox_tabbed_stepped_content()
+        ),
+        array(
+          'visible' => array('phila_adv_posts_select_options', '=', 'phila_image_gallery'),
+          'id' => 'phila_adv_posts_image_gallery',
+          'type' => 'group',
+          'fields' => array(
+            array(
+              'id' => 'phila_image_gallery_details',
+              'type' => 'group',
+              'fields' => array(
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Title', 'phila_image_gallery_title', true, 'Enter a title for this image gallery'),
+                array(
+                  'name' => 'Description',
+                  'id'   => 'phila_image_gallery_description',
+                  'desc' => 'Enter a description for this image gallery',
+                  'type' => 'wysiwyg',
+                  'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+                )
+              )
+            ),
+            array(
+              'type' => 'group',
+              'id' => 'phila_image_gallery',
+              'min_clone' => 3,              
+              'max_clone' => 10,
+              'clone' => true,
+              'sort_clone' => true,
+              'add_button' => '+ Add an image',
+              'fields' => array(
+                array(
+                  'id' => 'phila_images',
+                  'name' => 'Select image',
+                  'type' => 'image_advanced',
+                  'required' => true,
+                  'max_file_uploads' => 1,
+                )
+              )
+            )
+          )
+        )
+      )
+    );
+  }
 
 public static function phila_language_selector( $id = 'phila_select_language', $class = '' ){
   return array(
