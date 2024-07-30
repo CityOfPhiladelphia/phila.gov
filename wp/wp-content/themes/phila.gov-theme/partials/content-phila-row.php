@@ -264,7 +264,7 @@
               <?php
               $timeline_page = $current_row['phila_full_options']['phila_timeline_picker'];
               $limit = $current_row['phila_full_options']['phila_timeline_picker']['homepage_timeline_item_count'];
-              include(locate_template('/partials/timeline_stub.php')); ?>
+              include(locate_template('partials/timeline_stub.php')); ?>
             <!-- /Homepage timeline -->
 
           <?php elseif ( $current_row_option == 'phila_location_list'):?>
