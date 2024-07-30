@@ -108,7 +108,7 @@ class Phila_Gov_Collection_Page {
               ),
               'fields'  => array(
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title( $name = '1/4 heading'),
-                Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true ),
+                Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true, $post_types = ['post', 'advanced_post'] ),
                 array(
                   'id' => 'phila_v2_posts_link',
                   'title' => 'See all posts',
@@ -129,7 +129,7 @@ class Phila_Gov_Collection_Page {
               ),
               'fields'  => array(
                 Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title($name = '1/4 heading'),
-                Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true ),
+                Phila_Gov_Standard_Metaboxes::phila_post_selector( $multiple = true, $post_types = ['press_release'] ),
                 array(
                   'id' => 'phila_v2_press_release_link',
                   'title' => 'See all press releases',
