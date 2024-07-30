@@ -200,7 +200,6 @@ if ( $staff_member_loop->have_posts() ):
     <section class="row mbl all-staff-table <?php echo ( $unit_count ==  --$unit_size ) ? '' : 'bdr-bottom' ?>">
       <div class="large-24 columns">
       <?php if ($all_staff == 1 || $unit_count >= 0) : ?>
-        <?php echo $unit_count ?>
         <div id="sortable-table-<?php echo ($all_staff == 1) ? $unit_count == -1 ? "0" : $unit_count : $unit_count ?>" class="search-sort-table">
           <div class="search">
             <label for="table-search"><span class="screen-reader-text">Filter<?php echo ( $unit_count >= 1 ) ? ' unit' : '' ?> staff members by name or title</span></label>
