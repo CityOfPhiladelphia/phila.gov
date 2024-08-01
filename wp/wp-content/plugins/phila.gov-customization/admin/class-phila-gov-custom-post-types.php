@@ -202,6 +202,9 @@ class Phila_Gov_Custom_Post_Types{
         'menu_icon' => 'dashicons-megaphone',
         'hierarchical' => true,
         'query_var' => true,
+        'taxonomies' => array(
+          'category',
+        ),
         'rewrite' => array(
           'slug' => 'alerts',
           'with_front' => false,
