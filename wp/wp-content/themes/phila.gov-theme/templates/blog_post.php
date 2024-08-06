@@ -34,6 +34,7 @@ $connected = new WP_Query( [
     ],
     'nopaging'     => true,
 ] );
+$original_template_type = $template_type;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
@@ -50,6 +51,7 @@ $connected = new WP_Query( [
       </div>
       <div class="border-bottom-fat"></div>
     </div>
+    <?php if($template_type != "series") : ?>
     <div class="post-meta">
       <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ): ?>
         <div class="mbm">
@@ -93,11 +95,11 @@ $connected = new WP_Query( [
         </div>
       </div>
     </div>
-  <?php endif; ?>
+  <?php endif; endif; ?>
   </header>
 
 
-  <?php if ( has_post_thumbnail() && ($template_type != 'press_release') ): ?>
+  <?php if ( has_post_thumbnail() && ($template_type != 'press_release' && $template_type != 'series') ): ?>
     <div class="grid-container featured-image">
       <div class="grid-x medium-16 medium-centered align-middle">
         <?php if( strpos(phila_get_thumbnails(), 'phila-thumb') || strpos(phila_get_thumbnails(), 'phila-news')  ) : ?>
@@ -142,7 +144,7 @@ $connected = new WP_Query( [
   <?php if ($template_type != 'series') {
       while ( $connected->have_posts() ) : $connected->the_post(); 
         $content = get_post_field('phila_series_linking_text', $connected->the_ID(), $context = 'display'); ?>
-  <div class="series-blockquote mbm mtm"><blockquote><span><?php echo $content ?> <i><a href="<?php echo the_permalink();?>">link to series</a></i></span></blockquote></div>
+  <div class="series-blockquote grid-x medium-16 medium-centered align-middle"><em><blockquote><span><?php echo $content ?> <i><a href="<?php echo the_permalink();?>">View other posts in this series.</a></i></span></blockquote></em></div>
   <?php endwhile;
   } 
     wp_reset_postdata();
@@ -166,7 +168,7 @@ $connected = new WP_Query( [
   <hr class="margin-auto"/>
 </article>
 
-<?php wp_reset_postdata(); ?>
+<?php wp_reset_postdata(); $template_type = $original_template_type; ?>
 <?php
   $cat_ids = array();
 
@@ -208,7 +210,9 @@ $connected = new WP_Query( [
     $category = array($cat_id_string);
 
     $template = 'partials/posts/press-release-grid.php';
-  }else{
+  } if ($template_type == 'series') {
+    return;
+  } else{
     $template = 'partials/posts/content-related.php';
   }
 ?>

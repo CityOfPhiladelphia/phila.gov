@@ -2025,7 +2025,7 @@ add_action( 'mb_relationships_init', function() {
       'id'   => 'series_to_post_relationship',
       'from' => array(
         'object_type'  => 'post',
-        'post_type'   => 'blog_post',        
+        'post_type'   => 'blog_post',     
         'meta_box' => array(
           'visible' => array(
             'when' => array(
@@ -2039,6 +2039,9 @@ add_action( 'mb_relationships_init', function() {
       'to'   => array(
         'object_type'  => 'post',
         'post_type'   => 'blog_post',
+        'field' => array(
+          'placeholder' => 'Choose a blog post to add to this series',
+        ),   
       ),
       'reciprocal' => true,
   ) );

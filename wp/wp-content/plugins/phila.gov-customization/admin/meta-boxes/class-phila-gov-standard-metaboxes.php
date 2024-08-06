@@ -1687,7 +1687,7 @@ public static function phila_timeline_page_selector( ){
       'type'  => 'group',
       'clone' => true,
       'sort_clone' => true,
-      'add_button'  => '+ Add row',
+      'add_button'  => '+ Add component',
       'fields' => array(
         Phila_Gov_Standard_Metaboxes::phila_adv_posts_options(),
       ),
@@ -1697,7 +1697,8 @@ public static function phila_timeline_page_selector( ){
   public static function phila_series_row() {
     return array(
       'id' => 'phila_series_linking_text',      
-      'name' => 'Linking text',
+      'name' => 'Description',
+      'label_description' => 'Enter a one-sentence description of the series. This text will be added to all posts in the series and used to link to the series page. (e.g. "This post is part of a series that explores lesser-known City services and how residents can access them.")',
       'type' => 'text',
     );
   }
@@ -1713,15 +1714,16 @@ public static function phila_timeline_page_selector( ){
         array(
           'id'  => 'phila_adv_posts_select_options',
           'type'  => 'select',
-          'desc'  => 'Choose page content.',
+          'desc'  => 'Choose a component to add to your blog post.',
           'class' => 'percent-100',
-          'placeholder' => 'Select page content...',
+          'placeholder' => 'Select a component...',
           'options' => array(
-            'phila_lists' => 'Lists',
+            'phila_lists' => 'List',
             'phila_qna' => 'Q&A',
+            'phila_adv_stepped_process' => 'Stepped process',
             'phila_timeline' => 'Timeline',
-            'phila_adv_stepped_process' => 'Stepped Procress',
-            'phila_image_gallery' => 'Image Gallery'
+            'phila_image_gallery' => 'Image gallery',
+            'phila_text_component' => 'Text',
           )
         ),
         array(
@@ -1729,93 +1731,96 @@ public static function phila_timeline_page_selector( ){
           'id' => 'phila_adv_lists',
           'type' => 'group',
           'fields' => array(
-            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Title', 'phila_list_builder_title', true, 'Enter a title for this list'),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List title', 'phila_list_builder_title', true, 'Enter a title for this list.'),
             array(
               'id' => 'phila_list_title_style',
               'type' => 'radio',
-              'name' => 'Title Style',
+              'name' => 'Title style',
               'required' => true,
+              'std' => 'h2',
               'options' => array(
-                'h2' => 'H2',
-                'h3' => 'H3',
-                'h4' => 'H4',
-              ),
+                'h2' => 'Heading 2',
+                'h3' => 'Heading 3',
+                'h4' => 'Heading 4',
+                ),
             ),
             array(
               'id'    => 'phila_list_type',
               'type'  => 'radio',
-              'name'  => 'List Type',
+              'name'  => 'List type',
               'required' => true,
               'options' => array(
-                'ordered' => 'Ordered List',
-                'unordered' => 'Unordered List',
-                'ordered_with_paragraph' => 'Ordered List with Paragraph',
-                'unordered_with_paragraph' => 'Unordered List with Paragraph',
-                'check_list' => 'Check List'
+                'ordered' => 'Ordered list',
+                'unordered' => 'Unordered list',
+                'ordered_with_paragraph' => 'Ordered list with paragraph',
+                'unordered_with_paragraph' => 'Unordered list with paragraph',
+                'check_list' => 'Checklist'
               )
             ),
             array(
               'id'  => 'phila_ordered_list_fields',
               'type' => 'group',
               'name' => 'Ordered List',
+              'label_description' => "Use an ordered list if the order or number of items matters, as in a list of steps. Item number will automatically appear.",
               'clone' => true,
+              'sort_clone' => true,
+              'add_button' => '+ Add list item',
               'visible' => array('phila_list_type', '=', 'ordered'),
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_ordered_list_item', true, ''),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List item', 'phila_ordered_list_item', true, ''),
               ),
             ),
             array(
               'id'  => 'phila_unordered_list_fields',
               'type' => 'group',
-              'name' => 'Unordered List',
+              'name' => 'Unordered list',
+              'label_description' => "Use an unordered list if items don't follow a particular order, as in a list of application materials.",
               'clone' => true,
+              'sort_clone' => true,
+              'add_button' => '+ Add list item',
               'visible' => array('phila_list_type', '=', 'unordered'),
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_unordered_list_item', true, ''),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List item', 'phila_unordered_list_item', true, ''),
               )
             ),
             array(
               'id'  => 'phila_ordered_with_paragraph_fields',
               'type' => 'group',
               'name' => 'Ordered List with Paragraph',
+              'label_description' => 'Use an ordered list with paragraph if the order or number of items matters and you need to provide additional information about each item.',
               'clone' => true,
+              'sort_clone' => true,
+              'add_button' => '+ Add list item',
               'visible' => array('phila_list_type', '=', 'ordered_with_paragraph'),
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_ordered_list_item', true, ''),
-                Phila_Gov_Standard_Metaboxes::phila_paragraph_textarea($name = 'Paragraph', $desc = ''),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List item', 'phila_ordered_list_item', true, ''),
+                Phila_Gov_Standard_Metaboxes::phila_paragraph_textarea($name = 'Paragraph', $desc = '235 characters or fewer.'),
               ),
             ),
             array(
               'id'  => 'phila_unordered_with_paragraph_fields',
               'type' => 'group',
               'clone' => true,
+              'sort_clone' => true,
+              'add_button' => '+ Add list item',
               'name' => 'Unordered List with Paragraph',
+              'label_description' => "Use an unordered list if items don't follow a particular order and you need to provide additional information about each item.",
               'visible' => array('phila_list_type', '=', 'unordered_with_paragraph'),
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_unordered_list_item', true, ''),
-                Phila_Gov_Standard_Metaboxes::phila_paragraph_textarea($name = 'Paragraph', $desc = ''),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List item', 'phila_unordered_list_item', true, ''),
+                Phila_Gov_Standard_Metaboxes::phila_paragraph_textarea($name = 'Paragraph', $desc = '235 characters or fewer.'),
               ),
-            ),
-            array(
-              'id'  => 'phila_icon_fields',
-              'type' => 'group',
-              'visible' => array('phila_list_type', '=', 'check_list'),
-              'fields' => array(
-                array(
-                  'name' => 'Icon selection',
-                  'type'  => 'heading'
-                ),
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('', 'phila_check_list_icon', false, 'Choose a <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icon. E.g.: fas fa-bell. The default icon is fas fas-check.'),
-              )
             ),
             array(
               'id'  => 'phila_check_list_fields',
               'type' => 'group',
-              'name' => 'Check List',
+              'name' => 'Checklist',
               'clone' => true,
+              'sort_clone' => true,
+              'add_button' => '+ Add list item',
               'visible' => array('phila_list_type', '=', 'check_list'),
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List Item', 'phila_check_list_item', true, ''),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('List item', 'phila_check_list_item', true, ''),
               ),
             )
           )
@@ -1825,15 +1830,16 @@ public static function phila_timeline_page_selector( ){
           'id' => 'phila_adv_qna',
           'type' => 'group',
           'fields' => array(
-            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Title', 'phila_qna_title', true, 'Enter a title'),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Q&A title', 'phila_qna_title', true, 'Enter a title for this Q&A.'),
             array(
               'id' => 'phila_qna_style',
               'type' => 'radio',
-              'name' => 'Q&A Style',
+              'name' => 'Format',
               'required' => true,
+              'label_description' => 'Use interview format to present a conversation between two people and display their names. Use FAQ format to present a question and answer session with generic "Q" and "A" labels.',
               'options' => array(
-                'name' => 'Enter person\'s name',
-                'qa' => 'Enter Q&A',
+                'qa' => 'FAQ',
+                'name' => 'Interview',
               ),
             ),
             array(
@@ -1841,6 +1847,7 @@ public static function phila_timeline_page_selector( ){
               'type' => 'group',
               'clone' => true,
               'sort_clone' => true,
+              'add_button' => '+ Add a question',
               'visible' => array(
                 array('phila_qna_style', '=', 'name'),
               ),
@@ -1851,28 +1858,28 @@ public static function phila_timeline_page_selector( ){
                   'id'   => 'phila_qna_question_person',
                   'type' => 'text',
                   'required' => true,
-                  'desc' => 'Enter a name'
+                  'desc' => 'Enter a name.'
                 ),
                 array(
                   'name' => 'Question',
                   'id'   => 'phila_qna_question',
                   'type' => 'textarea',
                   'required' => true,
-                  'desc' => 'Enter a question'
+                  'desc' => 'Enter a question.'
                 ),
                 array(
                   'name' => 'Person\'s Name',
                   'id'   => 'phila_qna_answer_person',
                   'type' => 'text',
                   'required' => true,
-                  'desc' => 'Enter a name'
+                  'desc' => 'Enter a name.'
                 ),
                 array(
                   'name' => 'Answer',
                   'id'   => 'phila_qna_answer',
                   'type' => 'textarea',
                   'required' => true,
-                  'desc' => 'Enter an answer',
+                  'desc' => 'Enter an answer.',
                 ),
               )
             ),
@@ -1882,6 +1889,7 @@ public static function phila_timeline_page_selector( ){
               'type' => 'group',
               'clone' => true,
               'sort_clone' => true,
+              'add_button' => '+ Add a question',
               'visible' =>
               array(
                 array('phila_qna_style', '=', 'qa'),
@@ -1934,15 +1942,19 @@ public static function phila_timeline_page_selector( ){
               'id' => 'phila_image_gallery_details',
               'type' => 'group',
               'fields' => array(
-                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Title', 'phila_image_gallery_title', true, 'Enter a title for this image gallery'),
+                Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Title', 'phila_image_gallery_title', true, 'Enter a title for this image gallery.'),
                 array(
                   'name' => 'Description',
                   'id'   => 'phila_image_gallery_description',
-                  'desc' => 'Enter a description for this image gallery',
+                  'desc' => 'Enter a description for this image gallery.',
                   'type' => 'wysiwyg',
                   'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
                 )
               )
+            ),
+            array(
+              'type' => 'custom_html',
+              'std'  => '<h3>Restrictions</h1><p>A gallery must have a minimum of three images and a maximum of ten images. All images must be at least 1000px x 700px.</p>',
             ),
             array(
               'type' => 'group',
@@ -1963,7 +1975,13 @@ public static function phila_timeline_page_selector( ){
               )
             )
           )
-        )
+        ),
+        array(
+          'visible' => array('phila_adv_posts_select_options', '=', 'phila_text_component'),
+          'id' => 'phila_adv_posts_text_component',
+          'type' => 'wysiwyg',
+          'options' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
+        ),
       )
     );
   }

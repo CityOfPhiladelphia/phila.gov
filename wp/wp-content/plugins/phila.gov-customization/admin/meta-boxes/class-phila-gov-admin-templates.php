@@ -170,10 +170,10 @@ class Phila_Gov_Admin_Templates {
           'type'  => 'select',
           'required'  => true,
           'options' => array(
-            'post'   => 'Post',
-            'press_release'   => 'Press Release',
-            'advanced_post'   => 'Advanced Post',
-            'series'          => 'Series'
+            'press_release'   => 'Press release',
+            'post'   => 'Blog post',
+            'advanced_post'   => 'Advanced blog post',
+            'series'          => 'Blog series'
           ),
           'admin_columns' => array(
             'position' => 'after date',
