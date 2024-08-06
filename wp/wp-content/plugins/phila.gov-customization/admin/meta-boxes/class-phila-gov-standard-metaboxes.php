@@ -1858,7 +1858,7 @@ public static function phila_timeline_page_selector( ){
                   'id'   => 'phila_qna_question_person',
                   'type' => 'text',
                   'required' => true,
-                  'desc' => 'Enter a name.'
+                  'desc' => "Interviewer's name."
                 ),
                 array(
                   'name' => 'Question',
@@ -1872,7 +1872,7 @@ public static function phila_timeline_page_selector( ){
                   'id'   => 'phila_qna_answer_person',
                   'type' => 'text',
                   'required' => true,
-                  'desc' => 'Enter a name.'
+                  'desc' => "Respondent's name."
                 ),
                 array(
                   'name' => 'Answer',
@@ -1900,14 +1900,14 @@ public static function phila_timeline_page_selector( ){
                   'id'   => 'phila_qna_question',
                   'type' => 'textarea',
                   'required' => true,
-                  'desc' => 'Enter a question'
+                  'desc' => 'Enter a question.'
                 ),
                 array(
                   'name' => 'Answer',
                   'id'   => 'phila_qna_answer',
                   'type' => 'textarea',
                   'required' => true,
-                  'desc' => 'Enter an answer',
+                  'desc' => 'Enter an answer.',
                 ),
               )
             )
