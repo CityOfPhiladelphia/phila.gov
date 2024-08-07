@@ -135,7 +135,7 @@ class Phila_Gov_Admin_Templates {
   function register_template_selection_metabox_posts( $meta_boxes ){
 
     $meta_boxes[] = array(
-      'title'    => 'Select Template',
+      'title'    => 'Template',
       'post_types'    => array( 'post' ),
       'context'  => 'after_title',
       'fields' => array(

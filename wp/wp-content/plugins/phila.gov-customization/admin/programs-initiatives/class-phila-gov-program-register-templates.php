@@ -19,7 +19,7 @@ class Phila_Gov_Register_Program_Templates {
   function register_template_selection_metabox_programs( $meta_boxes ){
     $meta_boxes[] = array(
       'id'       => 'template_selection',
-      'title'    => 'Select Template',
+      'title'    => 'Template',
       'pages'    => array( 'programs' ),
       'context'  => 'after_title',
 
