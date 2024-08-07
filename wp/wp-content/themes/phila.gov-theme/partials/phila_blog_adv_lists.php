@@ -4,7 +4,7 @@ Partial for Advanced Blog Posts Lists Component
 */
 ?>
 
-<div class = "mvl">
+<div class = "mvxl">
 <?php if ($list['phila_list_type'] == "unordered") { ?>
     <<?php echo $list['phila_list_title_style'] ?>><?php echo $list['phila_list_builder_title']; ?></<?php echo $list['phila_list_title_style'] ?>>
     <ul style="padding-left: 0">
@@ -41,7 +41,7 @@ Partial for Advanced Blog Posts Lists Component
     <<?php echo $list['phila_list_title_style'] ?>><?php echo $list['phila_list_builder_title']; ?></<?php echo $list['phila_list_title_style'] ?>>
     <ul style="list-style: none; padding-left: 0">
         <?php foreach ($list['phila_check_list_fields'] as $item) { ?>
-            <li><i style="padding-right: 8px;" class="<?php echo $list['phila_icon_fields']['phila_check_list_icon'] ?? "fas fa-check" ?>"></i><?php echo $item['phila_check_list_item'] ?></li>
+            <li><i style="padding-right: 8px;" class="fas fa-check"></i><?php echo $item['phila_check_list_item'] ?></li>
         <?php } ?>
     </ul>
     <?php } ?>
