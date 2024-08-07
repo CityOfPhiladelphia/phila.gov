@@ -190,7 +190,7 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array(
       'title'    => 'Call to action',
-      'pages'    => array( 'post' ),
+      'pages'    => array( 'post', 'blog_post' ),
       'context'  => 'normal',
       'priority' => 'high',
       'visible' => array(
