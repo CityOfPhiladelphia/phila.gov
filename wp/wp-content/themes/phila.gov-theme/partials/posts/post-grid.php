@@ -40,17 +40,23 @@ if ( empty( $post_categories ) ) {
     'order' => 'desc',
     'orderby' => 'post_date',
     'meta_query'  => array(
+      'relation'  => 'OR',
       array(
         'key' => 'phila_template_select',
         'value' => 'post',
         'compare' => '=',
-      )
+      ),
+      array(
+        'key' => 'phila_template_select',
+        'value' => 'advanced_post',
+        'compare' => '=',
+      ),
     ),
   );
 
   if ( false === ( $sticky_posts = get_transient( get_the_ID().'_sticky_posts_results' ) ) ) {
     $sticky_posts = new WP_Query( $sticky_args );
-    set_transient( get_the_ID().'_sticky_posts_results', $sticky_posts, 1 * HOUR_IN_SECONDS );
+    // set_transient( get_the_ID().'_sticky_posts_results', $sticky_posts, 1 * HOUR_IN_SECONDS );
   }
   
 
@@ -64,29 +70,52 @@ if( !empty($tag) && $tag != 'is_single' ) {
     'orderby' => 'post_date',
     'tag__in'  => array($tag),
     'meta_query'  => array(
-      'relation'  => 'AND',
+      'relation'  => 'OR',
       array(
-        'key' => 'phila_template_select',
-        'value' => 'post',
-        'compare' => '=',
-      ),
-      array(
-        'relation'  => 'OR',
+        'relation'  => 'AND',
         array(
-          'key' => 'phila_select_language',
-          'value' => 'english',
+          'key' => 'phila_template_select',
+          'value' => 'post',
           'compare' => '=',
         ),
         array(
-          'key' => 'phila_select_language',
-          'compare' => 'NOT EXISTS'
+          'relation'  => 'OR',
+          array(
+            'key' => 'phila_select_language',
+            'value' => 'english',
+            'compare' => '=',
+          ),
+          array(
+            'key' => 'phila_select_language',
+            'compare' => 'NOT EXISTS'
+          ),
         ),
       ),
-    )
+      array(
+        'relation'  => 'AND',
+        array(
+          'key' => 'phila_template_select',
+          'value' => 'advanced_post',
+          'compare' => '=',
+        ),
+        array(
+          'relation'  => 'OR',
+          array(
+            'key' => 'phila_select_language',
+            'value' => 'english',
+            'compare' => '=',
+          ),
+          array(
+            'key' => 'phila_select_language',
+            'compare' => 'NOT EXISTS'
+          ),
+        ),
+      ),
+    ),
   );
   if ( false === ( $result = get_transient( get_the_ID().'_default_posts_results' ) ) ) {
     $result = new WP_Query( $posts_args );
-    set_transient( get_the_ID().'_default_posts_results', $result, 1 * HOUR_IN_SECONDS );
+    // set_transient( get_the_ID().'_default_posts_results', $result, 1 * HOUR_IN_SECONDS );
   }
 
 }else{
@@ -121,18 +150,17 @@ if( !empty($tag) && $tag != 'is_single' ) {
 
   if ( false === ( $more_posts = get_transient( get_the_ID().'_more_posts_results' ) ) ) {
     $more_posts = new WP_Query( $posts_args );
-    set_transient( get_the_ID().'_more_posts_results', $more_posts, 1 * HOUR_IN_SECONDS );
+    // set_transient( get_the_ID().'_more_posts_results', $more_posts, 1 * HOUR_IN_SECONDS );
   }
 
   if ( false === ( $result = get_transient( get_the_ID().'_empty_posts_results' ) ) ) {
     $result = new WP_Query();
-    set_transient( get_the_ID().'_empty_posts_results', $result, 1 * HOUR_IN_SECONDS );
+    // set_transient( get_the_ID().'_empty_posts_results', $result, 1 * HOUR_IN_SECONDS );
   }
 
-  
   //if sticky posts is empty, don't add it to the results array
   $result->posts = array_merge(isset($sticky_posts->posts) ? $sticky_posts->posts : array(), $more_posts->posts);
-  
+
 }
 $result->post_count = count( $result->posts );
 

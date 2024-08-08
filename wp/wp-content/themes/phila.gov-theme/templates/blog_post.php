@@ -16,8 +16,6 @@ $last_updated = rwmb_meta('is_last_updated');
 $last_updated_date = rwmb_meta('last_updated_date');
 $date_formatted = new DateTime($last_updated_date);
 $last_updated_text = rwmb_meta('last_updated_text');
-$language = rwmb_meta('phila_select_language');
-$language_list = phila_get_translated_language( $language );
 $archived_state = 0; //default state of not archived
 $archived = rwmb_meta('phila_archive_post');
 $post_is_old = false;
@@ -36,6 +34,7 @@ $connected = new WP_Query( [
     ],
     'nopaging'     => true,
 ] );
+$original_template_type = $template_type;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
@@ -45,17 +44,14 @@ $connected = new WP_Query( [
     </div>
     <div class="grid-x grid-padding-x align-bottom">
       <div class="cell medium-24 post-title">
-        <?php if ( $template_type == 'action_guide' || $template_type == 'action_guide_2' ) { ?>
-          <?php include( locate_template( 'partials/posts/action-guide-title.php' ) ); ?>
-        <?php } else {  ?>
-          <?php if ( $archived_state !== 0 ) : ?>
+        <?php if ( $archived_state !== 0 ) : ?>
             <div class="archived-tag">Archived</div>
           <?php endif; ?>
           <?php the_title( '<h1 style="display:inline">', '</h1>' ); ?>
-        <?php } ?>
       </div>
       <div class="border-bottom-fat"></div>
     </div>
+    <?php if($template_type != "series") : ?>
     <div class="post-meta">
       <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ): ?>
         <div class="mbm">
@@ -99,15 +95,12 @@ $connected = new WP_Query( [
         </div>
       </div>
     </div>
-  <?php endif; ?>
+  <?php endif; endif; ?>
   </header>
-  <?php  if ( count( $language_list ) >= 2 ): ?>
-    <?php include(locate_template ('partials/posts/post-translated-content.php') ); ?>
-  <?php endif; ?>
 
 
-  <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') && ($template_type != 'press_release') ): ?>
-    <div class="grid-container featured-image <?php echo $language == 'arabic' ? $language : '' ?>">
+  <?php if ( has_post_thumbnail() && ($template_type != 'press_release' && $template_type != 'series') ): ?>
+    <div class="grid-container featured-image">
       <div class="grid-x medium-16 medium-centered align-middle">
         <?php if( strpos(phila_get_thumbnails(), 'phila-thumb') || strpos(phila_get_thumbnails(), 'phila-news')  ) : ?>
           <div class="js-thumbnail-image">
@@ -151,24 +144,15 @@ $connected = new WP_Query( [
   <?php if ($template_type != 'series') {
       while ( $connected->have_posts() ) : $connected->the_post(); 
         $content = get_post_field('phila_series_linking_text', $connected->the_ID(), $context = 'display'); ?>
-  <div class="series-blockquote mbm"><blockquote><span><?php echo $content ?> <i><a href="<?php echo the_permalink();?>">link to series</a></i></span></blockquote></div>
+  <div class="series-blockquote grid-x medium-16 medium-centered align-middle"><em><blockquote><span><?php echo $content ?> <i><a href="<?php echo the_permalink();?>">View other posts in this series.</a></i></span></blockquote></em></div>
   <?php endwhile;
   } 
     wp_reset_postdata();
   ?>
-    <?php
-      if ( !empty( $translations ) ) :
-        foreach ( $translations as $translation ) : ?>
-        <?php
-        $lang = get_post_meta( $translation, 'phila_select_language' );
-        $id = intval( $translation );
-        $link = get_the_permalink( $id );
-        ?>
-          <a href="<?php echo $link ?>"><?php echo $lang[0] ?></a>
-      <?php endforeach; ?>
-    <?php endif; ?>
     <div>
-      <?php the_content(); ?>
+      <div class="mtm mbm">
+        <?php the_content(); ?>
+      </div>
       <?php if ( $template_type == 'advanced_post' ) { ?>
         <?php include(locate_template ('partials/posts/advanced-post-content.php') ); ?> 
       <?php } ?>
@@ -180,16 +164,11 @@ $connected = new WP_Query( [
     <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ) : ?>
       <div class="mvm center">###</div>
     <?php endif; ?>
-    <?php if ( $template_type == 'action_guide' ) { ?>
-      <?php include(locate_template ('partials/posts/action-guide-content.php') ); ?>
-    <?php } else if ( $template_type == 'action_guide_2' ) { ?>
-      <?php include(locate_template ('partials/posts/action_guide_v2/action-guide-content-v2.php') ); ?>
-    <?php } ?>
   </div>
   <hr class="margin-auto"/>
 </article>
 
-<?php wp_reset_postdata(); ?>
+<?php wp_reset_postdata(); $template_type = $original_template_type; ?>
 <?php
   $cat_ids = array();
 
@@ -213,7 +192,6 @@ $connected = new WP_Query( [
 
   $related_content_args = array(
     'post_type' => $related_post_type,
-    'category__and' => array($cat_id_string),
     'posts_per_page'  => $posts_per,
     'post__not_in'  => array($post_id),
     'meta_query' => array(
@@ -221,19 +199,6 @@ $connected = new WP_Query( [
         'key'     => 'phila_template_select',
         'value'   => $template_type,
         'compare' => '=',
-      ),
-      array(
-        'relation'  => 'OR',
-        array(
-          'key' => 'phila_select_language',
-          'value' => 'english',
-          'compare' => '=',
-        ),
-        array(
-          'key' => 'phila_select_language',
-          'value' => '',
-          'compare' => '=',
-        ),
       ),
     ),
   );
@@ -245,9 +210,9 @@ $connected = new WP_Query( [
     $category = array($cat_id_string);
 
     $template = 'partials/posts/press-release-grid.php';
-  }elseif($template_type == 'action_guide' || $template_type == 'action_guide_2'){
-    $template = 'partials/posts/action-guide-grid.php';
-  }else{
+  } if ($template_type == 'series') {
+    return;
+  } else{
     $template = 'partials/posts/content-related.php';
   }
 ?>

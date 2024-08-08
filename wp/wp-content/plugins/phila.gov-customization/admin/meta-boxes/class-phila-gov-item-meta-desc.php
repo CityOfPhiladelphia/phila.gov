@@ -19,13 +19,13 @@ class Phila_Item_Meta_Desc {
 
     $meta_boxes[] = array(
       'id'  => 'item_description',
-      'title' => 'Short Description',
+      'title' => 'Short description',
       'context'  => 'after_title',
       //'priority' => 'high',
 
       //TODO: replace this with a function that pulls the post types we need. It had been set up this way, but after a WP update, get_post_types was not returning CPTs. A quick fix needed to be put in place, and this is it.
       'post_types' => array(
-        'phila_post', 'news_post',  'department_page', 'service_page', 'document', 'press_release', 'page', 'post', 'programs', 'event_spotlight', 'guides'
+        'phila_post', 'news_post',  'department_page', 'service_page', 'document', 'press_release', 'page', 'post', 'programs', 'event_spotlight', 'guides', 'blog_post'
       ),
 
       'fields' => array(
@@ -33,7 +33,7 @@ class Phila_Item_Meta_Desc {
           'id'   => $prefix . 'meta_desc',
           'limit' => 140,
           'type' => 'textarea',
-          'desc'  => 'Enter a short description of this content. This description will appear in lists that include this item, search results, and social media link previews. 140 character maximum.',
+          'desc'  => 'Enter a short description of this content. This description will appear in lists that include this item, search results, and social media link previews.',
           'required'  => true
         ),
       ),

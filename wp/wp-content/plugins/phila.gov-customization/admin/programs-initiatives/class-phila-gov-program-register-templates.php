@@ -19,7 +19,7 @@ class Phila_Gov_Register_Program_Templates {
   function register_template_selection_metabox_programs( $meta_boxes ){
     $meta_boxes[] = array(
       'id'       => 'template_selection',
-      'title'    => 'Select Template',
+      'title'    => 'Template',
       'pages'    => array( 'programs' ),
       'context'  => 'after_title',
 
@@ -98,7 +98,7 @@ class Phila_Gov_Register_Program_Templates {
           'name' => 'Program hero image',
           'type'  => 'image_advanced',
           'max_file_uploads' => 1,
-          'desc'  => 'Minimum size 700px by 500px. Used on the Programs + initiatives landing page and hero header.',
+          'desc'  => 'Minimum size 700px by 500px. Used on the Programs landing page and hero header.',
           'columns' => 3,
         ),
         array(
