@@ -15,9 +15,9 @@ jQuery(document).ready(function($){
     var required_cat = $('#categorychecklist > li:first-child input');
     if( !required_cat.attr('checked')  ) {
       required_cat.attr('checked','checked');
-      required_cat.attr('disabled','disabled');
     }
   }
+  
   //Force contributrors to add email for review
   if ( phila_WP_User.includes('secondary_department_page_contributror') || phila_WP_User.includes('secondary_service_page_contributor') || phila_WP_User.includes('secondary_programs__initiatives_contributor') ){
     $('#dem_notify_emails').prop('required', 'required')
