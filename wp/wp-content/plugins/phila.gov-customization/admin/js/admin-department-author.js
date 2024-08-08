@@ -15,6 +15,7 @@ jQuery(document).ready(function($){
     var required_cat = $('#categorychecklist > li:first-child input');
     if( !required_cat.attr('checked')  ) {
       required_cat.attr('checked','checked');
+      required_cat.attr('disabled','disabled');
     }
   }
   //Force contributrors to add email for review
