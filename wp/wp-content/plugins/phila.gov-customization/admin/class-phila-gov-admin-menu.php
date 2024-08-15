@@ -173,7 +173,7 @@ function change_admin_post_label(){
     add_menu_page('Audiences', 'Audiences', 'manage_categories','edit-tags.php?taxonomy=audience', '', 'dashicons-groups');
     add_menu_page('Categories', 'Categories', 'manage_categories', 'edit-tags.php?taxonomy=service_type&post_type=service_page',);
     add_menu_page('Tags', 'Tags', 'manage_categories', 'edit-tags.php?taxonomy=post_tag', '', 'dashicons-tag');
-    add_menu_page('phila gov settings', 'phila gov settings', 'edit_theme_options','admin.php?page=phila_gov', );
+    // add_menu_page('phila gov settings', 'phila gov settings', 'edit_theme_options','admin.php?page=phila_gov', );
 
     add_menu_page('edit.php?post_type=department_page', 'Add Department Page', 'Add department page', 'edit_department_pages', 'post-new.php?post_type=department_page');
     // add_menu_page('edit.php?post_type=department_page', 'Add Department Page', 'Add department page', 'edit_department_pages', 'post-new.php?post_type=department_page');
