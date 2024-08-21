@@ -1721,6 +1721,7 @@ function get_target_phrases() {
     "Mayor's Commission on",
     "Mayor's Office of",
     "Mural Arts Philadelphia",
+    "Creative Philadelphia",
     "Philadelphia",
     "Commission on",
     "Zoning Board of",
