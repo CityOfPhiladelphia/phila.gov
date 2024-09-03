@@ -42,8 +42,8 @@ jQuery(document).ready(function($){
   }
 
   //Hide all category and tag menu items, department authors shouldn't see those.
-  $('a[href*="edit-tags.php"]').parent().css('display', 'none');
-
+$('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("display", "none");
+  
   var menuIdString = $('#menu-id').text().trim();
   var allMenuIDs = menuIdString.split(' ');
   var match = document.getElementById( allMenuIDs );
@@ -157,6 +157,12 @@ jQuery(document).ready(function($){
 
     $('#wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap').after( "<i>To request a change to 'What we do' content, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
 
+  }
+
+  if ( ( typenow == 'service_updates') && adminpage.indexOf('post') > -1 ){
+    if (!phila_WP_User.includes('secondary_service_status_contributor') ){
+      $('#publish').css('display', 'none')
+    }
   }
 
 });

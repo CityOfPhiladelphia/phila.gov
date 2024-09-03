@@ -140,9 +140,6 @@ function phila_content_image_sizes_attr( $sizes, $size ) {
   return $sizes;
 }
 
-
-
-
 add_filter('pre_get_document_title', 'phila_filter_title');
 
 function phila_filter_title( $title ){
