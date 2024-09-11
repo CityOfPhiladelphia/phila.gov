@@ -62,7 +62,7 @@ echo '
     "wpackagist-plugin/easy-wp-smtp":"^2.2.0",
     "wpackagist-plugin/admin-email-as-from-address":"^1.2",
     "wpackagist-plugin/jwt-authentication-for-wp-rest-api":"1.3.2",
-    "wpackagist-plugin/meta-box":"^5.8.2",
+    "wpackagist-plugin/meta-box":"^5.10.1",
     "wpackagist-plugin/mb-rest-api":"^2.0.1",
     "wpackagist-plugin/mb-relationships":"^1.11.2",
     "wpackagist-plugin/meta-box-text-limiter":"^1.1.3",
