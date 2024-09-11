@@ -40,7 +40,7 @@
           <?php 
           $slang_name = rawurlencode(html_entity_decode(trim( $cal_category ) ) );
           $see_all = array(
-            'URL' => '/the-latest/all-events/?category=' . $slang_name,
+            'URL' => '/news-and-events/#/events/?category=' . $slang_name,
             'content_type' => 'events',
             'nice_name' => 'events'
           ); ?>

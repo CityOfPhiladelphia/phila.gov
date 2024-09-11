@@ -16,22 +16,22 @@ function phila_breadcrumbs() {
     echo '</a></li>';
     //TODO: loop through template and apply $label_arr
     if ( is_singular('post') ){
-      echo '<li><a href="/the-latest">The latest news + events</a></li>';
+      echo '<li><a href="/news-and-events/#/">The latest news + events</a></li>';
       if( phila_get_selected_template( $post->ID ) == 'press_release' ) {
-        echo '<li><a href="/the-latest/archives/?templates=press_release">Press releases</a></li>';
+        echo '<li><a href="/news-and-events/#/press-releases">Press releases</a></li>';
       }elseif (phila_get_selected_template( $post->ID ) == 'post'){
-        echo '<li><a href="/the-latest/archives/?templates=post">Posts</a></li>';
+        echo '<li><a href="/news-and-events/#/posts">Posts</a></li>';
       }elseif ( phila_get_selected_template( $post->ID ) == 'action_guide' ) {
-        echo '<li><a href="/the-latest/archives/?templates=action_guide">Action guides</a></li>';
+        echo '<li><a href="/news-and-events/#/action-guides">Action guides</a></li>';
       }else {
-        echo '<li><a href="/the-latest/archives/?templates=featured">Featured</a></li>';
+        echo '<li><a href="/news-and-events/#/posts/?featured=true">Featured</a></li>';
       }
       echo '<li>';
       the_title();
       echo '</li>';
 
     } elseif ( is_singular('news_post') ) {
-      echo '<li><a href="/the-latest">The latest news + events</a></li>';
+      echo '<li><a href="/news-and-events/#/">The latest news + events</a></li>';
       echo '<li>';
       the_title();
       echo '</li>';
@@ -43,15 +43,15 @@ function phila_breadcrumbs() {
         echo '</li>';
 
     }elseif ( is_singular('phila_post') ) {
-      echo '<li><a href="/the-latest">The latest news + events</a></li>';
-      echo '<li><a href="/the-latest/archives/?template=post">Posts</a></li></li>';
+      echo '<li><a href="/news-and-events/#/">The latest news + events</a></li>';
+      echo '<li><a href="/news-and-events/#/posts/">Posts</a></li></li>';
       echo '<li>';
       the_title();
       echo '</li>';
 
     }elseif ( is_singular('press_release') ) {
-      echo '<li><a href="/the-latest">The latest news + events</a></li>';
-      echo '<li><a href="/the-latest/archives/?template=press_release">Press releases</a></li></li>';
+      echo '<li><a href="/news-and-events/#/">The latest news + events</a></li>';
+      echo '<li><a href="/news-and-events/#/press-releases">Press releases</a></li></li>';
       echo '<li>';
       the_title();
       echo '</li>';
@@ -131,7 +131,7 @@ function phila_breadcrumbs() {
 
     } elseif( is_tag() ){
 
-      echo '<li><a href="/the-latest">Posts</a></li>';
+      echo '<li><a href="/newss-and-events/">Posts</a></li>';
       echo '<li>';
       '<span>' . single_tag_title( 'Tagged in: ' ) . '</span>';
 
@@ -139,13 +139,13 @@ function phila_breadcrumbs() {
 
       $categories = get_the_category($post->ID);
 
-      echo '<li><a href="/the-latest">Posts</a></li>';
+      echo '<li><a href="/news-and-events/#/posts">Posts</a></li>';
       if ( !$categories == 0 ) {
         echo '<li>' . $categories[0]->name . '</li>';
       }
     } elseif ( is_author() ) {
 
-      echo '<li><a href="/the-latest">Posts</a></li>';
+      echo '<li><a href="/news-and-events/">Posts</a></li>';
       echo '<li>';
         printf( __( 'Author: %s', 'phila-gov' ), '<span class="vcard">' . get_the_author() . '</span>' );
       echo '</li>';

@@ -61,7 +61,7 @@
               </div>
             </div>
           <?php $see_all = array(
-            'URL' => '/the-latest/archives/?templates=action_guide',
+            'URL' => '/news-and-events/#/action-guides',
             'content_type' => $label,
             'nice_name' => 'Action guides',
           );?>

@@ -11,7 +11,7 @@ module.exports = jQuery(document).ready(function ($) {
       $('.programs-menu-link a').addClass('js-is-current');
     } else if (currentPath.indexOf('/departments/') === 0 || currentPath.indexOf('/departments/') === 1) {
       $('.departments-menu-link a').addClass('js-is-current');
-    } else if (currentPath.indexOf('/the-latest/') === 0 || currentPath.indexOf('/the-latest/') === 1) {
+    } else if (currentPath.indexOf('/news-and-events/') === 0 || currentPath.indexOf('/news-and-events/') === 1) {
       $('.news-menu-link a').addClass('js-is-current');
     } else if (currentPath.indexOf('/tools/') === 0 || currentPath.indexOf('/tools/') === 1) {
       $('.tools-menu-link a').addClass('js-is-current');
