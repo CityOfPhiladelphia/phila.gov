@@ -1246,7 +1246,7 @@ function phila_get_item_meta_desc( $bloginfo = true ){
  *
  **/
 
-function phila_get_selected_template( $post_id = null, $modify_response = true ){
+function phila_get_selected_template( $post_id = null, $modify_response = true, $deprecate_featured_template = false ){
 
   $user_selected_template = rwmb_meta( 'phila_template_select', $args = array(), $post_id );
 
@@ -1255,11 +1255,13 @@ function phila_get_selected_template( $post_id = null, $modify_response = true )
   }
   if ($modify_response == true ){
     //used to force "featured" template type. The user doesn't select this value from the normal template dropdpown and this can be applied to any post, press release or other item.
-    $old_feature = get_post_meta( $post_id, 'phila_show_on_home', true);
-    $new_feature = get_post_meta( $post_id, 'phila_is_feature', true );
+    if (!$deprecate_featured_template) {
+      $old_feature = get_post_meta( $post_id, 'phila_show_on_home', true);
+      $new_feature = get_post_meta( $post_id, 'phila_is_feature', true );
 
-    if ( $old_feature != 0 || $new_feature != 0  ){
-      $user_selected_template = 'featured';
+      if ( $old_feature != 0 || $new_feature != 0  ){
+        $user_selected_template = 'featured';
+      }
     }
     //clean up the data by assigning "phila_post" to "post"
     if(get_post_type($post_id) == 'phila_post') {
@@ -1268,6 +1270,35 @@ function phila_get_selected_template( $post_id = null, $modify_response = true )
   }
 
   return $user_selected_template;
+}
+
+
+function phila_get_archive_status( $post_id ) {
+  $archived = rwmb_meta('phila_archive_post', '', $post_id);
+  $phila_template = rwmb_meta('phila_template_select', '', $post_id);
+  $post_is_old = false;
+  if (date('Y-m-d', strtotime('-2 years')) > get_the_date('Y-m-d', $post_id)) { // if posts are 2 years old
+    $post_is_old = true;
+  }
+  if ((((empty( $archived ) || !isset($archived) || $archived == 'default') && $post_is_old) || $archived == 'archive_now') && ($phila_template == 'post' || $phila_template == '')) {
+    $archived = true;
+  } else {
+    $archived = false;
+  }
+  
+  return (bool) $archived;
+}
+
+function phila_get_the_category( $post_id ) {
+  $categories = get_the_category($post_id);
+
+  foreach ($categories as $category){
+      $trimmed_name = phila_get_owner_typography( $category );
+
+      $category->slang_name = html_entity_decode(trim($trimmed_name));
+  }
+
+  return (array) $categories;
 }
 
 /**
@@ -1991,6 +2022,33 @@ add_action( 'mb_relationships_init', function() {
 
 } );
 
+add_action( 'mb_relationships_init', function() {
+  MB_Relationships_API::register( array(
+      'id'   => 'series_to_post_relationship',
+      'from' => array(
+        'object_type'  => 'post',
+        'post_type'   => 'blog_post',     
+        'meta_box' => array(
+          'visible' => array(
+            'when' => array(
+              array('phila_template_select', '=', 'series'),
+            ),
+          ),
+          'context' => 'normal',
+          'title' => 'Series content'
+        )
+      ),
+      'to'   => array(
+        'object_type'  => 'post',
+        'post_type'   => 'blog_post',
+        'field' => array(
+          'placeholder' => 'Choose a blog post to add to this series',
+        ),   
+      ),
+      'reciprocal' => true,
+  ) );
+} );
+
 function phila_language_output($language){
   switch ($language) {
     case 'english';
@@ -2198,7 +2256,7 @@ add_filter('wp_insert_post_data', 'force_type_private', 10, 2);
 
 function set_environment() {
   global $phila_environment;
-    if (isset($_SERVER['HTTP_HOST'])) {
+  if (isset($_SERVER['HTTP_HOST'])) {
 
     if(strpos($_SERVER['HTTP_HOST'],'staging') !== false) {
       $phila_environment = 'staging';
@@ -2330,7 +2388,6 @@ function add_html_lang_attribute($output) {
   $output = implode(' ', $attributes);
   return $output;
 }
-
 // Commented out but will be returned in 60 days
 // function wpse_restrict_mimes($mime_types){
 //   $mime_types = array(
