@@ -34,6 +34,7 @@ class Phila_Gov_Admin_Menu {
     
     add_action('admin_menu', array($this, 'add_custom_menu_separator') );
 
+
  }
 
   function admin_menu_order( $menu_ord ) {
@@ -119,7 +120,9 @@ class Phila_Gov_Admin_Menu {
   {
     global $menu;
     $separator_index = array(4, 59, 99);
+
     foreach($separator_index as $sp) {
+
       if (isset($menu[$sp])) {
           unset($menu[$sp]);
       }
@@ -173,10 +176,6 @@ function change_admin_post_label(){
     add_menu_page('Audiences', 'Audiences', 'manage_categories','edit-tags.php?taxonomy=audience', '', 'dashicons-groups');
     add_menu_page('Categories', 'Categories', 'manage_categories', 'edit-tags.php?taxonomy=service_type&post_type=service_page',);
     add_menu_page('Tags', 'Tags', 'manage_categories', 'edit-tags.php?taxonomy=post_tag', '', 'dashicons-tag');
-    // add_menu_page('phila gov settings', 'phila gov settings', 'edit_theme_options','admin.php?page=phila_gov', );
-
-    add_menu_page('edit.php?post_type=department_page', 'Add Department Page', 'Add department page', 'edit_department_pages', 'post-new.php?post_type=department_page');
-    // add_menu_page('edit.php?post_type=department_page', 'Add Department Page', 'Add department page', 'edit_department_pages', 'post-new.php?post_type=department_page');
     
     add_submenu_page('edit.php', 'Announcements', 'Announcements', 'edit_posts', 'edit.php?post_type=announcement');
     add_submenu_page('edit.php?post_type=service_page', 'Add Service Page', 'Add service page', 'publish_service_pages', 'post-new.php?post_type=service_page');
