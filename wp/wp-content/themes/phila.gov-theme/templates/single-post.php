@@ -122,7 +122,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
             </div>
           </div>
         <?php else : ?>
-          <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
+          <div class="lightbox-link lightbox-link--feature flex-child-grow" data-open="phila-lightbox-feature">
             <?php echo phila_get_thumbnails(); ?>
             <?php $image_caption = get_post(get_post_thumbnail_id())->post_excerpt; ?>
             <?php $image_credit = isset(get_post_meta(get_post_thumbnail_id())['phila_media_credit'][0]) ? get_post_meta(get_post_thumbnail_id())['phila_media_credit'][0] : ''; ?>
