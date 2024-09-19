@@ -1657,7 +1657,7 @@ public static function phila_timeline_page_selector( ){
     'post_type'   => array('department_page', 'programs'),
     'post_status' => array( 'draft', 'publish', 'private'),
     'field_type'  => 'select_advanced',
-    'placeholder' => '',
+    'placeholder' => 'select a post',
     'desc'     =>  'Add a timeline page. You can narrow your search options by typing in the field above',
     'multiple'  => 'false',
 
@@ -1760,10 +1760,11 @@ public static function phila_timeline_page_selector( ){
             array(
               'id'  => 'phila_ordered_list_fields',
               'type' => 'group',
-              'name' => 'Ordered List',
+              'name' => 'Ordered list',
               'label_description' => "Use an ordered list if the order or number of items matters, as in a list of steps. Item number will automatically appear.",
               'clone' => true,
               'sort_clone' => true,
+              'min_clone' => 1,
               'add_button' => '+ Add list item',
               'visible' => array('phila_list_type', '=', 'ordered'),
               'fields' => array(
@@ -1777,6 +1778,7 @@ public static function phila_timeline_page_selector( ){
               'label_description' => "Use an unordered list if items don't follow a particular order, as in a list of application materials.",
               'clone' => true,
               'sort_clone' => true,
+              'min_clone' => 1,
               'add_button' => '+ Add list item',
               'visible' => array('phila_list_type', '=', 'unordered'),
               'fields' => array(
@@ -1786,10 +1788,11 @@ public static function phila_timeline_page_selector( ){
             array(
               'id'  => 'phila_ordered_with_paragraph_fields',
               'type' => 'group',
-              'name' => 'Ordered List with Paragraph',
-              'label_description' => 'Use an ordered list with paragraph if the order or number of items matters and you need to provide additional information about each item.',
+              'name' => 'Ordered list with paragraph',
+              'label_description' => 'Use an ordered list with paragraph if the order or number of items matters and you need to provide additional information about each item. Item number will automatically appear.',
               'clone' => true,
               'sort_clone' => true,
+              'min_clone' => 1,
               'add_button' => '+ Add list item',
               'visible' => array('phila_list_type', '=', 'ordered_with_paragraph'),
               'fields' => array(
@@ -1802,8 +1805,9 @@ public static function phila_timeline_page_selector( ){
               'type' => 'group',
               'clone' => true,
               'sort_clone' => true,
+              'min_clone' => 1,
               'add_button' => '+ Add list item',
-              'name' => 'Unordered List with Paragraph',
+              'name' => 'Unordered list with paragraph',
               'label_description' => "Use an unordered list if items don't follow a particular order and you need to provide additional information about each item.",
               'visible' => array('phila_list_type', '=', 'unordered_with_paragraph'),
               'fields' => array(
@@ -1817,6 +1821,7 @@ public static function phila_timeline_page_selector( ){
               'name' => 'Checklist',
               'clone' => true,
               'sort_clone' => true,
+              'min_clone' => 1,
               'add_button' => '+ Add list item',
               'visible' => array('phila_list_type', '=', 'check_list'),
               'fields' => array(
@@ -1836,7 +1841,7 @@ public static function phila_timeline_page_selector( ){
               'type' => 'radio',
               'name' => 'Format',
               'required' => true,
-              'label_description' => 'Use interview format to present a conversation between two people and display their names. Use FAQ format to present a question and answer session with generic "Q" and "A" labels.',
+              'label_description' => 'Use FAQ format to present a question and answer session with generic "Q" and "A" labels. <br><br> Use interview format to present a conversation between two people and display their names.',
               'options' => array(
                 'qa' => 'FAQ',
                 'name' => 'Interview',
@@ -1847,6 +1852,7 @@ public static function phila_timeline_page_selector( ){
               'type' => 'group',
               'clone' => true,
               'sort_clone' => true,
+              'min_clone' => 1,
               'add_button' => '+ Add a question',
               'visible' => array(
                 array('phila_qna_style', '=', 'name'),
@@ -1854,11 +1860,11 @@ public static function phila_timeline_page_selector( ){
 
               'fields' => array(
                 array(
-                  'name' => 'Person\'s Name',
+                  'name' => 'Interviewer\'s name',
                   'id'   => 'phila_qna_question_person',
                   'type' => 'text',
                   'required' => true,
-                  'desc' => "Interviewer's name."
+                  'desc' => "Enter the interviewer's name."
                 ),
                 array(
                   'name' => 'Question',
@@ -1868,11 +1874,11 @@ public static function phila_timeline_page_selector( ){
                   'desc' => 'Enter a question.'
                 ),
                 array(
-                  'name' => 'Person\'s Name',
+                  'name' => 'Respondent\'s name',
                   'id'   => 'phila_qna_answer_person',
                   'type' => 'text',
                   'required' => true,
-                  'desc' => "Respondent's name."
+                  'desc' => "Enter the respondent's name."
                 ),
                 array(
                   'name' => 'Answer',
@@ -1889,6 +1895,7 @@ public static function phila_timeline_page_selector( ){
               'type' => 'group',
               'clone' => true,
               'sort_clone' => true,
+              'min_clone' => 1,
               'add_button' => '+ Add a question',
               'visible' =>
               array(
@@ -1980,7 +1987,7 @@ public static function phila_timeline_page_selector( ){
           'visible' => array('phila_adv_posts_select_options', '=', 'phila_text_component'),
           'id' => 'phila_adv_posts_text_component',
           'type' => 'wysiwyg',
-          'options' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_advanced_small_wysiwyg(),
+          'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
         ),
       )
     );

@@ -15,7 +15,7 @@ function phila_breadcrumbs() {
     echo '<i class="fas fa-home" aria-hidden="true"></i><span class="accessible">Home</span>';
     echo '</a></li>';
     //TODO: loop through template and apply $label_arr
-    if ( is_singular('post') || is_singular(('blog_post')) ){
+    if ( is_singular('post') ){
       echo '<li><a href="/the-latest">The latest news + events</a></li>';
       if( phila_get_selected_template( $post->ID ) == 'press_release' ) {
         echo '<li><a href="/the-latest/archives/?templates=press_release">Press releases</a></li>';

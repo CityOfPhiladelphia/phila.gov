@@ -43,6 +43,7 @@
           black calc(50% + 0.45px), 
           transparent calc(50% + 0.52px), 
           transparent 100%); 
+          z-index: 999;
         &.first-dot {
           padding-top: 0px;
           margin-top: 7px;

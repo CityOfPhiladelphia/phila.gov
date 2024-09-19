@@ -1,5 +1,6 @@
-<?php $page_rows = rwmb_meta('phila_row');
-
+<?php $page_rows = rwmb_meta('phila_row'); ?>
+<div class = "medium-16 medium-centered align-middle">
+<?php
 foreach ($page_rows as $page_row) {
   if ($page_row['phila_adv_posts_options']['phila_adv_posts_select_options'] == 'phila_lists') {
     $list = $page_row['phila_adv_posts_options']['phila_adv_lists'];
@@ -24,3 +25,4 @@ foreach ($page_rows as $page_row) {
     include(locate_template('partials/phila_text_component.php'));
   }
 } ?>
+</div>

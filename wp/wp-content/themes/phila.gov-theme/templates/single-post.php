@@ -36,6 +36,7 @@ $connected = new WP_Query( [
     ],
     'nopaging'     => true,
 ] );
+$original_template_type = $template_type;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
@@ -128,7 +129,7 @@ $connected = new WP_Query( [
             </div>
           </div>
         <?php else : ?>
-          <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
+          <div class="lightbox-link lightbox-link--feature flex-child-auto" data-open="phila-lightbox-feature">
             <?php echo phila_get_thumbnails(); ?>
             <?php $image_caption = get_post(get_post_thumbnail_id())->post_excerpt; ?>
             <?php $image_credit = get_post_meta(get_post_thumbnail_id())['phila_media_credit'][0]; ?>
@@ -151,7 +152,7 @@ $connected = new WP_Query( [
   <?php if ($template_type != 'series') {
       while ( $connected->have_posts() ) : $connected->the_post(); 
         $content = get_post_field('phila_series_linking_text', $connected->the_ID(), $context = 'display'); ?>
-  <div class="series-blockquote mbm"><blockquote><span><?php echo $content ?> <i><a href="<?php echo the_permalink();?>">link to series</a></i></span></blockquote></div>
+  <div class="series-blockquote medium-16 medium-centered align-middle"><em><blockquote><span><?php echo $content ?> <i><a href="<?php echo the_permalink();?>">View other posts in this series.</a></i></span></blockquote></em></div>
   <?php endwhile;
   } 
     wp_reset_postdata();
@@ -189,7 +190,7 @@ $connected = new WP_Query( [
   <hr class="margin-auto"/>
 </article>
 
-<?php wp_reset_postdata(); ?>
+<?php wp_reset_postdata(); $template_type = $original_template_type; ?>
 <?php
   $cat_ids = array();
 
@@ -247,6 +248,8 @@ $connected = new WP_Query( [
     $template = 'partials/posts/press-release-grid.php';
   }elseif($template_type == 'action_guide' || $template_type == 'action_guide_2'){
     $template = 'partials/posts/action-guide-grid.php';
+  }elseif ($template_type == 'series') {
+    return; 
   }else{
     $template = 'partials/posts/content-related.php';
   }

@@ -3,7 +3,6 @@
 Partial for Advanced Blog Posts Text Component
 */
 ?>
-
-<div class = "mvxl">
+<div class="pvm">
     <?php echo $text; ?>
 </div>

@@ -42,8 +42,6 @@ require $dir. '/admin/define-roles.php';
 require $dir. '/admin/rest-additions.php';
 require $dir. '/admin/tiny-mce.php';
 
-require $dir. '/admin/blog-posts/class-phila-gov-cpt-blog-posts.php';
-
 require $dir. '/admin/service-page/class-phila-gov-cpt-service-page.php';
 require $dir. '/admin/service-page/class-phila-gov-service-register-templates.php';
 

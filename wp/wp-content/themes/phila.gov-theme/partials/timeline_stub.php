@@ -34,12 +34,11 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
 ?>
 
 <!-- Timeline Section -->
-<section style="margin-left: 0px;">
-  <div class="<?php echo ( $timeline_page != null ) ? 'mtl' : ''; ?>">
+<section style="margin-left: 0px;" class="<?php if (get_post_type() == "post") { echo "pvm"; } else { echo ( $timeline_page != null ) ? 'mtl' : ''; }?>">
     <div class="grid-x">
       <div class="cell">
         <?php if (isset($timeline_title)) { ?>
-          <h2 id="<?php echo sanitize_title_with_dashes( $timeline_title); ?>" class="<?php if (get_post_type() == "blog_post") { echo "h2"; } else { echo "contrast"; }?>"><?php echo $timeline_title; ?></h2>
+          <h2 id="<?php echo sanitize_title_with_dashes( $timeline_title); ?>" class="<?php if (get_post_type() == "post") { echo "h2"; } else { echo "contrast"; }?>"><?php echo $timeline_title; ?></h2>
         <?php } ?>
         <?php 
           $h = 0;
@@ -105,6 +104,5 @@ $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $
         <?php } ?>
       </div>
     </div>
-  </div>
 </section>
 <!-- Timeline Section/ -->
