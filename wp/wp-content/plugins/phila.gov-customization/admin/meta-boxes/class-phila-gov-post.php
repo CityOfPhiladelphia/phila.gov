@@ -62,7 +62,7 @@ class Phila_Gov_Post {
   );
 
   $meta_boxes[] = array(
-      'title'    => 'Social media share pre-filled text',
+      'title'    => 'Social media sharing text for X/Twitter',
       'pages'    => array( 'post', 'blog_post' ),
       'context'  => 'after_title',
       'fields'  => array(
@@ -71,7 +71,7 @@ class Phila_Gov_Post {
           'required'  => true,
           'id'  => 'phila_social_intent',
           'limit' => 256,
-          'desc'  => 'Curate post sharing text. Required. A link to this page will be automatically added. E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive.',
+          'desc'  => 'Required. Curate post sharing text. A link to this page will be automatically added. E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive.',
         )
       ),
     );

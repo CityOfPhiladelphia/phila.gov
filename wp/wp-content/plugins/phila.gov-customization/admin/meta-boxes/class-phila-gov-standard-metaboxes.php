@@ -1657,8 +1657,8 @@ public static function phila_timeline_page_selector( ){
     'post_type'   => array('department_page', 'programs'),
     'post_status' => array( 'draft', 'publish', 'private'),
     'field_type'  => 'select_advanced',
-    'placeholder' => '',
-    'desc'     =>  'Choose a timeline. For help with creating a timeline, contact websupport@phila.gov.',
+    'placeholder' => 'Choose a timeline',
+    'desc'     =>  'For help with creating a timeline, contact websupport@phila.gov.',
     'multiple'  => false,
 
     'query_args'  => array(
@@ -1922,7 +1922,7 @@ public static function phila_timeline_page_selector( ){
             array(
               'name' => 'Timeline item count',
               'id'   => 'homepage_timeline_item_count',
-              'desc'  => 'Select the number of items from the timeline to display',
+              'desc'  => 'Select the number of items from the timeline to display.',
               'type' => 'number'
             ),
           )
