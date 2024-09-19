@@ -2415,6 +2415,14 @@ function add_html_lang_attribute($output) {
   $output = implode(' ', $attributes);
   return $output;
 }
+
+// Change "Add title" to "Title" in the title field for all posts
+function change_title_text(){
+  return 'Title';
+}
+
+add_filter( 'enter_title_here', 'change_title_text');
+
 // Commented out but will be returned in 60 days
 // function wpse_restrict_mimes($mime_types){
 //   $mime_types = array(

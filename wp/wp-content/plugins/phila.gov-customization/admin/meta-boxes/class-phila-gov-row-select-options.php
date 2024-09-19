@@ -150,7 +150,7 @@ class Phila_Gov_Row_Select_Options {
       array(
         'id' => 'phila_stepped_content',
         'name'  => 'Title',
-        'desc' => 'Enter a title for this stepped process.',
+        'label_description' => 'Enter a title for this stepped process.',
         'type' => 'group',
         'fields'  => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_wysiwyg_title(),
