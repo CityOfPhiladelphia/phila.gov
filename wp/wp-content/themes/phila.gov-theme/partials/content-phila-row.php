@@ -263,6 +263,7 @@
             <!-- Homepage timeline -->
               <?php
               $timeline_page = $current_row['phila_full_options']['phila_timeline_picker'];
+              $limit = $current_row['phila_full_options']['phila_timeline_picker']['homepage_timeline_item_count'];
               include(locate_template('partials/timeline_stub.php')); ?>
             <!-- /Homepage timeline -->
 

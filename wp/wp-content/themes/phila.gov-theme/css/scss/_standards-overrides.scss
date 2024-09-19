@@ -43,9 +43,13 @@ footer.site-footer .contact {
 }
 
 .grid-container {
-  max-width: 90rem !important;
+  max-width: 90rem;
 }
 
 hr{
   max-width: 90rem;
+}
+
+html{
+  scroll-behavior: smooth;
 }

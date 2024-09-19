@@ -59,6 +59,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
   <?php endif; ?>
+  <div data-swiftype-index="false">
   <a href="#page" aria-hidden="false" class="skip-to-content">Skip to main content</a>
   <header class="global-nav no-js pbn-mu mbn-mu">
     <h1 class="accessible">City of Philadelphia</h1>
@@ -206,6 +207,7 @@
     <div id="phila-mobile-menu"></div>
     <div id="phila-site-wide-alerts"></div>
   </header>
+  </div>
   <div id="page">
     <?php
     $parent = phila_util_get_furthest_ancestor($post);

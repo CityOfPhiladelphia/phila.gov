@@ -467,7 +467,7 @@ class Phila_Gov_Standard_Metaboxes {
       'fields'  => array(
         array(
           //TODO: determine way to display step numbers in admin
-          'placeholder' => 'Step Heading',
+          'placeholder' => 'Step heading',
           'id'  => 'phila_step_wysiwyg_heading',
           'type'  => 'text',
           'class' => 'percent-95'
@@ -538,11 +538,11 @@ class Phila_Gov_Standard_Metaboxes {
 
       'fields'  => array(
         array(
-          'type' => 'heading',
-          'name' => 'Link details',
+          'type' => 'custom_html',
+          'name' => 'Link details<hr>',
         ),
         array(
-          'name' => 'Clickable link text',
+          'name' => 'Link text',
           'id' => 'link_text',
           'type'  => 'text',
           'size' => 50,
@@ -1651,16 +1651,15 @@ public static function phila_meta_var_connect(){
 public static function phila_timeline_page_selector( ){
 
   return array(
-    'name'          => 'Select timeline page',
+    'name'          => 'Select timeline',
     'id'          => 'phila_select_timeline',
     'type'        => 'post',
     'post_type'   => array('department_page', 'programs'),
     'post_status' => array( 'draft', 'publish', 'private'),
     'field_type'  => 'select_advanced',
-    'placeholder' => 'select a post',
+    'placeholder' => '',
     'desc'     =>  'Add a timeline page. You can narrow your search options by typing in the field above',
     'multiple'  => 'false',
-
     'query_args'  => array(
       'post_status'    => 'any',
       'posts_per_page' => -1,

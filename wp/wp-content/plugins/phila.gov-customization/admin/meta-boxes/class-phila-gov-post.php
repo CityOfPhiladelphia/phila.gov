@@ -71,7 +71,7 @@ class Phila_Gov_Post {
           'required'  => true,
           'id'  => 'phila_social_intent',
           'limit' => 256,
-          'desc'  => 'Curate Tweet sharing text. Required. 256 character limit.  A link to this page will be automatically added. <br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
+          'desc'  => 'Curate post sharing text. Required. A link to this page will be automatically added. E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive.',
         )
       ),
     );
@@ -205,24 +205,25 @@ class Phila_Gov_Post {
       ),
       'fields' => array(
         array(
+          'type' => 'custom_html',
+          'desc'  => 'Blogs engage readers by asking them to take action after reading a post. Use this area to encourage your readers to do something next.',
+        ),
+        array(
           'id' => 'post_read_cta',
           'type' => 'group',
           'clone' => true,
           'sort'  => true,
           'max_clone' => 2,
-          'desc'  => 'Blogs engage readers by asking them to take action after reading a post. Use this area to encourage your readers to do something next.',
           'fields' => array(
-            array(
-              'type'=> 'custom_html',
-            ),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'phila_post_links'),
               array(
-                'type'  => 'heading',
-                'name'  => 'Link description',
+                'type'  => 'custom_html',
+                'name'  => 'Link description<hr>',
               ),
           array(
             'id' => 'phila_link_desc',
             'type'  => 'textarea',
+            'desc' => 'Provide additional information about what you want the reader to do once they click the link.'
           ),
         )
       )
