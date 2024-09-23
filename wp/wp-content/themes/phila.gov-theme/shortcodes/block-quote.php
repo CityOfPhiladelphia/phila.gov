@@ -7,17 +7,17 @@
 * @package phila-gov_customization
 */
 
-function block_quote_shortcode($atts) {
+function block_quote_shortcode($atts, $content = null) {
 
-$a = shortcode_atts( array(
-    'text' => 'text',
-), $atts );
+    $a = shortcode_atts( array(
+        'text' => $content, // Use the content between shortcode tags as the default
+    ), $atts );
 
-ob_start();
+    ob_start();
     include( locate_template( 'partials/posts/block-quote.php' ) );
-    $content = ob_get_clean();
-    return $content;
+    $output = ob_get_clean();
 
+    return $output;
 }
 add_action( 'init', 'register_block_quote_shortcode' );
 

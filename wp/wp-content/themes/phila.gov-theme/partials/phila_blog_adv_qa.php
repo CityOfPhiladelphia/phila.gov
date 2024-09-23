@@ -3,7 +3,7 @@
 Partial for Advanced Blog Posts Q&A Component
 */
 ?>
-<div class="mvxl">
+<div class="pvm">
 <?php
 if ($qna['phila_qna_title'] != "") {
 ?>
@@ -26,4 +26,4 @@ if ($qna['phila_qna_title'] != "") {
         }
     } 
     ?>
-</div>    
+</div>

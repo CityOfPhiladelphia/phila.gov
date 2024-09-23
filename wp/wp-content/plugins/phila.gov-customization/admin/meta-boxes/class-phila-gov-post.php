@@ -16,7 +16,7 @@ class Phila_Gov_Post {
   function register_meta_boxes_posts($meta_boxes){
     $meta_boxes[] = array(
       'title'    => 'Additional authors',
-      'pages'    => array( 'post', 'blog_post'),
+      'pages'    => array( 'post' ),
       'context'  => 'after_title',
       'visible' => array(
         'when' => array(
@@ -110,6 +110,8 @@ class Phila_Gov_Post {
       'visible' => array(
         'when' => array(
           array('phila_template_select', '!=', 'action_guide'),
+          array('phila_template_select', '!=', 'advanced_post'),
+          array('phila_template_select', '!=', 'series'),
         ),
       ),
       'fields' => array(
@@ -119,12 +121,13 @@ class Phila_Gov_Post {
 
     $meta_boxes[] = array (
       'title'    => 'Updates and archiving',
-      'pages'    => array( 'post', 'blog_post'),
+      'pages'    => array( 'post' ),
       'context'  => 'side',
       'priority' => 'high',
       'visible' => array(
         'when' => array(
           array('phila_template_select', '!=', 'action_guide'),
+          array('phila_template_select', '!=', 'series'),
         ),
       ),
       'fields' => array(
@@ -189,10 +192,10 @@ class Phila_Gov_Post {
     );
 
     $meta_boxes[] = array(
-      'title'    => 'Call to action',
-      'pages'    => array( 'post', 'blog_post' ),
+      'title'    => 'End of post call to action. Where should users go now?',
+      'pages'    => array( 'post' ),
       'context'  => 'normal',
-      'priority' => 'high',
+      'priority' => 'low',
       'visible' => array(
         'when' => array(
           array('phila_template_select', '=', 'advanced_post'),
@@ -373,7 +376,7 @@ class Phila_Gov_Post {
     $meta_boxes[] = array(
       'id' => 'phila_adv_posts',
       'title'    => 'Content builder',
-      'pages'    => array('post', 'blog_post'),
+      'pages'    => array('post' ),
       'priority' => 'high',
       'revision' => true,
       'visible' => array(
@@ -390,7 +393,7 @@ class Phila_Gov_Post {
       'id' => 'phila_adv_series',
       'title'    => 'Series description',
       'priority' => 'high',
-      'pages'    => array('post', 'blog_post'),
+      'pages'    => array('post' ),
       'revision' => true,
       'visible' => array(
         'when' => array(

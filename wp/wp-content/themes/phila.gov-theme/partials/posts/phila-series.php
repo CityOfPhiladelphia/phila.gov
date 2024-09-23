@@ -6,14 +6,14 @@ $rows = MB_Relationships_API::get_connected( [
 ] );
 
 ?>
-<div class="grid-x grid-margin-x">
+<div class="series-grid grid-x grid-margin-x">
     <?php
     foreach ($rows as $row) {
         $post = get_post($row);
         $post_type = $post->post_type;
         $template_type = phila_get_selected_template();
     ?>
-        <div class="series cell medium-8 flex-container flex-dir-column mbm">
+        <div class="series cell medium-8 flex-container flex-dir-column mam">
             <a href="<?php echo the_permalink($row); ?>" class="card card--<?php echo 'series' ?>">
                 <div class="flex-child-shrink">
                     <?php if (has_post_thumbnail($row)) : ?>
