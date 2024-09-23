@@ -29,7 +29,14 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
 } else if ($archived == 'archive_now') {
   $archived_state = 2; //archived manually
 }
-
+$connected = new WP_Query( [
+    'relationship' => [
+        'id'   => 'series_to_post_relationship',
+        'from' => get_the_ID(), 
+    ],
+    'nopaging'     => true,
+] );
+$original_template_type = $template_type;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post img-floats'); ?>>
@@ -122,10 +129,10 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
             </div>
           </div>
         <?php else : ?>
-          <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
+          <div class="lightbox-link lightbox-link--feature flex-child-auto" data-open="phila-lightbox-feature">
             <?php echo phila_get_thumbnails(); ?>
             <?php $image_caption = get_post(get_post_thumbnail_id())->post_excerpt; ?>
-            <?php $image_credit = get_post_meta(get_post_thumbnail_id())['phila_media_credit'][0]; ?>
+            <?php $image_credit = isset(get_post_meta(get_post_thumbnail_id())['phila_media_credit'][0]) ? get_post_meta(get_post_thumbnail_id())['phila_media_credit'][0] : ''; ?>
             <?php if ($image_caption || $image_credit) { ?>
               <div class="phila-image-caption pam">
                 <?php if ($image_credit) { ?>
@@ -142,6 +149,14 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
     </div>
   <?php endif ?>
   <div class="grid-container post-content <?php echo $language == 'arabic' ? $language : '' ?>">
+  <?php if ($template_type != 'series') {
+      while ( $connected->have_posts() ) : $connected->the_post(); 
+        $content = get_post_field('phila_series_linking_text', $connected->the_ID(), $context = 'display'); ?>
+  <div class="series-blockquote medium-16 medium-centered align-middle"><em><blockquote><span><?php echo $content ?> <i><a href="<?php echo the_permalink();?>">View other posts in this series.</a></i></span></blockquote></em></div>
+  <?php endwhile;
+  } 
+    wp_reset_postdata();
+  ?>
     <?php
       if ( !empty( $translations ) ) :
         foreach ( $translations as $translation ) : ?>
@@ -153,8 +168,14 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
           <a href="<?php echo $link ?>"><?php echo $lang[0] ?></a>
       <?php endforeach; ?>
     <?php endif; ?>
-    <div class="medium-18 medium-centered mtm">
+    <div>
       <?php the_content(); ?>
+      <?php if ( $template_type == 'advanced_post' ) { ?>
+        <?php include(locate_template ('partials/posts/advanced-post-content.php') ); ?> 
+      <?php } ?>
+      <?php if ( $template_type == 'series' ) { ?>
+        <?php include(locate_template ('partials/posts/phila-series.php') ); ?> 
+      <?php } ?>
       <?php include(locate_template ('partials/posts/post-end-cta.php') ); ?>
     </div>
     <?php if ( get_post_type() == 'press_release' || $template_type == 'press_release' ) : ?>
@@ -169,7 +190,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
   <hr class="margin-auto"/>
 </article>
 
-<?php wp_reset_postdata(); ?>
+<?php wp_reset_postdata(); $template_type = $original_template_type; ?>
 <?php
   $cat_ids = array();
 
@@ -227,6 +248,8 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
     $template = 'partials/posts/press-release-grid.php';
   }elseif($template_type == 'action_guide' || $template_type == 'action_guide_2'){
     $template = 'partials/posts/action-guide-grid.php';
+  }elseif ($template_type == 'series') {
+    return; 
   }else{
     $template = 'partials/posts/content-related.php';
   }

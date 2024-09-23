@@ -55,6 +55,7 @@
     margin: $spacing-large auto;
     img{
       margin: 0 auto;
+      width: 100%;
     }
     @include breakpoint(small only) {
       padding:0;
@@ -215,6 +216,16 @@
   }
 }
 
+.series-blockquote{
+  blockquote {
+    border-left: 2px solid black;
+    padding-left: 15px;
+  } 
+  blockquote:before {
+      content: ' ' !important;
+  }
+}
+
 #longform-content-single-container {
   body {
     margin-top: 0px !important;
@@ -290,13 +301,13 @@
     a {
         text-decoration: underline !important;
       }
-    
+
       .interact-311 {
         a {
           text-decoration: none !important;
         }
       }
-  
+
       h3 {
         font-weight: 600 !important;
         font-size: 1.429rem !important;
@@ -308,7 +319,7 @@
           font-size: 2rem !important;
         }
       }
-      
+
       .medium-8.columns.phm {
         margin: 0;
         h2{
@@ -316,7 +327,7 @@
           font-size: 1.2rem !important;
         }
       }
-      
+
     .fat {
       .columns {
         &.medium-8 {

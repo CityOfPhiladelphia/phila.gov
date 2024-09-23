@@ -215,6 +215,7 @@ class Phila_Gov_Custom_Taxonomies {
       'public'                    => true,
       'show_ui'                   => true,
       'show_admin_column'         => true,
+      'show_in_rest'              => true,
       '_builtin'                  => true,
       'capabilities' => array(
         'manage_terms'	=>	'manage_tags',
@@ -222,6 +223,7 @@ class Phila_Gov_Custom_Taxonomies {
         'delete_terms'	=>	'delete_tags',
         'assign_terms'	=>	'assign_tags',
       ),
+      'rest_base'                 => 'tags',
     ) );
   }
 }
