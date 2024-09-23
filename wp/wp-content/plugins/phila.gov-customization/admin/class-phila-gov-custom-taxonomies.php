@@ -51,6 +51,12 @@ class Phila_Gov_Custom_Taxonomies {
         'slug' => 'service-types',
         'with_front' => false,
       ),
+      'capabilities' => array(
+        'manage_terms'	=>	'manage_service-types',
+        'edit_terms'	=>	'edit_service-types',
+        'delete_terms'	=>	'delete_service-types',
+        'assign_terms'	=>	'assign_service-types',
+      ),
     ));
   }
 
@@ -80,6 +86,12 @@ class Phila_Gov_Custom_Taxonomies {
       'rewrite' => array(
         'slug' => 'audiences',
         'with_front' => false,
+      ),
+      'capabilities' => array(
+        'manage_terms'	=>	'manage_audiences',
+        'edit_terms'	=>	'edit_audiences',
+        'delete_terms'	=>	'delete_audiences',
+        'assign_terms'	=>	'assign_audiences',
       ),
     ));
   }
@@ -204,6 +216,12 @@ class Phila_Gov_Custom_Taxonomies {
       'show_ui'                   => true,
       'show_admin_column'         => true,
       '_builtin'                  => true,
+      'capabilities' => array(
+        'manage_terms'	=>	'manage_tags',
+        'edit_terms'	=>	'edit_tags',
+        'delete_terms'	=>	'delete_tags',
+        'assign_terms'	=>	'assign_tags',
+      ),
     ) );
   }
 }
