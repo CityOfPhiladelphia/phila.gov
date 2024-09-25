@@ -282,7 +282,7 @@ a.card.sub-topic{
         display: block;
       }
       time {
-        font-size: 14px;
+        font-size: 1rem;
         font-weight: bold;
       }
       &.card--last {
@@ -304,12 +304,12 @@ a.card.sub-topic{
         background: none;
 
         time {
-          font-size: 14px;
+          font-size: 1rem;
           font-weight: bold;
         }
         a {
           font-weight: bold;
-          font-size: 14px;
+          font-size: 1rem;
           margin-bottom: 1rem;
           line-height: 1.8rem;
         }

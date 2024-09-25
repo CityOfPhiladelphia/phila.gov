@@ -3819,7 +3819,7 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 		}
 		#error-page p,
 		#error-page .wp-die-message {
-			font-size: 14px;
+			font-size: 1rem;
 			line-height: 1.5;
 			margin: 25px 0 20px;
 		}
@@ -3828,7 +3828,7 @@ function _default_wp_die_handler( $message, $title = '', $args = array() ) {
 		}
 		ul li {
 			margin-bottom: 10px;
-			font-size: 14px ;
+			font-size: 1rem ;
 		}
 		a {
 			color: #0073aa;
