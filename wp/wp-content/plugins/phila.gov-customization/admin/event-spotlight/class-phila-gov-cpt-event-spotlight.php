@@ -42,7 +42,7 @@ class Phila_Gov_CPT_Event_Spotlight{
         'public' => true,
         'has_archive' => true,
         'show_in_rest' => true,
-        'rest_base' => 'spotlight',
+        'rest_base' => 'spotlights',
         'show_in_nav_menus' => true,
         'menu_icon' => 'dashicons-calendar',
         'hierarchical' => true,
