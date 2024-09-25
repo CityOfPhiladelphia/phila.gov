@@ -463,9 +463,9 @@ class Phila_Gov_Row_Metaboxes {
         'fields'  => array(
             Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
             array(
-              'name' => 'Timeline item count',
+              'name' => 'Item count',
               'id'   => 'homepage_timeline_item_count',
-              'desc'  => 'Select the number of items from the timeline to display',
+              'desc'  => 'Enter the number of items that the timeline component should display.',
               'type' => 'number'
           ),
         )

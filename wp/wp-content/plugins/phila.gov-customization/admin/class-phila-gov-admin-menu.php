@@ -173,11 +173,11 @@ function change_admin_post_label(){
 
     // Add Menus as a Department Site submenu and program pages
     add_menu_page('Owners', 'Owners', 'manage_categories', 'edit-tags.php?taxonomy=category', '', 'dashicons-admin-users');
-    add_menu_page('Audiences', 'Audiences', 'manage_categories','edit-tags.php?taxonomy=audience', '', 'dashicons-groups');
-    add_menu_page('Categories', 'Categories', 'manage_categories', 'edit-tags.php?taxonomy=service_type&post_type=service_page',);
-    add_menu_page('Tags', 'Tags', 'manage_categories', 'edit-tags.php?taxonomy=post_tag', '', 'dashicons-tag');
+    add_menu_page('Audiences', 'Audiences', 'manage_audiences','edit-tags.php?taxonomy=audience', '', 'dashicons-groups');
+    add_menu_page('Categories', 'Categories', 'manage_service-types', 'edit-tags.php?taxonomy=service_type&post_type=service_page',);
+    add_menu_page('Tags', 'Tags', 'manage_tags', 'edit-tags.php?taxonomy=post_tag', '', 'dashicons-tag');
     
-    add_submenu_page('edit.php', 'Announcements', 'Announcements', 'edit_posts', 'edit.php?post_type=announcement');
+    add_submenu_page('edit.php', 'Announcements', 'Announcements', ' edit_announcements', 'edit.php?post_type=announcement');
     add_submenu_page('edit.php?post_type=service_page', 'Add Service Page', 'Add service page', 'publish_service_pages', 'post-new.php?post_type=service_page');
     add_submenu_page('edit.php?post_type=programs', 'Add Program Page', 'Add program page', 'publish_programss', 'post-new.php?post_type=programs');
     add_submenu_page('edit.php?post_type=programs', 'Nav Menu', 'Navigation menus', 'publish_programss', 'nav-menus.php');

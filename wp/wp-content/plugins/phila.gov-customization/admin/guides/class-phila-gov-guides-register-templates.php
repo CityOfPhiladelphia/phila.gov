@@ -25,7 +25,7 @@ class Phila_Gov_Register_Guide_Templates {
 
       'fields' => array(
         array(
-          'name'  => 'Select template',
+          'name'  => 'Template',
           'desc'  => '',
           'id'    => 'phila_template_select',
           'type'  => 'select',
