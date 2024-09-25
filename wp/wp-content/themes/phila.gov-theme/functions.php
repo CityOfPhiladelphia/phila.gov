@@ -489,8 +489,6 @@ function phila_get_thumbnails(){
     $thumbs = array(
       '0' => 'medium',
       '1' => 'phila-thumb',
-      '2' => 'home-thumb',
-      '3' => 'news-thumb'
     );
     $output = '';
     foreach ($thumbs as $key => $value) {
@@ -503,12 +501,7 @@ function phila_get_thumbnails(){
       }else if ($image[1] == 660 && $image[2] == 430 ) {
         $output .= get_the_post_thumbnail( $post=null, 'phila-thumb' );
         break;
-      }else if ( $image[1] == 550 && $image[2] == 360 ){
-        $output .= get_the_post_thumbnail( $post=null, 'home-thumb' );
-        break;
-      }elseif ( $image[1] == 250 && $image[2] == 165  ) {
-        $output .=  get_the_post_thumbnail( $post=null, 'news-thumb' );
-        break;
+
       }
     }
     return $output;
@@ -894,7 +887,7 @@ function phila_is_department_homepage( $post ) {
 function phila_get_current_department_name( $category, $byline = false, $break_tags = false, $name_list = false ){
 
 
-  if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {    
+  if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
 
     $cat_name = array();
     $cat_ids = array();
@@ -908,7 +901,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
     foreach( $category as $cat ){
       array_push( $cat_name, $cat->name );
       array_push( $cat_ids, $cat->cat_ID );
-    }    
+    }
 
     $cat_id_string = implode( ', ', $cat_ids );
 
@@ -936,7 +929,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
         if ( !$is_parent || $is_in_govt_dir) {
 
-          $all_available_pages[$permalink] = $the_title;          
+          $all_available_pages[$permalink] = $the_title;
 
         }
       }
@@ -946,7 +939,7 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
 
     if ( $byline == true ) {
       echo ' by ';
-    }    
+    }
 
     foreach ( $all_available_pages as $k => $v ){
 
@@ -1720,6 +1713,7 @@ function get_target_phrases() {
     "Mayor's Commission on",
     "Mayor's Office of",
     "Mural Arts Philadelphia",
+    "Creative Philadelphia",
     "Philadelphia",
     "Commission on",
     "Zoning Board of",
@@ -2255,7 +2249,7 @@ function inject_translation_slug($language)
   $default_lang = 'en';
   $language_codes = array('zh', 'es','ar', 'fr', 'ru', 'ms', 'hi', 'pt', 'bn', 'id', 'sw', 'ja', 'de', 'ko', 'it', 'fa', 'tr', 'nl', 'te', 'vi', 'ht');
   $new_path_segments = array();
-  
+
   foreach ($path_segments as $segment) {
     if (!in_array($segment, $language_codes)) {
       $new_path_segments[] = $segment;
@@ -2355,7 +2349,7 @@ function add_html_lang_attribute($output) {
   $lang = empty(rwmb_meta('phila_select_language')) ? 'en' : rwmb_meta('phila_select_language');
   $language_code = phila_return_language_code($lang);
   $attributes[] = 'lang="' . $language_code . '"';
-  
+
   $output = implode(' ', $attributes);
   return $output;
 }
@@ -2374,7 +2368,7 @@ function add_html_lang_attribute($output) {
 //       'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 //       'docx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 //       'ppt' => 'application/vnd.ms-powerpoint',
-//       'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 
+//       'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
 //       'pages' => 'application/vnd.apple.pages',
 //       'numbers' => 'application/vnd.apple.numbers',
 //       'csv' => 'text/csv',

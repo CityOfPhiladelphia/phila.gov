@@ -11,7 +11,7 @@ jQuery(document).ready(function($){
   }
 
   //Force top category to be checked all the time, unless the user has access to mutiple categories
-  if( !phila_WP_User.includes('multi_department_access') && !phila_WP_User.includes('secondary_all_departments')) {
+  if( !phila_WP_User.includes('multi_department_access') || !phila_WP_User.includes('secondary_all_departments')) {
     var required_cat = $('#categorychecklist > li:first-child input');
     if( !required_cat.attr('checked')  ) {
       required_cat.attr('checked','checked');
@@ -126,10 +126,10 @@ $('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("
     $('#phila_template_select option').each( function () {
       if( $(this).val() !== '' && $(this).val() !== 'post' ){
         $(this).css('display', 'none');
-      } 
+      }
     });
       //ensure users who only have access to posts get the option preselcted for them
-    if (!phila_WP_User.includes('secondary_press_release_editor') && 
+    if (!phila_WP_User.includes('secondary_press_release_editor') &&
       !phila_WP_User.includes('secondary_press_release_contributor') &&
       !phila_WP_User.includes( 'secondary_action_guide_editor' )){
       $("#phila_template_select").val('post');
@@ -142,7 +142,7 @@ $('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("
         }
       });
     }
-    
+
     if( phila_WP_User.includes( 'secondary_action_guide_editor' ) ) {
       $('#phila_template_select option').each( function () {
         if( $(this).val() === 'action_guide' ){
@@ -157,6 +157,12 @@ $('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("
 
     $('#wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap').after( "<i>To request a change to 'What we do' content, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
 
+  }
+
+  if ( ( typenow == 'service_updates') && adminpage.indexOf('post') > -1 ){
+    if (!phila_WP_User.includes('secondary_service_status_contributor') ){
+      $('#publish').css('display', 'none')
+    }
   }
 
 });
