@@ -6,14 +6,14 @@ $rows = MB_Relationships_API::get_connected( [
 ] );
 
 ?>
-<div class="grid-x grid-margin-x">
+<div class="series-grid grid-x grid-margin-x">
     <?php
     foreach ($rows as $row) {
         $post = get_post($row);
         $post_type = $post->post_type;
         $template_type = phila_get_selected_template();
     ?>
-        <div class="series cell medium-8 mbm">
+        <div class="series cell medium-8 flex-container flex-dir-column mam">
             <a href="<?php echo the_permalink($row); ?>" class="card card--<?php echo 'series' ?>">
                 <div class="flex-child-shrink">
                     <?php if (has_post_thumbnail($row)) : ?>
@@ -22,7 +22,6 @@ $rows = MB_Relationships_API::get_connected( [
                 </div>
                 <div class="card--content pam">
                     <div class="cell align-self-top post-label post-label--<?php echo 'series' ?>">
-                        <p><?php echo ucwords(str_replace('_', ' ', $template_type)); ?></p>
                         <header class="cell mvm">
                             <h1><?php echo get_the_title($row); ?></h1>
                         </header>

@@ -75,8 +75,9 @@ function prefix_options_meta_boxes( $meta_boxes ) {
         'type'   => 'group',
         'clone' => true,
         'max_clone'  => 2,
+        'min_clone' => 0,
+        'clone_empty_start' => true,
         'add_button' => '+ Add a second featured job',
-
         'fields'  => array(
           array(
             'id'  => 'job_title',

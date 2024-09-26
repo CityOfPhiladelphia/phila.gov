@@ -122,7 +122,7 @@ class Phila_Archives_Controller {
    * @param WP_REST_Request $request Current request.
   */
   public function get_items( $request ) {
-    $post_type = isset( $request['post_type'] ) ? array( $request['post_type']) : array('post', 'phila_post', 'press_release', 'news_post', 'advanced_post', 'blog_post');
+    $post_type = isset( $request['post_type'] ) ? array( $request['post_type']) : array('post', 'phila_post', 'press_release', 'news_post', 'advanced_post');
 
     $count = isset( $request['count'] ) ? $request['count'] : '40';
 
@@ -131,7 +131,7 @@ class Phila_Archives_Controller {
       switch($template) {
         case 'featured':
           $posts_args = array(
-            'post_type' => array('post', 'news_post', 'blog_post'),
+            'post_type' => array('post', 'news_post'),
             'meta_query'  => array(
               'relation'  => 'OR',
               array(

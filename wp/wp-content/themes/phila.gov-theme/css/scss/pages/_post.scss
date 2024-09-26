@@ -55,6 +55,7 @@
     margin: $spacing-large auto;
     img{
       margin: 0 auto;
+      width: 100%;
     }
     @include breakpoint(small only) {
       padding:0;

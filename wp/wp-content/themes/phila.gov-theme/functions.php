@@ -1721,6 +1721,7 @@ function get_target_phrases() {
     "Mayor's Commission on",
     "Mayor's Office of",
     "Mural Arts Philadelphia",
+    "Creative Philadelphia",
     "Philadelphia",
     "Commission on",
     "Zoning Board of",
@@ -1977,7 +1978,10 @@ add_action( 'mb_relationships_init', function() {
           'hidden' => array(
             'when' => array(
               array('phila_select_language', '!=', 'english'),
+              array('phila_template_select' , '=', 'advanced_post'),
+              array('phila_template_select' , '=', 'series'),
             ),
+            'relation' => 'or'
           ),
           'title' => 'Select translated posts',
           'context' => 'side',
@@ -2026,7 +2030,7 @@ add_action( 'mb_relationships_init', function() {
       'id'   => 'series_to_post_relationship',
       'from' => array(
         'object_type'  => 'post',
-        'post_type'   => 'blog_post',        
+        'post_type'   => 'post',
         'meta_box' => array(
           'visible' => array(
             'when' => array(
@@ -2034,12 +2038,39 @@ add_action( 'mb_relationships_init', function() {
             ),
           ),
           'context' => 'normal',
-          'title' => 'Series content'
-        )
+          'title' => 'Series content',
+        ),
+        'query_args'  => array(
+            'meta_query' => array(
+              'relation'  => 'OR',
+              array(
+                'key'     => 'phila_template_select',
+                'value'   => 'advanced_post',
+                'compare' => '=',
+              ),
+              array(
+                'key'     => 'phila_template_select',
+                'value'   => 'post',
+                'compare' => '=',
+              ),
+            ),
+          ),
       ),
       'to'   => array(
         'object_type'  => 'post',
-        'post_type'   => 'blog_post',
+        'post_type'   => 'post',
+        'field' => array(
+          'placeholder' => 'Choose a blog post to add to this series',
+          // 'query_args' => array(
+          //   'tax_query' => array(
+          //     array(
+          //       'taxonomy' => 'category',
+          //       'field'    => 'slug',
+          //       'terms'    =>  '',
+          //     ),
+          //   ),
+          // ),
+        ),   
       ),
       'reciprocal' => true,
   ) );

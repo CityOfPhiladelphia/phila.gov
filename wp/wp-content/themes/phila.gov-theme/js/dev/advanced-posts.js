@@ -4,7 +4,7 @@ module.exports = $(function () {
 
     containers.each(function () {
       var container = $(this);
-      var slides = container.find(".mySlides");
+      var slides = container.find(".phila-slides");
       var dots = container.find(".dots .dot");
 
       var currentIndex = 0;
@@ -13,7 +13,34 @@ module.exports = $(function () {
         slides.eq(currentIndex).removeClass("active");
         currentIndex = index;
         slides.eq(currentIndex).addClass("active");
+        adjustGalleryTextHeight(slides.eq(currentIndex).find('.image-gallery-text'));
       }
+
+      function adjustGalleryTextHeight(galleryText) {
+        var slideshowContainer = container;
+        var height, margin;
+
+        if (window.matchMedia("(max-width: 375px)").matches) {
+          height = '250px';
+          margin = '250px';
+        }  else if (window.matchMedia("(max-width: 768px)").matches) {
+          height = '200px';
+          margin = '200px';
+        } else if (window.matchMedia("(max-width: 1024px)").matches) {
+          height = '140px';
+          margin = '140px';
+        } else {
+          height = '110px';
+          margin = '110px';
+        }
+        if (galleryText.text().trim().length > 0) {
+            galleryText.css('height', height);
+            slideshowContainer.css('margin-bottom', margin);
+        } else {
+            galleryText.css('height', '0').hide();
+            slideshowContainer.css('margin-bottom', '0');
+        }
+    }
 
       container.find(".next").click(function () {
         var nextIndex = (currentIndex + 1) % slides.length;
@@ -37,8 +64,11 @@ module.exports = $(function () {
         dots.removeClass("active");
         dots.eq(index).addClass("active");
       }
-    });
-  }
+
+      adjustGalleryTextHeight(slides.eq(currentIndex).find('.image-gallery-text'));
+  });
+}
+
 
   $('.lightbox-link').click(function() {
     var imageId = $(this).data('open');

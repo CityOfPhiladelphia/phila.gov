@@ -17,6 +17,7 @@ jQuery(document).ready(function($){
       required_cat.attr('checked','checked');
     }
   }
+  
   //Force contributrors to add email for review
   if ( phila_WP_User.includes('secondary_department_page_contributror') || phila_WP_User.includes('secondary_service_page_contributor') || phila_WP_User.includes('secondary_programs__initiatives_contributor') ){
     $('#dem_notify_emails').prop('required', 'required')
@@ -174,6 +175,12 @@ $('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("
 
     $('#wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap').after( "<i>To request a change to 'What we do' content, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
 
+  }
+
+  if ( ( typenow == 'service_updates') && adminpage.indexOf('post') > -1 ){
+    if (!phila_WP_User.includes('secondary_service_status_contributor') ){
+      $('#publish').css('display', 'none')
+    }
   }
 
 });

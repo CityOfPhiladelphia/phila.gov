@@ -1,5 +1,6 @@
-<?php $page_rows = rwmb_meta('phila_row');
-
+<?php $page_rows = rwmb_meta('phila_row'); ?>
+<div class = "medium-16 medium-centered align-middle">
+<?php
 foreach ($page_rows as $page_row) {
   if ($page_row['phila_adv_posts_options']['phila_adv_posts_select_options'] == 'phila_lists') {
     $list = $page_row['phila_adv_posts_options']['phila_adv_lists'];
@@ -19,5 +20,9 @@ foreach ($page_rows as $page_row) {
     $title = $page_row['phila_adv_posts_options']['phila_adv_posts_image_gallery']['phila_image_gallery_details']['phila_image_gallery_title'];
     $description = $page_row['phila_adv_posts_options']['phila_adv_posts_image_gallery']['phila_image_gallery_details']['phila_image_gallery_description']; 
     include(locate_template('partials/phila_blog_adv_image_gallery.php'));
+  } elseif ($page_row['phila_adv_posts_options']['phila_adv_posts_select_options'] == 'phila_text_component') {
+    $text = $page_row['phila_adv_posts_options']['phila_adv_posts_text_component'];
+    include(locate_template('partials/phila_text_component.php'));
   }
 } ?>
+</div>
