@@ -192,7 +192,7 @@ class Phila_Gov_Post {
     );
 
     $meta_boxes[] = array(
-      'title'    => 'End of post call to action. Where should users go now?',
+      'title'    => 'Call to action',
       'pages'    => array( 'post' ),
       'context'  => 'normal',
       'priority' => 'low',
