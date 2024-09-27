@@ -223,7 +223,6 @@ class Phila_Gov_Custom_Taxonomies {
         'delete_terms'	=>	'delete_tags',
         'assign_terms'	=>	'assign_tags',
       ),
-      'rest_base'                 => 'tags',
     ) );
   }
 }
