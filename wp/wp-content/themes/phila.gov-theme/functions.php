@@ -2347,3 +2347,76 @@ function add_html_lang_attribute($output) {
 // }
 
 // add_filter('upload_mimes', 'wpse_restrict_mimes');
+
+function admin_speedup_remove_post_meta_box() {
+	global $post_type;
+
+	if ( is_admin() && post_type_supports( $post_type, 'custom-fields' ) ) {
+		remove_meta_box( 'postcustom', 'post', 'normal' );
+		add_meta_box( 'admin-speedup-postcustom', __('Admin Speedup Custom Fields'), 'admin_speedup_post_custom_meta_box', null, 'normal', 'core' );
+	}
+}
+
+add_action( 'add_meta_boxes', 'admin_speedup_remove_post_meta_box' );
+
+function admin_speedup_post_custom_meta_box($post) {
+  ?>
+  <div id="postcustom">
+  <div id="postcustomstuff">
+  <div id="ajax-response"></div>
+  <?php
+  $metadata = has_meta($post->ID);
+  foreach ( $metadata as $key => $value ) {
+    if ( is_protected_meta( $metadata[ $key ][ 'meta_key' ], 'post' ) || ! current_user_can( 'edit_post_meta', $post->ID, $metadata[ $key ][ 'meta_key' ] ) )
+      unset( $metadata[ $key ] );
+  }
+  list_meta( $metadata );
+  admin_speedup_meta_form( $post ); ?>
+  <?php $current_url = add_query_arg( 'admin_speedup_refresh_meta_keys', '1' ); ?>
+  <div style="padding: 20px; margin: 20px 0; background: #CCC">
+    
+  </div>
+  <p><?php _e('Custom fields can be used to add extra metadata to a post that you can use in your theme.'); ?></p>
+  </div>
+  </div>
+  <?php
+  }
+
+  function admin_speedup_meta_form( $post = null ) {
+    global $wpdb;
+    $post = get_post( $post );
+  
+    if ( false === ( $keys = get_transient( 'admin_speedup_meta_keys' ) ) ) {
+      $limit = apply_filters( 'postmeta_form_limit', 30 );
+      $sql = "SELECT meta_key
+        FROM $wpdb->postmeta
+        GROUP BY meta_key
+        HAVING meta_key NOT LIKE %s
+        ORDER BY meta_key
+        LIMIT %d";
+      $keys = $wpdb->get_col( $wpdb->prepare( $sql, $wpdb->esc_like( '_' ) . '%', $limit ) );
+  
+      set_transient( 'admin_speedup_meta_keys', $keys, 60 * 60 );
+    }
+  
+    if ( $keys ) {
+      natcasesort( $keys );
+      $meta_key_input_id = 'metakeyselect';
+    } else {
+      $meta_key_input_id = 'metakeyinput';
+    }
+  ?>
+  <p><?php _e( 'Add New Custom Field:' ) ?></p>
+  </tbody>
+  </table>
+  <?php
+  
+  }
+
+  function admin_speedup_clear_meta_keys() {
+    if ( is_admin() && isset( $_GET['admin_speedup_refresh_meta_keys'] ) && wp_verify_nonce( $_GET['_admin_speedup_nonce'], 'admin_speedup_refresh_meta_keys' ) ) {
+      delete_transient( 'admin_speedup_meta_keys' );
+    }
+  }
+  
+  add_action( 'admin_init', 'admin_speedup_clear_meta_keys' );
