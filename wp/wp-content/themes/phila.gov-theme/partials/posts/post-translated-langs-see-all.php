@@ -1,6 +1,6 @@
-<?php  
+<?php
 //Don't execute this code if we're on the latest
-if (is_page_template('templates/the-latest.php') ): 
+if (is_page_template('templates/the-latest.php') ):
   return;
 endif;
 if (isset( $tag )) {
@@ -23,11 +23,6 @@ if (isset( $tag )) {
         array(
           'key' => 'phila_select_language',
           'value' => 'english',
-          'compare' => '!=',
-        ),
-        array(
-          'key' => 'phila_select_language',
-          'value' => '',
           'compare' => '!=',
         ),
       ),
@@ -54,11 +49,6 @@ if (isset( $tag )) {
           'value' => 'english',
           'compare' => '!=',
         ),
-        array(
-          'key' => 'phila_select_language',
-          'value' => '',
-          'compare' => '!=',
-        ),
       ),
     )
   );
@@ -67,11 +57,11 @@ if (isset( $tag )) {
   $is_translated = new WP_Query( $translations );
   $langs = array();
 
-  while ( $is_translated->have_posts() ) : $is_translated->the_post(); 
+  while ( $is_translated->have_posts() ) : $is_translated->the_post();
   $lang = rwmb_meta('phila_select_language', '', $post->ID);
   $langs[$lang] = $lang;
   endwhile;
-  
+
   $unique_langs = phila_order_languages(array_unique($langs));
 
   if (!empty($tag)) {
@@ -90,7 +80,7 @@ if (isset( $tag )) {
     <h2 id="posts">Posts</h2>
     <ul class="translated-list">
     <?php foreach ($unique_langs as $lang): ?>
-        <?php if ($lang === 'english') : 
+        <?php if ($lang === 'english') :
           $url = '/the-latest/archives/?templates=post&language=english';
           if (!empty($term)) {
             $url .= '&tag=' . $term->name;
@@ -102,7 +92,7 @@ if (isset( $tag )) {
           ?>
           <li><a href="<?php echo $url; ?>">English</a></li>
         <?php endif; ?>
-        <?php if ($lang === 'spanish') : 
+        <?php if ($lang === 'spanish') :
             $url = '/the-latest/archives/?templates=post&language=spanish';
             if (!empty($term)) {
               $url .= '&tag=' . $term->name;
@@ -114,7 +104,7 @@ if (isset( $tag )) {
           ?>
           <li><a href="<?php echo $url; ?>">Español</a></li>
         <?php endif; ?>
-        <?php if ($lang === 'chinese') : 
+        <?php if ($lang === 'chinese') :
             $url = '/the-latest/archives/?templates=post&language=chinese';
             if (!empty($term)) {
               $url .= '&tag=' . $term->name;
@@ -126,7 +116,7 @@ if (isset( $tag )) {
           ?>
           <li><a href="<?php echo $url; ?>">中文</a></li>
         <?php endif; ?>
-        <?php if ($lang === 'vietnamese') : 
+        <?php if ($lang === 'vietnamese') :
           $url = '/the-latest/archives/?templates=post&language=vietnamese';
           if (!empty($term)) {
             $url .= '&tag=' . $term->name;
@@ -137,7 +127,7 @@ if (isset( $tag )) {
           }?>
           <li><a href="<?php echo $url ?>">Tiếng Việt</a></li>
         <?php endif; ?>
-        <?php if ($lang === 'russian') : 
+        <?php if ($lang === 'russian') :
           $url = '/the-latest/archives/?templates=post&language=russian';
           if (!empty($term)) {
             $url .= '&tag=' . $term->name;
@@ -148,7 +138,7 @@ if (isset( $tag )) {
           }?>
           <li><a href="<?php echo $url ?>">Pусский</a></li>
         <?php endif; ?>
-        <?php if ($lang === 'french') :  
+        <?php if ($lang === 'french') :
           $url = '/the-latest/archives/?templates=post&language=french';
           if (!empty($term)) {
             $url .= '&tag=' . $term->name;
@@ -164,5 +154,5 @@ if (isset( $tag )) {
   </div>
   <?php else: ?>
     <h2 id="posts">Posts</h2>
-  <?php endif; ?>  
+  <?php endif; ?>
   <?php wp_reset_postdata();?>
