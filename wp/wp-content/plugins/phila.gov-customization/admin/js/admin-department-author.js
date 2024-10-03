@@ -17,6 +17,7 @@ jQuery(document).ready(function($){
       required_cat.attr('checked','checked');
     }
   }
+  
   //Force contributrors to add email for review
   if ( phila_WP_User.includes('secondary_department_page_contributror') || phila_WP_User.includes('secondary_service_page_contributor') || phila_WP_User.includes('secondary_programs__initiatives_contributor') ){
     $('#dem_notify_emails').prop('required', 'required')
@@ -131,6 +132,8 @@ $('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("
       //ensure users who only have access to posts get the option preselcted for them
     if (!phila_WP_User.includes('secondary_press_release_editor') &&
       !phila_WP_User.includes('secondary_press_release_contributor') &&
+      !phila_WP_User.includes('secondary_advanced_post_editor') &&
+      !phila_WP_User.includes('secondary_advanced_post_contributor') &&
       !phila_WP_User.includes( 'secondary_action_guide_editor' )){
       $("#phila_template_select").val('post');
     }
@@ -141,8 +144,23 @@ $('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("
           $(this).css('display', 'inline-block');
         }
       });
+    }   
+    if( phila_WP_User.includes('secondary_advanced_post_editor') || phila_WP_User.includes('secondary_advanced_post_contributor') ) {
+      $('#phila_template_select option').each( function () {
+        if( $(this).val() === 'advanced_post' ){
+          $(this).css('display', 'inline-block');
+        }
+      });
     }
 
+    if( phila_WP_User.includes('secondary_advanced_post_editor') || phila_WP_User.includes('secondary_advanced_post_contributor') ) {
+      $('#phila_template_select option').each( function () {
+        if( $(this).val() === 'advanced_post' ){
+          $(this).css('display', 'inline-block');
+        }
+      });
+    }
+    
     if( phila_WP_User.includes( 'secondary_action_guide_editor' ) ) {
       $('#phila_template_select option').each( function () {
         if( $(this).val() === 'action_guide' ){

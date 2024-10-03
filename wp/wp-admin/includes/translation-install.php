@@ -59,7 +59,8 @@ function translations_api( $type, $args = null ) {
 		$request = wp_remote_post( $url, $options );
 
 		if ( $ssl && is_wp_error( $request ) ) {
-			trigger_error(
+			wp_trigger_error(
+				__FUNCTION__,
 				sprintf(
 					/* translators: %s: Support forums URL. */
 					__( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="%s">support forums</a>.' ),
@@ -237,7 +238,7 @@ function wp_download_language_pack( $download ) {
 	$translation = (object) $translation;
 
 	require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-	$skin              = new Automatic_Upgrader_Skin;
+	$skin              = new Automatic_Upgrader_Skin();
 	$upgrader          = new Language_Pack_Upgrader( $skin );
 	$translation->type = 'core';
 	$result            = $upgrader->upgrade( $translation, array( 'clear_update_cache' => false ) );
@@ -263,7 +264,7 @@ function wp_can_install_language_pack() {
 	}
 
 	require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-	$skin     = new Automatic_Upgrader_Skin;
+	$skin     = new Automatic_Upgrader_Skin();
 	$upgrader = new Language_Pack_Upgrader( $skin );
 	$upgrader->init();
 
