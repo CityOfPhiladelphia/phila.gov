@@ -4,13 +4,18 @@
  *
 */
 ?>
-<?php 
+<?php
   $override = rwmb_meta('phila_get_post_cats');
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
   $post_categories = isset($category) ? $category : '';
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
-  $is_tag = isset($is_spotlight_tag) ? $is_spotlight_tag : rwmb_meta('phila_get_post_cats');
-  $tag = isset($is_tag['tag']) ? $is_tag['tag'] : $a['tag'];
+
+  if (!is_page_template('templates/the-latest.php') ) {
+    $is_tag = isset($is_spotlight_tag) ? $is_spotlight_tag : rwmb_meta('phila_get_post_cats');
+    $tag = isset($is_tag['tag']) ? $is_tag['tag'] : $a['tag'];
+
+  }
+
 ?>
 <?php if (!empty($post_categories)): ?>
   <?php foreach ($post_categories as $category ) {
@@ -18,13 +23,13 @@
     $slang_name = urlencode(html_entity_decode(trim( phila_get_owner_typography( $current_cat ))));
   } ?>
 <?php else: ?>
-  <?php 
+  <?php
   $current_cat = null;
   $slang_name = '';
   ?>
   <?php endif; ?>
-  
-<?php 
+
+<?php
 
 /* if categories aren't set, this is the latest. */
 if ( empty( $post_categories ) ) {
@@ -52,7 +57,7 @@ if ( empty( $post_categories ) ) {
     $sticky_posts = new WP_Query( $sticky_args );
     set_transient( get_the_ID().'_sticky_posts_results', $sticky_posts, 1 * HOUR_IN_SECONDS );
   }
-  
+
 
 }
 
@@ -111,10 +116,6 @@ if( !empty($tag) && $tag != 'is_single' ) {
           'value' => 'english',
           'compare' => '=',
         ),
-        array(
-          'key' => 'phila_select_language',
-          'compare' => 'NOT EXISTS'
-        ),
       ),
     )
   );
@@ -129,10 +130,10 @@ if( !empty($tag) && $tag != 'is_single' ) {
     set_transient( get_the_ID().'_empty_posts_results', $result, 1 * HOUR_IN_SECONDS );
   }
 
-  
+
   //if sticky posts is empty, don't add it to the results array
   $result->posts = array_merge(isset($sticky_posts->posts) ? $sticky_posts->posts : array(), $more_posts->posts);
-  
+
 }
 $result->post_count = count( $result->posts );
 
@@ -208,7 +209,7 @@ $result->post_count = count( $result->posts );
                     $see_all_URL = array(
                       'URL' => '/the-latest/archives/?tag=' . $term,
                     );
-                  else: 
+                  else:
                     $term = get_term($tag, 'post_tag');
                     $see_all_URL = array(
                       'URL' => '/the-latest/archives/?tag=' . $term->name,
