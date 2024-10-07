@@ -20,8 +20,11 @@ class Phila_Gov_Post {
       'context'  => 'after_title',
       'visible' => array(
         'when' => array(
+          array('phila_template_select', '=', 'advanced_post'),
           array('phila_template_select', '=', 'post'),
+          array('phila_template_select', '=', 'series'),
         ),
+        'relation' => 'or'
       ),
       'fields'  => array(
         array(
@@ -59,8 +62,8 @@ class Phila_Gov_Post {
   );
 
   $meta_boxes[] = array(
-      'title'    => 'Social media share pre-filled text',
-      'pages'    => array( 'post' ),
+      'title'    => 'Social media sharing text for X/Twitter',
+      'pages'    => array( 'post', 'blog_post' ),
       'context'  => 'after_title',
       'fields'  => array(
         array(
@@ -68,7 +71,7 @@ class Phila_Gov_Post {
           'required'  => true,
           'id'  => 'phila_social_intent',
           'limit' => 256,
-          'desc'  => 'Curate Tweet sharing text. Required. 256 character limit.  A link to this page will be automatically added. <br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
+          'desc'  => 'Required. Curate post sharing text. A link to this page will be automatically added. E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive.',
         )
       ),
     );
@@ -107,6 +110,8 @@ class Phila_Gov_Post {
       'visible' => array(
         'when' => array(
           array('phila_template_select', '!=', 'action_guide'),
+          array('phila_template_select', '!=', 'advanced_post'),
+          array('phila_template_select', '!=', 'series'),
         ),
       ),
       'fields' => array(
@@ -122,6 +127,7 @@ class Phila_Gov_Post {
       'visible' => array(
         'when' => array(
           array('phila_template_select', '!=', 'action_guide'),
+          array('phila_template_select', '!=', 'series'),
         ),
       ),
       'fields' => array(
@@ -189,32 +195,35 @@ class Phila_Gov_Post {
       'title'    => 'End of post call to action. Where should users go now?',
       'pages'    => array( 'post' ),
       'context'  => 'normal',
-      'priority' => 'high',
+      'priority' => 'low',
       'visible' => array(
         'when' => array(
-          array('phila_template_select', '=', 'post'),
+          array('phila_template_select', '=', 'advanced_post'),
+          array('phila_template_select', '=', 'post')
         ),
+        'relation' => 'or'
       ),
       'fields' => array(
+        array(
+          'type' => 'custom_html',
+          'desc'  => 'Blogs engage readers by asking them to take action after reading a post. Use this area to encourage your readers to do something next.',
+        ),
         array(
           'id' => 'post_read_cta',
           'type' => 'group',
           'clone' => true,
           'sort'  => true,
           'max_clone' => 2,
-          'desc'  => 'Blogs engage readers by asking them to take action after reading a post. Use this area to encourage your readers to do something next.',
           'fields' => array(
-            array(
-              'type'=> 'custom_html',
-            ),
               Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('', 'phila_post_links'),
               array(
-                'type'  => 'heading',
-                'name'  => 'Link description',
+                'type'  => 'custom_html',
+                'name'  => 'Link description<hr>',
               ),
           array(
             'id' => 'phila_link_desc',
             'type'  => 'textarea',
+            'desc' => 'Provide additional information about what you want the reader to do once they click the link.'
           ),
         )
       )
@@ -364,7 +373,38 @@ class Phila_Gov_Post {
       ),
     );
 
+    $meta_boxes[] = array(
+      'id' => 'phila_adv_posts',
+      'title'    => 'Content builder',
+      'pages'    => array('post' ),
+      'priority' => 'high',
+      'revision' => true,
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'advanced_post'),
+        ),
+      ),
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_metabox_row()
+      )
+    );
+
+    $meta_boxes[] = array(
+      'id' => 'phila_adv_series',
+      'title'    => 'Series description',
+      'priority' => 'high',
+      'pages'    => array('post' ),
+      'revision' => true,
+      'visible' => array(
+        'when' => array(
+          array('phila_template_select', '=', 'series'),
+        ),
+      ),
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_series_row()
+      )
+    );
+
     return $meta_boxes;
   }
-
 }

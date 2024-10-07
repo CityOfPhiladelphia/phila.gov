@@ -1,7 +1,7 @@
 .hero-half{
   @include breakpoint(large up) {
     .hero-half--title{
-      width:510px;
+      width:600px;
     }
   }
 
