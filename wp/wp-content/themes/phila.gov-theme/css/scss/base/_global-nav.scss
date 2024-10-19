@@ -503,12 +503,11 @@
 
   }
   .icymi{
-    a {
       color: white;
       font-family: 'Times New Roman', Times, serif;
       font-style: italic;
       font-size: 1.3rem;
-    }
+      display: inline-block;
   }
 
 
@@ -643,26 +642,6 @@
       }
     }
 
-  }
-
-  .top-bar-right .menu>li {
-    >a:link {
-      @media screen and (min-width: 800px) and (max-width:1024px) {
-        padding: 2rem .5rem;
-      }
-
-      .news-menu-link a {
-        min-width: 80px;
-      }
-
-      .global-nav .services-menu-link a {
-        padding: 2rem 2rem 2rem .75rem !important;
-      }
-
-      a.logo {
-        width: 120px;
-      }
-    }
   }
 
   @include breakpoint(medium) {
@@ -951,10 +930,6 @@
         font-size: 1.5rem;
       }
 
-      @include breakpoint(medium up) {
-        margin-top: .75rem;
-      }
-
       @include breakpoint(small only) {
         min-width: 60px;
         font-size: inherit;
@@ -998,13 +973,11 @@ header {
     }
   }
   .logo {
-    display: block;
-    margin: 0 auto !important;
+    display: inline-block;
     opacity: 1;
     transition: opacity .25s ease-in-out;
     -moz-transition: opacity .25s ease-in-out;
     -webkit-transition: opacity .25s ease-in-out;
-    width: 170px; //magic number for the size of the logo
 
     &:hover {
       opacity: .6;
