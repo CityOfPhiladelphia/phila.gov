@@ -171,22 +171,20 @@
       <div>
         <div class="primary-menu" data-sticky-container data-swiftype-index="false">
           <div class="grid-container phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
-            <div class="grid-x">
-              <div class="small-2 menu-icon-container cell" data-swiftype-index="false">
+            <div class="grid-x align-middle align-justify grid-padding-x">
+              <div class="small-1 menu-icon-container cell" data-swiftype-index="false">
                 <button aria-label="Global navigation menu" class="menu-icon" type="button">
                   <i class="fass fa-bars" aria-hidden="true"></i>
                 </button>
               </div>
-              <div class="small-4 medium-4 logo-container cell">
+              <div class="small-4 large-11 logo-container cell">
                 <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia home">
                   <img src="https://www.phila.gov/assets/images/city-of-philadelphia-logo-medium-white.png" alt="City of Philadelphia logo" />
 >>>>>>> 5df7d9d06 (Add update header for new design)
                 </a>
+                <a href="/mayor" class="icymi">Mayor Cherelle L. Parker</a>
               </div>
-              <div class="small-4 valign cell show-for-medium icymi">
-                <a href="/mayor">Mayor Cherelle L. Parker</a>
-              </div>
-              <div class="medium-12 pan show-for-medium desktop-nav cell">
+              <div class="large-10 pan show-for-medium desktop-nav cell">
                 <div class="top-bar-right">
                   <nav data-swiftype-index="false" class="global-nav" aria-label="Main navigation menu">
                     <ul class="menu">
@@ -206,7 +204,7 @@
                   </nav>
                 </div>
               </div>
-              <div class="small-4 medium-2 cell site-search-container">
+              <div class="small-4 large-1 cell site-search-container">
                 <button aria-label="Site search" id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
                   <i class="fass fa-magnifying-glass" aria-hidden="true"></i>
                 </button>
