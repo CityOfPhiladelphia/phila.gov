@@ -15,7 +15,7 @@
 
   ul {
     font-size: 14px;
-    
+
     li.gov-site.show-for-medium {
       font-size: .85rem;
 
@@ -95,10 +95,8 @@
 
       background: color(ghost-gray);
 
-
-
       li {
-        
+
         &:last-of-type::after {
           content: none;
         }
@@ -148,7 +146,7 @@
             }
           }
         }
-        
+
         &.gov-site {
 
           span {
@@ -198,7 +196,7 @@
           pointer-events: none;
         }
       }
-        
+
       .goog-te-combo {
         font-size: 1rem;
       }
@@ -230,7 +228,7 @@
 
       /* Styles for screens between 600px and 900px */
       @media screen and (min-width: 780px) and (max-width: 950px) {
-      
+
         #lang-dropdown {
           transform: translateX(-7%) !important;
         }
@@ -332,7 +330,7 @@
               color: white;
               background-color: color(dark-ben-franklin);
             }
-            
+
             .fa {
               margin-right: 8px;
             }
@@ -351,7 +349,7 @@
         }
 
         .goog-te-gadget {
-          
+
           position: relative;
           display: block;
           color: color(dark-ben-franklin);
@@ -381,7 +379,7 @@
             font-family: "Montserrat", "Tahoma", sans-serif;
             min-height: 42px;
 
-            @media screen and (max-width: 779px) { 
+            @media screen and (max-width: 779px) {
                 padding-left: 3.5rem;
             }
 
@@ -504,20 +502,27 @@
     }
 
   }
+  .icymi{
+    a {
+      color: white;
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      font-size: 1.3rem;
+    }
+  }
 
 
   .menu-icon {
     position: relative;
-    min-width: 56px;
-    width: auto;
-    height: auto;
+    width: 70px;
+    height: 70px;
     padding: 1.3rem;
     margin-left: 0;
-    background: white;
-    color: color(dark-ben-franklin);
+    background: color(flyers-orange);
+    color: white;
 
     .fass {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
 
     .fa {
@@ -671,7 +676,7 @@
 
     .primary-menu {
       ul {
-        background-color: white;
+        background-color: color(dark-ben-franklin);
       }
 
       .menu {
@@ -689,6 +694,7 @@
             font-size: 14px;
             text-transform: none !important;
             padding: 2rem 1.7rem;
+            color: white;
           }
 
           a:active,
@@ -918,7 +924,7 @@
   }
 
   #services-list {
-    
+
     // sass-lint:disable-line no-ids
     .inner-wrapper {
       width: 100%;
@@ -962,7 +968,7 @@
         }
       }
 
-      color:color(dark-ben-franklin);
+      color:white;
       text-transform: uppercase;
 
     }
@@ -993,7 +999,7 @@ header {
   }
   .logo {
     display: block;
-    margin: 0.5rem auto !important;
+    margin: 0 auto !important;
     opacity: 1;
     transition: opacity .25s ease-in-out;
     -moz-transition: opacity .25s ease-in-out;
@@ -1026,7 +1032,7 @@ header {
         width: 100px;
         display: inline-block;
         vertical-align: middle;
-        
+
         .circle-icon {
           line-height: 1.5rem;
           align-items: center;

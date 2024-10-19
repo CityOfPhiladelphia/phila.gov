@@ -1,12 +1,13 @@
+
 .global-nav {
+  background: color(dark-ben-franklin);
   .phila-sticky {
-    background: white;
+    background: color(dark-ben-franklin);
     width: 100% !important;
     max-width: 100% !important;
     left: 0 !important;
 
     .sticky-header-width{
-      max-width: 90rem;
       margin-left: auto;
       margin-right: auto;
     }
