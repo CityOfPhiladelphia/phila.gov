@@ -502,12 +502,16 @@
     }
 
   }
-  .icymi{
+  a.icymi{
       color: white;
       font-family: 'Times New Roman', Times, serif;
       font-style: italic;
-      font-size: 1.3rem;
+      font-size: 1rem;
       display: inline-block;
+      text-decoration: none;
+      &:hover{
+        color: color(light-blue);
+      }
   }
 
 
@@ -516,9 +520,10 @@
     width: 70px;
     height: 70px;
     padding: 1.3rem;
+    margin-right: 1rem;
     margin-left: 0;
     background: color(flyers-orange);
-    color: white;
+    color: color(dark-gray);
 
     .fass {
       font-size: 2rem;
@@ -624,10 +629,6 @@
     }
   }
 
-  .top-bar-right {
-    width: 100%;
-  }
-
   @include breakpoint(small only) {
     .mega-menu-dropdown.dropdown-pane {
       display: none;
@@ -659,12 +660,9 @@
       }
 
       .menu {
-        display: flex;
-        list-style-type: none;
-        position: relative;
+        display: inline-block;
 
         li {
-          flex: 1;
 
           >a {
             text-align: center;
@@ -776,7 +774,7 @@
           width: 0;
           height: 0;
           border: inset 5px;
-          border-color: color(dark-ben-franklin) transparent transparent;
+          border-color: white transparent transparent;
           border-top-style: solid;
           border-bottom-width: 0;
           left: 74%;
@@ -912,23 +910,10 @@
       overflow: scroll;
     }
   }
-
-  .site-search-container {
-    @include breakpoint(small only) {
-      padding: 0px;
-    }
-
     button.site-search {
-      font-size: .5rem;
-      position: relative;
-      padding: 1rem 0;
-      cursor: pointer;
-      font-weight: normal;
-      background: none;
-
-      .fass {
-        font-size: 1.5rem;
-      }
+      color:white;
+      font-size: 1rem;
+      margin-right: 1rem;
 
       @include breakpoint(small only) {
         min-width: 60px;
@@ -943,7 +928,6 @@
         }
       }
 
-      color:white;
       text-transform: uppercase;
 
     }
@@ -955,19 +939,9 @@
     }
   }
 
-}
-
-@media screen and (min-width:950px) {
-  .news-menu-link {
-    min-width: 115px;
-    a {
-      padding: 2rem 1rem !important;
-    }
-  }
-}
 
 header {
-  .logo-container {
+  .branding-container {
     @include breakpoint(small only) {
       padding: 0px;
     }
@@ -978,6 +952,8 @@ header {
     transition: opacity .25s ease-in-out;
     -moz-transition: opacity .25s ease-in-out;
     -webkit-transition: opacity .25s ease-in-out;
+    padding: 0 1rem 0 0;
+    margin-right: 1rem;
 
     &:hover {
       opacity: .6;
