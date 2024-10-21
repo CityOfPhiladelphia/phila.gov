@@ -156,7 +156,7 @@
       <div>
         <div class="primary-menu" data-sticky-container data-swiftype-index="false">
           <div class="grid-container phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
-            <div class="grid-x align-middle align-justify grid-padding-x">
+            <div class="grid-x align-middle align-justify">
               <div class="small-20 medium-12 branding-container cell">
                 <button aria-label="Global navigation menu" class="menu-icon" type="button">
                     <i class="fass fa-bars" aria-hidden="true"></i>
@@ -164,7 +164,7 @@
                 <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia home">
                   <img src="https://www.phila.gov/assets/images/city-of-philadelphia-logo-medium-white.png" alt="City of Philadelphia logo" />
                 </a>
-                <a href="/mayor" class="icymi show-for-medium">Mayor Cherelle L. Parker</a>
+                <a href="/departments/mayor/" class="icymi show-for-medium">Mayor Cherelle L. Parker</a>
               </div>
               <div class="small-2 medium-12 desktop-nav cell">
                 <div class="top-bar-right">
