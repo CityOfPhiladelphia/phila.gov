@@ -92,21 +92,18 @@
     }
 
     ul {
-
       background: color(ghost-gray);
+      padding: 0 0 0 1rem;
 
       li {
-
         &:last-of-type::after {
           content: none;
         }
-
         &::after {
           display: inline;
           background: color(ghost-gray);
           content: none;
         }
-
         a {
 
           padding: 1rem 8px 1rem 8px !important;
@@ -479,7 +476,6 @@
     }
   }
 
-
   .sticky {
     // sass-lint:disable-block no-important
     background: white;
@@ -510,7 +506,7 @@
       display: inline-block;
       text-decoration: none;
       &:hover{
-        color: color(light-blue);
+        color: color(electric-blue);
       }
   }
 
@@ -524,6 +520,11 @@
     margin-left: 0;
     background: color(flyers-orange);
     color: color(dark-gray);
+
+    &:hover {
+      color: white;
+      background: color(dark-gray);
+    }
 
     .fass {
       font-size: 2rem;
@@ -643,6 +644,27 @@
       }
     }
 
+  }
+
+
+  @media screen and (min-width: 750px) and (max-width: 1120px) {
+    .primary-menu .menu li > a {
+        font-size: 10.5px !important; //force main menu to shrink at smaller screen size. Prevents wrapping for mayor link
+        text-transform: none !important;
+        padding: 2rem 1.3rem 2rem 1rem !important;
+    }
+    .logo {
+      margin:0;
+      img{
+        width: 150px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 816px) {
+    a.icymi {
+      width:110px;
+    }
   }
 
   @include breakpoint(medium) {
@@ -952,7 +974,6 @@ header {
     transition: opacity .25s ease-in-out;
     -moz-transition: opacity .25s ease-in-out;
     -webkit-transition: opacity .25s ease-in-out;
-    padding: 0 1rem 0 0;
     margin-right: 1rem;
 
     &:hover {
@@ -1061,11 +1082,7 @@ header {
       border-bottom: 1rem solid color(ghost-gray);
       top: -1rem;
       position: absolute;
-      right: .6rem;
-
-      @include breakpoint(medium) {
-        right: 1rem;
-      }
+      right: -4px;
     }
   }
 }
