@@ -4,7 +4,7 @@
   Partial for our feedback area.
 */
 ?>
-<div class="row">
+<div class="row mtl">
   <div class="small-24 columns">
     <?php if( is_404() ) : ?>
       <img src="<?php echo get_stylesheet_directory_uri() . '/img/city-skyline.svg' ?>" />
