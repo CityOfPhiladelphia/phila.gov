@@ -65,6 +65,10 @@ class Phila_Gov_Custom_Post_Types{
         wp_redirect(admin_url('edit.php', 'http'), 301);
         exit;
     }
+    if($pagenow == 'edit.php' && isset($_GET['post_type']) && $_GET['post_type'] == 'advanced_post'){
+      wp_redirect(admin_url('edit.php', 'http'), 301);
+      exit;
+  }
   }
 
   function create_phila_service_updates() {
@@ -125,6 +129,7 @@ class Phila_Gov_Custom_Post_Types{
         ),
         'exclude_from_search' => true,
         'show_in_rest'  => true,
+        'rest_base' => 'announcements',
         'public' => false,
         'show_ui' => true,
         'has_archive' => false,
@@ -290,6 +295,7 @@ class Phila_Gov_Custom_Post_Types{
         ),
       )
     );
+    
   }
   function create_phila_press_release() {
     register_post_type( 'press_release',
@@ -328,6 +334,7 @@ class Phila_Gov_Custom_Post_Types{
       )
     );
   }
+
   function create_phila_staff_directory() {
     register_post_type( 'staff_directory',
       array(

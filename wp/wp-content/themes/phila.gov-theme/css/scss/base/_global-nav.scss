@@ -14,8 +14,8 @@
   z-index: 998;
 
   ul {
-    font-size: 14px;
-
+    font-size: 1rem;
+    
     li.gov-site.show-for-medium {
       font-size: .85rem;
 
@@ -690,7 +690,7 @@
             text-align: center;
             height: inherit;
             font-weight: 650;
-            font-size: 14px;
+            font-size: 1rem;
             text-transform: none !important;
             padding: 2rem 1.7rem;
             color: white;
@@ -862,7 +862,7 @@
           line-height: 1.2;
           vertical-align: middle;
           max-width: calc(100% - 45px);
-          font-size: 14px;
+          font-size: 1rem;
         }
 
         span {
