@@ -7,6 +7,9 @@
     width: 100%;
   }
 }
+.menu-wrapper {
+  width:100%;
+}
 
 .global-nav {
   @include secondary-font(400);
@@ -16,7 +19,7 @@
   ul {
 
     font-size: 1rem;
-    
+
     li.gov-site.show-for-medium {
       font-size: .85rem;
 
@@ -514,8 +517,8 @@
 
   .menu-icon {
     position: relative;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     padding: 1.3rem;
     margin-right: 1rem;
     margin-left: 0;
@@ -652,7 +655,7 @@
     .primary-menu .menu li > a {
         font-size: 10.5px !important; //force main menu to shrink at smaller screen size. Prevents wrapping for mayor link
         text-transform: none !important;
-        padding: 2rem 1.3rem 2rem 1rem !important;
+        padding: 2rem .5rem !important;
     }
     .logo {
       margin:0;
@@ -662,9 +665,9 @@
     }
   }
 
-  @media screen and (min-width: 750px) and (max-width: 816px) {
+  @media screen and (min-width: 750px) and (max-width: 880px) {
     a.icymi {
-      width:110px;
+      width:100px;
     }
   }
 
@@ -936,7 +939,7 @@
     button.site-search {
       color:white;
       font-size: 1rem;
-      margin-right: 1rem;
+      padding: 1rem;
 
       @include breakpoint(small only) {
         min-width: 60px;
