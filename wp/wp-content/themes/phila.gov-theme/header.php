@@ -153,10 +153,10 @@
     </div>
     <!-- sticky/desktop nav -->
     <div id="global-sticky-nav" class="row expanded">
-      <div>
+      <div class="small-24 columns phn">
         <div class="primary-menu" data-sticky-container data-swiftype-index="false">
           <div class="grid-container phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
-            <div class="grid-x align-middle align-justify">
+            <div class="menu-wrapper grid-x align-middle align-justify">
               <div class="small-20 medium-12 branding-container cell">
                 <button aria-label="Global navigation menu" class="menu-icon" type="button">
                     <i class="fass fa-bars" aria-hidden="true"></i>
@@ -194,7 +194,7 @@
           </div><!-- close columns -->
         </div>
       </div>
-    </div>
+                </div>
     <?php include(locate_template('partials/global/translations-modal.php')); ?>
     <div id="phila-mobile-menu"></div>
     <div id="phila-site-wide-alerts"></div>
