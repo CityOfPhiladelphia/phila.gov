@@ -10,7 +10,7 @@ footer {
       text-transform: none;
     }
     h2 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
     section {
       border-bottom: 1px solid #a2a2a2;
@@ -36,7 +36,8 @@ footer {
         margin: 0;
         list-style: none;
         padding: 0;
-        line-height: 1.6rem;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
       }
     }
     .city-social {
@@ -45,10 +46,14 @@ footer {
       }
       .fa-stack {
         vertical-align: inherit;
+        height: 1.5em;
+      }
+      .fa-stack-1x{
+        line-height: 1em;
       }
     }
   }
   .trending-requests a:link{
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
