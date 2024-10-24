@@ -152,21 +152,7 @@
       </div>
     </div>
     <!-- sticky/desktop nav -->
-<<<<<<< HEAD
-    <div id="global-sticky-nav" class="row">
-      <div class="small-24 columns">
-        <div class="row primary-menu" data-sticky-container data-swiftype-index="false">
-          <div class="columns phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
-            <div class="row sticky-header-width">
-              <div class="small-4 columns menu-icon-container" data-responsive-toggle="mobile-nav" data-swiftype-index="false" data-hide-for="medium">
-                <button aria-label="Mobile navigation menu" class="menu-icon" type="button" data-toggle>
-                  <i class="fass fa-bars" aria-hidden="true"></i>
-                </button>
-              </div>
-              <div class="small-16 medium-4 columns valign medium-push-0 logo-container">
-                <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia">
-                  <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//www.phila.gov/assets/images/city-of-philadelphia.png" alt="City of Philadelphia" />
-=======
+
     <div id="global-sticky-nav" class="row expanded">
       <div>
         <div class="primary-menu" data-sticky-container data-swiftype-index="false">
@@ -178,7 +164,6 @@
                   </button>
                 <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia home">
                   <img src="https://www.phila.gov/assets/images/city-of-philadelphia-logo-medium-white.png" alt="City of Philadelphia logo" />
->>>>>>> 5df7d9d06 (Add update header for new design)
                 </a>
                 <a href="/departments/mayor/" class="icymi show-for-medium">Mayor Cherelle L. Parker</a>
               </div>
