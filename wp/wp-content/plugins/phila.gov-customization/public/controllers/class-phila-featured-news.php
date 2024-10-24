@@ -117,7 +117,7 @@ class Phila_Featured_Controller {
     if (isset( $schema['properties']['featured_image'] )) {
       $featured_image_id = get_post_thumbnail_id($post);
       if (wp_get_attachment_image_src($featured_image_id)) {
-        $medium_featured_image_url = wp_get_attachment_image_src($featured_image_id);
+        $medium_featured_image_url = wp_get_attachment_image_src($featured_image_id, 'medium');
         $post_data['featured_image']  = (string) $medium_featured_image_url[0];
       }
     }
