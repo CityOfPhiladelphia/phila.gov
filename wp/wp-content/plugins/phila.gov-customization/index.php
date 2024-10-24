@@ -90,6 +90,7 @@ require $dir. '/public/controllers/class-phila-closures.php';
 require $dir. '/public/controllers/class-phila-calendars.php';
 require $dir. '/public/controllers/class-phila-departments.php';
 require $dir. '/public/controllers/class-phila-documents.php';
+require $dir. '/public/controllers/class-phila-featured-news.php';
 require $dir. '/public/controllers/class-phila-document-finder.php';
 require $dir. '/public/controllers/class-phila-jobs.php';
 require $dir. '/public/controllers/class-phila-last-updated.php';
@@ -107,3 +108,6 @@ require $dir. '/public/removals.php';
 require $dir. '/public/rewrite-rules.php';
 
 require $dir. '/public/controllers/v2/class-phila-site-wide-alerts-v2.php';
+require $dir. '/public/controllers/v2/class-phila-announcements-v2.php';
+require $dir. '/public/controllers/v2/class-phila-posts-v2.php';
+require $dir. '/public/controllers/v2/class-phila-spotlights-v2.php';

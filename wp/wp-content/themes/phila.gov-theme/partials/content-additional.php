@@ -100,7 +100,9 @@
       <div class="panel info equal">
         <aside>
           <h3><i class="fas fa-comments" aria-hidden="true"></i> Questions?</h3>
-          <?php echo apply_filters( 'the_content', $content['aside']['questions'] );?>
+            <span>
+              <?php echo apply_filters( 'the_content', $content['aside']['questions'] );?>
+            </span>
         </aside>
       </div>
     </div>
