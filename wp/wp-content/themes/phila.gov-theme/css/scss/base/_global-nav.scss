@@ -7,6 +7,9 @@
     width: 100%;
   }
 }
+.menu-wrapper {
+  width:100%;
+}
 
 .global-nav {
   @include secondary-font(400);
@@ -14,8 +17,9 @@
   z-index: 998;
 
   ul {
-    font-size: 14px;
-    
+
+    font-size: 1rem;
+
     li.gov-site.show-for-medium {
       font-size: .85rem;
 
@@ -92,23 +96,18 @@
     }
 
     ul {
-
       background: color(ghost-gray);
-
-
+      padding: 0 0 0 1rem;
 
       li {
-        
         &:last-of-type::after {
           content: none;
         }
-
         &::after {
           display: inline;
           background: color(ghost-gray);
           content: none;
         }
-
         a {
 
           padding: 1rem 8px 1rem 8px !important;
@@ -148,7 +147,7 @@
             }
           }
         }
-        
+
         &.gov-site {
 
           span {
@@ -198,7 +197,7 @@
           pointer-events: none;
         }
       }
-        
+
       .goog-te-combo {
         font-size: 1rem;
       }
@@ -230,7 +229,7 @@
 
       /* Styles for screens between 600px and 900px */
       @media screen and (min-width: 780px) and (max-width: 950px) {
-      
+
         #lang-dropdown {
           transform: translateX(-7%) !important;
         }
@@ -332,7 +331,7 @@
               color: white;
               background-color: color(dark-ben-franklin);
             }
-            
+
             .fa {
               margin-right: 8px;
             }
@@ -351,7 +350,7 @@
         }
 
         .goog-te-gadget {
-          
+
           position: relative;
           display: block;
           color: color(dark-ben-franklin);
@@ -381,7 +380,7 @@
             font-family: "Montserrat", "Tahoma", sans-serif;
             min-height: 42px;
 
-            @media screen and (max-width: 779px) { 
+            @media screen and (max-width: 779px) {
                 padding-left: 3.5rem;
             }
 
@@ -481,7 +480,6 @@
     }
   }
 
-
   .sticky {
     // sass-lint:disable-block no-important
     background: white;
@@ -504,20 +502,36 @@
     }
 
   }
+  a.icymi{
+      color: white;
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      font-size: 1rem;
+      display: inline-block;
+      text-decoration: none;
+      &:hover{
+        color: color(electric-blue);
+      }
+  }
 
 
   .menu-icon {
     position: relative;
-    min-width: 56px;
-    width: auto;
-    height: auto;
+    width: 80px;
+    height: 80px;
     padding: 1.3rem;
+    margin-right: 1rem;
     margin-left: 0;
-    background: white;
-    color: color(dark-ben-franklin);
+    background: color(flyers-orange);
+    color: color(dark-gray);
+
+    &:hover {
+      color: white;
+      background: color(dark-gray);
+    }
 
     .fass {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
 
     .fa {
@@ -620,10 +634,6 @@
     }
   }
 
-  .top-bar-right {
-    width: 100%;
-  }
-
   @include breakpoint(small only) {
     .mega-menu-dropdown.dropdown-pane {
       display: none;
@@ -640,23 +650,24 @@
 
   }
 
-  .top-bar-right .menu>li {
-    >a:link {
-      @media screen and (min-width: 800px) and (max-width:1024px) {
-        padding: 2rem .5rem;
-      }
 
-      .news-menu-link a {
-        min-width: 80px;
+  @media screen and (min-width: 750px) and (max-width: 1120px) {
+    .primary-menu .menu li > a {
+        font-size: 10.5px !important; //force main menu to shrink at smaller screen size. Prevents wrapping for mayor link
+        text-transform: none !important;
+        padding: 2rem .5rem !important;
+    }
+    .logo {
+      margin:0;
+      img{
+        width: 150px;
       }
+    }
+  }
 
-      .global-nav .services-menu-link a {
-        padding: 2rem 2rem 2rem .75rem !important;
-      }
-
-      a.logo {
-        width: 120px;
-      }
+  @media screen and (min-width: 750px) and (max-width: 880px) {
+    a.icymi {
+      width:100px;
     }
   }
 
@@ -671,24 +682,22 @@
 
     .primary-menu {
       ul {
-        background-color: white;
+        background-color: color(dark-ben-franklin);
       }
 
       .menu {
-        display: flex;
-        list-style-type: none;
-        position: relative;
+        display: inline-block;
 
         li {
-          flex: 1;
 
           >a {
             text-align: center;
             height: inherit;
             font-weight: 650;
-            font-size: 14px;
+            font-size: 1rem;
             text-transform: none !important;
             padding: 2rem 1.7rem;
+            color: white;
           }
 
           a:active,
@@ -791,7 +800,7 @@
           width: 0;
           height: 0;
           border: inset 5px;
-          border-color: color(dark-ben-franklin) transparent transparent;
+          border-color: white transparent transparent;
           border-top-style: solid;
           border-bottom-width: 0;
           left: 74%;
@@ -857,7 +866,7 @@
           line-height: 1.2;
           vertical-align: middle;
           max-width: calc(100% - 45px);
-          font-size: 14px;
+          font-size: 1rem;
         }
 
         span {
@@ -918,7 +927,7 @@
   }
 
   #services-list {
-    
+
     // sass-lint:disable-line no-ids
     .inner-wrapper {
       width: 100%;
@@ -927,27 +936,10 @@
       overflow: scroll;
     }
   }
-
-  .site-search-container {
-    @include breakpoint(small only) {
-      padding: 0px;
-    }
-
     button.site-search {
-      font-size: .5rem;
-      position: relative;
-      padding: 1rem 0;
-      cursor: pointer;
-      font-weight: normal;
-      background: none;
-
-      .fass {
-        font-size: 1.5rem;
-      }
-
-      @include breakpoint(medium up) {
-        margin-top: .75rem;
-      }
+      color:white;
+      font-size: 1rem;
+      padding: 1rem;
 
       @include breakpoint(small only) {
         min-width: 60px;
@@ -962,7 +954,6 @@
         }
       }
 
-      color:color(dark-ben-franklin);
       text-transform: uppercase;
 
     }
@@ -974,31 +965,20 @@
     }
   }
 
-}
-
-@media screen and (min-width:950px) {
-  .news-menu-link {
-    min-width: 115px;
-    a {
-      padding: 2rem 1rem !important;
-    }
-  }
-}
 
 header {
-  .logo-container {
+  .branding-container {
     @include breakpoint(small only) {
       padding: 0px;
     }
   }
   .logo {
-    display: block;
-    margin: 0.5rem auto !important;
+    display: inline-block;
     opacity: 1;
     transition: opacity .25s ease-in-out;
     -moz-transition: opacity .25s ease-in-out;
     -webkit-transition: opacity .25s ease-in-out;
-    width: 170px; //magic number for the size of the logo
+    margin-right: 1rem;
 
     &:hover {
       opacity: .6;
@@ -1026,7 +1006,7 @@ header {
         width: 100px;
         display: inline-block;
         vertical-align: middle;
-        
+
         .circle-icon {
           line-height: 1.5rem;
           align-items: center;
@@ -1106,11 +1086,7 @@ header {
       border-bottom: 1rem solid color(ghost-gray);
       top: -1rem;
       position: absolute;
-      right: .6rem;
-
-      @include breakpoint(medium) {
-        right: 1rem;
-      }
+      right: -4px;
     }
   }
 }
@@ -1148,4 +1124,3 @@ header {
   border: 1px solid black;
   z-index: 10001;
 }
-
