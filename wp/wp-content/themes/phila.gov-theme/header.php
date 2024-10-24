@@ -152,7 +152,6 @@
       </div>
     </div>
     <!-- sticky/desktop nav -->
-
     <div id="global-sticky-nav" class="row expanded">
       <div>
         <div class="primary-menu" data-sticky-container data-swiftype-index="false">
