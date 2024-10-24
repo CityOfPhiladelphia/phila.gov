@@ -10,22 +10,8 @@ module.exports = $(function () {
     e.preventDefault();
   });
 
-  if ($('#mobile-nav-drilldown').length){
-
-    var drilldownOptions = {
-      autoHeight: false,
-      scrollTop: true,
-      parentLink: true,
-      scrollTopElement: 'body'
-    };
-
-    var mobileMenu = new Foundation.Drilldown( $('#mobile-nav-drilldown'), drilldownOptions );
-  }else{
-    console.warn('Standards JS: Add the #mobile-nav-drilldown markup.');
-  }
-
   /* Drilldown menu */
-  $(document).on('toggled.zf.responsiveToggle', '[data-responsive-toggle]', function(){
+  $('.menu-icon').click(function(e) {
     extendMenuToggle();
   });
 
@@ -53,6 +39,7 @@ module.exports = $(function () {
     $('.global-nav .menu-icon').toggleClass('active');
     $('#vue-mobile-menu').toggleClass('hide');
     $('html').toggleClass('is-reveal-open');
+    console.log('toggle');
   }
 
   function checkBrowserHeight(){
@@ -213,14 +200,14 @@ module.exports = $(function () {
 document.addEventListener("DOMContentLoaded", function() {
   var titles = document.querySelectorAll(".cost .title");
   var maxHeight = 0;
-  
+
   titles.forEach(function(title) {
     var titleHeight = title.offsetHeight;
     if (titleHeight > maxHeight) {
       maxHeight = titleHeight;
     }
   });
-  
+
   titles.forEach(function(title) {
     title.style.height = maxHeight + "px";
   });
