@@ -14,6 +14,11 @@ footer.site-footer.site-footer .fat h1, footer.site-footer.site-footer .fat h2, 
   }
 }
 
+footer.site-footer {
+  margin-top:0;
+  font-size:120%;
+}
+
 .label, label {
   font-weight: normal !important;
 }
@@ -32,14 +37,9 @@ footer.site-footer .contact {
   border: none;
 }
 
-@include breakpoint(small only) {
-  #full-footer-start{
-    margin-top: 1rem;
-  }
-}
-
 html{
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 .row{
@@ -52,4 +52,8 @@ html{
 
 hr{
   max-width: 90rem;
+}
+
+html{
+  scroll-behavior: smooth;
 }

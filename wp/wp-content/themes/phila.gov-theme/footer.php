@@ -22,75 +22,11 @@
     <?php get_template_part( 'partials/content', 'feedback' ); ?>
   <?php endif; ?>
   <?php echo phila_get_dept_contact_blocks(); ?>
-  <div id="full-footer-start" class="philly311">
-    <section>
-      <div class="row">
-        <div class="columns intro">
-          <h2 class="mbxs">Philly311</h2>
-          <span><a href="https://www.phila.gov/departments/philly311/" aria-label="Philly 311">311</a> provides direct access to City government information, services, and real-time service updates. Multiple languages are available.</span>
-        </div>
-      </div>
-      <div class="row pvn pvl-mu equal-height">
-        <div class="small-24 medium-8 columns prxl pvm ptn-mu pbl-mu pbl-mu sidewalk bdr-right-mu interact-311 clearfix equal">
-          <section>
-            <h3 class="h4 dark-gray">Interact with 311 online</h3>
-            <a href="https://iframe.publicstuff.com/#?client_id=242" class="button icon full-width clearfix">
-              <div class="valign">
-                <div class="button-label valign-cell">Report a problem</div>
-              </div>
-            </a>
-            <a href="https://www.phila.gov/departments/philly311/	" class="button icon full-width clearfix">
-              <div class="valign">
-                <div class="button-label valign-cell">Ask a question</div>
-              </div>
-            </a>
-            <a href="https://www.phila.gov/services/property-lots-housing/track-a-service-request-with-311/#/" class="button icon full-width clearfix">
-              <div class="valign">
-                <div class="button-label valign-cell">Track a request</div>
-              </div>
-            </a>
-          </section>
-        </div>
-        <div class="medium-16 columns trending-requests phl pvm pvn-mu equal">
-          <section>
-            <h3 class="h4 dark-gray">Trending requests</h3>
-            <!-- TODO: Begin pulling these in from 311 -->
-              <ul class="columns-2-mu">
-                <li>
-                  <a href="https://www.phila.gov/services/property-lots-housing/property-taxes/get-real-estate-tax-relief/get-the-homestead-exemption/" class="trending-requests">Apply for a Homestead Exemption</a>
-                </li>
-                <li>
-                  <a href="https://www.phila.gov/departments/philadelphia-department-of-prisons/about/facilities/" class="trending-requests">Correctional facilities</a>
-                </li>
-                <li>
-                  <a href="https://onlineserviceshub.com/ParkingPortal/Philadelphia" class="trending-requests">Pay a parking violation</a>
-                </li>
-                <li>
-                  <a href="https://secure8.i-doxs.net/CityOfPhiladelphiaWRB/SignIn.aspx" class="trending-requests">Pay a water bill</a>
-                </li>
-                <li>
-                  <a href="https://www.phila.gov/services/payments-assistance-taxes/make-a-payment/pay-your-real-estate-tax/" class="trending-requests">Pay a Real Estate Tax bill</a>
-                </li>
-                <li>
-                  <a href="https://property.phila.gov/" class="trending-requests">Search for property information</a>
-                </li>
-                <li>
-                  <a href="https://www.phila.gov/services/trash-recycling-city-upkeep/find-your-trash-and-recycling-collection-day/#/" class="trending-requests">Trash and recycling schedule</a>
-                </li>
-                <li>
-                  <a href="https://www.phila.gov/services/water-gas-utilities/become-a-water-customer/" class="trending-requests">Turn water service on or off</a>
-                </li>
-              </ul>
-            </section>
-        </div>
-      </div>
-    </section>
-  </div>
-  <div class="phila-footer">
+  <div id="full-footer-start" class="phila-footer">
     <div class="row pvs ptl-mu phm equal-height">
       <section class="medium-8 columns phm pvm pvn-mu equal">
         <h2 class="mtn mbm">Elected officials</h2>
-        <nav class="take-action">
+        <nav>
           <ul>
             <li class="pvxs"><a href="https://www.phila.gov/departments/mayor/">Mayor</a></li>
             <li class="pvxs"><a href="http://phlcouncil.com/" class="external">City Council</a></li>
@@ -105,7 +41,7 @@
       </section>
       <section class="medium-8 columns phm pll-mu pvm pvn-mu equal">
         <h2 class="mtn mbm">Open government</h2>
-        <nav class="take-action">
+        <nav>
           <ul>
             <li class="pvxs"><a href="https://codelibrary.amlegal.com/codes/philadelphia/latest/overview" class="external">Philadelphia Code &amp; Charter</a></li>
             <li class="pvxs"><a href="https://www.phila.gov/departments/department-of-records/">City records</a></li>
@@ -119,24 +55,31 @@
         </nav>
       </section>
       <section class="medium-8 columns phm pll-mu pvm pvn-mu equal">
-        <h2 class="mtn mbm">Connect with City government</h2>
-        <nav class="city-social">
+        <h2 class="mtn mbm">Explore Philadelphia</h2>
+        <nav>
+          <ul>
+            <li class="pvxs">
+              <a href="https://www.septa.org/" class="external">SEPTA</a><br></li>
+              <li><a href="https://www.visitphilly.com/" class="external">Visit Philadelphia</a></li>
+          </ul>
+        </nav>
+        <nav class="city-social mtl">
           <ul class="inline-list">
             <li class="pbm">
               <a href="https://www.facebook.com/cityofphiladelphia" class="prl" data-analytics="social">
-                <i class="fab fa-facebook fa-3x" title="Facebook" aria-hidden="true"></i>
+                <i class="fab fa-facebook-f fa-2x" title="Facebook" aria-hidden="true"></i>
                 <span class="show-for-sr">Facebook</span>
               </a>
             </li>
             <li class="pbm">
               <a href="https://twitter.com/PhiladelphiaGov" class="prl"  data-analytics="social">
-                <i class="fa-brands fa-x-twitter fa-3x" title="Twitter" aria-hidden="true"></i>
+                <i class="fa-brands fa-x-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
               </a>
             </li>
             <li class="pbm">
               <a href="https://www.instagram.com/cityofphiladelphia/" class="prl" data-analytics="social">
-                <i class="fab fa-instagram fa-3x" title="Instagram" aria-hidden="true"></i>
+                <i class="fab fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
                 <span class="show-for-sr">Instagram</span>
               </a>
             </li>
@@ -152,36 +95,28 @@
             </li>
             <li class="pbm">
               <a href="https://www.youtube.com/user/PhilaGov" class="prl" data-analytics="social">
-                <i class="fab fa-youtube fa-3x" title="Youtube" aria-hidden="true"></i>
+                <i class="fab fa-youtube fa-2x" title="Youtube" aria-hidden="true"></i>
                 <span class="show-for-sr">Youtube</span>
               </a>
             </li>
             <li class="pbm">
               <a href="https://www.flickr.com/photos/phillycityrep" class="prl" data-analytics="social">
-                <i class="fab fa-flickr fa-3x" title="Flickr" aria-hidden="true"></i>
+                <i class="fab fa-flickr fa-2x" title="Flickr" aria-hidden="true"></i>
                 <span class="show-for-sr">Flickr</span>
               </a>
             </li>
             <li class="pbm">
               <a href="https://github.com/CityOfPhiladelphia" class="prl"  data-analytics="social">
-                <i class="fab fa-github fa-3x" title="GitHub" aria-hidden="true"></i>
+                <i class="fab fa-github fa-2x" title="GitHub" aria-hidden="true"></i>
                 <span class="show-for-sr">GitHub</span>
               </a>
             </li>
             <li class="pbm">
               <a href="https://www.linkedin.com/showcase/phlcitycareers" class="prl"  data-analytics="social">
-                <i class="fab fa-linkedin-in fa-3x" title="LinkedIn" aria-hidden="true"></i>
+                <i class="fab fa-linkedin-in fa-2x" title="LinkedIn" aria-hidden="true"></i>
                 <span class="show-for-sr">LinkedIn</span>
               </a>
             </li>
-          </ul>
-        </nav>
-        <nav>
-          <ul>
-            <li class="pvxs"><a href="https://www.phila.gov/departments/">Departments and other agencies</a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/services/">Service directory</a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/programs/">Programs & initiatives </a></li>
-            <li class="pvxs"><a href="https://www.phila.gov/documents/">Publications & forms </a></li>
           </ul>
         </nav>
       </section>

@@ -66,7 +66,7 @@
 
     <!-- Utility Navigation -->
     <div class="utility-nav">
-      <div class="grid-container bg-ghost-gray">
+      <div class="bg-ghost-gray">
         <div class="top-bar bg-ghost-gray" id="responsive-menu">
           <div class="top-bar-left valign-mu">
             <ul class="menu">
@@ -152,27 +152,26 @@
       </div>
     </div>
     <!-- sticky/desktop nav -->
-    <div id="global-sticky-nav" class="row">
-      <div class="small-24 columns">
-        <div class="row primary-menu" data-sticky-container data-swiftype-index="false">
-          <div class="columns phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
-            <div class="row sticky-header-width">
-              <div class="small-4 columns menu-icon-container" data-responsive-toggle="mobile-nav" data-swiftype-index="false" data-hide-for="medium">
-                <button aria-label="Mobile navigation menu" class="menu-icon" type="button" data-toggle>
-                  <i class="fass fa-bars" aria-hidden="true"></i>
-                </button>
-              </div>
-              <div class="small-16 medium-4 columns valign medium-push-0 logo-container">
-                <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia">
-                  <img src="<?php echo get_stylesheet_directory_uri() . "/img/city-of-philadelphia-logo.svg" ?>" data-fallback="//www.phila.gov/assets/images/city-of-philadelphia.png" alt="City of Philadelphia" />
+    <div id="global-sticky-nav" class="row expanded">
+      <div class="small-24 columns phn">
+        <div class="primary-menu" data-sticky-container data-swiftype-index="false">
+          <div class="grid-container phila-sticky phn" data-margin-top="0" data-sticky data-sticky-on="medium">
+            <div class="menu-wrapper grid-x align-middle align-justify">
+              <div class="small-20 medium-12 branding-container cell">
+                <button aria-label="Global navigation menu" class="menu-icon" type="button">
+                    <i class="fass fa-bars" aria-hidden="true"></i>
+                  </button>
+                <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia home">
+                  <img src="https://www.phila.gov/assets/images/city-of-philadelphia-logo-medium-white.png" alt="City of Philadelphia logo" />
                 </a>
+                <a href="/departments/mayor/" class="icymi show-for-medium">Mayor Cherelle L. Parker</a>
               </div>
-              <div class="medium-16 columns pan show-for-medium desktop-nav">
+              <div class="small-2 medium-12 desktop-nav cell">
                 <div class="top-bar-right">
                   <nav data-swiftype-index="false" class="global-nav" aria-label="Main navigation menu">
-                    <ul class="menu">
+                    <ul class="menu show-for-medium">
                       <li class="services-menu-link" data-toggle="services-mega-menu">
-                        <a href="" class="no-link " data-link="/services/" onclick="noLink(event)">Services</a>
+                        <a href="" class="no-link " data-link="/services/">Services</a>
                       </li>
                       <li class="programs-menu-link">
                         <a href="<?php echo get_site_url() ?>/programs/" class="">Programs</a>
@@ -180,29 +179,22 @@
                       <li class="departments-menu-link">
                         <a href="<?php echo get_site_url() ?>/departments/" class="">Departments</a>
                       </li>
-                      <li class="tools-menu-link">
-                        <a href="<?php echo get_site_url() ?>/tools/" class="">Tools</a>
-                      </li>
-                      <li class="publications-menu-link">
-                        <a href="<?php echo get_site_url() ?>/documents/" class=""> Publications</a>
-                      </li>
                       <li class="news-menu-link">
-                        <a href="<?php echo get_site_url() ?>/the-latest/" class=""><i class="fa-solid fa-newspaper"></i> News</a>
+                        <a href="<?php echo get_site_url() ?>/the-latest/" class="">News</a>
                       </li>
                     </ul>
+                      <button aria-label="Site search" id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
+                    <i class="fass fa-magnifying-glass" aria-hidden="true"></i>
+                  </button>
                   </nav>
                 </div>
               </div>
-              <div class="small-4 medium-1 columns phn-m prn site-search-container">
-                <button aria-label="Site search" id="site-search-button" class="site-search" type="button" data-toggle="search-dropdown">
-                  <i class="fass fa-magnifying-glass" aria-hidden="true"></i>
-                </button>
               </div>
             </div> <!-- close row -->
           </div><!-- close columns -->
         </div>
       </div>
-    </div>
+                </div>
     <?php include(locate_template('partials/global/translations-modal.php')); ?>
     <div id="phila-mobile-menu"></div>
     <div id="phila-site-wide-alerts"></div>
