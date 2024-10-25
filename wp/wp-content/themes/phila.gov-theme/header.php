@@ -171,7 +171,7 @@
                   <nav data-swiftype-index="false" class="global-nav" aria-label="Main navigation menu">
                     <ul class="menu show-for-medium">
                       <li class="services-menu-link" data-toggle="services-mega-menu">
-                        <a href="" class="no-link " data-link="/services/" onclick="noLink(event)">Services</a>
+                        <a href="" class="no-link " data-link="/services/">Services</a>
                       </li>
                       <li class="programs-menu-link">
                         <a href="<?php echo get_site_url() ?>/programs/" class="">Programs</a>

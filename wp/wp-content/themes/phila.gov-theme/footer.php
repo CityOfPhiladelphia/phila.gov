@@ -22,7 +22,7 @@
     <?php get_template_part( 'partials/content', 'feedback' ); ?>
   <?php endif; ?>
   <?php echo phila_get_dept_contact_blocks(); ?>
-  <div class="phila-footer">
+  <div id="full-footer-start" class="phila-footer">
     <div class="row pvs ptl-mu phm equal-height">
       <section class="medium-8 columns phm pvm pvn-mu equal">
         <h2 class="mtn mbm">Elected officials</h2>

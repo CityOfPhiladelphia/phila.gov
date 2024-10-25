@@ -37,12 +37,6 @@ footer.site-footer .contact {
   border: none;
 }
 
-@include breakpoint(small only) {
-  #full-footer-start{
-    margin-top: 1rem;
-  }
-}
-
 html{
   scroll-behavior: smooth;
   font-size: 16px;
