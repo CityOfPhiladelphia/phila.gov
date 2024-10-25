@@ -42,6 +42,7 @@ class Phila_Featured_Controller {
 
     $posts_args = array(
       'post_type' => array('post'),
+      'posts_per_page'  => 3,
       'meta_query'  => array(
           array(
             'key' => 'phila_is_feature',
