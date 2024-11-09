@@ -79,13 +79,13 @@ if( !empty($tag) ) {
     <h2 class="header">Press releases</h2>
     <hr>
     <?php while ( $result->have_posts() ) : $result->the_post(); ?>
-    <a class="press-release" <?php 'href=' . get_permalink() ?>>
+    <a class="press-release" href="<?php echo get_the_permalink(); ?>">
       <div class="grid-x grid-padding-x">
         <div class="cell small-3 align-self-middle center">
           <i class="fa fa-file-lines" aria-hidden="true"></i> <span class="sr-only">Press release</span>
         </div>
         <div class="cell small-21 align-self-middle">
-          <h3><?php echo get_the_title(); ?></h3>
+          <p><?php echo get_the_title(); ?></p>
           <div class="post-meta">
             <span class="date-published"><time datetime="<?php echo get_post_time('Y-m-d'); ?>"><?php echo get_the_date();?></time></span>
           </div>

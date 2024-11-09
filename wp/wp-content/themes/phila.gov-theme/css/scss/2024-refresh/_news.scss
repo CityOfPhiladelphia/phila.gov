@@ -26,7 +26,7 @@
         font-family: "Times New Roman Italic", "Times New Roman", sans-serif;
         font-style: italic;
         color: #0f4d90;
-        font-size: 30px;
+        font-size: 2rem;
       }
       img {
         max-width: auto;
@@ -59,15 +59,18 @@
     padding: 2rem;
     display: block;
     text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
 
-
-    h3{
+    p{
       font-style: italic;
       margin-bottom: 1rem;
+      font-size: 2rem;
 
     }
     .post-meta {
       color: #444;
+      font-weight: 400;
     }
 
     .fa {
