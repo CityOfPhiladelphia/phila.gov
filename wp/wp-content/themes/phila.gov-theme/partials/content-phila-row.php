@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying the full width row content 
+ * The template used for displaying the full width row content
  *
  * @package phila-gov
  */
@@ -28,7 +28,7 @@
 
         if ( $current_row_option == 'phila_blog_posts'):?>
           <!-- Blog Content -->
-          <div class="mvl">
+          <div class="mvl mp-blogs">
             <?php $blog_cat_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category']) ? $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category'] : ''; ?>
             <?php $blog_tag_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['tag']) ? $current_row['phila_full_options']['phila_get_post_cats']['tag'] : ''; ?>
             <?php $blog_see_all = isset( $current_row['phila_full_options']['phila_get_post_cats']['override_url']) ? $current_row['phila_full_options']['phila_get_post_cats']['override_url'] : ''; ?>
@@ -46,7 +46,7 @@
             $cal_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_full_width_calendar_id'] : null;
             $spotlight_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_event_spotlight'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_event_spotlight'] : '';
             $display_spotlight = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_active_event_spotlight'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_active_event_spotlight'] : null;
-            $cal_owner_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] : ''; 
+            $cal_owner_id = isset( $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['phila_calendar_owner'] : '';
             ?>
 
             <?php $calendar_see_all = isset( $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] ) ? $current_row['phila_full_options']['phila_full_width_calendar']['override_url'] : ''; ?>
@@ -69,7 +69,7 @@
               <!-- /Callout -->
             <?php endif;?>
 
-          <?php elseif ($current_row_option == 'phila_cost_callout'): 
+          <?php elseif ($current_row_option == 'phila_cost_callout'):
             $cost_callout = $current_row['phila_full_options']['phila_cost_component'];
           ?>
           <div class="cost">
@@ -214,7 +214,7 @@
               <!--/Registration-->
 
         <?php endif; ?>
-        
+
         <?php elseif ( $current_row_option == 'phila_vue_app'): ?>
           <?php if ( isset( $current_row['phila_full_options']['phila_vue_template'] ) ):
 
@@ -241,12 +241,12 @@
                   $count++;
                 }
               }
-              
+
               ?>
             <?php include(locate_template( 'partials/vue-apps/app-container.php' ) ); ?>
 
         <?php endif; ?>
-        
+
           <?php elseif ( $current_row_option == 'phila_stepped_content'):?>
             <?php if ( isset( $current_row['phila_full_options']['phila_full_options_select'] ) ): ?>
               <!-- Heading groups -->
@@ -301,7 +301,7 @@
               <!-- /Boards/Commission Members -->
             <?php endif;?>
             <?php elseif ( $current_row_option == 'phila_staff_table'):?>
-            <?php if ( isset( $current_row['phila_full_options']['phila_staff_directory_listing'] ) ): 
+            <?php if ( isset( $current_row['phila_full_options']['phila_staff_directory_listing'] ) ):
               $repeating_override = $current_row['phila_full_options']['phila_staff_directory_listing']['phila_get_staff_cats']['phila_staff_category'];
               ?>
               <!-- Staff listing -->
@@ -310,7 +310,7 @@
             <?php endif;?>
 
             <?php elseif ( $current_row_option == 'phila_photo_callout'): ?>
-            <?php if ( isset( $current_row['phila_full_options']['phila_photo_callout']) || isset( $current_row['phila_full_options']['phila_full_options_select'] )): 
+            <?php if ( isset( $current_row['phila_full_options']['phila_photo_callout']) || isset( $current_row['phila_full_options']['phila_full_options_select'] )):
               ?>
               <!-- Photo call out -->
               <?php include(locate_template('partials/departments/v2/photo-callout.php')); ?>
@@ -325,7 +325,7 @@
             <?php endif;?>
 
             <?php elseif ( $current_row_option == 'phila_content_heading_group'):
-            
+
             $wysiwyg_heading = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_wysiwyg_heading'] ) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_wysiwyg_heading'] : '';
             $wysiwyg_content = isset( $current_row['phila_full_options']['phila_content_heading_group']['phila_unique_wysiwyg_content'] ) ? $current_row['phila_full_options']['phila_content_heading_group']['phila_unique_wysiwyg_content'] : '';
 
@@ -336,7 +336,7 @@
             <?php endif;?>
 
             <?php elseif ( $current_row_option == 'phila_heading_one_quarter_select'):
-            
+
             $wysiwyg_heading = isset( $current_row['phila_full_options']['phila_heading_one_quarter']['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ? $current_row['phila_full_options']['phila_heading_one_quarter']['phila_custom_wysiwyg']['phila_wysiwyg_title'] : '';
             $wysiwyg_content = isset( $current_row['phila_full_options']['phila_heading_one_quarter']['phila_custom_wysiwyg']['phila_wysiwyg_content'] ) ? $current_row['phila_full_options']['phila_heading_one_quarter']['phila_custom_wysiwyg']['phila_wysiwyg_content'] : '';
 
@@ -348,9 +348,9 @@
 
 
           <?php elseif ( $current_row_option == 'phila_prereq'):
-          
+
             $accordion_group = isset( $current_row['phila_full_options']['phila_prereq']['accordion_group'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_group'] : '';
-            $requirements_prereq_title = isset( $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] : '';  
+            $requirements_prereq_title = isset( $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] ) ? $current_row['phila_full_options']['phila_prereq']['accordion_row_title'] : '';
             $override_icon = isset( $current_row['phila_full_options']['phila_prereq']['phila_v2_icon'] ) ? $current_row['phila_full_options']['phila_prereq']['phila_v2_icon'] : '';
             $use_icon = true;
             $is_full_width = false;
@@ -369,7 +369,7 @@
               <?php include(locate_template('partials/content-custom-additional.php')); ?>
               <!-- /Additional Content -->
             <?php endif;?>
-          <?php elseif ( $current_row_option == 'phila_modal'): 
+          <?php elseif ( $current_row_option == 'phila_modal'):
             $phila_modal = isset( $current_row['phila_full_options']['phila_modal'] ) ? $current_row['phila_full_options']['phila_modal'] : '';
 
             if ( !empty( $phila_modal ) ) :  ?>

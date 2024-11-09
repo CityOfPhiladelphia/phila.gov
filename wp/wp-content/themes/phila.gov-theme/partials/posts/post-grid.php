@@ -235,3 +235,39 @@ $result->post_count = count( $result->posts );
     <?php endif;?>
   <?php wp_reset_postdata(); ?>
 </div>
+<div class="featured-grid grid-container grid-padding-x">
+<div class="grid-container fluid featured mtxl">
+    <div class="featured-grid grid-container grid-padding-x">
+      <h2 class="header">Featured news</h2>
+      <hr />
+      <div v-for="(item, index) in featuredItems" :key="index" class="featured-item">
+            <a :href=item.link class="faux-card grid-x">
+                <div class="cell large-6 flex-child-auto">
+                    <img :src=item.featured_image
+                    alt=""/>
+                </div>
+                <div class="cell featured-content pam large-18 grid-x">
+                    <div class="cell align-self-top post-label post-label--post">
+                        <header class="mvm">
+                            {{ item.title }}
+                        </header>
+                    </div>
+                    <div class="cell align-self-bottom">
+                        <div class="post-meta">
+                            <span class="date-published">
+                                <time :datetime=item.date>{{ formatDate(item.date) }}</time>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="grid-container group">
+      <a class="button float-right content-type-featured mbxl" href="https://www.phila.gov/the-latest/" aria-label="See all news">
+        See all news
+        <i class="fas fa-angle-right fa-lg" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
