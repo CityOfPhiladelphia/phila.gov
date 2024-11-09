@@ -1531,6 +1531,8 @@ function phila_connect_panel($connect_panel) {
 
       if ( isset( $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'] ) && $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'] != ''  ) $output_array['social']['twitter'] = $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'];
 
+      if ( isset( $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'] ) && $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'] != ''  ) $output_array['social']['linkedin'] = $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'];
+
       if ( isset( $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'] ) && $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'] != '' ) $output_array['social']['instagram'] = $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'];
 
       if ( isset( $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_youtube'] ) && $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_youtube'] != '' ) $output_array['social']['youtube'] = $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_youtube'];

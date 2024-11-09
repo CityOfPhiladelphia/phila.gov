@@ -28,8 +28,11 @@
 
         if ( $current_row_option == 'phila_blog_posts'):?>
           <!-- Blog Content -->
-          <div class="mvl mp-blogs">
+          <div class="mvl">
             <?php $blog_cat_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category']) ? $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category'] : ''; ?>
+
+            <?php $use_2024_design = isset( $current_row['phila_full_options']['2024_updated_design']) ? $current_row['phila_full_options']['2024_updated_design'] : ''; ?>
+
             <?php $blog_tag_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['tag']) ? $current_row['phila_full_options']['phila_get_post_cats']['tag'] : ''; ?>
             <?php $blog_see_all = isset( $current_row['phila_full_options']['phila_get_post_cats']['override_url']) ? $current_row['phila_full_options']['phila_get_post_cats']['override_url'] : ''; ?>
             <?php include( locate_template( 'partials/departments/phila_full_row_blog.php' ) ); ?>

@@ -108,10 +108,12 @@
             $email_desc = isset( $content['phila_std_address']['phila_connect_general']['phila_connect_email_exp'] ) ? $content['phila_std_address']['phila_connect_general']['phila_connect_email_exp'] : '';
 
             $fax = isset( $content['phila_std_address']['phila_connect_general']['phila_connect_fax'] ) ? $content['phila_std_address']['phila_connect_general']['phila_connect_fax'] : '';
-          
+
             $facebook = isset( $content['phila_std_address']['phila_connect_general']['phila_connect_social']['phila_connect_social_facebook'] ) ? $content['phila_std_address']['phila_connect_general']['phila_connect_social']['phila_connect_social_facebook'] : '';
 
             $twitter = isset( $content['phila_std_address']['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'] ) ? $content['phila_std_address']['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'] : '';
+
+            $linkedin = isset( $content['phila_std_address']['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'] ) ? $content['phila_std_address']['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'] : '';
 
             $instagram = isset( $content['phila_std_address']['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'] ) ? $content['phila_std_address']['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'] : '';
 
@@ -167,6 +169,14 @@
                         <a href="<?php echo $twitter; ?>" class="phs" data-analytics="social">
                           <i class="fa-brands fa-x-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
                           <span class="show-for-sr">Twitter</span>
+                        </a>
+                      </span>
+                    <?php endif; ?>
+                    <?php if ( !empty( $linkedin) ) : ?>
+                      <span class="pvxs">
+                        <a href="<?php echo $linkedin; ?>" class="phs" data-analytics="social">
+                          <i class="fa-brands fa-x-linkedin fa-2x" title="LinkedIn" aria-hidden="true"></i>
+                          <span class="show-for-sr">LinkedIn</span>
                         </a>
                       </span>
                     <?php endif; ?>

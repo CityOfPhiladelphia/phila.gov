@@ -86,6 +86,14 @@ class Phila_Gov_Row_Metaboxes {
     'fields' => array(
       Phila_Gov_Row_Select_Options::phila_metabox_full_options_select(),
       array(
+        'name' => '2024 updated design',
+        'id' => '2024_updated_design',
+        'type' => 'switch',
+        'desc'  => 'Use updated 2024 design?',
+        'on_label'  => 'Yes',
+        'off_label' => 'No',
+      ),
+      array(
         'visible' => array('phila_full_options_select', '=', 'phila_blog_posts'),
         'id'  => 'phila_get_post_cats',
         'type' => 'group',

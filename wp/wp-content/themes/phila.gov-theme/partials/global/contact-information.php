@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
 *
 * Standard output for contact iformation within body copy
 * $contact_content - Required - Array of phila_std_address['address_group']
@@ -32,6 +32,8 @@ $fax = isset( $contact_content['phila_connect_general']['phila_connect_fax'] ) ?
 $facebook = isset( $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_facebook'] ) ? $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_facebook'] : '';
 
 $twitter = isset( $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'] ) ? $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'] : '';
+
+$linkedin = isset( $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'] ) ? $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'] : '';
 
 $instagram = isset( $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'] ) ? $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'] : '';
 
@@ -82,6 +84,14 @@ $flickr = isset( $contact_content['phila_connect_general']['phila_connect_social
       <a href="<?php echo $twitter; ?>" class="phs" data-analytics="social">
         <i class="fa-brands fa-x-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
         <span class="show-for-sr">Twitter</span>
+      </a>
+    </span>
+  <?php endif; ?>
+  <?php if ( !empty( $linkedin ) ) : ?>
+    <span class="pvxs">
+      <a href="<?php echo $linkedin; ?>" class="phs" data-analytics="social">
+        <i class="fa-brands fa-x-linkedin fa-2x" title="LinkedIn" aria-hidden="true"></i>
+        <span class="show-for-sr">LinkedIn</span>
       </a>
     </span>
   <?php endif; ?>
