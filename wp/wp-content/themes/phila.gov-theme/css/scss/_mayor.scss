@@ -4,9 +4,52 @@
     color: white;
     text-align: left;
   }
-  span.MAYOR {
-    display: block;
-    text-transform: uppercase;
-    font-size: 3rem;
+  .image-offset{
+    .one-philly-mayor {
+      position: relative;
+      top: 2rem;
+    }
   }
+  .mr-meeseeks {
+    h1 {
+      font-size: 3rem;
+    }
+    span.MAYOR {
+      display: block;
+      text-transform: uppercase;
+      font-size: 5rem;
+      line-height: 4rem;
+      font-weight: 700;
+    }
+    .tagline {
+      font-size: 2rem;
+      font-style: italic;
+      font-family: 'Times New Roman', Times, serif;
+    }
+  }
+  .what-we-do, .contrast {
+    display: none;
+  }
+  .custom-text{
+    p{
+      font-size: 1.2rem;
+    }
+  }
+  table.connect{
+    font-size: 1.4rem !important;
+
+    th, td{
+      padding: 0;
+    }
+    div {
+      font-size: 1.4rem !important;
+    }
+    tbody {
+      background-color: white;
+    }
+    &.no-alternate tr:nth-child(even){
+      background-color: white;
+    }
+  }
+
 }
