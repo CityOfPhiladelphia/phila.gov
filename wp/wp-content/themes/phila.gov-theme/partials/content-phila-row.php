@@ -31,7 +31,7 @@
           <div class="mvl">
             <?php $blog_cat_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category']) ? $current_row['phila_full_options']['phila_get_post_cats']['phila_post_category'] : ''; ?>
 
-            <?php $use_2024_design = isset( $current_row['phila_full_options']['2024_updated_design']) ? $current_row['phila_full_options']['2024_updated_design'] : ''; ?>
+            <?php $use_2024_design = isset( $current_row['phila_full_options']['phila_get_post_cats']['2024_updated_design']) ? $current_row['phila_full_options']['phila_get_post_cats']['2024_updated_design'] : ''; ?>
 
             <?php $blog_tag_override = isset( $current_row['phila_full_options']['phila_get_post_cats']['tag']) ? $current_row['phila_full_options']['phila_get_post_cats']['tag'] : ''; ?>
             <?php $blog_see_all = isset( $current_row['phila_full_options']['phila_get_post_cats']['override_url']) ? $current_row['phila_full_options']['phila_get_post_cats']['override_url'] : ''; ?>
@@ -118,6 +118,10 @@
               endif; ?>
             <!-- /Get involved -->
           <?php elseif ( $current_row_option == 'phila_full_width_press_releases'): ?>
+
+            <?php $use_2024_design = isset( $current_row['phila_full_options']['full_width_press_releases']['2024_updated_design']) ? $current_row['phila_full_options']['full_width_press_releases']['2024_updated_design'] : ''; ?>
+
+
             <?php $press_cat_override = isset( $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category']) ? $current_row['phila_full_options']['full_width_press_releases']['phila_press_release_category'][0] : '';
             ?>
             <?php $press_tag_override = isset( $current_row['phila_full_options']['full_width_press_releases']['tag']) ? $current_row['phila_full_options']['full_width_press_releases']['tag'] : '';
@@ -125,7 +129,7 @@
             <?php $blog_see_all = isset( $current_row['phila_full_options']['full_width_press_releases']['override_url']) ? $current_row['phila_full_options']['full_width_press_releases']['override_url'] : ''; ?>
               <!-- Press Releases -->
               <section class="row mvl">
-                <?php echo do_shortcode('[press-releases posts=5 see_all="' . $blog_see_all . '" tag="'. $press_tag_override .'" category="' . $press_cat_override . '"]');?>
+                <?php echo do_shortcode('[press-releases see_all="' . $blog_see_all . '" tag="'. $press_tag_override .'" category="' . $press_cat_override . '" use_2024_design="'.$use_2024_design .'"]');?>
               </section>
               <!-- /Press Releases -->
             <?php elseif ($current_row_option == 'phila_resource_list'): ?>

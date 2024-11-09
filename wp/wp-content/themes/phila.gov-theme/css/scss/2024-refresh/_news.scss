@@ -51,3 +51,26 @@
       }
     }
   }
+
+  a.press-release{
+    background-color: color(ghost-gray);
+    font-size: 2rem;
+    margin: 3rem 0;
+    padding: 2rem;
+    display: block;
+    text-decoration: none;
+
+
+    h3{
+      font-style: italic;
+      margin-bottom: 1rem;
+
+    }
+    .post-meta {
+      color: #444;
+    }
+
+    .fa {
+      font-size: 5rem;
+    }
+  }
