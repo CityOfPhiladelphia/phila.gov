@@ -75,7 +75,7 @@ echo '
     "wpackagist-plugin/tinymce-advanced":"^5.9.2",
     "nesbot/carbon": "^2.64",
     "google/apiclient": "^2.13",
-    "wpackagist-plugin/litespeed-cache": "^5.0.0"
+    "wpackagist-plugin/litespeed-cache": "^6.5.2"
   },
   "config": {
     "allow-plugins": {
