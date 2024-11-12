@@ -74,7 +74,8 @@ echo '
     "wpackagist-plugin/wordpress-importer":"^0.8",
     "wpackagist-plugin/tinymce-advanced":"^5.9.2",
     "nesbot/carbon": "^2.64",
-    "google/apiclient": "^2.13"
+    "google/apiclient": "^2.13",
+    "wpackagist-plugin/litespeed-cache": "^5.0.0"
   },
   "config": {
     "allow-plugins": {
