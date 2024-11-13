@@ -262,14 +262,6 @@ class Phila_Gov_Row_Metaboxes {
         'type' => 'group',
         'visible'  => array('phila_full_options_select', '=', 'phila_full_width_press_releases'),
         'fields' => array(
-          array(
-            'name' => '2024 updated design',
-            'id' => '2024_updated_design',
-            'type' => 'switch',
-            'desc'  => 'Use updated 2024 design?',
-            'on_label'  => 'Yes',
-            'off_label' => 'No',
-          ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_press_release_category', 'Display press releases from these owners.' ),
           array(
             'name'  => 'Filter by a tag',
