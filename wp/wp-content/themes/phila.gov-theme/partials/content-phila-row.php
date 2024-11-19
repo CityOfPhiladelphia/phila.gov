@@ -135,7 +135,10 @@
             <?php elseif ($current_row_option == 'phila_resource_list'): ?>
               <?php if ( isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'] ) ):
                   $phila_dept_homepage_cta = $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section'];
+
+                  $use_2024_design = isset( $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section']['2024_updated_design']) ? $current_row['phila_full_options']['phila_call_to_action_multi']['phila_call_to_action_section']['2024_updated_design'] : '';
                   ?>
+
                   <!-- Call to action multi -->
                   <div class="mvl"><?php
 

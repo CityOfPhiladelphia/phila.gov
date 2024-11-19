@@ -945,6 +945,14 @@ class Phila_Gov_Standard_Metaboxes {
         'type' => 'group',
         'fields' => array(
           array(
+            'name' => '2024 updated design',
+            'id' => '2024_updated_design',
+            'type' => 'switch',
+            'desc'  => 'Use updated 2024 design?',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
+          ),
+          array(
             'name'  => 'Section Title',
             'id'    => 'phila_action_section_title_multi',
             'type'  => 'text',

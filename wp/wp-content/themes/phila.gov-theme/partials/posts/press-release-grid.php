@@ -76,12 +76,11 @@ if( !empty($tag) ) {
 <?php if ($use_2024_design): ?>
   <?php if ( $result->have_posts() ) : ?>
     <div class="refresh">
-    <h2 class="header">Press releases</h2>
-    <hr>
+    <h2 class="header contrast">Press releases</h2>
     <?php while ( $result->have_posts() ) : $result->the_post(); ?>
     <a class="press-release" href="<?php echo get_the_permalink(); ?>">
-      <div class="grid-x grid-padding-x">
-        <div class="cell small-3 align-self-middle center">
+      <div class="grid-x">
+        <div class="cell small-3 align-self-middle center show-for-medium">
           <i class="fa fa-file-lines" aria-hidden="true"></i> <span class="sr-only">Press release</span>
         </div>
         <div class="cell small-21 align-self-middle">

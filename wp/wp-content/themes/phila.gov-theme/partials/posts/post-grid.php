@@ -149,8 +149,7 @@ $result->post_count = count( $result->posts );
 <div class="refresh">
   <div id="latest-news" class="grid-container fluid featured mtxl">
       <div class="featured-grid grid-container grid-padding-x">
-        <h2 class="header">Latest news</h2>
-        <hr />
+        <h2 class="header contrast">Latest news</h2>
         <?php $count = 0; ?>
         <?php if ( $result->have_posts() ) : ?>
           <?php while ( $result->have_posts() ) : $result->the_post(); ?>

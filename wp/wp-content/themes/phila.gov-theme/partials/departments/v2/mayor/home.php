@@ -16,7 +16,7 @@
 <header>
   <div class="hero-content">
     <div class="hero-subpage">
-      <div class="grid-x expanded">
+      <div class="grid-x grid-padding-x expanded align-center">
         <div class="cell medium-8">
           <div class="image-offset">
             <img src="<?php echo $full_url ?>" alt="Mayor Cherelle L. Parker" class="one-philly-mayor" />
