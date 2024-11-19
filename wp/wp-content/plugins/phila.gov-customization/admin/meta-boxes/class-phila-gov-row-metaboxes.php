@@ -442,50 +442,50 @@ class Phila_Gov_Row_Metaboxes {
         'visible' => array('phila_full_options_select', '=', 'phila_photo_callout'),
         'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_photo_callout()
       ),
-      // array(
-      //   'id' => 'faq',
-      //   'type'  => 'group',
-      //   'visible' => array('phila_full_options_select', '=', 'phila_faq'),
-      //   'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_faq()
-      // ),
+      array(
+        'id' => 'faq',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_faq'),
+        'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_faq()
+      ),
       array(
         'id' => 'phila_content_heading_group',
         'type'  => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_content_heading_group'),
         'fields' => Phila_Gov_Row_Metaboxes::phila_metabox_heading_group()
       ),
-      // array(
-      //   'id' => 'phila_prereq',
-      //   'type'  => 'group',
-      //   'visible' => array('phila_full_options_select', '=', 'phila_prereq'),
-      //   'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_prereq_row('Prerequisite row title')
-      // ),
+      array(
+        'id' => 'phila_prereq',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_prereq'),
+        'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_prereq_row('Prerequisite row title')
+      ),
       array(
         'id' => 'phila_content_additional_content',
         'type'  => 'group',
         'visible' => array('phila_full_options_select', '=', 'phila_content_additional_content'),
         'fields' =>   Phila_Gov_Standard_Metaboxes::phila_meta_var_addtional_content()
       ),
-      // array(
-      //   'id' => 'phila_service_update_page',
-      //   'type'  => 'group',
-      //   'visible' => array('phila_full_options_select', '=', 'phila_service_updates'),
-      //   'fields'  => Phila_Gov_Standard_Metaboxes::phila_get_service_updates(),
-      // ),
-      // array(
-      //   'id' => 'phila_timeline_picker',
-      //   'type'  => 'group',
-      //   'visible' => array('phila_full_options_select', '=', 'phila_homepage_timeline'),
-      //   'fields'  => array(
-      //       Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
-      //       array(
-      //         'name' => 'Timeline item count',
-      //         'id'   => 'homepage_timeline_item_count',
-      //         'desc'  => 'Select the number of items from the timeline to display',
-      //         'type' => 'number'
-      //     ),
-      //   )
-      // ),
+      array(
+        'id' => 'phila_service_update_page',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_service_updates'),
+        'fields'  => Phila_Gov_Standard_Metaboxes::phila_get_service_updates(),
+      ),
+      array(
+        'id' => 'phila_timeline_picker',
+        'type'  => 'group',
+        'visible' => array('phila_full_options_select', '=', 'phila_homepage_timeline'),
+        'fields'  => array(
+            Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
+            array(
+              'name' => 'Timeline item count',
+              'id'   => 'homepage_timeline_item_count',
+              'desc'  => 'Select the number of items from the timeline to display',
+              'type' => 'number'
+          ),
+        )
+      ),
       array(
         'id'   => 'phila_modal',
         'type' => 'group',
