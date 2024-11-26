@@ -17,8 +17,8 @@ function get_dept_partial($partial_name, $partial_args = array()){
 
   if ( $post->ID == '4099' ){
     include(locate_template(('partials/departments/v2/mayor/home.php')));
+
   } else if ($post->post_parent == '4099'){
-    echo 'this is a child of the mayor';
     include(locate_template(('partials/departments/v2/mayor/subpage.php')));
   }
   else{
@@ -41,7 +41,7 @@ $user_selected_template = phila_get_selected_template();
 
 get_header(); ?>
 
-<div id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
+<div id="post-<?php the_ID(); ?>" <?php post_class('department clearfix ' . $user_selected_template); ?>>
 
   <?php
 
@@ -98,11 +98,14 @@ get_header(); ?>
           <!-- END Department Stub -->
       <?php
 
-        } else {
+      } else if ($user_selected_template == 'bio_page') {
+        include(locate_template( 'partials/departments/v2/bio-page.php') ) ;
+
+        }else {
           $is_stub = false;
           include(locate_template( 'templates/single-on-site-content.php') ) ;
-        }
-      endwhile;
+        } ?>
+      <?php endwhile;
     }
   ?>
 </div><!-- #post-## -->

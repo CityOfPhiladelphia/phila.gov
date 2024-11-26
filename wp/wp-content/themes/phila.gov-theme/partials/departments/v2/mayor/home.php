@@ -15,7 +15,6 @@
 <div class="mayor-page">
 <header>
   <div class="hero-content">
-    <div class="hero-subpage">
       <div class="grid-x grid-padding-x expanded align-center">
         <div class="cell medium-8">
           <div class="image-offset">
@@ -27,7 +26,6 @@
                 <div class="tagline"><?php echo phila_get_item_meta_desc( ); ?></div>
               </div>
               </div>
-            </div><!-- END .row.expanded   -->
             <?php
 
               /*
