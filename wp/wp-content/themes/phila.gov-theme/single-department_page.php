@@ -17,7 +17,11 @@ function get_dept_partial($partial_name, $partial_args = array()){
 
   if ( $post->ID == '4099' ){
     include(locate_template(('partials/departments/v2/mayor/home.php')));
-  }else{
+  } else if ($post->post_parent == '4099'){
+    echo 'this is a child of the mayor';
+    include(locate_template(('partials/departments/v2/mayor/subpage.php')));
+  }
+  else{
     phila_get_template_part('partials/departments/v2/department-'.$partial_name, $partial_args);
   }
 }

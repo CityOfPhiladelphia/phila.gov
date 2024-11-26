@@ -1311,6 +1311,31 @@ $meta_boxes[] = array(
   ),
 );
 
+$meta_boxes[] = array(
+  'title' => 'Bio page',
+  'pages' => array('department_page'),
+  'context' => 'advanced',
+  'priority' => 'low',
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'bio_page'),
+    ),
+  ),
+
+  'fields'  => array(
+    array(
+      'name' => 'Person title',
+      'type'  => 'text',
+      'id'  => 'phila_person_title',
+    ),
+    array(
+      'id' => 'phila_person_headshot',
+      'type' => 'file',
+      'desc'  => 'Upload a headshot of the person',
+    )
+  )
+);
+
 return $meta_boxes;
 
 }
