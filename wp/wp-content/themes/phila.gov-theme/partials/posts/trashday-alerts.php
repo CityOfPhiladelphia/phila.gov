@@ -49,12 +49,18 @@ foreach ( $holidays as $holiday ) {
       }
         ?>">
         <th class="phl-mu <?php if ( !phila_is_department_homepage( $post ) && !is_home() && $a['icon_padding'] == 0 ) echo 'icon-only';?>">
-          <i class="fa-2x fa-fw fas fa-trash-alt service-icon <?php if( $a['icon_padding'] && $a['icon_padding'] == 1) echo 'plm-mu' ?>" aria-hidden="true"></i>
+          <i class="fa-solid fa-xl service-icon service-icon <?php if( $a['icon_padding'] && $a['icon_padding'] == 1) echo 'plm-mu' ?> 
+          <?php 
+            if ( $status == 1 || $status == 2 || $status == 3 || $is_holiday == true )
+            { echo "fa-circle-exclamation"; } 
+          else if ( $status == 0) 
+            { echo "fa-circle-check"; } 
+           ?>" aria-hidden="true"></i>
           <?php if ( $a['icon_text'] && $a['icon_text'] == 1 ) { ?>
             <span class="icon-label">Trash & recycling</span>
           <?php } ?>
         </th>
-        <td class="pam">
+        <td class="prm pbm ptm">
           <span class="bold">
             <?php if 
               ( $status == 3 ) { echo $flexible_collection['phila_flexible_collection_status']; } else if
