@@ -107,7 +107,7 @@ endif;
                       <?php endif; ?>
                     </em></span>
 
-                    <?php endif; ?>`
+                    <?php endif; ?>
                   </td>
                 </tr><!-- row -->
               <?php ++$i; ?>
