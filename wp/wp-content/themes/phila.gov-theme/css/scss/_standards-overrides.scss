@@ -57,3 +57,27 @@ hr{
 html{
   scroll-behavior: smooth;
 }
+
+.service-update{
+  .icon-only {
+    padding: 1rem 0 1rem 1rem;
+  }
+  td {
+    background: #f0f0f0 !important;
+    border-right: 0px;
+    border-left: 0px;
+  }
+  th{
+    background: #f0f0f0 !important;
+    border-right: 0px;
+    border-left: 0px;
+  }
+  .service-update--warning, .service-update--critical {
+    i {
+      color: red;
+    }
+  }
+  i {
+    color: green;
+  }
+}
