@@ -30,7 +30,7 @@ jQuery(document).ready(function($){
 
 
   //If department "contributor" doesn't have access to this post type, hide the publish button, allow publishing action on document pages
-  if ( ( typenow != 'document') && adminpage.indexOf('post') > -1 ){
+  if ( ( typenow != 'document') && ( typenow != 'page') && adminpage.indexOf('post') > -1 ){
     phila_WP_User.some(
       function(v){
         if ( v.indexOf(typenow) >= 0) {
@@ -44,7 +44,7 @@ jQuery(document).ready(function($){
 
   //Hide all category and tag menu items, department authors shouldn't see those.
 $('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("display", "none");
-  
+
   var menuIdString = $('#menu-id').text().trim();
   var allMenuIDs = menuIdString.split(' ');
   var match = document.getElementById( allMenuIDs );
@@ -96,7 +96,7 @@ $('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("
     if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
       $('[id^=phila_block_id]').parent().parent().hide();
       //hide short description and let users know what they can do to change it
-      $('#phila_meta_desc').after( "<i>To request a change to the short description, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
+      $('#phila_meta_desc').after( "<i>To request a change to the short description, email <a href='mailto:websupport@phila.gov'>websupport@phila.gov</a>.</i>" )
     }
   }
 
@@ -118,7 +118,7 @@ $('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("
   }
 
   if ( ( typenow == 'programs') && adminpage.indexOf('post') > -1 ){
-    $('#phila_meta_desc').after( "<i>To request a change to the short description, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
+    $('#phila_meta_desc').after( "<i>To request a change to the short description, email <a href='mailto:websupport@phila.gov'>websupport@phila.gov</a>.</i>" )
   }
 
   if ( ( typenow == 'post') && adminpage.indexOf('post') > -1 ){
@@ -173,7 +173,7 @@ $('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("
   }
   if ( ( typenow == 'department_page') && adminpage.indexOf('post') > -1 ){
 
-    $('#wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap').after( "<i>To request a change to 'What we do' content, email <a href='mailto:oddt@phila.gov'>oddt@phila.gov</a>.</i>" )
+    $('#wp-module_row_1_col_1_module_row_1_col_1_options_phila_module_row_1_col_1_textarea-wrap').after( "<i>To request a change to 'What we do' content, email <a href='mailto:websupport@phila.gov'>websupport@phila.gov</a>.</i>" )
 
   }
 
