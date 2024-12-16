@@ -1286,7 +1286,6 @@ function phila_get_archive_status( $post_id ) {
   } else {
     $archived = false;
   }
-
   return (bool) $archived;
 }
 
