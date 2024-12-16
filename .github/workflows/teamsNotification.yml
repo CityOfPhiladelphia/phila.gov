@@ -1,0 +1,15 @@
+name: MS Teams Notification
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      # this is the new step
+      - uses: dchourasia/ms-teams-notification@1.0 #  or "./" if in a local set-up
+        if: always()
+        with:
+          github-token: ${{ github.token }}
+          webhook-uri: ${{ secrets.TEAMS_WEBHOOK_URL }}
