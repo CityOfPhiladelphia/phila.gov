@@ -159,12 +159,12 @@
             <div class="menu-wrapper grid-x align-middle align-justify">
               <div class="small-20 medium-12 branding-container cell">
                 <button aria-label="Global navigation menu" class="menu-icon" type="button">
-                    <i class="fass fa-bars"><span class="show-for-sr">Menu</span></i>
+                    <i class="fass fa-bars" aria-hidden="true"></i>
                   </button>
                 <a href="<?php echo get_home_url(); ?>" class="logo" aria-label="City of Philadelphia home">
                   <img src="https://www.phila.gov/assets/images/city-of-philadelphia-logo-medium-white.png" alt="City of Philadelphia logo" />
                 </a>
-                <a href="/departments/mayor/" class="icymi show-for-medium" translate="no">Mayor Cherelle L. Parker</a>
+                <a href="/departments/mayor/" class="icymi show-for-medium">Mayor Cherelle L. Parker</a>
               </div>
               <div class="small-2 medium-12 desktop-nav cell">
                 <div class="top-bar-right">

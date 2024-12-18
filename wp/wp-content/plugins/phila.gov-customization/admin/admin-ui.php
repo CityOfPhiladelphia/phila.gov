@@ -70,9 +70,9 @@ function phila_show_all_pages_menu_selection( $args ){
 add_action( 'admin_enqueue_scripts', 'phila_load_admin_media_js', 10, 1 );
 
 function phila_load_admin_media_js( $hook ) {
-  wp_register_script( 'all-admin-scripts', plugins_url( 'js/admin.js' , __FILE__, array('jquery-validation') ) );
+  wp_register_script( 'all-admin-scripts', plugins_url( 'js/admin.js' , __FILE__), array('jquery-validation')  );
 
-  wp_register_script( 'jquery-validation', plugins_url('js/jquery.validate.min.js', __FILE__, array( 'jquery') ) );
+  wp_register_script( 'jquery-validation', plugins_url('js/jquery.validate.min.js', __FILE__), array( 'jquery')  );
 
   wp_localize_script( 'all-admin-scripts', 'searchAjax',
   array(

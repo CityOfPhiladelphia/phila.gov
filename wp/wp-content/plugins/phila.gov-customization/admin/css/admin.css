@@ -221,3 +221,7 @@ ul#department_page-search-checklist li{
 #adminmenu div.separator{
   background-color: rgba(240,246,252,.6);
  }
+ 
+.js .tmce-active .wp-editor-area {
+  color: #000000
+}
