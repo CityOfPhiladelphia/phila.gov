@@ -695,6 +695,7 @@ function post_categories_meta_box( $post, $box ) {
 						'orderby'          => 'name',
 						'hierarchical'     => 1,
 						'show_option_none' => '&mdash; ' . $taxonomy->labels->parent_item . ' &mdash;',
+						'required'		   => true
 					);
 
 					/**
