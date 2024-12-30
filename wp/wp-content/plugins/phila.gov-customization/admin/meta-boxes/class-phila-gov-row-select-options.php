@@ -45,7 +45,7 @@ class Phila_Gov_Row_Select_Options {
         'phila_custom_text' => 'Custom text',
         'phila_custom_text_multi' => 'Custom text (multiple)',
         'phila_faq' => 'FAQ',
-        'phila_prereq' => 'FAQ list with icon (prereq approval style)',
+        //'phila_prereq' => 'FAQ list with icon (prereq approval style)',
         'phila_feature_p_i' => 'Featured page content',
         'phila_get_involved' => 'Get Involved',
         'phila_image_list' => 'Image list',
@@ -87,7 +87,7 @@ class Phila_Gov_Row_Select_Options {
       ),
     );
   }
-  
+
   public static function phila_metabox_tabbed_select(){
     return array(
       'id'   => 'phila_tabbed_select',

@@ -37,6 +37,7 @@ function register_template_selection_metabox_departments( $meta_boxes ){
         'options' => array(
           'homepage_v2'             => 'Homepage',
           'homepage_v3'             => 'Homepage 2021',
+          'bio_page'                => 'Bio page',
           'default'                 => 'Default',
           'repeating_rows'          => 'Repeating rows',
           'one_quarter_headings_v2' => '1/4 headings',

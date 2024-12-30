@@ -1311,6 +1311,104 @@ $meta_boxes[] = array(
   ),
 );
 
+$meta_boxes[] = array(
+  'title' => 'Bio page',
+  'pages' => array('department_page'),
+  'context' => 'advanced',
+  'priority' => 'high',
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'bio_page'),
+    ),
+  ),
+
+  'fields'  => array(
+    array(
+      'name' => 'Person title',
+      'type'  => 'text',
+      'id'  => 'phila_person_title',
+    ),
+    array(
+      'id' => 'phila_person_headshot',
+      'type' => 'file',
+      'desc'  => 'Upload a headshot of the person',
+      'max_file_uploads' => 1,
+      'force_delete' => true,
+    ),
+    array(
+      'id' => 'phila_std_address',
+      'type' => 'group',
+      'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields(),
+        array(
+          'id' => 'phila_connect_general',
+          'type' => 'group',
+          // List of sub-fields
+          'fields' => array(
+            array(
+              'type' => 'heading',
+              'name' => 'Email, fax, etc.',
+            ),
+            array(
+              'name' => 'Email',
+              'id'   => 'phila_connect_email',
+              'type' => 'email',
+              'desc' => 'example@phila.gov',
+            ),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Explanation text for email', 'phila_connect_email_exp', false, 'Ex. For press inquiries contact:'),
+            array(
+              'id' => 'phila_connect_social',
+              'type' => 'group',
+              'fields' => array(
+                array(
+                  'type' => 'heading',
+                  'name' => 'Social',
+                ),
+                array(
+                  'name' => 'Facebook URL',
+                  'id'   => 'phila_connect_social_facebook',
+                  'type' => 'url',
+                  'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+                ),
+                array(
+                  'name' => 'X URL',
+                  'id'   => 'phila_connect_social_twitter',
+                  'type' => 'url',
+                  'desc' => 'Example: https://x.com/PhiladelphiaGov'
+                ),
+                array(
+                  'name' => 'LinkedIn URL',
+                  'id'   => 'phila_connect_social_linkedin',
+                  'type' => 'url',
+                  'desc' => 'Example: https://www.linkedin.com/company/city-of-philadelphia/'
+                ),
+                array(
+                  'name' => 'Instagram URL',
+                  'id'   => 'phila_connect_social_instagram',
+                  'type' => 'url',
+                  'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+                ),
+                array(
+                  'name' => 'YouTube URL',
+                  'id'   => 'phila_connect_social_youtube',
+                  'type' => 'url',
+                  'desc' => 'Example: https://www.youtube.com/user/philly311center'
+                ),
+                array(
+                  'name' => 'Flickr URL',
+                  'id'   => 'phila_connect_social_flickr',
+                  'type' => 'url',
+                  'desc' => 'Example: https://www.flickr.com/photos/philly_cityrep/'
+                ),
+              ),
+            )
+          )
+        )
+      )
+    )
+  )
+);
+
 return $meta_boxes;
 
 }

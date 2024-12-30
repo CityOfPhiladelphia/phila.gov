@@ -1,0 +1,95 @@
+.featured {
+  background-color: #f0f0f0;
+  padding: 3rem 0 5rem 0;
+
+  hr {
+
+    margin: 0 auto;
+    border: 5px solid #2176d2;
+  }
+  .featured-grid {
+    margin: 0 auto !important;
+
+    .featured-content{
+      background-color: white;
+      padding-left: 1.5rem;
+    }
+    .date-published {
+      color: #444;
+      font-family: "Open Sans", Helvetica, Roboto, Arial, sans-serif;
+      font-size: 1.2rem;
+    }
+    .featured-item {
+      margin: 3rem 0;
+    }
+
+    .post-label {
+      font-family: "Times New Roman Italic", "Times New Roman", sans-serif;
+      font-style: italic;
+      color: #0f4d90;
+      font-size: 2rem;
+    }
+    img {
+      max-width: auto;
+      width: 100%;
+    }
+
+    a.faux-card:hover {
+      cursor: pointer;
+
+      img{
+        opacity: .4;
+      }
+      .featured-content {
+          background-color: #0f4d90;
+      }
+      .post-label {
+        color: #fff;
+      }
+      .date-published {
+        color: #fff;
+      }
+    }
+  }
+}
+
+a.press-release{
+  background-color: color(ghost-gray);
+  font-size: 2rem;
+  margin: 3rem 0;
+  padding: 2rem 0;
+  display: block;
+  text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+
+  @include breakpoint(medium down) {
+    padding: 1rem 0;
+    margin: 2rem 0;
+  }
+
+  &:hover{
+    background-color: color(ben-franklin-blue);
+    color: white !important;
+    .post-meta {
+      color: white;
+    }
+  }
+
+  p{
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    @include breakpoint(medium down) {
+      font-size: 1.5rem;
+    }
+  }
+  .post-meta {
+    color: #444;
+    font-weight: 400;
+  }
+
+  .fa {
+    font-size: 5rem;
+  }
+}
