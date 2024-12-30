@@ -175,7 +175,7 @@
                     <?php if ( !empty( $linkedin) ) : ?>
                       <span class="pvxs">
                         <a href="<?php echo $linkedin; ?>" class="phs" data-analytics="social">
-                          <i class="fa-brands fa-x-linkedin fa-2x" title="LinkedIn" aria-hidden="true"></i>
+                          <i class="fa-brands fa-linkedin fa-2x" title="LinkedIn" aria-hidden="true"></i>
                           <span class="show-for-sr">LinkedIn</span>
                         </a>
                       </span>

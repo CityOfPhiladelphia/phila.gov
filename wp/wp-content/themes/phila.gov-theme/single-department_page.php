@@ -100,11 +100,10 @@ get_header(); ?>
 
       } else if ($user_selected_template == 'bio_page') {
         include(locate_template( 'partials/departments/v2/bio-page.php') ) ;
-
-        }else {
-          $is_stub = false;
-          include(locate_template( 'templates/single-on-site-content.php') ) ;
-        } ?>
+      }else {
+        $is_stub = false;
+        include(locate_template( 'templates/single-on-site-content.php') ) ;
+      } ?>
       <?php endwhile;
     }
   ?>

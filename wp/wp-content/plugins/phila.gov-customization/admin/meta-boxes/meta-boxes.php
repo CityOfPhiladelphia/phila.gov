@@ -1332,69 +1332,77 @@ $meta_boxes[] = array(
       'id' => 'phila_person_headshot',
       'type' => 'file',
       'desc'  => 'Upload a headshot of the person',
+      'max_file_uploads' => 1,
+      'force_delete' => true,
     ),
-    Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields(),
     array(
-      'id' => 'phila_connect_general',
+      'id' => 'phila_std_address',
       'type' => 'group',
-      // List of sub-fields
       'fields' => array(
+        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_address_fields(),
         array(
-          'type' => 'heading',
-          'name' => 'Email, fax, etc.',
-        ),
-        array(
-          'name' => 'Email',
-          'id'   => 'phila_connect_email',
-          'type' => 'email',
-          'desc' => 'example@phila.gov',
-        ),
-        Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Explanation text for email', 'phila_connect_email_exp', false, 'Ex. For press inquiries contact:'),
-        array(
-          'id' => 'phila_connect_social',
+          'id' => 'phila_connect_general',
           'type' => 'group',
+          // List of sub-fields
           'fields' => array(
             array(
               'type' => 'heading',
-              'name' => 'Social',
+              'name' => 'Email, fax, etc.',
             ),
             array(
-              'name' => 'Facebook URL',
-              'id'   => 'phila_connect_social_facebook',
-              'type' => 'url',
-              'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+              'name' => 'Email',
+              'id'   => 'phila_connect_email',
+              'type' => 'email',
+              'desc' => 'example@phila.gov',
             ),
+            Phila_Gov_Standard_Metaboxes::phila_metabox_v2_phila_text('Explanation text for email', 'phila_connect_email_exp', false, 'Ex. For press inquiries contact:'),
             array(
-              'name' => 'X URL',
-              'id'   => 'phila_connect_social_twitter',
-              'type' => 'url',
-              'desc' => 'Example: https://x.com/PhiladelphiaGov'
-            ),
-            array(
-              'name' => 'LinkedIn URL',
-              'id'   => 'phila_connect_social_linkedin',
-              'type' => 'url',
-              'desc' => 'Example: https://www.linkedin.com/company/city-of-philadelphia/'
-            ),
-            array(
-              'name' => 'Instagram URL',
-              'id'   => 'phila_connect_social_instagram',
-              'type' => 'url',
-              'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
-            ),
-            array(
-              'name' => 'YouTube URL',
-              'id'   => 'phila_connect_social_youtube',
-              'type' => 'url',
-              'desc' => 'Example: https://www.youtube.com/user/philly311center'
-            ),
-            array(
-              'name' => 'Flickr URL',
-              'id'   => 'phila_connect_social_flickr',
-              'type' => 'url',
-              'desc' => 'Example: https://www.flickr.com/photos/philly_cityrep/'
-            ),
-          ),
+              'id' => 'phila_connect_social',
+              'type' => 'group',
+              'fields' => array(
+                array(
+                  'type' => 'heading',
+                  'name' => 'Social',
+                ),
+                array(
+                  'name' => 'Facebook URL',
+                  'id'   => 'phila_connect_social_facebook',
+                  'type' => 'url',
+                  'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
+                ),
+                array(
+                  'name' => 'X URL',
+                  'id'   => 'phila_connect_social_twitter',
+                  'type' => 'url',
+                  'desc' => 'Example: https://x.com/PhiladelphiaGov'
+                ),
+                array(
+                  'name' => 'LinkedIn URL',
+                  'id'   => 'phila_connect_social_linkedin',
+                  'type' => 'url',
+                  'desc' => 'Example: https://www.linkedin.com/company/city-of-philadelphia/'
+                ),
+                array(
+                  'name' => 'Instagram URL',
+                  'id'   => 'phila_connect_social_instagram',
+                  'type' => 'url',
+                  'desc' => 'Example: https://www.instagram.com/cityofphiladelphia/'
+                ),
+                array(
+                  'name' => 'YouTube URL',
+                  'id'   => 'phila_connect_social_youtube',
+                  'type' => 'url',
+                  'desc' => 'Example: https://www.youtube.com/user/philly311center'
+                ),
+                array(
+                  'name' => 'Flickr URL',
+                  'id'   => 'phila_connect_social_flickr',
+                  'type' => 'url',
+                  'desc' => 'Example: https://www.flickr.com/photos/philly_cityrep/'
+                ),
+              ),
+            )
+          )
         )
       )
     )
