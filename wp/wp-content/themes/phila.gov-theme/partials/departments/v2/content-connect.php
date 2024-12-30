@@ -63,6 +63,7 @@
     <tr>
       <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
         <i class="fas fa-phone fa-2x" aria-hidden="true"></i>
+        <span class="accessible">Phone</span>
       </th>
       <td class="<?php echo (!$archive) ? 'pvl': 'percent-90' ?>">
         <div class="p-tel">
@@ -117,6 +118,7 @@
       <tr>
         <th scope="row">
           <i class="fas fa-link fa-2x" aria-hidden="true"></i>
+          <span class="accessible">Website</span>
         </th>
         <td>
           <a href="<?php echo $connect_vars['website']['url'] ?>" class="website <?php echo $connect_vars['website']['external'] ? 'external' : ''?>">
