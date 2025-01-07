@@ -1,0 +1,1 @@
+<?php xdebug_info();
