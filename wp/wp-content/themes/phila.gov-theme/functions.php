@@ -61,35 +61,19 @@ function phila_gov_setup() {
     function phila_register_category_menus() {
 
       $get_possible_pages = array(
-      	'post_type' => array('department_page', 'programs'),
-        'posts_per_page'  => -1,
-        'order' => 'asc',
+        'post_type' => array('department_page', 'programs'),
+        'posts_per_page' => -1,  // Retrieve all posts
+        'order' => 'ASC',
         'orderby' => 'title',
-        'post_status' => 'any',
+        'post_status' => array('publish', 'pending', 'draft', 'future', 'private'),  // Exclude 'trash' and 'auto-draft'
         'meta_query' => array(
-      		'relation' => 'OR',
-      		array(
-      			'key'     => 'phila_template_select',
-      			'value'   => 'prog_landing_page',
-      			'compare' => '=',
-      		),
-      		array(
-      			'key'     => 'phila_template_select',
-      			'value'   => 'homepage_v2',
-      			'compare' => '=',
-      		),
-          array(
-      			'key'     => 'phila_template_select',
-      			'value'   => 'homepage_v3',
-      			'compare' => '=',
-      		),
-          array(
-            'key'     => 'phila_template_select',
-            'value'   => 'department_homepage',
-            'compare' => '=',
-          ),
-      	),
-      );
+            array(
+                'key'     => 'phila_template_select',
+                'value'   => array('prog_landing_page', 'homepage_v2', 'homepage_v3', 'department_homepage'),
+                'compare' => 'IN',
+            )
+        )
+    );
       $query = new WP_Query( $get_possible_pages );
 
       // The Loop
