@@ -65,7 +65,7 @@ function phila_gov_setup() {
         'posts_per_page' => -1,  // Retrieve all posts
         'order' => 'ASC',
         'orderby' => 'title',
-        'post_status' => array('any'),  // Exclude 'trash' and 'auto-draft'
+        'post_status' => 'any',  // Exclude 'trash' and 'auto-draft'
         'meta_query' => array(
             array(
                 'key'     => 'phila_template_select',
