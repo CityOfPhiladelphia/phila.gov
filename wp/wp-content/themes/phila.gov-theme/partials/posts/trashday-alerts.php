@@ -16,7 +16,7 @@ foreach ( $holidays as $holiday ) {
   $holiday_date = new DateTime($holiday['start_date']);
   $holiday_date->setTime(0, 0, 0, 0);
   $end_date = clone $holiday_date;
-  if ($today->format('N') <= 4 && $holiday_date->format('N') != 5 && $holiday_date->format('N') != 6 && $holiday_date->format('N') != 7 ) {
+  if ($today->format('N') <= 5 && $holiday_date->format('N') != 6 && $holiday_date->format('N') != 7 ) {
     $end_date->modify('next friday');
   }
   if (( $today >= $holiday_date) && ($today <= $end_date) && (date('N') <= 5)){
