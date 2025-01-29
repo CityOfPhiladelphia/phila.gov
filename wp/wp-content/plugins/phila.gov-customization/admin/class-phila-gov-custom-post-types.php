@@ -130,6 +130,7 @@ class Phila_Gov_Custom_Post_Types{
         'has_archive' => false,
         'menu_icon' => 'dashicons-id',
         'hierarchical' => false,
+        'rest_base' => 'announcements',
         'rewrite' => array(
           'slug' => 'announcements',
         ),
