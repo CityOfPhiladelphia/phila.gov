@@ -7,7 +7,7 @@
 ?>
 <!--Vuejs-->
 <?php if (!empty($app_title) ): ?>
-  <div class="grid-container">
+  <div class="grid-container pan">
     <div class="grid-x">
       <div class="cell small-24">
         <h3><?php echo $app_title ?> </h3>
@@ -15,7 +15,7 @@
     </div>
   </div>
 <?php endif; ?>
-<div class="grid-container">
+<div class="grid-container pan">
   <div class="grid-x">
     <div class="cell small-24">
       <div id="<?php echo empty($app_id) ? 'vue-app' : $app_id ?>"></div>
