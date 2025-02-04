@@ -24,8 +24,7 @@
     }
 
     .post-label {
-      font-family: "Times New Roman Italic", "Times New Roman", sans-serif;
-      font-style: italic;
+      font-family: "Open Sans Semibold", "Open Sans", sans-serif;
       color: #0f4d90;
       font-size: 2rem;
     }
@@ -60,7 +59,7 @@ a.press-release{
   padding: 2rem 0;
   display: block;
   text-decoration: none;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Open Sans Semibold", "Open Sans", sans-serif;
   font-weight: 400;
 
   @include breakpoint(medium down) {
@@ -77,7 +76,6 @@ a.press-release{
   }
 
   p{
-    font-style: italic;
     margin-bottom: 1rem;
     font-size: 2rem;
     @include breakpoint(medium down) {
