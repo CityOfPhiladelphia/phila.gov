@@ -926,7 +926,7 @@ class Phila_Gov_Standard_Metaboxes {
         'id'    => 'phila_action_panel_fa_multi',
         'type'  => 'text',
         'class' => 'action-panel-fa',
-        'desc'  => 'Uses <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icons. Eg: fas fa-bell'
+        'desc'  => 'Uses <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icons. Eg: fas fa-bell',
       ),
       array(
         'name'  => 'Link url',

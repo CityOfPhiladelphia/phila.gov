@@ -736,6 +736,15 @@ function phila_register_meta_boxes( $meta_boxes ){
           ),
 
           array(
+            'name' => '2024 updated design',
+            'id' => '2024_updated_design',
+            'type' => 'switch',
+            'desc'  => 'Use updated 2024 design?',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
+          ),
+
+          array(
             'id'  => 'phila_call_to_action_multi_group',
             'type' => 'group',
             'clone'  => true,
