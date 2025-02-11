@@ -141,6 +141,8 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             'type'  => 'wysiwyg',
             'desc'  => 'Enter a short description of the current status. 170 character maximum.',
             'required'  => true,
+            'limit'      => 180,
+            'limit_type' => 'character',
             'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
           ),
           array(
