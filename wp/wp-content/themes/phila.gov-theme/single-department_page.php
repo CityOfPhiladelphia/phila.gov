@@ -13,7 +13,17 @@ global $post;
  * @param  array  $partial_args arguments to scope to that specifc partial
  */
 function get_dept_partial($partial_name, $partial_args = array()){
-  phila_get_template_part('partials/departments/v2/department-'.$partial_name, $partial_args);
+  global $post;
+
+  if ( $post->ID == '4099' ){
+    include(locate_template(('partials/departments/v2/mayor/home.php')));
+
+  } else if ($post->post_parent == '4099'){
+    include(locate_template(('partials/departments/v2/mayor/subpage.php')));
+  }
+  else{
+    phila_get_template_part('partials/departments/v2/department-'.$partial_name, $partial_args);
+  }
 }
 
 $content = $post->post_content;
@@ -29,22 +39,14 @@ $ancestors = get_post_ancestors($post);
 $parent = wp_get_post_parent_id($post);
 $user_selected_template = phila_get_selected_template();
 
-if (phila_get_selected_template($parent) == 'prog_association' ) {
-  $user_selected_template = 'prog_association';
-  $association = true;
-}
-
 get_header(); ?>
 
-
-<div id="post-<?php the_ID(); ?>" <?php post_class('department clearfix'); ?>>
+<div id="post-<?php the_ID(); ?>" <?php post_class('department clearfix ' . $user_selected_template); ?>>
 
   <?php
 
     $parent = phila_util_get_furthest_ancestor($post);
 
-    if ( phila_util_is_new_template( $parent->ID ) && $user_selected_template !== 'prog_association' ) :
-      
       /**
        * Department Homepage V2 Hero
        */
@@ -61,12 +63,6 @@ get_header(); ?>
       get_dept_partial('hero', $hero_data);
 
 ?>
-<?php else: ?>
-    <?php 
-      include(locate_template( 'partials/programs/header.php') ); ?>
-<?php endif; ?>
-
-
   <?php
     if ( $user_selected_template === 'off_site_department' ){
 
@@ -100,13 +96,15 @@ get_header(); ?>
             <?php wp_reset_query(); ?>
           <?php endif; ?>
           <!-- END Department Stub -->
-      <?php 
+      <?php
 
-        } else {
-          $is_stub = false;
-          include(locate_template( 'templates/single-on-site-content.php') ) ;
-        }
-      endwhile;
+      } else if ($user_selected_template == 'bio_page') {
+        include(locate_template( 'partials/departments/v2/bio-page.php') ) ;
+      }else {
+        $is_stub = false;
+        include(locate_template( 'templates/single-on-site-content.php') ) ;
+      } ?>
+      <?php endwhile;
     }
   ?>
 </div><!-- #post-## -->

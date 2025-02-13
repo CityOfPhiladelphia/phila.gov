@@ -6,10 +6,12 @@ h1 .fa{
     font-size: 2rem;
   }
 }
-//set explicit height on logo for IE10, 11
-#global-sticky-nav{
-  .logo img{
-    height:43px;
+
+.primary-menu{
+  .menu-item-has-children{
+    a{
+      color:white;
+    }
   }
 }
 

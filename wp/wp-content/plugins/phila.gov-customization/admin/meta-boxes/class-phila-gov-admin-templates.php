@@ -135,7 +135,7 @@ class Phila_Gov_Admin_Templates {
   function register_template_selection_metabox_posts( $meta_boxes ){
 
     $meta_boxes[] = array(
-      'title'    => 'Select Template',
+      'title'    => 'Template',
       'post_types'    => array( 'post' ),
       'context'  => 'after_title',
       'fields' => array(
@@ -145,10 +145,10 @@ class Phila_Gov_Admin_Templates {
           'type'  => 'select',
           'required'  => true,
           'options' => array(
-            'post'   => 'Post',
-            'press_release' => 'Press Release',
-            'action_guide'  => 'Action Guide',
-            'action_guide_2'  => 'Action Guide V2'
+            'press_release'   => 'Press Release',
+            'post'            => 'Blog post',
+            'advanced_post'   => 'Advanced blog post',
+            'series'          => 'Blog series'
           ),
           'admin_columns' => array(
             'position' => 'after date',
@@ -158,7 +158,6 @@ class Phila_Gov_Admin_Templates {
         ),
       ),
     );
-
 
     return $meta_boxes;
 

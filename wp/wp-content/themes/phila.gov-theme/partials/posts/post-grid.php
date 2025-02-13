@@ -1,10 +1,11 @@
 <?php
 /*
- * Display a grid of 3 posts
+ * Display a grid of 3 posts or a list of 4 posts if using 2024 design
  *
 */
 ?>
 <?php
+
   $override = rwmb_meta('phila_get_post_cats');
   $override_url = isset($override['override_url']) ? $override['override_url'] : '';
   $post_categories = isset($category) ? $category : '';
@@ -45,17 +46,23 @@ if ( empty( $post_categories ) ) {
     'order' => 'desc',
     'orderby' => 'post_date',
     'meta_query'  => array(
+      'relation'  => 'OR',
       array(
         'key' => 'phila_template_select',
         'value' => 'post',
         'compare' => '=',
-      )
+      ),
+      array(
+        'key' => 'phila_template_select',
+        'value' => 'advanced_post',
+        'compare' => '=',
+      ),
     ),
   );
 
   if ( false === ( $sticky_posts = get_transient( get_the_ID().'_sticky_posts_results' ) ) ) {
     $sticky_posts = new WP_Query( $sticky_args );
-    set_transient( get_the_ID().'_sticky_posts_results', $sticky_posts, 1 * HOUR_IN_SECONDS );
+    // set_transient( get_the_ID().'_sticky_posts_results', $sticky_posts, 1 * HOUR_IN_SECONDS );
   }
 
 
@@ -69,29 +76,52 @@ if( !empty($tag) && $tag != 'is_single' ) {
     'orderby' => 'post_date',
     'tag__in'  => array($tag),
     'meta_query'  => array(
-      'relation'  => 'AND',
+      'relation'  => 'OR',
       array(
-        'key' => 'phila_template_select',
-        'value' => 'post',
-        'compare' => '=',
-      ),
-      array(
-        'relation'  => 'OR',
+        'relation'  => 'AND',
         array(
-          'key' => 'phila_select_language',
-          'value' => 'english',
+          'key' => 'phila_template_select',
+          'value' => 'post',
           'compare' => '=',
         ),
         array(
-          'key' => 'phila_select_language',
-          'compare' => 'NOT EXISTS'
+          'relation'  => 'OR',
+          array(
+            'key' => 'phila_select_language',
+            'value' => 'english',
+            'compare' => '=',
+          ),
+          array(
+            'key' => 'phila_select_language',
+            'compare' => 'NOT EXISTS'
+          ),
         ),
       ),
-    )
+      array(
+        'relation'  => 'AND',
+        array(
+          'key' => 'phila_template_select',
+          'value' => 'advanced_post',
+          'compare' => '=',
+        ),
+        array(
+          'relation'  => 'OR',
+          array(
+            'key' => 'phila_select_language',
+            'value' => 'english',
+            'compare' => '=',
+          ),
+          array(
+            'key' => 'phila_select_language',
+            'compare' => 'NOT EXISTS'
+          ),
+        ),
+      ),
+    ),
   );
   if ( false === ( $result = get_transient( get_the_ID().'_default_posts_results' ) ) ) {
     $result = new WP_Query( $posts_args );
-    set_transient( get_the_ID().'_default_posts_results', $result, 1 * HOUR_IN_SECONDS );
+    // set_transient( get_the_ID().'_default_posts_results', $result, 1 * HOUR_IN_SECONDS );
   }
 
 }else{
@@ -122,15 +152,14 @@ if( !empty($tag) && $tag != 'is_single' ) {
 
   if ( false === ( $more_posts = get_transient( get_the_ID().'_more_posts_results' ) ) ) {
     $more_posts = new WP_Query( $posts_args );
-    set_transient( get_the_ID().'_more_posts_results', $more_posts, 1 * HOUR_IN_SECONDS );
+    // set_transient( get_the_ID().'_more_posts_results', $more_posts, 1 * HOUR_IN_SECONDS );
   }
 
   if ( false === ( $result = get_transient( get_the_ID().'_empty_posts_results' ) ) ) {
     $result = new WP_Query();
-    set_transient( get_the_ID().'_empty_posts_results', $result, 1 * HOUR_IN_SECONDS );
+    // set_transient( get_the_ID().'_empty_posts_results', $result, 1 * HOUR_IN_SECONDS );
   }
-
-
+  
   //if sticky posts is empty, don't add it to the results array
   $result->posts = array_merge(isset($sticky_posts->posts) ? $sticky_posts->posts : array(), $more_posts->posts);
 
@@ -144,94 +173,139 @@ $result->post_count = count( $result->posts );
 
 <?php $count = 0; ?>
 <?php $label = 'post'; ?>
-<div class="post-grid">
-  <div class="grid-container">
-    <?php if ( $result->have_posts() ) : ?>
-      <?php include( locate_template( 'partials/posts/post-translated-langs-see-all.php' ) ); ?>
-        <div class="grid-x grid-margin-x align-stretch">
-        <?php $total = $result->post_count; ?>
-        <?php $label_arr = phila_get_post_label('post'); ?>
-        <?php while ( $result->have_posts() ) : $result->the_post(); ?>
-          <?php $post_type = get_post_type(); ?>
-          <?php $post_obj = get_post_type_object( $post_type ); ?>
-          <?php $count++; ?>
-          <?php if( $user_selected_template === 'custom_content' || $post_type_parent === 'guides' ): ?>
-            <div class="cell medium-24 align-self-stretch post-<?php echo $count ?>">
-              <?php include( locate_template( 'partials/posts/content-list-icon.php' ) ); ?>
-            </div>
-          <?php else: ?>
-            <?php if ($total >= 3 ): ?>
-              <?php if ($count == 1 ): ?>
-                <div class="cell medium-16 align-self-stretch post-<?php echo $count ?>">
-                <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
-              <?php elseif( $count == 2 ):?>
-                <div class="cell medium-8 align-self-stretch post-<?php echo $count ?>">
-                <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
-              <?php elseif( $count == 3 )  : ?>
-                </div>
+<?php if ($use_2024_design): ?>
+<div class="refresh">
+  <div id="latest-news" class="grid-container fluid featured mtxl">
+      <div class="featured-grid grid-container grid-padding-x">
+        <h2 class="header contrast">Latest news</h2>
+        <?php $count = 0; ?>
+        <?php if ( $result->have_posts() ) : ?>
+          <?php while ( $result->have_posts() ) : $result->the_post(); ?>
+          <div class="featured-item">
+              <a href="<?php echo the_permalink(); ?>" class="faux-card grid-x">
+                  <?php if ( has_post_thumbnail() ) : ?>
+                    <div class="cell large-6 flex-child-auto">
+                      <?php echo phila_get_thumbnails(); ?>
+                    </div>
+                    <?php endif; ?>
+                  <div class="cell featured-content pam large-18 grid-x">
+                      <div class="cell align-self-top post-label post-label--post">
+                          <header class="mvm">
+                            <?php echo get_the_title(); ?>
+                          </header>
+                      </div>
+                      <div class="cell align-self-bottom">
+                          <div class="post-meta">
+                              <span class="date-published"><time datetime="<?php echo get_post_time('Y-m-d'); ?>"><?php echo get_the_date();?></time></span>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <?php endwhile; ?>
+          <?php endif; ?>
+      </div>
+      <div class="grid-container group">
+        <a class="button float-right content-type-featured mbxl" href="https://www.phila.gov/the-latest/" aria-label="See all news">
+          See all news
+          <i class="fas fa-angle-right fa-lg" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+<?php else: ?>
+<div class="row">
+  <div class="post-grid">
+    <div class="grid-container">
+      <?php if ( $result->have_posts() ) : ?>
+        <?php include( locate_template( 'partials/posts/post-translated-langs-see-all.php' ) ); ?>
+          <div class="grid-x grid-margin-x align-stretch">
+          <?php $total = $result->post_count; ?>
+          <?php $label_arr = phila_get_post_label('post'); ?>
+          <?php while ( $result->have_posts() ) : $result->the_post(); ?>
+            <?php $post_type = get_post_type(); ?>
+            <?php $post_obj = get_post_type_object( $post_type ); ?>
+            <?php $count++; ?>
+            <?php if( $user_selected_template === 'custom_content' || $post_type_parent === 'guides' ): ?>
+              <div class="cell medium-24 align-self-stretch post-<?php echo $count ?>">
+                <?php include( locate_template( 'partials/posts/content-list-icon.php' ) ); ?>
               </div>
-              <div class="grid-container">
-                <div class="grid-x grid-margin-x">
-                  <div class="cell medium-24 post-<?php echo $count ?>">
-                    <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
+            <?php else: ?>
+              <?php if ($total >= 3 ): ?>
+                <?php if ($count == 1 ): ?>
+                  <div class="cell medium-16 align-self-stretch post-<?php echo $count ?>">
+                  <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
+                <?php elseif( $count == 2 ):?>
+                  <div class="cell medium-8 align-self-stretch post-<?php echo $count ?>">
+                  <?php include( locate_template( 'partials/posts/content-card-image.php' ) ); ?>
+                <?php elseif( $count == 3 )  : ?>
                   </div>
                 </div>
-              <?php endif; ?>
-            </div>
-            <?php elseif ( $count == 1 || $count == 2) : ?>
-                <div class="cell medium-24">
-                  <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
-                </div>
-            <?php endif;?>
-          <?php endif; ?>
-        <?php endwhile; ?>
-        <?php if ($count >= 3 ): ?>
-        <div class="grid-container group">
-            <?php $see_all = array(
-              'URL' => '/the-latest/archives/?templates=post&templates=featured',
-              'content_type' => $label,
-              'nice_name' => 'posts'
-            ); ?>
-            <?php if( !empty( $post_categories ) ) :?>
-              <?php $see_all_URL = array(
-                'URL' => '/the-latest/archives/?templates=post&templates=featured&department=' . $slang_name,
-              );
-              $see_all = array_replace( $see_all, $see_all_URL );
-              endif;?>
-              <?php if( !empty( $tag ) && $tag != 'is_single' ) :
-                  if( gettype($tag) === 'array'):
-                    $term = [];
-                    foreach($tag as $t) {
-                      $name = get_term($t, 'post_tag');
-                      array_push($term, $name->name);
-                    }
-                    $term = implode(', ', $term);
-                    $see_all_URL = array(
-                      'URL' => '/the-latest/archives/?tag=' . $term,
-                    );
-                  else:
-                    $term = get_term($tag, 'post_tag');
-                    $see_all_URL = array(
-                      'URL' => '/the-latest/archives/?tag=' . $term->name,
-                    );
-                  endif; ?>
-              <?php if (!empty($override_url)) : ?>
-              <?php $see_all_URL = array(
-                  'URL' => $override_url
-                ); ?>
-              <?php endif; ?>
-              <?php $see_all = array_replace($see_all, $see_all_URL );
+                <div class="grid-container">
+                  <div class="grid-x grid-margin-x">
+                    <div class="cell medium-24 post-<?php echo $count ?>">
+                      <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
+                    </div>
+                  </div>
+                <?php endif; ?>
+              </div>
+              <?php elseif ( $count == 1 || $count == 2) : ?>
+                  <div class="cell medium-24">
+                    <?php include( locate_template( 'partials/posts/content-list-image.php' ) ); ?>
+                  </div>
+              <?php endif;?>
+            <?php endif; ?>
+          <?php endwhile; ?>
+          <?php if ($count >= 3 ): ?>
+          <div class="grid-container group">
+              <?php $see_all = array(
+                'URL' => '/the-latest/archives/?templates=post&templates=featured',
+                'content_type' => $label,
+                'nice_name' => 'posts'
+              ); ?>
+              <?php if( !empty( $post_categories ) ) :?>
+                <?php $see_all_URL = array(
+                  'URL' => '/the-latest/archives/?templates=post&templates=featured&department=' . $slang_name,
+                );
+                $see_all = array_replace( $see_all, $see_all_URL );
                 endif;?>
-          <?php if ($user_selected_template == 'custom_content' || $post_type_parent === 'guides'): ?>
-            </div>
-            <div class='custom'>
-              <?php include( locate_template( 'partials/custom-content-see-all.php' ) ); ?>
-            </div>
-          <?php else: ?>
-            <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
-          <?php endif; ?>
-        </div>
-      <?php endif; ?>
-    <?php endif;?>
-  <?php wp_reset_postdata(); ?>
-</div>
+                <?php if( !empty( $tag ) && $tag != 'is_single' ) :
+                    if( gettype($tag) === 'array'):
+                      $term = [];
+                      foreach($tag as $t) {
+                        $name = get_term($t, 'post_tag');
+                        array_push($term, $name->name);
+                      }
+                      $term = implode(', ', $term);
+                      $see_all_URL = array(
+                        'URL' => '/the-latest/archives/?tag=' . $term,
+                      );
+                    else:
+                      $term = get_term($tag, 'post_tag');
+                      $see_all_URL = array(
+                        'URL' => '/the-latest/archives/?tag=' . $term->name,
+                      );
+                    endif; ?>
+                <?php if (!empty($override_url)) : ?>
+                <?php $see_all_URL = array(
+                    'URL' => $override_url
+                  ); ?>
+                <?php endif; ?>
+                <?php $see_all = array_replace($see_all, $see_all_URL );
+                  endif;?>
+            <?php if ($user_selected_template == 'custom_content' || $post_type_parent === 'guides'): ?>
+              </div>
+              <div class='custom'>
+                <?php include( locate_template( 'partials/custom-content-see-all.php' ) ); ?>
+              </div>
+            <?php else: ?>
+              <?php include( locate_template( 'partials/content-see-all.php' ) ); ?>
+            <?php endif; ?>
+          </div>
+        <?php endif; ?>
+      <?php endif;?>
+  </div>
+  </div>
+  </div>
+<?php wp_reset_postdata(); ?>
+<?php endif; ?>

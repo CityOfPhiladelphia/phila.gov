@@ -5,15 +5,15 @@ module.exports = $(function () {
   var navHeight = $('.global-nav').height();
   var windowWidth = $(window).width();
 
-//Generic class for links that should prevent clickthrough
-$('.no-link').click(function(e){
-  e.preventDefault();
-});
+  //Generic class for links that should prevent clickthrough
+  $('.no-link').click(function(e){
+    e.preventDefault();
+  });
 
-/* Drilldown menu */
-$('.menu-icon').click(function(e) {
-  extendMenuToggle();
-});
+  /* Drilldown menu */
+  $('.menu-icon').click(function(e) {
+    extendMenuToggle();
+  });
 
 //opened submenu
 $(document).on('open.zf.drilldown', '[data-drilldown]', function(){
@@ -198,17 +198,18 @@ $('.clickable-row .document').click(function(e) {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-var titles = document.querySelectorAll(".cost .title");
-var maxHeight = 0;
+  var titles = document.querySelectorAll(".cost .title");
+  var maxHeight = 0;
 
-titles.forEach(function(title) {
-  var titleHeight = title.offsetHeight;
-  if (titleHeight > maxHeight) {
-    maxHeight = titleHeight;
-  }
-});
+  titles.forEach(function(title) {
+    var titleHeight = title.offsetHeight;
+    if (titleHeight > maxHeight) {
+      maxHeight = titleHeight;
+    }
+  });
 
-titles.forEach(function(title) {
-  title.style.height = maxHeight + "px";
+  titles.forEach(function(title) {
+    title.style.height = maxHeight + "px";
+  });
 });
 });
