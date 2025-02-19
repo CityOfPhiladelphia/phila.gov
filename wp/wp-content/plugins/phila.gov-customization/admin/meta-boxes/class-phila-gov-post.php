@@ -28,7 +28,7 @@ class Phila_Gov_Post {
           'id'  => 'phila_author',
           'type' => 'user',
           'multiple' => true,
-          'hidden' => true,
+          // 'hidden' => true,
           'field_type'  => 'select_advanced',
           'placeholder' => 'Select more authors',
           'desc'  => 'The author of this post will be listed first, with authors chosen here appearing after, in the order listed.'
