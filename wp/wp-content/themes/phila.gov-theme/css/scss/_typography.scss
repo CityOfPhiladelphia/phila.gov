@@ -11,6 +11,10 @@ h2, .h2 {
   font-weight: 600;
   font-size: 2rem;
   line-height: 2.2rem;
+
+  &.contrast{
+    padding-bottom: 0.15rem;
+  }
 }
 
 h3, .h3{
