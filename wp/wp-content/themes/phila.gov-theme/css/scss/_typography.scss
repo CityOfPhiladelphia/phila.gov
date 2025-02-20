@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
 p, ul, ol, div, section {
-  font-size: 16px;
+  font-size: 1rem;
 }
 h1, .h1 {
   font-weight: 600;
@@ -61,11 +61,11 @@ button, .button {
 }
 
 input[type=checkbox] + label[for] {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 input[type=radio] + label[for] {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .callout {

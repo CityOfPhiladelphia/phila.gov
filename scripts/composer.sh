@@ -44,7 +44,6 @@ echo '
     "cityofphiladelphia/duplicate-and-merge-posts": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/google-calendar-events": "dev-'$GITHUB_BRANCH'",
     "cityofphiladelphia/restrict-categories": "dev-'$GITHUB_BRANCH'",
-    "cityofphiladelphia/mb-revision": "dev-'$GITHUB_BRANCH'",
     "kylephillips/nestedpages": "dev-main",
     "wpackagist-plugin/better-search-replace":"1.4.3",
     "wpackagist-plugin/disable-gutenberg":"2.8.1",
@@ -63,7 +62,8 @@ echo '
     "wpackagist-plugin/wordpress-importer":"^0.8",
     "wpackagist-plugin/tinymce-advanced":"^5.9.2",
     "nesbot/carbon": "^2.64",
-    "google/apiclient": "^2.13"
+    "google/apiclient": "^2.13",
+    "wpackagist-plugin/litespeed-cache": "^6.5.2"
   },
   "config": {
     "allow-plugins": {

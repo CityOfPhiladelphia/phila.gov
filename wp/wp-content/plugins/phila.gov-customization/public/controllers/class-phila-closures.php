@@ -69,11 +69,12 @@ class Phila_Closures_Controller {
         $status = "Trash and recycling collections are on schedule.";
         break;
       case 1:
-        $status = "Trash and recycling collections are delayed in some areas. Set materials out on scheduled day.";
+        $delay = true;
+        $status = "Trash and recycling collections are delayed in some areas. You should still set materials out on your scheduled day. ";
         break;
       case 2:
         $delay = true;
-        $status = "Trash and recycling collections are delayed in some areas. Set materials out one day behind scheduled day.";
+        $status = "Trash and recycling collections are delayed in some areas. Set materials out one day after your scheduled day.";
         break;
       case 3:
         $status = $flexible_collection['phila_flexible_collection_status'];
@@ -105,7 +106,7 @@ class Phila_Closures_Controller {
       $end_date->setTime(0,0,1);
 
       if ( ($holiday_date <= $today ) && ($end_date >= $today) && (date('N') <= 5) ) {
-        $status = "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day.";
+        $status = "On a holiday schedule: Set trash and recycling out one day after your regular day. Trash-only collection (available in some areas) is canceled this week.";
         $delay = true;
       }
 

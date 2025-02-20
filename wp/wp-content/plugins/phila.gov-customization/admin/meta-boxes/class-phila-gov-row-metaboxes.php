@@ -90,6 +90,14 @@ class Phila_Gov_Row_Metaboxes {
         'id'  => 'phila_get_post_cats',
         'type' => 'group',
         'fields' => array(
+          array(
+            'name' => '2024 updated design',
+            'id' => '2024_updated_design',
+            'type' => 'switch',
+            'desc'  => 'Use updated 2024 design?',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
+          ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select new owner', 'phila_post_category', 'Display posts from these owners.' ),
           array(
             'name'  => 'Filter by a tag',
@@ -254,6 +262,14 @@ class Phila_Gov_Row_Metaboxes {
         'type' => 'group',
         'visible'  => array('phila_full_options_select', '=', 'phila_full_width_press_releases'),
         'fields' => array(
+          array(
+            'name' => '2024 updated design',
+            'id' => '2024_updated_design',
+            'type' => 'switch',
+            'desc'  => 'Use updated 2024 design?',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
+          ),
           Phila_Gov_Standard_Metaboxes::phila_metabox_category_picker('Select owners', 'phila_press_release_category', 'Display press releases from these owners.' ),
           array(
             'name'  => 'Filter by a tag',
@@ -278,13 +294,13 @@ class Phila_Gov_Row_Metaboxes {
         'context'  => 'normal',
         'priority' => 'default',
         'type'    => 'group',
-    
+
         'visible' => array(
           'when' => array(
             array( 'phila_full_options_select', '=', 'phila_staff_table'),
           ),
         ),
-    
+
         'fields' => array(
           array(
             'id'   => 'phila_staff_directory_selected',
@@ -345,7 +361,7 @@ class Phila_Gov_Row_Metaboxes {
         'type'  => 'group',
         'clone' => false,
         'visible' => array('phila_full_options_select', '=', 'phila_programs'),
-        'fields'  => 
+        'fields'  =>
           Phila_Gov_Standard_Metaboxes::phila_program_page_selector($multiple = true)
       ),
       array(
@@ -463,9 +479,9 @@ class Phila_Gov_Row_Metaboxes {
         'fields'  => array(
             Phila_Gov_Standard_Metaboxes::phila_timeline_page_selector(),
             array(
-              'name' => 'Timeline item count',
+              'name' => 'Item count',
               'id'   => 'homepage_timeline_item_count',
-              'desc'  => 'Select the number of items from the timeline to display',
+              'desc'  => 'Enter the number of items that the timeline component should display.',
               'type' => 'number'
           ),
         )
@@ -702,10 +718,16 @@ class Phila_Gov_Row_Metaboxes {
                     'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
                   ),
                   array(
-                    'name' => 'Twitter URL',
+                    'name' => 'X URL',
                     'id'   => 'phila_connect_social_twitter',
                     'type' => 'url',
-                    'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+                    'desc' => 'Example: https://x.com/PhiladelphiaGov'
+                  ),
+                  array(
+                    'name' => 'LinkedIn URL',
+                    'id'   => 'phila_connect_social_linkedin',
+                    'type' => 'url',
+                    'desc' => 'Example: https://www.linkedin.com/company/city-of-philadelphia/'
                   ),
                   array(
                     'name' => 'Instagram URL',
@@ -747,7 +769,7 @@ class Phila_Gov_Row_Metaboxes {
 
         'fields'  => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_v2_ordered_content(),
-          
+
         )
       ),
     );
@@ -769,9 +791,9 @@ class Phila_Gov_Row_Metaboxes {
         'add_button' => '+ Add FAQ',
         'fields' => array(
           Phila_Gov_Standard_Metaboxes::phila_metabox_double_wysiwyg(
-            $section_name = 'FAQ title', 
-            $wysiwyg_desc = 'FAQ content', 
-            $columns = 12, 
+            $section_name = 'FAQ title',
+            $wysiwyg_desc = 'FAQ content',
+            $columns = 12,
             $clone = true ),
         )
       )

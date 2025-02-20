@@ -44,7 +44,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'settings_pages' => 'phila_gov',
     'tab'            => 'general',
     'include' => array(
-      'user_role'  => array( 'administrator', 'editor' ),
+      'user_role'  => array( 'administrator', 'editor',  ),
     ),
     'fields'         => array(
       array(
@@ -109,7 +109,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
     'settings_pages' => 'phila_gov',
     'tab'            => 'closures',
     'include' => array(
-      'user_role'  => array( 'administrator', 'editor', 'job_board_editor', 'secondary_philagov_closure_settings_editor' ),
+      'user_role'  => array( 'administrator', 'editor', 'secondary_philagov_closure_settings_editor' ),
     ),
     'fields'  => array(
       array(
@@ -141,6 +141,8 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             'type'  => 'wysiwyg',
             'desc'  => 'Enter a short description of the current status. 170 character maximum.',
             'required'  => true,
+            'limit'      => 180,
+            'limit_type' => 'character',
             'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic(),
           ),
           array(

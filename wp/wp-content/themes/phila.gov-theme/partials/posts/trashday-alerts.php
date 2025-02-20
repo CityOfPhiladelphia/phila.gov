@@ -64,10 +64,10 @@ foreach ( $holidays as $holiday ) {
           <span class="bold">
             <?php if 
               ( $status == 3 ) { echo $flexible_collection['phila_flexible_collection_status']; } else if
-              ( $is_holiday == true ) { echo "Trash and recycling collections are on a holiday schedule. Set materials out one day behind your regular day."; } else if
+              ( $is_holiday == true ) { echo "On a holiday schedule: Set trash and recycling out one day after your regular day. Trash-only collection (available in some areas) is canceled this week."; } else if
               ( $status == 0 ) { echo "Trash and recycling collections are on schedule."; } else if 
-              ( $status == 1 ) { echo "Trash and recycling collections are delayed in some areas. Set materials out on scheduled day."; } else if
-              ( $status == 2 ) { echo "Trash and recycling collections are delayed in some areas. Set materials out one day behind scheduled day."; } 
+              ( $status == 1 ) { echo "Trash and recycling collections are delayed in some areas. You should still set materials out on your scheduled day. "; } else if
+              ( $status == 2 ) { echo "Trash and recycling collections are delayed in some areas. Set materials out one day after your scheduled day."; } 
             ?>
           </span>
         </td>

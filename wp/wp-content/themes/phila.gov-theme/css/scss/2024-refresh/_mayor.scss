@@ -1,0 +1,158 @@
+.mayor-page {
+  .hero-content {
+    background: color(ben-franklin-blue);
+    color: white;
+    text-align: left;
+  }
+  .image-offset{
+    .one-philly-mayor {
+      position: relative;
+      top: 2rem;
+    }
+  }
+  .mr-meeseeks {
+    h1 {
+      font-size: 3rem;
+      @include breakpoint(medium down) {
+        font-size: 2rem;
+      }
+    }
+    span.MAYOR {
+      display: block;
+      text-transform: uppercase;
+      font-size: 5rem;
+      line-height: 4rem;
+      font-weight: 700;
+      @include breakpoint(medium down) {
+        font-size: 3rem;
+        line-height: 3rem;
+      }
+    }
+    .tagline {
+      font-size: 2rem;
+      font-family: "Open Sans Semibold", "Open Sans", sans-serif;
+      @include breakpoint(medium down) {
+        font-size: 1.5rem;
+      }
+    }
+    @include breakpoint(medium down) {
+      text-align: center;
+    }
+  }
+  #what-we-do, .connect-box .contrast {
+    display: none;
+  }
+  .custom-text{
+    p, ul, li, div{
+      font-size: 1.2rem;
+    }
+  }
+  table.connect{
+    font-size: 1.4rem !important;
+
+    th, td{
+      padding: 0 0 2rem 0;
+    }
+    div {
+      font-size: 1.4rem !important;
+    }
+    tbody {
+      background-color: white;
+    }
+    &.no-alternate tr:nth-child(even){
+      background-color: white;
+    }
+  }
+  .cta-multi{
+    padding: 0;
+    margin: 0;
+
+    a.color-block-card{
+      display: block;
+      font-family: "Montserrat-Bold", "Montserrat", sans-serif;
+      padding: 1rem 1rem 1rem 4rem;
+      text-decoration: none;
+      @include breakpoint(medium down) {
+        text-align: center;
+        padding: 2rem;
+        min-height: 200px;
+      }
+      .text-bottom {
+        display: flex;
+        min-height: 280px;
+      }
+      .copy {
+        font-size: 2rem;
+        line-height: 3rem;
+        align-self: self-end;
+        span{
+          background-color: color(dark-ben-franklin);
+          color: white;
+        }
+      }
+    }
+    .cell:nth-child(1) {
+      background-image: url(https://phila.gov/assets/images/website/parker-1-color.png);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      a{
+        color: #444;
+        &:hover{
+          color: white;
+          background-image: url(https://phila.gov/assets/images/website/parker-1.png);
+          background-repeat: no-repeat;
+          background-size: 100%;
+        }
+      }
+    }
+    .cell:nth-child(2) {
+      background-image: url(https://phila.gov/assets/images/website/parker-2-color.png);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      a{
+        color: #444;
+        &:hover{
+          color: white;
+          background-image: url(https://phila.gov/assets/images/website/parker-2.png);
+          background-repeat: no-repeat;
+          background-size: 100%;
+
+        }
+      }
+    }
+    .cell:nth-child(3) {
+      background-image: url(https://phila.gov/assets/images/website/parker-3-color.png);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      a {
+        color: white;
+        &:hover{
+          color: #444;
+          background-image: url(https://phila.gov/assets/images/website/parker-3.png);
+          background-repeat: no-repeat;
+          background-size: 100%;
+        }
+      }
+    }
+    .cell:nth-child(4) {
+      background: color(dark-ben-franklin) !important;
+      a {
+        color: white;
+        &:hover{
+          color: #444;
+        }
+      }
+    }
+  }
+  h2 {
+    font-family: Montserrat-Bold,Montserrat Bold,Montserrat,sans-serif;
+    font-size: 3.75rem;
+    line-height: 4rem;
+    font-weight: 700;
+    @include breakpoint(medium down) {
+      font-size: 2.75rem;
+      line-height: 2.75rem;
+    }
+  }
+
+}

@@ -61,35 +61,19 @@ function phila_gov_setup() {
     function phila_register_category_menus() {
 
       $get_possible_pages = array(
-      	'post_type' => array('department_page', 'programs'),
-        'posts_per_page'  => -1,
-        'order' => 'asc',
+        'post_type' => array('department_page', 'programs'),
+        'posts_per_page' => -1,  // Retrieve all posts
+        'order' => 'ASC',
         'orderby' => 'title',
-        'post_status' => 'any',
+        'post_status' => 'any',  // Exclude 'trash' and 'auto-draft'
         'meta_query' => array(
-      		'relation' => 'OR',
-      		array(
-      			'key'     => 'phila_template_select',
-      			'value'   => 'prog_landing_page',
-      			'compare' => '=',
-      		),
-      		array(
-      			'key'     => 'phila_template_select',
-      			'value'   => 'homepage_v2',
-      			'compare' => '=',
-      		),
-          array(
-      			'key'     => 'phila_template_select',
-      			'value'   => 'homepage_v3',
-      			'compare' => '=',
-      		),
-          array(
-            'key'     => 'phila_template_select',
-            'value'   => 'department_homepage',
-            'compare' => '=',
-          ),
-      	),
-      );
+            array(
+                'key'     => 'phila_template_select',
+                'value'   => array('prog_landing_page', 'homepage_v2', 'homepage_v3', 'department_homepage'),
+                'compare' => 'IN',
+            )
+        )
+    );
       $query = new WP_Query( $get_possible_pages );
 
       // The Loop
@@ -1286,7 +1270,6 @@ function phila_get_archive_status( $post_id ) {
   } else {
     $archived = false;
   }
-
   return (bool) $archived;
 }
 
@@ -1530,6 +1513,8 @@ function phila_connect_panel($connect_panel) {
       if ( isset( $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_facebook'] ) && $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_facebook'] != '') $output_array['social']['facebook'] = $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_facebook'];
 
       if ( isset( $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'] ) && $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'] != ''  ) $output_array['social']['twitter'] = $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'];
+
+      if ( isset( $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'] ) && $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'] != ''  ) $output_array['social']['linkedin'] = $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'];
 
       if ( isset( $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'] ) && $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'] != '' ) $output_array['social']['instagram'] = $connect_panel['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'];
 
