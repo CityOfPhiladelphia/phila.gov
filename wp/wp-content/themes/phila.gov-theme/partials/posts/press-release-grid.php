@@ -4,13 +4,15 @@
 */
 ?>
 <?php $press_categories = isset( $category ) ? $category : '';?>
+<?php $use_2024_design = isset( $use_2024_design ) ? $use_2024_design : '';?>
+
 <?php if ($press_categories) : ?>
   <?php foreach ($press_categories as $category ) {
     $current_cat = get_category($category);
     $slang_name = html_entity_decode(trim(phila_get_owner_typography( $current_cat )));
   }
   ?>
-  <?php else: 
+  <?php else:
     $current_cat = null;
     $slang_name = '';?>
 <?php endif; ?>
@@ -57,8 +59,8 @@ if( !empty($tag) ) {
 }
 ?>
 
-<?php 
-  $user_selected_template = phila_get_selected_template(); 
+<?php
+  $user_selected_template = phila_get_selected_template();
   $post_type_parent = get_post_type($post->ID);
 ?>
 
@@ -71,6 +73,29 @@ if( !empty($tag) ) {
 <?php $label = 'press_release' ?>
 <?php $count = 0; ?>
 
+<?php if ($use_2024_design): ?>
+  <?php if ( $result->have_posts() ) : ?>
+    <div class="refresh">
+    <h2 class="header contrast">Press releases</h2>
+    <?php while ( $result->have_posts() ) : $result->the_post(); ?>
+    <a class="press-release" href="<?php echo get_the_permalink(); ?>">
+      <div class="grid-x">
+        <div class="cell small-3 align-self-middle center show-for-medium">
+          <i class="fa fa-file-lines" aria-hidden="true"></i> <span class="sr-only">Press release</span>
+        </div>
+        <div class="cell small-21 align-self-middle">
+          <p><?php echo get_the_title(); ?></p>
+          <div class="post-meta">
+            <span class="date-published"><time datetime="<?php echo get_post_time('Y-m-d'); ?>"><?php echo get_the_date();?></time></span>
+          </div>
+        </div>
+      </div>
+    </a>
+    <?php endwhile; ?>
+  </div>
+  <?php endif; ?>
+
+<?php else: ?>
 <div class="press-grid<?php echo ( is_page_template() ) ? "" : ' mbxl mtxl' ?>">
   <div class="grid-container">
   <?php if ( $result->have_posts() ) : ?>
@@ -116,3 +141,4 @@ if( !empty($tag) ) {
   <?php wp_reset_postdata(); ?>
   </div>
 </div>
+<?php endif; ?>
