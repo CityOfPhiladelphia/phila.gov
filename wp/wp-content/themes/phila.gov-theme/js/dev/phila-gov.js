@@ -212,4 +212,3 @@ document.addEventListener("DOMContentLoaded", function() {
     title.style.height = maxHeight + "px";
   });
 });
-});
