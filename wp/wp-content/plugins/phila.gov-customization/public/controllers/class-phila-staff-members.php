@@ -209,15 +209,7 @@ class Phila_Staff_Member_Controller {
     }
 
     if (isset( $schema['properties']['categories'] )) {
-      $categories = get_the_category($post->ID);
-
-      foreach ($categories as $category){
-          $trimmed_name = phila_get_owner_typography( $category );
-
-          $category->slang_name = html_entity_decode(trim($trimmed_name));
-      }
-
-      $post_data['categories']  = (array) $categories;
+      $post_data['categories']  = phila_get_the_category( $post->ID );
     }
 
     return rest_ensure_response( $post_data );
