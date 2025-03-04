@@ -1,13 +1,13 @@
 <!-- Stepped content wrapper -->
-<div class="grid-x grid-margin-x mvl">
+<div class="grid-x grid-margin-x <?php if (get_post_type() == "post") { echo "pvm"; } else { echo "mvl"; }?>">
   <div class="medium-24 cell pbm">
     <div class="mbl">	
       <?php if( isset($current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title'] )): ?>	
         <?php $current_row_id = sanitize_title_with_dashes( $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title']);?>
-        <h4 id="<?php echo $current_row_id;?>" class="h3 black bg-ghost-gray phm-mu mtn mbm"><?php echo $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title']; ?></h4>	
+        <h4 id="<?php echo $current_row_id;?>" class="<?php if (get_post_type() == "post") { echo "h2"; } else { echo "h3 black bg-ghost-gray phm-mu mtn mbm"; }?>"><?php echo $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_title']; ?></h4>	
       <?php endif;?>	
       <?php if( isset($current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_content'] )): ?>	
-        <div class="plm">	
+        <div class="<?php if (get_post_type() == "post") { echo ""; } else { echo "plm";} ?>">	
           <?php echo apply_filters( 'the_content', $current_row[$current_row_option]['phila_stepped_content']['phila_wysiwyg_content']) ?>	
         </div>	
       <?php endif;?>	

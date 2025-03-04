@@ -53,41 +53,43 @@
         </div>
         <div class="cell medium-16 columns pbxl flex-container auto mrn margin-auto">
           <article class="full">
-            <header class="entry-header">
-              <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
-            </header>
+            <?php if ($parent_title != get_the_title() ): ?>
+              <header class="entry-header">
+                <h2><?php echo ( $parent_title != get_the_title() ) ?  get_the_title() : '' ?></h2>
+              </header>
+            <?php endif; ?>
             <div id="service-<?php echo $user_selected_template?>" data-swiftype-index='true' data-swiftype-name="body" data-swiftype-type="text" class="entry-content">
-            <?php if ($user_selected_template == 'tax_detail') : 
+            <?php if ($user_selected_template == 'tax_detail') :
               get_template_part('partials/services/content', 'tax-detail');
-            
-              elseif ($user_selected_template == 'start_process') : 
-                get_template_part('partials/services/content', 'start-process');
-                get_template_part('partials/content', 'default'); 
 
-              elseif ($user_selected_template == 'vue_app') : 
+              elseif ($user_selected_template == 'start_process') :
+                get_template_part('partials/services/content', 'start-process');
+                get_template_part('partials/content', 'default');
+
+              elseif ($user_selected_template == 'vue_app') :
                 get_template_part('partials/services/content', 'vue-app');
 
               elseif ($user_selected_template == 'default_v2') :
-                get_template_part('partials/services/content', 'default-v2'); 
-              
-              elseif ($user_selected_template == 'custom_content') :
-                include( locate_template( 'partials/content-basic.php' ) ); 
-                include( locate_template( 'partials/content-phila-row.php' ) ); 
-            
-            ?> <!-- Service Stub  --> <?php
-              elseif ($user_selected_template == 'service_stub') : 
-                get_template_part('partials/services/content', 'stub'); 
-              elseif ($user_selected_template == 'topic_page'):
-                get_template_part('partials/services/content', 'topic-page'); 
+                get_template_part('partials/services/content', 'default-v2');
 
-              else : 
-                get_template_part('partials/content', 'default'); 
+              elseif ($user_selected_template == 'custom_content') :
+                include( locate_template( 'partials/content-basic.php' ) );
+                include( locate_template( 'partials/content-phila-row.php' ) );
+
+            ?> <!-- Service Stub  --> <?php
+              elseif ($user_selected_template == 'service_stub') :
+                get_template_part('partials/services/content', 'stub');
+              elseif ($user_selected_template == 'topic_page'):
+                get_template_part('partials/services/content', 'topic-page');
+
+              else :
+                get_template_part('partials/content', 'default');
 
               endif; ?>
               </div>
             </article>
           </div>
-        </div>  
+        </div>
       </div>
     </div><!-- #post-## -->
 
@@ -101,10 +103,10 @@
 <script>
   function serviceMenuClick(obj){
     window.dataLayer.push({
-      'event' : 'GAEvent', 
-      'eventCategory': 'Service Page Conversion', 
-      'eventAction': '<?php echo $parent_title ?>', 
-      'eventLabel': obj.innerText, 
+      'event' : 'GAEvent',
+      'eventCategory': 'Service Page Conversion',
+      'eventAction': '<?php echo $parent_title ?>',
+      'eventLabel': obj.innerText,
     })
   }
 </script>
