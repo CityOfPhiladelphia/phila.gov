@@ -135,7 +135,7 @@ class Phila_Gov_Post {
           'off_label' => 'No',
         ),
         array(
-          'name'  => 'Date for last updated',
+          'name'  => 'Date for last updated/Archived date',
           'id'    => 'last_updated_date',
           'type'  => 'date',
           'required' => true,
@@ -144,10 +144,12 @@ class Phila_Gov_Post {
             'maxDate'     => 0
           ),
           'visible' => array(
-            'when' => array(
-              array('is_last_updated', '=', '1'),
+                'when' => array(
+                    array('is_last_updated', '=', '1'),
+                    array('phila_archive_post', '=', 'archive_now'),
+                ),
+                'relation' => 'or', 
             ),
-          ),
         ),
         array(
           'name'  => 'Note for last updated',
