@@ -129,7 +129,7 @@
             <li><a href="/terms-of-use">Terms of use</a></li>
             <li><a href="https://www.phila.gov/open-records-policy/">Right to know</a></li>
             <li><a href="https://www.phila.gov/privacypolicy">Privacy Policy</a></li>
-            <li><a href="https://www.phila.gov/documents/ada-policies/">Accessibility</a></li>
+            <li><a href="https://www.phila.gov/accessibility-policy/">Accessibility</a></li>
         </ul>
       </nav>
     </div>
