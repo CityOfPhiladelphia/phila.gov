@@ -28,7 +28,7 @@
       // NOTE: the id is important. Google Tag Manager uses it to attach the
       // last modified date to our web analytics.
       ?>
-      <div class="small-text">This content was last updated by <?php
+      <div class="small-text">This content was last updated <?php
         $category = get_the_category();
         echo phila_list_departments( $category, $by_line = true );?>
       </div>
