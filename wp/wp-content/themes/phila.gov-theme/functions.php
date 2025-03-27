@@ -973,6 +973,84 @@ function phila_get_current_department_name( $category, $byline = false, $break_t
   }
 }
 
+// lists departments for the content modified in the footer
+function phila_list_departments( $category, $byline = false, $break_tags = false, $name_list = false ){
+
+  if( !empty( $category ) && $category[0]->slug != 'uncategorized' ) {
+
+    $cat_name = array();
+    $cat_ids = array();
+    $all_available_pages = array();
+    $full_links = array();
+    $names = array();
+
+    foreach( $category as $cat ){
+      array_push( $cat_name, $cat->name );
+      array_push( $cat_ids, $cat->cat_ID );
+    }
+
+    $args = array(
+      'post_type'=> 'department_page',
+      'posts_per_page' => -1,
+      'category__in'  => $cat_ids,
+    );
+
+    $get_links = new WP_Query( $args );
+
+    if ( $get_links->have_posts() ) {
+      while ( $get_links->have_posts() ) {
+        global $post;
+        $get_links->the_post();
+
+        $permalink = get_the_permalink();
+        $the_title = get_the_title();
+        $is_parent = $post->post_parent;
+        $is_in_govt_dir = rwmb_meta('phila_department_home_page');
+
+        if ( !$is_parent || $is_in_govt_dir) {
+          $all_available_pages[$permalink] = $the_title;
+        }
+      }
+    }
+    wp_reset_postdata();
+
+    if ( $byline == true ) {
+      echo ' by ';
+    }
+
+    foreach ( $all_available_pages as $k => $v ){
+      $markup = '<a href="' . esc_url($k) . '">' . esc_html($v) . '</a>';
+      array_push( $names, $v );
+      array_push( $full_links, $markup );
+    }
+
+    if ( $name_list == true ) {
+      return format_department_names($names);
+    }
+
+    if ( $break_tags == true ) {
+      return implode( '<br>', $full_links );
+    } else {
+      return format_department_names($full_links);
+    }
+  }
+}
+
+
+function format_department_names($items) {
+    $count = count($items);
+    
+    if ($count === 1) {
+        return $items[0] . '.';
+    } elseif ($count === 2) {
+        return $items[0] . ' and ' . $items[1] . '.';
+    } elseif ($count > 2) {
+        return implode(', ', array_slice($items, 0, -1)) . ', and ' . end($items) . '.';
+    }
+
+    return '';
+}
+
 
 function phila_get_department_owner_ids( $categories ){
   if( !empty( $categories ) && $categories[0]->slug != 'uncategorized' ) {
