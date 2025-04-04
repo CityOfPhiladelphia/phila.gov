@@ -139,7 +139,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             'id'  => 'phila_flexible_collection_status',
             'name'  => 'Status',
             'type'  => 'wysiwyg',
-            'desc'  => 'Enter a short description of the current status. 170 character maximum.',
+            'desc'  => 'Enter a short description of the current status. A call to action and link to the "Find your trash day" page is automatically added to the end of the message. 180 character maximum.',
             'required'  => true,
             'limit'      => 180,
             'limit_type' => 'character',
@@ -152,8 +152,7 @@ function prefix_options_meta_boxes( $meta_boxes ) {
             'inline' => false,
             'options' =>  array(
                 '0' => 'green',
-                '1' => 'yellow',
-                '2' => 'red',
+                '1' => 'red',
             )
           ),
           array(

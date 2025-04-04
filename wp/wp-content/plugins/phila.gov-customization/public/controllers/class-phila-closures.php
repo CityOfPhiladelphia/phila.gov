@@ -78,9 +78,11 @@ class Phila_Closures_Controller {
         break;
       case 3:
         $status = $flexible_collection['phila_flexible_collection_status'];
-        if ( $flexible_collection['phila_flexible_collection_impact'] == 1 ) {
+        if ( $flexible_collection['phila_flexible_collection_color'] == 0 ) {
+          $delay = false;
+          $undetermined = false;
+        } else if ( $flexible_collection['phila_flexible_collection_color'] == 1 ) {
           $delay = true;
-        } else if ( $flexible_collection['phila_flexible_collection_impact'] == 2 ) {
           $undetermined = true;
         }
         break;
