@@ -132,10 +132,10 @@ class Phila_Gov_Staff_Directory {
               'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
             ),
             array(
-              'name' => 'Twitter URL',
+              'name' => 'X URL',
               'id'   => $prefix . 'staff_twitter',
               'type' => 'url',
-              'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+              'desc' => 'Example: https://x.com/PhiladelphiaGov'
             ),
             array(
               'name' => 'Instagram URL',
