@@ -71,7 +71,10 @@ define('DISABLE_WP_CRON', true);
 define('WP_AUTO_UPDATE_CORE', false);
 
 /** Give WP admin addtional memory  */
-define( 'WP_MAX_MEMORY_LIMIT', '256M' );
+define( 'WP_MAX_MEMORY_LIMIT', '768M' );
+
+/** Increase base memory limit  */
+define( 'WP_MEMORY_LIMIT', '512M' );
 
 /* Change auto save interval from one minute to 10 */ 
 define( 'AUTOSAVE_INTERVAL', 600 );
