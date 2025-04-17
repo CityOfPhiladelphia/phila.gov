@@ -1,15 +1,4 @@
-# cloudwatch-stacks
-[![Provisioned with AWS CDK](https://img.shields.io/badge/Provisioned_with-AWS%20CDK-1E8900?logo=amazon-aws)](https://aws.amazon.com/cdk/)
-[![Deployed via GitHub Actions](https://img.shields.io/badge/deployed%20via-GitHub%20Actions-blue?logo=githubactions)](https://docs.github.com/en/actions/guides)
-[![Hosted on AWS](https://img.shields.io/badge/hosted%20on-AWS-orange?logo=amazon-aws)](https://aws.amazon.com/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/CityOfPhiladelphia/cloudwatch-stacks)
-
-A project for managing CloudWatch resources using AWS CDK.
-
 # cloudwatch-stack
-
-[![Build and Deploy](https://github.com/CityOfPhiladelphia/cloudwatch-stack/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/CityOfPhiladelphia/cloudwatch-stack/actions/workflows/build-and-deploy.yml)
-[![Unit Tests](https://github.com/CityOfPhiladelphia/cloudwatch-stack/actions/workflows/run-unit-tests.yml/badge.svg)](https://github.com/CityOfPhiladelphia/cloudwatch-stack/actions/workflows/run-unit-tests.yml)
 [![Coverage](https://img.shields.io/codecov/c/github/CityOfPhiladelphia/cloudwatch-stack)](https://codecov.io/gh/CityOfPhiladelphia/cloudwatch-stack)
 [![AWS CDK](https://img.shields.io/badge/AWS-CDK-FF9900?logo=amazonaws&logoColor=white)](https://aws.amazon.com/cdk/)
 [![Node.js](https://img.shields.io/badge/Node.js-18.x-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
