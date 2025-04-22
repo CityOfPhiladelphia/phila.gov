@@ -10,19 +10,42 @@ $status = rwmb_meta( 'phila_collection_status', array( 'object_type' => 'setting
 $holidays = rwmb_meta( 'phila_holidays', array( 'object_type' => 'setting' ), 'phila_settings' );
 
 $is_holiday = false;
-foreach ( $holidays as $holiday ) {
-  $today = new DateTime();
-  $today->setTime(0, 0, 0, 0);
-  $holiday_date = new DateTime($holiday['start_date']);
-  $holiday_date->setTime(0, 0, 0, 0);
-  $end_date = clone $holiday_date;
-  if ($today->format('N') <= 5 && $holiday_date->format('N') != 6 && $holiday_date->format('N') != 7 ) {
-    $end_date->modify('next friday');
+$today = new DateTime();
+$today->setTime(0, 0, 0, 0);
+$today_day = (int) $today->format('N');
+
+if ($today_day <= 5) { // Only check for weekdays
+  $holiday_window_start = null;
+
+  foreach ( $holidays as $holiday ) {
+    $holiday_date = new DateTime($holiday['start_date']);
+    $holiday_date->setTime(0, 0, 0, 0);
+    $holiday_day = (int) $holiday_date->format('N');
+
+    // Only consider weekday holidays (Mon–Fri)
+    if ($holiday_day <= 5) {
+      // Check if the holiday is in the same week as today
+      if ($holiday_date->format('oW') === $today->format('oW')) {
+        if ($holiday_window_start === null || $holiday_date < $holiday_window_start) {
+          $holiday_window_start = $holiday_date;
+        }
+      }
+    }
   }
-  if (( $today >= $holiday_date) && ($today <= $end_date) && (date('N') <= 5)){
-    $is_holiday = true;
+
+  // If we found a holiday this week, and today is between the earliest holiday and Friday
+  if ($holiday_window_start !== null) {
+    $holiday_window_end = clone $holiday_window_start;
+    if ((int) $holiday_window_start->format('N') < 5) {
+      $holiday_window_end->modify('friday this week');
+    }
+
+    if ($today >= $holiday_window_start && $today <= $holiday_window_end) {
+      $is_holiday = true;
+    }
   }
 }
+
 ?>
 
 <?php global $post; ?>
