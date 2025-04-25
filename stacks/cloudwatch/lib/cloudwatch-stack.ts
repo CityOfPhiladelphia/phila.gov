@@ -6,9 +6,7 @@ import * as cw from 'aws-cdk-lib/aws-cloudwatch';
 import * as cw_actions from 'aws-cdk-lib/aws-cloudwatch-actions';
 import * as autoscaling from 'aws-cdk-lib/aws-autoscaling';
 import * as dotenv from 'dotenv';
-import { create } from 'domain';
 import { validate } from './utils/validate';
-import { Environment } from 'aws-cdk-lib/aws-appconfig';
 
 dotenv.config();
 
@@ -22,37 +20,34 @@ export class CloudwatchStack extends cdk.Stack {
       },
     });
 
-    const { ASG_NAME, SNS_TOPIC_NAME, ALERT_EMAILS, ENVIRONMENT } = validate.environment([
-      'ASG_NAME',
-      'SNS_TOPIC_NAME',
-      'ALERT_EMAILS',
-      'ENVIRONMENT',
-    ]);
-    
-    // use the following line if the SNS topic already exists
-    const alertTopic = 
-      sns.Topic.fromTopicArn(
-        this, 
-        'ExistingAlertTopic', 
-        `arn:aws:sns:${this.region}:${this.account}:${SNS_TOPIC_NAME}`
-      );
+    // Validate and destructure environment variables
+    const { ASG_NAME, ALERT_EMAILS } = validate.environment(['ASG_NAME', 'ALERT_EMAILS']);
 
-    // Uncomment the following lines to create a new SNS topic
-    // const alertTopic = new sns.Topic(this, 'AsgAlerts', {
-    //   topicName: snsTopicName,
-    //   displayName: 'ASG Alerts',
-    // });
+    const NEW_SNS_TOPIC_NAME = process.env.NEW_SNS_TOPIC_NAME;
+    const EXISTING_SNS_TOPIC_ARN = process.env.EXISTING_SNS_TOPIC_ARN;
+    
+    if ((NEW_SNS_TOPIC_NAME && EXISTING_SNS_TOPIC_ARN) || (!NEW_SNS_TOPIC_NAME && !EXISTING_SNS_TOPIC_ARN)) {
+      throw new Error('You must specify either NEW_SNS_TOPIC_NAME or EXISTING_SNS_TOPIC_ARN, but not both.');
+    }
+    
+    const alertTopic = EXISTING_SNS_TOPIC_ARN
+      ? sns.Topic.fromTopicArn(this, 'ExistingAlertTopic', EXISTING_SNS_TOPIC_ARN)
+      : new sns.Topic(this, 'AsgAlerts', {
+          topicName: NEW_SNS_TOPIC_NAME,
+          displayName: 'ASG Alerts',
+        });
 
     // Add email subscriptions
     ALERT_EMAILS?.split(',').forEach(email => {
       alertTopic.addSubscription(new sns_subs.EmailSubscription(email.trim()));
     });
 
-    const autoScalingGroup = autoscaling.AutoScalingGroup.fromAutoScalingGroupName(
-      this,
-      'ExistingAsg',
-      ASG_NAME!
-    );
+    //Uncomment if we need the AutoScalingGroup itself for anything in the future
+    // const autoScalingGroup = autoscaling.AutoScalingGroup.fromAutoScalingGroupName(
+    //   this,
+    //   'ExistingAsg',
+    //   ASG_NAME!
+    // );
     
     const createAlarm = (
       id: string,
@@ -95,56 +90,10 @@ export class CloudwatchStack extends cdk.Stack {
         label: 'Avg Disk Utilization',
         period: cdk.Duration.minutes(1),
       }),
-    
-      NetworkIn: new cw.Metric({
-        namespace: 'AWS/EC2',
-        metricName: 'NetworkIn',
-        dimensionsMap: {
-          AutoScalingGroupName: ASG_NAME!,
-        },
-        statistic: 'Average',
-        period: cdk.Duration.minutes(1),
-      }),
-    
-      NetworkOut: new cw.Metric({
-        namespace: 'AWS/EC2',
-        metricName: 'NetworkOut',
-        dimensionsMap: {
-          AutoScalingGroupName: ASG_NAME!,
-        },
-        statistic: 'Average',
-        period: cdk.Duration.minutes(1),
-      }),
     };
-
-    type Thresholds = { 
-      [environment: string]: { // Could also be enum if feeling fancy
-          network: { 
-               in: number, 
-               out: number
-           }
-         }
-     };
-     
-     const thresholds: Thresholds = { 
-       staging: { 
-        network: {
-           in: 1400 * 1024 * 1024, // 1.4 GB
-           out: 130 * 1024 * 1024  // 130 MB
-        }
-       },
-       production: { 
-        network: {
-          in: 150 * 1024 * 1024, // need to set this
-          out: 150 * 1024 * 1024 // need to set this
-        }
-       }
-     }
 
     createAlarm('CPUUtilizationAlarm', metrics.CPUUtilization, 70, `${ASG_NAME} - CPU Utilization Alarm`);
     createAlarm('MemoryUtilizationAlarm', metrics.MemoryUtilization, 80, `${ASG_NAME} - Memory Utilization Alarm`);
     createAlarm('DiskUtilizationAlarm', metrics.DiskUtilization, 75, `${ASG_NAME} - Disk Utilization Alarm`);
-    createAlarm('NetworkInAlarm', metrics.NetworkIn, thresholds[ENVIRONMENT!].network.in, `${ASG_NAME} - Network In Alarm`);
-    createAlarm('NetworkOutAlarm', metrics.NetworkOut, thresholds[ENVIRONMENT!].network.out, `${ASG_NAME} - Network Out Alarm`);
   }
 }
