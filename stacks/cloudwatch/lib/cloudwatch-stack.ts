@@ -41,13 +41,6 @@ export class CloudwatchStack extends cdk.Stack {
     ALERT_EMAILS?.split(',').forEach(email => {
       alertTopic.addSubscription(new sns_subs.EmailSubscription(email.trim()));
     });
-
-    //Uncomment if we need the AutoScalingGroup itself for anything in the future
-    // const autoScalingGroup = autoscaling.AutoScalingGroup.fromAutoScalingGroupName(
-    //   this,
-    //   'ExistingAsg',
-    //   ASG_NAME!
-    // );
     
     const createAlarm = (
       id: string,
