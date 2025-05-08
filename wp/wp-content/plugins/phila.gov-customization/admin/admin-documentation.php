@@ -16,7 +16,7 @@ function phila_resource_hub_content()
 <p><a href="https://standards.phila.gov/">Digital standards</a> </p>
 <p>The digital standards are guides for design, development, and content for City websites. </p>
 <hr>
-<p><a href="https://phila.sharepoint.com/:f:/s/Teams-OIT-PhilagovProjectTeam/EuFE222ofUBNi_XknL-R6WcBGAwpdXhlikRBTyZAXiEzKQ?e=vsRAtu">Training presentations, guidance, and tip sheets</a> </p>
+<p><a href="https://phila.sharepoint.com/sites/philagovTrainingResources">Training presentations, guidance, and tip sheets</a> </p>
 <p>This is a collection of training presentations and other guidance produced by the Digital Services team. It also includes:  </p>
 <ul class="resource-hub">
 <li><p>Documentation for various WordPress features. </p>
@@ -24,6 +24,8 @@ function phila_resource_hub_content()
 <li><p>Links to City stock photos and other imagery sources for blogs. </p>
 </li>
 <li><p>Links to useful tools and websites. </p>
+</li>
+<li><p>Information on site reviews and how to keep your site up to date.</p>
 </li>
 </ul>
 <hr>
