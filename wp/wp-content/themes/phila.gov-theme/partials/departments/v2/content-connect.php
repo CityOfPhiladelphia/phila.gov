@@ -63,6 +63,7 @@
     <tr>
       <th scope="row" <?php echo ($archive) ? 'class="hide-for-small-only"' : ''?>>
         <i class="fas fa-phone fa-2x" aria-hidden="true"></i>
+        <span class="accessible">Phone</span>
       </th>
       <td class="<?php echo (!$archive) ? 'pvl': 'percent-90' ?>">
         <div class="p-tel">
@@ -90,9 +91,9 @@
             $co_code = ( $phone_multi['co-code'] != '' ) ? $phone_multi['co-code'] : '';
 
             $subscriber_number = ( $phone_multi['subscriber-number'] != '' ) ? '-' . $phone_multi['subscriber-number'] : '';
-            
+
             $phone_text_2 = ($phone_multi['helper-text'] != '') ? $phone_multi['helper-text'] : '';
-            
+
             $full_phone_2 = $area . $co_code . $subscriber_number;
             ?>
             <a href="tel:<?php echo preg_replace('/[^A-Za-z0-9]/', '', $full_phone_2); ?>" class="value phone-link"><?php echo $full_phone_2; ?></a>
@@ -117,6 +118,7 @@
       <tr>
         <th scope="row">
           <i class="fas fa-link fa-2x" aria-hidden="true"></i>
+          <span class="accessible">Website</span>
         </th>
         <td>
           <a href="<?php echo $connect_vars['website']['url'] ?>" class="website <?php echo $connect_vars['website']['external'] ? 'external' : ''?>">
@@ -147,6 +149,14 @@
               <a href="<?php echo $connect_vars['social']['twitter']; ?>" class="phs" data-analytics="social">
                 <i class="fa-brands fa-x-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
                 <span class="show-for-sr">Twitter</span>
+              </a>
+            </div>
+          <?php endif; ?>
+          <?php if ( isset( $connect_vars['social']['linkedin'] ) && !$connect_vars['social']['linkedin'] == '') : ?>
+            <div class="shrink small-5 cell">
+              <a href="<?php echo $connect_vars['social']['linkedin']; ?>" class="phs" data-analytics="social">
+                <i class="fa-brands fa-linkedin fa-2x" title="linkedin" aria-hidden="true"></i>
+                <span class="show-for-sr">LinkedIn</span>
               </a>
             </div>
           <?php endif; ?>
