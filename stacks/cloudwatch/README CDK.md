@@ -38,24 +38,24 @@ Ensure the following tools are installed:
 
 ### Installation and Usage
 
-1. Install dependencies:
+1. Navigate to the `cloudwatch` directory:
+   ```bash
+   cd ../stacks/cloudwatch
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Log in to your AWS account in the CLI:
+3. Log in to your AWS account in the CLI:
    ```bash
    aws sso login --profile <YOUR_AWS_ACCOUNT_PROFILE_NAME>
    ```
-
-3. Bootstrap your AWS environment (if not already done):
+   
+4. Bootstrap your AWS environment (if not already done):
    ```bash
    cdk bootstrap --profile <YOUR_AWS_ACCOUNT_PROFILE_NAME>
-   ```
-
-4. Navigate to the `cloudwatch` directory:
-   ```bash
-   cd ../stacks/cloudwatch
    ```
 
 5. Deploy the stack:
