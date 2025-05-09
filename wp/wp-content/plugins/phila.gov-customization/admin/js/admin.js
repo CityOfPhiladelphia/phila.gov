@@ -94,10 +94,6 @@ $('#adminmenu a:contains("Nested View")').text('Nested view');
 
   } else {
 
-    // Change "Submit for review" to "Set to pending" for post and document
-    if ( typenow == 'post' || typenow == 'document') {
-      $('#publish').val("Set to pending");
-    }
 
     // Remove slug on attachment to prevent clicks on the link
     if ( typenow == 'attachment' && adminpage.indexOf( 'post' ) > -1 ) {
