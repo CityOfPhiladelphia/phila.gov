@@ -31,8 +31,8 @@ else {
             $c++;	
             ?>	
             <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] ) ? '<h3 class="bmn" id="' .  sanitize_title_with_dashes($table['phila_custom_wysiwyg']['phila_wysiwyg_title']) .'">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_title'] . '</h3>' : ''; ?>	
-            <div id="sortable-table-<?php echo $c?>" class="search-sort-table">	
-              <?php if ( count($table['phila_files']) >= 7) : ?>	
+            <div id="sortable-table-<?php echo $c?>" class="search-sort-table" data-table-id="<?php echo $c ?>">	
+              <?php if ( count($table['phila_files']) > 6) : ?>	
                 <div class="search">	
                   <label for="table-search"><span class="screen-reader-text"><?php echo !empty( $table['phila_search_bar_text'] ) ? $table['phila_search_bar_text']  : 'Begin typing to filter documents';?> </span></label>	
                   <input type="text" class="table-search search-field" placeholder="<?php echo !empty( $table['phila_search_bar_text'] ) ? $table['phila_search_bar_text']  : 'Begin typing to filter documents';?> " />	
@@ -41,7 +41,7 @@ else {
               <?php endif; ?>	
               <div class="table-wrapper">	
 
-                <table class="mbxl js-hide-empty <?php echo !empty( $no_pagination ) || count($table['phila_files']) < 6 ? 'no-paginate' : ''?>">	
+                <table class="mbxl js-hide-empty <?php echo !empty( $no_pagination ) || count($table['phila_files']) < 7 ? 'no-paginate' : ''?>">	
                   <?php echo !empty( $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] ) ? '<caption class="ptn accessible">' . $table['phila_custom_wysiwyg']['phila_wysiwyg_content'] . '</caption>' : ''; ?>	
                   <thead>	
                     <tr>	
@@ -109,12 +109,12 @@ else {
                 </tbody>	
               </table>	
             </div>	
-            <?php if ( count($table['phila_files'] ) >= 7 &&  $no_pagination == 0 ) : ?>	
+            <?php if ( count($table['phila_files'] ) > 6 &&  $no_pagination == 0 ) : ?>	
               <ul class="pagination-wrapper no-js">	
                 <li class="prev">	
                   <a class="prev-<?php echo $c?>" href="#">Previous</a>	
                 </li>	
-                <ul class="pagination"></ul>	
+                <li class="pagination"></li> 	
                 <li class="next">	
                   <a class="next-<?php echo $c?>" href="#">Next</a>	
                 </li>	
