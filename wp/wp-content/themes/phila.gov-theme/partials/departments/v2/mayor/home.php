@@ -21,7 +21,7 @@
             <img src="<?php echo $full_url ?>" alt="Mayor Cherelle L. Parker" class="one-philly-mayor" />
           </div>
         </div>
-          <div class="cell medium-10 align-self-middle mr-meeseeks">
+          <div class="cell medium-14 align-self-middle mr-meeseeks">
             <h1>Office of the <span class="MAYOR">Mayor</span></h1>
                 <div class="tagline"><?php echo phila_get_item_meta_desc( ); ?></div>
               </div>

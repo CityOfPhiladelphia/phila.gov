@@ -1,6 +1,6 @@
 .featured {
   background-color: #f0f0f0;
-  padding: 3rem 0 5rem 0;
+  padding: 3rem 0 3rem 0;
 
   hr {
 
@@ -24,8 +24,7 @@
     }
 
     .post-label {
-      font-family: "Times New Roman Italic", "Times New Roman", sans-serif;
-      font-style: italic;
+      font-family: "Open Sans Semibold", "Open Sans", sans-serif;
       color: #0f4d90;
       font-size: 2rem;
     }
@@ -53,6 +52,16 @@
   }
 }
 
+.press-rels{
+  .featured-grid
+    {
+      margin: 0 auto !important;
+        .featured-item {
+          margin: 3rem 0;
+      }
+  }
+}
+
 a.press-release{
   background-color: color(ghost-gray);
   font-size: 2rem;
@@ -60,7 +69,7 @@ a.press-release{
   padding: 2rem 0;
   display: block;
   text-decoration: none;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Open Sans Semibold", "Open Sans", sans-serif;
   font-weight: 400;
 
   @include breakpoint(medium down) {
@@ -77,7 +86,6 @@ a.press-release{
   }
 
   p{
-    font-style: italic;
     margin-bottom: 1rem;
     font-size: 2rem;
     @include breakpoint(medium down) {
@@ -87,6 +95,12 @@ a.press-release{
   .post-meta {
     color: #444;
     font-weight: 400;
+  }
+
+  .date-published {
+    color: #444;
+    font-family: "Open Sans", Helvetica, Roboto, Arial, sans-serif;
+    font-size: 1.2rem;
   }
 
   .fa {
