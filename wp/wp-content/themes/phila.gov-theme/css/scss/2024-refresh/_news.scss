@@ -1,6 +1,6 @@
 .featured {
   background-color: #f0f0f0;
-  padding: 3rem 0 5rem 0;
+  padding: 3rem 0 3rem 0;
 
   hr {
 
@@ -52,6 +52,16 @@
   }
 }
 
+.press-rels{
+  .featured-grid
+    {
+      margin: 0 auto !important;
+        .featured-item {
+          margin: 3rem 0;
+      }
+  }
+}
+
 a.press-release{
   background-color: color(ghost-gray);
   font-size: 2rem;
@@ -85,6 +95,12 @@ a.press-release{
   .post-meta {
     color: #444;
     font-weight: 400;
+  }
+
+  .date-published {
+    color: #444;
+    font-family: "Open Sans", Helvetica, Roboto, Arial, sans-serif;
+    font-size: 1.2rem;
   }
 
   .fa {
