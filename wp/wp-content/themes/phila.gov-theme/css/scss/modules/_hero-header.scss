@@ -14,9 +14,14 @@
   font-family: 'Montserrat', 'Tahoma', sans-serif;
   position:relative;
 
-  @media screen and (max-width: 39.9375em) {
-    //important to override inline style
+  @media screen and (max-width: 40em) {
     background-image:none !important;
+  }
+
+  @media screen and (min-width: 40em) {
+    .hero-subpage {
+      background-image:none !important;
+    }
   }
 
   @media only screen and (min-width: 40em) {
