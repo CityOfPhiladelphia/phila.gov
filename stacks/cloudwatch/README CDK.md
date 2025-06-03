@@ -11,6 +11,11 @@ This stack creates EC2 alarms per autoscaling group in CloudWatch for:
 - Average Disk Utilization (sourced from CloudWatch Agent)
 - Average CPU Utilzation
 
+**Note:** 
+- Data for **Average Memory Utilization** and **Average Disk Utilization** will only be collected if the CloudWatch Agent is installed and running on the EC2 instances in the Auto Scaling Group.
+- The installation of the CloudWatch Agent is automated via the user data script in the launch configuration of the relevant Auto Scaling Group. 
+- An example of this setup exists in the staging environment. The user data script references the CloudWatch Agent configuration stored in AWS Systems Manager Parameter Store.
+
 ## Table of Contents
 
 - [Project Architecture](#project-architecture)
