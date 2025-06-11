@@ -38,7 +38,7 @@ class Phila_Gov_Event_Spotlight_Template {
       'pages' => array( 'event_spotlight' ),
       'priority' => 'high',
       'include' => array(
-        'user_role'  => array( 'administrator', 'editor', 'phila_master_homepage_editor' ),
+        'user_role'  => array( 'administrator', 'editor', 'phila_master_homepage_editor', 'secondary_spotlight_editor' ),
         'relation' => 'or',
         ),
       'fields' => array(
