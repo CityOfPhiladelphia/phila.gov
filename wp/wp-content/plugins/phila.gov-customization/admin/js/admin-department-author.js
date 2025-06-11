@@ -166,7 +166,7 @@ $('a[href="edit-tags.php?taxonomy=category&post_type=calendar"]').parent().css("
   }
 
   if ( ( typenow == 'event_spotlight') && adminpage.indexOf('post') > -1 ){
-    if (!phila_WP_User.includes('secondary_event_spotlight') ){
+    if (!phila_WP_User.includes('secondary_spotlight_editor') ){
       $('#publish').css('display', 'none')
     }
   }
