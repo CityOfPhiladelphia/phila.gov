@@ -94,7 +94,13 @@ $('#adminmenu a:contains("Nested View")').text('Nested view');
 
   } else {
 
-
+    // Change "Submit for review" to "Set to pending" for post and document
+    if ( typenow == 'post' || typenow == 'document') {
+      if(phila_WP_User.includes('secondary_blog_contributor') || phila_WP_User.includes('secondary_advanced_post_contributor') || phila_WP_User.includes('secondary_document_page_contributor')) {
+        $('#publish').val("Set to pending");
+      }
+    }
+    
     // Remove slug on attachment to prevent clicks on the link
     if ( typenow == 'attachment' && adminpage.indexOf( 'post' ) > -1 ) {
       jQuery( '#edit-slug-box' ).hide();
