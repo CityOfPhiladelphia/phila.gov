@@ -1,16 +1,19 @@
 module.exports = $(function () {
   //BEGIN Translation Bar
 
-  $(document).ready(function () {
-    $("#google_translate_element").bind("DOMNodeInserted", function () {
-      if ($("#google_translate_element").length) {
-        var $firstOption = $(".goog-te-combo option:first");
+  const targetNode = document.getElementById("google_translate_element");
+
+if (targetNode) {
+  const observer = new MutationObserver(function (mutationsList) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === "childList" && $("#google_translate_element").length) {
+        const $firstOption = $(".goog-te-combo option:first");
 
         if ($firstOption.length && $firstOption.text() === "Select Language") {
           $firstOption.text("More Languages");
         }
 
-        $("i.fa-plus").on("click", function (e) {
+        $("i.fa-plus").on("click", function () {
           $("select.goog-te-combo").trigger("click");
         });
 
@@ -27,19 +30,27 @@ module.exports = $(function () {
           $(".goog-te-gadget span:first").remove();
         }
 
-        var targetDiv = $("#\\:0\\.targetLanguage");
+        const targetDiv = $("#\\:0\\.targetLanguage");
         if (!targetDiv.has(".fa.fa-plus").length) {
-          var icon = $("<i>").addClass("fa fa-plus");
+          const icon = $("<i>").addClass("fa fa-plus");
           targetDiv.prepend(icon);
         }
 
-        var targetDiv = $(".goog-te-gadget");
-        var select = $("select.goog-te-combo");
+        const gadgetDiv = $(".goog-te-gadget");
+        const select = $("select.goog-te-combo");
         select.on("focus", function () {
-          targetDiv.focus();
+          gadgetDiv.focus();
         });
+
+        // Optionally, stop observing after one mutation
+        // observer.disconnect();
       }
-    });
+    }
+  });
+
+  observer.observe(targetNode, { childList: true, subtree: true });
+}
+
     // "hard code" english translations label DD
     $("#translate-english").text("English");
     $("#translate-english-dropdown").text("English");
@@ -102,17 +113,6 @@ module.exports = $(function () {
         $("#mobile-lang-button").focus();
         $("#desktop-lang-button").focus();
       },
-    });
-
-    var hoverTimeout;
-
-    $("button#desktop-lang-button").hover(function () {
-      clearTimeout(hoverTimeout);
-      if (!$("#lang-dropdown").hasClass("is-open")) {
-        hoverTimeout = setTimeout(function () {
-          $("#lang-dropdown").foundation("open");
-        }, 500);
-      }
     });
 
     function toggleMenuOpen(isOpen) {
@@ -179,4 +179,4 @@ module.exports = $(function () {
   });
 
   //END Translation Bar
-});
+
