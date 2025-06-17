@@ -51,7 +51,6 @@ if (targetNode) {
   observer.observe(targetNode, { childList: true, subtree: true });
 }
 
-
     // "hard code" english translations label DD
     $("#translate-english").text("English");
     $("#translate-english-dropdown").text("English");
@@ -114,17 +113,6 @@ if (targetNode) {
         $("#mobile-lang-button").focus();
         $("#desktop-lang-button").focus();
       },
-    });
-
-    var hoverTimeout;
-
-    $("button#desktop-lang-button").hover(function () {
-      clearTimeout(hoverTimeout);
-      if (!$("#lang-dropdown").hasClass("is-open")) {
-        hoverTimeout = setTimeout(function () {
-          $("#lang-dropdown").foundation("open");
-        }, 500);
-      }
     });
 
     function toggleMenuOpen(isOpen) {
