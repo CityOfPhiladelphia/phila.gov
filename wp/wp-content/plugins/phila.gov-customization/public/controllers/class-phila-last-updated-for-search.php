@@ -136,7 +136,7 @@ class Phila_Last_Updated_For_Search_Controller {
       'post_title'   => $post->post_title,
       'updated_at'   => get_post_modified_time('c', false, $post),
       'link'         => get_permalink($post->ID),
-      'post_content' => $post->post_content,
+      'post_content' => get_the_content(null, false, $post),
       'post_type'    => $post->post_type,
       'tags'         => wp_get_post_tags( $post->ID, array( 'fields' => 'names' ) ),
       'categories'   => wp_get_post_categories( $post->ID, array( 'fields' => 'names' ) ),
