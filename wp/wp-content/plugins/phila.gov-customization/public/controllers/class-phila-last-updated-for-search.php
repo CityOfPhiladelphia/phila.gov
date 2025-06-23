@@ -62,28 +62,7 @@ class Phila_Last_Updated_For_Search_Controller {
 
     $posts = get_posts( $args );
 
-    $data = array(
-      array(
-        'link'  => '/404/',
-        'updated_at' => ''
-      ),
-      array(
-        'link'  => '/departments/',
-        'updated_at' => ''
-      ),
-      array(
-        'link'  => '/documents/',
-        'updated_at' => ''
-      ),
-      array(
-        'link'  => '/programs/',
-        'updated_at' => ''
-      ),
-      array(
-        'link'  => '/services/',
-        'updated_at' => ''
-      ),
-    );
+    $data = array();
 
     if ( empty( $posts ) ) {
         return rest_ensure_response( $data );
@@ -136,7 +115,7 @@ class Phila_Last_Updated_For_Search_Controller {
       'post_title'   => $post->post_title,
       'updated_at'   => get_post_modified_time('c', false, $post),
       'link'         => get_permalink($post->ID),
-      'post_content' => get_the_content(null, false, $post),
+      'post_content' => preg_replace('/[^\x20-\x7E]/', '', wp_strip_all_tags(strip_shortcodes(get_the_content(null, false, $post)))),
       'post_type'    => $post->post_type,
       'tags'         => wp_get_post_tags( $post->ID, array( 'fields' => 'names' ) ),
       'categories'   => wp_get_post_categories( $post->ID, array( 'fields' => 'names' ) ),
