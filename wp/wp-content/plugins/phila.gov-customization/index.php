@@ -94,6 +94,7 @@ require $dir. '/public/controllers/class-phila-featured-news.php';
 require $dir. '/public/controllers/class-phila-document-finder.php';
 require $dir. '/public/controllers/class-phila-jobs.php';
 require $dir. '/public/controllers/class-phila-last-updated.php';
+require $dir. '/public/controllers/class-phila-last-updated-for-search.php';
 require $dir. '/public/controllers/class-phila-longform-content.php';
 require $dir. '/public/controllers/class-phila-pages.php';
 require $dir. '/public/controllers/class-phila-posts.php';
