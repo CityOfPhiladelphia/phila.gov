@@ -76,3 +76,30 @@ button.link,
 button.icon .fa, button.icon .fas, button.icon .far, button.icon .fab, button.icon .fal, .button.icon .fa, .button.icon .fas, .button.icon .far, .button.icon .fab, .button.icon .fal {
   font-size: 1.4em;
 }
+
+// .cta-button {
+//   border: 1px red solid;
+// }
+
+
+
+@media print, screen and (min-width: 46.8738em){
+  .cta-button {
+    padding-left: .30rem;
+    }
+  }
+
+@media print, screen and (min-width: 750px) and (max-width: 818px) {
+  .cta-button {
+    padding-left: .5rem;
+    }
+   }
+
+@media print, screen and (max-width: 46.8738em){
+.cta-button {
+  margin-top: .50rem;
+  margin-left: .25rem;
+  display: flex;
+  justify-content: center;
+}
+}
