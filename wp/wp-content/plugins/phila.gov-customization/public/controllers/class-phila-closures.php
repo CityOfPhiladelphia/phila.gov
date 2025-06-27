@@ -107,7 +107,7 @@ class Phila_Closures_Controller {
       }
       $end_date->setTime(0,0,1);
 
-      if ( ($holiday_date <= $today ) && ($end_date >= $today) && (date('N') <= 5) ) {
+      if ( ($holiday_date <= $today ) && ($end_date >= $today) && (date('N') <= 5) && ($phila_collection_status !== 3) ) {
         $status = "On a holiday schedule: Set trash and recycling out one day after your regular day. Trash-only collection (available in some areas) is canceled this week.";
         $delay = true;
       }
