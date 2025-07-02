@@ -267,6 +267,16 @@
         }
       }
 
+      @media screen and (min-width: 750px) and (max-width: 779px){
+        
+        .show-for-small-only {
+          display: inline-block !important;
+        }
+        .show-for-medium {
+          display: none !important;
+        }
+      }
+
       @media screen and (max-width: 779px) {
 
         .show-for-small-only {
