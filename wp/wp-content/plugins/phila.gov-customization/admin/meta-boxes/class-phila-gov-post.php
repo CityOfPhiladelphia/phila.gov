@@ -65,7 +65,7 @@ class Phila_Gov_Post {
       'fields'  => array(
         array(
           'type' => 'textarea',
-          'required'  => true,
+          'required'  => false,
           'id'  => 'phila_social_intent',
           'limit' => 256,
           'desc'  => 'Curate Tweet sharing text. Required. 256 character limit.  A link to this page will be automatically added. <br /> E.g.: Now through Sept. 25, #WelcomingWeek has free events citywide to support Philly being welcoming and inclusive',
