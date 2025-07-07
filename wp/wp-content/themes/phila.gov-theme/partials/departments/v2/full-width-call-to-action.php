@@ -25,7 +25,7 @@
               <p class="mts"><?php echo $link['description'] ?></p>
             <?php endif; ?>
           </div>
-          <div class="small-24 medium-6 cell center">
+          <div class="small-24 medium-6 cell center cta-button">
             <a <?php echo ( !empty( $link['url'] ) && (empty($link['is_modal'] ) ) ) ?  "href=" . $link['url'] : "" ?> class="button <?php echo ( !empty($link['external']) || !empty($link['modal_icon']) ) ? 'icon ' : '';?> clearfix float-right"
               <?php echo ( !empty($link['is_modal'] ) && ( empty( $link['url'] ) ) ) ? "data-open=action-modal" : "" ?>>
               <?php if ( !empty( $link['link_text'] ) ) :?>
