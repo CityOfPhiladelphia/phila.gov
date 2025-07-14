@@ -1011,6 +1011,60 @@ class Phila_Gov_Standard_Metaboxes {
       ),
     );
   }
+
+    public static function phila_meta_var_phila_project_get_involved (){
+
+    return array(
+      array(
+        'id'  => 'phila_project_get_involved_section',
+        'type' => 'group',
+        'fields' => array(
+          array(
+            'name'  => 'Section Title',
+            'id'    => 'phila_project_get_involved_section_title',
+            'type'  => 'text',
+            'class'  => 'percent-100'
+          ),
+          array(
+            'id'  => 'phila_project_get_involved_group',
+            'type' => 'group',
+            'clone'  => true,
+            'max_clone' => 4,
+            'sort_clone' => true,
+            'fields' => array(
+              array(
+                'name'  => 'Link text',
+                'id'    => 'phila_project_link_text',
+                'type'  => 'text',
+                'class' => 'action-panel-cta-text',
+              ),
+              array(
+                'name'  => 'Summary',
+                'id'    => 'phila_project_summary',
+                'type'  => 'textarea',
+                'class' => 'action-panel-details',
+              ),
+              array(
+                'name'  => 'Icon',
+                'id'    => 'phila_project_fa',
+                'type'  => 'text',
+                'class' => 'action-panel-fa',
+              ),
+              array(
+                'name'  => 'URL to content',
+                'id'    => 'phila_project_link',
+                'type'  => 'text',
+                'class' => 'action-panel-link',
+                'columns'  => 12,
+              ),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'phila_action_panel_link_loc_multi')
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   // List of links with FontAwesome icons
   public static function phila_meta_var_list_items (){
 

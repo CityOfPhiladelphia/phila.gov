@@ -58,6 +58,7 @@ ul.simcal-events{
   float:left;
   color:color(phanatic-green);
   background: color(ghost-gray);
+  height: 156px;
 
   .month{
     display: block;
@@ -136,6 +137,7 @@ ul.simcal-events{
       font-weight: 600;
       color: #444444;
       letter-spacing: 0;
+      height: 156px;
       .month {
         font-size: 16px;
         letter-spacing: 0;
@@ -162,5 +164,6 @@ ul.simcal-events{
   .calendar-date{
     color:white;
     background:color(phanatic-green);
+    height: 156px;
   }
 }
