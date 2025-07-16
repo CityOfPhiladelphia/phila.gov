@@ -278,10 +278,10 @@ class Phila_Media_Library_Report_Controller
 }
 
 // Function to register our new routes from the controller.
-function phila_register_last_updated_for_search_rest_routes()
+function phila_register_media_library_report_rest_routes()
 {
-  $controller = new Phila_Last_Updated_For_Search_Controller();
+  $controller = new Phila_Media_Library_Report_Controller();
   $controller->register_routes();
 }
 
-add_action('rest_api_init', 'phila_register_last_updated_for_search_rest_routes');
+add_action('rest_api_init', 'phila_register_media_library_report_rest_routes');
