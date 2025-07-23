@@ -176,7 +176,7 @@ class Phila_Media_Library_Report_Controller
         ),
         'uploaded_by'  => get_the_author_meta('display_name', $post->post_author),
         'updated_at'   => date('Y-m-d', strtotime(get_post_modified_time('c', false, $post))), // Date only
-        'backend_url'  => "admin.phila.gov/wp-admin/post.php?post=$post->ID&action=edit",
+        'backend_url'  => "https://admin.phila.gov/wp-admin/post.php?post=$post->ID&action=edit",
         'path'         => get_permalink($post->ID),
     );
 
