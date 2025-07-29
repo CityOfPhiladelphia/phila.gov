@@ -55,6 +55,9 @@ require $dir. '/admin/event-spotlight/templates/class-phila-gov-spotlight.php';
 require $dir. '/admin/guides/class-phila-gov-cpt-guides.php';
 require $dir. '/admin/guides/class-phila-gov-guides-register-templates.php';
 
+require $dir. '/admin/projects/class-phila-gov-cpt-projects.php';
+require $dir. '/admin/projects/class-phila-gov-project-register-templates.php';
+
 require $dir. '/admin/meta-boxes/meta-boxes.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-admin-templates.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-custom-phone.php';

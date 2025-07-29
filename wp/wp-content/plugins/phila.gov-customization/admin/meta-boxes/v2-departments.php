@@ -92,12 +92,13 @@ function phila_register_department_meta_boxes( $meta_boxes ){
 
   $meta_boxes[] = array(
     'title' => 'Full-width call to action',
-    'pages'    => array( 'department_page' ),
+    'pages'    => array( 'department_page', 'project' ),
     'visible' => array(
       'when' => array(
         array('phila_template_select', 'homepage_v2'),
         array('phila_template_select', 'things-to-do'),
-        array('phila_template_select', 'our-locations')
+        array('phila_template_select', 'our-locations'),
+        array('phila_template_select', '=', 'project_homepage' )
       ),
       'relation' => 'or'
     ),
