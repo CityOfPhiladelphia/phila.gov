@@ -457,6 +457,24 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
+    'id'  => 'phila_project_partner_list',
+    'title' => 'Partner List',
+    'pages'    => array( 'project' ),
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', '=', 'project_homepage' )
+      ),
+    ),
+    'fields' => array(
+      array(
+        'id'  => 'phila_project_wysiwyg_content',
+        'type'  => 'wysiwyg',
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+      )
+    ),
+  );
+
+  $meta_boxes[] = array(
     'id'  => 'phila_project_get_involved',
     'title' => 'Get involved',
     'context'  => 'normal',
