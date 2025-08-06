@@ -178,6 +178,7 @@ class Phila_Media_Library_Report_Controller
         'updated_at'   => date('Y-m-d', strtotime(get_post_modified_time('c', false, $post))), // Date only
         'backend_url'  => "https://admin.phila.gov/wp-admin/post.php?post=$post->ID&action=edit",
         'path'         => get_permalink($post->ID),
+        'view_url'     => wp_get_attachment_url($post->ID)
     );
 
     return rest_ensure_response($data);
@@ -281,6 +282,11 @@ class Phila_Media_Library_Report_Controller
                 ),
                 'readonly'    => true,
             ),
+            'view_url' => array(
+                'description' => __('Link to the media item.', 'phila-gov'),
+                'type'        => 'string',
+                'readonly'    => true,
+            )
         ),
         'query_parameters' => array(
             'page' => array(
