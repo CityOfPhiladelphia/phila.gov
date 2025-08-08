@@ -1710,6 +1710,37 @@ public static function phila_timeline_page_selector( ){
   );
 }
 
+public static function phila_project_timeline_page_selector( ){
+
+  return array(
+    'name'        => 'Select timeline page',
+    'id'          => 'phila_select_timeline',
+    'type'        => 'post',
+    'post_type'   => array('project'),
+    'post_status' => array( 'draft', 'publish', 'private'),
+    'field_type'  => 'select_advanced',
+    'placeholder' => '',
+    'desc'     =>  'Add a timeline page. You can narrow your search options by typing in the field above',
+    'multiple'  => false,
+
+    'query_args'  => array(
+      'post_status'    => 'any',
+      'posts_per_page' => -1,
+      'meta_query' => array(
+        array(
+          'key'     => 'phila_template_select',
+          'value'   => 'project_timeline',
+          'compare' => '=',
+        )
+      )
+    ),
+    'js_options'  => array(
+      'width' => '100%',
+      'closeOnSelect' => false,
+    )
+  );
+}
+
 public static function phila_language_selector( $id = 'phila_select_language', $class = '' ){
   return array(
     'name'  => 'Select the language of this post',

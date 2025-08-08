@@ -489,6 +489,28 @@ function phila_register_meta_boxes( $meta_boxes ){
   );
 
   $meta_boxes[] = array(
+  'id'       => 'project_homepage_timeline',
+  'title'    => 'Homepage timeline',
+  'pages'    => array( 'project' ),
+  'context'  => 'normal',
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'project_homepage' ),
+    ),
+  ),
+  'fields' => array(
+    Phila_Gov_Standard_Metaboxes::phila_project_timeline_page_selector(),
+    array(
+      'name' => 'Timeline item count',
+      'id'   => 'homepage_timeline_item_count',
+      'desc'  => 'Select the number of items from the timeline to display',
+      'type' => 'number'
+    ),
+  )
+
+);
+
+  $meta_boxes[] = array(
     'id'       => 'phila_staff_directory_listing',
     'title'    => 'Staff Directory Listing',
     'pages'    => array( 'department_page', 'project' ),
@@ -1290,12 +1312,14 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Timeline',
-  'pages' => array('department_page', 'programs'),
+  'pages' => array('department_page', 'programs', 'project'),
   'revision' => true,
   'visible' => array(
     'when'  => array(
       array('phila_template_select', '=', 'timeline'),
+      array('phila_template_select', '=', 'project_timeline'),
     ),
+    'relation' => 'or',
   ),
   'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_timeline()
 );
