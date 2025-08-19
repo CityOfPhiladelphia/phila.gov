@@ -36,7 +36,7 @@ function register_template_selection_metabox_projects( $meta_boxes ){
         'placeholder'  => 'Select a template',
         'options' => array(
           'project_homepage'    => 'Homepage',
-          'project_subpage'     => 'Subpage',
+          'project_timeline'     => 'Timeline',
           ),
           'admin_columns' => array(
             'position' => 'after date',
