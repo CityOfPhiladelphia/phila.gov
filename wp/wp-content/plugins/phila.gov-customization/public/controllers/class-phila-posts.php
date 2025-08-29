@@ -366,6 +366,14 @@ class Phila_Archives_Controller {
       $post_data['categories']  = (array) $categories;
     }
 
+    if (isset( $schema['properties']['featured_image'] )) {
+      $featured_image_id = get_post_thumbnail_id($post);
+      if (wp_get_attachment_image_src($featured_image_id)) {
+        $medium_featured_image_url = wp_get_attachment_image_src($featured_image_id, 'medium');
+        $post_data['featured_image']  = (string) $medium_featured_image_url[0];
+      }
+    }
+
     if (isset( $schema['properties']['archived'] )) {
       $archived = rwmb_meta('phila_archive_post', '', $post->ID);
       $phila_template = rwmb_meta('phila_template_select', '', $post->ID);
@@ -452,6 +460,10 @@ class Phila_Archives_Controller {
         ),
         'link'  => array(
           'description' => esc_html__('The permalink for this object.', 'phila-gov'),
+          'type'  => 'string',
+        ),
+        'featured_image'  => array(
+          'description' => esc_html__('The featured image for this object.', 'phila-gov'),
           'type'  => 'string',
         ),
         'language'  => array(
