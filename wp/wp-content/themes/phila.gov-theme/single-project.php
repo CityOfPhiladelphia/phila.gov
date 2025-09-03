@@ -13,15 +13,36 @@ get_header();
 include(locate_template('partials/projects/project-header.php'));
 
 if ($user_selected_template == 'project_timeline') {
+
     include(locate_template('partials/timeline_stub.php'));
     get_footer();
     return;
-}
 
- else {
+} elseif ($user_selected_template == 'resource_list_v2') {
 
-    include(locate_template('partials/departments/phila_module_row_1.php'));
-    include(locate_template('partials/departments/v2/full-width-call-to-action.php'));
+    include(locate_template( 'partials/resource-list.php' ) );
+    get_footer();
+    return;
+
+}  elseif ($user_selected_template == 'phila_one_quarter') {
+
+    include(locate_template( 'partials/departments/v2/content-one-quarter.php' ) );
+    get_footer();
+    return;
+
+} elseif ($user_selected_template == 'collection_page_v2') {
+
+    include(locate_template( 'partials/departments/v2/collection-page.php' )); 
+    get_footer();
+    return;
+
+} else {
+
+    include(locate_template('partials/departments/phila_module_row_1.php')); ?>
+    
+    <div id="phila-gov-homepage"></div>
+
+    <?php include(locate_template('partials/departments/v2/full-width-call-to-action.php'));
 
     $timeline_page = rwmb_meta('phila_select_timeline');
     $limit = rwmb_meta('homepage_timeline_item_count');

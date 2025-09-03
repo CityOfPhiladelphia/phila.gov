@@ -37,6 +37,9 @@ function register_template_selection_metabox_projects( $meta_boxes ){
         'options' => array(
           'project_homepage'    => 'Homepage',
           'project_timeline'     => 'Timeline',
+          'resource_list_v2'    => 'Resource List',
+          'phila_one_quarter'    => '1/4 Headings (subpage)',
+          'collection_page_v2'   => 'Collection page',
           ),
           'admin_columns' => array(
             'position' => 'after date',

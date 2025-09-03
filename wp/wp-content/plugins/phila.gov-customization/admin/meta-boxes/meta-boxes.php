@@ -247,7 +247,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_resource_list',
     'title'    => __( 'Resource List' ),
-    'pages'    => array( 'department_page', 'programs' ),
+    'pages'    => array( 'department_page', 'programs', 'project' ),
     'context'  => 'normal',
     'priority' => 'high',
     'visible' => array(
@@ -509,6 +509,38 @@ function phila_register_meta_boxes( $meta_boxes ){
   )
 
 );
+
+  $meta_boxes[] = array(
+    'id'  => 'project_status',
+    'title' => 'Project Status',
+    'pages' => array( 'project' ),
+    'context' => 'normal',
+    'priority' => 'default',
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', '=', 'project_homepage' ),
+      ),
+    ),
+    'fields' => array(
+      array(
+        'id'   => 'phila_project_status_description',
+        'name' => 'Status description',
+        'type' => 'textarea',
+        ),
+      array(
+        'id'   => 'phila_project_status',
+        'name' => 'Select a status',
+        'type' => 'radio',
+        'required' => true,
+        'options' => array(
+          '0' => 'Planning',
+          '1' => 'Design',
+          '2' => 'Construction',
+          '3' => 'Completed',
+        ),
+      ),
+    ),
+  );
 
   $meta_boxes[] = array(
     'id'       => 'phila_staff_directory_listing',
@@ -987,7 +1019,7 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Heading Groups',
-  'pages' => array('department_page', 'page', 'service_page', 'programs'),
+  'pages' => array('department_page', 'page', 'service_page', 'programs', 'project'),
   'revision' => true,
 
   'visible' => array(
