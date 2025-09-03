@@ -102,6 +102,7 @@ require $dir. '/public/controllers/class-phila-longform-content.php';
 require $dir. '/public/controllers/class-phila-pages.php';
 require $dir. '/public/controllers/class-phila-posts.php';
 require $dir. '/public/controllers/class-phila-programs.php';
+require $dir. '/public/controllers/class-phila-projects.php';
 require $dir. '/public/controllers/class-phila-service-pages.php';
 require $dir. '/public/controllers/class-phila-staff-members.php';
 
