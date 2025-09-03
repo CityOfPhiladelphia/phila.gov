@@ -520,6 +520,7 @@
       text-decoration: none;
       &:hover{
         color: color(electric-blue);
+        background: none;
       }
   }
 
@@ -677,6 +678,7 @@
   @media screen and (min-width: 750px) and (max-width: 880px) {
     a.icymi {
       width:100px;
+      font-size: .8rem;
     }
   }
 

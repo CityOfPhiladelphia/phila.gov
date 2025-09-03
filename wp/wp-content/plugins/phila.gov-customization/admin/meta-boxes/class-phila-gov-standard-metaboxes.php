@@ -148,10 +148,16 @@ class Phila_Gov_Standard_Metaboxes {
                       'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
                     ),
                     array(
-                      'name' => 'Twitter URL',
+                      'name' => 'X URL',
                       'id'   => 'phila_connect_social_twitter',
                       'type' => 'url',
-                      'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+                      'desc' => 'Example: https://x.com/PhiladelphiaGov'
+                    ),
+                    array(
+                      'name' => 'LinkedIn URL',
+                      'id'   => 'phila_connect_social_linkedin',
+                      'type' => 'url',
+                      'desc' => 'Example: https://www.linkedin.com/company/city-of-philadelphia/'
                     ),
                     array(
                       'name' => 'Instagram URL',
@@ -939,6 +945,14 @@ class Phila_Gov_Standard_Metaboxes {
         'type' => 'group',
         'fields' => array(
           array(
+            'name' => '2024 updated design',
+            'id' => '2024_updated_design',
+            'type' => 'switch',
+            'desc'  => 'Use updated 2024 design?',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
+          ),
+          array(
             'name'  => 'Section Title',
             'id'    => 'phila_action_section_title_multi',
             'type'  => 'text',
@@ -1150,10 +1164,16 @@ public static function phila_meta_var_connect(){
               'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
               ),
               array(
-              'name' => 'Twitter URL',
+              'name' => 'X URL',
               'id'   => 'phila_connect_social_twitter',
               'type' => 'url',
-              'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+              'desc' => 'Example: https://x.com/PhiladelphiaGov'
+              ),
+              array(
+                'name' => 'LinkedIn URL',
+                'id'   => 'phila_connect_social_linkedin',
+                'type' => 'url',
+                'desc' => 'Example: https://www.linkedin.com/company/city-of-philadelphia/'
               ),
               array(
               'name' => 'Instagram URL',
@@ -1300,7 +1320,7 @@ public static function phila_meta_var_connect(){
       'add_button' => '+ Add member',
       'fields'  => array(
         array(
-          'id'  => 'full_name', 
+          'id'  => 'full_name',
           'name'  => 'Full name',
           'type'  => 'text',
           'desc'  => 'Enter the full name, with honorific e.g.: Dr. Herbert West, PhD'
