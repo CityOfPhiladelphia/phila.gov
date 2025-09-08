@@ -2422,13 +2422,13 @@ function load_vue_site_wide_alerts() {
   wp_enqueue_style('site-wide-alerts-app-css', 'https://www.phila.gov/embedded/site-wide-alerts/'.$phila_environment.'/css/app.css?cachebreaker');
 }
 function load_vue_homepage() {
-
-  if (is_front_page()) {
+  global $post;
   global $phila_environment;
+  if ((is_front_page() === True) or (get_post_type($post->ID) === 'project')) {
     wp_enqueue_script('vue-homepage-chunk-js', 'https://www.phila.gov/embedded/homepage/'.$phila_environment.'/js/chunk-vendors.js?cachebreaker', array(), null, true );
     wp_enqueue_script('vue-homepage-app-js', 'https://www.phila.gov/embedded/homepage/'.$phila_environment.'/js/app.js?cachebreaker', array(), null, true );
     wp_enqueue_style('vue-homepage-app-css', 'https://www.phila.gov/embedded/homepage/'.$phila_environment.'/css/app.css?cachebreaker');
-    }
+  }
 }
 
 
