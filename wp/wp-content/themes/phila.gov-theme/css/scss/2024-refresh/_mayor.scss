@@ -30,7 +30,8 @@
     }
     .tagline {
       font-size: 2rem;
-      font-family: "Open Sans Semibold", "Open Sans", sans-serif;
+      font-style: italic;
+      font-family: 'Times New Roman', Times, serif;
       @include breakpoint(medium down) {
         font-size: 1.5rem;
       }
@@ -66,71 +67,45 @@
   .cta-multi{
     padding: 0;
     margin: 0;
-
     a.color-block-card{
       display: block;
-      font-family: "Montserrat-Bold", "Montserrat", sans-serif;
-      padding: 1rem 1rem 1rem 4rem;
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      padding: 4rem 1rem 4rem 4rem;
       text-decoration: none;
       @include breakpoint(medium down) {
         text-align: center;
         padding: 2rem;
-        min-height: 200px;
-      }
-      .text-bottom {
-        display: flex;
-        min-height: 280px;
       }
       .copy {
-        font-size: 2rem;
+        font-size: 2.5rem;
         line-height: 3rem;
-        align-self: self-end;
-        span{
-          background-color: color(dark-ben-franklin);
-          color: white;
-        }
       }
     }
     .cell:nth-child(1) {
-      background-image: url(https://www.phila.gov/assets/images/website/parker-1-color.png);
-      background-repeat: no-repeat;
-      background-size: 100%;
+      background: color(electric-blue) !important;
       a{
         color: #444;
         &:hover{
-          color: white;
-          background-image: url(https://www.phila.gov/assets/images/website/parker-1.png);
-          background-repeat: no-repeat;
-          background-size: 100%;
+          color: white
         }
       }
     }
     .cell:nth-child(2) {
-      background-image: url(https://www.phila.gov/assets/images/website/parker-2-color.png);
-      background-repeat: no-repeat;
-      background-size: 100%;
+      background: color(flyers-orange)!important;
       a{
         color: #444;
         &:hover{
-          color: white;
-          background-image: url(https://www.phila.gov/assets/images/website/parker-2.png);
-          background-repeat: no-repeat;
-          background-size: 100%;
-
+          color: white
         }
       }
     }
     .cell:nth-child(3) {
-      background-image: url(https://www.phila.gov/assets/images/website/parker-3-color.png);
-      background-repeat: no-repeat;
-      background-size: 100%;
+      background: color(ben-franklin-blue) !important;
       a {
         color: white;
         &:hover{
           color: #444;
-          background-image: url(https://www.phila.gov/assets/images/website/parker-3.png);
-          background-repeat: no-repeat;
-          background-size: 100%;
         }
       }
     }
