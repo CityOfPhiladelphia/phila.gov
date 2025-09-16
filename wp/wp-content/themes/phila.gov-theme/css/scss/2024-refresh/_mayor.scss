@@ -70,9 +70,9 @@
     a.color-block-card{
       display: block;
       font-family: 'Times New Roman', Times, serif;
-      font-style: italic;
       padding: 4rem 1rem 4rem 4rem;
       text-decoration: none;
+      color: white;
       @include breakpoint(medium down) {
         text-align: center;
         padding: 2rem;
@@ -80,34 +80,20 @@
       .copy {
         font-size: 2.5rem;
         line-height: 3rem;
+        color: white;
+        box-shadow: inset 0 -0.4em 0 0 #0f4d90;
       }
     }
     .cell:nth-child(1) {
       background: color(electric-blue) !important;
-      a{
-        color: #444;
-        &:hover{
-          color: white
-        }
-      }
+
     }
     .cell:nth-child(2) {
       background: color(flyers-orange)!important;
-      a{
-        color: #444;
-        &:hover{
-          color: white
-        }
-      }
+     
     }
     .cell:nth-child(3) {
       background: color(ben-franklin-blue) !important;
-      a {
-        color: white;
-        &:hover{
-          color: #444;
-        }
-      }
     }
     .cell:nth-child(4) {
       background: color(dark-ben-franklin) !important;
