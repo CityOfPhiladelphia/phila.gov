@@ -78,6 +78,7 @@ a.press-release{
   p{
     margin-bottom: 1rem;
     font-size: 2rem;
+    line-height: 1.2;
     @include breakpoint(medium down) {
       font-size: 1.5rem;
     }
@@ -88,6 +89,6 @@ a.press-release{
   }
 
   .fa {
-    font-size: 5rem;
+    font-size: 2em;
   }
 }
