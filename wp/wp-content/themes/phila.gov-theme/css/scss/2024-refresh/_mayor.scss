@@ -67,64 +67,81 @@
   .cta-multi{
     padding: 0;
     margin: 0;
-    a.color-block-card{
-      display: block;
+
+    .color-block-card--container {
+      position: relative;
       font-family: 'Times New Roman', Times, serif;
-      padding: 4rem 1rem 4rem 4rem;
       text-decoration: none;
       color: white;
+      height: 446px;
       @include breakpoint(medium down) {
         text-align: center;
         padding: 2rem;
       }
       .copy {
-        font-size: 2.5rem;
-        line-height: 3rem;
+          font-size: 2.5rem;
+          line-height: 3rem;
+          color: white;
+          box-shadow: inset 0 -0.7em 0 0 #0f4d90;
+      }
+      .color-block-card--background {
+         height: 100%;
+         width: 100%;
+      }
+      a.color-block-card{
+        display: block;
+        position: absolute;
+        padding: 4rem 1rem 4rem 4rem;
+        top: 0;
+        left: 0;
+        height: fit-content;
+      }
+      i {
         color: white;
-        box-shadow: inset 0 -0.7em 0 0 #0f4d90;
       }
     }
-    .cell:nth-child(1) {
-      // this is electric-blue, converted to rgb so we can manipulate opacity on hover
-      background: rgba(37, 205, 247, 0.9) !important;
-      &:hover {
-        background: rgba(37, 205, 247, 0.2) !important
+    .cell {
+      &:nth-child(1) a.color-block-card {
+        // this is electric-blue, converted to rgb so we can manipulate opacity on hover
+        background: rgba(37, 205, 247, 0.9) !important;
+        &:hover {
+          background: rgba(37, 205, 247, 0.2) !important
+        }
       }
-    }
-    .cell:nth-child(2) {
-      // This is flyers-orange, converted to rgb so we can manipulate opacity on hover
-      background: rgba(249, 147, 0, 0.9) !important;
-      &:hover {
-        background: rgba(249, 147, 0, 0.2) !important
+      &:nth-child(2) a.color-block-card {
+        // This is flyers-orange, converted to rgb so we can manipulate opacity on hover
+        background: rgba(249, 147, 0, 0.9) !important;
+        &:hover {
+          background: rgba(249, 147, 0, 0.2) !important
+        }
       }
-    }
-    .cell:nth-child(3) {
-      // This is ben-franklin-blue, converted to rgb so we can manipulate opacity on hover.
-      background: rgba(33, 118, 210, 0.9) !important;
-      &:hover {
-        background: rgba(33, 118, 210, 0.2) !important
+      &:nth-child(3) a.color-block-card {
+        // This is ben-franklin-blue, converted to rgb so we can manipulate opacity on hover.
+        background: rgba(33, 118, 210, 0.9) !important;
+        &:hover {
+          background: rgba(33, 118, 210, 0.2) !important
+        }
       }
-    }
-    .cell:nth-child(4) {
-      // We don't currently use a 4th cell, so I haven't converted it.
-      background: color(dark-ben-franklin) !important;
-      a {
-        color: white;
-        &:hover{
-          color: #444;
+      &:nth-child(4) a.color-block-card {
+        // We don't currently use a 4th cell, so I haven't converted it.
+        background: color(dark-ben-franklin) !important;
+        a {
+          color: white;
+          &:hover{
+            color: #444;
+          }
         }
       }
     }
-  }
-  h2 {
-    font-family: Montserrat-Bold,Montserrat Bold,Montserrat,sans-serif;
-    font-size: 3.75rem;
-    line-height: 4rem;
-    font-weight: 700;
-    @include breakpoint(medium down) {
-      font-size: 2.75rem;
-      line-height: 2.75rem;
+    h2 {
+      font-family: Montserrat-Bold,Montserrat Bold,Montserrat,sans-serif;
+      font-size: 3.75rem;
+      line-height: 4rem;
+      font-weight: 700;
+      @include breakpoint(medium down) {
+        font-size: 2.75rem;
+        line-height: 2.75rem;
+      }
     }
   }
-
 }

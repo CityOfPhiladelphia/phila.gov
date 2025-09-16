@@ -916,12 +916,12 @@ class Phila_Gov_Standard_Metaboxes {
         'name'  =>  'Background image',
         'id'    => 'phila_action_panel_image_multi',
         'type'  => 'file_input',
-        'class' => 'a',
-        'visible' => array(
-          'when' => array(
-            array( '2024_updated_design', '=', 1 ),
-          ),
-        )
+        'class' => 'action-panel-image',
+        // 'visible' => array(
+        //   'when' => array(
+        //     array( '2024_updated_design', '=', 1 ),
+        //   ),
+        // )
       ),
       Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'phila_action_panel_link_loc_multi'),
     );
@@ -1016,11 +1016,11 @@ class Phila_Gov_Standard_Metaboxes {
                 'id'    => 'phila_action_panel_image_multi',
                 'type'  => 'file_input',
                 'class' => 'a',
-                'visible' => array(
-                  'when' => array(
-                    array( '2024_updated_design', '=', 1 ),
-                  ),
-                )
+                // 'visible' => array(
+                //   'when' => array(
+                //     array( '2024_updated_design', '=', 1 ),
+                //   ),
+                // )
               ),
               Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'phila_action_panel_link_loc_multi')
             ),
