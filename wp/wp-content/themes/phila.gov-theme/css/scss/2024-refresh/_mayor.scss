@@ -31,6 +31,7 @@
     .tagline {
       font-size: 2rem;
       font-family: 'Times New Roman', Times, serif;
+      line-height: 1;
       @include breakpoint(medium down) {
         font-size: 1.5rem;
       }
