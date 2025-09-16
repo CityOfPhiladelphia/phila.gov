@@ -81,21 +81,32 @@
         font-size: 2.5rem;
         line-height: 3rem;
         color: white;
-        box-shadow: inset 0 -0.4em 0 0 #0f4d90;
+        box-shadow: inset 0 -0.7em 0 0 #0f4d90;
       }
     }
     .cell:nth-child(1) {
-      background: color(electric-blue) !important;
-
+      // this is electric-blue, converted to rgb so we can manipulate opacity on hover
+      background: rgba(37, 205, 247, 0.9) !important;
+      &:hover {
+        background: rgba(37, 205, 247, 0.2) !important
+      }
     }
     .cell:nth-child(2) {
-      background: color(flyers-orange)!important;
-     
+      // This is flyers-orange, converted to rgb so we can manipulate opacity on hover
+      background: rgba(249, 147, 0, 0.9) !important;
+      &:hover {
+        background: rgba(249, 147, 0, 0.2) !important
+      }
     }
     .cell:nth-child(3) {
-      background: color(ben-franklin-blue) !important;
+      // This is ben-franklin-blue, converted to rgb so we can manipulate opacity on hover.
+      background: rgba(33, 118, 210, 0.9) !important;
+      &:hover {
+        background: rgba(33, 118, 210, 0.2) !important
+      }
     }
     .cell:nth-child(4) {
+      // We don't currently use a 4th cell, so I haven't converted it.
       background: color(dark-ben-franklin) !important;
       a {
         color: white;
