@@ -52,7 +52,9 @@
                 <i class="<?php echo $action_panel_fa; ?>"></i>
               </span>          <?php endif; ?>
           <?php if (!$action_panel_cta_text == ''): ?>
-            <div class="copy <?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></div>
+            <div>
+            <span class="copy <?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></span>
+            </div>
           <?php endif; ?>
           </div>
         </a>
