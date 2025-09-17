@@ -76,7 +76,7 @@
       height: 446px;
       @include breakpoint(medium down) {
         text-align: center;
-        padding: 2rem;
+        margin: 2rem;
       }
       .copy {
           font-size: 2.5rem;
@@ -88,13 +88,19 @@
          height: 100%;
          width: 100%;
       }
-      a.color-block-card{
+      a.color-block-card {
         display: block;
         position: absolute;
         padding: 4rem 1rem 4rem 4rem;
         top: 0;
         left: 0;
         height: fit-content;
+        width: 100%;
+        min-height: 100%;
+        @include breakpoint(medium down) {
+          text-align: center;
+          padding: 2rem;
+        }
       }
       i {
         color: white;
