@@ -67,7 +67,16 @@
   .cta-multi{
     padding: 0;
     margin: 0;
-
+    #featured {
+      margin-left: 1.5rem;
+    }
+    @include breakpoint(medium down) {
+      text-align: center;
+      margin: 1.5rem;
+      #featured {
+        margin-left: 0;
+      }
+    }
     .color-block-card--container {
       position: relative;
       font-family: 'Times New Roman', Times, serif;
@@ -76,7 +85,7 @@
       height: 446px;
       @include breakpoint(medium down) {
         text-align: center;
-        margin: 2rem;
+        height: 320px;
       }
       .copy {
           font-size: 2.5rem;
