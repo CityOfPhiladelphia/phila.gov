@@ -14,7 +14,6 @@ $desc = rwmb_meta( 'phila_meta_desc', array(), $parent_id );
             <div class="row expanded pbs pvxxl-mu">
                 <div class="medium-18 small-centered columns text-overlay">
                     <h1 class="hero-title"><?php echo $parent->post_title; ?></h1>
-                    <p class="sub-title mbn-mu"><?php echo $desc; ?></p>
                 </div>
             </div>
         </div><!-- END .row.expanded   -->
