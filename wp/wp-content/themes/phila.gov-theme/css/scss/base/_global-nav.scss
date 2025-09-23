@@ -267,6 +267,16 @@
         }
       }
 
+      @media screen and (min-width: 750px) and (max-width: 779px){
+        
+        .show-for-small-only {
+          display: inline-block !important;
+        }
+        .show-for-medium {
+          display: none !important;
+        }
+      }
+
       @media screen and (max-width: 779px) {
 
         .show-for-small-only {
@@ -510,6 +520,7 @@
       text-decoration: none;
       &:hover{
         color: color(electric-blue);
+        background: none;
       }
   }
 
@@ -667,6 +678,7 @@
   @media screen and (min-width: 750px) and (max-width: 880px) {
     a.icymi {
       width:100px;
+      font-size: .8rem;
     }
   }
 

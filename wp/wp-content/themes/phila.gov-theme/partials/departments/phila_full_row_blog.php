@@ -12,7 +12,7 @@
     $slang_name = phila_get_owner_typography( $categories[0] );
   }
 
-  if ( empty($blog_see_all) ) : 
+  if ( empty($blog_see_all) ) :
     $blog_see_all = '';
   endif;
 
@@ -36,15 +36,15 @@
   endif;
   ?>
 
-<section class="row">
-  <?php 
+<section>
+  <?php
     global $post;
     $a = array(
       'name' => 'Posts',
       'tag' => $blog_tag_override,
       'see_all' => $blog_see_all
     );
-  
+
     if (isset($blog_cat_override[0])){
       $category = array($blog_cat_override[0]);
     } else {
@@ -54,17 +54,17 @@
         array_push($category, $cat->term_id);
       }
     }
-  
+
     if ( !empty($a['tag'] ) ){
       $tag = explode(',', $a['tag']);
     }
-  
+
     if ( !empty($a['see_all']) ){
       $override_url = $a['see_all'];
     }
-    
+
     include( locate_template( 'partials/posts/post-grid.php' ) );
-  
+
     wp_reset_postdata();
   ?>
 </section>

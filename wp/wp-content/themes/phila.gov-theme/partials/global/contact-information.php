@@ -1,7 +1,7 @@
 <?php
-/* 
+/*
 *
-* Standard output for contact iformation within body copy
+* Standard output for contact information within body copy
 * $contact_content - Required - Array of phila_std_address['address_group']
 * $is_address - Required - String - 'phila_address_select'
 */
@@ -32,6 +32,8 @@ $fax = isset( $contact_content['phila_connect_general']['phila_connect_fax'] ) ?
 $facebook = isset( $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_facebook'] ) ? $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_facebook'] : '';
 
 $twitter = isset( $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'] ) ? $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_twitter'] : '';
+
+$linkedin = isset( $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'] ) ? $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_linkedin'] : '';
 
 $instagram = isset( $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'] ) ? $contact_content['phila_connect_general']['phila_connect_social']['phila_connect_social_instagram'] : '';
 
@@ -71,42 +73,32 @@ $flickr = isset( $contact_content['phila_connect_general']['phila_connect_social
 <div class="ptxs">
   <?php if ( !empty( $facebook ) ) : ?>
     <span class="pvxs">
-      <a href="<?php echo $facebook ?>" class="phs" data-analytics="social">
-        <i class="fab fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i>
-        <span class="show-for-sr">Facebook</span>
-      </a>
+      <a href="<?php echo $facebook ?>" class="phs" data-analytics="social"><i class="fab fa-facebook fa-2x" title="Facebook" aria-hidden="true"></i><span class="show-for-sr">Facebook</span></a>
     </span>
   <?php endif; ?>
   <?php if ( !empty( $twitter ) ) : ?>
     <span class="pvxs">
-      <a href="<?php echo $twitter; ?>" class="phs" data-analytics="social">
-        <i class="fa-brands fa-x-twitter fa-2x" title="Twitter" aria-hidden="true"></i>
-        <span class="show-for-sr">Twitter</span>
-      </a>
+      <a href="<?php echo $twitter; ?>" class="phs" data-analytics="social"><i class="fa-brands fa-x-twitter fa-2x" title="Twitter" aria-hidden="true"></i><span class="show-for-sr">Twitter</span></a>
+    </span>
+  <?php endif; ?>
+  <?php if ( !empty( $linkedin ) ) : ?>
+    <span class="pvxs">
+      <a href="<?php echo $linkedin; ?>" class="phs" data-analytics="social"><i class="fa-brands fa-linkedin fa-2x" title="LinkedIn" aria-hidden="true"></i><span class="show-for-sr">LinkedIn</span></a>
     </span>
   <?php endif; ?>
   <?php if ( !empty( $instagram ) ) : ?>
     <span class="pvxs">
-      <a href="<?php echo $instagram; ?>" class="phs" data-analytics="social">
-      <i class="fab fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i>
-        <span class="show-for-sr">Instagram</span>
-      </a>
+      <a href="<?php echo $instagram; ?>" class="phs" data-analytics="social"><i class="fab fa-instagram fa-2x" title="Instagram" aria-hidden="true"></i><span class="show-for-sr">Instagram</span></a>
     </span>
   <?php endif; ?>
   <?php if ( !empty( $youtube ) ) : ?>
     <span class="pvxs">
-      <a href="<?php echo $youtube ?>" class="phs" data-analytics="social">
-      <i class="fab fa-youtube fa-2x" title="YouTube" aria-hidden="true"></i>
-        <span class="show-for-sr">Youtube channel</span>
-      </a>
+      <a href="<?php echo $youtube ?>" class="phs" data-analytics="social"><i class="fab fa-youtube fa-2x" title="YouTube" aria-hidden="true"></i><span class="show-for-sr">Youtube channel</span></a>
     </span>
   <?php endif; ?>
   <?php if ( !empty( $flickr ) )  : ?>
     <span class="pvxs">
-      <a href="<?php echo $flickr; ?>" class="phs" data-analytics="social">
-      <i class="fab fa-flickr fa-2x" title="Flickr" aria-hidden="true"></i>
-        <span class="show-for-sr">Flickr stream</span>
-      </a>
+      <a href="<?php echo $flickr; ?>" class="phs" data-analytics="social"><i class="fab fa-flickr fa-2x" title="Flickr" aria-hidden="true"></i><span class="show-for-sr">Flickr stream</span></a>
     </span>
   <?php endif; ?>
 </div>

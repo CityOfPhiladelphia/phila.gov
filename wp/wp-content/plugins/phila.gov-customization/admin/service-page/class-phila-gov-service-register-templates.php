@@ -34,7 +34,7 @@ class Phila_Gov_Register_Service_Templates {
           'id' => 'phila_start_process',
           'type'  => 'group',
           'clone' => false,
-    
+
           'fields' => array(
             array(
               'id'  => 'phila_wysiwyg_process_content',
@@ -69,7 +69,7 @@ class Phila_Gov_Register_Service_Templates {
         Phila_Gov_Standard_Metaboxes::phila_metabox_v2_link_fields('Button details', 'phila_start_button'),
     )
   );
-    
+
 
     $meta_boxes[] = array(
       'id'       => 'service_questions',
@@ -181,10 +181,16 @@ class Phila_Gov_Register_Service_Templates {
                       'desc' => 'Example: https://www.facebook.com/PhiladelphiaCityGovernment/',
                     ),
                     array(
-                      'name' => 'Twitter URL',
+                      'name' => 'X URL',
                       'id'   => 'phila_connect_social_twitter',
                       'type' => 'url',
-                      'desc' => 'Example: https://twitter.com/PhiladelphiaGov'
+                      'desc' => 'Example: https://x.com/PhiladelphiaGov'
+                    ),
+                    array(
+                      'name' => 'LinkedIn URL',
+                      'id'   => 'phila_connect_social_linkedin',
+                      'type' => 'url',
+                      'desc' => 'Example: https://www.linkedin.com/company/city-of-philadelphia/'
                     ),
                     array(
                       'name' => 'Instagram URL',

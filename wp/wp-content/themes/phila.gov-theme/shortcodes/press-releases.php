@@ -14,7 +14,8 @@ function press_release_shortcode($atts) {
     'name' => 'Press releases',
     'category' => '',
     'tag' => '',
-    'see_all' => ''
+    'see_all' => '',
+    'use_2024_design' => ''
   ), $atts );
 
   $category = array();
@@ -34,6 +35,9 @@ function press_release_shortcode($atts) {
 
   if ( !empty($a['see_all']) ){
     $override_url = $a['see_all'];
+  }
+  if ( !empty($a['use_2024_design']) ){
+    $use_2024_design = $a['use_2024_design'];
   }
 
 

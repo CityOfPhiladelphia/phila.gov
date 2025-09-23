@@ -87,7 +87,7 @@ class Phila_Gov_Row_Select_Options {
       ),
     );
   }
-  
+
   public static function phila_metabox_tabbed_select(){
     return array(
       'id'   => 'phila_tabbed_select',
