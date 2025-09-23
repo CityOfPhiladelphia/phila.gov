@@ -60,14 +60,14 @@
         <?php endif; ?>
         </header>
         <?php echo $columns == '24' ? '<hr class="mll mrl show-for-small-only">' : '<hr class="mll mrl">'; ?>
-          <div class="details" style="text-align: center;"><?php echo $action_panel_summary; ?></div>
+          <div class="details" style="<?php echo $item_count > 1 ? "text-align: center;" : ''; ?>"><?php echo $action_panel_summary; ?></div>
         </div>
       </a>
     <?php endif; ?>
     </div>
   <?php endforeach; ?>
 </section>
-<?php if ( $link_url != '' && $link_title != ''):?>
+<?php if ( $link_url != '' && $link_title != '' && $item_count > 3):?>
   <div class="row mtm">
     <div class="columns">
 

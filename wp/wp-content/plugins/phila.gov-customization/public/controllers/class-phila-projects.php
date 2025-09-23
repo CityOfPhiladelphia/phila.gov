@@ -31,7 +31,7 @@ class Phila_Projects_Controller {
     $query_args = array(
       'post_type'      => 'project',
       'posts_per_page' => -1,
-      'post_status'    => 'publish',
+      'post_status'    => array( 'publish', 'private', 'draft', 'pending' ),
       'order'          => 'ASC',
       'orderby'        => 'title',
     );

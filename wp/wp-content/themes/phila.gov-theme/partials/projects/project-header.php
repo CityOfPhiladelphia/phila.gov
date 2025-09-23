@@ -1,6 +1,6 @@
 <header>
-    <div class="hero-content project-header" style="background-color:#0f4d90; height: 292px;">
-        <div class="hero-subpage" style="color:blue">
+    <div class="hero-content project-header">
+        <div class="hero-subpage" style="background-color:#0f4d90;">
             <div class="row expanded pbs pvxxl-mu">
                 <div class="medium-18 small-centered columns text-overlay">
                     <h1 class="hero-title"><?php echo the_title(); ?></h1>

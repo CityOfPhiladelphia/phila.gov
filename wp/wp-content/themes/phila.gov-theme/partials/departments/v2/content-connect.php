@@ -132,7 +132,7 @@
           <span class="accessible">Social</span>
         </th>
         <td >
-        <div class="pvm grid-x">
+        <div class="pvm grid-x grid-margin-y">
           <?php if ( ! empty( $connect_vars['social'] ) ):?>
           <?php if ( isset( $connect_vars['social']['facebook'] ) && !$connect_vars['social']['facebook'] == '') : ?>
             <div class="shrink small-5 cell">
