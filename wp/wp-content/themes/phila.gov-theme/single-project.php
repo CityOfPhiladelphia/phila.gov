@@ -10,33 +10,37 @@ $user_selected_template = phila_get_selected_template();
 
 get_header();
 
-include(locate_template('partials/projects/project-header.php'));
-
 if ($user_selected_template == 'project_timeline') {
-
+  
+    include(locate_template('partials/projects/project-subpage-header.php'));
     include(locate_template('partials/timeline_stub.php'));
     get_footer();
     return;
 
 } elseif ($user_selected_template == 'resource_list_v2') {
 
+    include(locate_template('partials/projects/project-subpage-header.php'));
     include(locate_template( 'partials/resource-list.php' ) );
     get_footer();
     return;
 
 }  elseif ($user_selected_template == 'phila_one_quarter') {
 
+    include(locate_template('partials/projects/project-subpage-header.php'));
     include(locate_template( 'partials/departments/v2/content-one-quarter.php' ) );
     get_footer();
     return;
 
 } elseif ($user_selected_template == 'collection_page_v2') {
 
+    include(locate_template('partials/projects/project-subpage-header.php'));
     include(locate_template( 'partials/departments/v2/collection-page.php' )); 
     get_footer();
     return;
 
 } else {
+
+    include(locate_template('partials/projects/project-header.php'));
 
     include(locate_template('partials/departments/phila_module_row_1.php')); ?>
     
@@ -62,7 +66,7 @@ if ($user_selected_template == 'project_timeline') {
         <?php include(locate_template('partials/departments/phila_call_to_action_multi.php')); ?>
     </div>
 
-    <?php include(locate_template('partials/departments/phila_staff_directory_listing.php')); ?>
+    <?php include(locate_template('partials/projects/project-staff-listing.php')); ?>
     <?php include(locate_template('partials/projects/project-partner-list.php')); ?>
 
     <?php get_footer(); 

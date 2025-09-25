@@ -107,7 +107,7 @@
         <?php endif; ?>
         </header>
         <?php echo $columns == '24' ? '<hr class="mll mrl show-for-small-only">' : '<hr class="mll mrl">'; ?>
-          <div class="details" style="text-align: center;"><?php echo $action_panel_summary; ?></div>
+          <div class="details" style="<?php echo $item_count > 1 ? "text-align: center;" : ''; ?>"><?php echo $action_panel_summary; ?></div>
         </div>
       </a>
     <?php endif; ?>
@@ -117,7 +117,6 @@
   <?php if ( $link_url != '' && $link_title != ''):?>
     <div class="row mtm">
       <div class="columns">
-
         <?php $see_all = array(
             'URL' => $link_url,
             'content_type' => $action_panel_title,

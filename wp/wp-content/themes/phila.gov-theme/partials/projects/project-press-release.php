@@ -14,7 +14,7 @@ $slang_name = html_entity_decode(trim(phila_get_owner_typography($current_cat)))
 if (!empty($tag)) {
 
   $press_release_template_args  = array(
-    'posts_per_page' => 4,
+    'posts_per_page' => 3,
     'post_type' => array('post'),
     'orderby' => 'post_date',
     'tag_id'  => (int) $tag,
@@ -30,7 +30,7 @@ if (!empty($tag)) {
   );
 } else {
   $press_release_template_args  = array(
-    'posts_per_page' => 4,
+    'posts_per_page' => 3,
     'post_type' => array('post'),
     'order' => 'desc',
     'orderby' => 'post_date',

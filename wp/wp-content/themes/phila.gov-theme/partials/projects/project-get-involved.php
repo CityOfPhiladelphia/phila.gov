@@ -22,7 +22,7 @@
         <h2 id="<?php echo sanitize_title_with_dashes( $action_panel_title ); ?>"><?php echo $action_panel_title; ?></h2>
       </div>
     </div>
-    <section class="get-involved-row" style="background-color: #d7d7d7;">
+    <section class="get-involved-row row" style="background-color: #d7d7d7;">
       <div class="row-wrap">
       <div class="row mbm ptm <?php if( $item_count > 1 ) echo 'equal-height';?>">
       <?php foreach ( $action_panel_multi as $call_to_action ) :

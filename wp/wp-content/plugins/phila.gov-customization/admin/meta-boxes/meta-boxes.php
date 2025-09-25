@@ -389,7 +389,13 @@ function phila_register_meta_boxes( $meta_boxes ){
               'name' => 'Custom Text Title',
               'id'   => 'phila_module_row_1_col_1_texttitle',
               'type' => 'text',
-              'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
+              'hidden' => array(
+                'when' => array(
+                  array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
+                  array('phila_template_select', '=', 'project_homepage')
+                ),
+                'relation' => 'or',
+              ),
             ),
           array(
             'name' => 'Custom Text Content',
@@ -454,6 +460,28 @@ function phila_register_meta_boxes( $meta_boxes ){
 
     // List of sub-fields
     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full(),
+  );
+
+  $meta_boxes[] = array(
+    'id'  => 'project_staff_list',
+    'title'    => 'Project staff list',
+    'type'  => 'group',
+    'clone' => false,
+    'pages'    => array( 'project' ),
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', '=', 'project_homepage' )
+      ),
+    ),
+    'fields'  => array(
+      array(
+        'id'  => 'section_title',
+        'name'  => 'Section title',
+        'type'  => 'text',
+        'desc'  => 'Use this section to create an accordion-style list of people who don\'t formally work for the City of Philadelphia. List will appear in the order below.',
+      ),
+      Phila_Gov_Standard_Metaboxes::phila_meta_var_project_staff_list()
+    ),
   );
 
   $meta_boxes[] = array(
@@ -545,7 +573,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_staff_directory_listing',
     'title'    => 'Staff Directory Listing',
-    'pages'    => array( 'department_page', 'project' ),
+    'pages'    => array( 'department_page' ),
     'context'  => 'normal',
     'priority' => 'default',
 
@@ -555,10 +583,8 @@ function phila_register_meta_boxes( $meta_boxes ){
     ),
     'visible' => array(
       'when'  => array(
-        array('phila_template_select', '=', 'homepage_v2' ),
-        array( 'phila_template_select', '=', 'project_homepage' )
+        array('phila_template_select', '=', 'homepage_v2' )
       ),
-      'relation' => 'or',
     ),
 
     'fields' => array(
@@ -823,6 +849,7 @@ function phila_register_meta_boxes( $meta_boxes ){
             'name'  =>  'See all title (optional)',
             'id'    => 'phila_url_title',
             'type'  => 'text',
+            'hidden' => array('phila_template_select', '=', 'project_homepage' ),
           ),
           array(
             'name'  =>  'See all URL (optional)',
