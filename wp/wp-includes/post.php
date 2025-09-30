@@ -7902,6 +7902,30 @@ function wp_get_post_parent_id( $post = null ) {
 }
 
 /**
+ * Returns the post_name of the post's parent.
+ *
+ * @since 3.1.0
+ * @since 5.9.0 The `$post` parameter was made optional.
+ *
+ * @param int|WP_Post|null $post Optional. Post ID or post object. Defaults to global $post.
+ * @return string|false Post parent post_name (which can be '' if there is no parent),
+ *                   or false if the post does not exist.
+ */
+function wp_get_post_parent_name( $post_parent = null ) {
+	$post_parent = get_post( $post_parent );
+
+	if ( ! $post_parent || is_wp_error( $post_parent ) ) {
+		return false;
+	}
+
+	if ( $post_parent == 0) {
+		return '';
+	}
+
+	return (string) post_parent->post_name;
+}
+
+/**
  * Checks the given subset of the post hierarchy for hierarchy loops.
  *
  * Prevents loops from forming and breaks those that it finds. Attached

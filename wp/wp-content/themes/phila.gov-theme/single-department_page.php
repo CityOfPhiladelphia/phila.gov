@@ -15,10 +15,12 @@ global $post;
 function get_dept_partial($partial_name, $partial_args = array()){
   global $post;
 
-  if ( $post->ID == '4099' ){
-    include(locate_template(('partials/departments/v2/mayor/home.php')));
+  $parent = wp_get_post_parent_id($post);
+  $parent_post_name = wp_get_post_parent_name($parent);
 
-  } else if ($post->post_parent == '4099'){
+  if ( $post->post_name == 'mayor' ){
+    include(locate_template(('partials/departments/v2/mayor/home.php')));
+  } else if ($parent_post_name == 'mayor'){
     include(locate_template(('partials/departments/v2/mayor/subpage.php')));
   }
   else{
@@ -36,13 +38,11 @@ $children = get_posts( array(
 ));
 
 $ancestors = get_post_ancestors($post);
-$parent = wp_get_post_parent_id($post);
 $user_selected_template = phila_get_selected_template();
 
 get_header(); ?>
 
 <div id="post-<?php the_ID(); ?>" <?php post_class('department clearfix ' . $user_selected_template); ?>>
-
   <?php
 
     $parent = phila_util_get_furthest_ancestor($post);
