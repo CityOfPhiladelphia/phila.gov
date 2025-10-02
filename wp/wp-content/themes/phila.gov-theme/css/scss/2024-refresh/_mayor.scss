@@ -79,26 +79,30 @@
     }
     .color-block-card--container {
       position: relative;
-      font-family: 'Times New Roman', Times, serif;
-      text-decoration: none;
       color: white;
       height: 446px;
       @include breakpoint(medium down) {
         text-align: center;
         height: 320px;
       }
+      // This overrides styles coming in from `_typography.scss` which are leaving a vestigial underline.
+      // The color is (for whatever reason) only showing up as that underline, and not in the text itself,
+      // so I don't think that this lowers accessibility.
+      a:active, a:hover, a:focus {
+        color: #0f4d90;;
+      }
       .copy {
-          font-size: 2.5rem;
-          line-height: 3rem;
+          font-size: 2rem;
+          line-height: 2.5rem;
           color: white;
           box-shadow: inset 0 -0.7em 0 0 #0f4d90;
+          font-family: Montserrat-Bold,Montserrat Bold,Montserrat,sans-serif;
       }
       .color-block-card--background {
          height: 100%;
          width: 100%;
       }
       a.color-block-card {
-        display: block;
         position: absolute;
         padding: 4rem 1rem 4rem 4rem;
         top: 0;
@@ -106,6 +110,10 @@
         height: fit-content;
         width: 100%;
         min-height: 100%;
+        border: 1px solid white;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
         @include breakpoint(medium down) {
           text-align: center;
           padding: 2rem;
