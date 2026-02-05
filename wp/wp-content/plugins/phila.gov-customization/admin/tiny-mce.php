@@ -279,7 +279,6 @@ function phila_defer_heavy_assets() {
             'jquery-validation',
             'thickbox',
             'media-upload',
-            'wpfront-user-role-editor'
         );
         
         foreach ( $defer_scripts as $script ) {
