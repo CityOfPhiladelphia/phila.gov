@@ -72,4 +72,4 @@ echo '
   }
 }
 ' > ~/app/wp/composer.json
-rm -rf ~/app/wp/vendor && composer clear-cache && composer update -d ~/app/wp
+rm -rf ~/app/wp/vendor && composer clear-cache && composer install -d ~/app/wp --no-dev --prefer-dist --no-interaction
