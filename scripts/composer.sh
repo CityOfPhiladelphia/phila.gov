@@ -5,6 +5,8 @@ echo '
 {
   "name": "cityofphiladelphia/phila.gov",
   "description": "Phila.gov",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "repositories":[
     {
         "type":"composer",
@@ -71,4 +73,4 @@ echo '
   }
 }
 ' > ~/app/wp/composer.json
-rm -rf ~/app/wp/vendor && composer clear-cache && composer install -d ~/app/wp --no-dev --prefer-dist --no-interaction
+rm -rf ~/app/wp/vendor && rm -f ~/app/wp/composer.lock && composer clear-cache && composer install -d ~/app/wp
