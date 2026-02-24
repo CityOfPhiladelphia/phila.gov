@@ -56,7 +56,6 @@ echo '
     "wpackagist-plugin/meta-box":"^5.10.3",
     "meta-box/meta-box-aio":"dev-master",
     "wpackagist-plugin/miniorange-saml-20-single-sign-on":"^5.0.7",
-    "wpackagist-plugin/reusable-text-blocks":"^1.5.3",
     "wpackagist-plugin/amazon-s3-and-cloudfront":"^2.6.2",
     "wpackagist-plugin/classic-editor":"^1.6.2",
     "wpackagist-plugin/wp-rest-api-v2-menus":"^0.12.1",
