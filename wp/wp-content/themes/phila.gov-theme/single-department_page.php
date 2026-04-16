@@ -38,6 +38,7 @@ $children = get_posts( array(
 $ancestors = get_post_ancestors($post);
 $parent = wp_get_post_parent_id($post);
 $user_selected_template = phila_get_selected_template();
+$parent_template = phila_get_selected_template($parent);
 
 get_header(); ?>
 
@@ -46,8 +47,7 @@ get_header(); ?>
   <?php
 
     $parent = phila_util_get_furthest_ancestor($post);
-
-    if ( phila_util_is_new_template( $parent->ID ) && $user_selected_template !== 'prog_association' ) :
+    if ( phila_util_is_new_template( $parent->ID ) && $user_selected_template !== 'prog_association' && $parent_template !== 'prog_association' ) :
       /**
        * Department Homepage V2 Hero
        */
