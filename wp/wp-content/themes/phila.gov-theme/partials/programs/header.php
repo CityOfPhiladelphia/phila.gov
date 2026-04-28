@@ -70,7 +70,7 @@
         </div>
       </div>
     </div>
-    <?php if ($user_selected_template != 'prog_association') : ?>
+    <?php if ($user_selected_template != 'prog_association' && phila_get_selected_template($ancestors[0]) != 'prog_association') : ?>
       <?php phila_get_menu(); ?>
     <?php endif; ?>
     <?php if ($current_post_type != 'department_page' && $user_selected_template != 'stub') : ?>

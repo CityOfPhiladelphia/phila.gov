@@ -1,10 +1,12 @@
-source ~/.ssh/environment
+source ~/environment
 composer config --global github-oauth.github.com $GITHUB_AUTH_TOKEN
 sudo chmod 777 ~/app/wp
 echo '
 {
   "name": "cityofphiladelphia/phila.gov",
   "description": "Phila.gov",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "repositories":[
     {
         "type":"composer",
@@ -56,7 +58,6 @@ echo '
     "wpackagist-plugin/meta-box":"^5.10.3",
     "meta-box/meta-box-aio":"dev-master",
     "wpackagist-plugin/miniorange-saml-20-single-sign-on":"^5.0.7",
-    "wpackagist-plugin/reusable-text-blocks":"^1.5.3",
     "wpackagist-plugin/amazon-s3-and-cloudfront":"^2.6.2",
     "wpackagist-plugin/classic-editor":"^1.6.2",
     "wpackagist-plugin/wp-rest-api-v2-menus":"^0.12.1",
@@ -73,4 +74,4 @@ echo '
   }
 }
 ' > ~/app/wp/composer.json
-rm -rf ~/app/wp/vendor && composer clear-cache && composer update -d ~/app/wp
+rm -rf ~/app/wp/vendor && rm -f ~/app/wp/composer.lock && composer clear-cache && composer install -d ~/app/wp
