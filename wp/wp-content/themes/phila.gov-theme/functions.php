@@ -2372,7 +2372,7 @@ function set_environment() {
   if (isset($_SERVER['HTTP_HOST'])) {
 
     if(strpos($_SERVER['HTTP_HOST'],'staging') !== false) {
-      $phila_environment = 'production';
+      $phila_environment = 'staging';
     }
     else if(strpos($_SERVER['HTTP_HOST'],'test') !== false) {
       $phila_environment = 'test';
