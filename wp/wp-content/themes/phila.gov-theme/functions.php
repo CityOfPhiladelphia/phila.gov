@@ -495,7 +495,7 @@ function phila_get_thumbnails(){
   if (has_post_thumbnail()){
     $id = get_post_thumbnail_id();
     $thumbs = array(
-      '0' => 'medium',
+      '0' => 'large',
       '1' => 'phila-thumb',
     );
     $output = '';
@@ -504,7 +504,7 @@ function phila_get_thumbnails(){
       $image = wp_get_attachment_image_src($id, $value);
 
       if ($image[1] >= 700 && $image[2] >= 400 ) {
-        $output .= get_the_post_thumbnail( $post=null, 'medium' );
+        $output .= get_the_post_thumbnail( $post=null, 'large' );
         break;
       }else if ($image[1] == 660 && $image[2] == 430 ) {
         $output .= get_the_post_thumbnail( $post=null, 'phila-thumb' );
