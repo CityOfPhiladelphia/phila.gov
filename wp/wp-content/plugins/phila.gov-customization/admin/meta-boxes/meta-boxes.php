@@ -247,7 +247,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_resource_list',
     'title'    => __( 'Resource List' ),
-    'pages'    => array( 'department_page', 'programs' ),
+    'pages'    => array( 'department_page', 'programs', 'project' ),
     'context'  => 'normal',
     'priority' => 'high',
     'visible' => array(
@@ -344,7 +344,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_module_row_1',
     'title'    => 'Two-thirds row',
-    'pages'    => array( 'department_page' ),
+    'pages'    => array( 'department_page', 'project' ),
     'context'  => 'normal',
     'priority' => 'default',
     'revision' => true,
@@ -352,7 +352,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     'visible' => array(
       'when'  => array(
         array('phila_template_select', '=', 'homepage_v2' ),
+        array('phila_template_select', '=', 'project_homepage' )
       ),
+      'relation' => 'or',
     ),
 
     'fields' => array(
@@ -387,7 +389,13 @@ function phila_register_meta_boxes( $meta_boxes ){
               'name' => 'Custom Text Title',
               'id'   => 'phila_module_row_1_col_1_texttitle',
               'type' => 'text',
-              'hidden' => array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
+              'hidden' => array(
+                'when' => array(
+                  array('phila_module_row_1_col_1_type', '!=', 'phila_module_row_1_col_1_custom_text'),
+                  array('phila_template_select', '=', 'project_homepage')
+                ),
+                'relation' => 'or',
+              ),
             ),
           array(
             'name' => 'Custom Text Content',
@@ -434,7 +442,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_module_row_2',
     'title'    => 'Full row calendar',
-    'pages'    => array( 'department_page' ),
+    'pages'    => array( 'department_page', 'project' ),
     'context'  => 'normal',
     'priority' => 'default',
     'revision' => true,
@@ -445,12 +453,121 @@ function phila_register_meta_boxes( $meta_boxes ){
     'visible' => array(
       'when'  => array(
         array('phila_template_select', '=', 'homepage_v2' ),
+        array( 'phila_template_select', '=', 'project_homepage' ),
       ),
       'relation' => 'or',
     ),
 
     // List of sub-fields
     'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_v2_calendar_full(),
+  );
+
+  $meta_boxes[] = array(
+    'id'  => 'project_staff_list',
+    'title'    => 'Project staff list',
+    'type'  => 'group',
+    'clone' => false,
+    'pages'    => array( 'project' ),
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', '=', 'project_homepage' )
+      ),
+    ),
+    'fields'  => array(
+      array(
+        'id'  => 'section_title',
+        'name'  => 'Section title',
+        'type'  => 'text',
+        'desc'  => 'Use this section to create an accordion-style list of people who don\'t formally work for the City of Philadelphia. List will appear in the order below.',
+      ),
+      Phila_Gov_Standard_Metaboxes::phila_meta_var_project_staff_list()
+    ),
+  );
+
+  $meta_boxes[] = array(
+    'id'  => 'phila_project_partner_list',
+    'title' => 'Partner List',
+    'pages'    => array( 'project' ),
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', '=', 'project_homepage' )
+      ),
+    ),
+    'fields' => array(
+      array(
+        'id'  => 'phila_project_wysiwyg_content',
+        'type'  => 'wysiwyg',
+        'options' => Phila_Gov_Standard_Metaboxes::phila_wysiwyg_options_basic()
+      )
+    ),
+  );
+
+  $meta_boxes[] = array(
+    'id'  => 'phila_project_get_involved',
+    'title' => 'Get involved',
+    'context'  => 'normal',
+    'priority' => 'default',
+    'pages'    => array( 'project' ),
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', '=', 'project_homepage' )
+      ),
+    ),
+    'fields' => Phila_Gov_Standard_Metaboxes::phila_meta_var_phila_project_get_involved(),
+  );
+
+  $meta_boxes[] = array(
+  'id'       => 'project_homepage_timeline',
+  'title'    => 'Homepage timeline',
+  'pages'    => array( 'project' ),
+  'context'  => 'normal',
+  'visible' => array(
+    'when'  => array(
+      array('phila_template_select', '=', 'project_homepage' ),
+    ),
+  ),
+  'fields' => array(
+    Phila_Gov_Standard_Metaboxes::phila_project_timeline_page_selector(),
+    array(
+      'name' => 'Timeline item count',
+      'id'   => 'homepage_timeline_item_count',
+      'desc'  => 'Select the number of items from the timeline to display',
+      'type' => 'number'
+    ),
+  )
+
+);
+
+  $meta_boxes[] = array(
+    'id'  => 'project_status',
+    'title' => 'Project Status',
+    'pages' => array( 'project' ),
+    'context' => 'normal',
+    'priority' => 'default',
+    'visible' => array(
+      'when' => array(
+        array('phila_template_select', '=', 'project_homepage' ),
+      ),
+    ),
+    'fields' => array(
+      array(
+        'id'   => 'phila_project_status_description',
+        'name' => 'Status description',
+        'type' => 'textarea',
+        ),
+      array(
+        'id'   => 'phila_project_status',
+        'name' => 'Select a status',
+        'type' => 'radio',
+        'required' => true,
+        'options' => array(
+          '0' => 'Planning',
+          '1' => 'Design',
+          '2' => 'Construction',
+          '3' => 'Completed',
+        ),
+      ),
+    ),
   );
 
   $meta_boxes[] = array(
@@ -466,7 +583,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     ),
     'visible' => array(
       'when'  => array(
-        array('phila_template_select', '=', 'homepage_v2' ),
+        array('phila_template_select', '=', 'homepage_v2' )
       ),
     ),
 
@@ -500,7 +617,7 @@ function phila_register_meta_boxes( $meta_boxes ){
         'on_label'  => 'Yes',
         'off_label' => 'No',
         'visible' => array(
-          'phila_template_select', 'in', ['homepage_v2', 'homepage_v3']
+          'phila_template_select', 'in', ['homepage_v2', 'homepage_v3', 'project_homepage']
         )
       ),
     ),
@@ -546,7 +663,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_full_row_press_releases',
     'title'    => 'Full row press releases posts (3 total)',
-    'pages'    => array( 'department_page', 'guides' ),
+    'pages'    => array( 'department_page', 'guides', 'project' ),
     'context'  => 'normal',
     'priority' => 'default',
 
@@ -556,7 +673,8 @@ function phila_register_meta_boxes( $meta_boxes ){
     'visible' => array(
       'when' => array(
         array( 'phila_template_select', '=', 'homepage_v2'),
-        array( 'phila_template_select', '=', 'guide_landing_page' )
+        array( 'phila_template_select', '=', 'guide_landing_page' ),
+        array( 'phila_template_select', '=', 'project_homepage' )
       ),
       'relation'  => 'or'
     ),
@@ -596,7 +714,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'       => 'phila_full_row_blog',
     'title'    => 'Full row blog posts (3 total)',
-    'pages'    => array( 'department_page', 'guides' ),
+    'pages'    => array( 'department_page', 'guides', 'project' ),
     'context'  => 'normal',
     'priority' => 'high',
 
@@ -606,6 +724,7 @@ function phila_register_meta_boxes( $meta_boxes ){
     'visible' => array(
       'when' => array(
         array( 'phila_template_select', '=', 'homepage_v2' ),
+        array( 'phila_template_select', '=', 'project_homepage' ),
         array( 'phila_template_select', '=', 'guide_landing_page' )
       ),
       'relation' => 'or',
@@ -699,7 +818,7 @@ function phila_register_meta_boxes( $meta_boxes ){
   $meta_boxes[] = array(
     'id'  => 'phila_call_to_action_multi',
     'title' => 'Call to action cards (resources)',
-    'pages' => array( 'department_page' ),
+    'pages' => array( 'department_page', 'project' ),
     'context' => 'normal',
     'priority' => 'default',
     'revision' => true,
@@ -710,7 +829,9 @@ function phila_register_meta_boxes( $meta_boxes ){
     'visible' => array(
       'when'  => array(
         array('phila_template_select', '=', 'homepage_v2' ),
+        array('phila_template_select', '=', 'project_homepage' )
       ),
+      'relation' => 'or',
     ),
 
     'fields' => array(
@@ -728,11 +849,21 @@ function phila_register_meta_boxes( $meta_boxes ){
             'name'  =>  'See all title (optional)',
             'id'    => 'phila_url_title',
             'type'  => 'text',
+            'hidden' => array('phila_template_select', '=', 'project_homepage' ),
           ),
           array(
             'name'  =>  'See all URL (optional)',
             'id'    => 'phila_url',
             'type'  => 'url',
+          ),
+
+          array(
+            'name' => '2024 updated design',
+            'id' => '2024_updated_design',
+            'type' => 'switch',
+            'desc'  => 'Use updated 2024 design?',
+            'on_label'  => 'Yes',
+            'off_label' => 'No',
           ),
 
           array(
@@ -915,7 +1046,7 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Heading Groups',
-  'pages' => array('department_page', 'page', 'service_page', 'programs'),
+  'pages' => array('department_page', 'page', 'service_page', 'programs', 'project'),
   'revision' => true,
 
   'visible' => array(
@@ -1249,12 +1380,14 @@ $meta_boxes[] = array(
 
 $meta_boxes[] = array(
   'title' => 'Timeline',
-  'pages' => array('department_page', 'programs'),
+  'pages' => array('department_page', 'programs', 'project'),
   'revision' => true,
   'visible' => array(
     'when'  => array(
       array('phila_template_select', '=', 'timeline'),
+      array('phila_template_select', '=', 'project_timeline'),
     ),
+    'relation' => 'or',
   ),
   'fields' => Phila_Gov_Standard_Metaboxes::phila_metabox_timeline()
 );

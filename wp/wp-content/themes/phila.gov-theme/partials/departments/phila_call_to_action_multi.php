@@ -82,7 +82,6 @@
         <h2 id="<?php echo phila_format_uri($action_panel_title)?>" <?php echo isset($contrast) ? '' : 'class="contrast"'?>><?php echo $action_panel_title; ?></h2>
       </div>
       <?php foreach ( $action_panel_multi as $call_to_action ) :
-
         $action_panel_summary = isset( $call_to_action['phila_action_panel_summary_multi'] ) ? $call_to_action['phila_action_panel_summary_multi'] : '';
         $action_panel_cta_text = isset( $call_to_action['phila_action_panel_cta_text_multi'] ) ? $call_to_action['phila_action_panel_cta_text_multi'] : '';
         $action_panel_link = isset( $call_to_action['phila_action_panel_link_multi'] ) ? $call_to_action['phila_action_panel_link_multi'] : '';
@@ -108,7 +107,7 @@
         <?php endif; ?>
         </header>
         <?php echo $columns == '24' ? '<hr class="mll mrl show-for-small-only">' : '<hr class="mll mrl">'; ?>
-          <span class="details"><?php echo $action_panel_summary; ?></span>
+          <div class="details" style="<?php echo $item_count > 1 ? "text-align: center;" : ''; ?>"><?php echo $action_panel_summary; ?></div>
         </div>
       </a>
     <?php endif; ?>
@@ -118,7 +117,6 @@
   <?php if ( $link_url != '' && $link_title != ''):?>
     <div class="row mtm">
       <div class="columns">
-
         <?php $see_all = array(
             'URL' => $link_url,
             'content_type' => $action_panel_title,

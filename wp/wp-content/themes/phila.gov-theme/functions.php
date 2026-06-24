@@ -61,7 +61,7 @@ function phila_gov_setup() {
     function phila_register_category_menus() {
 
       $get_possible_pages = array(
-      	'post_type' => array('department_page', 'programs'),
+      	'post_type' => array('department_page', 'programs', 'project'),
         'posts_per_page'  => -1,
         'order' => 'asc',
         'orderby' => 'title',
@@ -86,6 +86,11 @@ function phila_gov_setup() {
           array(
             'key'     => 'phila_template_select',
             'value'   => 'department_homepage',
+            'compare' => '=',
+          ),
+          array(
+            'key'     => 'phila_template_select',
+            'value'   => 'project_homepage',
             'compare' => '=',
           ),
       	),
@@ -2422,14 +2427,53 @@ function load_vue_site_wide_alerts() {
   wp_enqueue_style('site-wide-alerts-app-css', 'https://www.phila.gov/embedded/site-wide-alerts/'.$phila_environment.'/css/app.css?cachebreaker');
 }
 function load_vue_homepage() {
-
-  if (is_front_page()) {
-  global $phila_environment;
+  global $post;
+  $phila_environment = 'staging';
+  if ((is_front_page() === True) or (get_post_type($post->ID) === 'project')) {
     wp_enqueue_script('vue-homepage-chunk-js', 'https://www.phila.gov/embedded/homepage/'.$phila_environment.'/js/chunk-vendors.js?cachebreaker', array(), null, true );
     wp_enqueue_script('vue-homepage-app-js', 'https://www.phila.gov/embedded/homepage/'.$phila_environment.'/js/app.js?cachebreaker', array(), null, true );
     wp_enqueue_style('vue-homepage-app-css', 'https://www.phila.gov/embedded/homepage/'.$phila_environment.'/css/app.css?cachebreaker');
-    }
+  }
 }
+
+/**
+ * This allows us to load drafts with the url pattern /projects/slug?preview=true 
+ * in order to load the project status component when the project is not published.
+ */
+
+add_action( 'save_post_project', function( $post_id, $post, $update ) {
+    if ( in_array( $post->post_status, array( 'draft', 'pending' ), true ) ) {
+        if ( empty( $post->post_name ) ) {
+            $slug = sanitize_title( $post->post_title );
+            if ( empty( $slug ) ) {
+                $slug = $post_id;
+            }
+            wp_update_post( array(
+                'ID'        => $post_id,
+                'post_name' => $slug,
+            ) );
+        }
+    }
+}, 10, 3 );
+
+add_filter( 'preview_post_link', function( $preview_link, $post ) {
+    if ( $post->post_type === 'project' && in_array( $post->post_status, array( 'draft', 'pending' ), true ) ) {
+        $slug = $post->post_name ?: $post->ID;
+        $preview_link = home_url( user_trailingslashit( "projects/{$slug}" ) );
+        $preview_link = add_query_arg( 'preview', 'true', $preview_link );
+    }
+    return $preview_link;
+}, 10, 2 );
+
+add_action( 'pre_get_posts', function( $q ) {
+    if ( is_admin() || ! $q->is_main_query() ) {
+        return;
+    }
+
+    if ( ! empty( $_GET['preview'] ) && $q->is_singular && $q->get( 'post_type' ) === 'project' ) {
+        $q->set( 'post_status', array( 'draft', 'pending', 'publish', 'future', 'private' ) );
+    }
+});
 
 
 function phila_return_language_code($language){
