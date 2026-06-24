@@ -64,9 +64,9 @@
             </td>
             <td class="format">
               <?php if ( $file_type ): ?>
-              <div aria-hidden="true">
+              <div>
                 <span class="file-type prs"><?php phila_format_document_type( $file_type ); ?></span>
-                <a href="<?php echo $document['url'] ?>" data-file-name="<?php echo $document['title']; ?>" aria-hidden="true"><i class="fas fa-download fa-lg"></i>
+                <a href="<?php echo $document['url'] ?>" data-file-name="<?php echo $document['title']; ?>"><i class="fas fa-download fa-lg" aria-hidden="true"></i>
                 </a>
               </div>
               <?php endif; ?>
