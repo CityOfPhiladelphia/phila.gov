@@ -16,6 +16,9 @@
     $blog_see_all = '';
   endif;
 
+  $blog_override = rwmb_meta('phila_get_post_cats');
+  $blog_cat_override = isset($blog_override['phila_post_category']) ? $blog_override['phila_post_category'] : '';
+
   if ( !empty( $blog_cat_override )) :
     if( is_object($blog_cat_override[0])) {
       $slang_name = phila_get_owner_typography( $blog_cat_override[0] );
