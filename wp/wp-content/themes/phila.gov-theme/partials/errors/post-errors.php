@@ -37,7 +37,7 @@ if ( is_user_logged_in() && (phila_get_selected_template() == 'post' || phila_ge
         'title' => "Warning: The featured image doesn't meet the size requirements",
         'link' => '',
         'messages' => array(
-          '<p>The featured image of a blog post must conform to the size requirements of 1000px x 700px</p>'
+          '<p>The featured image of a blog post must conform to the size requirements of 1000px x 570px</p>'
         )
       );
     }
