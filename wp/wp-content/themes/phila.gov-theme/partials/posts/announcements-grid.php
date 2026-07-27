@@ -72,8 +72,12 @@
   <?php if ( $announcements->have_posts() ) : ?>
     <?php $total = $announcements->post_count; ?>
     <div class="grid-container announcement-grid mbxl">
-    <?php if ( is_single() || is_home() ) { ?>
+    <?php if ( is_single() || is_home() ) { 
+      if ( $user_selected_template == 'vue_app' ) : ?>
+      <h3 style="margin-top: 1rem !important;">Announcements</h3>
+      <?php else : ?>
       <h2>Announcements</h2>
+      <?php endif; ?>
     <?php } ?>
     <div class="grid-x grid-margin-x">
     <?php while ( $announcements->have_posts() ) : $announcements->the_post(); ?>
