@@ -497,6 +497,7 @@ function phila_get_thumbnails(){
     $thumbs = array(
       '0' => 'large',
       '1' => 'phila-thumb',
+      '2' => 'medium',
     );
     $output = '';
     foreach ($thumbs as $key => $value) {
@@ -509,7 +510,9 @@ function phila_get_thumbnails(){
       }else if ($image[1] == 660 && $image[2] == 430 ) {
         $output .= get_the_post_thumbnail( $post=null, 'phila-thumb' );
         break;
-
+      }else if ($image[1] < 660 && $image[2] < 430 ) {
+        $output .= get_the_post_thumbnail( $post=null, 'medium' );
+        break;
       }
     }
     return $output;
