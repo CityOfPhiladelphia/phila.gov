@@ -103,8 +103,7 @@ if ((empty( $archived ) || !isset($archived) || $archived == 'default') &&  $pos
   <?php if ( has_post_thumbnail() && ($template_type != 'action_guide') && ($template_type != 'press_release') ): ?>
     <div class="grid-container featured-image <?php echo $language == 'arabic' ? $language : '' ?>">
       <div class="grid-x medium-16 medium-centered align-middle">
-        <?php if( strpos(phila_get_thumbnails(), 'phila-thumb') || strpos(phila_get_thumbnails(), 'phila-news')  ) : 
-          var_dump(phila_get_thumbnails()); ?>
+        <?php if( strpos(phila_get_thumbnails(), 'phila-thumb') || strpos(phila_get_thumbnails(), 'phila-news')  ) : ?>
           <div class="js-thumbnail-image">
             <div class="lightbox-link lightbox-link--feature" data-open="phila-lightbox-feature">
               <?php echo phila_get_thumbnails(); ?>
