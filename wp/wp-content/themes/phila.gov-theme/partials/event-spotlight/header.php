@@ -50,7 +50,7 @@
                   echo $date_output;
                   ?>
                 <?php else :?>
-                  <?php $date_output = str_replace(array('Sep'), array('Sept'), $start->format('l, ' . $start_month_format . ' j') . ' - ' . $end->format( 'l, ' . $end_month_format . ' j, Y') );
+                  <?php $date_output = str_replace(array('Sep'), array('Sept'), $start->format('l, ' . $start_month_format . ' j, Y') . ' - ' . $end->format( 'l, ' . $end_month_format . ' j, Y') );
                   echo $date_output;
                   ?>
 
@@ -75,7 +75,7 @@
                   <?php else : ?>
                     <?php $date_output = str_replace(
                       array('Sep','12:00 am','12:00 pm','am','pm',':00'),
-                      array('Sept','midnight','noon','a.m.','p.m.',''), $start->format('l, ' . $start_month_format . ' j') . ' - ' . $end->format('l, ' . $end_month_format . ' j, Y' ) .  '<br />'. $start->format('g:i a') . ' - '  . $end->format('g:i a'));
+                      array('Sept','midnight','noon','a.m.','p.m.',''), $start->format('l, ' . $start_month_format . ' j, Y') . ' - ' . $end->format('l, ' . $end_month_format . ' j, Y' ) .  '<br />'. $start->format('g:i a') . ' - '  . $end->format('g:i a'));
                       echo $date_output;
                       ?>
                       <i class="fas fa-sync" aria-hidden="true"></i> Recurring daily
