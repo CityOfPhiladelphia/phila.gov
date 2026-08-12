@@ -40,23 +40,24 @@
           $action_panel_cta_text = isset( $call_to_action['phila_action_panel_cta_text_multi'] ) ? $call_to_action['phila_action_panel_cta_text_multi'] : '';
           $action_panel_link = isset( $call_to_action['phila_action_panel_link_multi'] ) ? $call_to_action['phila_action_panel_link_multi'] : '';
           $action_panel_link_loc = isset(  $call_to_action['phila_action_panel_link_loc_multi'] ) ? $call_to_action['phila_action_panel_link_loc_multi'] : '';
-          $action_panel_fa = isset( $call_to_action['phila_action_panel_fa_multi'] ) ? $call_to_action['phila_action_panel_fa_multi'] : '';
+          $action_panel_image = isset( $call_to_action['phila_action_panel_image_multi'] ) ? $call_to_action['phila_action_panel_image_multi'] : '';
         ?>
       <?php phila_grid_column_counter( $item_count ); ?>
       <div class="large-<?php echo $columns ?> cell pbm <?php if( $item_count > 1 ) echo 'equal-height';?>">
         <?php if (!$action_panel_link == ''): ?>
-        <a href="<?php echo $action_panel_link; ?>"  class="color-block-card">
-          <div class="<?php if( $item_count > 1 ): echo 'equal'; endif;?>">
-            <?php if ($action_panel_fa): ?>
-              <span class="fa-stack <?php echo $columns == '24' ? 'fa-3x' : 'fa-4x'; ?>" aria-hidden="true">
-                <i class="<?php echo $action_panel_fa; ?>"></i>
-              </span>          <?php endif; ?>
-          <?php if (!$action_panel_cta_text == ''): ?>
-            <div class="copy <?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></div>
-          <?php endif; ?>
+          <div class="color-block-card--container">
+            <a href="<?php echo $action_panel_link; ?>"  class="color-block-card">
+              <div class="<?php if( $item_count > 1 ): echo 'equal'; endif;?>">
+                <?php if (!$action_panel_cta_text == ''): ?>
+                  <div>
+                    <span class="copy <?php if ($action_panel_link_loc) echo 'external';?>"><?php echo $action_panel_cta_text; ?></span>
+                  </div>
+                <?php endif; ?>
+              </div>
+            </a>
+            <div class="color-block-card--background"<?php if (!$action_panel_image == ''): ?> style="background-image: url('<?php echo $action_panel_image; ?>'); background-size: cover; background-repeat: no-repeat;"<?php endif ?>></div>
           </div>
-        </a>
-      <?php endif; ?>
+        <?php endif; ?>
       </div>
 
     <?php endforeach; ?></div>

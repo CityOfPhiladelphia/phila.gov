@@ -912,6 +912,13 @@ class Phila_Gov_Standard_Metaboxes {
         'class' => 'action-panel-link',
         'columns' => 6,
       ),
+      array(
+        'name'  =>  'Background image',
+        'id'    => 'phila_action_panel_image_multi',
+        'type'  => 'file_input',
+        'class' => 'action-panel-image',
+        'desc'  => 'When "2024 updated design" is turned on, you MUST select a background image for each of these panels.<br> It will not be visible when "2024 updated design" is turned off.'
+      ),
       Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'phila_action_panel_link_loc_multi'),
     );
   }
@@ -956,7 +963,7 @@ class Phila_Gov_Standard_Metaboxes {
             'name'  => 'Section Title',
             'id'    => 'phila_action_section_title_multi',
             'type'  => 'text',
-            'class'  => 'percent-100'
+            'class'  => 'percent-100',
           ),
           array(
             'id'  => 'phila_call_to_action_multi_group',
@@ -999,6 +1006,13 @@ class Phila_Gov_Standard_Metaboxes {
                 'type'  => 'text',
                 'class' => 'action-panel-link',
                 'columns'  => 12,
+              ),
+              array(
+                'name'  =>  'Background image',
+                'id'    => 'phila_action_panel_image_multi',
+                'type'  => 'file_input',
+                'class' => 'a',
+                'desc'  => 'When "2024 updated design" is turned on, you MUST select a background image for each of these panels.<br> It will not be visible when "2024 updated design" is turned off.'
               ),
               Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'phila_action_panel_link_loc_multi')
             ),
