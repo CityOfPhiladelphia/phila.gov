@@ -119,8 +119,8 @@
         foreach ( $resource_list_groups as $resource_key => $resource_list_group) :
 
           $outer_loop++;
-          $resource_list_title = isset( $resource_list_group['phila_resource_list_title'] ) ? $resource_list_group['phila_resource_list_title'] : '';
-          $resource_list_description = isset( $resource_list_group['phila_resource_list_description'] ) ? $resource_list_group['phila_resource_list_description'] : '';
+          $resource_list_title = isset( $resource_list_group['phila_resource_list_title'] ) ? $resource_list_group['phila_resource_list_title'] : null;
+          $resource_list_description = isset( $resource_list_group['phila_resource_list_description'] ) ? $resource_list_group['phila_resource_list_description'] : null;
           $resource_list_slug = sanitize_title_with_dashes($resource_list_title); ?>
           <div class="grid-container">
             <div class="grid-x grid-padding-x one-quarter-row  <?php if(isset($current_row['phila_resource_group']['phila_wysiwyg_content'] ) || $user_selected_template != 'collection_page_v2') { echo "mvm"; } ?>">
