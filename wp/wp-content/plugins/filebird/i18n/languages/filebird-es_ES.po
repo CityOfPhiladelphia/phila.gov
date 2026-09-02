@@ -1,0 +1,980 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: FileBird\n"
+"POT-Creation-Date: 2021-05-08 00:10+0700\n"
+"PO-Revision-Date: 2021-05-26 14:50+0700\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.3\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: filebird.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: es\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: apps\n"
+"X-Poedit-SearchPathExcluded-2: *.css\n"
+"X-Poedit-SearchPathExcluded-3: *.js\n"
+"X-Poedit-SearchPathExcluded-4: blocks/filebird-gallery/node_modules\n"
+
+#: includes/Classes/ACF/acf-field-filebird-v4.php:22
+#: includes/Classes/ACF/acf-field-filebird-v5.php:21
+msgid "FileBird Folder"
+msgstr "Carpeta FileBird"
+
+#: includes/Classes/Convert.php:167
+msgid "Import categories to FileBird"
+msgstr "Importar categorías a FileBird"
+
+#: includes/Classes/Convert.php:170
+#, php-format
+msgid ""
+"We found you have %1$s categories you created from <strong>%2$s</strong> "
+"plugin. Would you like to import it to <strong>FileBird</strong>?"
+msgstr ""
+"Hemos encontrado que tienes %1$s categories que creaste a partir del "
+"<strong>plugin %2$s.</strong> ¿Desea importarlo a <strong>FileBird</strong>?"
+
+#: includes/Classes/Convert.php:173 views/pages/settings/tab-import.php:25
+#: views/pages/settings/tab-import.php:53
+#: views/pages/settings/tab-import.php:81
+#: views/pages/settings/tab-import.php:109
+#: views/pages/settings/tab-import.php:137
+msgid "Import Now"
+msgstr "Importar ahora"
+
+#: includes/Classes/Convert.php:174
+msgid "No, thanks"
+msgstr "No, gracias"
+
+#: includes/Classes/Convert.php:218
+msgid "Success"
+msgstr "Éxito"
+
+#: includes/Classes/Convert.php:234
+msgid "success"
+msgstr "éxito"
+
+#: includes/Classes/Convert.php:236
+msgid "validation failed"
+msgstr "validación fallida"
+
+#: includes/Classes/Convert.php:252
+msgid "Successfully wiped."
+msgstr "Borrado con éxito."
+
+#: includes/Classes/Convert.php:268
+msgid "Successfully cleared."
+msgstr "Borrado con éxito."
+
+#: includes/Classes/Convert.php:272
+msgid "Please try again."
+msgstr "Inténtalo de nuevo."
+
+#: includes/Classes/Convert.php:360
+#, php-format
+msgid ""
+"Congratulations! We imported successfully %d folders into <strong>FileBird.</"
+"strong>"
+msgstr ""
+"¡Felicitaciones! Hemos importado correctamente carpetas %1$d en "
+"<strong>FileBird.</strong>"
+
+#: includes/Classes/Convert.php:370 includes/Classes/Convert.php:377
+#: includes/Classes/Convert.php:384 includes/Classes/Convert.php:391
+#: includes/Classes/Convert.php:398 includes/Classes/EnhancedConvert.php:43
+msgid "Already Updated"
+msgstr "Ya actualizado"
+
+#: includes/Classes/DocumentGallery.php:41
+msgid "This folder ID does not exist, please check again."
+msgstr "Este ID de carpeta no existe, por favor compruebe de nuevo."
+
+#: includes/Classes/EnhancedConvert.php:52
+msgid "Updated"
+msgstr "Actualizado"
+
+#: includes/Classes/Review.php:74
+msgid "Give FileBird a review"
+msgstr "Dale una reseña a FileBird"
+
+#: includes/Classes/Review.php:76
+msgid ""
+"Thank you for choosing FileBird. We hope you love it. Could you take a "
+"couple of seconds posting a nice review to share your happy experience?"
+msgstr ""
+"Gracias por elegir FileBird. Esperamos que te guste. ¿Podría tomarse un par "
+"de segundos publicando una buena crítica para compartir su experiencia feliz?"
+
+#: includes/Classes/Review.php:79
+msgid "We will be forever grateful. Thank you in advance ;)"
+msgstr "Estaremos eternamente agradecidos. Gracias de antemano ;)"
+
+#: includes/Classes/Review.php:82
+msgid "Rate now"
+msgstr "Evaluar ahora"
+
+#: includes/Classes/Review.php:83
+msgid "Later"
+msgstr "Luego"
+
+#: includes/Classes/Review.php:84
+msgid "Already did"
+msgstr "Ya hecho"
+
+#: includes/Classes/TabActive.php:40
+msgid "Activate your license for automatic updates"
+msgstr "Active su licencia para actualizaciones automáticas"
+
+#: includes/Classes/TabActive.php:152
+msgid "Could not use this purchase code for your domain."
+msgstr "No se pudo usar este código de compra para su dominio."
+
+#: includes/Classes/TabActive.php:155
+msgid "Could not verify your domain."
+msgstr "No se pudo verificar su dominio."
+
+#: includes/Classes/TabActive.php:167
+msgid "Please active license to update."
+msgstr "Por favor, licencia activa para actualizar."
+
+#: includes/Controller/Api.php:104
+msgid "Invalid action"
+msgstr "Acción no válida"
+
+#: includes/Controller/Api.php:129
+msgid "folder_id is missing."
+msgstr "folder_id falta."
+
+#: includes/Controller/Api.php:140
+msgid "Required fields are missing."
+msgstr "Faltan los campos obligatorios."
+
+#: includes/Controller/Api.php:154 includes/Controller/Folder.php:432
+#: includes/Controller/Folder.php:487 includes/Controller/Folder.php:500
+msgid "Validation failed"
+msgstr "Validación fallida"
+
+#: includes/Controller/Folder.php:65
+msgid "Create your first folder for media library now."
+msgstr "Cree ahora su primera carpeta para la biblioteca multimedia."
+
+#: includes/Controller/Folder.php:67
+msgid "Get Started"
+msgstr "Comenzar"
+
+#: includes/Controller/Folder.php:89 includes/I18n.php:126
+msgid "FileBird 4 Update Required"
+msgstr "Actualización de FileBird 4 requerida"
+
+#: includes/Controller/Folder.php:93
+msgid ""
+"You're using the new FileBird 4. Please update database to view your folders "
+"correctly."
+msgstr ""
+"Estás usando el nuevo FileBird 4. Actualice la base de datos para ver sus "
+"carpetas correctamente."
+
+#: includes/Controller/Folder.php:99
+#: views/pages/settings/tab-update-database.php:10
+msgid "Update now"
+msgstr "Actualizar ahora"
+
+#: includes/Controller/Folder.php:235
+msgid "Your request can't be processed."
+msgstr "Su solicitud no se puede procesar."
+
+#: includes/Controller/Folder.php:260 includes/Model/Folder.php:30
+msgid "All Folders"
+msgstr "Todas las carpetas"
+
+#: includes/Controller/Folder.php:264 includes/Controller/Folder.php:599
+#: includes/I18n.php:70 includes/Model/Folder.php:34
+msgid "Uncategorized"
+msgstr "Sin categoría"
+
+#: includes/Controller/Folder.php:389
+msgid "Please choose folder"
+msgstr "Por favor, elija la carpeta"
+
+#: includes/Controller/Folder.php:428 includes/Controller/Folder.php:446
+msgid "A folder with this name already exists. Please choose another one."
+msgstr "Ya existe una carpeta con este nombre. Por favor, elija otro."
+
+#: includes/Controller/Folder.php:475
+msgid "Can't delete folder, please try again later"
+msgstr "No se puede eliminar la carpeta, vuelva a intentarlo más tarde"
+
+#: includes/Controller/Folder.php:496
+msgid "Folder tree has been updated."
+msgstr "Se ha actualizado el árbol de carpetas."
+
+#: includes/I18n.php:40
+msgid "No media files found."
+msgstr "No se encontraron archivos multimedia."
+
+#: includes/I18n.php:41
+msgid "New Folder"
+msgstr "Nueva carpeta"
+
+#: includes/I18n.php:42
+msgid "Delete"
+msgstr "Borrar"
+
+#: includes/I18n.php:43 includes/I18n.php:59
+msgid "Folders"
+msgstr "Carpetas"
+
+#: includes/I18n.php:44
+msgid "Ok"
+msgstr "Ok"
+
+#: includes/I18n.php:45
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: includes/I18n.php:46
+msgid "Cut"
+msgstr "Cortar"
+
+#: includes/I18n.php:47
+msgid "Paste"
+msgstr "Pegar"
+
+#: includes/I18n.php:48
+msgid "Download"
+msgstr "Descargar"
+
+#: includes/I18n.php:49
+msgid "Download (Pro version)"
+msgstr "Descargar (versión Pro)"
+
+#: includes/I18n.php:50
+msgid "Loading"
+msgstr "Cargando"
+
+#: includes/I18n.php:51
+msgid "Generating download link..."
+msgstr "Generar enlace de descarga..."
+
+#: includes/I18n.php:52
+msgid "Successfully moved"
+msgstr "Se movió con éxito"
+
+#: includes/I18n.php:53
+msgid "Unsuccessfully moved"
+msgstr "Sin éxito se movió"
+
+#: includes/I18n.php:54
+msgid "Successfully deleted!"
+msgstr "¡Eliminado con éxito!"
+
+#: includes/I18n.php:55
+msgid "Can't delete!"
+msgstr "¡No se puede borrar!"
+
+#: includes/I18n.php:56
+msgid "Save"
+msgstr "Guardar"
+
+#: includes/I18n.php:57
+msgid "Folder"
+msgstr "Carpeta"
+
+#: includes/I18n.php:58
+msgid "Folder name..."
+msgstr "Nombre de la carpeta..."
+
+#: includes/I18n.php:60
+msgid "Enter folder name..."
+msgstr "Introduzca el nombre de la carpeta..."
+
+#: includes/I18n.php:61
+msgid "Are you sure you want to delete"
+msgstr "¿Está seguro que desea eliminar?"
+
+#: includes/I18n.php:62
+msgid "Are you sure?"
+msgstr "¿Estás seguro?"
+
+#: includes/I18n.php:63
+msgid "Those files will be moved to <strong>Uncategorized</strong> folder."
+msgstr ""
+"Esos archivos se moverán a la carpeta <strong>Sin categorizar.</strong>"
+
+#: includes/I18n.php:64
+msgid "You are editing another folder! Please complete the task first!"
+msgstr "¡Estás editando otra carpeta! Por favor, complete la tarea primero!"
+
+#: includes/I18n.php:65
+msgid "Sort Folders"
+msgstr "Ordenar carpetas"
+
+#: includes/I18n.php:66
+msgid "Delete Folder"
+msgstr "Borrar carpeta"
+
+#: includes/I18n.php:67
+msgid "Sort Files"
+msgstr "Ordenar archivos"
+
+#: includes/I18n.php:68
+msgid "Bulk Select"
+msgstr "Selección múltiple"
+
+#: includes/I18n.php:69
+msgid "All Files"
+msgstr "Todos los Archivos"
+
+#: includes/I18n.php:71
+msgid "Previous folder selected"
+msgstr "Carpeta anterior seleccionada"
+
+#: includes/I18n.php:72
+msgid "Rename"
+msgstr "Renombrar"
+
+#: includes/I18n.php:73
+msgid ""
+"Are you sure you want to delete this folder? Those files will be moved to "
+"<strong>Uncategorized</strong> folder."
+msgstr ""
+"¿Está seguro de que desea eliminar esta carpeta? Esos archivos se moverán a "
+"la carpeta <strong>Sin categorizar.</strong>"
+
+#: includes/I18n.php:74
+msgid "Sort Ascending"
+msgstr "Ordenar ascendente"
+
+#: includes/I18n.php:75
+msgid "Sort Descending"
+msgstr "Orden Descendente"
+
+#: includes/I18n.php:76
+msgid "Reset"
+msgstr "Reiniciar"
+
+#: includes/I18n.php:77
+msgid "By Name"
+msgstr "Por Nombre"
+
+#: includes/I18n.php:78
+msgid "Name Ascending"
+msgstr "Nombre ascendiente"
+
+#: includes/I18n.php:79
+msgid "Name Descending"
+msgstr "Nombre descendiente"
+
+#: includes/I18n.php:80
+msgid "By Date"
+msgstr "Por fecha"
+
+#: includes/I18n.php:81
+msgid "Date Ascending"
+msgstr "Fecha Ascendente"
+
+#: includes/I18n.php:82
+msgid "Date Descending"
+msgstr "Fecha Descendente"
+
+#: includes/I18n.php:83
+msgid "By Modified"
+msgstr "Por Modificado"
+
+#: includes/I18n.php:84
+msgid "Modified Ascending"
+msgstr "Ascendiendo modificado"
+
+#: includes/I18n.php:85
+msgid "Modified Descending"
+msgstr "Descenso modificado"
+
+#: includes/I18n.php:86
+msgid "By Author"
+msgstr "Por autor"
+
+#: includes/I18n.php:87
+msgid "Author Ascending"
+msgstr "Autor ascendente"
+
+#: includes/I18n.php:88
+msgid "Author Descending"
+msgstr "Autor Descendente"
+
+#: includes/I18n.php:89
+msgid "By Title"
+msgstr "Por Titulo"
+
+#: includes/I18n.php:90
+msgid "Title Ascending"
+msgstr "Título Ascendente"
+
+#: includes/I18n.php:91
+msgid "Title Descending"
+msgstr "Título Descendente"
+
+#: includes/I18n.php:92
+msgid "Skip & Deactivate"
+msgstr "Saltar y desactivar"
+
+#: includes/I18n.php:93
+msgid "Deactivate"
+msgstr "Desactivar"
+
+#: includes/I18n.php:94
+msgid "Thank you so much!"
+msgstr "¡Muchas gracias!"
+
+#: includes/I18n.php:96
+msgid "It doesn't have the features I'm looking for."
+msgstr "No tiene las características que estoy buscando."
+
+#: includes/I18n.php:97
+msgid "Not work with my theme or other plugins."
+msgstr "No trabajar con mi tema u otros plugins."
+
+#: includes/I18n.php:98
+msgid "Found another plugin that works better."
+msgstr "Se ha encontrado otro plugin que funciona mejor."
+
+#: includes/I18n.php:99
+msgid "Don't know how to use it."
+msgstr "No sé cómo usarlo."
+
+#: includes/I18n.php:100
+msgid "This is just temporary, I will use it again."
+msgstr "Esto es sólo temporal, lo usaré de nuevo."
+
+#: includes/I18n.php:101
+msgid "Other"
+msgstr "Otro"
+
+#: includes/I18n.php:103
+msgid "Which features please?"
+msgstr "¿Qué características, por favor?"
+
+#: includes/I18n.php:104
+msgid "Please tell us which one"
+msgstr "Por favor, díganos cuál"
+
+#: includes/I18n.php:105
+msgid ""
+"Please read FileBird documentation <a target=\"_blank\" href=\"https://"
+"ninjateam.gitbook.io/filebird/\">here</a> or <a target=\"_blank\" href="
+"\"https://ninjateam.org/support/\">chat with us</a> if you need help"
+msgstr ""
+"Por favor, lea la documentación de FileBird <a target=\"_blank\" href="
+"\"https://ninjateam.gitbook.io/filebird/\">aquí</a> o <a target=\"_blank\" "
+"href=\"https://ninjateam.org/support/\">chatee con nosotros</a> si necesita "
+"ayuda"
+
+#: includes/I18n.php:106
+msgid ""
+"Please <a target=\"_blank\" href=\"https://ninjateam.org/support/\">ask for "
+"support here</a>, we will fix it for you."
+msgstr ""
+"Por <a target=\"_blank\" href=\"https://ninjateam.org/support/\">favor, pida "
+"apoyo aquí,</a>lo arreglaremos para usted."
+
+#: includes/I18n.php:107
+msgid "Please share your thoughts..."
+msgstr "Por favor, comparta sus pensamientos..."
+
+#: includes/I18n.php:108
+msgid "Want a better FileBird?"
+msgstr "¿Quieres un FileBird mejor?"
+
+#: includes/I18n.php:109
+msgid ""
+"Sorry to see you walk away, please share why you want to deactivate FileBird?"
+msgstr ""
+"Lamento ver que se vaya, por favor comparta por qué desea desactivar "
+"FileBird?"
+
+#: includes/I18n.php:110
+msgid "Folder Limit Reached"
+msgstr "Límite de carpeta alcanzado"
+
+#: includes/I18n.php:111
+msgid ""
+"<p>FileBird Lite version supports up to 10 folders.<br>Please upgrade to "
+"have unlimited folders and other premium features!</p>\n"
+"        <ul class=\"fbv-in_feature\">\n"
+"          <li>Unlimited Folders</li>\n"
+"          <li>Sort Files / Folders</li>\n"
+"          <li>Compatible with Premium Page Builders <span id=\"fbv-"
+"pagebuilder\" class=\"njn-i\"><svg viewBox=\"0 0 192 512\"><path fill="
+"\"currentColor\" d=\"M20 424.229h20V279.771H20c-11.046 "
+"0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 "
+"20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 "
+"0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 "
+"72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z\"></path></svg></span></"
+"li>\n"
+"          <li>Get Fast Updates</li>\n"
+"          <li>Premium Technical Support</li>\n"
+"          <li>One-time Payment</li>\n"
+"          <li>30-day Refund Guarantee</li>\n"
+"        </ul>"
+msgstr ""
+"<p>La versión FileBird Lite admite hasta 10 carpetas.<br>Por favor, "
+"actualice para tener carpetas ilimitadas y otras características premium!</"
+"p>\n"
+"        <ul class=\"fbv-in_feature\">\n"
+"          <li>Carpetas ilimitadas</li>\n"
+"          <li>Ordenar archivos / carpetas</li>\n"
+"          <li>Compatible con los constructores de páginas premium<span id="
+"\"fbv-pagebuilder\" class=\"njn-i\"><svg viewbox=\"0 0 192 512\"><path fill="
+"\"currentColor\" d=\"M20 424.229h20V279.771H20c-11.046 "
+"0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 "
+"20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 "
+"0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 "
+"72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z\"></path></svg></span></"
+"li>\n"
+"          <li>Obtener actualizaciones rápidas</li>\n"
+"          <li>Soporte técnico premium</li>\n"
+"          <li>Pago único</li>\n"
+"          <li>Garantía de reembolso de 30 días</li>\n"
+"        </ul>"
+
+#: includes/I18n.php:121
+msgid "Including Divi, Fusion, Thrive Architect, WPBakery..."
+msgstr "Incluyendo Divi, Fusion, Thrive Architect, WPBakery..."
+
+#: includes/I18n.php:122
+msgid "Upgrade to FileBird Pro now"
+msgstr "Actualice a FileBird Pro ahora"
+
+#: includes/I18n.php:123
+msgid "Success."
+msgstr "Éxito."
+
+#: includes/I18n.php:124
+msgid "Congratulations. Successfully imported!"
+msgstr "Felicitaciones. ¡Importado con éxito!"
+
+#: includes/I18n.php:125
+msgid "Go To Media"
+msgstr "Ir a medios"
+
+#: includes/I18n.php:127
+msgid ""
+"You're using the new FileBird 4. Please import database to view your folders "
+"correctly."
+msgstr ""
+"Estás usando el nuevo FileBird 4. Importe la base de datos para ver sus "
+"carpetas correctamente."
+
+#: includes/I18n.php:128
+msgid "Import now"
+msgstr "Importar ahora"
+
+#: includes/I18n.php:129
+msgid ""
+"Import failed. Please try again or <a href=\"https://ninjateam.org/support\" "
+"target=\"_blank\">contact our support</a>."
+msgstr ""
+"Error al importar. Inténtelo de nuevo o <a href=\"https://ninjateam.org/"
+"support\" target=\"_blank\">póngase en contacto con nuestro soporte.</a>"
+
+#: includes/I18n.php:130
+msgid "Please enter your Purchase Code."
+msgstr "Introduzca su código de compra."
+
+#: includes/I18n.php:131
+msgid "Please enter your Personal Access Token or get one."
+msgstr "Introduzca su token de acceso personal u obtenga uno."
+
+#: includes/I18n.php:132
+msgid "Can not active your License, please try again."
+msgstr "No puede activar su Licencia, por favor inténtelo de nuevo."
+
+#: includes/I18n.php:133 views/pages/html-settings.php:24
+#: views/pages/settings/tab-settings.php:1
+msgid "Settings"
+msgstr "Ajustes"
+
+#: includes/I18n.php:134 views/pages/html-settings.php:64
+msgid "FileBird Settings"
+msgstr "Configuración de FileBird"
+
+#: includes/I18n.php:135
+msgid "Select a default startup folder:"
+msgstr "Seleccione una carpeta de inicio predeterminada:"
+
+#: includes/I18n.php:136
+msgid "Auto sort files by:"
+msgstr "Ordenar automáticamente los archivos por:"
+
+#: includes/I18n.php:137
+msgid "Default"
+msgstr "Por defecto"
+
+#: includes/I18n.php:138
+msgid "Settings saved"
+msgstr "Ajustes guardados"
+
+#: includes/I18n.php:139
+msgid "Failed to save settings. Please try again!"
+msgstr "¡Error al guardar la configuración. Por favor inténtelo de nuevo!"
+
+#: includes/I18n.php:140
+msgid "Unlock new features"
+msgstr "Desbloquear nuevas características"
+
+#: includes/I18n.php:141
+msgid ""
+"To use FileBird folders with your current page builder/plugin, please "
+"upgrade to PRO version."
+msgstr ""
+"Para utilizar carpetas de FileBird con su creador de páginas /plugin actual, "
+"actualice a la versión PRO."
+
+#: includes/I18n.php:142
+msgid "Do more with FileBird PRO"
+msgstr "Haz más con FileBird PRO"
+
+#: includes/I18n.php:143
+msgid ""
+"You're using a third party plugin, which is supported in FileBird PRO. "
+"Please upgrade to browse files faster and get more done."
+msgstr ""
+"Estás usando un plugin de terceros, que es compatible con FileBird PRO. "
+"Actualice para examinar archivos más rápido y hacer más."
+
+#: includes/I18n.php:144
+msgid "Go Pro"
+msgstr "Hazte Pro"
+
+#: includes/I18n.php:145
+msgid "View details."
+msgstr "Ver detalles"
+
+#: includes/I18n.php:146
+msgid "Turn off for 7 days"
+msgstr "Apagar durante 7 días"
+
+#: includes/I18n.php:147
+msgid "Collapse"
+msgstr "Colapsar"
+
+#: includes/I18n.php:148
+msgid "Expand"
+msgstr "Expandir"
+
+#: includes/I18n.php:149
+msgid "Uploaded"
+msgstr "Subido"
+
+#: includes/I18n.php:150
+msgid "Less than a min"
+msgstr "Menos de un minuto"
+
+#: includes/I18n.php:151
+msgid "Total size"
+msgstr "Tamaño total"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:54
+msgid "View details"
+msgstr "Ver detalles"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr "Más información sobre %s"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr "Buscar actualizaciones"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:214
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr "El plugin %s está actualizado."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:216
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr "Una nueva versión del %s plugin está disponible."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:218
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr "No se pudo determinar si hay actualizaciones disponibles para %s."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:224
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr "Estado de actualización desconocido \"%s\""
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr "No hay changelog disponible."
+
+#. Plugin Name of the plugin/theme
+#: includes/Page/Settings.php:39 includes/Page/Settings.php:40
+msgid "FileBird"
+msgstr "FileBird"
+
+#: includes/Page/Settings.php:56
+msgid "Documentation"
+msgstr "Documentación"
+
+#: views/pages/html-settings.php:19
+msgid "Activation"
+msgstr "Activación"
+
+#: views/pages/html-settings.php:31
+#: views/pages/settings/tab-update-database.php:1
+msgid "Update Database"
+msgstr "Actualizar base de datos"
+
+#: views/pages/html-settings.php:36
+msgid "API"
+msgstr "API"
+
+#: views/pages/html-settings.php:41 views/pages/settings/tab-uninstall.php:1
+msgid "Uninstall"
+msgstr "Desinstalar"
+
+#: views/pages/html-settings.php:50
+msgid "Import"
+msgstr "Importar"
+
+#: views/pages/settings/tab-activated.php:9
+msgid "Congratulations! 🎉"
+msgstr "¡Felicitaciones! 🎉"
+
+#: views/pages/settings/tab-activated.php:12
+msgid "Your FileBird Pro was activated!"
+msgstr "¡Tu FileBird Pro fue activado!"
+
+#: views/pages/settings/tab-activated.php:21
+msgid ""
+"Starting a new site? <a href=\"https://1.envato.market/Get-FileBird\" class="
+"\"njt-fb-purchase-more\">Buy another license</a>."
+msgstr ""
+"¿Empezando un nuevo sitio? <a href=\"https://1.envato.market/Get-FileBird\" "
+"class=\"njt-fb-purchase-more\">Comprar otra licencia</a>."
+
+#: views/pages/settings/tab-active.php:9
+msgid ""
+"To activate FileBird, please sign in to Envato and accept a few permissions."
+msgstr ""
+"Para activar FileBird, inicie sesión en Envato y acepte algunos permisos."
+
+#: views/pages/settings/tab-active.php:11
+msgid "This helps verify your license."
+msgstr "Esto ayuda a verificar su licencia."
+
+#: views/pages/settings/tab-active.php:14
+msgid "By activating FileBird, you’ll have:"
+msgstr "Al activar FileBird, tendrás:"
+
+#: views/pages/settings/tab-active.php:19
+msgid "Auto-update to the latest version"
+msgstr "Actualización automática a la última versión"
+
+#: views/pages/settings/tab-active.php:22
+msgid "Premium Technical Support"
+msgstr "Soporte técnico Premium"
+
+#: views/pages/settings/tab-active.php:25
+msgid "Live Chat 1-1 on Facebook for any questions"
+msgstr "Chat en vivo 1-1 en Facebook para cualquier pregunta"
+
+#: views/pages/settings/tab-active.php:34
+msgid "Login with Envato"
+msgstr "Inicio de sesión con Envato"
+
+#: views/pages/settings/tab-api.php:1
+msgid "REST API"
+msgstr "REST API"
+
+#: views/pages/settings/tab-api.php:2
+msgid "An API to run Get folders & Set attachments"
+msgstr "Una API para ejecutar Obtener carpetas y Establecer datos adjuntos"
+
+#: views/pages/settings/tab-api.php:3
+msgid ""
+"Please see FileBird API for developers <a target=\"_blank\" href=\"https://"
+"ninjateam.gitbook.io/filebird/api\">here</a>."
+msgstr ""
+"Consulte FileBird API para desarrolladores <a target=\"_blank\" href="
+"\"https://ninjateam.gitbook.io/filebird/api\">aquí</a>."
+
+#: views/pages/settings/tab-api.php:9
+msgid "API key"
+msgstr "Clave API"
+
+#: views/pages/settings/tab-api.php:22
+msgid "Generate"
+msgstr "Generar"
+
+#: views/pages/settings/tab-import.php:1
+msgid "Import to FileBird"
+msgstr "Importar a FileBird"
+
+#: views/pages/settings/tab-import.php:3
+msgid ""
+"Import categories/folders from other plugins. We import virtual folders, "
+"your website will be safe, don't worry ;)"
+msgstr ""
+"Importa categorías/carpetas desde otros plugins. Importamos carpetas "
+"virtuales, su sitio web estará seguro, no se preocupe ;)"
+
+#: views/pages/settings/tab-import.php:10
+msgid "Enhanced Media Library plugin by wpUXsolutions"
+msgstr "Complemento Enhanced Media Library de wpUXsolutions"
+
+#: views/pages/settings/tab-import.php:14
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>Enhanced Media Library</strong> plugin."
+msgstr ""
+"Hemos encontrado que tienes <strong>categorías (%1$s)</strong> que creaste a "
+"partir del plugin <strong>Enhanced Media Library.</strong>"
+
+#: views/pages/settings/tab-import.php:16
+#: views/pages/settings/tab-import.php:44
+#: views/pages/settings/tab-import.php:72
+#: views/pages/settings/tab-import.php:100
+#: views/pages/settings/tab-import.php:128
+msgid " Would you like to import to <strong>FileBird</strong>?"
+msgstr "¿Desea importar a <strong>FileBird?</strong>"
+
+#: views/pages/settings/tab-import.php:38
+msgid "WordPress Media Library Folders by Max Foundry"
+msgstr "Carpetas de la biblioteca multimedia de WordPress de Max Foundry"
+
+#: views/pages/settings/tab-import.php:42
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>WordPress Media Library Folders</strong> plugin."
+msgstr ""
+"Hemos encontrado que tienes <strong>categorías (%1$s)</strong> que creaste "
+"desde <strong>WordPress Media Library Folders</strong> plugin."
+
+#: views/pages/settings/tab-import.php:66
+msgid "WP Media folder by Joomunited"
+msgstr "Carpeta WP Media de Joomunited"
+
+#: views/pages/settings/tab-import.php:70
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>WP Media folder</strong> plugin."
+msgstr ""
+"Hemos encontrado que tienes <strong>(%1$s)</strong> categorías que has "
+"creado a partir del plugin de <strong>carpetas WP Media.</strong>"
+
+#: views/pages/settings/tab-import.php:94
+msgid "WP Real Media Library by devowl.io GmbH"
+msgstr "WP Real Media Library de devowl.io GmbH"
+
+#: views/pages/settings/tab-import.php:98
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>WP Real Media Library</strong> plugin."
+msgstr ""
+"Hemos encontrado que tienes <strong>categorías (%1$s)</strong> que creaste a "
+"partir del plugin <strong>WP Real Media Library.</strong>"
+
+#: views/pages/settings/tab-import.php:122
+msgid "HappyFiles by Codeer"
+msgstr "HappyFiles por Codeer"
+
+#: views/pages/settings/tab-import.php:126
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>HappyFiles</strong> plugin."
+msgstr ""
+"Hemos encontrado que tienes <strong>( %1$s )</strong> categorías que creaste "
+"a partir del plugin <strong>HappyFiles.</strong>"
+
+#: views/pages/settings/tab-settings.php:5
+msgid "Each user has his own folders?"
+msgstr "¿Cada usuario tiene sus propias carpetas?"
+
+#: views/pages/settings/tab-uninstall.php:5
+msgid "Clear all data"
+msgstr "Borrar todos los datos"
+
+#: views/pages/settings/tab-uninstall.php:6
+msgid ""
+"This action will delete all FileBird data, FileBird settings and bring you "
+"back to WordPress default media library."
+msgstr ""
+"Esta acción eliminará todos los datos de FileBird, la configuración de "
+"FileBird y le traerá de vuelta a la biblioteca multimedia predeterminada de "
+"WordPress."
+
+#: views/pages/settings/tab-uninstall.php:9
+msgid "Clear"
+msgstr "Limpiar"
+
+#: views/pages/settings/tab-update-database.php:6
+msgid "Import from old version"
+msgstr "Importar desde la versión anterior"
+
+#: views/pages/settings/tab-update-database.php:7
+msgid ""
+"By running this action, all folders created in version 3.9 & earlier "
+"installs will be imported."
+msgstr ""
+"Al ejecutar esta acción, se importarán todas las carpetas creadas en la "
+"versión 3.9 e instalaciones anteriores."
+
+#: views/particle/activation_fail.php:5
+msgid ""
+"It seems you don't have any valid FileBird license. Please <a href=\"https://"
+"ninjateam.org/support\" target=\"_blank\">contact support</a> to get help or "
+"<a href=\"https://1.envato.market/Get-FileBird\" target=\"_blank\">purchase "
+"a FileBird license</a>"
+msgstr ""
+"Parece que no tiene ninguna licencia válida de FileBird. Póngase <a href="
+"\"https://ninjateam.org/support\" target=\"_blank\">en contacto con el "
+"soporte técnico</a> para obtener ayuda o comprar una licencia de <a href="
+"\"https://1.envato.market/Get-FileBird\" target=\"_blank\">FileBird</a>"
+
+#: views/particle/activation_fail.php:9
+msgid "Oops! Activation failed."
+msgstr "¡Vaya! Error en la activación."
+
+#: views/particle/folder_dropdown.php:2
+msgid "Choose folder: "
+msgstr "Elija Carpeta:"
+
+#. Plugin URI of the plugin/theme
+msgid "https://ninjateam.org/wordpress-media-library-folders/"
+msgstr "https://ninjateam.org/wordpress-media-library-folders/"
+
+#. Description of the plugin/theme
+msgid ""
+"Organize thousands of WordPress media files into folders/ categories at ease."
+msgstr ""
+"Organiza miles de archivos multimedia de WordPress en carpetas/categorías a "
+"tu gusto."
+
+#. Author of the plugin/theme
+msgid "Ninja Team"
+msgstr "Ninja Team"
+
+#. Author URI of the plugin/theme
+msgid "https://ninjateam.org"
+msgstr "https://ninjateam.org"

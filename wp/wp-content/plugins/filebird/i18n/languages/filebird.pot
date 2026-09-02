@@ -1,0 +1,1719 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FileBird\n"
+"POT-Creation-Date: 2024-03-01 09:43+0700\n"
+"PO-Revision-Date: 2020-12-18 14:31+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: filebird.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: apps\n"
+"X-Poedit-SearchPathExcluded-2: *.css\n"
+"X-Poedit-SearchPathExcluded-3: blocks/filebird-gallery/node_modules\n"
+"X-Poedit-SearchPathExcluded-4: release\n"
+"X-Poedit-SearchPathExcluded-5: assets\n"
+"X-Poedit-SearchPathExcluded-6: blocks/filebird-gallery/src\n"
+"X-Poedit-SearchPathExcluded-7: vendor\n"
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "FileBird Gallery"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Display folder images in a rich gallery."
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Attachment Page"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Media File"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "None"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Ascending"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Descending"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Please choose folder in the block settings."
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "This folder has no images, please choose another one."
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Gallery Settings"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/includes/I18n.php:51 includes/I18n.php:51
+msgid "Folder"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Columns"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Crop Images"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Thumbnails are cropped to align."
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Caption"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Display image caption"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Link To"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Sort By"
+msgstr ""
+
+#: blocks/filebird-gallery/dist/blocks.build.js:1
+#: build/filebird-lite/blocks/filebird-gallery/dist/blocks.build.js:1
+msgid "Sort Type"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:111
+#: build/filebird-lite/includes/Classes/Convert.php:322
+#: includes/Classes/Convert.php:111 includes/Classes/Convert.php:322
+#, php-format
+msgid ""
+"We found you have %1$s categories you created from <strong>%2$s</strong> "
+"plugin. Would you like to import it to <strong>FileBird</strong>?"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:319
+#: includes/Classes/Convert.php:319
+msgid "Import categories to FileBird"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:336
+#: build/filebird-lite/views/pages/settings/tab-import.php:19
+#: build/filebird-lite/views/pages/settings/tab-import.php:41
+#: build/filebird-lite/views/pages/settings/tab-import.php:63
+#: build/filebird-lite/views/pages/settings/tab-import.php:85
+#: build/filebird-lite/views/pages/settings/tab-import.php:107
+#: build/filebird-lite/views/pages/settings/tab-import.php:129
+#: build/filebird-lite/views/pages/settings/tab-import.php:151
+#: build/filebird-lite/views/pages/settings/tab-import.php:173
+#: build/filebird-lite/views/pages/settings/tab-import.php:228
+#: includes/Classes/Convert.php:336 views/pages/settings/tab-import.php:19
+#: views/pages/settings/tab-import.php:41
+#: views/pages/settings/tab-import.php:63
+#: views/pages/settings/tab-import.php:85
+#: views/pages/settings/tab-import.php:107
+#: views/pages/settings/tab-import.php:129
+#: views/pages/settings/tab-import.php:151
+#: views/pages/settings/tab-import.php:173
+#: views/pages/settings/tab-import.php:228
+msgid "Import Now"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:337
+#: build/filebird-lite/includes/Classes/Review.php:72
+#: build/filebird-lite/includes/I18n.php:151 includes/Classes/Convert.php:337
+#: includes/Classes/Review.php:72 includes/I18n.php:151
+msgid "No, thanks"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:380
+#: includes/Classes/Convert.php:380
+msgid "Success"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:399
+#: includes/Classes/Convert.php:399
+msgid "success"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:401
+#: includes/Classes/Convert.php:401
+msgid "validation failed"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:418
+#: includes/Classes/Convert.php:418
+msgid "Successfully wiped."
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:438
+#: includes/Classes/Convert.php:438
+msgid "Successfully cleared."
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:444
+#: build/filebird-lite/includes/I18n.php:156 includes/Classes/Convert.php:444
+#: includes/I18n.php:156
+msgid "Please try again."
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:533
+#: build/filebird-lite/includes/Controller/Folder.php:764
+#: includes/Classes/Convert.php:533 includes/Controller/Folder.php:764
+#, php-format
+msgid ""
+"Congratulations! We imported successfully %d folders into <strong>FileBird.</"
+"strong>"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Convert.php:546
+#: build/filebird-lite/includes/Classes/Convert.php:555
+#: build/filebird-lite/includes/Classes/Convert.php:564
+#: build/filebird-lite/includes/Classes/Convert.php:573
+#: build/filebird-lite/includes/Classes/Convert.php:582
+#: build/filebird-lite/includes/Classes/Convert.php:591
+#: build/filebird-lite/includes/Classes/Convert.php:600
+#: build/filebird-lite/includes/Classes/Convert.php:609
+#: includes/Classes/Convert.php:546 includes/Classes/Convert.php:555
+#: includes/Classes/Convert.php:564 includes/Classes/Convert.php:573
+#: includes/Classes/Convert.php:582 includes/Classes/Convert.php:591
+#: includes/Classes/Convert.php:600 includes/Classes/Convert.php:609
+msgid "Already Updated"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Review.php:61
+#: includes/Classes/Review.php:61
+msgid "Give FileBird a review"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Review.php:63
+#: includes/Classes/Review.php:63
+msgid ""
+"Thank you for choosing FileBird. We hope you love it. Could you take a "
+"couple of seconds posting a nice review to share your happy experience?"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Review.php:66
+#: includes/Classes/Review.php:66
+msgid "We will be forever grateful. Thank you in advance ;)"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Review.php:70
+#: includes/Classes/Review.php:70
+msgid "Rate now"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Review.php:71
+#: includes/Classes/Review.php:71
+msgid "Later"
+msgstr ""
+
+#: build/filebird-lite/includes/Classes/Svg.php:57 includes/Classes/Svg.php:57
+msgid "This file couldn't be uploaded."
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Api.php:107
+#: includes/Controller/Api.php:107
+msgid "Invalid action"
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Api.php:153
+#: build/filebird-lite/includes/Controller/Api.php:184
+#: includes/Controller/Api.php:153 includes/Controller/Api.php:184
+msgid "folder_id is missing."
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Api.php:198
+#: includes/Controller/Api.php:198
+msgid "Required fields are missing."
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Api.php:219
+#: build/filebird-lite/includes/Controller/Folder.php:501
+#: build/filebird-lite/includes/Controller/Folder.php:572
+#: build/filebird-lite/includes/Controller/Folder.php:591
+#: includes/Controller/Api.php:219 includes/Controller/Folder.php:501
+#: includes/Controller/Folder.php:572 includes/Controller/Folder.php:591
+msgid "Validation failed"
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Folder.php:293
+#: includes/Controller/Folder.php:293
+msgid "Your request can't be processed."
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Folder.php:341
+#: build/filebird-lite/includes/Model/Folder.php:34
+#: includes/Controller/Folder.php:341 includes/Model/Folder.php:34
+msgid "All Folders"
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Folder.php:345
+#: build/filebird-lite/includes/Controller/Folder.php:623
+#: build/filebird-lite/includes/I18n.php:64
+#: build/filebird-lite/includes/Model/Folder.php:38
+#: includes/Controller/Folder.php:345 includes/Controller/Folder.php:623
+#: includes/I18n.php:64 includes/Model/Folder.php:38
+msgid "Uncategorized"
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Folder.php:473
+#: includes/Controller/Folder.php:473
+msgid "Please choose folder"
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Folder.php:496
+#: build/filebird-lite/includes/Controller/Folder.php:519
+#: includes/Controller/Folder.php:496 includes/Controller/Folder.php:519
+msgid "A folder with this name already exists. Please choose another one."
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Folder.php:556
+#: includes/Controller/Folder.php:556
+msgid "Can't delete folder, please try again later"
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Folder.php:585
+#: includes/Controller/Folder.php:585
+msgid "Folder tree has been updated."
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Folder.php:627
+#: includes/Controller/Folder.php:627
+msgid "FileBird folder:"
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Folder.php:628
+#: includes/Controller/Folder.php:628
+msgid "Click on the button to move this file to another folder"
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Folder.php:811
+#: includes/Controller/Folder.php:811
+msgid "The uploaded file was not generated by FileBird. Please check again."
+msgstr ""
+
+#: build/filebird-lite/includes/Controller/Folder.php:849
+#: includes/Controller/Folder.php:849
+msgid "folders"
+msgstr ""
+
+#: build/filebird-lite/includes/Fallback.php:11 includes/Fallback.php:11
+msgid ""
+"It looks like you have another FileBird version installed, please delete it "
+"before activating this new version. All of the settings and data are still "
+"preserved."
+msgstr ""
+
+#: build/filebird-lite/includes/Fallback.php:12 includes/Fallback.php:12
+msgid "Read more details."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:35 includes/I18n.php:35
+msgid "No media files found."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:36 includes/I18n.php:36
+msgid "New Folder"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:37 includes/I18n.php:37
+msgid "Delete"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:38
+#: build/filebird-lite/includes/I18n.php:53 includes/I18n.php:38
+#: includes/I18n.php:53
+msgid "Folders"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:39 includes/I18n.php:39
+msgid "Ok"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:40 includes/I18n.php:40
+msgid "Cancel"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:41 includes/I18n.php:41
+msgid "Cut"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:42 includes/I18n.php:42
+msgid "Paste"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:43 includes/I18n.php:43
+msgid "Download"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:44 includes/I18n.php:44
+msgid "Loading"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:45 includes/I18n.php:45
+msgid "Generating download link..."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:46 includes/I18n.php:46
+msgid "Successfully moved"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:47 includes/I18n.php:47
+msgid "Unsuccessfully moved"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:48 includes/I18n.php:48
+msgid "Successfully deleted!"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:49 includes/I18n.php:49
+msgid "Can't delete!"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:50 includes/I18n.php:50
+msgid "Save"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:52 includes/I18n.php:52
+msgid "Folder name..."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:54 includes/I18n.php:54
+msgid "Enter folder name..."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:55 includes/I18n.php:55
+msgid "Are you sure you want to delete"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:56 includes/I18n.php:56
+msgid "Are you sure?"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:57 includes/I18n.php:57
+msgid "Those files will be moved to <strong>Uncategorized</strong> folder."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:58 includes/I18n.php:58
+msgid "You are editing another folder! Please complete the task first!"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:59 includes/I18n.php:59
+msgid "Sort Folders"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:60 includes/I18n.php:60
+msgid "Delete Folder"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:61 includes/I18n.php:61
+msgid "Sort Files"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:62 includes/I18n.php:62
+msgid "Bulk Select"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:63 includes/I18n.php:63
+msgid "All Files"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:65 includes/I18n.php:65
+msgid "Previous folder selected"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:66 includes/I18n.php:66
+msgid "Rename"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:67 includes/I18n.php:67
+msgid ""
+"Are you sure you want to delete this folder? Those files will be moved to "
+"<strong>Uncategorized</strong> folder."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:68 includes/I18n.php:68
+msgid "Sort Ascending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:69 includes/I18n.php:69
+msgid "Sort Descending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:70 includes/I18n.php:70
+msgid "Reset"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:71 includes/I18n.php:71
+msgid "By Name"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:72 includes/I18n.php:72
+msgid "Name Ascending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:73 includes/I18n.php:73
+msgid "Name Descending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:74 includes/I18n.php:74
+msgid "By Date"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:75 includes/I18n.php:75
+msgid "Date Ascending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:76 includes/I18n.php:76
+msgid "Date Descending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:77 includes/I18n.php:77
+msgid "By Modified"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:78 includes/I18n.php:78
+msgid "Modified Ascending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:79 includes/I18n.php:79
+msgid "Modified Descending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:80 includes/I18n.php:80
+msgid "By Author"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:81 includes/I18n.php:81
+msgid "By File Name"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:82 includes/I18n.php:82
+msgid "Author Ascending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:83 includes/I18n.php:83
+msgid "Author Descending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:84 includes/I18n.php:84
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:85 includes/I18n.php:85
+msgid "Deactivate"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:86 includes/I18n.php:86
+msgid "Thank you so much!"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:88 includes/I18n.php:88
+msgid "I've purchased FileBird Pro."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:89 includes/I18n.php:89
+msgid "It doesn't have the features I'm looking for."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:90 includes/I18n.php:90
+msgid "Not work with my theme or other plugins."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:91 includes/I18n.php:91
+msgid "Found another plugin that works better."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:92 includes/I18n.php:92
+msgid "Don't know how to use it."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:93 includes/I18n.php:93
+msgid "This is just temporary, I will use it again."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:94 includes/I18n.php:94
+msgid "Other"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:96 includes/I18n.php:96
+msgid "Which features please?"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:97 includes/I18n.php:97
+msgid "Please tell us which one"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:98 includes/I18n.php:98
+msgid ""
+"Please read FileBird documentation <a target=\"_blank\" href=\"https://"
+"ninjateam.gitbook.io/filebird/\">here</a> or <a target=\"_blank\" "
+"href=\"https://ninjateam.org/support/\">chat with us</a> if you need help"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:99 includes/I18n.php:99
+msgid ""
+"Please <a target=\"_blank\" href=\"https://ninjateam.org/support/\">ask for "
+"support here</a>, we will fix it for you."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:100 includes/I18n.php:100
+msgid "Please share your thoughts..."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:101 includes/I18n.php:101
+msgid "Want a better FileBird?"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:102 includes/I18n.php:102
+msgid ""
+"Sorry to see you walk away, please share why you want to deactivate FileBird?"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:103 includes/I18n.php:103
+msgid "Folder Limit Reached"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:105 includes/I18n.php:105
+msgid ""
+"<p>FileBird Lite version supports up to 10 folders.<br>Please upgrade to "
+"have unlimited folders and other premium features!</p>\n"
+"        <ul class=\"fbv-in_feature\">\n"
+"          <li>Unlimited Folders</li>\n"
+"          <li>Sort Files / Folders</li>\n"
+"          <li>Compatible with Premium Page Builders <span id=\"fbv-"
+"pagebuilder\" class=\"njn-i\"><svg viewBox=\"0 0 192 512\"><path "
+"fill=\"currentColor\" d=\"M20 424.229h20V279.771H20c-11.046 "
+"0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 "
+"20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 "
+"0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 "
+"72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z\"></path></svg></span></"
+"li>\n"
+"          <li>Get Fast Updates</li>\n"
+"          <li>Premium Technical Support</li>\n"
+"          <li>One-time Payment</li>\n"
+"          <li>30-day Refund Guarantee</li>\n"
+"        </ul>"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:117 includes/I18n.php:117
+msgid "Including Divi, Fusion, Thrive Architect, WPBakery..."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:118 includes/I18n.php:118
+msgid "Upgrade to FileBird Pro now"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:119 includes/I18n.php:119
+msgid "Success."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:120 includes/I18n.php:120
+msgid "Congratulations. Successfully imported!"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:121 includes/I18n.php:121
+msgid "Go To Media"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:122
+#: build/filebird-lite/views/notices/html-notice-update-database.php:20
+#: includes/I18n.php:122 views/notices/html-notice-update-database.php:20
+msgid "FileBird 4 Update Required"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:123 includes/I18n.php:123
+msgid ""
+"You're using the new FileBird 4. Please import database to view your folders "
+"correctly."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:124 includes/I18n.php:124
+msgid "Import now"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:125 includes/I18n.php:125
+msgid ""
+"Import failed. Please try again or <a href=\"https://ninjateam.org/support\" "
+"target=\"_blank\">contact our support</a>."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:126 includes/I18n.php:126
+msgid "Please enter your Purchase Code."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:127 includes/I18n.php:127
+msgid "Please enter your Personal Access Token or get one."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:128 includes/I18n.php:128
+msgid "Can not active your License, please try again."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:129
+#: build/filebird-lite/includes/Page/Settings.php:109
+#: build/filebird-lite/views/pages/html-settings.php:27 includes/I18n.php:129
+#: includes/Page/Settings.php:109 views/pages/html-settings.php:27
+msgid "Settings"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:130
+#: build/filebird-lite/includes/Page/Settings.php:36
+#: build/filebird-lite/views/pages/html-settings.php:62 includes/I18n.php:130
+#: includes/Page/Settings.php:36 views/pages/html-settings.php:62
+msgid "FileBird Settings"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:131 includes/I18n.php:131
+msgid "Select a default startup folder:"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:132 includes/I18n.php:132
+msgid "Settings saved"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:133 includes/I18n.php:133
+msgid "Failed to save settings. Please try again!"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:134 includes/I18n.php:134
+msgid "Unlock new features"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:135 includes/I18n.php:135
+msgid ""
+"To use FileBird folders with your current page builder/plugin, please "
+"upgrade to PRO version."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:136 includes/I18n.php:136
+msgid "Do more with FileBird PRO"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:137 includes/I18n.php:137
+msgid ""
+"You're using a third party plugin, which is supported in FileBird PRO. "
+"Please upgrade to browse files faster and get more done."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:138
+#: build/filebird-lite/includes/Page/Settings.php:40
+#: build/filebird-lite/includes/Page/Settings.php:112
+#: build/filebird-lite/views/pages/html-settings.php:20 includes/I18n.php:138
+#: includes/Page/Settings.php:40 includes/Page/Settings.php:112
+#: views/pages/html-settings.php:20
+msgid "Go Pro"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:139 includes/I18n.php:139
+msgid "View details."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:140 includes/I18n.php:140
+msgid "Turn off for 7 days"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:141 includes/I18n.php:141
+msgid "Collapse"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:142 includes/I18n.php:142
+msgid "Expand"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:143 includes/I18n.php:143
+msgid "Uploaded"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:144 includes/I18n.php:144
+msgid "Less than a min"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:145 includes/I18n.php:145
+msgid "Total size"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:146 includes/I18n.php:146
+msgid "Move"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:147 includes/I18n.php:147
+msgid "item"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:148 includes/I18n.php:148
+msgid "items"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:149 includes/I18n.php:149
+msgid "Import folders to FileBird"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:150 includes/I18n.php:150
+msgid "Go to import"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:152 includes/I18n.php:152
+msgid ""
+"You have some folders created by other media plugins. Would you like to "
+"import them?"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:153 includes/I18n.php:153
+msgid "Default Tree View"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:154 includes/I18n.php:154
+msgid "Flat Tree View"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:155 includes/I18n.php:155
+msgid "Imported!"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:157 includes/I18n.php:157
+msgid "Successfully exported!"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:158 includes/I18n.php:158
+msgid "Successfully imported!"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:159 includes/I18n.php:159
+msgid "Please activate FileBird license to use this feature."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:160 includes/I18n.php:160
+msgid "By Size"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:161 includes/I18n.php:161
+msgid "Size Ascending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:162 includes/I18n.php:162
+msgid "Size Descending"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:163 includes/I18n.php:163
+msgid "PRO"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:164 includes/I18n.php:164
+msgid "Change Color"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:165 includes/I18n.php:165
+msgid "Processing..."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:166 includes/I18n.php:166
+msgid "All folders"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:167 includes/I18n.php:167
+msgid "Common folders"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:168 includes/I18n.php:168
+msgid "This option imports the common folder tree and user-based folder trees."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:169 includes/I18n.php:169
+msgid "This option imports only the common folder tree."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:170 includes/I18n.php:170
+msgid "This option imports the folder tree created by"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:171 includes/I18n.php:171
+msgid "Add your first folder"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:172 includes/I18n.php:172
+msgid "You don't have any folder. Add folder to easily manage your files."
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:173 includes/I18n.php:173
+msgid "Add Folder"
+msgstr ""
+
+#: build/filebird-lite/includes/I18n.php:174 includes/I18n.php:174
+msgid "Contact Support"
+msgstr ""
+
+#: build/filebird-lite/includes/Page/Settings.php:98
+#: includes/Page/Settings.php:98
+msgid "Documentation"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:35
+#: includes/Recommended/Recommended.php:35
+msgid "FileBird - WordPress Media Library Folders & File Manager"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:36
+#: includes/Recommended/Recommended.php:36
+msgid ""
+"Organize thousands of WordPress media files in folders / categories at ease."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:44
+#: includes/Recommended/Recommended.php:44
+msgid "YayMail - WooCommerce Email Customizer"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:45
+#: includes/Recommended/Recommended.php:45
+msgid ""
+"Customize WooCommerce email templates with live preview & drag and drop "
+"email builder."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:53
+#: includes/Recommended/Recommended.php:53
+msgid "YayCurrency - WooCommerce Multi-Currency Switcher"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:54
+#: includes/Recommended/Recommended.php:54
+msgid "WooCommerce Multi-Currency made easy, powerful, and flexible."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:62
+#: includes/Recommended/Recommended.php:62
+msgid "YaySwatches - Variation Swatches for WooCommerce"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:63
+#: includes/Recommended/Recommended.php:63
+msgid ""
+"Optimize your variable product showcase with color swatches, image swatches, "
+"custom images, buttons, and more!"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:71
+#: includes/Recommended/Recommended.php:71
+msgid "YayExtra - WooCommerce Extra Product Options"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:72
+#: includes/Recommended/Recommended.php:72
+msgid ""
+"Add WooCommerce product options like personal engraving, print-on-demand "
+"items, gifts, custom canvas prints, and personalized products."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:80
+#: includes/Recommended/Recommended.php:80
+msgid "YayPricing - WooCommerce Dynamic Pricing & Discounts"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:81
+#: includes/Recommended/Recommended.php:81
+msgid ""
+"Offer automatic pricing and discounts to design a powerful marketing "
+"strategy for your WooCommerce store."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:89
+#: includes/Recommended/Recommended.php:89
+msgid "YaySMTP - Simple WP SMTP Mail"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:90
+#: includes/Recommended/Recommended.php:90
+msgid ""
+"Send WordPress emails successfully with WP Mail SMTP via your favorite "
+"Mailer."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:98
+#: includes/Recommended/Recommended.php:98
+msgid "WP Chat App"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:99
+#: includes/Recommended/Recommended.php:99
+msgid "Integrate WhatsApp experience directly into your WordPress website."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:107
+#: includes/Recommended/Recommended.php:107
+msgid "Filester - File Manager Pro"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:108
+#: includes/Recommended/Recommended.php:108
+msgid ""
+"Best WordPress file manager without FTP access. Clean design. No need to "
+"upgrade because this…"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:116
+#: includes/Recommended/Recommended.php:116
+msgid "Multi Step for Contact Form 7"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:117
+#: includes/Recommended/Recommended.php:117
+msgid "Break your looooooong form into user-friendly steps."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:125
+#: includes/Recommended/Recommended.php:125
+msgid "Database for Contact Form 7"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:126
+#: includes/Recommended/Recommended.php:126
+msgid ""
+"Automatically save all data submitted via Contact Form 7 to your database."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:134
+#: includes/Recommended/Recommended.php:134
+msgid "WP Duplicate Page"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:135
+#: includes/Recommended/Recommended.php:135
+msgid "Clone WordPress page, post, custom post types."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:143
+#: includes/Recommended/Recommended.php:143
+msgid "Notibar - Notification Bar for WordPress"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:144
+#: includes/Recommended/Recommended.php:144
+msgid ""
+"Customizer for sticky header, notification bar, alert, promo code, marketing "
+"campaign, top banner."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:155
+#: build/filebird-lite/includes/Recommended/Recommended.php:245
+#: build/filebird-lite/includes/Recommended/Recommended.php:553
+#: includes/Recommended/Recommended.php:155
+#: includes/Recommended/Recommended.php:245
+#: includes/Recommended/Recommended.php:553
+msgid "Recommended Plugins"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:160
+#: build/filebird-lite/includes/Recommended/Recommended.php:163
+#: includes/Recommended/Recommended.php:160
+#: includes/Recommended/Recommended.php:163
+msgid "Featured"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:161
+#: build/filebird-lite/includes/Recommended/Recommended.php:164
+#: includes/Recommended/Recommended.php:161
+#: includes/Recommended/Recommended.php:164
+msgid "WooCommerce"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:250
+#: includes/Recommended/Recommended.php:250
+msgid "All"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:254
+#: includes/Recommended/Recommended.php:254
+msgid "Management"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:255
+#: includes/Recommended/Recommended.php:255
+msgid "Marketing"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:294
+#: build/filebird-lite/includes/Recommended/Recommended.php:342
+#: build/filebird-lite/includes/Recommended/Recommended.php:390
+#: includes/Recommended/Recommended.php:294
+#: includes/Recommended/Recommended.php:342
+#: includes/Recommended/Recommended.php:390
+msgid "Nonce is invalid"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:311
+#: includes/Recommended/Recommended.php:311
+msgid "Get data success"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:319
+#: build/filebird-lite/includes/Recommended/Recommended.php:363
+#: build/filebird-lite/includes/Recommended/Recommended.php:473
+#: includes/Recommended/Recommended.php:319
+#: includes/Recommended/Recommended.php:363
+#: includes/Recommended/Recommended.php:473
+msgid "Error exception."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:328
+#: build/filebird-lite/includes/Recommended/Recommended.php:372
+#: build/filebird-lite/includes/Recommended/Recommended.php:482
+#: includes/Recommended/Recommended.php:328
+#: includes/Recommended/Recommended.php:372
+#: includes/Recommended/Recommended.php:482
+msgid "Error."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:356
+#: includes/Recommended/Recommended.php:356
+msgid "Activate success"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:439
+#: includes/Recommended/Recommended.php:439
+msgid "Install success"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:463
+#: includes/Recommended/Recommended.php:463
+msgid "Update success"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/Recommended.php:553
+#: includes/Recommended/Recommended.php:553
+msgid "Recommended"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:42
+#: build/filebird-lite/includes/Recommended/views/content.php:95
+#: includes/Recommended/views/content.php:42
+#: includes/Recommended/views/content.php:95
+msgid "Not installed"
+msgstr ""
+
+#. translators: %s: Plugin name and version.
+#: build/filebird-lite/includes/Recommended/views/content.php:76
+#: build/filebird-lite/includes/Recommended/views/content.php:84
+#: includes/Recommended/views/content.php:76
+#: includes/Recommended/views/content.php:84
+#, php-format
+msgctxt "plugin"
+msgid "Install %s now"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:77
+#: build/filebird-lite/includes/Recommended/views/content.php:85
+#: includes/Recommended/views/content.php:77
+#: includes/Recommended/views/content.php:85
+msgid "Install Now"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:91
+#: includes/Recommended/views/content.php:91
+msgctxt "plugin"
+msgid "Cannot Install"
+msgstr ""
+
+#. translators: %s: Plugin name and version.
+#: build/filebird-lite/includes/Recommended/views/content.php:108
+#: build/filebird-lite/includes/Recommended/views/content.php:119
+#: includes/Recommended/views/content.php:108
+#: includes/Recommended/views/content.php:119
+#, php-format
+msgctxt "plugin"
+msgid "Update %s now"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:110
+#: build/filebird-lite/includes/Recommended/views/content.php:121
+#: includes/Recommended/views/content.php:110
+#: includes/Recommended/views/content.php:121
+msgid "Update Now"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:127
+#: includes/Recommended/views/content.php:127
+msgctxt "plugin"
+msgid "Cannot Update"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:144
+#: includes/Recommended/views/content.php:144
+msgctxt "plugin"
+msgid "Activated"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:149
+#: includes/Recommended/views/content.php:149
+msgid "Activate"
+msgstr ""
+
+#. translators: %s: Plugin name.
+#: build/filebird-lite/includes/Recommended/views/content.php:151
+#: includes/Recommended/views/content.php:151
+#, php-format
+msgctxt "plugin"
+msgid "Activate %s"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:162
+#: includes/Recommended/views/content.php:162
+msgid "Network Activate"
+msgstr ""
+
+#. translators: %s: Plugin name.
+#: build/filebird-lite/includes/Recommended/views/content.php:164
+#: includes/Recommended/views/content.php:164
+#, php-format
+msgctxt "plugin"
+msgid "Network Activate %s"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:177
+#: includes/Recommended/views/content.php:177
+msgctxt "plugin"
+msgid "Cannot Activate"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:183
+#: includes/Recommended/views/content.php:183
+msgctxt "plugin"
+msgid "Installed"
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:213
+#: includes/Recommended/views/content.php:213
+msgid "This plugin doesn&#8217;t work with your versions of WordPress and PHP."
+msgstr ""
+
+#. translators: 1: URL to WordPress Updates screen, 2: URL to Update PHP page.
+#: build/filebird-lite/includes/Recommended/views/content.php:217
+#: includes/Recommended/views/content.php:217
+#, php-format
+msgid ""
+"<a href=\"%1$s\">Please update WordPress</a>, and then <a "
+"href=\"%2$s\">learn more about updating PHP</a>."
+msgstr ""
+
+#. translators: %s: URL to WordPress Updates screen.
+#: build/filebird-lite/includes/Recommended/views/content.php:225
+#: build/filebird-lite/includes/Recommended/views/content.php:241
+#: includes/Recommended/views/content.php:225
+#: includes/Recommended/views/content.php:241
+#, php-format
+msgid "<a href=\"%s\">Please update WordPress</a>."
+msgstr ""
+
+#. translators: %s: URL to Update PHP page.
+#: build/filebird-lite/includes/Recommended/views/content.php:231
+#: build/filebird-lite/includes/Recommended/views/content.php:250
+#: includes/Recommended/views/content.php:231
+#: includes/Recommended/views/content.php:250
+#, php-format
+msgid "<a href=\"%s\">Learn more about updating PHP</a>."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:237
+#: includes/Recommended/views/content.php:237
+msgid "This plugin doesn&#8217;t work with your version of WordPress."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:246
+#: includes/Recommended/views/content.php:246
+msgid "This plugin doesn&#8217;t work with your version of PHP."
+msgstr ""
+
+#: build/filebird-lite/includes/Recommended/views/content.php:274
+#: includes/Recommended/views/content.php:274
+msgid "Status"
+msgstr ""
+
+#: build/filebird-lite/includes/Support/ACF/acf-field-filebird-v4.php:20
+#: build/filebird-lite/includes/Support/ACF/acf-field-filebird-v5.php:19
+#: includes/Support/ACF/acf-field-filebird-v4.php:20
+#: includes/Support/ACF/acf-field-filebird-v5.php:19
+msgid "FileBird Folder"
+msgstr ""
+
+#: build/filebird-lite/includes/Support/DocumentGallery.php:26
+#: includes/Support/DocumentGallery.php:26
+msgid "This folder ID does not exist, please check again."
+msgstr ""
+
+#: build/filebird-lite/includes/Support/WPML.php:67
+#: includes/Support/WPML.php:67
+msgid "Done!"
+msgstr ""
+
+#: build/filebird-lite/includes/YC.php:62 includes/YC.php:62
+msgid "Email Customizer for WooCommerce"
+msgstr ""
+
+#: build/filebird-lite/includes/YC.php:63 includes/YC.php:63
+msgid ""
+"YayMail helps you easily customize your WooCommerce emails with email "
+"builder. Try it today!"
+msgstr ""
+
+#: build/filebird-lite/includes/YC.php:65 includes/YC.php:65
+msgid "Install for Free"
+msgstr ""
+
+#: build/filebird-lite/includes/YC.php:66 includes/YC.php:66
+msgid "No, Thanks"
+msgstr ""
+
+#: build/filebird-lite/views/notices/html-notice-first-folder.php:11
+#: views/notices/html-notice-first-folder.php:11
+msgid "Create your first folder for media library now."
+msgstr ""
+
+#: build/filebird-lite/views/notices/html-notice-first-folder.php:13
+#: views/notices/html-notice-first-folder.php:13
+msgid "Get Started"
+msgstr ""
+
+#: build/filebird-lite/views/notices/html-notice-update-database.php:24
+#: views/notices/html-notice-update-database.php:24
+msgid ""
+"You are using the new FileBird 4. Please update database to view your "
+"folders correctly."
+msgstr ""
+
+#: build/filebird-lite/views/notices/html-notice-update-database.php:30
+#: build/filebird-lite/views/pages/settings/tab-tools.php:20
+#: views/notices/html-notice-update-database.php:30
+#: views/pages/settings/tab-tools.php:20
+msgid "Update now"
+msgstr ""
+
+#: build/filebird-lite/views/pages/html-settings.php:34
+#: views/pages/html-settings.php:34
+msgid "Tools"
+msgstr ""
+
+#: build/filebird-lite/views/pages/html-settings.php:42
+#: views/pages/html-settings.php:42
+msgid "Import/Export"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-active.php:12
+#: views/pages/settings/tab-active.php:12
+msgid "Upgrade to FileBird Pro"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-active.php:15
+#: views/pages/settings/tab-active.php:15
+msgid "Explore the best of FileBird"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-active.php:16
+#: views/pages/settings/tab-active.php:16
+msgid "Lifetime license"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-active.php:28
+#: views/pages/settings/tab-active.php:28
+msgid "Download entire folders in ZIP"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-active.php:37
+#: views/pages/settings/tab-active.php:37
+msgid "Advanced third-party compatibility"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-active.php:46
+#: views/pages/settings/tab-active.php:46
+msgid "Sort files and folders"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-active.php:55
+#: views/pages/settings/tab-active.php:55
+msgid "Folder themes (Windows 11 and Dropbox)"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-active.php:64
+#: views/pages/settings/tab-active.php:64
+msgid "File count, breadcrumb, folder custom colors, and more"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-active.php:73
+#: views/pages/settings/tab-active.php:73
+msgid "One-time payment"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-active.php:82
+#: views/pages/settings/tab-active.php:82
+msgid "VIP live chat support"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-active.php:89
+#: views/pages/settings/tab-active.php:89
+msgid "GO PRO"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:3
+#: views/pages/settings/tab-import.php:3
+msgid "Import"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:5
+#: views/pages/settings/tab-import.php:5
+msgid ""
+"Import categories/folders from other plugins. We import virtual folders, "
+"your website will be safe, don't worry ;)"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:12
+#: views/pages/settings/tab-import.php:12
+msgid "Enhanced Media Library plugin by wpUXsolutions"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:23
+#: views/pages/settings/tab-import.php:23
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sEnhanced "
+"Media Library%5$s plugin."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:25
+#: build/filebird-lite/views/pages/settings/tab-import.php:47
+#: build/filebird-lite/views/pages/settings/tab-import.php:69
+#: build/filebird-lite/views/pages/settings/tab-import.php:91
+#: build/filebird-lite/views/pages/settings/tab-import.php:113
+#: build/filebird-lite/views/pages/settings/tab-import.php:135
+#: build/filebird-lite/views/pages/settings/tab-import.php:157
+#: build/filebird-lite/views/pages/settings/tab-import.php:179
+#: views/pages/settings/tab-import.php:25
+#: views/pages/settings/tab-import.php:47
+#: views/pages/settings/tab-import.php:69
+#: views/pages/settings/tab-import.php:91
+#: views/pages/settings/tab-import.php:113
+#: views/pages/settings/tab-import.php:135
+#: views/pages/settings/tab-import.php:157
+#: views/pages/settings/tab-import.php:179
+#, php-format
+msgid " Would you like to import to %1$sFileBird%2$s?"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:34
+#: views/pages/settings/tab-import.php:34
+msgid "WordPress Media Library Folders by Max Foundry"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:45
+#: views/pages/settings/tab-import.php:45
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sWordPress "
+"Media Library Folders%5$s plugin."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:56
+#: views/pages/settings/tab-import.php:56
+msgid "WP Media folder by Joomunited"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:67
+#: views/pages/settings/tab-import.php:67
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sWP Media "
+"folder%5$s plugin."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:78
+#: views/pages/settings/tab-import.php:78
+msgid "WP Real Media Library by devowl.io GmbH"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:89
+#: views/pages/settings/tab-import.php:89
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sWP Real "
+"Media Library%5$s plugin."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:100
+#: views/pages/settings/tab-import.php:100
+msgid "HappyFiles by Codeer"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:111
+#: views/pages/settings/tab-import.php:111
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from "
+"%4$sHappyFiles%5$s plugin."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:122
+#: views/pages/settings/tab-import.php:122
+msgid "Folders by Premio"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:133
+#: build/filebird-lite/views/pages/settings/tab-import.php:177
+#: views/pages/settings/tab-import.php:133
+#: views/pages/settings/tab-import.php:177
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sFolders%5$s "
+"plugin."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:144
+#: views/pages/settings/tab-import.php:144
+msgid "WP Media Folders by Damien Barrère"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:155
+#: views/pages/settings/tab-import.php:155
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sWP Media "
+"Folders%5$s plugin."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:166
+#: views/pages/settings/tab-import.php:166
+msgid "Mediamatic by Plugincraft "
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:191
+#: views/pages/settings/tab-import.php:191
+msgid "Export"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:197
+#: views/pages/settings/tab-import.php:197
+msgid "Export CSV"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:204
+#: views/pages/settings/tab-import.php:204
+msgid "Export Now"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:209
+#: views/pages/settings/tab-import.php:209
+msgid "The current folder structure will be exported."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:216
+#: views/pages/settings/tab-import.php:216
+msgid "Import CSV"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:233
+#: views/pages/settings/tab-import.php:233
+msgid "Choose FileBird CSV file to import."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:234
+#: views/pages/settings/tab-import.php:234
+msgid ""
+"(Please check to make sure that there is no duplicated name. The current "
+"folder structure is preserved.)"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-import.php:235
+#: views/pages/settings/tab-import.php:235
+msgid "Learn more"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-settings.php:9
+#: views/pages/settings/tab-settings.php:9
+msgid "Each user has his own folders?"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-settings.php:24
+#: views/pages/settings/tab-settings.php:24
+msgid "Show Breadcrumb"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-settings.php:37
+#: views/pages/settings/tab-settings.php:37
+msgid "Allow built-in SVG upload & sanitization"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-settings.php:50
+#: views/pages/settings/tab-settings.php:50
+msgid "Folder Counter"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-settings.php:55
+#: views/pages/settings/tab-settings.php:55
+msgid "Count files in each folder"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-settings.php:58
+#: views/pages/settings/tab-settings.php:58
+msgid "Count files in both parent folder and subfolders (PRO)"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-settings.php:65
+#: views/pages/settings/tab-settings.php:65
+msgid "FileBird Theme"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-settings.php:75
+#: views/pages/settings/tab-settings.php:75
+msgid "FileBird Default"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-settings.php:84
+#: views/pages/settings/tab-settings.php:84
+msgid "Windows 11"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-settings.php:93
+#: views/pages/settings/tab-settings.php:93
+msgid "Dropbox"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:16
+#: views/pages/settings/tab-tools.php:16
+msgid "Import from old version"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:22
+#: views/pages/settings/tab-tools.php:22
+msgid ""
+"By running this action, all folders created in version 3.9 & earlier "
+"installs will be imported."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:30
+#: views/pages/settings/tab-tools.php:30
+msgid "REST API key"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:37
+#: build/filebird-lite/views/pages/settings/tab-tools.php:53
+#: views/pages/settings/tab-tools.php:37 views/pages/settings/tab-tools.php:53
+msgid "Generate"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:39
+#: views/pages/settings/tab-tools.php:39
+#, php-format
+msgid "Please see FileBird API for developers %1$shere%2$s."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:46
+#: views/pages/settings/tab-tools.php:46
+msgid "Attachment Size"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:58
+#: views/pages/settings/tab-tools.php:58
+msgid "Generate attachment size used in \"Sort by size\" function."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:65
+#: views/pages/settings/tab-tools.php:65
+msgid "Danger Zone"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:71
+#: views/pages/settings/tab-tools.php:71
+msgid "Clear all data"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:75
+#: views/pages/settings/tab-tools.php:75
+msgid "Clear"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:78
+#: views/pages/settings/tab-tools.php:78
+msgid ""
+"This action will delete all FileBird data, FileBird settings and bring you "
+"back to WordPress default media library."
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:87
+#: views/pages/settings/tab-tools.php:87
+msgid "Sync WPML"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:93
+#: views/pages/settings/tab-tools.php:93
+msgid "Sync"
+msgstr ""
+
+#: build/filebird-lite/views/pages/settings/tab-tools.php:98
+#: views/pages/settings/tab-tools.php:98
+msgid "Assign WPML existing translated media to FileBird folders."
+msgstr ""
+
+#: build/filebird-lite/views/particle/folder_dropdown.php:2
+#: views/particle/folder_dropdown.php:2
+msgid "Choose folder: "
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "FileBird Lite"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://ninjateam.org/wordpress-media-library-folders/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Organize thousands of WordPress media files into folders/ categories at ease."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Ninja Team"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://ninjateam.org"
+msgstr ""

@@ -1,0 +1,981 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Project-Id-Version: FileBird\n"
+"POT-Creation-Date: 2021-05-08 00:10+0700\n"
+"PO-Revision-Date: 2021-05-26 16:47+0700\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.3\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: filebird.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: vi\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: apps\n"
+"X-Poedit-SearchPathExcluded-2: *.css\n"
+"X-Poedit-SearchPathExcluded-3: *.js\n"
+"X-Poedit-SearchPathExcluded-4: blocks/filebird-gallery/node_modules\n"
+
+#: includes/Classes/ACF/acf-field-filebird-v4.php:22
+#: includes/Classes/ACF/acf-field-filebird-v5.php:21
+msgid "FileBird Folder"
+msgstr "Thư mục FileBird"
+
+#: includes/Classes/Convert.php:167
+msgid "Import categories to FileBird"
+msgstr "Nhập danh mục vào FileBird"
+
+#: includes/Classes/Convert.php:170
+#, php-format
+msgid ""
+"We found you have %1$s categories you created from <strong>%2$s</strong> "
+"plugin. Would you like to import it to <strong>FileBird</strong>?"
+msgstr ""
+"Chúng tôi thấy bạn có %1$s thư mục mà bạn đã tạo từ <strong>%2$s</strong> "
+"plugin. Bạn có muốn nhập nó vào <strong>FileBird</strong>?"
+
+#: includes/Classes/Convert.php:173 views/pages/settings/tab-import.php:25
+#: views/pages/settings/tab-import.php:53
+#: views/pages/settings/tab-import.php:81
+#: views/pages/settings/tab-import.php:109
+#: views/pages/settings/tab-import.php:137
+msgid "Import Now"
+msgstr "Nhập ngay"
+
+#: includes/Classes/Convert.php:174
+msgid "No, thanks"
+msgstr "Không, cảm ơn"
+
+#: includes/Classes/Convert.php:218
+msgid "Success"
+msgstr "Thành công"
+
+#: includes/Classes/Convert.php:234
+msgid "success"
+msgstr "thành công"
+
+#: includes/Classes/Convert.php:236
+msgid "validation failed"
+msgstr "Xác thực không thành công"
+
+#: includes/Classes/Convert.php:252
+msgid "Successfully wiped."
+msgstr "Xóa thành công."
+
+#: includes/Classes/Convert.php:268
+msgid "Successfully cleared."
+msgstr "Xóa thành công."
+
+#: includes/Classes/Convert.php:272
+msgid "Please try again."
+msgstr "Vui lòng thử lại."
+
+#: includes/Classes/Convert.php:360
+#, php-format
+msgid ""
+"Congratulations! We imported successfully %d folders into <strong>FileBird.</"
+"strong>"
+msgstr ""
+"Chúc mừng! Chúng tôi đã nhập thành công %1$d thư mục vào <strong>FileBird.</"
+"strong>"
+
+#: includes/Classes/Convert.php:370 includes/Classes/Convert.php:377
+#: includes/Classes/Convert.php:384 includes/Classes/Convert.php:391
+#: includes/Classes/Convert.php:398 includes/Classes/EnhancedConvert.php:43
+msgid "Already Updated"
+msgstr "Đã Cập Nhật"
+
+#: includes/Classes/DocumentGallery.php:41
+msgid "This folder ID does not exist, please check again."
+msgstr "ID thư mục này không tồn tại, vui lòng kiểm tra lại."
+
+#: includes/Classes/EnhancedConvert.php:52
+msgid "Updated"
+msgstr "Đã cập nhật"
+
+#: includes/Classes/Review.php:74
+msgid "Give FileBird a review"
+msgstr "Cho FileBird đánh giá"
+
+#: includes/Classes/Review.php:76
+msgid ""
+"Thank you for choosing FileBird. We hope you love it. Could you take a "
+"couple of seconds posting a nice review to share your happy experience?"
+msgstr ""
+"Cảm ơn bạn đã chọn FileBird. Chúng tôi hy vọng bạn thích nó. Bạn có thể bỏ "
+"ra một vài giây viết một đánh giá chia sẻ trải nghiệm tuyệt vời của bạn "
+"không?"
+
+#: includes/Classes/Review.php:79
+msgid "We will be forever grateful. Thank you in advance ;)"
+msgstr "Chúng tôi sẽ rất biết ơn. Cảm ơn bạn trước ;)"
+
+#: includes/Classes/Review.php:82
+msgid "Rate now"
+msgstr "Đánh giá ngay"
+
+#: includes/Classes/Review.php:83
+msgid "Later"
+msgstr "Để sau"
+
+#: includes/Classes/Review.php:84
+msgid "Already did"
+msgstr "Đã làm"
+
+#: includes/Classes/TabActive.php:40
+msgid "Activate your license for automatic updates"
+msgstr "Kích hoạt giấy phép của bạn để cập nhật tự động"
+
+#: includes/Classes/TabActive.php:152
+msgid "Could not use this purchase code for your domain."
+msgstr "Không thể dùng mã mua này cho tên miền của bạn."
+
+#: includes/Classes/TabActive.php:155
+msgid "Could not verify your domain."
+msgstr "Không thể kiểm chứng tên miền của bạn."
+
+#: includes/Classes/TabActive.php:167
+msgid "Please active license to update."
+msgstr "Vui lòng cấp phép hiện hoạt để cập nhật."
+
+#: includes/Controller/Api.php:104
+msgid "Invalid action"
+msgstr "Hành động không hợp lệ"
+
+#: includes/Controller/Api.php:129
+msgid "folder_id is missing."
+msgstr "folder_id bị thiếu."
+
+#: includes/Controller/Api.php:140
+msgid "Required fields are missing."
+msgstr "Các trường bắt buộc bị thiếu."
+
+#: includes/Controller/Api.php:154 includes/Controller/Folder.php:432
+#: includes/Controller/Folder.php:487 includes/Controller/Folder.php:500
+msgid "Validation failed"
+msgstr "Xác thực không thành công"
+
+#: includes/Controller/Folder.php:65
+msgid "Create your first folder for media library now."
+msgstr "Tạo thư mục đầu tiên của bạn cho thư viện phương tiện ngay bây giờ."
+
+#: includes/Controller/Folder.php:67
+msgid "Get Started"
+msgstr "Bắt đầu"
+
+#: includes/Controller/Folder.php:89 includes/I18n.php:126
+msgid "FileBird 4 Update Required"
+msgstr "FileBird 4 Cập Nhật cần thiết"
+
+#: includes/Controller/Folder.php:93
+msgid ""
+"You're using the new FileBird 4. Please update database to view your folders "
+"correctly."
+msgstr ""
+"Bạn đang sử dụng FileBird 4. Hãy cập nhật cơ sở dữ liệu để xem các thư mục "
+"của bạn một cách chính xác."
+
+#: includes/Controller/Folder.php:99
+#: views/pages/settings/tab-update-database.php:10
+msgid "Update now"
+msgstr "Cập nhật bây giờ"
+
+#: includes/Controller/Folder.php:235
+msgid "Your request can't be processed."
+msgstr "Không thể xử lý yêu cầu của bạn."
+
+#: includes/Controller/Folder.php:260 includes/Model/Folder.php:30
+msgid "All Folders"
+msgstr "Tất cả thư mục"
+
+#: includes/Controller/Folder.php:264 includes/Controller/Folder.php:599
+#: includes/I18n.php:70 includes/Model/Folder.php:34
+msgid "Uncategorized"
+msgstr "Chưa phân loại"
+
+#: includes/Controller/Folder.php:389
+msgid "Please choose folder"
+msgstr "Vui lòng chọn thư mục"
+
+#: includes/Controller/Folder.php:428 includes/Controller/Folder.php:446
+msgid "A folder with this name already exists. Please choose another one."
+msgstr "Thư mục với tên này đã tồn tại. Vui lòng chọn một tên khác."
+
+#: includes/Controller/Folder.php:475
+msgid "Can't delete folder, please try again later"
+msgstr "Không thể xóa thư mục, vui lòng thử lại sau"
+
+#: includes/Controller/Folder.php:496
+msgid "Folder tree has been updated."
+msgstr "Cây thư mục đã được cập nhật."
+
+#: includes/I18n.php:40
+msgid "No media files found."
+msgstr "Không tìm thấy tệp phương tiện."
+
+#: includes/I18n.php:41
+msgid "New Folder"
+msgstr "Thư mục mới"
+
+#: includes/I18n.php:42
+msgid "Delete"
+msgstr "Xóa"
+
+#: includes/I18n.php:43 includes/I18n.php:59
+msgid "Folders"
+msgstr "Thư mục"
+
+#: includes/I18n.php:44
+msgid "Ok"
+msgstr "Đồng ý"
+
+#: includes/I18n.php:45
+msgid "Cancel"
+msgstr "Hủy"
+
+#: includes/I18n.php:46
+msgid "Cut"
+msgstr "Cắt"
+
+#: includes/I18n.php:47
+msgid "Paste"
+msgstr "Dán"
+
+#: includes/I18n.php:48
+msgid "Download"
+msgstr "Tải xuống"
+
+#: includes/I18n.php:49
+msgid "Download (Pro version)"
+msgstr "Tải xuống (Phiên bản Pro)"
+
+#: includes/I18n.php:50
+msgid "Loading"
+msgstr "Đang tải"
+
+#: includes/I18n.php:51
+msgid "Generating download link..."
+msgstr "Đang tạo liên kết tải xuống..."
+
+#: includes/I18n.php:52
+msgid "Successfully moved"
+msgstr "Đã chuyển thành công"
+
+#: includes/I18n.php:53
+msgid "Unsuccessfully moved"
+msgstr "Di chuyển không thành công"
+
+#: includes/I18n.php:54
+msgid "Successfully deleted!"
+msgstr "Đã xóa thành công!"
+
+#: includes/I18n.php:55
+msgid "Can't delete!"
+msgstr "Không thể xóa!"
+
+#: includes/I18n.php:56
+msgid "Save"
+msgstr "Lưu"
+
+#: includes/I18n.php:57
+msgid "Folder"
+msgstr "Thư mục"
+
+#: includes/I18n.php:58
+msgid "Folder name..."
+msgstr "Tên thư mục..."
+
+#: includes/I18n.php:60
+msgid "Enter folder name..."
+msgstr "Nhập tên thư mục..."
+
+#: includes/I18n.php:61
+msgid "Are you sure you want to delete"
+msgstr "Bạn có chắc chắn muốn xóa"
+
+#: includes/I18n.php:62
+msgid "Are you sure?"
+msgstr "Bạn có chắc không?"
+
+#: includes/I18n.php:63
+msgid "Those files will be moved to <strong>Uncategorized</strong> folder."
+msgstr ""
+"Những tập tin sẽ được chuyển đến thư mục <strong>Uncategorized</strong> ."
+
+#: includes/I18n.php:64
+msgid "You are editing another folder! Please complete the task first!"
+msgstr "Bạn đang chỉnh sửa một thư mục khác! Hãy hoàn thành nhiệm vụ đó trước!"
+
+#: includes/I18n.php:65
+msgid "Sort Folders"
+msgstr "Sắp xếp thư mục"
+
+#: includes/I18n.php:66
+msgid "Delete Folder"
+msgstr "Xóa thư mục"
+
+#: includes/I18n.php:67
+msgid "Sort Files"
+msgstr "Sắp xếp tập tin"
+
+#: includes/I18n.php:68
+msgid "Bulk Select"
+msgstr "Chọn hàng loạt"
+
+#: includes/I18n.php:69
+msgid "All Files"
+msgstr "Tất cả tài liệu"
+
+#: includes/I18n.php:71
+msgid "Previous folder selected"
+msgstr "Thư mục được chọn trước đó"
+
+#: includes/I18n.php:72
+msgid "Rename"
+msgstr "Đổi tên"
+
+#: includes/I18n.php:73
+msgid ""
+"Are you sure you want to delete this folder? Those files will be moved to "
+"<strong>Uncategorized</strong> folder."
+msgstr ""
+"Bạn có chắc muốn xóa bỏ thư mục này không? Những tập tin sẽ được chuyển đến "
+"thư mục <strong>Uncategorized</strong> ."
+
+#: includes/I18n.php:74
+msgid "Sort Ascending"
+msgstr "Sắp xếp tăng dần"
+
+#: includes/I18n.php:75
+msgid "Sort Descending"
+msgstr "Sắp xếp giảm dần"
+
+#: includes/I18n.php:76
+msgid "Reset"
+msgstr "Đặt lại"
+
+#: includes/I18n.php:77
+msgid "By Name"
+msgstr "Theo tên"
+
+#: includes/I18n.php:78
+msgid "Name Ascending"
+msgstr "Tên tăng dần"
+
+#: includes/I18n.php:79
+msgid "Name Descending"
+msgstr "Tên giảm dần"
+
+#: includes/I18n.php:80
+msgid "By Date"
+msgstr "Theo ngày"
+
+#: includes/I18n.php:81
+msgid "Date Ascending"
+msgstr "Thời gian tăng"
+
+#: includes/I18n.php:82
+msgid "Date Descending"
+msgstr "Thời gian giảm"
+
+#: includes/I18n.php:83
+msgid "By Modified"
+msgstr "Theo sửa đổi"
+
+#: includes/I18n.php:84
+msgid "Modified Ascending"
+msgstr "Đổi tăng dần"
+
+#: includes/I18n.php:85
+msgid "Modified Descending"
+msgstr "Thay đổi giảm dần"
+
+#: includes/I18n.php:86
+msgid "By Author"
+msgstr "Theo tác giả"
+
+#: includes/I18n.php:87
+msgid "Author Ascending"
+msgstr "Tác giả tăng dần"
+
+#: includes/I18n.php:88
+msgid "Author Descending"
+msgstr "Tác giả giảm dần"
+
+#: includes/I18n.php:89
+msgid "By Title"
+msgstr "Theo Tiêu đề"
+
+#: includes/I18n.php:90
+msgid "Title Ascending"
+msgstr "Tiêu đề Tăng dần"
+
+#: includes/I18n.php:91
+msgid "Title Descending"
+msgstr "Tiêu đề Giảm dần"
+
+#: includes/I18n.php:92
+msgid "Skip & Deactivate"
+msgstr "Bỏ qua & Hủy kích hoạt"
+
+#: includes/I18n.php:93
+msgid "Deactivate"
+msgstr "Vô hiệu hóa"
+
+#: includes/I18n.php:94
+msgid "Thank you so much!"
+msgstr "Cảm ơn bạn rất nhiều!"
+
+#: includes/I18n.php:96
+msgid "It doesn't have the features I'm looking for."
+msgstr "Nó không có các tính năng tôi đang tìm kiếm."
+
+#: includes/I18n.php:97
+msgid "Not work with my theme or other plugins."
+msgstr "Không làm việc với theme của tôi hoặc các plugin khác."
+
+#: includes/I18n.php:98
+msgid "Found another plugin that works better."
+msgstr "Tìm thấy một plugin tốt hơn."
+
+#: includes/I18n.php:99
+msgid "Don't know how to use it."
+msgstr "Không biết làm thế nào để sử dụng nó."
+
+#: includes/I18n.php:100
+msgid "This is just temporary, I will use it again."
+msgstr "Điều này chỉ là tạm thời, tôi sẽ sử dụng nó một lần nữa."
+
+#: includes/I18n.php:101
+msgid "Other"
+msgstr "Khác"
+
+#: includes/I18n.php:103
+msgid "Which features please?"
+msgstr "Những tính năng nào?"
+
+#: includes/I18n.php:104
+msgid "Please tell us which one"
+msgstr "Xin vui lòng cho chúng tôi biết lý do"
+
+#: includes/I18n.php:105
+msgid ""
+"Please read FileBird documentation <a target=\"_blank\" href=\"https://"
+"ninjateam.gitbook.io/filebird/\">here</a> or <a target=\"_blank\" href="
+"\"https://ninjateam.org/support/\">chat with us</a> if you need help"
+msgstr ""
+"Vui lòng đọc tài liệu về FileBird <a target=\"_blank\" href=\"https://"
+"ninjateam.gitbook.io/filebird/\">ở đây</a> hoặc <a target=\"_blank\" href="
+"\"https://ninjateam.org/support/\">trò chuyện với chúng tôi</a> nếu bạn cần "
+"trợ giúp"
+
+#: includes/I18n.php:106
+msgid ""
+"Please <a target=\"_blank\" href=\"https://ninjateam.org/support/\">ask for "
+"support here</a>, we will fix it for you."
+msgstr ""
+"Xin vui lòng <a target=\"_blank\" href=\"https://ninjateam.org/support/"
+"\">yêu cầu hỗ trợ ở đây</a>, chúng tôi sẽ sửa chữa nó cho bạn."
+
+#: includes/I18n.php:107
+msgid "Please share your thoughts..."
+msgstr "Xin chia sẻ suy nghĩ của bạn..."
+
+#: includes/I18n.php:108
+msgid "Want a better FileBird?"
+msgstr "Bạn muốn có một phiên bản FileBird tốt hơn?"
+
+#: includes/I18n.php:109
+msgid ""
+"Sorry to see you walk away, please share why you want to deactivate FileBird?"
+msgstr ""
+"Rất tiếc khi bạn tắt FileBird, xin vui lòng chia sẻ lý do tại sao bạn muốn "
+"tắt FileBird?"
+
+#: includes/I18n.php:110
+msgid "Folder Limit Reached"
+msgstr "Đạt giới hạn thư mục"
+
+#: includes/I18n.php:111
+msgid ""
+"<p>FileBird Lite version supports up to 10 folders.<br>Please upgrade to "
+"have unlimited folders and other premium features!</p>\n"
+"        <ul class=\"fbv-in_feature\">\n"
+"          <li>Unlimited Folders</li>\n"
+"          <li>Sort Files / Folders</li>\n"
+"          <li>Compatible with Premium Page Builders <span id=\"fbv-"
+"pagebuilder\" class=\"njn-i\"><svg viewBox=\"0 0 192 512\"><path fill="
+"\"currentColor\" d=\"M20 424.229h20V279.771H20c-11.046 "
+"0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 "
+"20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 "
+"0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 "
+"72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z\"></path></svg></span></"
+"li>\n"
+"          <li>Get Fast Updates</li>\n"
+"          <li>Premium Technical Support</li>\n"
+"          <li>One-time Payment</li>\n"
+"          <li>30-day Refund Guarantee</li>\n"
+"        </ul>"
+msgstr ""
+"<p>FileBird Lite Phiên bản hỗ trợ tối đa 10 thư mục.<br>Vui lòng nâng cấp để "
+"có các thư mục không giới hạn và các tính năng cao cấp khác!</p>\n"
+"        <ul class=\"fbv-in_feature\">\n"
+"          <li>Không giới hạn thư mục</li>\n"
+"          <li>Sắp xếp tập tin/thư mục</li>\n"
+"          <li>Tương thích với Premium Builders<span id=\"fbv-pagebuilder\" "
+"class=\"njn-i\"><svg viewbox=\"0 0 192 512\"><path fill=\"currentColor\" d="
+"\"M20 424.229h20V279.771H20c-11.046 0-20-8.954-20-20V212c0-11.046 8.954-20 "
+"20-20h112c11.046 0 20 8.954 20 20v212.229h20c11.046 0 20 8.954 20 20V492c0 "
+"11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20v-47.771c0-11.046 8.954-20 "
+"20-20zM96 0C56.235 0 24 32.235 24 72s32.235 72 72 72 72-32.235 72-72S135.764 "
+"0 96 0z\"></path></svg></span></li>\n"
+"          <li>Nhận Cập Nhật nhanh</li>\n"
+"          <li>Hỗ trợ kỹ thuật cao cấp</li>\n"
+"          <li>Thanh toán một lần</li>\n"
+"          <li>Đảm bảo hoàn tiền trong 30 ngày</li>\n"
+"        </ul>"
+
+#: includes/I18n.php:121
+msgid "Including Divi, Fusion, Thrive Architect, WPBakery..."
+msgstr "Bao gồm Divi, Fusion, Thrive Architect, WPBakery..."
+
+#: includes/I18n.php:122
+msgid "Upgrade to FileBird Pro now"
+msgstr "Nâng cấp lên FileBird Pro ngay bây giờ"
+
+#: includes/I18n.php:123
+msgid "Success."
+msgstr "Thành công."
+
+#: includes/I18n.php:124
+msgid "Congratulations. Successfully imported!"
+msgstr "Chúc mừng. Nhập thư mục thành công!"
+
+#: includes/I18n.php:125
+msgid "Go To Media"
+msgstr "Đi tới Media"
+
+#: includes/I18n.php:127
+msgid ""
+"You're using the new FileBird 4. Please import database to view your folders "
+"correctly."
+msgstr ""
+"Bạn đang sử dụng FileBird mới 4. Hãy nhập cơ sở dữ liệu để xem các thư mục "
+"của bạn một cách chính xác."
+
+#: includes/I18n.php:128
+msgid "Import now"
+msgstr "Nhập ngay bây giờ"
+
+#: includes/I18n.php:129
+msgid ""
+"Import failed. Please try again or <a href=\"https://ninjateam.org/support\" "
+"target=\"_blank\">contact our support</a>."
+msgstr ""
+"Nhập không thành công. Vui lòng thử lại hoặc <a href=\"https://ninjateam.org/"
+"support\" target=\"_blank\">liên hệ với hỗ trợ của chúng tôi</a>."
+
+#: includes/I18n.php:130
+msgid "Please enter your Purchase Code."
+msgstr "Vui lòng nhập Mã mua hàng của bạn."
+
+#: includes/I18n.php:131
+msgid "Please enter your Personal Access Token or get one."
+msgstr "Vui lòng nhập Mã truy cập cá nhân của bạn hoặc nhận một mã thông báo."
+
+#: includes/I18n.php:132
+msgid "Can not active your License, please try again."
+msgstr "Không thể kích hoạt, vui lòng thử lại."
+
+#: includes/I18n.php:133 views/pages/html-settings.php:24
+#: views/pages/settings/tab-settings.php:1
+msgid "Settings"
+msgstr "Cài đặt"
+
+#: includes/I18n.php:134 views/pages/html-settings.php:64
+msgid "FileBird Settings"
+msgstr "Thiết lập FileBird"
+
+#: includes/I18n.php:135
+msgid "Select a default startup folder:"
+msgstr "Chọn thư mục khởi động mặc định:"
+
+#: includes/I18n.php:136
+msgid "Auto sort files by:"
+msgstr "Tự động sắp xếp tệp theo:"
+
+#: includes/I18n.php:137
+msgid "Default"
+msgstr "Mặc định"
+
+#: includes/I18n.php:138
+msgid "Settings saved"
+msgstr "Đã lưu cài đặt"
+
+#: includes/I18n.php:139
+msgid "Failed to save settings. Please try again!"
+msgstr "Thất bại khi lưu cài đặt. Làm ơn thử lại lần nữa!"
+
+#: includes/I18n.php:140
+msgid "Unlock new features"
+msgstr "Mở khóa các tính năng mới"
+
+#: includes/I18n.php:141
+msgid ""
+"To use FileBird folders with your current page builder/plugin, please "
+"upgrade to PRO version."
+msgstr ""
+"Để sử dụng các thư mục FileBird với trình tạo trang / plugin hiện tại của "
+"bạn, vui lòng nâng cấp lên phiên bản PRO."
+
+#: includes/I18n.php:142
+msgid "Do more with FileBird PRO"
+msgstr "Làm được nhiều việc hơn với FileBird PRO"
+
+#: includes/I18n.php:143
+msgid ""
+"You're using a third party plugin, which is supported in FileBird PRO. "
+"Please upgrade to browse files faster and get more done."
+msgstr ""
+"Bạn đang sử dụng một plugin của bên thứ ba, được hỗ trợ trong FileBird PRO. "
+"Vui lòng nâng cấp để duyệt tệp nhanh hơn và hoàn thành nhiều việc hơn."
+
+#: includes/I18n.php:144
+msgid "Go Pro"
+msgstr "Nâng cấp"
+
+#: includes/I18n.php:145
+msgid "View details."
+msgstr "Xem chi tiết"
+
+#: includes/I18n.php:146
+msgid "Turn off for 7 days"
+msgstr "Tắt trong 7 ngày"
+
+#: includes/I18n.php:147
+msgid "Collapse"
+msgstr "Thu gọn"
+
+#: includes/I18n.php:148
+msgid "Expand"
+msgstr "Mở rộng"
+
+#: includes/I18n.php:149
+msgid "Uploaded"
+msgstr "Đã tải lên"
+
+#: includes/I18n.php:150
+msgid "Less than a min"
+msgstr "Dưới một phút"
+
+#: includes/I18n.php:151
+msgid "Total size"
+msgstr "Tổng kích thước"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:54
+msgid "View details"
+msgstr "Xem chi tiết"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr "Thông tin bổ sung về %s"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr "Kiểm tra cập nhật"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:214
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr "Plugin %s là đến nay."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:216
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr "Một phiên bản mới của plugin %s có sẵn."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:218
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr "Không thể xác định nếu bản cập nhật sẵn có cho %s."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:224
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr "Trạng thái kiểm tra cập nhật không xác định \"% s\""
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr "Không có thay đổi có sẵn."
+
+#. Plugin Name of the plugin/theme
+#: includes/Page/Settings.php:39 includes/Page/Settings.php:40
+msgid "FileBird"
+msgstr "FileBird"
+
+#: includes/Page/Settings.php:56
+msgid "Documentation"
+msgstr "Tài liệu"
+
+#: views/pages/html-settings.php:19
+msgid "Activation"
+msgstr "Kích hoạt"
+
+#: views/pages/html-settings.php:31
+#: views/pages/settings/tab-update-database.php:1
+msgid "Update Database"
+msgstr "Cập nhật cơ sở dữ liệu"
+
+#: views/pages/html-settings.php:36
+msgid "API"
+msgstr "API"
+
+#: views/pages/html-settings.php:41 views/pages/settings/tab-uninstall.php:1
+msgid "Uninstall"
+msgstr "Gỡ cài đặt"
+
+#: views/pages/html-settings.php:50
+msgid "Import"
+msgstr "Nhập"
+
+#: views/pages/settings/tab-activated.php:9
+msgid "Congratulations! 🎉"
+msgstr "Chúc mừng! 🎉"
+
+#: views/pages/settings/tab-activated.php:12
+msgid "Your FileBird Pro was activated!"
+msgstr "FileBird Pro của bạn đã được kích hoạt!"
+
+#: views/pages/settings/tab-activated.php:21
+msgid ""
+"Starting a new site? <a href=\"https://1.envato.market/Get-FileBird\" class="
+"\"njt-fb-purchase-more\">Buy another license</a>."
+msgstr ""
+"Bạn đang bắt đầu một trang web mới? <a href=\"https://1.envato.market/Get-"
+"FileBird\" class=\"njt-fb-purchase-more\">Mua giấy phép khác</a>."
+
+#: views/pages/settings/tab-active.php:9
+msgid ""
+"To activate FileBird, please sign in to Envato and accept a few permissions."
+msgstr ""
+"Để kích hoạt FileBird, vui lòng đăng nhập vào Envato và chấp nhận một vài "
+"quyền."
+
+#: views/pages/settings/tab-active.php:11
+msgid "This helps verify your license."
+msgstr "Điều này giúp xác minh giấy phép của bạn."
+
+#: views/pages/settings/tab-active.php:14
+msgid "By activating FileBird, you’ll have:"
+msgstr "Bằng cách kích hoạt FileBird, bạn sẽ có:"
+
+#: views/pages/settings/tab-active.php:19
+msgid "Auto-update to the latest version"
+msgstr "Tự động cập nhật lên phiên bản mới nhất"
+
+#: views/pages/settings/tab-active.php:22
+msgid "Premium Technical Support"
+msgstr "Hỗ trợ kỹ thuật cao cấp"
+
+#: views/pages/settings/tab-active.php:25
+msgid "Live Chat 1-1 on Facebook for any questions"
+msgstr "Trò chuyện trực tiếp 1-1 trên Facebook cho bất kỳ câu hỏi nào"
+
+#: views/pages/settings/tab-active.php:34
+msgid "Login with Envato"
+msgstr "Đăng nhập bằng Envato"
+
+#: views/pages/settings/tab-api.php:1
+msgid "REST API"
+msgstr "REST API Key"
+
+#: views/pages/settings/tab-api.php:2
+msgid "An API to run Get folders & Set attachments"
+msgstr "API để chạy nhận thư mục & đặt tệp đính kèm"
+
+#: views/pages/settings/tab-api.php:3
+msgid ""
+"Please see FileBird API for developers <a target=\"_blank\" href=\"https://"
+"ninjateam.gitbook.io/filebird/api\">here</a>."
+msgstr ""
+"Vui lòng xem FileBird API cho các nhà phát triển <a target=\"_blank\" href="
+"\"https://ninjateam.gitbook.io/filebird/api\">ở đây</a>."
+
+#: views/pages/settings/tab-api.php:9
+msgid "API key"
+msgstr "Mã API"
+
+#: views/pages/settings/tab-api.php:22
+msgid "Generate"
+msgstr "Tạo"
+
+#: views/pages/settings/tab-import.php:1
+msgid "Import to FileBird"
+msgstr "Nhập vào FileBird"
+
+#: views/pages/settings/tab-import.php:3
+msgid ""
+"Import categories/folders from other plugins. We import virtual folders, "
+"your website will be safe, don't worry ;)"
+msgstr ""
+"Nhập danh mục/thư mục từ các plugin khác. Chúng tôi nhập các thư mục ảo, "
+"trang web của bạn sẽ được an toàn, đừng lo lắng;)"
+
+#: views/pages/settings/tab-import.php:10
+msgid "Enhanced Media Library plugin by wpUXsolutions"
+msgstr "Enhanced Media Library plugin bởi wpUXsolutions"
+
+#: views/pages/settings/tab-import.php:14
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>Enhanced Media Library</strong> plugin."
+msgstr ""
+"Chúng tôi thấy bạn có <strong>(%1$s)</strong> danh mục bạn đã tạo từ plugin "
+"<strong>Thư viện phương tiện nâng cao</strong> ."
+
+#: views/pages/settings/tab-import.php:16
+#: views/pages/settings/tab-import.php:44
+#: views/pages/settings/tab-import.php:72
+#: views/pages/settings/tab-import.php:100
+#: views/pages/settings/tab-import.php:128
+msgid " Would you like to import to <strong>FileBird</strong>?"
+msgstr ""
+"Bạn có muốn nhập thư mục từ các plugins khác vào<strong>FileBird</"
+"strong>không?"
+
+#: views/pages/settings/tab-import.php:38
+msgid "WordPress Media Library Folders by Max Foundry"
+msgstr "Thư mục thư viện phương tiện WordPress của Max Foundry"
+
+#: views/pages/settings/tab-import.php:42
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>WordPress Media Library Folders</strong> plugin."
+msgstr ""
+"Chúng tôi tìm thấy bạn có <strong>(%1$s)</strong> loại bạn tạo ra từ "
+"<strong>Wordpress Media Thư viện thư mục</strong> plugin."
+
+#: views/pages/settings/tab-import.php:66
+msgid "WP Media folder by Joomunited"
+msgstr "WP Media thư mục của Joomunited"
+
+#: views/pages/settings/tab-import.php:70
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>WP Media folder</strong> plugin."
+msgstr ""
+"Chúng tôi thấy bạn có <strong>(%1$s)</strong> loại bạn tạo ra từ <strong>WP "
+"Media plugin thư mục</strong> ."
+
+#: views/pages/settings/tab-import.php:94
+msgid "WP Real Media Library by devowl.io GmbH"
+msgstr "WP Real Media Library bởi devowl.io GmbH"
+
+#: views/pages/settings/tab-import.php:98
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>WP Real Media Library</strong> plugin."
+msgstr ""
+"Chúng tôi thấy bạn có <strong>(%1$s)</strong> loại bạn đã tạo từ <strong>WP "
+"Real Media Library</strong> plugin."
+
+#: views/pages/settings/tab-import.php:122
+msgid "HappyFiles by Codeer"
+msgstr "HappyFiles của Codeer"
+
+#: views/pages/settings/tab-import.php:126
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>HappyFiles</strong> plugin."
+msgstr ""
+"Chúng tôi tìm thấy bạn <strong>có %1$s ( ) </strong> danh mục bạn đã tạo từ "
+"plugin <strong>HappyFiles.</strong>"
+
+#: views/pages/settings/tab-settings.php:5
+msgid "Each user has his own folders?"
+msgstr "Mỗi người dùng có thư mục riêng của mình?"
+
+#: views/pages/settings/tab-uninstall.php:5
+msgid "Clear all data"
+msgstr "Xóa tất cả dữ liệu"
+
+#: views/pages/settings/tab-uninstall.php:6
+msgid ""
+"This action will delete all FileBird data, FileBird settings and bring you "
+"back to WordPress default media library."
+msgstr ""
+"Hành động này sẽ xóa tất cả dữ liệu FileBird, cài đặt FileBird và đưa bạn "
+"trở lại thư viện phương tiện mặc định của WordPress."
+
+#: views/pages/settings/tab-uninstall.php:9
+msgid "Clear"
+msgstr "Xóa"
+
+#: views/pages/settings/tab-update-database.php:6
+msgid "Import from old version"
+msgstr "Nhập từ phiên bản cũ"
+
+#: views/pages/settings/tab-update-database.php:7
+msgid ""
+"By running this action, all folders created in version 3.9 & earlier "
+"installs will be imported."
+msgstr ""
+"Bằng hoạt động này, tất cả các thư mục được tạo trong phiên bản 3,9 & cài "
+"đặt trước đó sẽ nhập."
+
+#: views/particle/activation_fail.php:5
+msgid ""
+"It seems you don't have any valid FileBird license. Please <a href=\"https://"
+"ninjateam.org/support\" target=\"_blank\">contact support</a> to get help or "
+"<a href=\"https://1.envato.market/Get-FileBird\" target=\"_blank\">purchase "
+"a FileBird license</a>"
+msgstr ""
+"Có vẻ như bạn không có bất kỳ giấy phép FileBird hợp lệ nào. Vui lòng <a "
+"href=\"https://ninjateam.org/support\" target=\"_blank\">liên hệ với</a> bộ "
+"phận hỗ trợ để được trợ giúp hoặc mua giấy phép <a href=\"https://1.envato."
+"market/Get-FileBird\" target=\"_blank\">FileBird</a>"
+
+#: views/particle/activation_fail.php:9
+msgid "Oops! Activation failed."
+msgstr "Rất tiếc! Kích hoạt thất bại."
+
+#: views/particle/folder_dropdown.php:2
+msgid "Choose folder: "
+msgstr "Chọn thư mục:"
+
+#. Plugin URI of the plugin/theme
+msgid "https://ninjateam.org/wordpress-media-library-folders/"
+msgstr "https://ninjateam.org/wordpress-media-library-folders/"
+
+#. Description of the plugin/theme
+msgid ""
+"Organize thousands of WordPress media files into folders/ categories at ease."
+msgstr ""
+"Tổ chức hàng ngàn tập tin phương tiện truyền thông WordPress vào thư mục/"
+"chuyên mục thoải mái."
+
+#. Author of the plugin/theme
+msgid "Ninja Team"
+msgstr "Ninja Team"
+
+#. Author URI of the plugin/theme
+msgid "https://ninjateam.org"
+msgstr "https://ninjateam.org"

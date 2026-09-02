@@ -1,0 +1,7 @@
+$kind: http-request
+description: ""
+url: "{{base_url}}/services?per_page"
+method: GET
+queryParams:
+  per_page: null
+order: 4317789085477300

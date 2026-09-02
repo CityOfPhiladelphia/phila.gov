@@ -1,0 +1,725 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Project-Id-Version: FileBird\n"
+"POT-Creation-Date: 2020-08-09 20:48+0700\n"
+"PO-Revision-Date: 2020-08-10 17:32+0700\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: filebird.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: id_ID\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: includes/Classes/Convert.php:128
+msgid "Import categories to FileBird"
+msgstr "Impor kategori FileBird"
+
+#: includes/Classes/Convert.php:131
+#, php-format
+msgid ""
+"We found you have %1$s categories you created from <strong>%2$s</strong> "
+"plugin. Would you like to import it to <strong>FileBird</strong>?"
+msgstr ""
+"Kami menemukan Anda memiliki %1$s kategori yang Anda buat dari <strong>%2$s</"
+"strong> plugin. Apakah Anda ingin mengimpornya ke <strong>Filebird</strong>?"
+
+#: includes/Classes/Convert.php:134 views/pages/html-settings.php:106
+#: views/pages/html-settings.php:137 views/pages/html-settings.php:168
+#: views/pages/html-settings.php:199
+msgid "Import Now"
+msgstr "Import Sekarang"
+
+#: includes/Classes/Convert.php:135
+msgid "No, thanks"
+msgstr "Tidak, terimakasih"
+
+#: includes/Classes/Convert.php:177
+msgid "Success"
+msgstr "Berhasil"
+
+#: includes/Classes/Convert.php:193
+msgid "success"
+msgstr "sukses"
+
+#: includes/Classes/Convert.php:195
+msgid "validation failed"
+msgstr "validasi gagal"
+
+#: includes/Classes/Convert.php:211
+msgid "Successfully wiped."
+msgstr "Berhasil dihapus."
+
+#: includes/Classes/Convert.php:225
+msgid "Successfully cleared."
+msgstr "Berhasil dibersihkan."
+
+#: includes/Classes/Convert.php:229
+msgid "Please try again."
+msgstr "Silakan mencoba kembali."
+
+#: includes/Classes/Convert.php:313
+#, php-format
+msgid ""
+"Congratulations! We imported successfully %1$d folders into <strong>FileBird."
+"</strong>"
+msgstr ""
+"Selamat! Kami berhasil diimpor %1$d folder ke <strong>Filebird.</strong>"
+
+#: includes/Classes/Convert.php:323 includes/Classes/Convert.php:330
+#: includes/Classes/Convert.php:337 includes/Classes/Convert.php:344
+#: includes/Classes/EnhancedConvert.php:43
+msgid "Already Updated"
+msgstr "Sudah diperbarui"
+
+#: includes/Classes/EnhancedConvert.php:52
+msgid "Updated"
+msgstr "Diperbarui"
+
+#: includes/Classes/Review.php:71
+msgid "Give FileBird a review"
+msgstr "Memberikan FileBird review"
+
+#: includes/Classes/Review.php:73
+msgid ""
+"Thank you for choosing FileBird. We hope you love it. Could you take a "
+"couple of seconds posting a nice review to share your happy experience?"
+msgstr ""
+"Terima kasih telah memilih FileBird. Kami harap Anda menyukainya. Bisakah "
+"Anda mengambil beberapa detik posting review bagus untuk berbagi pengalaman "
+"bahagia Anda?"
+
+#: includes/Classes/Review.php:76
+msgid "We will be forever grateful. Thank you in advance ;)"
+msgstr "Kita akan selamanya bersyukur. Terima kasih sebelumnya;)"
+
+#: includes/Classes/Review.php:79
+msgid "Rate now"
+msgstr "Tingkat sekarang"
+
+#: includes/Classes/Review.php:80
+msgid "Later"
+msgstr "Kemudian"
+
+#: includes/Classes/Review.php:81
+msgid "Already did"
+msgstr "Sudah melakukan"
+
+#: includes/Controller/Api.php:60
+msgid "Invalid action"
+msgstr "Tindakan tidak sah"
+
+#: includes/Controller/Api.php:82 includes/Controller/Folder.php:393
+#: includes/Controller/Folder.php:448 includes/Controller/Folder.php:461
+msgid "Validation failed"
+msgstr "Validasi gagal"
+
+#: includes/Controller/Folder.php:47
+msgid "Create your first folder for media library now."
+msgstr "Buat folder pertama Anda untuk Perpustakaan media sekarang."
+
+#: includes/Controller/Folder.php:49
+msgid "Get Started"
+msgstr "Mulai yuk!"
+
+#: includes/Controller/Folder.php:71 includes/I18n.php:114
+msgid "FileBird 4 Update Required"
+msgstr "FileBird 4 update diperlukan"
+
+#: includes/Controller/Folder.php:75
+msgid ""
+"You're using the new FileBird 4. Please update database to view your folders "
+"correctly."
+msgstr ""
+"Anda menggunakan FileBird 4 yang baru. Silakan Perbarui database untuk "
+"melihat folder Anda dengan benar."
+
+#: includes/Controller/Folder.php:81 views/pages/html-settings.php:75
+msgid "Update now"
+msgstr "Perbarui sekarang"
+
+#: includes/Controller/Folder.php:206
+msgid "Your request can't be processed."
+msgstr "Permintaan Anda tidak dapat diproses."
+
+#: includes/Controller/Folder.php:227 includes/Model/Folder.php:30
+msgid "All Folders"
+msgstr "Semua folder"
+
+#: includes/Controller/Folder.php:231 includes/Controller/Folder.php:475
+#: includes/I18n.php:62 includes/Model/Folder.php:34
+msgid "Uncategorized"
+msgstr "Tidak berkategori"
+
+#: includes/Controller/Folder.php:350
+msgid "Please choose folder"
+msgstr "Silakan pilih folder"
+
+#: includes/Controller/Folder.php:389 includes/Controller/Folder.php:407
+msgid "Please choose another name."
+msgstr "Silakan pilih nama lain."
+
+#: includes/Controller/Folder.php:436
+msgid "Can't delete folder, please try again later"
+msgstr "Tidak dapat menghapus folder, silakan coba lagi nanti"
+
+#: includes/Controller/Folder.php:457
+msgid "Folder tree has been updated."
+msgstr "Pohon folder telah diperbarui."
+
+#: includes/I18n.php:36
+msgid "No media files found."
+msgstr "Tidak ada file media yang ditemukan."
+
+#: includes/I18n.php:37
+msgid "New Folder"
+msgstr "Folder Baru"
+
+#: includes/I18n.php:38
+msgid "Delete"
+msgstr "Hapus"
+
+#: includes/I18n.php:39 includes/I18n.php:51
+msgid "Folders"
+msgstr "Folder"
+
+#: includes/I18n.php:40
+msgid "Ok"
+msgstr "Oke"
+
+#: includes/I18n.php:41
+msgid "Cancel"
+msgstr "Batal"
+
+#: includes/I18n.php:42
+msgid "Cut"
+msgstr "Potong"
+
+#: includes/I18n.php:43
+msgid "Paste"
+msgstr "Tempel"
+
+#: includes/I18n.php:44
+msgid "Loading"
+msgstr "Memuat"
+
+#: includes/I18n.php:45
+msgid "Successfully moved"
+msgstr "Berhasil dipindahkan"
+
+#: includes/I18n.php:46
+msgid "Successfully deleted!"
+msgstr "Berhasil dihapus!"
+
+#: includes/I18n.php:47
+msgid "Can't delete!"
+msgstr "Tidak dapat menghapus!"
+
+#: includes/I18n.php:48
+msgid "Save"
+msgstr "Simpan"
+
+#: includes/I18n.php:49
+msgid "Folder"
+msgstr "Folder"
+
+#: includes/I18n.php:50
+msgid "Folder name..."
+msgstr "Nama folder..."
+
+#: includes/I18n.php:52
+msgid "Enter folder name..."
+msgstr "Masukkan nama folder..."
+
+#: includes/I18n.php:53
+msgid "Are you sure you want to delete"
+msgstr "Anda yakin ingin menghapus"
+
+#: includes/I18n.php:54
+msgid "Are you sure?"
+msgstr "Apakah Anda yakin?"
+
+#: includes/I18n.php:55
+msgid "Those files will be moved to <strong>Uncategorized</strong> folder."
+msgstr ""
+"File tersebut akan dipindahkan ke folder yang tidak <strong>dikategorikan</"
+"strong> ."
+
+#: includes/I18n.php:56
+msgid "You are editing another folder! Please complete the task first!"
+msgstr "Anda mengedit folder lain! Mohon selesaikan tugasnya terlebih dahulu!"
+
+#: includes/I18n.php:57
+msgid "Sort Folders"
+msgstr "Urutkan folder"
+
+#: includes/I18n.php:58
+msgid "Delete Folder"
+msgstr "Hapus folder"
+
+#: includes/I18n.php:59
+msgid "Sort Files"
+msgstr "Urutkan file"
+
+#: includes/I18n.php:60
+msgid "Bulk Select"
+msgstr "Pilih massal"
+
+#: includes/I18n.php:61
+msgid "All Files"
+msgstr "Semua Berkas"
+
+#: includes/I18n.php:63
+msgid "Rename"
+msgstr "Ganti Nama"
+
+#: includes/I18n.php:64
+msgid ""
+"Are you sure you want to delete this folder? Those files will be moved to "
+"<strong>Uncategorized</strong> folder."
+msgstr ""
+"Anda yakin ingin menghapus folder ini? File tersebut akan dipindahkan ke "
+"folder yang tidak <strong>dikategorikan</strong> ."
+
+#: includes/I18n.php:65
+msgid "Sort Ascending"
+msgstr "Sortir Menaik"
+
+#: includes/I18n.php:66
+msgid "Sort Descending"
+msgstr "Sortir Menurun"
+
+#: includes/I18n.php:67
+msgid "Reset"
+msgstr "Reset"
+
+#: includes/I18n.php:68
+msgid "By Name"
+msgstr "Dengan nama"
+
+#: includes/I18n.php:69
+msgid "Name Ascending"
+msgstr "Nama Naik"
+
+#: includes/I18n.php:70
+msgid "Name Descending"
+msgstr "Nama Turun"
+
+#: includes/I18n.php:71
+msgid "By Date"
+msgstr "Berdasarkan Tanggal"
+
+#: includes/I18n.php:72
+msgid "Date Ascending"
+msgstr "Tanggal Naik"
+
+#: includes/I18n.php:73
+msgid "Date Descending"
+msgstr "Tanggal Turun"
+
+#: includes/I18n.php:74
+msgid "By Modified"
+msgstr "Oleh Modified"
+
+#: includes/I18n.php:75
+msgid "Modified Ascending"
+msgstr "Perubahan urutan"
+
+#: includes/I18n.php:76
+msgid "Modified Descending"
+msgstr "Perubahan menurun"
+
+#: includes/I18n.php:77
+msgid "By Author"
+msgstr "Oleh Penulis"
+
+#: includes/I18n.php:78
+msgid "Author Ascending"
+msgstr "Penulis ascending"
+
+#: includes/I18n.php:79
+msgid "Author Descending"
+msgstr "Pengarang menurun"
+
+#: includes/I18n.php:80
+msgid "Skip & Deactivate"
+msgstr "Lewati & Nonaktifkan"
+
+#: includes/I18n.php:81
+msgid "Deactivate"
+msgstr "Nonaktifkan"
+
+#: includes/I18n.php:82
+msgid "Thank you so much!"
+msgstr "Terima kasih banyak!"
+
+#: includes/I18n.php:84
+msgid "It doesn't have the features I'm looking for."
+msgstr "Tidak memiliki fitur yang saya cari."
+
+#: includes/I18n.php:85
+msgid "Not work with my theme or other plugins."
+msgstr "Tidak bekerja dengan tema atau plugin lainnya."
+
+#: includes/I18n.php:86
+msgid "Found another plugin that works better."
+msgstr "Menemukan plugin lain yang bekerja lebih baik."
+
+#: includes/I18n.php:87
+msgid "Don't know how to use it."
+msgstr "Tidak tahu bagaimana menggunakannya."
+
+#: includes/I18n.php:88
+msgid "This is just temporary, I will use it again."
+msgstr "Ini hanya sementara, saya akan menggunakannya lagi."
+
+#: includes/I18n.php:89
+msgid "Other"
+msgstr "Lainnya"
+
+#: includes/I18n.php:91
+msgid "Which features please?"
+msgstr "Yang fitur please?"
+
+#: includes/I18n.php:92
+msgid "Please tell us which one"
+msgstr "Tolong beritahu kami mana yang"
+
+#: includes/I18n.php:93
+msgid ""
+"Please read FileBird documentation <a target=\"_blank\" href=\"https://"
+"ninjateam.gitbook.io/filebird/\">here</a> or <a target=\"_blank\" href="
+"\"https://ninjateam.org/support/\">chat with us</a> if you need help"
+msgstr ""
+"Silakan baca dokumentasi FileBird <a target=\"_blank\" href=\"https://"
+"ninjateam.gitbook.io/filebird/\">di sini</a> atau <a target=\"_blank\" href="
+"\"https://ninjateam.org/support/\">mengobrol dengan kami</a> jika Anda "
+"memerlukan bantuan"
+
+#: includes/I18n.php:94
+msgid ""
+"Please <a target=\"_blank\" href=\"https://ninjateam.org/support/\">ask for "
+"support here</a>, we will fix it for you."
+msgstr ""
+"Silakan <a target=\"_blank\" href=\"https://ninjateam.org/support/\">meminta "
+"dukungan di sini</a>, kami akan memperbaikinya untuk Anda."
+
+#: includes/I18n.php:95
+msgid "Please share your thoughts..."
+msgstr "Silakan berbagi pikiran Anda..."
+
+#: includes/I18n.php:96
+msgid "Want a better FileBird?"
+msgstr "Ingin FileBird yang lebih baik?"
+
+#: includes/I18n.php:97
+msgid ""
+"Sorry to see you walk away, please share why you want to deactivate FileBird?"
+msgstr ""
+"Maaf untuk melihat Anda berjalan pergi, silakan berbagi mengapa Anda ingin "
+"menonaktifkan FileBird?"
+
+#: includes/I18n.php:98
+msgid "Folder Limit Reached"
+msgstr "Batas folder tercapai"
+
+#: includes/I18n.php:99
+msgid ""
+"<p>FileBird Lite version supports up to 10 folders.<br>Please upgrade to "
+"have unlimited folders and other premium features!</p>\n"
+"        <ul class=\"fbv-in_feature\">\n"
+"          <li>Unlimited Folders</li>\n"
+"          <li>Sort Files / Folders</li>\n"
+"          <li>Compatible with Premium Page Builders <span id=\"fbv-"
+"pagebuilder\" class=\"njn-i\"><svg viewBox=\"0 0 192 512\"><path fill="
+"\"currentColor\" d=\"M20 424.229h20V279.771H20c-11.046 "
+"0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 "
+"20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 "
+"0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 "
+"72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z\"></path></svg></span></"
+"li>\n"
+"          <li>Get Fast Updates</li>\n"
+"          <li>Premium Technical Support</li>\n"
+"          <li>One-time Payment</li>\n"
+"          <li>30-day Refund Guarantee</li>\n"
+"        </ul>"
+msgstr ""
+"<p>Versi FileBird Lite mendukung hingga 10 folder.<br>Silakan upgrade untuk "
+"memiliki folder terbatas dan fitur Premium lainnya!</p>\n"
+"        <ul class=\"fbv-in_feature\">\n"
+"          <li>Folder tak terbatas</li>\n"
+"          <li>Urutkan file/folder</li>\n"
+"          <li>Kompatibel dengan pembangun halaman premium<span id=\"fbv-"
+"pagebuilder\" class=\"njn-i\"><svg viewbox=\"0 0 192 512\"><path fill="
+"\"currentColor\" d=\"M20 424.229h20V279.771H20c-11.046 "
+"0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 "
+"20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 "
+"0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 "
+"72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z\"></path></svg></span></"
+"li>\n"
+"          <li>Dapatkan update cepat</li>\n"
+"          <li>Dukungan teknis Premium</li>\n"
+"          <li>Pembayaran satu kali</li>\n"
+"          <li>Jaminan pengembalian dana 30 hari</li>\n"
+"        </ul>"
+
+#: includes/I18n.php:109
+msgid "Including Divi, Fusion, Thrive Architect, WPBakery..."
+msgstr "Termasuk Divi, Fusion, Thrive arsitek, WPBakery..."
+
+#: includes/I18n.php:110
+msgid "Upgrade to FileBird Pro now"
+msgstr "Upgrade ke FileBird Pro sekarang"
+
+#: includes/I18n.php:111
+msgid "Success."
+msgstr "Berhasil."
+
+#: includes/I18n.php:112
+msgid "Congratulations. Successfully imported!"
+msgstr "Selamat. Berhasil diimpor!"
+
+#: includes/I18n.php:113
+msgid "Go To Media"
+msgstr "Pergi ke media"
+
+#: includes/I18n.php:115
+msgid ""
+"You're using the new FileBird 4. Please import database to view your folders "
+"correctly."
+msgstr ""
+"Anda menggunakan FileBird 4 yang baru. Silakan impor database untuk melihat "
+"folder Anda dengan benar."
+
+#: includes/I18n.php:116
+msgid "Import now"
+msgstr "Impor sekarang"
+
+#: includes/I18n.php:117
+msgid ""
+"Import failed. Please try again or <a href=\"https://ninjateam.org/support\" "
+"target=\"_blank\">contact our support</a>."
+msgstr ""
+"Impor gagal. Silakan coba lagi atau <a href=\"https://ninjateam.org/support"
+"\" target=\"_blank\">Hubungi dukungan kami</a>."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p9/Plugin/Ui.php:54
+msgid "View details"
+msgstr "Lihat rincian"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p9/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr "Informasi lebih lanjut tentang %s"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p9/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr "Cek Pembaruan"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p9/Plugin/Ui.php:213
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr "Plugin %s adalah up to date."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p9/Plugin/Ui.php:215
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr "Versi baru dari plugin %s tersedia."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p9/Plugin/Ui.php:217
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr "Tidak dapat menentukan jika pembaruan tersedia untuk %s."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p9/Plugin/Ui.php:223
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr "Status pemeriksa pembaruan tidak diketahui \" %s\""
+
+#: includes/Lib/plugin-update-checker/Puc/v4p9/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr "Tidak ada changelog tersedia."
+
+#. Plugin Name of the plugin/theme
+#: includes/Page/Settings.php:36 includes/Page/Settings.php:37
+msgid "FileBird"
+msgstr "Fileburung"
+
+#: includes/Page/Settings.php:53
+msgid "Documentation"
+msgstr "Dokumentasi"
+
+#: views/pages/html-settings.php:18 views/pages/html-settings.php:28
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: views/pages/html-settings.php:19 views/pages/html-settings.php:66
+msgid "Update Database"
+msgstr "Pembaruan database"
+
+#: views/pages/html-settings.php:22
+msgid "Import"
+msgstr "Impor"
+
+#: views/pages/html-settings.php:25
+msgid "API"
+msgstr "API"
+
+#: views/pages/html-settings.php:32
+msgid "Each user has his own folders?"
+msgstr "Setiap pengguna memiliki foldernya sendiri?"
+
+#: views/pages/html-settings.php:56
+msgid "Clear all data"
+msgstr "Hapus semua data"
+
+#: views/pages/html-settings.php:57
+msgid ""
+"This action will delete all FileBird data, FileBird settings and bring you "
+"back to WordPress default media library."
+msgstr ""
+"Tindakan ini akan menghapus semua FileBird data, FileBird pengaturan dan "
+"membawa Anda kembali ke WordPress Perpustakaan media default."
+
+#: views/pages/html-settings.php:60
+msgid "Clear"
+msgstr "Bersihkan"
+
+#: views/pages/html-settings.php:71
+msgid "Import from old version"
+msgstr "Impor dari versi lama"
+
+#: views/pages/html-settings.php:72
+msgid ""
+"By running this action, all folders created in version 3.9 & earlier "
+"installs will be imported."
+msgstr ""
+"Dengan menjalankan tindakan ini, semua folder yang dibuat di versi 3,9 & "
+"menginstal sebelumnya akan diimpor."
+
+#: views/pages/html-settings.php:82
+msgid "Import to FileBird"
+msgstr "Impor ke FileBird"
+
+#: views/pages/html-settings.php:84
+msgid ""
+"Import categories/folders from other plugins. We import virtual folders, "
+"your website will be safe, don't worry ;)"
+msgstr ""
+"Impor kategori/folder dari plugin lain. Kami mengimpor folder virtual, situs "
+"web Anda akan aman, jangan khawatir;)"
+
+#: views/pages/html-settings.php:91
+msgid "Enhanced Media Library plugin by wpUXsolutions"
+msgstr "Enhanced Media Library plugin oleh wpUXsolutions"
+
+#: views/pages/html-settings.php:95
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>Enhanced Media Library</strong> plugin."
+msgstr ""
+"Kami menemukan Anda memiliki <strong>(%1$s)</strong> kategori yang Anda buat "
+"dari <strong>Enhanced Media Library</strong> plugin."
+
+#: views/pages/html-settings.php:97 views/pages/html-settings.php:128
+#: views/pages/html-settings.php:159 views/pages/html-settings.php:190
+msgid " Would you like to import to <strong>FileBird</strong>?"
+msgstr "Apakah Anda ingin mengimpor ke <strong>Filebird</strong>?"
+
+#: views/pages/html-settings.php:122
+msgid "WordPress Media Library Folders by Max Foundry"
+msgstr "WordPress Media Library folder oleh Max Foundry"
+
+#: views/pages/html-settings.php:126
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>WordPress Media Library Folders</strong> plugin."
+msgstr ""
+"Kami menemukan Anda memiliki <strong>(%1$s)</strong> kategori yang Anda buat "
+"dari <strong>Wordpress Media Library folder</strong> plugin."
+
+#: views/pages/html-settings.php:153
+msgid "WP Media folder by Joomunited"
+msgstr "WP media folder oleh Joomunited"
+
+#: views/pages/html-settings.php:157
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>WP Media folder</strong> plugin."
+msgstr ""
+"Kami menemukan Anda memiliki <strong>(%1$s)</strong> kategori yang Anda buat "
+"dari <strong>WP media folder</strong> plugin."
+
+#: views/pages/html-settings.php:184
+msgid "WP Real Media Library by devowl.io GmbH"
+msgstr "WP Real Media Library oleh devowl.io GmbH"
+
+#: views/pages/html-settings.php:188
+#, php-format
+msgid ""
+"We found you have <strong>(%1$s)</strong> categories you created from "
+"<strong>WP Real Media Library</strong> plugin."
+msgstr ""
+"Kami menemukan Anda memiliki <strong>(%1$s)</strong> kategori yang Anda buat "
+"dari <strong>WP Real Media Library</strong> plugin."
+
+#: views/pages/html-settings.php:215
+msgid "REST API"
+msgstr "API REST"
+
+#: views/pages/html-settings.php:216
+msgid "An API to run Get folders & Set attachments"
+msgstr "API untuk menjalankan folder Get & set lampiran"
+
+#: views/pages/html-settings.php:217
+msgid ""
+"Please see FileBird API for developers <a target=\"_blank\" href=\"https://"
+"ninjateam.gitbook.io/filebird/api\">here</a>."
+msgstr ""
+"Silakan lihat FileBird API untuk pengembang <a target=\"_blank\" href="
+"\"https://ninjateam.gitbook.io/filebird/api\">di sini</a>."
+
+#: views/pages/html-settings.php:223
+msgid "API key"
+msgstr "API key"
+
+#: views/pages/html-settings.php:236
+msgid "Generate"
+msgstr "Menghasilkan"
+
+#: views/particle/folder_dropdown.php:2
+msgid "Choose Folder: "
+msgstr "Pilih folder:"
+
+#. Plugin URI of the plugin/theme
+msgid "https://ninjateam.org/wordpress-media-library-folders/"
+msgstr "https://ninjateam.org/wordpress-media-library-folders/"
+
+#. Description of the plugin/theme
+msgid ""
+"Organize thousands of WordPress media files into folders/ categories at ease."
+msgstr "Mengatur ribuan file media WordPress ke dalam folder/kategori nyaman."
+
+#. Author of the plugin/theme
+msgid "Ninja Team"
+msgstr "Ninja Team"
+
+#. Author URI of the plugin/theme
+msgid "https://ninjateam.org"
+msgstr "https://ninjateam.org"

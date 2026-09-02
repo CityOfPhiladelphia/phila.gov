@@ -4,6 +4,27 @@
  *
  * @package phila-gov
 */
+global $post;
+
+
+/**
+ * Get a department specific partial template with scoped args
+ * @param  string $partial_name name of partial after hyphen
+ * @param  array  $partial_args arguments to scope to that specifc partial
+ */
+function get_dept_partial($partial_name, $partial_args = array()){
+  global $post;
+
+  if ( $post->ID == '4273' ){ //connected neighborhoods - preview id: 404273
+    include(locate_template(('partials/departments/v2/mayor/home.php')));
+
+  } else if ($post->post_parent == '4273'){
+    include(locate_template(('partials/departments/v2/mayor/subpage.php')));
+  }
+  else{
+    phila_get_template_part('partials/departments/v2/department-'.$partial_name, $partial_args);
+  }
+}
 
 $user_selected_template = phila_get_selected_template();
 $language = rwmb_meta('phila_select_language');
@@ -11,6 +32,27 @@ $language_list = phila_get_translated_language( $language );
 get_header();
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class('program clearfix'); ?>>
+
+  <?php
+
+    $parent = phila_util_get_furthest_ancestor($post);
+    if ( phila_util_is_new_template( $parent->ID ) && $user_selected_template !== 'prog_association' && $parent_template !== 'prog_association' ) :
+      /**
+       * Department Homepage V2 Hero
+       */
+      $hero_data = array(
+        'parent' => phila_util_get_furthest_ancestor($post),
+        'is_homepage' => ($user_selected_template == 'homepage_v2' || $user_selected_template == 'homepage_v3'),
+        'bg' => array(
+          'desktop'      => phila_get_hero_header_v2( $parent->ID ),
+          'mobile'       => phila_get_hero_header_v2( $parent->ID, true ),
+          'photo_credit' => rwmb_meta( 'phila_v2_photo_credit', $parent->ID )
+        )
+      );
+
+      get_dept_partial('hero', $hero_data);
+
+  ?>
 
 <?php if ( $user_selected_template == 'prog_off_site' ) : ?>
 

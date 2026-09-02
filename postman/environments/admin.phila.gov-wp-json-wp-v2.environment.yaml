@@ -1,0 +1,4 @@
+name: admin.phila.gov/wp-json/wp/v2
+values:
+  - key: base_url
+    value: ''

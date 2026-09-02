@@ -1,0 +1,1202 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FileBird\n"
+"POT-Creation-Date: 2022-05-23 11:55+0700\n"
+"PO-Revision-Date: 2022-07-02 00:56+0900\n"
+"Last-Translator: \n"
+"Language-Team: FileBird South Korea Language 5 by ZZAGNPAPER\n"
+"Language: ko_KR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: filebird.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: apps\n"
+"X-Poedit-SearchPathExcluded-2: *.css\n"
+"X-Poedit-SearchPathExcluded-3: *.js\n"
+"X-Poedit-SearchPathExcluded-4: blocks/filebird-gallery/node_modules\n"
+"X-Poedit-SearchPathExcluded-5: release\n"
+
+#: includes/Classes/Convert.php:111 includes/Classes/Convert.php:286
+#, php-format
+msgid ""
+"We found you have %1$s categories you created from <strong>%2$s</strong> "
+"plugin. Would you like to import it to <strong>FileBird</strong>?"
+msgstr ""
+"플러그인에서 <strong>%2$s</strong> 만든 카테고리가 있음을 %1$s 발견했습니다. "
+"<strong>파일버드</strong>로 가져오시겠습니까?"
+
+#: includes/Classes/Convert.php:281
+msgid "Import categories to FileBird"
+msgstr "파일버드에 카테고리 가져오기"
+
+#: includes/Classes/Convert.php:301 views/pages/settings/tab-import.php:19
+#: views/pages/settings/tab-import.php:41
+#: views/pages/settings/tab-import.php:63
+#: views/pages/settings/tab-import.php:85
+#: views/pages/settings/tab-import.php:107
+#: views/pages/settings/tab-import.php:129
+#: views/pages/settings/tab-import.php:179
+msgid "Import Now"
+msgstr "지금 가져오기"
+
+#: includes/Classes/Convert.php:303 includes/Classes/Review.php:65
+#: includes/I18n.php:168
+msgid "No, thanks"
+msgstr "아니오, 괜찮습니다"
+
+#: includes/Classes/Convert.php:337
+msgid "Success"
+msgstr "성공"
+
+#: includes/Classes/Convert.php:356
+msgid "success"
+msgstr "성공"
+
+#: includes/Classes/Convert.php:358
+msgid "validation failed"
+msgstr "유효성 검사 실패"
+
+#: includes/Classes/Convert.php:376
+msgid "Successfully wiped."
+msgstr "성공적으로 지웠습니다."
+
+#: includes/Classes/Convert.php:394
+msgid "Successfully cleared."
+msgstr "성공적으로 지웠습니다."
+
+#: includes/Classes/Convert.php:400
+msgid "Please try again."
+msgstr "나중에 다시 시도하기 바랍니다."
+
+#: includes/Classes/Convert.php:482
+#, php-format
+msgid ""
+"Congratulations! We imported successfully %d folders into <strong>FileBird.</"
+"strong>"
+msgstr ""
+"축하합니다! 우리는 파일버드에 폴더를 성공적으로 %d 가져 <strong>왔습니다.</"
+"strong>"
+
+#: includes/Classes/Convert.php:495 includes/Classes/Convert.php:504
+#: includes/Classes/Convert.php:513 includes/Classes/Convert.php:522
+#: includes/Classes/Convert.php:531 includes/Classes/Convert.php:540
+msgid "Already Updated"
+msgstr "이미 업데이트됨"
+
+#: includes/Classes/Review.php:54
+msgid "Give FileBird a review"
+msgstr "파일버드에 리뷰 제공"
+
+#: includes/Classes/Review.php:56
+msgid ""
+"Thank you for choosing FileBird. We hope you love it. Could you take a "
+"couple of seconds posting a nice review to share your happy experience?"
+msgstr ""
+"FileBird를 선택해 주셔서 감사합니다. 많이 사랑해주세요. 여러분의 행복한 경험"
+"을 공유하기 위해 몇 초 동안 멋진 후기를 올려주실 수 있나요?"
+
+#: includes/Classes/Review.php:59
+msgid "We will be forever grateful. Thank you in advance ;)"
+msgstr "우리는 영원히 감사 할 것입니다. 잘부탁드립니다;)"
+
+#: includes/Classes/Review.php:63
+msgid "Rate now"
+msgstr "평가"
+
+#: includes/Classes/Review.php:64
+msgid "Later"
+msgstr "나중에"
+
+#: includes/Classes/TabActive.php:45
+msgid "Activate your license for automatic updates"
+msgstr "자동 업데이트를 위해 라이선스 활성화"
+
+#: includes/Classes/TabActive.php:51
+#| msgid ""
+#| "Import failed. Please try again or <a href=\"https://ninjateam.org/support"
+#| "\" target=\"_blank\">contact our support</a>."
+msgid ""
+"Validation failed (Nonce Errors), please try again later. Or you can <a href="
+"\"https://ninjateam.org/support\" target=\"_blank\"><strong>contact support</"
+"strong></a>."
+msgstr ""
+"가져오기에 실패했습니다. 다시 시도하거나 <a href=\"https://ninjateam.org/"
+"support\" target=\"_blank\">지원팀에 문의하십시오</a>."
+
+#: includes/Classes/TabActive.php:158
+msgid "Please active license to update."
+msgstr "업데이트 할 활성 라이센스를 사용하십시오."
+
+#: includes/Classes/TabActive.php:159
+#| msgid "Deactivate"
+msgid "Deactivating license"
+msgstr "비활성화"
+
+#: includes/Classes/TabActive.php:160
+msgid ""
+"Are you sure to deactivate the current license key? You will not get regular "
+"updates or any support for this site."
+msgstr ""
+"현재 라이센스 키를 비활성화해야 합니까? 이 사이트에 대한 정기적인 업데이트나 "
+"지원을받지 못합니다."
+
+#: includes/Classes/TabActive.php:161
+#| msgid "Please try again."
+msgid "Please try again later!"
+msgstr "나중에 다시 시도하기 바랍니다!"
+
+#: includes/Controller/Api.php:106
+msgid "Invalid action"
+msgstr "잘못된 작업"
+
+#: includes/Controller/Api.php:138 includes/Controller/Api.php:169
+msgid "folder_id is missing."
+msgstr "folder_id가 누락되었습니다."
+
+#: includes/Controller/Api.php:183
+msgid "Required fields are missing."
+msgstr "필수 필드가 누락되었습니다."
+
+#: includes/Controller/Api.php:204 includes/Controller/Folder.php:582
+#: includes/Controller/Folder.php:653 includes/Controller/Folder.php:672
+msgid "Validation failed"
+msgstr "유효성 검사 실패"
+
+#: includes/Controller/Attachment/SizeMeta.php:109
+msgid "File Size"
+msgstr "파일 크기"
+
+#: includes/Controller/Folder.php:92
+msgid "Create your first folder for media library now."
+msgstr "지금 미디어 라이브러리의 첫 번째 폴더를 만듭니다."
+
+#: includes/Controller/Folder.php:94
+msgid "Get Started"
+msgstr "시작하기"
+
+#: includes/Controller/Folder.php:122 includes/I18n.php:137
+msgid "FileBird 4 Update Required"
+msgstr "파일버드 4 업데이트 필요"
+
+#: includes/Controller/Folder.php:126
+msgid ""
+"You are using the new FileBird 4. Please update database to view your "
+"folders correctly."
+msgstr ""
+"새로운 파일버드 4를 사용하고 있습니다. 폴더를 올바르게 보려면 데이터베이스를 "
+"업데이트하십시오."
+
+#: includes/Controller/Folder.php:145 views/pages/settings/tab-tools.php:11
+msgid "Update now"
+msgstr "지금 업데이트"
+
+#: includes/Controller/Folder.php:355
+msgid "Your request can't be processed."
+msgstr "요청을 처리할 수 없습니다."
+
+#: includes/Controller/Folder.php:404 includes/Model/Folder.php:32
+msgid "All Folders"
+msgstr "전체 폴더"
+
+#: includes/Controller/Folder.php:408 includes/Controller/Folder.php:762
+#: includes/Controller/Folder.php:808 includes/I18n.php:74
+#: includes/Model/Folder.php:36
+msgid "Uncategorized"
+msgstr "미분류"
+
+#: includes/Controller/Folder.php:542
+msgid "Please choose folder"
+msgstr "폴더를 선택하십시오"
+
+#: includes/Controller/Folder.php:577 includes/Controller/Folder.php:600
+msgid "A folder with this name already exists. Please choose another one."
+msgstr "이 이름을 가진 폴더가 이미 있습니다. 다른 항목을 선택하십시오."
+
+#: includes/Controller/Folder.php:637
+msgid "Can't delete folder, please try again later"
+msgstr "폴더를 삭제할 수 없습니다. 나중에 다시 시도하십시오"
+
+#: includes/Controller/Folder.php:666
+msgid "Folder tree has been updated."
+msgstr "폴더 트리가 업데이트되었습니다."
+
+#: includes/Controller/Folder.php:766
+msgid "FileBird folder:"
+msgstr "파일버드 폴더:"
+
+#: includes/Controller/Folder.php:767
+msgid "Click on the button to move this file to another folder"
+msgstr "이 파일을 다른 폴더로 이동하려면 단추를 클릭하십시오"
+
+#: includes/Controller/Folder.php:928
+msgid "The uploaded file was not generated by FileBird. Please check again."
+msgstr ""
+"업로드된 파일이 파일버드에 의해 생성되지 않았습니다. 다시 확인해 주세요."
+
+#: includes/Fallback.php:11
+msgid ""
+"It looks like you have another FileBird version installed, please delete it "
+"before activating this new version. All of the settings and data are still "
+"preserved."
+msgstr ""
+"다른 파일버드 버전이 설치된 것 같습니다. 이 새 버전을 활성화하기 전에 삭제하"
+"십시오. 모든 설정과 데이터는 여전히 보존됩니다."
+
+#: includes/Fallback.php:13
+msgid "Read more details."
+msgstr "자세한 내용을 읽어 보십시오."
+
+#: includes/I18n.php:40
+msgid "No media files found."
+msgstr "미디어 파일을 찾을 수 없습니다."
+
+#: includes/I18n.php:41
+msgid "New Folder"
+msgstr "새 폴더"
+
+#: includes/I18n.php:42
+msgid "Delete"
+msgstr "삭제"
+
+#: includes/I18n.php:43 includes/I18n.php:63
+msgid "Folders"
+msgstr "폴더"
+
+#: includes/I18n.php:44
+msgid "Ok"
+msgstr "확인"
+
+#: includes/I18n.php:45
+msgid "Cancel"
+msgstr "취소"
+
+#: includes/I18n.php:46
+msgid "Close"
+msgstr "닫기"
+
+#: includes/I18n.php:47
+msgid "Cut"
+msgstr "잘라내기"
+
+#: includes/I18n.php:48
+msgid "Paste"
+msgstr "붙여넣기"
+
+#: includes/I18n.php:49
+msgid "Download"
+msgstr "다운로드"
+
+#: includes/I18n.php:50
+msgid "Download (Pro version)"
+msgstr "다운로드 (프로 버전)"
+
+#: includes/I18n.php:51
+msgid "Loading"
+msgstr "로딩중"
+
+#: includes/I18n.php:52
+msgid "Generating download link..."
+msgstr "다운로드 링크 생성..."
+
+#: includes/I18n.php:53
+msgid "Successfully moved"
+msgstr "성공적으로 이동됨"
+
+#: includes/I18n.php:54
+msgid "Unsuccessfully moved"
+msgstr "성공적으로 이동되지 않음"
+
+#: includes/I18n.php:55
+msgid "Successfully updated!"
+msgstr "성공적으로 업데이트됨!"
+
+#: includes/I18n.php:56
+msgid "Unsuccessfully updated!"
+msgstr "성공적으로 업데이트되지 않았습니다!"
+
+#: includes/I18n.php:57
+msgid "Successfully deleted!"
+msgstr "성공적으로 삭제되었습니다!"
+
+#: includes/I18n.php:58
+msgid "Can't delete!"
+msgstr "삭제할 수 없습니다!"
+
+#: includes/I18n.php:59
+msgid "Change Color"
+msgstr "색상 변경"
+
+#: includes/I18n.php:60
+msgid "Save"
+msgstr "저장"
+
+#: includes/I18n.php:61
+msgid "Folder"
+msgstr "폴더"
+
+#: includes/I18n.php:62
+msgid "Folder name..."
+msgstr "폴더 이름..."
+
+#: includes/I18n.php:64
+msgid "Enter folder name..."
+msgstr "폴더 이름 입력..."
+
+#: includes/I18n.php:65
+msgid "Are you sure you want to delete"
+msgstr "삭제하시겠습니까"
+
+#: includes/I18n.php:66
+msgid "Are you sure?"
+msgstr "확실합니까?"
+
+#: includes/I18n.php:67
+msgid "Those files will be moved to <strong>Uncategorized</strong> folder."
+msgstr "해당 파일이 <strong>으로 이동됩니다.분류되지 않은 폴더입니다."
+
+#: includes/I18n.php:68
+msgid "You are editing another folder! Please complete the task first!"
+msgstr "다른 폴더를 편집하고 있습니다! 먼저 작업을 완료하십시오!"
+
+#: includes/I18n.php:69
+msgid "Sort Folders"
+msgstr "폴더 정렬"
+
+#: includes/I18n.php:70
+msgid "Delete Folder"
+msgstr "폴더 삭제"
+
+#: includes/I18n.php:71
+msgid "Sort Files"
+msgstr "파일 정렬"
+
+#: includes/I18n.php:72
+msgid "Bulk Select"
+msgstr "일괄 선택"
+
+#: includes/I18n.php:73
+msgid "All Files"
+msgstr "모든 파일"
+
+#: includes/I18n.php:75
+msgid "Previous folder selected"
+msgstr "이전 폴더가 선택됨"
+
+#: includes/I18n.php:76
+msgid "Rename"
+msgstr "이름 바꾸기"
+
+#: includes/I18n.php:77
+msgid ""
+"Are you sure you want to delete this folder? Those files will be moved to "
+"<strong>Uncategorized</strong> folder."
+msgstr ""
+"이 폴더를 삭제하시겠습니까? 해당 파일이 <strong>으로 이동됩니다.분류되지 않"
+"은 폴더입니다."
+
+#: includes/I18n.php:78
+msgid "Sort Ascending"
+msgstr "오름차순"
+
+#: includes/I18n.php:79
+msgid "Sort Descending"
+msgstr "내림차순"
+
+#: includes/I18n.php:80
+msgid "Reset"
+msgstr "초기화"
+
+#: includes/I18n.php:81
+msgid "By Name"
+msgstr "이름순"
+
+#: includes/I18n.php:82
+msgid "Name Ascending"
+msgstr "이름 오름차순"
+
+#: includes/I18n.php:83
+msgid "Name Descending"
+msgstr "이름 내림차순"
+
+#: includes/I18n.php:84
+msgid "By Date"
+msgstr "날짜별"
+
+#: includes/I18n.php:85
+msgid "Date Ascending"
+msgstr "최신순"
+
+#: includes/I18n.php:86
+msgid "Date Descending"
+msgstr "오래된순"
+
+#: includes/I18n.php:87
+msgid "By Modified"
+msgstr "수정순"
+
+#: includes/I18n.php:88
+msgid "Modified Ascending"
+msgstr "수정 오름차순"
+
+#: includes/I18n.php:89
+msgid "Modified Descending"
+msgstr "수정 내림차순"
+
+#: includes/I18n.php:90
+msgid "By Author"
+msgstr "작성자"
+
+#: includes/I18n.php:91
+msgid "By File Name"
+msgstr "파일 이름순"
+
+#: includes/I18n.php:92
+msgid "Author Ascending"
+msgstr "작성자 오름차순"
+
+#: includes/I18n.php:93
+msgid "Author Descending"
+msgstr "작성자 내림차순"
+
+#: includes/I18n.php:94
+msgid "By Title"
+msgstr "제목별"
+
+#: includes/I18n.php:95
+msgid "Title Ascending"
+msgstr "제목 오름차순"
+
+#: includes/I18n.php:96
+msgid "Title Descending"
+msgstr "제목 내림차순"
+
+#: includes/I18n.php:97
+msgid "By Size"
+msgstr "크기별"
+
+#: includes/I18n.php:98
+#| msgid "Title Ascending"
+msgid "Size Ascending"
+msgstr "제목 오름차순"
+
+#: includes/I18n.php:99
+#| msgid "Title Descending"
+msgid "Size Descending"
+msgstr "제목 내림차순"
+
+#: includes/I18n.php:100
+msgid "Skip & Deactivate"
+msgstr "건너뛰기 & 비활성화"
+
+#: includes/I18n.php:101
+msgid "Deactivate"
+msgstr "비활성화"
+
+#: includes/I18n.php:102
+msgid "Thank you so much!"
+msgstr "정말 고맙습니다!"
+
+#: includes/I18n.php:104
+msgid "It doesn't have the features I'm looking for."
+msgstr "제가 찾는 기능이 없습니다."
+
+#: includes/I18n.php:105
+msgid "Not work with my theme or other plugins."
+msgstr "내 테마 또는 다른 플러그인으로 작업하지 않습니다."
+
+#: includes/I18n.php:106
+msgid "Found another plugin that works better."
+msgstr "더 잘 작동하는 다른 플러그인을 찾았습니다."
+
+#: includes/I18n.php:107
+msgid "Don't know how to use it."
+msgstr "어떻게 사용하는지 모르겠어요."
+
+#: includes/I18n.php:108
+msgid "This is just temporary, I will use it again."
+msgstr "이건 그냥 임시방편이에요, 다시 쓰겠습니다."
+
+#: includes/I18n.php:109
+msgid "Other"
+msgstr "기타"
+
+#: includes/I18n.php:111
+msgid "Which features please?"
+msgstr "어떤 기능을 원하십니까?"
+
+#: includes/I18n.php:112
+msgid "Please tell us which one"
+msgstr "어떤 게 좋을지 말씀해 주세요"
+
+#: includes/I18n.php:113
+msgid ""
+"Please read FileBird documentation <a target=\"_blank\" href=\"https://"
+"ninjateam.gitbook.io/filebird/\">here</a> or <a target=\"_blank\" href="
+"\"https://ninjateam.org/support/\">chat with us</a> if you need help"
+msgstr ""
+"<a target=\"_blank\" href=\"https://ninjateam.gitbook.io/filebird/\">여기에서"
+"</a> 파일버드 문서를 읽거나 도움이 필요하면 <a target=\"_blank\" href="
+"\"https://ninjateam.org/support/\">우리와 채팅하십시오.</a>"
+
+#: includes/I18n.php:114
+msgid ""
+"Please <a target=\"_blank\" href=\"https://ninjateam.org/support/\">ask for "
+"support here</a>, we will fix it for you."
+msgstr ""
+"<a target=\"_blank\" href=\"https://ninjateam.org/support/\">여기에 지원을 요"
+"청하십시오</a>, 우리는 당신을 위해 그것을 고칠 것입니다."
+
+#: includes/I18n.php:115
+msgid "Please share your thoughts..."
+msgstr "의견을 말씀해 주세요."
+
+#: includes/I18n.php:116
+msgid "Want a better FileBird?"
+msgstr "더 나은 파일버드를 원하십니까?"
+
+#: includes/I18n.php:117
+msgid ""
+"Sorry to see you walk away, please share why you want to deactivate FileBird?"
+msgstr ""
+"당신이 떠나는 것을 보게되어 죄송합니다, 파일버드를 비활성화하려는 이유를 공유"
+"하십시오?"
+
+#: includes/I18n.php:118
+msgid "Folder Limit Reached"
+msgstr "폴더 제한에 도달했습니다"
+
+#: includes/I18n.php:120
+msgid ""
+"<p>FileBird Lite version supports up to 10 folders.<br>Please upgrade to "
+"have unlimited folders and other premium features!</p>\n"
+"        <ul class=\"fbv-in_feature\">\n"
+"          <li>Unlimited Folders</li>\n"
+"          <li>Sort Files / Folders</li>\n"
+"          <li>Compatible with Premium Page Builders <span id=\"fbv-"
+"pagebuilder\" class=\"njn-i\"><svg viewBox=\"0 0 192 512\"><path fill="
+"\"currentColor\" d=\"M20 424.229h20V279.771H20c-11.046 "
+"0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 "
+"20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 "
+"0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 "
+"72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z\"></path></svg></span></"
+"li>\n"
+"          <li>Get Fast Updates</li>\n"
+"          <li>Premium Technical Support</li>\n"
+"          <li>One-time Payment</li>\n"
+"          <li>30-day Refund Guarantee</li>\n"
+"        </ul>"
+msgstr ""
+"<p>FileBird Lite 버전은 최대 10 개의 폴더를 지원합니다.<br>무제한 폴더 및 기"
+"타 프리미엄 기능을 갖도록 업그레이드하십시오!</p>\n"
+"        <ul class=\"fbv-in_feature\">\n"
+"          <li>무제한 폴더</li>\n"
+"          <li>파일 / 폴더 정렬</li>\n"
+"          <li>프리미엄 페이지 빌더와 호환 가능 <span id=\"fbv-pagebuilder\" "
+"class=\"njn-i\"><svg viewBox=\"0 0 192 512\"><path fill=\"currentColor\" d="
+"\"M20 424.229h20V279.771H20c-11.046 0-20-8.954-20-20V212c0-11.046 8.954-20 "
+"20-20h112c11.046 0 20 8.954 20 20v212.229h20c11.046 0 20 8.954 20 20V492c0 "
+"11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20v-47.771c0-11.046 8.954-20 "
+"20-20zM96 0C56.235 0 24 32.235 24 72s32.235 72 72 72 72-32.235 72-72S135.764 "
+"0 96 0z\"></path></svg></span></li>\n"
+"          <li>빠른 업데이트 받기</li>\n"
+"          <li>프리미엄 기술 지원</li>\n"
+"          <li>일회성 지불</li>\n"
+"          <li>30일 환불 보증</li>\n"
+"        </ul>"
+
+#: includes/I18n.php:132
+msgid "Including Divi, Fusion, Thrive Architect, WPBakery..."
+msgstr "Divi, Fusion, Thrive Architect, WPBakery 포함 ..."
+
+#: includes/I18n.php:133
+msgid "Upgrade to FileBird Pro now"
+msgstr "지금 FileBird Pro로 업그레이드"
+
+#: includes/I18n.php:134
+msgid "Success."
+msgstr "성공."
+
+#: includes/I18n.php:135
+msgid "Congratulations. Successfully imported!"
+msgstr "축하합니다. 성공적으로 가져왔습니다!"
+
+#: includes/I18n.php:136
+msgid "Go To Media"
+msgstr "미디어로 이동"
+
+#: includes/I18n.php:138
+msgid ""
+"You're using the new FileBird 4. Please import database to view your folders "
+"correctly."
+msgstr ""
+"새 파일버드 4를 사용하고 있습니다. 폴더를 올바르게 보려면 데이터베이스를 가져"
+"오십시오."
+
+#: includes/I18n.php:139
+msgid "Import now"
+msgstr "지금 가져오기"
+
+#: includes/I18n.php:140
+msgid ""
+"Import failed. Please try again or <a href=\"https://ninjateam.org/support\" "
+"target=\"_blank\">contact our support</a>."
+msgstr ""
+"가져오기에 실패했습니다. 다시 시도하거나 <a href=\"https://ninjateam.org/"
+"support\" target=\"_blank\">지원팀에 문의하십시오</a>."
+
+#: includes/I18n.php:141
+msgid "Please enter your Purchase Code."
+msgstr "구매 코드를 입력하십시오."
+
+#: includes/I18n.php:142
+msgid "Please enter your Personal Access Token or get one."
+msgstr "개인 액세스 토큰을 입력하거나 받으십시오."
+
+#: includes/I18n.php:143
+msgid "Can not active your License, please try again."
+msgstr "라이센스를 활성화할 수 없습니다. 다시 시도하십시오."
+
+#: includes/I18n.php:144 views/pages/html-settings.php:28
+msgid "Settings"
+msgstr "설정"
+
+#: includes/I18n.php:145 views/pages/html-settings.php:66
+msgid "FileBird Settings"
+msgstr "파일버드 설정"
+
+#: includes/I18n.php:146
+msgid "Select a default startup folder:"
+msgstr "기본 시작 폴더를 선택합니다:"
+
+#: includes/I18n.php:147
+msgid "Auto sort files by:"
+msgstr "자동 정렬 파일 기준:"
+
+#: includes/I18n.php:148
+msgid "Default"
+msgstr "기본값"
+
+#: includes/I18n.php:149
+msgid "Settings saved"
+msgstr "설정을 저장했습니다"
+
+#: includes/I18n.php:150
+msgid "Failed to save settings. Please try again!"
+msgstr "설정을 저장하지 못했습니다. 다시 시도하십시오!"
+
+#: includes/I18n.php:151
+msgid "Unlock new features"
+msgstr "새로운 기능 잠금 해제"
+
+#: includes/I18n.php:152
+msgid ""
+"To use FileBird folders with your current page builder/plugin, please "
+"upgrade to PRO version."
+msgstr ""
+"현재 페이지 빌더 / 플러그인과 함께 파일버드 폴더를 사용하려면 프로 버전으로 "
+"업그레이드하십시오."
+
+#: includes/I18n.php:153
+msgid "Do more with FileBird PRO"
+msgstr "파일버드 프로로 더 많은 작업 수행"
+
+#: includes/I18n.php:154
+msgid ""
+"You're using a third party plugin, which is supported in FileBird PRO. "
+"Please upgrade to browse files faster and get more done."
+msgstr ""
+"파일버드 프로에서 지원되는 타사 플러그인을 사용하고 있습니다. 파일을 더 빨리 "
+"찾아보고 더 많은 작업을 수행하려면 업그레이드하십시오."
+
+#: includes/I18n.php:155
+msgid "Go Pro"
+msgstr "프로 버전 가기"
+
+#: includes/I18n.php:156
+msgid "View details."
+msgstr "세부 정보 보기."
+
+#: includes/I18n.php:157
+msgid "Turn off for 7 days"
+msgstr "7일 동안 끄기"
+
+#: includes/I18n.php:158
+msgid "Collapse"
+msgstr "접기"
+
+#: includes/I18n.php:159
+msgid "Expand"
+msgstr "펼치기"
+
+#: includes/I18n.php:160
+msgid "Uploaded"
+msgstr "업로드됨"
+
+#: includes/I18n.php:161
+msgid "Less than a min"
+msgstr "1분 미만"
+
+#: includes/I18n.php:162
+msgid "Total size"
+msgstr "전체 크기"
+
+#: includes/I18n.php:163
+msgid "Move"
+msgstr "이동"
+
+#: includes/I18n.php:164
+msgid "item"
+msgstr "아이템"
+
+#: includes/I18n.php:165
+msgid "items"
+msgstr "아이템"
+
+#: includes/I18n.php:166
+msgid "Import folders to FileBird"
+msgstr "FileBird로 폴더 가져오기"
+
+#: includes/I18n.php:167
+msgid "Go to import"
+msgstr "가져오기로 이동"
+
+#: includes/I18n.php:169
+msgid ""
+"You have some folders created by other media plugins. Would you like to "
+"import them?"
+msgstr "다른 미디어 플러그인으로 만든 폴더가 있습니다. 가져오시겠습니까?"
+
+#: includes/I18n.php:170
+msgid "Default Tree View"
+msgstr "기본 트리 보기"
+
+#: includes/I18n.php:171
+msgid "Flat Tree View"
+msgstr "플랫 트리 보기"
+
+#: includes/I18n.php:172
+#| msgid "Generate"
+msgid "Generate Size"
+msgstr "생성"
+
+#: includes/I18n.php:173
+msgid "File Processing"
+msgstr "파일 처리"
+
+#: includes/I18n.php:174
+msgid "Processing..."
+msgstr "처리중…"
+
+#: includes/I18n.php:175
+msgid "Generate attachment size"
+msgstr "첨부 파일 크기 생성"
+
+#: includes/I18n.php:176
+#| msgid "Folder name..."
+msgid "Folder counter:"
+msgstr "폴더 카운터:"
+
+#: includes/I18n.php:177
+msgid "Count files in each folder"
+msgstr "각 폴더의 파일 개수"
+
+#: includes/I18n.php:178
+msgid "Count files in both parent folder and subfolders"
+msgstr "상위 폴더와 하위 폴더 모두에서 파일 개수"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:54
+msgid "View details"
+msgstr "상세 보기"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr "%s에 대한 추가 정보"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr "업데이트 확인하기"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:214
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr "%s 플러그인은 최신입니다."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:216
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr "새로운 버전의 %s 플러그인이 사용 가능합니다."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:218
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr "업데이트가 %s에 가능한지 판단할 수 없습니다."
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Plugin/Ui.php:224
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr "“%s” 상태에 대한 알수 없는 업데이트"
+
+#: includes/Lib/plugin-update-checker/Puc/v4p11/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr "사용 가능한 변경 기록이 없습니다."
+
+#. Plugin Name of the plugin/theme
+#: includes/Page/Settings.php:23 includes/Page/Settings.php:24
+msgid "FileBird"
+msgstr "파일버드"
+
+#: includes/Page/Settings.php:40
+msgid "Documentation"
+msgstr "문서"
+
+#: includes/Support/ACF/acf-field-filebird-v4.php:20
+#: includes/Support/ACF/acf-field-filebird-v5.php:19
+msgid "FileBird Folder"
+msgstr "파일버드 폴더"
+
+#: includes/Support/DocumentGallery.php:26
+msgid "This folder ID does not exist, please check again."
+msgstr "이 폴더 ID가 존재하지 않으므로 다시 확인하십시오."
+
+#: views/pages/html-settings.php:23
+msgid "Activation"
+msgstr "활성화"
+
+#: views/pages/html-settings.php:39
+msgid "Tools"
+msgstr "도구"
+
+#: views/pages/html-settings.php:47
+msgid "Import/Export"
+msgstr "가져오기/내보내기"
+
+#: views/pages/settings/tab-activated.php:13
+msgid "Congratulations! 🎉"
+msgstr "축하합니다! 🎉"
+
+#: views/pages/settings/tab-activated.php:18
+msgid "Your FileBird Pro was activated!"
+msgstr "파일버드 프로가 활성화되었습니다!"
+
+#: views/pages/settings/tab-activated.php:24
+msgid "Your license is: "
+msgstr "귀하의 라이센스: "
+
+#: views/pages/settings/tab-activated.php:28
+#| msgid "Deactivate"
+msgid "Deactivate license."
+msgstr "라이선스 비활성화."
+
+#: views/pages/settings/tab-activated.php:34
+msgid "Starting a new site?"
+msgstr "새 사이트를 시작한다고요?"
+
+#: views/pages/settings/tab-activated.php:36
+msgid "Buy another license."
+msgstr "다른 라이센스를 구입하세요."
+
+#: views/pages/settings/tab-active.php:13
+msgid ""
+"To activate FileBird, please sign in to Envato and accept a few permissions."
+msgstr ""
+"파일버드를 활성화하려면 엔바토에 로그인하고 몇 가지 권한을 수락하십시오."
+
+#: views/pages/settings/tab-active.php:15
+msgid "This helps verify your license (Each license is activated once)."
+msgstr ""
+"이렇게 하면 라이선스를 확인할 수 있습니다(각 라이선스는 한 번 활성화됨)."
+
+#: views/pages/settings/tab-active.php:18
+msgid "By activating FileBird, you will have:"
+msgstr "FileBird를 활성화하면 다음과 같은 이점이 있습니다:"
+
+#: views/pages/settings/tab-active.php:23
+msgid "Auto-update to the latest version"
+msgstr "최신 버전으로 자동 업데이트"
+
+#: views/pages/settings/tab-active.php:26
+msgid "Premium Technical Support"
+msgstr "프리미엄 기술 지원"
+
+#: views/pages/settings/tab-active.php:29
+msgid "Live Chat 1-1 on Facebook for any questions"
+msgstr "라이브 채팅 1-1 페이스 북에서 질문에 대한"
+
+#: views/pages/settings/tab-active.php:42
+msgid "Login with Envato"
+msgstr "엔바토로 로그인"
+
+#: views/pages/settings/tab-import.php:2
+msgid "Import"
+msgstr "가져오기"
+
+#: views/pages/settings/tab-import.php:5
+msgid ""
+"Import categories/folders from other plugins. We import virtual folders, "
+"your website will be safe, don't worry ;)"
+msgstr ""
+"다른 플러그인에서 카테고리 / 폴더를 가져옵니다. 우리는 가상 폴더를 가져 오"
+"고, 귀하의 웹 사이트는 안전 할 것입니다, 걱정하지 마십시오 ;)"
+
+#: views/pages/settings/tab-import.php:12
+msgid "Enhanced Media Library plugin by wpUXsolutions"
+msgstr "향상된 wpUXsolutions의 미디어 라이브러리 플러그인"
+
+#: views/pages/settings/tab-import.php:23
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sEnhanced "
+"Media Library%5$s plugin."
+msgstr ""
+"%1$s향상된 미디어 라이브러리%2$s플러그인에서 만든 %3$s(%4$s)%5$s 카테고리가 "
+"있음을 발견했습니다."
+
+#: views/pages/settings/tab-import.php:25
+#: views/pages/settings/tab-import.php:47
+#: views/pages/settings/tab-import.php:69
+#: views/pages/settings/tab-import.php:91
+#: views/pages/settings/tab-import.php:113
+#: views/pages/settings/tab-import.php:135
+#, php-format
+msgid " Would you like to import to %1$sFileBird%2$s?"
+msgstr " %1$s파일버드%2$s로 가져오시겠습니까?"
+
+#: views/pages/settings/tab-import.php:34
+msgid "WordPress Media Library Folders by Max Foundry"
+msgstr "Max Foundry별 워드프레스 미디어 라이브러리 폴더"
+
+#: views/pages/settings/tab-import.php:45
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sWordPress "
+"Media Library Folders%5$s plugin."
+msgstr ""
+"우리는 당신이 %1$s워드프레스 미디어 라이브러리 폴더%2$s플러그인에서 만든 "
+"%3$s (%4$s) %5$s 카테고리를 가지고 있음을 발견했습니다."
+
+#: views/pages/settings/tab-import.php:56
+msgid "WP Media folder by Joomunited"
+msgstr "WP 미디어 폴더 by Joomunited"
+
+#: views/pages/settings/tab-import.php:67
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sWP Media "
+"folder%5$s plugin."
+msgstr ""
+"우리는 당신이 %1$sWP 미디어 폴더%2$s플러그인에서 만든 %3$s (%4$s) %5$s 카테고"
+"리를 가지고 있음을 발견했습니다."
+
+#: views/pages/settings/tab-import.php:78
+msgid "WP Real Media Library by devowl.io GmbH"
+msgstr "devowl.io GmbH의 WP 리얼 미디어 라이브러리"
+
+#: views/pages/settings/tab-import.php:89
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sWP Real "
+"Media Library%5$s plugin."
+msgstr ""
+"우리는 당신이 %1$sWP 리얼 미디어 라이브러리%2$s플러그인에서 만든 %3$s (%4$s) "
+"%5$s 카테고리를 가지고 있음을 발견했습니다."
+
+#: views/pages/settings/tab-import.php:100
+msgid "HappyFiles by Codeer"
+msgstr "코더의 해피파일스"
+
+#: views/pages/settings/tab-import.php:111
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sHappyFiles"
+"%5$s plugin."
+msgstr ""
+"우리는 당신이 %1$s해피파일스%2$s 플러그인에서 만든 %3$s (%4$s) %5$s 카테고리"
+"를 가지고 있음을 발견했습니다."
+
+#: views/pages/settings/tab-import.php:122
+msgid "Folders by Premio"
+msgstr "프리미오의 폴더"
+
+#: views/pages/settings/tab-import.php:133
+#, php-format
+msgid ""
+"We found you have %1$s(%2$s)%3$s categories you created from %4$sFolders%5$s "
+"plugin."
+msgstr "%4$s폴더%5$s 플러그인으로 만든 %1$s(%2$s)%3$s 카테고리가 있습니다."
+
+#: views/pages/settings/tab-import.php:147
+msgid "Export"
+msgstr "내보내기"
+
+#: views/pages/settings/tab-import.php:153
+msgid "Export CSV"
+msgstr "CSV 내보내기"
+
+#: views/pages/settings/tab-import.php:160
+msgid "Export Now"
+msgstr "지금 내보내기"
+
+#: views/pages/settings/tab-import.php:165
+msgid "The current folder structure will be exported."
+msgstr "현재 폴더 구조를 내보냅니다."
+
+#: views/pages/settings/tab-import.php:172
+msgid "Import CSV"
+msgstr "CSV 가져오기"
+
+#: views/pages/settings/tab-import.php:183
+msgid "Choose FileBird CSV file to import."
+msgstr "가져올 파일버드 CSV 파일을 선택합니다."
+
+#: views/pages/settings/tab-import.php:184
+msgid ""
+"(Please check to make sure that there is no duplicated name. The current "
+"folder structure is preserved.)"
+msgstr "(중복된 이름이 없는지 확인하십시오. 현재 폴더 구조가 보존됩니다.)"
+
+#: views/pages/settings/tab-settings.php:4
+msgid "Each user has his own folders?"
+msgstr "각 사용자는 자신의 폴더를 가지고 있습니까?"
+
+#: views/pages/settings/tab-settings.php:20
+#| msgid "FileBird"
+msgid "Filebird theme"
+msgstr "파일버드"
+
+#: views/pages/settings/tab-settings.php:30
+#| msgid "FileBird folder:"
+msgid "FileBird Default"
+msgstr "파일버드 기본값"
+
+#: views/pages/settings/tab-settings.php:40
+msgid "Windows 11"
+msgstr "윈도우 11"
+
+#: views/pages/settings/tab-settings.php:50
+msgid "Dropbox"
+msgstr "드롭박스"
+
+#: views/pages/settings/tab-tools.php:7
+msgid "Import from old version"
+msgstr "이전 버전에서 가져오기"
+
+#: views/pages/settings/tab-tools.php:13
+msgid ""
+"By running this action, all folders created in version 3.9 & earlier "
+"installs will be imported."
+msgstr ""
+"이 작업을 실행하면 버전 3.9 및 이전 설치에서 만든 모든 폴더를 가져옵니다."
+
+#: views/pages/settings/tab-tools.php:21
+msgid "REST API key"
+msgstr "REST API 키"
+
+#: views/pages/settings/tab-tools.php:36
+msgid "Generate"
+msgstr "생성"
+
+#: views/pages/settings/tab-tools.php:38
+#, php-format
+msgid "Please see FileBird API for developers %1$shere%2$s."
+msgstr "개발자를 위한 FileBird API를 참조하십시오%1$s여기%2$s."
+
+#: views/pages/settings/tab-tools.php:45
+msgid "Danger Zone"
+msgstr "위험 구역"
+
+#: views/pages/settings/tab-tools.php:51
+msgid "Clear all data"
+msgstr "모든 데이터 지우기"
+
+#: views/pages/settings/tab-tools.php:55
+msgid "Clear"
+msgstr "초기화"
+
+#: views/pages/settings/tab-tools.php:57
+msgid ""
+"This action will delete all FileBird data, FileBird settings and bring you "
+"back to WordPress default media library."
+msgstr ""
+"이 작업은 모든 파일버드 데이터, 파일버드 설정을 삭제하고 워드프레스 기본 미디"
+"어 라이브러리로 돌아갑니다."
+
+#: views/particle/activation_fail.php:8
+#| msgid ""
+#| "It seems you don't have any valid FileBird license. Please <a href="
+#| "\"https://ninjateam.org/support\" target=\"_blank\">contact support</a> "
+#| "to get help or <a href=\"https://1.envato.market/Get-FileBird\" target="
+#| "\"_blank\">purchase a FileBird license</a>"
+msgid ""
+"It seems you don't have any valid FileBird license. Please <a href=\"https://"
+"ninjateam.org/support\" target=\"_blank\"><strong>contact support</strong></"
+"a> to get help or <a href=\"https://1.envato.market/Get-FileBird\" target="
+"\"_blank\"><strong>purchase a FileBird license</strong></a>"
+msgstr ""
+"유효한 파일버드 라이센스가없는 것 같습니다. <a href=\"https://ninjateam.org/"
+"support\" target=\"_blank\">지원을 요청</a> 하여 도움을 받거나 <a href="
+"\"https://1.envato.market/Get-FileBird\" target=\"_blank\">파일버드 라이센스"
+"를 구입하십시오.</a>"
+
+#: views/particle/activation_fail.php:10
+#| msgid ""
+#| "This license was used, please <a href=\"https://1.envato.market/Get-"
+#| "FileBird\" target=\"_blank\">purchase another license</a>"
+msgid ""
+"This license was used with <i>%s</i>, please <a href=\"https://1.envato."
+"market/Get-FileBird\" target=\"_blank\"><strong>purchase another license</"
+"strong></a>, or <a href=\"https://ninjateam.org/support\" target=\"_blank"
+"\"><strong>contact support</strong></a>"
+msgstr ""
+"이 라이센스가 사용되었습니다, <a href=\"https://1.envato.market/Get-FileBird"
+"\" target=\"_blank\">다른 라이센스를 구입</a>하시기 바랍니다"
+
+#: views/particle/activation_fail.php:14
+msgid "Oops! Activation failed."
+msgstr "이런! 정품 인증에 실패했습니다."
+
+#: views/particle/folder_dropdown.php:2
+msgid "Choose folder: "
+msgstr "폴더 선택: "
+
+#. Plugin URI of the plugin/theme
+msgid "https://ninjateam.org/wordpress-media-library-folders/"
+msgstr "https://ninjateam.org/wordpress-media-library-folders/"
+
+#. Description of the plugin/theme
+msgid ""
+"Organize thousands of WordPress media files into folders/ categories at ease."
+msgstr ""
+"수천 개의 워드프레스 미디어 파일을 폴더/카테고리로 쉽게 구성할 수 있습니다."
+
+#. Author of the plugin/theme
+msgid "Ninja Team"
+msgstr "닌자 팀"
+
+#. Author URI of the plugin/theme
+msgid "https://ninjateam.org"
+msgstr "https://ninjateam.org"
+
+#~ msgid "Validation failed. Please try again later."
+#~ msgstr "유효성 검사에 실패했습니다. 나중에 다시 시도하십시오."
+
+#, php-format
+#~ msgid ""
+#~ "We found you have <strong>(%1$s)</strong> categories you created from "
+#~ "<strong>HappyFiles</strong> plugin."
+#~ msgstr ""
+#~ "<strong>우리는 당신이 해피파일스</strong> 플러그인에서 만든 "
+#~ "<strong>(%1$s)</strong> 카테고리를 가지고 있음을 발견했습니다."

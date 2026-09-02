@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{base_url}}/departments"
+method: GET
+order: 4372964580585632

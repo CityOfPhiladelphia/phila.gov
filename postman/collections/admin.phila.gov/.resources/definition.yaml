@@ -1,0 +1,13 @@
+$kind: collection
+name: admin.phila.gov
+variables:
+  base_url: ""
+auth:
+  - id: bccbe702-6f80-4e05-9353-632278fbfd19
+    type: basic
+    name: Basic Auth
+    credentials:
+      username: courtney.christian@phila.gov
+      password: sU9L whm1 ZCI9 itsx tAus n8SI
+    rules:
+      url: https://admin.phila.gov/wp-json/wp/v2
