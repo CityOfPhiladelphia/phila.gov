@@ -1142,7 +1142,8 @@ $meta_boxes[] = array(
     'when'  =>  array(
         array('phila_template_select', '=', 'homepage_v2'),
         array('phila_template_select', '=', 'homepage_v3'),
-        array('phila_template_select', '=', 'prog_landing_page')
+        array('phila_template_select', '=', 'prog_landing_page'),
+        array('phila_template_select', '=', 'prog_homepage_v2')
       ),
     'relation'  => 'or'
   ),
@@ -1220,7 +1221,8 @@ $meta_boxes[] = array(
     'when'  =>  array(
         array('phila_template_select', '=', 'homepage_v2'),
         array('phila_template_select', '=', 'homepage_v3'),
-        array('phila_template_select', '=', 'prog_landing_page')
+        array('phila_template_select', '=', 'prog_landing_page'),
+        array('phila_template_select', '=', 'prog_homepage_v2')
       ),
     'relation'  => 'or'
   ),
