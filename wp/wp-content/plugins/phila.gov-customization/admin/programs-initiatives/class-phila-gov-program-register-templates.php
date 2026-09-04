@@ -35,6 +35,7 @@ class Phila_Gov_Register_Program_Templates {
 
           'options' => array(
             'prog_landing_page'  => 'Homepage',
+            'homepage_v2' => 'Homepage v2 (full hero)',
             'phila_one_quarter'    => '1/4 Headings (subpage)',
             'collection_page_v2'   => 'Collection page',
             'covid_guidance'   =>  'Covid guidance',

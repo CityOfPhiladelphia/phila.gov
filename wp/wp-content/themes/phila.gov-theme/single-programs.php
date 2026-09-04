@@ -16,17 +16,26 @@ function get_dept_partial($partial_name, $partial_args = array()){
   global $post;
 
   if ( $post->ID == '4273' ){ //connected neighborhoods - preview id: 404273
-    include(locate_template(('partials/departments/v2/mayor/home.php')));
-
-  } else if ($post->post_parent == '4273'){
-    include(locate_template(('partials/departments/v2/mayor/subpage.php')));
-  }
-  else{
     phila_get_template_part('partials/departments/v2/department-'.$partial_name, $partial_args);
   }
 }
 
+$content = $post->post_content;
+$children = get_posts( array(
+  'post_parent' => $post->ID,
+  'orderby'     => 'menu_order',
+  'order'       => 'ASC',
+  'post_type'   => 'department_page',
+  'post_status' => 'publish'
+));
+
+$ancestors = get_post_ancestors($post);
+$parent = wp_get_post_parent_id($post);
+
 $user_selected_template = phila_get_selected_template();
+
+$parent_template = phila_get_selected_template($parent);
+
 $language = rwmb_meta('phila_select_language');
 $language_list = phila_get_translated_language( $language );
 get_header();
@@ -53,6 +62,11 @@ get_header();
       get_dept_partial('hero', $hero_data);
 
   ?>
+
+  <?php else: ?>
+      <?php 
+        include(locate_template( 'partials/programs/header.php') ); ?>
+  <?php endif; ?>
 
 <?php if ( $user_selected_template == 'prog_off_site' ) : ?>
 
