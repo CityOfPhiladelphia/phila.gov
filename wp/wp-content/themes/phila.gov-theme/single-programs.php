@@ -6,20 +6,6 @@
 */
 global $post;
 
-
-/**
- * Get a department specific partial template with scoped args
- * @param  string $partial_name name of partial after hyphen
- * @param  array  $partial_args arguments to scope to that specifc partial
- */
-function get_dept_partial($partial_name, $partial_args = array()){
-  global $post;
-
-  if ( $post->ID == '4273' ){ //connected neighborhoods - preview id: 404273
-    phila_get_template_part('partials/departments/v2/department-'.$partial_name, $partial_args);
-  }
-}
-
 $content = $post->post_content;
 $children = get_posts( array(
   'post_parent' => $post->ID,
