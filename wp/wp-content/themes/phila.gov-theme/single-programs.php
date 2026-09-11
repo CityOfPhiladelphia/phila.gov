@@ -4,54 +4,13 @@
  *
  * @package phila-gov
 */
-global $post;
-
-$content = $post->post_content;
-$children = get_posts( array(
-  'post_parent' => $post->ID,
-  'orderby'     => 'menu_order',
-  'order'       => 'ASC',
-  'post_type'   => 'department_page',
-  'post_status' => 'publish'
-));
-
-$ancestors = get_post_ancestors($post);
-$parent = wp_get_post_parent_id($post);
 
 $user_selected_template = phila_get_selected_template();
-
-$parent_template = phila_get_selected_template($parent);
 $language = rwmb_meta('phila_select_language');
 $language_list = phila_get_translated_language( $language );
 get_header();
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class('program clearfix'); ?>>
-
-  <?php
-
-    $parent = phila_util_get_furthest_ancestor($post);
-    if ( phila_util_is_new_template( $parent->ID ) && $user_selected_template !== 'prog_association' && $parent_template !== 'prog_association' ) :
-      /**
-       * Department Homepage V2 Hero
-       */
-      $hero_data = array(
-        'parent' => phila_util_get_furthest_ancestor($post),
-        'is_homepage' => ($user_selected_template == 'homepage_v2' || $user_selected_template == 'homepage_v3'),
-        'bg' => array(
-          'desktop'      => phila_get_hero_header_v2( $parent->ID ),
-          'mobile'       => phila_get_hero_header_v2( $parent->ID, true ),
-          'photo_credit' => rwmb_meta( 'phila_v2_photo_credit', $parent->ID )
-        )
-      );
-
-      get_dept_partial('hero', $hero_data);
-
-  ?>
-
-  <?php else: ?>
-      <?php 
-        include(locate_template( 'partials/programs/header.php') ); ?>
-  <?php endif; ?>
 
 <?php if ( $user_selected_template == 'prog_off_site' ) : ?>
 
