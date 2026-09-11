@@ -471,56 +471,48 @@ function phila_register_services_rest_routes() {
 
 add_action( 'rest_api_init', 'phila_register_services_rest_routes' );
 
+function build_page_tree($parent_id = 0) {
 
+    $all_pages = get_posts(array(
+        'post_type'      => 'service_page',
+        'posts_per_page' => -1,
+        'orderby'        => 'menu_order',
+        'order'          => 'ASC',
+        'post_status'    => 'publish',
+    ));
 
-function get_page_list($parent_id = 0, &$page_list = array()) {
-  $args = array (
-    'post_type' => 'service_page',
-    'orderby' => 'menu_order',
-    'order' => 'ASC',
-    'child_of' => $parent_id,
-  );
-  $pages = get_pages($args);
+    if (empty($all_pages)) {
+        return array();
+    }
 
-  foreach ($pages as $page) {
-      if (!in_array($page->ID, $page_list)) {
-          $page_list[] = $page->ID;
-
-          get_page_list($page->ID, $page_list);
-      }
-  }
-
-  return $page_list;
+    $pages_by_parent = array();
+    foreach ($all_pages as $page) {
+        $pages_by_parent[$page->post_parent][] = array(
+            'ID'          => $page->ID,
+            'post_title'  => $page->post_title,
+            'post_link'   => get_permalink($page->ID), 
+            'post_name'   => $page->post_name,
+            'post_parent' => $page->post_parent,
+            'post_type'   => $page->post_type,
+        );
+    }
+    
+    return build_tree_from_map($pages_by_parent, $parent_id);
 }
 
-function build_page_tree($parent_id = 0) {
-  $page_list = get_page_list($parent_id);
+function build_tree_from_map($pages_by_parent, $parent_id) {
+    if (!isset($pages_by_parent[$parent_id])) {
+        return array();
+    }
 
-  $page_tree = array();
-
-  foreach ($page_list as $page_id) {
-      $page = get_post($page_id);
-
-      $page_item = array(
-          'ID' => $page->ID,
-          'post_title' => $page->post_title,
-          'post_link' => get_permalink($page->ID),
-          'post_name' => $page->post_name,
-          'post_parent' => $page->post_parent,
-          'post_type' => $page->post_type
-      );
-
-      if ($page->post_parent == $parent_id) {
-          $children = build_page_tree($page->ID);
-
-          if (!empty($children)) {
+    $tree = array();
+    foreach ($pages_by_parent[$parent_id] as $page_item) {
+        $children = build_tree_from_map($pages_by_parent, $page_item['ID']);
+        if (!empty($children)) {
             $page_item['collapsed'] = 'true';
             $page_item['children'] = $children;
-          }
-
-          $page_tree[] = $page_item;
-      }
-  }
-
-  return $page_tree;
+        }
+        $tree[] = $page_item;
+    }
+    return $tree;
 }
