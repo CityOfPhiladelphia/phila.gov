@@ -4,11 +4,8 @@
  *
  * @package phila-gov
 */
-global $post;
 
 $user_selected_template = phila_get_selected_template();
-
-// $parent_template = phila_get_selected_template($parent);
 $language = rwmb_meta('phila_select_language');
 $language_list = phila_get_translated_language( $language );
 get_header();
