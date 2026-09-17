@@ -903,7 +903,7 @@ class Phila_Gov_Standard_Metaboxes {
         'id'    => 'phila_action_panel_fa_multi',
         'type'  => 'text',
         'class' => 'action-panel-fa',
-        'desc'  => 'Uses <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icons. Eg: fas fa-bell'
+        'desc'  => 'Uses <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> icons. Eg: fas fa-bell',
       ),
       array(
         'name'  => 'Link url',
@@ -1025,6 +1025,76 @@ class Phila_Gov_Standard_Metaboxes {
       ),
     );
   }
+
+    public static function phila_meta_var_phila_project_get_involved (){
+
+    return array(
+      array(
+        'id'  => 'phila_project_get_involved_section',
+        'type' => 'group',
+        'fields' => array(
+          array(
+            'name'  => 'Section Title',
+            'id'    => 'phila_project_get_involved_section_title',
+            'type'  => 'text',
+            'class'  => 'percent-100'
+          ),
+          array(
+            'id'  => 'phila_project_get_involved_group',
+            'type' => 'group',
+            'clone'  => true,
+            'min_clone' => 2,
+            'max_clone' => 4,
+            'sort_clone' => true,
+            'fields' => array(
+              array(
+                'name'  => 'Link text',
+                'id'    => 'phila_project_link_text',
+                'type'  => 'text',
+                'class' => 'action-panel-cta-text',
+              ),
+              array(
+                'name'  => 'Summary',
+                'id'    => 'phila_project_summary',
+                'type'  => 'textarea',
+                'class' => 'action-panel-details',
+                'limit' => 140,
+              ),
+              array(
+                'name'  => 'Icon',
+                'id'    => 'phila_project_fa',
+                'type'  => 'text',
+                'class' => 'action-panel-fa',
+              ),
+              array(
+                'name'  => 'URL to content',
+                'id'    => 'phila_project_link',
+                'type'  => 'text',
+                'class' => 'action-panel-link',
+                'columns'  => 12,
+              ),
+              Phila_Gov_Standard_Metaboxes::phila_metabox_external($id = 'phila_action_panel_link_loc_multi')
+            ),
+            'std' => array(
+              array(
+                'phila_project_link_text' => '',
+                'phila_project_summary'   => '',
+                'phila_project_fa'        => '',
+                'phila_project_link'      => '',
+              ),
+              array(
+                'phila_project_link_text' => '',
+                'phila_project_summary'   => '',
+                'phila_project_fa'        => '',
+                'phila_project_link'      => '',
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   // List of links with FontAwesome icons
   public static function phila_meta_var_list_items (){
 
@@ -1358,6 +1428,40 @@ public static function phila_meta_var_connect(){
     );
   }
 
+    public static function phila_meta_var_project_staff_list ($id = 'phila_project_staff_list'){
+    return array(
+      'id' => $id,
+      'type'  => 'group',
+      'clone' => true,
+      'sort_clone' => true,
+      'add_button' => '+ Add member',
+      'fields'  => array(
+        array(
+          'id'  => 'full_name', 
+          'name'  => 'Full name',
+          'type'  => 'text',
+          'desc'  => 'Enter the full name, with honorific e.g.: Dr. Herbert West, PhD'
+        ),
+        array(
+          'id'  => 'title',
+          'name'  => 'Title',
+          'type'  => 'text',
+          'desc'  => 'E.g.: Chief of Staff/Reanimator'
+        ),
+        array(
+          'id'  => 'email',
+          'name'  => 'Email address',
+          'type'  => 'email',
+        ),
+        array(
+          'id'  => 'phone',
+          'name'  => 'Phone',
+          'type'  => 'phone'
+        ),
+      )
+    );
+  }
+
   public static function phila_callout_v2(){
     return array(
       'id'  => 'phila_callout_v2',
@@ -1627,7 +1731,7 @@ public static function phila_meta_var_connect(){
       'id'  => 'timeline-title',
       'type'  => 'text',
       'name'  => 'Title',
-      'desc'  =>  'Content appears on homepage',
+      'desc'  =>  'This title appears on the program or project homepage.',
     ),
     array(
       'id'  => 'timeline-month-year-toggle',
@@ -1665,6 +1769,37 @@ public static function phila_timeline_page_selector( ){
         array(
           'key'     => 'phila_template_select',
           'value'   => 'timeline',
+          'compare' => '=',
+        )
+      )
+    ),
+    'js_options'  => array(
+      'width' => '100%',
+      'closeOnSelect' => false,
+    )
+  );
+}
+
+public static function phila_project_timeline_page_selector( ){
+
+  return array(
+    'name'        => 'Select timeline page',
+    'id'          => 'phila_select_timeline',
+    'type'        => 'post',
+    'post_type'   => array('project'),
+    'post_status' => array( 'draft', 'publish', 'private'),
+    'field_type'  => 'select_advanced',
+    'placeholder' => '',
+    'desc'     =>  'Add a timeline page. You can narrow your search options by typing in the field above',
+    'multiple'  => false,
+
+    'query_args'  => array(
+      'post_status'    => 'any',
+      'posts_per_page' => -1,
+      'meta_query' => array(
+        array(
+          'key'     => 'phila_template_select',
+          'value'   => 'project_timeline',
           'compare' => '=',
         )
       )

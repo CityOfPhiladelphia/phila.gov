@@ -155,6 +155,18 @@ function phila_breadcrumbs() {
         echo '<li>';
         the_title();
         echo '</li>';
-    }
+    } elseif ( is_singular('project') ) {
+
+      $anc = get_post_ancestors( $post->ID );
+      $title = get_the_title();
+
+      foreach ( $anc as $ancestor ) {
+
+        $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> ' .  $output;
+      }
+
+      echo '<li><a href="/projects/">Projects</a></li>' . $output;
+      echo '<li> '.$title.'</li>';
+    } 
   echo '</ul>';
 }//end breadcrumbs
