@@ -7,11 +7,12 @@ function phila_register_department_meta_boxes( $meta_boxes ){
   //Department Homepage
   $meta_boxes[] = array(
     'title' => 'Department media',
-    'pages'    => array( 'department_page' ),
+    'pages'    => array( 'department_page', 'programs' ),
     'visible' => array(
       'when'  => array(
         array('phila_template_select', '=', 'homepage_v2' ),
         array('phila_template_select', '=', 'homepage_v3' ),
+        array('phila_template_select', '=', 'prog_homepage_v2' )
       ),
       'relation' => 'or',
     ),
