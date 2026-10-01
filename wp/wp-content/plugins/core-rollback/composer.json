@@ -1,0 +1,54 @@
+{
+	"name": "afragen/core-rollback",
+	"description": "Seamless rollback of WordPress Core to latest release or any outdated, secure release using the Core Update API and core update methods.",
+	"type": "wordpress-plugin",
+	"keywords": [
+		"core",
+		"rollback",
+		"downgrade",
+		"upgrade"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Andy Fragen",
+			"email": "andy@thefragens.com",
+			"homepage": "https://thefragens.com",
+			"role": "Developer"
+		}
+	],
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/afragen/core-rollback"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/afragen/core-rollback/issues",
+		"source": "https://github.com/afragen/core-rollback"
+	},
+	"prefer-stable": true,
+	"require": {
+		"php": ">=5.6"
+	},
+	"autoload": {
+		"psr-4": {
+			"Fragen\\Rollback\\": "src/"
+		}
+	},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^3.0.0"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"make-pot": [
+			"wp i18n make-pot . languages/core-rollback.pot"
+		],
+		"lint": "@php ./vendor/bin/phpcs .",
+		"format": "@php ./vendor/bin/phpcbf ."
+	}
+}
