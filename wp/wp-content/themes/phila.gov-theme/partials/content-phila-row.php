@@ -400,7 +400,7 @@
               if ( $current_row_option_one['phila_two_thirds_col_option'] == 'phila_custom_text'):?>
                 <?php if ( isset( $current_row_option_one['phila_custom_text'] ) ):
                   $custom_text = $current_row_option_one['phila_custom_text']; ?>
-                  <div class="large-16 columns">
+                  <div class="large-14 columns mhm">
                     <?php include(locate_template('partials/departments/content-custom-text.php'));?>
                   </div>
                 <?php endif;?>

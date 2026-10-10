@@ -55,6 +55,9 @@ require $dir. '/admin/event-spotlight/templates/class-phila-gov-spotlight.php';
 require $dir. '/admin/guides/class-phila-gov-cpt-guides.php';
 require $dir. '/admin/guides/class-phila-gov-guides-register-templates.php';
 
+require $dir. '/admin/projects/class-phila-gov-cpt-projects.php';
+require $dir. '/admin/projects/class-phila-gov-project-register-templates.php';
+
 require $dir. '/admin/meta-boxes/meta-boxes.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-admin-templates.php';
 require $dir. '/admin/meta-boxes/class-phila-gov-custom-phone.php';
@@ -100,6 +103,7 @@ require $dir. '/public/controllers/class-phila-longform-content.php';
 require $dir. '/public/controllers/class-phila-pages.php';
 require $dir. '/public/controllers/class-phila-posts.php';
 require $dir. '/public/controllers/class-phila-programs.php';
+require $dir. '/public/controllers/class-phila-projects.php';
 require $dir. '/public/controllers/class-phila-service-pages.php';
 require $dir. '/public/controllers/class-phila-staff-members.php';
 

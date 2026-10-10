@@ -1,0 +1,35 @@
+.project-template-default {
+    .project-header {
+        .hero-title {
+            font-weight: 650;
+            color: #ffffff;
+        }
+        .sub-title {
+            color: #ffffff;
+        }
+    }
+
+    .content-type-press_release, .content-type-events, .content-type-posts, .content-type-Resources {
+        background-color: #25cef7 !important;
+        font-weight: 700 !important;
+        color: #444444 !important;
+    }
+
+    .project-posts {
+        img {
+            height: 128px;
+            width: 201px;
+        }
+
+        .post-label, .post-meta{
+            text-decoration: underline !important; 
+            color: #0f4d90 !important;
+        }
+
+        article {
+            .card {
+                height: auto;
+            }
+        }
+    }
+}

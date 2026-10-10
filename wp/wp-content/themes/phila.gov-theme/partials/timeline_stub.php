@@ -6,7 +6,10 @@
 ?>
 
 <?php 
-$timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $timeline_page['phila_select_timeline'];
+if($post_type !== 'project') {
+  $timeline_page = !isset($timeline_page) ? rwmb_meta('phila_select_timeline') : $timeline_page['phila_select_timeline'];
+}
+
  $limit = $limit ? $limit : 5;
 
   if ( $timeline_page != null ) {

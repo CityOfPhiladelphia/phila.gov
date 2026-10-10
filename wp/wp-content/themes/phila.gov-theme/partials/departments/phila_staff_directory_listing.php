@@ -52,7 +52,7 @@ if ( has_category() ) {
       $args = array(
         'orderby' => 'title',
         'order' => 'ASC',
-        'post_type' => 'staff_directory',
+        'post_type' => array('staff_directory', 'project'),
         'cat' => array($category_id),
         'posts_per_page' => -1,
         'meta_key' => 'units',
@@ -67,7 +67,7 @@ if ( has_category() ) {
     $args = array(
       'orderby' => 'title',
       'order' => 'ASC',
-      'post_type' => 'staff_directory',
+      'post_type' => array('staff_directory', 'project'),
       'cat' => array($category_id),
       'posts_per_page' => -1,
       'meta_query' => array(
@@ -90,7 +90,7 @@ if ( has_category() ) {
         $args = array(
           'orderby' => 'title',
           'order' => 'ASC',
-          'post_type' => 'staff_directory',
+          'post_type' => array('staff_directory', 'project' ),
           'cat' => array($category_id),
           'posts_per_page' => -1,
           'meta_query' => array(
@@ -112,7 +112,7 @@ if ( has_category() ) {
         $args = array(
           'orderby' => 'title',
           'order' => 'ASC',
-          'post_type' => 'staff_directory',
+          'post_type' => array('staff_directory', 'project'),
           'cat' => array($category_id),
           'posts_per_page' => -1,
           );
